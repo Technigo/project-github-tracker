@@ -1,18 +1,38 @@
 body {
   background: #ffece9;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  text-align: center;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.username-picture {
+/* h1 {
+} */
+
+.user-information {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.username-picture__picture {
+.user-information__picture {
   border-radius: 50%;
   width: 15%;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects__repo-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.projects__repo-container-latest-commit {
 }

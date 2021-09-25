@@ -1,19 +1,29 @@
-const name = "Zancotti";
-const myReposApi = `https://api.github.com/users/${name}/repos`;
-const usernameAndPictureApi = `https://api.github.com/users/${name}`;
+//Global variables
+let username = "Zancotti";
 let filteredRepos = [];
+let repoName, commitsUrl, repoDefaultBranch;
+
+//DOM selectors
+
+// Used APIs
+const myReposApi = `https://api.github.com/users/${username}/repos`;
+const usernameAndPictureApi = `https://api.github.com/users/${username}`;
+let pullRequestsApi;
 
 const getUsernameAndPicture = () => {
   fetch(usernameAndPictureApi)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      const username = `${data.login}`;
-      const pictureOfUser = `${data.avatar_url}`;
+      const pictureOfUser = data.avatar_url;
+      const userBio = data.bio;
 
-      usernamePicture.innerHTML = `
-        <img class="username-picture__picture" src="${pictureOfUser}" alt="Picture of gitHub-user"/>
-        <div class="username-picture__username">${username}</div>`;
+      userInformation.innerHTML = `
+        <img class="user-information__picture" src="${pictureOfUser}" alt="Picture of gitHub-user"/>
+        <div class="user-information__username-bio-container">
+          <div class="user-information__username">${username}</div>
+          <div class="user-information__bio">${userBio}</div>
+        </div>`;
     });
 };
 
@@ -23,7 +33,7 @@ const getRepos = () => {
     .then((data) => {
       console.log(data);
       data.forEach((e) => {
-        if (e.fork === true && e.full_name.includes(`project`)) {
+        if (e.fork === true && e.name.includes(`project`)) {
           filteredRepos.push(e);
         }
       });
@@ -35,15 +45,44 @@ const getRepos = () => {
       filteredRepos = filteredRepos.reverse();
 
       filteredRepos.forEach((e) => {
-        repoName = e.full_name;
+        repoName = e.name;
+        repoDefaultBranch = e.default_branch;
         repoCreateDate = e.created_at;
-        const myDate = new Date(repoCreateDate);
+        projects.innerHTML += `<div class="projects__repo-container" id="${repoName}">
+          <div>${repoName}</div>
+        </div>`;
 
-        console.log(repoCreateDate);
-        console.log(myDate);
-
-        projects.innerHTML += `<div>${repoName}</div>`;
+        repoDefaultBranch = e.default_branch;
+        pullRequestsApi = `https://api.github.com/repos/technigo/${repoName}/pulls?head=${username}:${repoDefaultBranch}`;
+        getPullRequests(repoName);
       });
+    });
+};
+
+const getPullRequests = (repoName) => {
+  console.log("pullRequestsApi", pullRequestsApi);
+  fetch(pullRequestsApi)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("pullRequestsApi data", data);
+
+      if (data.length === 1) {
+        commitsUrl = data[0].commits_url;
+        getcommits(repoName);
+      }
+    });
+};
+
+const getcommits = (repoName) => {
+  fetch(commitsUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("getcommits data", data);
+      let commitMessage = data[data.length - 1].commit.message;
+      console.log(commitMessage);
+
+      containerToChange = document.getElementById(repoName);
+      containerToChange.innerHTML += `<div class="projects__repo-container-latest-commit">Latest commit message: ${commitMessage}</div>`;
     });
 };
 
@@ -53,7 +92,10 @@ const getRepos = () => {
 // };
 
 /*- A list of all repos that are forked ones from Technigo
+= done
 - Your username and profile picture
+= done
+
 - Most recent update (push) for each repo
 - Name of your default branch for each repo
 - URL to the actual GitHub repo
