@@ -1,8 +1,8 @@
-# GitHub Tracker
+# Week 7- Technigo Bootcamp
 
-Replace this readme with your own information about your project.
+# Project GitHub Tracker
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week, we want you to create a place to keep track of the GitHub repos that you're using here at Technigo. You will continue practicing your JavaScript and API skills with the help of GitHub's own documentation.
 
 ## The problem
 

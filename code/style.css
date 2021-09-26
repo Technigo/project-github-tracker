@@ -1,3 +1,62 @@
 body {
-  background: #FFECE9;
+  background: #FFECE9; 
+}
+
+.general-info{
+  background-color: rgb(194, 138, 235);
+  padding: 20px;
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: column;
+}
+
+.general-title{
+  font-weight: 600;
+}
+
+.profile-image{
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+}
+
+.profile-info-wraper{
+  margin-left: 10px;
+  display: grid;
+}
+
+.main-section{
+  border: 1px solid blue
+}
+
+
+.projects-info {
+  background-color: aquamarine;
+  border: 1px solid red;
+  display: flex;
+  margin: 10px;
+}
+
+.card{
+  background-color: palegoldenrod;
+  border: 1px solid black;
+  display: flex;
+  margin: 10px;
+}
+
+@media screen and (min-width: 768px){
+  .general-title {
+    width: 100%;
+
+}
+
+.general-info{
+    flex-direction: row;
+}
+
+
+}
+
+@media screen and (min-width: 991px){
+
 }
