@@ -6,11 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel ="icon" href="https://avatars.githubusercontent.com/u/80845418?v=4" type="image"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
+  <header class="header">
+    <img class="github-icon" src="./github.png" alt="github icon"/>
+    <h1 class="main-title"> GitHub Tracker</h1>
+  </header>
+
+  <div class="userinfo">
+    <p id="profilepic"></p>
+    <p class="userid" id="username"></p>
+  </div>
+
   <h2>Projects:</h2>
   <main id="projects"></main>
+
+  <div class="repos">
+    <p id="repolist"></p>
+  </div>
+
+  
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
