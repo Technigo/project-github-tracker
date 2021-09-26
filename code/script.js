@@ -5,12 +5,18 @@ fetch(repoURL)
 .then((response)=>{
 return response.json()
 })
-.then((repo)=>{
-    console.log(repo)
-    projects.innerHTML = `The name of your first project was ${repo[0].name}`
+.then((forked)=>{
+    console.log(forked)
+    projects.innerHTML = `The name of your first project was ${forked[0].name}`
+    const forkedProjects = forked.filter(()=>)
 
-   repo.forEach(reponames => {
-    projects.innerHTML += `<p> Project name ${reponames.name}</p>`
-   });
+    
+
+   //repo.forEach(reponames => {
+    //projects.innerHTML += `<p> Project name: ${reponames.name}</p>`
+   //});
 
 })
+
+.catch((error) => console.error(error))
+.then(() => console.log('Request finished'));
