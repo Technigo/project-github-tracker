@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="./hero-image.jpg"
+        alt="cover image of plants"
+        class="hero-image"
+      />
+      <h1 class="header-title">GitHub Tracker</h1>
+      <div>Profile image and username</div>
+    </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <main class="projects">
+      <h3>Repositories</h3>
+      <section class="project-container" id="projectContainer"></section>
+      modal/accordion for each project??
+    </main>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <p>
+      - A list of all repos that are forked ones from Technigo
+      <br />
+      - Your username and profile picture
+      <br />
+      - Most recent update (push) for each repo
+      <br />
+      - Name of your default branch for each repo
+      <br />
+      - URL to the actual GitHub repo
+      <br />
+      - Number of commit messages for each repo
+      <br />
+      - All pull requests
+      <br />
+      - - It should be responsive (mobile first)
+      <br />
+      - A chart of how many projects you've done so far, compared to how many
+      you will do using [Chart.js](https://www.chartjs.org/).
+      [Here](https://www.chartjs.org/docs/latest/getting-started/)'s
+      documentation on how to get started, and in the left menu you can also
+      find [example
+      usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+      <br />
+      - A visualisation, for example through a pie chart, of how many projects
+      you've done so far, compared to how many you will do (in total it will be
+      20 weekly projects 🥳) using [Chart.js](https://www.chartjs.org/).
+    </p>
+    <!-- This will be used to draw the chart 👇 -->
+    <canvas id="chart"></canvas>
+
+    <footer>footer</footer>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
