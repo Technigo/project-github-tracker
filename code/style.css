@@ -1,3 +1,7 @@
 body {
-  background: #FFECE9;
+  background: #ffece9;
+}
+
+.chart {
+  width: 200px;
 }
