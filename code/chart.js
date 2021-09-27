@@ -2,8 +2,22 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
 //"Draw" the chart here 👇
-// const config = {
-//   type: "line",
-//   data: data,
-//   options: {},
-// };
+
+const drawChart = amount => {
+  const config = {
+    type: "pie",
+    data: {
+      labels: ["finished projects", "projects left"],
+
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [amount, 20 - amount],
+          backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+          hoverOffset: 4,
+        },
+      ],
+    },
+  };
+  const myChart = new Chart(ctx, config);
+};
