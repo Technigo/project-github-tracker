@@ -1,5 +1,6 @@
-const repoURL = 'https://api.github.com/users/KaraHowes/repos'
-
+const USER = 'KaraHowes'
+const repoURL = `https://api.github.com/users/${USER}/repos`
+const projectsContainer = document.getElementById('projects')
 
 
 
@@ -9,12 +10,12 @@ return response.json()
 })
 .then((data)=>{
     console.log(data)
-    projects.innerHTML = `The name of your first project was ${data[0].name}`
+    projectsContainer.innerHTML = `The name of your first project was ${data[0].name}`
     
-    const forkedProjects = data.filter(repo => repo.fork)
+    const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
     
     forkedProjects.forEach((forkName)=> {
-    projects.innerHTML += `<p> forked projects: ${forkName.name}</p>`
+    projectsContainer.innerHTML += `<h3>${forkName.name}</h3>`
     
 })
 }
