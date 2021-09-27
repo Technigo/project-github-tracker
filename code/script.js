@@ -26,12 +26,15 @@ const presentRepoData = () => {
             const filteredCommits = json.filter(
               (project) => project.commit.committer.name === "Linnea Isebrink"
             );
-            console.log(filteredCommits);
+            let commitDate = filteredCommits[0].commit.author.date
+            let commitMessage = filteredCommits[0].commit.message
             projectsContainer.innerHTML += `
                 <h3>${project.name}</h3>
                 <p>${project.default_branch}</p>
                 <a href="${project.html_url}">${project.html_url}</a>
                 <p>This repo has been commited to ${filteredCommits.length} times</p>
+                <p>The last commit was made: ${commitDate.slice(0, 10)} at ${commitDate.slice(11, 16)}</p>
+                <p>And the commit message was: ${commitMessage}</p>
         `;
           });
       });
