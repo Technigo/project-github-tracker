@@ -12,9 +12,9 @@ const userProfile = () => {
   fetch(USER_URL)
   .then(res => res.json())
   .then(data => {
-      console.log(data);
+      //console.log(data);
       userContainer.innerHTML = `
-      <h1>Username: ${data.login}</h1>
+      <h2>Username: ${data.login}</h2>
       <p>Full name: ${data.name}</p>
       <p>Location: ${data.location}</p>
       <img src="${data.avatar_url}"/>
@@ -35,6 +35,7 @@ const fetchAll = () => {
     `))
 
       //drawChart(forkedRepos.length)
+      pullRequests(forkedRepos)
     })
     .catch(() => {
       container.innerHTML = `
@@ -42,28 +43,57 @@ const fetchAll = () => {
     <p>Please try again!</p>
     `
     })
-    
-  
 }
 
-fetchAll()
 
-
-
-/*const pullRequests = (repos) => {
+const pullRequests = (repos) => {
   repos.forEach(repo => {
-    console.log(repo)
+    //console.log(repo)
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        //console.log(data)
         const myPulls = data.filter(pull => pull.user.login === repo.owner.login)
-        console.log(myPulls)
-      
+        //console.log(myPulls)
+        //const COMMENTS_URL = myPulls.review_comments_url
+        const myCommits = myPulls.commits_url
+        console.log(myCommits)
+        //showComments(COMMENTS_URL)
+        showCommits(myCommits)
       })
+      
+    
     })
 }
+
+const showCommits = (repos) => {
+repos.forEach(repo => {
+  fetch(myCommits)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+  })
+
+})
+
+}
+
+/*const showComments = (repos) =>
+repos.forEach(repo => {
+  fetch(COMMENTS_URL)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+  })
+})*/
+
+
+
+
+userProfile()
+fetchAll()
 pullRequests()
+showComments()
 
 //Eventlisteners
 searchBtn.addEventListener('click', () => {
