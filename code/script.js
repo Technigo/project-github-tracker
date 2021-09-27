@@ -1,18 +1,35 @@
-const REPOS_URL = "https://api.github.com/users/Lundgreneddie/repos";
-const PR_URL = "https://api.github.com/repos/technigo/${reponame}/pulls"
+const USER = 'Lundgreneddie'
+const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
+const profileContainer = document.getElementById('profile');
 const projectsContainer = document.getElementById('projects');
 const pullContainer = document.getElementById('pullRequests');
 
-const getRepos = () => {
-    fetch(REPOS_URL)
+const getProfile = () => {
+  fetch (`https://api.github.com/users/${USER}`)
     .then(res => res.json())
     .then(json => {
-      console.log(json);
-      //data.forEach(repo => console.log(repo.name))
-      const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-'))
-      forkedRepos.forEach(repo => projectsContainer.innerHTML += `<h3>${repo.name}<h3>`)
+      profileContainer.innerHTML = `
+      <h2>${json.login}</h2>
+      <img src=${json.avatar_url}>
+      `
+    })
+}
+getProfile()
+
+const getRepos = () => {
+    fetch(REPOS_URL)
+     .then(res => res.json())
+     .then(json => {
+        console.log(json);
+        //data.forEach(repo => console.log(repo.name))
+        const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-'))
+        forkedRepos.forEach(repo => projectsContainer.innerHTML += `<h3>${repo.name}<h3>
+        <h3>${repo.pushed_at.slice(0, 10)}: ${repo.pushed_at.slice(11, 16)}</h3>
+        <h3>${repo.default_branch}</h3>
+        <a href=${repo.html_url}>Go here</a>
+      `)
+
       drawChart(forkedRepos.length)
-      getPullRequests(forkedRepos)
     })   
  }
 
