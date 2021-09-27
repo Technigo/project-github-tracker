@@ -1,15 +1,9 @@
 TODO:
 
-1. fetch the repos and console log them
-2. get them in the browser
-3. filter out the technigo repos
-
-4) test chart library
-
 // ### What to include
 
-// - A list of all repos that are forked ones from Technigo
-// - Your username and profile picture
+// - A list of all repos that are forked ones from Technigo ✅
+// - Your username and profile picture ✅
 // - Most recent update (push) for each repo
 // - Name of your default branch for each repo
 // - URL to the actual GitHub repo

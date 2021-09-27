@@ -12,7 +12,7 @@ const drawChart = (amount) => {
       datasets: [
         {
           label: "Repos chart",
-          data: [amount, 20 - amount], //length of repo array ,
+          data: [amount, 19 - amount], //length of repo array ,
           backgroundColor: [
             "rgb(255, 99, 132)", //own colors
             "rgb(54, 162, 235)",
