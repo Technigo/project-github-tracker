@@ -15,7 +15,11 @@ return response.json()
     const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
     
     forkedProjects.forEach((forkName)=> {
-    projectsContainer.innerHTML += `<h3>${forkName.name}</h3>`
+    projectsContainer.innerHTML += `<p>${forkName.name}</p>`
+
+    drawChart(forkedProjects.length)
+    console.log('hello', forkedProjects.length)
+
     
 })
 }
