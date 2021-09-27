@@ -1,3 +1,166 @@
 body {
-  background: #FFECE9;
+  background: #EA86B6;
+}
+
+h1 {
+  width: fit-content;
+  max-width: 90%;
+  margin: 10% auto;
+  color: #daff05;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2.2em;
+}
+
+h2 {
+  width: fit-content;
+  margin: auto;
+  color: #daff05;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 2em;
+}
+
+img {
+  width: 150px;
+  display: block;
+  margin: 30px auto;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+#username {
+  color: #daff05;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+/* THE LIST SECTION */
+
+#list {
+  display: block;
+  max-width: 90%;
+  padding: 2%;
+  margin: auto;
+}
+
+li {
+  width: 90%;
+  margin: 30px auto;
+  color: #daff05;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+li a {
+  text-decoration: none;
+  margin: 10px auto;
+  color: #daff05;
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 1.2em;
+}
+
+li a:hover {
+  text-decoration: none;
+  background-color:#d2c1fc;
+}
+
+
+/* THE CHART SECTION */
+
+#chart {
+  background-color: #daff05;
+  display: block;
+  max-width: 90%;
+  margin: 10% auto;
+}
+
+/* -------- MEDIA QUERIES HERE --------- */
+
+
+/* TABLET SIZE SCREEN */
+@media (min-width: 667px) {
+
+  h1 {
+    width: fit-content;
+    max-width: 90%;
+    margin: 10% auto;
+    color: #daff05;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size:4em;
+  }
+  
+  h2 {
+    width: fit-content;
+    margin: 20px auto;
+    color: #daff05;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 3em;
+  }
+
+  #username {
+    color: #daff05;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 2.5em;
+    align-items: center;
+    display: block;
+    width: fit-content;
+    margin: 10px auto 80px;
+  }
+  
+  img {
+    width: 250px;
+    display: block;
+    margin: 10px auto 30px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  
+ 
+  /* THE LIST SECTION */
+  
+  #list {
+    display: block;
+    max-width: 90%;
+    margin: 10px auto 50px;
+    text-align: center;
+  }
+  
+  /* numbers*/
+  li {
+    width: 90%;
+    margin: 15px auto;
+    color: #daff05;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.5em;
+  }
+
+
+  /* text list */
+  li a {
+    text-decoration: none;
+    margin: 10px auto;
+    color: #daff05;
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 1.5em;
+  }
+  
+  li a:hover {
+    text-decoration: none;
+    background-color:#d2c1fc;
+  }
+  
+  
+  /* THE CHART SECTION */
+  
+  #chart {
+    background-color: #daff05;
+    display: block;
+    width: 90%;
+    margin: 10% auto;
+  }
+
+
 }

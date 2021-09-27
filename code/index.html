@@ -5,14 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <link rel="shortcut icon" href="/tracker.png" type="image/x-icon">
 </head>
 <body>
   <h1>GitHub Tracker</h1>
+
+
+  <img id="avatar"> </img>
+
+  <p id="username"></p>
+
   <h2>Projects:</h2>
-  <main id="projects"></main>
+
+  
+  <main>
+
+    <ol id="list"></ol>
+    
+  </main>
 
   <!-- This will be used to draw the chart 👇 -->
+
+  <h2>Progress:</h2>
   <canvas id="chart"></canvas>
 
   <script src="./script.js"></script>
