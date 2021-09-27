@@ -4,13 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Technigo GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <h1>Technigo GitHub Tracker</h1>
+  <main id="projects">
+    <form id="search-field">
+      <input
+        class="input-field"
+        id="gitusername"
+        type="text"
+        placeholder="Github Username"
+        autocomplete="off"
+        required
+      />
+      <input type="submit" id="searchbtn" class="search-button">
+    </form>
+    <h2>Projects:</h2>
+  </main>
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
