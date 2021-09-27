@@ -3,12 +3,29 @@ let username = searchBtn.value
 const inputValue = document.getElementById('gitusername')
 const user = 'Asivol93'
 const REPOS_URL = `https://api.github.com/users/${user}/repos`
+const USER_URL = `https://api.github.com/users/${user}`
 const container = document.getElementById('projects')
+const userContainer = document.getElementById('userProfile')
+
+
+const userProfile = () => {
+  fetch(USER_URL)
+  .then(res => res.json())
+  .then(data => {
+      console.log(data);
+      userContainer.innerHTML = `
+      <h1>Username: ${data.login}</h1>
+      <p>Full name: ${data.name}</p>
+      <p>Location: ${data.location}</p>
+      <img src="${data.avatar_url}"/>
+      `
+    })
+}
 
 const fetchAll = () => {
   fetch(REPOS_URL)
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-'))
       forkedRepos.forEach((repo) =>
@@ -24,7 +41,6 @@ const fetchAll = () => {
     <h1>Sorry we could not find any data!</h1>
     <p>Please try again!</p>
     `
-    pullRequests(forkedRepos)
     })
     
   
@@ -34,7 +50,7 @@ fetchAll()
 
 
 
-const pullRequests = (repos) => {
+/*const pullRequests = (repos) => {
   repos.forEach(repo => {
     console.log(repo)
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
