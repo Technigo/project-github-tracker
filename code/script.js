@@ -2,33 +2,27 @@ const USER = 'KaraHowes'
 const repoURL = `https://api.github.com/users/${USER}/repos`
 const projectsContainer = document.getElementById('projects')
 
+const getRepos = ()=>{
 
-
-fetch(repoURL)
-.then((response)=>{
-return response.json()
-})
-.then((data)=>{
-    console.log(data)
-    projectsContainer.innerHTML = `The name of your first project was ${data[0].name}`
+    fetch(repoURL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        //projectsContainer.innerHTML = `The name of your first project was ${data[0].name}`
+        
+        
+        const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+        forkedProjects.forEach(repo => projectsContainer.innerHTML += `<h3>${repo.name}</h3>`)
     
-    const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+        drawChart(forkedProjects.length)
+        console.log('hello', forkedProjects.length)
     
-    forkedProjects.forEach((forkName)=> {
-    projectsContainer.innerHTML += `<p>${forkName.name}</p>`
-
-    drawChart(forkedProjects.length)
-    console.log('hello', forkedProjects.length)
-
+        
     
-})
+    }
+    
+    
+    )
 }
 
-   //repo.forEach((reponames) => {
-    //projects.innerHTML += `<p> Project name: ${reponames.name}</p>`
-   //});
-
-
-
-).catch((error) => console.error(error))
-.then(() => console.log('Request finished'));
+getRepos()

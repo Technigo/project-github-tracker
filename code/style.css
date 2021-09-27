@@ -2,7 +2,7 @@ body {
   background-color: aquamarine;
 }
 
-.chart{
-  max-width: 100px;
-  height: 300px;
+.canvas-chart{
+  max-width: 500px;
+ 
 }

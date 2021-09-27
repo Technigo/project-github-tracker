@@ -10,22 +10,21 @@ const drawChart = (amount) =>{
         labels: [
           'Completed Projects',
           'Remaining Projects',
-  
         ],
         datasets: [{
           label: 'My First Dataset',
           data: [amount , 24-amount],
           backgroundColor: [
             'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            'rgb(54, 162, 235)'
             
           ],
           hoverOffset: 4
         }]
-      }
+      },
 
-    }
-    const myChart = new Chart(ctx, config);
+    };
+  const myChart = new Chart(ctx, config)
 }
 
 
