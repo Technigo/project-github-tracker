@@ -15,10 +15,20 @@ const getRepos = () => {
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
       forkedRepos.forEach(
-        (repo) => (projectsContainer.innerHTML += `<h3>${repo.name}</h3>`)
+        (repo) =>
+          (projectsContainer.innerHTML += `<div class = "repositories"> <h3>${repo.name}</h3> </div>`)
       );
       drawChart(forkedRepos.length);
     });
 };
 
 getRepos();
+
+// pull requests
+const getPullRequests = (repo) => {
+  repo.forEach((repo) => {
+    fetch("https://api.github.com/repos/technigo/" + repo.name + PULLS)
+      .then((response) => response.json())
+      .then((data) => {});
+  });
+};

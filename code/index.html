@@ -9,12 +9,23 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
-    <main id="projects"></main>
-
+    <header class="header"></header>
+    <section class="main-container">
+      <section class="profile-container">
+        <img
+          class="profile-pic"
+          src="https://i.ibb.co/pRcYcBJ/IMG-3379-2.jpg"
+          alt="profile-pic"
+        />
+        <h1>Camilla Ekman</h1>
+      </section>
+      <section class="repo-container">
+        <h2>Popular repositories:</h2>
+        <main id="projects"></main>
+      </section>
+    </section>
     <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
+    <canvas class="chart-container" id="chart"></canvas>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
