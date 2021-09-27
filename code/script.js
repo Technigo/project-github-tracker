@@ -1,41 +1,51 @@
 const projects = document.getElementById('projects')
+const USER = 'jakobxlindstrom'
+const USER_URL = `https://api.github.com/users/${USER}`
 
-fetch('https://api.github.com/users/jakobxlindstrom/repos')
-  .then((res) => res.json())
-  .then((repos) => {
-    console.log(repos)
-    repos.forEach((repos) => {
-      projects.innerHTML += `<p> my Repo ${repos.name}</p>`
+const getUserData = () => {
+  fetch(USER_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      projects.innerHTML = `
+    <h1>Username: ${data.login}</h1>
+    <h4>Full name: ${data.name}</h4>
+    <h4>Location : ${data.location}</h4>
+    <img src="${data.avatar_url}"/>
+     `
     })
-  })
-
-const filter = (fork) => {
-  if (fork === true) {
-    projects.innerHTML = `These are my FORKED repos${repos.fork}`
-  } else {
-    console.log(`not there yet`)
-  }
 }
-filter()
 
-// fetch('https://api.github.com/repos/technigo/jakobxlindstrom/pulls')
-//   .then((res) => res.json())
-//   .then((pulls) => {
-//     console.log(pulls)
-//   })
+const getRepos = () => {
+  fetch(`https://api.github.com/users/${USER}/repos`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      const filtered = data.filter(
+        (repo) => repo.fork && repo.name.startsWith('project-')
+      )
+      filtered
+        .forEach((repo) => {
+          projects.innerHTML += `<p><a href="${repo.html_url}" target="blank"> my Repo ${repo.name}</a></p>
+        <p>Branch ${repo.default_branch}`
+          getPR(filtered)
+        })
+        .catch(error)
+      projects.innerHTML += `<p> This is a error message beacuse there is an error. </p>`
+    })
+}
+const getPR = (repos) => {
+  repos.forEach((repo) => {
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
+      .then((res) => res.json())
+      .then((data) => {
+        const myPR = data.filter((pull) => pull.user.login === repo.owner.login)
+        const myCommits = myPR.commits_url
+      })
+  })
+}
 
-//   ### What to include
+getUserData()
+getRepos()
+getPR()
 
-//   - A list of all repos that are forked ones from Technigo
-//   - Your username and profile picture
-//   - Most recent update (push) for each repo
-//   - Name of your default branch for each repo
-//   - URL to the actual GitHub repo
-//   - Number of commit messages for each repo
-//   - All pull requests
-//   - A chart of how many projects you've done so far,
-//   compared to how many you will do using
-//   [Chart.js](https://www.chartjs.org/).
-//   [Here](https://www.chartjs.org/docs/latest/getting-started/)'s
-//   documentation on how to get started, and in the left menu you can also find
-//   [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+// add eventlistener here
