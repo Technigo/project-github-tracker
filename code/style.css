@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin: 10px;
   background-color: #000;
   font-family: 'Itim', cursive;
   color: aliceblue;
@@ -14,10 +14,68 @@ body {
   z-index: -1; /* keep the image behind the content */
 }
 
+.octacat {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 2px;
+}
+
 .header-title {
   position: relative;
   /* z-index: 1; */
   font-size: 18px;
+}
+
+.profile {
+  /* border: 0.5px dotted red; */
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.profile-info {
+  grid-column: span 1;
+  /* border: 2px dotted green; */
+  font-size: 8px;
+}
+
+table {
+  /* border: 2px dotted red; */
+  width: 100%;
+}
+
+td {
+  /* border: 1px solid yellow; */
+  width: 50%;
+}
+
+.profile-image-icons {
+  /* border: 1px dotted yellow; */
+  grid-column: span 1;
+  margin: auto;
+}
+
+.profile-image {
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  box-shadow: 0px 6px 5px #ccc;
+  margin-bottom: 5px;
+}
+
+.contact-icons {
+  border: 1px dotted pink;
+  border-radius: 5px;
+  background-color: #ccc;
+  text-align: center;
+}
+
+.icon {
+  padding: 1px;
 }
 
 .projects {
@@ -28,6 +86,8 @@ body {
 
 h3 {
   font-size: 16px;
+  text-transform: uppercase;
+  margin-left: 10px;
 }
 
 .project-container {
@@ -50,4 +110,38 @@ h3 {
 
 .project-emoji {
   margin-right: 14px;
+}
+
+@media (min-width: 768px) {
+  .octacat {
+    width: 32px;
+    height: 32px;
+  }
+  .header-title {
+    font-size: 32px;
+  }
+
+  .profile-info {
+    font-size: 18px;
+  }
+
+  .profile-image {
+    width: 114px;
+    height: 114px;
+  }
+
+  .icon {
+    padding: 5px;
+    width: 26px;
+    height: 26px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  .project-card {
+    font-size: 22px;
+    padding: 20px 0 20px 20px;
+  }
 }
