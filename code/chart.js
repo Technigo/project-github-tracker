@@ -11,7 +11,7 @@ const drawChart = (amount) => {
       datasets: [
         {
           label: "My First Dataset",
-          data: [amount, 20 - 4],
+          data: [amount, 20 - 6],
           backgroundColor: [
             "rgb(255, 99, 132)",
             "rgb(54, 162, 235)",
