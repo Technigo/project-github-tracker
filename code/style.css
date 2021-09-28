@@ -1,3 +1,8 @@
 body {
-  background: #FFECE9;
+	background: grey;
+}
+
+.avatar {
+	height: 50px;
+	border-radius: 50%;
 }
