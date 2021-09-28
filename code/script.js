@@ -6,6 +6,9 @@ const USER_URL = `https://api.github.com/users/${userName}`
 // const PULL_API_URL = `https://api.github.com/repos/technigo/${repo.name}/PULLS`
 const reposContainer = document.getElementById("projects")
 const profileContainer = document.getElementById("profileContainer")
+const pullRequestData = document.getElementById("pullRequestData")
+
+// let repoName = document.getElementById("repo.name")
 
 const userProfile = () => {
   fetch(USER_URL)
@@ -17,6 +20,7 @@ const userProfile = () => {
     <p>Full name: ${data.name}</p>
     <p>Location: ${data.location}</p>
     <img src="${data.avatar_url}"/>
+   
     `
 
   })
@@ -35,6 +39,7 @@ const fetchRepos = () => {
       <h3>${repo.name}</h3>
       <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
       <p>${repo.default_branch}</p>
+      <p>${repo.pushed_at}</p>
       `)
       drawChart(forkedRepos.length)
       getPullRequests(forkedRepos)
@@ -54,9 +59,9 @@ const getPullRequests = (repos) => {
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
     .then(res => res.json())
     .then(data => {
-      
-        const myPulls = data.filter(pull => pull.user.login === repo.owner.login) 
-        console.log(myPulls)
+        const myPull = data.find(pull => pull.user.login === repo.owner.login) 
+        // console.log(myPull)
+        fetchCommits(myPull.commits_url)
       // if (data.user.login === userName && data.repo.owner.login === userName) {
       // }
 
@@ -70,6 +75,19 @@ const getPullRequests = (repos) => {
 		})
   })
 }
+
+const fetchCommits = (url) => {
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data)
+    pullRequestData.innerHTML += `
+    <p>${data.length}</p>
+    `
+  })
+}
+
 userProfile()
 fetchRepos()
+// showCommits()
 // getPullRequests()
