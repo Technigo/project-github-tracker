@@ -1,20 +1,24 @@
 
 
 body {
-  background: #EFDE97;
+  background: #ECE0D0;
   width: 100%;
   margin: 0px;
 }
 
 header {
-  background-color: #CB6A5D
+  background-color: #A1A88F;
+}
+
+h1, h2 {
+  font-family: 'Stardos Stencil', cursive;
 }
 
 h1 {
   margin: 0px;
   padding: 50px;
   text-align: center;
-  font-size: 3em;
+  font-size: 4em;
 }
 
 h3 {
@@ -27,32 +31,134 @@ p {
   margin: 0;
 }
 
+.profile-container h2 {
+  font-size: 4em;
+}
+
+.project-container h2 {
+  font-size: 3em;
+  margin: 0px 0px;
+  text-align: center;
+}
+
+
 img {
   border-radius: 50%;
   width: 200px;
+  grid-column: span 1;
+}
+
+.profile-container {
+  display: grid;
+  Grid-template-columns: 1fr 1fr;
+  margin: 100px;
+}
+
+profile-name {
+  grid-column: span 1;
 }
 
 .projects {
   display: grid;
-  Grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
-
+  Grid-template-columns: 1fr;
+  grid-gap: 20px;
+  margin: 20px 50px;
 }
 
 .repos {
-  border: 2px solid black;
+  border: 1px solid black;
+  background-color: #CBD1D0;
   grid-column: span 1;
   grid-column-end: auto;
   padding: 5px;
 }
+
+footer{
+  background-color:#A1A88F;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+footer h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+.canvas {
+  margin: 50px 100px;
+
+}
+
 /* Mobile */
-@media (min-width: 0px) and (max-width: 767px) {}
+@media (min-width: 0px) and (max-width: 767px) {
+.not-break {
+  display: none;
+}
+
+}
 
 /* Tablet */
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+  .break {
+    display: none;
+  }
+  
+  img {
+    width: 300px;
+  }
+
+  h2 {
+    font-size: 5em;
+  }
+  
+  .projects {
+    Grid-template-columns: 1fr 1fr;
+  }
+}
 
 /* small laptop */
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .break {
+    display: none;
+  }
+  
+  img {
+    width: 300px;
+  }
+
+  h2 {
+    font-size: 5em;
+  }
+  
+  .projects {
+    Grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
 
 /* big laptop */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+ .profile-container {
+   margin: 100px 200px;
+ }
+
+ .project-container {
+   margin: 100px 200px;
+ }
+
+  
+  .break {
+    display: none;
+  }
+  
+  img {
+    width: 300px;
+  }
+  
+  h2 {
+    font-size: 5em;
+  }
+  
+  .projects {
+    Grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

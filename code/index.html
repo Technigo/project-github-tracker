@@ -7,24 +7,32 @@
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-<header><h1>GitHub Tracker</h1></header>
-    <section id="profile-container">
-      <h2 id="profile" class="profile">Profile:</h2>
+<header>
+  <h1 class="break">GitHub<br/> Tracker</h1>
+  <h1 class="not-break">GitHub Tracker</h1>
+</header>
+    <section id="profile-container" class="profile-container">
     </section>
-
     <section id="project-container" class="project-container">
-      <h2>Projects:</h2>
+      <h2>Forked Technigo Projects:</h2>
       <main id="projects" class="projects"></main>
     </section>
     
 
-    
+  
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <canvas id="chart" class="canvas"></canvas>
+  <footer><h1>Footer</h1></footer>  
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
