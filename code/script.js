@@ -2,17 +2,19 @@ const USER_ID = "MarySnopok";
 const REPOS_URL = `https://api.github.com/users/${USER_ID}/repos`;
 const reposDataContainer = document.getElementById("projects");
 const userDetails = document.getElementById("user-details");
+const commentsContainer = document.getElementById("comments");
 
 // - A list of all repos that are forked once from Technigo
 const fetchUserRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-      console.log(data[0].owner.login);
-      console.log(data[0].owner.avatar_url);
+      console.log("data", data);
       getUserNameAndPic(data);
       getReposDetails(data);
+    })
+    .catch((error) => {
+      console.error("fetchUserRepos", error);
     });
 };
 fetchUserRepos();
@@ -26,33 +28,70 @@ const getReposDetails = (data) => {
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
   userForkedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
-    console.log("date", lastUpdate);
     fetch(repo.commits_url.replace("{/sha}", ""))
       .then((response) => response.json())
       .then((commits) => {
-        console.log("repo.date", repo.date);
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
-    <a class="repo-links" href="${repo.url}">View on Github</a>
-    <div class="repos-stats">
+    <a class="repo-links" href="${repo.html_url}">View on Github</a>
+    <div class="repos-stats" id="${repo.name}">
     <p class="stats">branch: ${repo.default_branch}<p>
     <p class="stats">last update: ${lastUpdate}<p>
-    <a class="stats link">commits: ${commits.length}<p>
+    <p class="stats link">commits: ${commits.length}<p>
     <p class="stats">views: ${repo.watchers}<p>
     </div>
     `;
+      })
+      .catch((error) => {
+        console.error("repo commits url", error);
+      });
+  });
+  getPullRequests(userForkedRepos);
+};
+
+const getPullRequests = (userForkedRepos) => {
+  userForkedRepos.forEach((repo) => {
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+      .then((res) => res.json())
+      .then((pulls) => {
+        console.log("technigo", pulls);
+        const userPRs = pulls.filter((pull) => pull.user.login === repo.owner.login);
+        console.log("userPR review ");
+        userPRs.forEach((pull) => {
+          const COMMENTS_URL = pull.review_comments_url;
+          const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
+          document.getElementById(`${repo.name}`).innerHTML += `
+        <div class="repos-stats" id="${repo.name}">
+        <p class="stats">PR date: ${pullDate}<p>
+        </div>`;
+          // getComments(COMMENTS_URL);
+        });
+      })
+      .catch((error) => {
+        console.error("getPullRequests", error);
       });
   });
 };
 
-// const date1 = new Date('December 17, 1995 03:24:00');
-// Sun Dec 17 1995 03:24:00 GMT...
-// - URL to the actual GitHub repo first fetch  OK
-// - Name of your default branch for each repo -  first fetch OK
-// number of views OK
-// - Most recent update (push) for each repo - first fetch
-// - Number of commit messages for each repo - OK
+// const getComments = (COMMENTS_URL) => {
+//   fetch(COMMENTS_URL)
+//     .then((res) => res.json())
+//     .then((comments) => {
+//       console.log("comments", comments);
+//       comments.forEach((comment) => {
+//         commentsContainer.innerHTML += `
+//         <div class="comment-container"> </div>
+//         `
+//       })
 
+//     })
+//     .catch((error) => {
+//       console.error("getComments", error);
+//     });
+// };
+
+// https://stackoverflow.com/c/technigo/questions/2918
+// https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100
 // - All pull requests
 // - A chart of how many projects you've done so far, compared
 // to how many you will do using [Chart.js](https://www.chartjs.org/).
@@ -86,3 +125,8 @@ const getReposDetails = (data) => {
 
 // DONE
 // - Your username and profile picture first fetch DONE
+// - URL to the actual GitHub repo first fetch  OK
+// - Name of your default branch for each repo -  first fetch OK
+// number of views OK
+// - Most recent update (push) for each repo - first fetch OK
+// - Number of commit messages for each repo - OK
