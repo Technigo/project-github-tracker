@@ -10,52 +10,63 @@ const getUserInfo = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data); //REMOVE
-      userContainer.innerHTML = `<h2>User name: ${data.name}</h2>
+      userContainer.innerHTML = `
       <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
-       alt="Profile picture">
+       alt="Profile picture"><h2>User name: ${data.name}</h2><p>${data.bio}</p>
       `;
     });
 };
 
+const getPullRequests = (repos) => {
+  //Get all the PRs for each project.
+  repos.forEach((repo) => {
+    //put in another container?
+    fetch(
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const myPulls = data.filter(
+          (pull) => pull.user.login === repo.owner.login
+        );
+        console.log("MY PULLS", myPulls);
+        // console.log("PULL DATA", data);
+      });
+  });
+};
+
+//Started w function for capital letter
+// const capitalLetter = ((name) => {
+//   name.charAt(0).toUpperCase() + name.slice(1)
+// }
+
+//Get all repos
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data); //REMOVE
       //data.forEach((repo) => console.log(repo.name));
-      const forkedRepos = data.filter(
+      let forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
+      //Sorts filtered repos after dates
+      forkedRepos.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      );
+      forkedRepos = forkedRepos.reverse();
+
       forkedRepos.forEach(
-        (repo) => (projectsContainer.innerHTML += `<h3>${repo.name}</h3>`)
+        (repo) =>
+          (projectsContainer.innerHTML += `<h3>${repo.name}</h3><p></p>`),
+        console.log("FORKED REPOS", forkedRepos),
+        //pass along filtered repos as an argument when calling getPullRequest
+        getPullRequests(forkedRepos)
       );
       drawChart(forkedRepos.length);
     });
 };
 
-//Remember to pass along your filtered repos as an argument when
-//you are calling this function
-// const getPullRequests = (repos) => {
-//   //Get all the PRs for each project.
-//   repos.forEach((repo) => {
-//     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         const myPulls = data.filter(
-//           (pull) => pull.user.login === repo.owner.login
-//         );
-//         console.log("MY PULLS", myPulls);
-
-//         //TODO
-//         //1. Find only the PR that you made by comparing pull.user.login
-//         // with repo.owner.login
-//         //2. Now you're able to get the commits for each repo by using
-//         // the commits_url as an argument to call another function
-//         //3. You can also get the comments for each PR by calling
-//         // another function with the review_comments_url as argument
-//       });
-//   });
-// };
 getUserInfo();
 getRepos();
-//getPullRequests();
+// getPullRequests();
