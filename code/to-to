@@ -1,0 +1,49 @@
+
+### DONE
+
+
+- A list of all repos 
+
+- Filter to only show repos forked from Technigo
+
+- Filter to only show the repos that start with "project"
+
+- Your username and profile picture
+
+- URL to the actual GitHub repo
+
+
+### TO DO
+
+- All pull requests
+
+- Most recent update (push) for each repo 
+
+- Name of your default branch for each repo (main or master)
+
+- Number of commit messages for each repo
+
+- A chart of how many projects you've done so far, compared to how many you will do (21)
+
+- Make the project responsive (grid/flexbox? in tablet and desktop)
+
+- Add profile-url to username
+
+
+[Chart.js](https://www.chartjs.org/) [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+
+
+
+#####
+
+Endpoint to get all your repos
+https://api.github.com/users/${username}/repos
+
+Endpoint to get all PRs from a Technigo repo https://api.github.com/repos/Technigo/${reponame}/pulls
+
+To get the comments from a PR, you need to get the URL from the review_comments_url property in the PR json object. It might look something like this: https://api.github.com/repos/Technigo/project-news-site/pulls/247/comments 
+and then do a fetch with that url.
+
+To get the commits from a PR, you need to get the URL  from the commits_url property in the PR json object. It might look something like this:
+https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits
+and then do a fetch with that url.
