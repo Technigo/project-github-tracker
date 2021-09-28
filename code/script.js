@@ -4,7 +4,7 @@ const userProjects = document.getElementById('projects');
 const progressChart = document.getElementById('chart')
 
 //Global Variables
-let userName = 'nama0027'
+let userName = "nama0027";
 
 // API variables
 const USER_REPO_URL = `https://api.github.com/users/${userName}/repos`;
@@ -50,8 +50,9 @@ const getRepos = () =>{
                 </div>
                 `
             })
+            drawChart(technigoProjects.length)
     })
 }
 
-//getRepos();
+getRepos();
 getUser();
