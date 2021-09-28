@@ -19,12 +19,31 @@ const getRepos = () => {
       );
 
       // printing out the filtered projects stored in forkedRepos
-      // Adding += to show all the projects and not only just one
+      // Adding += to show the other projects
       forkedRepos.forEach(
         (repo) => (projectContainer.innerHTML += `<h3> ${repo.name} </h3>`)
       );
-
+      getPullRequests(forkedRepos); //calling the next function getPullRequests
       drawChart(forkedRepos.length);
     });
 };
+
+//A function to fetch pull requests
+//Passing repos as an argument
+const getPullRequests = (repos) => {
+  repos.forEach((repo) => {
+    fetch(
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const myPullRequests = data.filter(
+          (pull) => pull.user.login === repo.owner.login
+        );
+        console.log(myPullRequests);
+      });
+  });
+};
 getRepos();
+
+// getPullRequests(repos);
