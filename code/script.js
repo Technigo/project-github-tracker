@@ -21,7 +21,10 @@ const fetchAllRepos = () => {
 					.then((res) => {
 						// only pick repos with owner = Technigo
 						if (res.parent.owner.login === parentOwner) {
-							projects.innerHTML += /*html*/ `<p>${repo.name} from ${res.parent.owner.login} </p>`;
+							projects.innerHTML += /*html*/ `
+							<p><a href=${repo.html_url} target="_blank">${repo.name}</a> from ${res.parent.owner.login} default branch: ${repo.default_branch} updated: ${repo.pushed_at} </p>
+							`;
+							console.log(res);
 						}
 					})
 					.catch((err) => alert(err));
