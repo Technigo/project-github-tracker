@@ -25,24 +25,28 @@ const getUserNameAndPic = (data) => {
 const getReposDetails = (data) => {
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
   userForkedRepos.forEach((repo) => {
+    const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
+    console.log("date", lastUpdate);
     fetch(repo.commits_url.replace("{/sha}", ""))
       .then((response) => response.json())
       .then((commits) => {
+        console.log("repo.date", repo.date);
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
     <a class="repo-links" href="${repo.url}">View on Github</a>
     <div class="repos-stats">
     <p class="stats">branch: ${repo.default_branch}<p>
-    <p class="stats">last update: ${repo.updated_at}<p>
+    <p class="stats">last update: ${lastUpdate}<p>
     <a class="stats link">commits: ${commits.length}<p>
     <p class="stats">views: ${repo.watchers}<p>
     </div>
-    
     `;
       });
   });
 };
 
+// const date1 = new Date('December 17, 1995 03:24:00');
+// Sun Dec 17 1995 03:24:00 GMT...
 // - URL to the actual GitHub repo first fetch  OK
 // - Name of your default branch for each repo -  first fetch OK
 // number of views OK
