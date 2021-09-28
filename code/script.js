@@ -32,6 +32,7 @@ const fetchAll = () => {
     container.innerHTML += `
     <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
     <p>Branch: ${repo.default_branch}<p>
+    <p>${repo.pushed_at}</p>
     `
     )
     drawChart(forkedRepos.length)
@@ -54,29 +55,26 @@ const pullRequests = (repos) => {
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
       .then(res => res.json())
       .then(data => {
-        //console.log(data)
-        const myPulls = data.filter(pull => pull.user.login === repo.owner.login)
-        //console.log(myPulls)
+        const myPulls = data.find(pull => pull.user.login === repo.owner.login)
         //const COMMENTS_URL = myPulls.review_comments_url
-        const COMMITS_URL = data.commits_url.number
         //console.log(data)
         //showComments(COMMENTS_URL)
-        showCommits(COMMITS_URL)
+        //console.log(myPulls)
+        showCommits(myPulls.commits_url)
       })
       
     
     })
 }
 
-const showCommits = (repos) => {
-repos.forEach(repo => {
-  fetch(COMMITS_URL)
+const showCommits = (url) => {
+  fetch(url)
   .then(res => res.json())
   .then(data => {
-    console.log(data)
+    container.innerHTML += `
+    <p>${data.length}</p>
+    `
   })
-
-})
 
 }
 
