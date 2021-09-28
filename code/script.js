@@ -40,9 +40,9 @@ const getRepos = () => {
                 <p>Default branch name</p>
                 <h4>${repo.default_branch}</h4>
             </div>
-            <div class="default-branch">
-                <p>Default branch name</p>
-                <h4>${repo.url}</h4>
+            <div class="url">
+                <p>Default branch URL</p>
+                <h4 class="break">${repo.url}</h4>
             </div>
         </div>`)
         drawChart(forkedRepos.length)
