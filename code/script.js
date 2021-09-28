@@ -61,7 +61,7 @@ const getPullRequests = (repos) => {
         getCommits(myPullRequest[0].commits_url,(data) => {
           const numberOfCommits = data.length
           //added function so the DOM do not self close tags
-          let boxHtml = '<div class="box-repo" >'; // https://stackoverflow.com/questions/46300108/innerhtml-closes-tags
+          let boxHtml = `<div class="box-repo ${repo.name}">`; // https://stackoverflow.com/questions/46300108/innerhtml-closes-tags
           boxHtml += `<h3>${repo.name}</h3>`
           boxHtml += `<p>Number of commits ${numberOfCommits}</p>`
           boxHtml += `<p>Last update (push) ${repo.pushed_at}</p>`

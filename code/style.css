@@ -1,5 +1,21 @@
 body {
-  background: #FFECE9;
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.header {
+display: grid;
+grid-column: span 12;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
 }
 
 .grid-container {
@@ -8,16 +24,27 @@ body {
   grid-column: span 12;
 }
 
+
 .box-repo {
+  padding: 10px;
+  background-color: rgb(123, 160, 148);
   display: grid;
-  grid-column: span 6;
-  column-gap: 1em;
-  row-gap: 1em;
+  grid-column: span 12;
+  border-radius: 15px 35px; 
 }
 
+.header h1 {
+  font-size: 30px;
+}
 
 .chart {
+  display: grid;
+  grid-column: span 12;
   width: 100px;
   height: 100px;
 }
 
+.my-profile {
+  display: grid;
+  grid-column: span 12;
+}
