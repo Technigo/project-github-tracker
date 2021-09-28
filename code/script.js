@@ -6,6 +6,7 @@ const REPOS_API_URL = `https://api.github.com/users/${userName}/repos`;
 const userContainer = document.getElementById("userInfo");
 const reposContainer = document.getElementById("projects");
 const commentsContainer = document.getElementById("comments");
+const commitsContainer = document.getElementById("commits");
 
 const getUserData = () => {
   fetch(USER_URL)
@@ -20,8 +21,6 @@ const getUserData = () => {
       reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
     });
 };
-
-getUserData();
 
 const fetchRepos = () => {
   fetch(REPOS_API_URL)
@@ -40,6 +39,7 @@ const fetchRepos = () => {
         <p>${repo.default_branch}</p>
         `)
       );
+      drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
       //   console.log(forkedRepos);
     })
@@ -47,24 +47,24 @@ const fetchRepos = () => {
       reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
     });
 };
-fetchRepos();
 
 const getPullRequests = (repos) => {
   console.log(repos);
   //Get all the PRs for each project.
   repos.forEach((repo) => {
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
+    fetch(
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100/page=3`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
 
-        const filteredPulls = data.filter(
+        const filteredPull = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
 
-        console.log(filteredPulls);
-        const COMMENTS_URL = filteredPulls[0].review_comments_url;
-        const COMMITS_URL = filteredPulls[0].commits_url;
+        showCommits(filteredPull.commits_url);
+
         //TODO
         //1. Find only the PR that you made by comparing pull.user.login
         // with repo.owner.login
@@ -73,26 +73,20 @@ const getPullRequests = (repos) => {
         //3. You can also get the comments for each PR by calling
         // another function with the review_comments_url as argument
         // showComments(COMMENTS_URL);
-        console.log(COMMENTS_URL);
-        console.log(COMMITS_URL);
       });
   });
 };
 
-getPullRequests();
-
-const showComments = (urlList) => {
-  console.log(urlList);
-  urlList.forEach((url) => {
-    fetch(`'${url}'`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
-        const comments = data.body;
-        commentsContainer.innerHTML += `${comments}`;
-      });
-  });
+const showCommits = (url) => {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      commitsContainer.innerHTML += `
+      <p>Commit: ${data.length}</p>
+      `;
+    });
 };
 
-showComments();
+getUserData();
+fetchRepos();
