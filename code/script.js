@@ -33,8 +33,18 @@ const getPullRequests = (repos) => {
           (pull) => pull.user.login === repo.owner.login
         );
         console.log(userPullRequests);
+        const commitsURL = userPullRequests[0].commits_url;
+        console.log(commitsURL);
+        // getCommits(commitsURL);
+
+        const commentsURL = userPullRequests[0].review_comments_url;
+        console.log(commentsURL);
       });
   });
 };
+
+// const getCommits = (commits) => {
+//   projectContainer.innerHTML += `<h2>${commits}</h2>`;
+// };
 
 getRepos();
