@@ -5,17 +5,20 @@ body {
 }
 
 .header {
-  background-color: #3c4143;
-  color: #adb4b6;
+  background-color: #2d333b;
+  color: #adbac7;
   height: 80px;
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile-image {
   width: 200px;
   border-radius: 300px;
-
+  border: #adb4b6;
+  margin-bottom: 20px;
 }
+
 .main-section {
   display: flex;
   flex-direction: column;
@@ -26,11 +29,14 @@ body {
 }
 
 .my-divs {
-  border: 1px solid black;
+  border: 1px solid #444c56;
   margin-bottom: 20px;
-  border-radius: 12px;
+  border-radius: 15px;
   text-align: center;
   background-color:#242728;
+}
+.my-divs h5 {
+  margin: 15px;
 }
 
 .github-image {
@@ -56,6 +62,35 @@ body {
   color: #768390;
   cursor: pointer;
 }
+.names h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.name {
+  font-size: 26px;
+}
+.username {
+  font-size: 20px;
+  font-weight: 300;
+}
+.location-info {
+  display: flex;
+  justify-content: row;
+}
+.location-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert();
+  margin-right:10px;
+  margin-top: 10px;
+}
+.bio {
+  margin-top:0;
+}
+.linkedin-info {
+  display: none;
+}
 
 @media (min-width:768px) {
   .chart {
@@ -66,24 +101,55 @@ body {
   .main-section {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
   }
   .my-divs {
     display: grid;
     font-size: 15px;
+    width: 450px;
+    height: 150px;
   }
+
+  .my-divs h5 {
+    margin: 5px;
+    margin-top:0;
+  }
+
   .projects-section {
     display: grid;
     grid-template-columns:repeat(2, 1fr) ;
+  
   }
 
   .my-divs {
     margin-left: 20px;
   }
+  .linkedin-info {
+    display: inline;
+  }
+  .linkedin-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .link-linkedin {
+    text-decoration: none;
+    color: #768390;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .link-linkedin:hover {
+    color: #539bf5;
+  }
+  .profile-image {
+    width: 300px;
+  }
 }
 
 @media (min-width:992px) {
   .main-section {
-    margin: 20px 300px 20px 300px;
+    margin: 50px 200px 50px 200px;
+  }
+  .profile-image {
+    margin-right: 50px;
   }
 }

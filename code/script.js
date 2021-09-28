@@ -20,8 +20,9 @@ const getRepos = () => {
                 //console.log('owner login', repo.owner.login)
                 projectsContainer.innerHTML += `<div class ="my-divs" id='${repo.name}'>
                 <h3 class="repo-name">${repo.name}</h3>
-                <a class="links" href ="${repo.html_url}" target="_blank">Click to view</a>
-                <h5>Most recent update: ${new Date(repo.updated_at).toLocaleDateString()}</h5>
+                <a class="links" href ="${repo.html_url}" target="_blank">Click to view more info</a>
+                <h5 id="languageName">${repo.language}</h5>
+                <h5>Most recent update: ${new Date(repo.updated_at).toDateString()}</h5>
                 <h5>Default branch: ${repo.default_branch}</h5>
                 </div>`
             })
@@ -38,7 +39,13 @@ const getGeneralInfo = () => {
             console.log(data)
             generalInfoContainer.innerHTML += `
             <img class="profile-image" src="${data.avatar_url} alt ="avatar"/>
-            <h1>${data.login}</h1>
+            <div class="names"><h1 class="name">${data.name}</h1>
+            <h1 class="username">${data.login}</h1></div>
+            <p class="bio">${data.bio}</p>
+            <div class="location-info"><img class="location-icon" src="location.png" alt="location" /><p> ${data.location}</p></div>
+            <div class="linkedin-info">
+            <img class="linkedin-icon" src="chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}">https://www.linkedin.com/in/julia-nikitinashlm/</a>
+            </div>
             `
         })
 }
