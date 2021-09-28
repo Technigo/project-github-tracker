@@ -5,3 +5,8 @@ body {
   color: rgb(206, 206, 206);
   font-family: 'Montserrat';
 }
+
+.profile-img {
+  width: 100px;
+  border-radius: 50%;
+}
