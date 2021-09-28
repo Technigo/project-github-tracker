@@ -1,3 +1,9 @@
-body {
-  background: #FFECE9;
+* {
+  border: 1px solid black;
+}
+
+img {
+  width: 150px;
+  display: block;
+  border-radius: 50%;
 }
