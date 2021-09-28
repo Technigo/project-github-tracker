@@ -3,7 +3,6 @@
 const USER = "camekman";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const INFO_URL = `https://api.github.com/users/${USER}`;
-//const COMMIT_URL = `https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits`;
 const projectsContainer = document.getElementById("projects");
 const profileContainer = document.getElementById("profile-container");
 const image = document.getElementById("image");
@@ -25,7 +24,9 @@ const getRepos = () => {
           }"> <h3>${repo.name}</h3> 
           <h5>${repo.default_branch}</h5> <h5> latest update: ${new Date(
             repo.updated_at
-          ).toLocaleDateString()} </h5></div>`)
+          ).toLocaleDateString()} </h5>
+          <h5>Git URL: <a href="${repo.html_url}">${repo.name}</a></h5>
+          </div>`)
       );
       drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);

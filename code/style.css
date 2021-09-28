@@ -6,7 +6,7 @@ body {
 .header {
   display: flex;
   background: rgb(36, 36, 36);
-  padding: 40px;
+  padding: 30px;
 }
 
 .profile-container {
@@ -42,7 +42,7 @@ h1 {
   border-radius: 6px;
   border-width: 1px;
   padding: 5px;
-  margin-top: 8px;
+  margin-top: 2px;
 }
 
 .chart-container {
@@ -54,20 +54,7 @@ h1 {
   h1 {
     display: contents;
   }
-  .main-container {
-    display: flex;
-    flex-direction: column;
-  }
   .profile-container {
-    flex-direction: column;
-  }
-  /* .profile-pic {
-    width: 20%;
-    height: 20%;
-    object-fit: cover;
-  } */
-
-  .repo-container {
-    flex-direction: column;
+    /* display: row; */
   }
 }
