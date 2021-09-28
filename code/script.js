@@ -16,12 +16,11 @@ const getRepos = () => {
     .then((json) => {
       console.log("DATA", json);
       const forkedRepos = json.filter(
-        (repo) => repo.fork && repo.name.startsWith("project-")
+        (project) => project.fork && project.name.startsWith("project-")
       );
 
-      forkedRepos.forEach((repo) => {
-        let currentProject = repo.name;
-        const COMMIT_URL = `https://api.github.com/repos/${USER}/${currentProject}/commits`;
+      forkedRepos.forEach((project) => {
+        const COMMIT_URL = `https://api.github.com/repos/${USER}/${project.name}/commits`;
         fetch(COMMIT_URL)
           .then((response) => {
             return response.json();
@@ -29,23 +28,53 @@ const getRepos = () => {
           .then((json) => {
             console.log("COMMITS", json);
             const filteredCommits = json.filter(
-              (repo) => repo.commit.committer.name === "Bruna Santos"
+              (project) => project.commit.author.name === "Bruna Santos Araujo"
             );
-            // let commitDate = filteredCommits[0].commit.author.date;
-            // let commitMessage = filteredCommits[0].commit.message;
+            console.log("FILTERED", filteredCommits);
+            console.log("NUMBER OF COMMITS", filteredCommits.length);
+            // console.log("COMMIT MESSAGE", filteredCommits.commit.message);
+            //TRYING TO PUT THE MESSAGE ON THE LAST COMMIT//
 
             projectsContainer.innerHTML += `
-            <div>
-            <h3> Project Name: ${repo.name}</h3>
-            <a href = ${repo.html_url}> ${repo.name} </a>
-            <p>Main branch: ${repo.default_branch}</p>
-            </div>
-            `;
+          <div>
+          <h3> Project Name: ${project.name}</h3>
+          <a href = ${project.html_url}> ${project.name} </a>
+          <p> Main branch: ${project.default_branch}</p>
+          <p> Number of commits: ${filteredCommits.length}</p>
+          <p> Latest push: ${project.pushed_at.slice(
+            0,
+            10
+          )}, ${project.pushed_at.slice(11, 16)} 
+          </p>
+          </div>
+          `;
+
+            // const getPulls = (forkedRepos) => {
+            //   forkedRepos.forEach((project) => {
+            //     fetch(
+            //       `https://api.github.com/repos/technigo/${project.name}/pulls`
+            //     )
+            //       .then((response) => response.json())
+            //       .then((data) => {
+            //         console.log("PULLS", data);
+            //       });
+            //   });
+            // };
           });
       });
       drawChart(forkedRepos.length);
     });
 };
+
+// const getPulls = (forkedRepos) => {
+//   forkedRepos.forEach((project) => {
+//     fetch(`https://api.github.com/repos/technigo/${project.name}/pulls`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log("PULLS", data);
+//       });
+//   });
+// };
 
 // -- PROFILE INFO -- //
 const getUser = () => {
