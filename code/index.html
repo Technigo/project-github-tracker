@@ -4,33 +4,34 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap" rel="stylesheet">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-<body>
-  <div class="left-area">
-    <div class="profile" id="profile"></div>
+
+<!-- <header class="header">
+  <h1>GitHub Tracker</h1>
+</header> -->
+<body class="background">
+
+  <section class="left-area">
+      <div class="profile" id="profile"></div>
       <button class="button" id="followButton">Follow</button>
-    </div>
-
-  <section>
-    <header class="header">
-      <h1>GitHub Tracker</h1>
-    </header>
-    
-    <main class="project-grid" id="projects">
-      <h2>Projects:</h2>
-    </main>
-  <section>  
-  
+       <!-- This will be used to draw the chart 👇 -->
+      <div class="chart">
+        <canvas id="chart"></canvas>
+      </div>
+  </section>  
 
 
-  <!-- This will be used to draw the chart 👇 -->
-  <div class="chart">
-  <canvas id="chart"></canvas>
-  </div>
+    <section class="right-area">
+      <h2>Project repositories / Technigo Frontend Bootcamp 2021/22</h2>
+      <div class="project-grid" id="projects">  
+    </section>  
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

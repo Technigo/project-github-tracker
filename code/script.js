@@ -5,7 +5,7 @@ const profileContainer = document.getElementById('profile')
 // const PULLS_URL = `https://api.github.com/repos/technigo/${repo.name}/pulls`
 
 
-// ---- PROFILE -----
+// ---- PROFILE -----//
 
 const getProfile = () => {
     fetch (`https://api.github.com/users/${USER}`)
@@ -13,14 +13,14 @@ const getProfile = () => {
     .then(data => {
         console.log(data)
     profileContainer.innerHTML += `
-    <h2>${data.login}</h2>
     <img src=${data.avatar_url}></img>
+    <h2 class="user-name">${data.login}</h2>
     `
     })
 }
-
 getProfile()
 
+// ---- REPOS -----//
 
 const getRepos = () => {
     fetch(REPOS_URL)
@@ -29,12 +29,53 @@ const getRepos = () => {
         console.log(data)
         // data.forEach(repo => console.log(repo.name))
         const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-        forkedRepos.forEach(repo => projectsContainer.innerHTML += `<h3>${repo.name}</h3>`)
+        forkedRepos.forEach(repo => projectsContainer.innerHTML += `
+        <div class="project-card"> 
+            <h3>${repo.name}</h3>
+            <div class="most-recent">
+                <p>Most recent push</p>
+                <h4>${repo.pushed_at}</h4>
+            </div>
+            <div class="default-branch">
+                <p>Default branch name</p>
+                <h4>${repo.default_branch}</h4>
+            </div>
+            <div class="default-branch">
+                <p>Default branch name</p>
+                <h4>${repo.url}</h4>
+            </div>
+        </div>`)
         drawChart(forkedRepos.length)
     })
 }
-
 getRepos()
+
+
+// ---- MOST RECENT PUSH -----//
+
+// const getMostRecentPush = () => {
+//     fetch(``)
+//     .then(response => (response.json()))
+//     .then(data => {
+
+// }
+// getMostRecentPush()
+
+// ---- COMMITS -----//
+
+// const getCommitAmount = () => {
+//     fetch(`https://api.github.com/${USER}/repos/{owner}/{repo}/pulls/{pull_number}/commits`)
+//     .then(response => (response.json()))
+//     .then(data => {
+//         console.log(data)
+// })
+// }
+// getCommitAmount()
+
+// "https://api.github.com/repos/octocat/Hello-World/commits{/sha}
+
+
+
 
 
 
