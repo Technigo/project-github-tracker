@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header class="header__container">
-      <div>GitHub Tracker</div>
+      <h1>GitHub Tracker</h1>
     </header>
 
     <div id="userInformation" class="user-information"></div>
     <div id="projects" class="projects">
       <div class="projects__title">Projects at Technigo:</div>
     </div>
+    <div class="projects__pull-request" id="projectsPullRequest"></div>
 
     <!-- This will be used to draw the chart 👇 -->
     <canvas id="chart"></canvas>
-
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
   </body>
