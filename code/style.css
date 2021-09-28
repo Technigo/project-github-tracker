@@ -1,3 +1,59 @@
+:root{
+  --primary-color :#264653;
+  --secondary-color:#2a9d8f;
+    
+}
+
+
 body {
-  background: #FFECE9;
+  margin:0;
+  padding:0;
+  height: 100%;
+  font-size: 1em;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.tracker{
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ 
+}
+.profile{
+  height:20vh;
+  top: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
+  display: flex;
+}
+.photo {
+ border: solid 1px var(--secondary-color);
+ border-radius: 50%;
+
+}
+
+.content{
+  height:75%;
+  display: flex;
+  padding-left: 20px;
+}
+.projects-detail{
+  
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+
+}
+.repo-card{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 3px solid var(--secondary-color);
+  border-radius: 4px;
+  margin: 3px;
+  width: 400px;
+  height: 200px;
 }

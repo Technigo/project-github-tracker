@@ -8,13 +8,32 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <!--
+  <header class="header">
+    <h1>GitHub Tracker</h1>
+  </header>-->
+  <section class= "tracker">
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <aside class= "profile" id ="profile">
+      <img class= "photo" src="" alt="">
+      <h1 class="name"></h1>
+      <button class= "github-link"> Visit my GitHub </button>
+    </aside>
 
+    <section class= "content">
+      <div class= "projects" >
+        <h2>Projects:</h2>
+        <main class="projects-detail" id="projects" >
+
+        </main>
+      </div>
+      <!-- This will be used to draw the chart 👇 -->
+      <div class="chart">
+        <h1>My Progress</h1>
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+  </section>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
