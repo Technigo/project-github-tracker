@@ -4,8 +4,8 @@ Replace this readme with your own information about your project.
 
 Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
 
-Github icon made by Pixel perfect from www.flaticon.com
 
+Icon made by Freepik from www.flaticon.com
 
 ## The problem
 

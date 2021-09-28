@@ -1,11 +1,12 @@
 const main = document.getElementById('projects')
 const username = document.getElementById('username')
 const profilepic = document.getElementById('profilepic')
-const repolist = document.getElementById('repolist')
+const projectContainer = document.getElementById('projectscontainer')
 
-//main fetch github user
-const API_user_kaliine = 'https://api.github.com/users/kaliine'
-fetch (API_user_kaliine)
+
+//main fetch github userinfo
+const API_USER_KALIINE = 'https://api.github.com/users/kaliine'
+fetch (API_USER_KALIINE)
     .then((response) => {
         return response.json()
     })
@@ -18,16 +19,69 @@ fetch (API_user_kaliine)
 
 
 //fetching all repos
-const repos = 'https://api.github.com/users/Kaliine/repos'
-fetch (repos)
-    .then((response) => {
-        return response.json()
+const REPOS_URL = 'https://api.github.com/users/Kaliine/repos'
+
+const getRepos = () => {
+fetch (REPOS_URL)
+    .then((response) => response.json())
+    .then(data => {
+        console.log(data)
+        //filter out the ones that are forked and starting with "project-"
+        const technigoProjects = data.filter(repo => repo.fork === true && repo.name.startsWith('project-')) 
+        technigoProjects.forEach(repo => 
+             
+        //Code to display it in the browser        
+        projectContainer.innerHTML += `
+        <h3>${repo.name}</h3>
+        <p>Most recent update (push): ${repo.pushed_at}</p>
+        <p>Default branch: ${repo.default_branch}</p>
+        <p>GitHub link: ${repo.html_url}</p>`)
+            
+
+    getCommits(technigoProjects)
+    getPushBranchURL(technigoProjects)
+
     })
-    .then ((json) => {
-        json.forEach((reponames) => {
-            repolist.innerHTML += `<p> Project name: ${reponames.name}</p>`
+}
+
+
+const getPushBranchURL = (filteredArray) => {
+	//getting the most recent update (push) for each repo
+	console.log('Latest push:')
+	filteredArray.forEach(repo => {
+		console.log(repo.pushed_at)  
+	})
+
+	//getting the name of default branch for each repo
+	console.log('Default branch:')
+	filteredArray.forEach(repo => {
+		console.log(repo.default_branch)
+	});	
+
+	//getting the link to the actual GitHub repo
+	console.log('GitHub link:')
+	filteredArray.forEach(repo => {
+		console.log(repo.html_url)
+	});		
+}
+
+const getCommits = (url) => {
+    console.log(url)
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            const numberOfCommits = data.length
+            projectContainer.innerHTML += `<p>Number of commits ${numberOfCommits}</p>`
+            console.log(data.length)
         })
-    })
+}
+
+//Call the getRepos function
+getRepos()
+
+
+
 
 /* 
 //fetching all pull requests
@@ -51,10 +105,8 @@ const getPullRequests = (repo) => {
 
 
     /* To do:
-    - most recent update (push) for each repo
-    - Name of your default branch for each repo
-    - URL to the actual GitHub repo
-    - Number of commit messages for each repo
+    - format date, pushes
+
     - All pull requests
     - A chart */
 
