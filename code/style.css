@@ -2,3 +2,22 @@ body {
   background: #FFECE9;
 }
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column: span 12;
+}
+
+.box-repo {
+  display: grid;
+  grid-column: span 6;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+
+
+.chart {
+  width: 100px;
+  height: 100px;
+}
+

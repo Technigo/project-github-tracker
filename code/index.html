@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,28 @@
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
   <h1>GitHub Tracker</h1>
   <h2>Projects:</h2>
   <h3></h3>
 
-    <!-- search field  -->
-    <label for="search-repos">Search:</label>
-    <input type="search" id="repo-search" name="q"
-    placeholder="Search repo"
-           aria-label="Search through site content">
-    
-    <button>Search</button>
-    
-   
-  <main id="projects"></main>
+  <!-- search field  -->
+  <label for="search-repos">Search:</label>
+  <input type="search" id="repo-search" name="q" placeholder="Search repo" aria-label="Search through site content">
+
+  <button>Search</button>
+
+
+  <main id="projects" class="grid-container"></main>
   <div id="myProfile" class="my-profile"></div>
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div class="chart">
+    <canvas id="chart"></canvas>
+  </div>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
 </html>
