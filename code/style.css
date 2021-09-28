@@ -1,3 +1,41 @@
-body {
-  background: #FFECE9;
+* {
+  margin: 0;
+}
+.chart {
+  width: 250px;
+  padding: 1;
+  margin: 2rem auto;
+}
+.info-text {
+  width: 8rem;
+  margin: auto 2rem;
+  font-size: 20px;
+}
+.profile-info {
+  border-bottom: solid black 0.5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.heading-text {
+  margin: 1rem 8rem;
+  font-size: 20px;
+}
+.projects-info {
+  display: flex;
+  flex-direction: row;
+}
+.projects-cards {
+  border: solid black 1px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin: 0.5rem 0.1rem;
+  padding: 0.5rem;
+}
+.profile-img {
+  position: absolute;
+  margin: 3rem 0.5rem;
+  border-radius: 50%;
+  width: 100px;
 }
