@@ -1,3 +1,58 @@
+
+
 body {
-  background: #FFECE9;
+  background: #EFDE97;
+  width: 100%;
+  margin: 0px;
 }
+
+header {
+  background-color: #CB6A5D
+}
+
+h1 {
+  margin: 0px;
+  padding: 50px;
+  text-align: center;
+  font-size: 3em;
+}
+
+h3 {
+  padding: 0px;
+  margin: 0;
+}
+
+p {
+  padding: 0px;
+  margin: 0;
+}
+
+img {
+  border-radius: 50%;
+  width: 200px;
+}
+
+.projects {
+  display: grid;
+  Grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+
+}
+
+.repos {
+  border: 2px solid black;
+  grid-column: span 1;
+  grid-column-end: auto;
+  padding: 5px;
+}
+/* Mobile */
+@media (min-width: 0px) and (max-width: 767px) {}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {}
+
+/* small laptop */
+@media (min-width: 992px) {}
+
+/* big laptop */
+@media (min-width: 1200px) {}
