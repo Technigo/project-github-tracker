@@ -1,3 +1,10 @@
 body {
-  background: #FFECE9;
+  background: #ffece9;
+}
+
+/* grid */
+/* responsive (mobile first) */
+
+/* div class for repo cards */
+.repo-card {
 }
