@@ -34,7 +34,7 @@ body {
   padding: 20px 0 0 0;
   border-bottom: 3px solid pink
 }
-.updated, .branch, .URL, .number-commits, .blank-line {
+.updated, .branch, .URL, .number-commits, .blank-line, .times-forked {
   margin: 6px 0 0 0;
   padding: 6px 0 0 0;
   border-bottom: 1px solid #B2B3B4; 
