@@ -10,22 +10,29 @@
   </head>
   <body>
     <header class="header"></header>
-    <section class="main-container">
-      <section class="profile-container">
-        <img
+    <section class="profile-container" id="profile-container">
+      <img
+        class="profile-pic"
+        src="https://images.unsplash.com/photo-1580065632882-3d6d4ca954ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYzMTAwMjM0Nw&ixlib=rb-1.2.1&q=80&w=400"
+        id="image"
+      />
+      <!-- first attempt -->
+      <!-- <img
           class="profile-pic"
           src="https://i.ibb.co/pRcYcBJ/IMG-3379-2.jpg"
           alt="profile-pic"
-        />
-        <h1>Camilla Ekman</h1>
-      </section>
+        /> -->
+      <h1></h1>
+    </section>
+    <section class="main-container">
       <section class="repo-container">
         <h2>Popular repositories:</h2>
         <main id="projects"></main>
       </section>
+
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas class="chart-container" id="chart"></canvas>
     </section>
-    <!-- This will be used to draw the chart 👇 -->
-    <canvas class="chart-container" id="chart"></canvas>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

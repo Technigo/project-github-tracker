@@ -31,7 +31,7 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #e5e2e2;
-  padding: 20px;
+  padding: 5px;
 }
 
 .repositories {
@@ -41,7 +41,7 @@ h1 {
   border: solid rgb(163, 160, 160);
   border-radius: 6px;
   border-width: 1px;
-  padding: 10px;
+  padding: 5px;
   margin-top: 8px;
 }
 
@@ -56,20 +56,18 @@ h1 {
   }
   .main-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   .profile-container {
     flex-direction: column;
-    width: 25%;
   }
   .profile-pic {
-    width: 80%;
-    height: 80%;
+    width: 20%;
+    height: 20%;
     object-fit: cover;
   }
 
   .repo-container {
-    flex-direction: row;
-    width: 75%;
+    flex-direction: column;
   }
 }
