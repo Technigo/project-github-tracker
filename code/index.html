@@ -6,18 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
-    <main id="projects"></main>
     <div class="profile-container" id="profileContainer">
       <img id="profileImage" class="profile-image" alt="profile-image" />
-      <p id="userName"></p>
+      <p id="userName" class="user-name"></p>
     </div>
+    <div class="tracker">
+      <h1>GitHub Tracker</h1>
+      <h2>Projects:</h2>
+    </div>
+    <main id="projects" class="projects"></main>
 
     <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
+    <canvas id="chart" class="chart"></canvas>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

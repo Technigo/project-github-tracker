@@ -5,18 +5,6 @@ const projects = document.getElementById("projects");
 const profileImage = document.getElementById("profileImage");
 const userName = document.getElementById("userName");
 
-// const forkedRepos = (data) => {
-//   const Reposforked = data.filter(
-//     (repo) => repo.fork && repo.name.startsWith("project")
-//   );
-//   Reposforked.forEach(
-//     (repo) =>
-//       (projects.innerHTML += `<div class="repo" id="${repo.name}">
-//       <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
-//       </div>`)
-//   );
-// };
-
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
@@ -29,15 +17,17 @@ const getRepos = () => {
       forkedRepos.forEach(
         (repo) =>
           (projects.innerHTML += `<div class="repo" id="${repo.name}"> 
-               <h3><a href="${repo.html_url}" target="_blank">${
+               <a class="repo-item1" href="${repo.html_url}" target="_blank">${
             repo.name
-          }</a></h3>
-               <h4>${repo.default_branch}</h4>
-               <ha>Last updated: ${new Date(
+          }</a>
+               <span class="repo-item2">${repo.default_branch}</span>
+               <h4 class="repo-item3">Last updated: ${new Date(
                  repo.updated_at
-               ).toLocaleString()}</h4>
+               ).toLocaleDateString()}</h4>
                </div>`)
       );
+
+      drawChart(forkedRepos.length);
       const profileImg = data.forEach(
         (profile) => (profileImage.src = profile.owner.avatar_url)
       );
@@ -76,7 +66,7 @@ const getCommits = (commitsURL, repo) => {
       // console.log(data.length);
       document.getElementById(
         `${repo.name}`
-      ).innerHTML += `<h4> Number of commits: ${data.length}</h4>`;
+      ).innerHTML += `<h4 class="repo-item4"> Number of commits: ${data.length}</h4>`;
     });
 };
 
