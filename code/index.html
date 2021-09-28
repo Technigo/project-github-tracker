@@ -6,13 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>GitHub Tracker</h1>
   <h2>Projects:</h2>
   <h3></h3>
-  <main id="projects"></main>
 
+    <!-- search field  -->
+    <label for="search-repos">Search:</label>
+    <input type="search" id="repo-search" name="q"
+    placeholder="Search repo"
+           aria-label="Search through site content">
+    
+    <button>Search</button>
+    
+   
+  <main id="projects"></main>
+  <div id="myProfile" class="my-profile"></div>
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
 
