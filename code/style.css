@@ -2,9 +2,43 @@ body {
   background: #FFECE9;
 }
 
-.project-grid {
-  display: grid;
+.projects-grid {
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
-  grid-template-columns: repeat(6, 1fr);
+}
 
+.project{
+  background-color: antiquewhite;
+  border: 1px solid rebeccapurple;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 0.5rem 0.5rem 0 0.5rem;
+
+}
+
+.profile-img{
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+@media (min-width: 768px){
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  margin: 0 2rem 0 2rem;
+}
+
+.profile-img{
+  width: 33%;
+
+}
 }

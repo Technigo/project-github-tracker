@@ -1,8 +1,11 @@
 const USER = `Ajliin`
-const REPOS_URL = `https://api.github.com/users/Ajliin/repos`
+const REPOS_URL = `https://api.github.com/users/${USER}/repos`
+
 const headerContainer = document.getElementById('header')
 const projectContainer = document.getElementById('projects')
 
+let PROJECT = ""
+let PROJECT_API = ""
 
 
 const getRepos =() => {
@@ -11,7 +14,7 @@ fetch(REPOS_URL)
         return response.json()
     })
     .then ((data) => {
-        repoInfo(data)
+        repoInfo(data)   
 })
 }
 getRepos()
@@ -23,22 +26,36 @@ console.log(data[0].owner.login)
 console.log(data[0].fork)
 
 const forkedRepo = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-forkedRepo.forEach((repo, index) => {
-    console.log(forkedRepo)
-    projectContainer.innerHTML += `<div class ="project-grid"> ${repo.name}</div>`
+console.log(forkedRepo)
+forkedRepo.forEach((repo) => {
+    projectContainer.innerHTML += `<div class ="project"> ${repo.name}</div>`
 })
-headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>` 
+headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>
+<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">` 
 
+getProjectInfo(forkedRepo)
 })
 
-// getProjectInfo = (data) => {
-//     console.log('from getProjectInfo', repo)
-//     fetch('https://api.github.com/repos/technigo/project-chatbot/pulls')
-//     .then ((response) => {
-//         return response.json()
-//     })
-//     .then ((json) => {
-//         console.log(json)
-//     })
-// }
+getProjectInfo = (forkedRepo) => {
+    console.log('from getProjectInfo', forkedRepo[0].name )
+    PROJECT = forkedRepo[0].name
+    console.log(PROJECT)
+    PROJECT_API = `https://api.github.com/repos/technigo/${forkedRepo[0].name}/pulls`
+    console.log(PROJECT_API)
+    fetchProjectinfo()
+} 
+
+const fetchProjectinfo = () => {
+    fetch(PROJECT_API)
+    .then ((response) => {
+        return response.json()
+    })
+    .then ((json) => {
+        const userProject = json.filter(repo => repo.user.login === "Ajliin")
+        console.log(userProject)
+    })
+}
+ 
+    
+
 // getProjectInfo(data)
