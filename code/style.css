@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 body {
   background: #ffece9;
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 
 *,
@@ -10,29 +14,81 @@ body {
   box-sizing: inherit;
 }
 
-/* h1 {
-} */
+.header__container {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  color: white;
+  background-color: rgb(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7.5%;
+  font-size: 1em;
+}
 
 .user-information {
   display: flex;
+  margin-top: 64px;
+  padding: 20px 20px 0 20px;
 }
 
 .user-information__picture {
   border-radius: 50%;
-  width: 15%;
+  width: 25%;
+}
+
+.user-information__username {
+  font-size: 40px;
+  font-weight: 200;
+  padding-left: 20px;
+}
+
+.user-information__bio {
+  font-size: 16px;
+  padding-left: 20px;
 }
 
 .projects {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 0 20px 20px 20px;
+}
+
+.projects__title {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em 0;
 }
 
 .projects__repo-container {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+  padding: 10px 0;
 }
 
-.projects__repo-container-latest-commit {
+.projects__repo-container__header {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(0, 0, 0, 0.2);
+  padding-left: 10px;
+}
+
+.projects__repo-container__header__flex-box {
+  width: 100%;
+}
+
+.projects__repo-container__header__flex-box__repo-name {
+  font-weight: 500;
+  margin: 4px 0;
+}
+
+.projects__repo-container__header__flex-box__html-url {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.projects__repo-container__header__amount-commitmessages {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  padding-right: 10px;
 }
