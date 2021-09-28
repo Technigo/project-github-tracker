@@ -20,10 +20,10 @@ DONE 2) get them in the browser
 ### What to include
 
 DONE A list of all repos that are forked ones from Technigo
-- Your username and profile picture
+DONE - Your username and profile picture
 - Most recent update (push) for each repo
 DONE Name of your default branch for each repo
 DONE URL to the actual GitHub repo
 - Number of commit messages for each repo
 - All pull requests
-- A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+DONE - A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).

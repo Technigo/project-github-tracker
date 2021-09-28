@@ -28,15 +28,17 @@ const fetchAll = () => {
     .then(data => {
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-'))
-      forkedRepos.forEach((repo) =>
-    (container.innerHTML += `
+      forkedRepos.forEach(repo =>
+    container.innerHTML += `
     <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
     <p>Branch: ${repo.default_branch}<p>
-    `))
-
-      //drawChart(forkedRepos.length)
+    `
+    )
+    drawChart(forkedRepos.length)
       pullRequests(forkedRepos)
     })
+    
+    
     .catch(() => {
       container.innerHTML = `
     <h1>Sorry we could not find any data!</h1>
@@ -46,20 +48,20 @@ const fetchAll = () => {
 }
 
 
+
 const pullRequests = (repos) => {
   repos.forEach(repo => {
-    //console.log(repo)
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
       .then(res => res.json())
       .then(data => {
         //console.log(data)
         const myPulls = data.filter(pull => pull.user.login === repo.owner.login)
         //console.log(myPulls)
         //const COMMENTS_URL = myPulls.review_comments_url
-        const myCommits = myPulls.commits_url
-        console.log(myCommits)
+        const COMMITS_URL = data.commits_url.number
+        //console.log(data)
         //showComments(COMMENTS_URL)
-        showCommits(myCommits)
+        showCommits(COMMITS_URL)
       })
       
     
@@ -68,7 +70,7 @@ const pullRequests = (repos) => {
 
 const showCommits = (repos) => {
 repos.forEach(repo => {
-  fetch(myCommits)
+  fetch(COMMITS_URL)
   .then(res => res.json())
   .then(data => {
     console.log(data)
@@ -92,8 +94,8 @@ repos.forEach(repo => {
 
 userProfile()
 fetchAll()
-pullRequests()
-showComments()
+//pullRequests()
+//showComments()
 
 //Eventlisteners
 searchBtn.addEventListener('click', () => {
