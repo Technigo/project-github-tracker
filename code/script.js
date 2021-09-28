@@ -60,7 +60,7 @@ const getRepos = () => {
           (projectsContainer.innerHTML += `<h3>${repo.name}</h3>
           <p>Most recent push: ${repo.pushed_at.substring(0, 10)}
           </p><p>Name of default branch: ${repo.default_branch}</p>
-          <a href=${repo.html_url}>LINK TO REPO</a>`),
+          <a href=${repo.html_url} target="_blank">LINK TO REPO</a>`),
         console.log("FORKED REPOS", forkedRepos),
         //pass along filtered repos as an argument when calling getPullRequest
         getPullRequests(forkedRepos)
@@ -68,6 +68,18 @@ const getRepos = () => {
       drawChart(forkedRepos.length);
     });
 };
+
+//Testing commits, going not so good....
+const COMMITS_URL = `https://api.github.com/repos/${USER}/project-business-site/commits{/sha}`;
+
+const myCommits = () => {
+  fetch(COMMITS_URL)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Commits:", data);
+    });
+};
+myCommits();
 
 getUserInfo();
 getRepos();
