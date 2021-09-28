@@ -1,16 +1,32 @@
-console.log("script works?")
+// console.log("script works?")
 
 const userName = "JohannaMJ"
 const REPOS_API_URL = `https://api.github.com/users/${userName}/repos`
+const USER_URL = `https://api.github.com/users/${userName}`
 // const PULL_API_URL = `https://api.github.com/repos/technigo/${repo.name}/PULLS`
 const reposContainer = document.getElementById("projects")
+const profileContainer = document.getElementById("profileContainer")
 
+const userProfile = () => {
+  fetch(USER_URL)
+  .then(response => response.json())
+  .then(data => {
+    // console.log(data)
+    profileContainer.innerHTML = `
+    <h2>Username: ${data.login}</h2>
+    <p>Full name: ${data.name}</p>
+    <p>Location: ${data.location}</p>
+    <img src="${data.avatar_url}"/>
+    `
+
+  })
+}
 
 const fetchRepos = () => {
   fetch(REPOS_API_URL)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
       
       // const repo = repo.name
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith("project-")
@@ -20,8 +36,9 @@ const fetchRepos = () => {
       <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
       <p>${repo.default_branch}</p>
       `)
+      drawChart(forkedRepos.length)
       getPullRequests(forkedRepos)
-      console.log(forkedRepos)
+      // console.log(forkedRepos)
     })
     .catch(() => {
       reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`
@@ -29,20 +46,19 @@ const fetchRepos = () => {
     
     
 }
-fetchRepos()
+
 
 const getPullRequests = (repos) => {
-  console.log(repos)
   //Get all the PRs for each project.
   repos.forEach((repo) => {
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/PULLS`)
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
-
-      if (data.user.login === userName && data.repo.owner.login === userName) {
-        console.log("hej")
-      }
+      
+        const myPulls = data.filter(pull => pull.user.login === repo.owner.login) 
+        console.log(myPulls)
+      // if (data.user.login === userName && data.repo.owner.login === userName) {
+      // }
 
 			//TODO
 	    //1. Find only the PR that you made by comparing pull.user.login
@@ -54,5 +70,6 @@ const getPullRequests = (repos) => {
 		})
   })
 }
-
-getPullRequests()
+userProfile()
+fetchRepos()
+// getPullRequests()
