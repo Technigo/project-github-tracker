@@ -44,15 +44,70 @@ const getRepos = () =>{
             const technigoProjects = data.filter(item => (item.fork && item.name.startsWith('project-') ))
             technigoProjects.forEach((repo) => {
                 console.log(repo.name);
+                getPullRequests(repo)
                 userProjects.innerHTML += `
-                <div class ="repo-card"> 
-                    <h3> ${repo.name}</h3>
+                <div class ="repo-card" id= "${repo.name}"> 
+                    <a href = "${repo.html_url}"> 
+                    <span>  ${repo.name}</span>
+                    </a>
+                    <label > Default branch:
+                        <span>  ${repo.default_branch} </span>
+                    </label>
+                    
+                    <label > Last updated at:
+                        <span>  ${repo.pushed_at} </span>
+                    </label>
                 </div>
                 `
             })
             drawChart(technigoProjects.length)
+           
     })
 }
 
+const getPullRequests = (repo) => {
+    //Get all the PRs for each project.
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            const userPullReq = data.filter((item) => (repo.owner.login === item.user.login || item.title.includes('Naushin')));
+            userPullReq.forEach((item) => {
+                getCommits(item.commits_url, repo.name);
+                getComments(item.review_comments_url);
+                
+        })
+    })
+}
+    
+
+
+
+function getCommits  (commitUrl, repoName) {
+
+    //console.log(commitUrl)
+    
+
+    fetch(commitUrl)
+    .then(res => res.json())
+    .then(data => {
+        //console.log(data.length)
+        
+        document.getElementById(repoName).innerHTML +=`
+        <label > Number of Commits:
+        <span>  ${data.length} </span>
+        </label>
+    `
+                
+    })
+   
+}
+
+const getComments = (commentsUrl) => {
+
+    console.log (commentsUrl)
+    
+}
+
 getRepos();
-getUser();
+//getUser();
