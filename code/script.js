@@ -1,8 +1,10 @@
 const USER = 'jenquach'
-const repoNames = ['project-business-site', 'project-chatbot']
+const repoNames = ['project-news-site', 'project-business-site', 'project-chatbot', 'project-guess-who', 'project-weather-app', 'project-github-tracker']
+const commitsURL = ['https://api.github.com/repos/Technigo/project-news-site/pulls/242/commits', 'https://api.github.com/repos/Technigo/project-business-site/pulls/222/commits']
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 
 const projectsContainer = document.getElementById('projects')
+const pullRequests = document.getElementById('pullrequests')
 
 
 const getRepos = () => {
@@ -18,14 +20,24 @@ const getRepos = () => {
 }
 
 
-const getPRs = (repoNames) => {
+const getPRs = () => {
   repoNames.forEach(name => {
     fetch(`https://api.github.com/repos/Technigo/${name}/pulls`)
     .then(res => res.json())
     .then(data => {
-    console.log(data)
+      for (let i=0; i<data.length; i++) {
+        // console.log(data[i].user.login)
+        if (data[i].user.login === USER) {
+          console.log(data[i])
+          pullRequests.innerHTML += `<h3>${data[i].title}</h3>`
+        }
+      }
     })
   })
+}
+
+const getCommits = () => {
+  
 }
 
 
