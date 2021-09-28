@@ -29,7 +29,7 @@ const getPullRequests = (repos) => {
         const myPulls = data.filter(
           (pull) => pull.user.login === repo.owner.login
         );
-        console.log("MY PULLS", myPulls);
+        // console.log("MY PULLS", myPulls);
         // console.log("PULL DATA", data);
       });
   });
@@ -40,13 +40,12 @@ const getPullRequests = (repos) => {
 //   name.charAt(0).toUpperCase() + name.slice(1)
 // }
 
-//Get all repos
+//Get all repos w/ details
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data); //REMOVE
-      //data.forEach((repo) => console.log(repo.name));
+      console.log("DATA_GETREPOS", data);
       let forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
@@ -58,7 +57,10 @@ const getRepos = () => {
 
       forkedRepos.forEach(
         (repo) =>
-          (projectsContainer.innerHTML += `<h3>${repo.name}</h3><p></p>`),
+          (projectsContainer.innerHTML += `<h3>${repo.name}</h3>
+          <p>Most recent push: ${repo.pushed_at.substring(0, 10)}
+          </p><p>Name of default branch: ${repo.default_branch}</p>
+          <a href=${repo.html_url}>LINK TO REPO</a>`),
         console.log("FORKED REPOS", forkedRepos),
         //pass along filtered repos as an argument when calling getPullRequest
         getPullRequests(forkedRepos)
