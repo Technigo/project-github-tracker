@@ -1,3 +1,89 @@
 body {
-  background: #FFECE9;
+  background:#181a1b;
+  margin:0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #3c4143;
+  color: #adb4b6;
+  height: 80px;
+  text-align: center;
+}
+
+.profile-image {
+  width: 200px;
+  border-radius: 300px;
+
+}
+.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 20px;
+  color: #768390;
+  
+}
+
+.my-divs {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  text-align: center;
+  background-color:#242728;
+}
+
+.github-image {
+  width: 30px;
+  filter: invert();
+  margin-top: 5px;
+}
+.repo-name {
+  color: #539bf5;
+}
+.links {
+  color: #539bf5;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.statistics {
+  color: #768390;
+  text-align: center;
+}
+.link-github {
+  text-decoration: none;
+  color: #768390;
+  cursor: pointer;
+}
+
+@media (min-width:768px) {
+  .chart {
+    max-width: 300px;
+    max-height: 300px;
+    margin-left: 700px;
+  }
+  .main-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .my-divs {
+    display: grid;
+    font-size: 15px;
+  }
+  .projects-section {
+    display: grid;
+    grid-template-columns:repeat(2, 1fr) ;
+  }
+
+  .my-divs {
+    margin-left: 20px;
+  }
+}
+
+@media (min-width:992px) {
+  .main-section {
+    margin: 20px 300px 20px 300px;
+  }
 }
