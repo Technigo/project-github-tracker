@@ -1,0 +1,30 @@
+1) fetch the repos and console log them 
+2) get them in the browser 
+3) filter out the technigo repos
+4) test chart library
+//Remember to pass along your filtered repos as an argument when
+//you are calling this function
+
+const getPullRequests = (repos) => {
+  //Get all the PRs for each project.
+  repos.forEach((repo) => {
+    fetch('https://api.github.com/users/MT-dotse/repos' + repo.name + PULLS)
+      .then((res) => res.json())
+      .then((data) => {
+        //TODO
+        let keep;
+        if (pull.user.login === repo.owner.login) {
+          keep = pull.user.login;
+          commitsURL(keep);
+        }
+        console.log('Hello from script js');
+
+        //1. Find only the PR that you made by comparing pull.user.login
+        // with either USER or repo.owner.login
+        //2. Now you're able to get the commits for each repo by using
+        // the commits_url as an argument to call another function
+        //3. You can also get the comments for each PR by calling
+        // another function with the review_comments_url as argument
+      });
+  });
+};
