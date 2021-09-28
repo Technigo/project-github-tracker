@@ -2,7 +2,6 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
 //"Draw" the chart here 👇
-const myChart = new Chart(ctx, config);
 const drawChart = (amount) => {
   const config = {
     type: "doughnut",
@@ -11,7 +10,7 @@ const drawChart = (amount) => {
       datasets: [
         {
           label: "My First Dataset",
-          data: [amount, 20 - amount], //300 = lenght of repo array, second is 20 - lenght of repo array
+          data: [amount, 19 - amount],
           backgroundColor: [
             "rgb(255, 99, 132)",
             "rgb(54, 162, 235)",
@@ -22,4 +21,5 @@ const drawChart = (amount) => {
       ],
     },
   };
+  const myChart = new Chart(ctx, config);
 };
