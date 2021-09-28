@@ -1,3 +1,10 @@
 body {
   background: #FFECE9;
 }
+
+.project-grid {
+  display: grid;
+  border: 1px solid black;
+  grid-template-columns: repeat(6, 1fr);
+
+}
