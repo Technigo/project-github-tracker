@@ -33,7 +33,7 @@ img {
   font-size: 1.5em;
   display: block;
   width: fit-content;
-  margin: 20px auto;
+  margin: 20px auto 30px;
 }
 
 /* THE LIST SECTION */
@@ -42,16 +42,17 @@ img {
   display: block;
   max-width: 90%;
   padding: 2%;
-  margin: auto;
+  margin: 10px auto 30px;
+  text-align: center;
 }
 
 li {
+  display: inline-block;
   width: 90%;
-  margin: 30px auto;
+  margin: 5px auto;
   color: #daff05;
   font-family: 'Chakra Petch', sans-serif;
   font-size: 1.2em;
-  text-align: left;
 }
 
 li a {
@@ -71,7 +72,9 @@ li a:hover {
 /* THE CHART SECTION */
 
 #chart {
-  background-color: #daff05;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #daff05;
   display: block;
   max-width: 90%;
   margin: 10% auto;
@@ -126,15 +129,15 @@ li a:hover {
     max-width: 90%;
     margin: 10px auto 50px;
     text-align: center;
+    font-size: 1.5em;
   }
   
   /* numbers*/
   li {
-    width: 90%;
+    max-width: 90%;
     margin: 15px auto;
     color: #daff05;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 1.5em;
   }
 
 
@@ -144,7 +147,7 @@ li a:hover {
     margin: 10px auto;
     color: #daff05;
     font-family: 'Chakra Petch', sans-serif;
-    font-size: 1.5em;
+    font-size: 2em;
   }
   
   li a:hover {
@@ -156,7 +159,9 @@ li a:hover {
   /* THE CHART SECTION */
   
   #chart {
-    background-color: #daff05;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #daff05;
     display: block;
     width: 90%;
     margin: 10% auto;
