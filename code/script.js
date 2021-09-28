@@ -1,27 +1,42 @@
-const USER = 'mamite100'
-const REPOS_URL = `https://api.github.com/users/${USER}/repos`
-const projectsContainer = document.getElementById('projects')
+const { intlFormat } = require("date-fns");
 
+const username = "mamite100";
+const repoApi = `https://api.github.com/users/${username}/repos`;
+const projectsContainer = document.getElementById("projects");
+const headerContainer =document.getElementById ("header")
+//const info = document.getElementById("info");
+const chartSection = document.getElementById("projectsInfo");
+const gitApi = `https://api.github.com/users/${username}`;
+const commentsApi = `https://api.github.com/repos/Technigo/project-news-site/pulls/247/comments`;
+const commitApi = `https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits`; 
 
 const getRepos = () => {
-    fetch (REPOS_URL)
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-       // data.forEach( repo => console.log (repo.name))
-       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-') && ! repo.name.endsWith('github-tracker'))
-       forkedRepos.forEach(repo =>  
-       projectsContainer.innerHTML +=`<h3> ${repo.name}</h3>`)
+    fetch (repoApi)
+        .then((res) => res.json())
+        .then((data) => {
+        console.log(data);
+ // data.forEach( repo => console.log (repo.name))
+
+        const forkedRepos = data.filter(
+        (repo) => repo.fork && repo.name.startsWith("project-") 
+        );
+        //console.log(forkedRepos)
+
+       forkedRepos.forEach((repo) => { 
+       projectsContainer.innerHTML +=
+       `<div id= "${
+           repo.name
+        }" class= "projects-cards">
+        <h3> ${repo.name}</h3>
+        <h5> Most recent push: ${ new Date (repo.pushed_at) .toLocaleDateString()}</h5>
+
+        <h5>Default branch: ${repo.default_branch}</h5>
+
+        <h5>Link to my GitHub repository: <a href ="${repo.html_url}" target ="_blank"> Link </a> </h5>
+        </div>`
     })
-
-}
-getRepos() 
-
-//Endpoint to get all PRs from a Technigo repo `https://api.github.com/repos/technigo/${reponame}/pulls`
-
-//To get the comments from a PR, you need to get the URL from the `review_comments_url` property in the PR json object. It might look something like this: `https://api.github.com/repos/Technigo/project-news-site/pulls/247/comments` 
-//and then do a fetch with that url.
-
-//To get the commits from a PR, you need to get the URL  from the `commits_url` property in the PR json object. It might look something like this:
-//`https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits`
-// and then do a fetch with that url.
+getPullRequests(forkedRepos)
+drawChart (forkedRepos.length);
+});
+};
+chartSection.innerHTML += ``
