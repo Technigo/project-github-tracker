@@ -13,8 +13,13 @@ const getProfile = () => {
     .then(data => {
         console.log(data)
     profileContainer.innerHTML += `
-    <img src=${data.avatar_url}></img>
-    <h2 class="user-name">${data.login}</h2>
+    <div class"user-img">
+        <img src=${data.avatar_url}></img>
+    </div
+    <div>
+        <h2>Jessi Nygren Walhed</h2>
+        <h3 class="user-name">${data.login}</h3>
+    </div>
     `
     })
 }

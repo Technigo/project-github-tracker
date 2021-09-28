@@ -15,35 +15,47 @@ body {
   background-color: #1a1a1a;
   font-family: poppins;
   color: #dedede;
-  padding: 3rem;
+  padding-right: 7%;
+  padding-left: 7%;
+  padding-bottom: ;
   margin: 0;
   max-width: 90%;
 }
 
-.body {
+.main {
   display: flex;
   flex-direction: row;
   align-content: center;
 }
 
+.header {
+  width: 100%;
+  padding: 2rem 0 2rem 0;
+}
+
 h2 {
+  font-size: 1.5rem;
   font-weight: 100;
   margin-top: 0;
 }
 
 h3 {
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
+  color: #58a6ff;
 }
 
 h4 {
+  font-size: 1rem;
   margin: 0;
 }
 
 p {
+  font-size: 14px;
   font-weight: 100;
   margin: 0.5rem 0 0 0;
-}s
+}
 
 
 /* // LEFT AREA // */
@@ -55,15 +67,23 @@ p {
 }
 
 .user-name {
-  text-align: center;
-  margin-top: 1rem;
+  margin-top: 0;
 }
+
+.profile h2 {
+  margin-bottom: 0;
+}
+
+/* .user-img {
+  display: inline-block;
+  vertical-align: center;
+} */
 
 img {
   border-radius: 50%;
-  width: 60%;
+  width: 50%;
   height: auto;
-  align-self: center;
+  margin-bottom: 1rem;
 }
 
 .button {
@@ -73,10 +93,12 @@ img {
  border: none;
  border-radius: 12px;
  font-size: 1.125rem;
+ margin-top: 1rem;
 }
 
 .chart {
-  width: 250px;
+  /* width: 250px; */
+  width: 100%;
   height: auto;
   padding-top: 3rem;
 }
@@ -109,4 +131,5 @@ img {
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
+  font-size: 1rem;
 }
