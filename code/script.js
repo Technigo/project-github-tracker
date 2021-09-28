@@ -45,17 +45,21 @@ const getRepos = () =>{
             technigoProjects.forEach((repo) => {
                 console.log(repo.name);
                 getPullRequests(repo)
+                const date = formateDate (repo.pushed_at)
                 userProjects.innerHTML += `
                 <div class ="repo-card" id= "${repo.name}"> 
                     <a href = "${repo.html_url}"> 
                     <span>  ${repo.name}</span>
                     </a>
+                    <label > Languages:
+                        <span>  ${repo.language} </span>
+                    </label>
                     <label > Default branch:
                         <span>  ${repo.default_branch} </span>
                     </label>
                     
                     <label > Last updated at:
-                        <span>  ${repo.pushed_at} </span>
+                        <span>  ${date} </span>
                     </label>
                 </div>
                 `
@@ -102,7 +106,14 @@ function getCommits  (commitUrl, repoName) {
     })
    
 }
+const formateDate = (date) => {
+    
+    const today = new Date()
 
+return date
+
+
+}
 const getComments = (commentsUrl) => {
 
     console.log (commentsUrl)
@@ -110,4 +121,4 @@ const getComments = (commentsUrl) => {
 }
 
 getRepos();
-//getUser();
+getUser();

@@ -6,27 +6,29 @@
 
 
 body {
-  margin:0;
+  margin:0 auto;
   padding:0;
   height: 100%;
+  max-width: 320px;
   font-size: 1em;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: var(--primary-color);
 }
 
 
 .tracker{
  display: flex;
  flex-direction: column;
- width: 100%;
+ 
  
 }
 .profile{
   height:30vh;
-  top: 0;
-  bottom: 0;
-  background-color: var(--primary-color);
+  
+  
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 }
 .user{
   display: flex;
@@ -42,8 +44,8 @@ body {
 .link-github{
   display: block;
   cursor: pointer;
-  width: 170px;
-  height:42px;
+  width: 260px;
+  height:30px;
   background: #333;
   color: #fff;
   font-size: 16px;
@@ -52,7 +54,7 @@ body {
   border-radius: 4px;
   line-height: 19px;
   padding-top:  10px;
-  margin-top: 20px; 
+  margin: 10px; 
 }
 .content{
   height:75%;
@@ -64,24 +66,23 @@ body {
   
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  
 
 }
 .repo-card{
   display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  align-items:flex-start;
+  justify-content:space-evenly;
   overflow: hidden;
   border: 3px solid var(--secondary-color);
   border-radius: 4px;
   margin: 3px;
-  width: 400px;
+  width: 320px;
   height: 200px;
 }
 
 .chart-container{
 
-  align-items: center;
-  justify-content: center;
+  background-color: darkgray;
 }
