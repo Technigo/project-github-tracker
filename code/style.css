@@ -1,3 +1,36 @@
 body {
   background: #FFECE9;
+  font-family: 'Baloo Chettan 2', cursive;
+}
+
+.topbar {
+  background-color: white;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.title {
+  color: #FFECE9;
+  font-weight: bold;
+  font-size: 70px;
+}
+
+.project-title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.github-project {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.chart-box {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
 }
