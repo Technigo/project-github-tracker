@@ -7,28 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
-  <h1>GitHub Tracker</h1>
-  <div id="userProfile"></div>
-  <h2>Projects:</h2>
-
-  <main id="projects"></main>
-  <div>
-    <canvas id="myChart"></canvas>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>GitHub Tracker</h1>
   </div>
+</div>
 
+<body>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div id="userProfile" class="user-container"></div>
+  <hr>
+  <h2>My projects:</h2>
+
+  <main id="projects" class="projects-container"></main>
+
+  <section class="chart-container">
+    <p>Overview of completed projects</p>
+    <canvas id="myChart" class="chart"></canvas>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
+<footer>
+  <h5 class="creator">Created and developed by</h5>
+  <img src="./assets/annad.png" alt="creator-logo" class="logo">
+</footer>
 
 </html>

@@ -10,11 +10,12 @@ const userProfile = () => {
     fetch(USER_URL)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             userContainer.innerHTML = `
-        <h2>Username: ${data.login}<h2>
-        <p>Full name: ${data.name}</p>
-        <p>Location: ${data.location}<p>
-        <img src="${data.avatar_url}"/>
+        <a href="${data.html_url}" target="blank"><img src="${data.avatar_url}" class="avatar"/></a>
+        <p class="full-name">${data.name}</p>
+        <p class="username">Username: ${data.login}</p>
+        <p class="location">${data.location}</p>
         `
         })
 }
@@ -24,16 +25,16 @@ const fetchRepos = () => {
     fetch(MY_REPOS)
         .then((res) => res.json())
         .then((data) => {
-            //console.log(data)
             const forkedRepos =
                 data.filter(repo => repo.fork && repo.name.startsWith("project-"))
 
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
                       <div class="repo" id=${repo.name}>
-                        <a href="${repo.html_url}" target="blank">${repo.name} with default branch ${repo.default_branch}</a>
-                        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-                        <p id="commit-${repo.name}">Commits amount: </p>
+                        <a href="${repo.html_url}" target="blank">Name: ${repo.name}</a> 
+                        <p>Branch: ${repo.default_branch}</p>
+                        <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+                        <p id="commit-${repo.name}">Amount of commits: </p> 
                       </div>
                         `
             })
