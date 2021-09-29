@@ -1,5 +1,5 @@
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
-
+const totalProjects = 19;
 
 const getRepos = () => {
 	fetch(REPO_API)
@@ -18,6 +18,7 @@ const getRepos = () => {
 
 			getPushBranchURL(forkedRepos);
 			getCommits(forkedRepos);
+			drawChart(forkedRepos.length)
 		})
 }
 
@@ -42,11 +43,33 @@ const getPushBranchURL = (filteredArray) => {
 }
 
 const getCommits = (filteredArray) => {
-	//Number of commit messages for each repo
-	//First make a new array with all the needed APIs of the commit_urls
+	
+	//First make a new array with all the needed APIs (found under commit_urls in forkedRepos)
 	const allCommitUrls = filteredArray.map(repo => repo.commits_url)
 	console.log('Here is the array with all the commits: ', allCommitUrls)
+
+	//the URLs end with {/sha}, therefore the last 6 chars need to be sliced
+	allCommitUrls.forEach(commitAPI => {
+		commitAPI = commitAPI.slice(0, -6)
+		console.log(commitAPI)
+
+		//now the URLs can be passed on to get data about number and content of commits 
+		fetch(commitAPI)
+			.then((res) => res.json())
+			.then((data) => {
+				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein')
+				//Number of commit messages for each repo
+				const noOfCommits = authorCommits.length
+				console.log('These are my commits: ',authorCommits)
+				console.log('Number of commits: ', noOfCommits)
+				authorCommits.forEach(entry => {
+					const textOfCommit = entry.commit.message
+					console.log('This is the commit-text: ', textOfCommit)
+				})   
+			})
+	});
 }
+
 
 getRepos();
 

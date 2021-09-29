@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <h1>GitHub Tracker</h1>
@@ -13,8 +14,9 @@
   <main id="projects"></main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <div>
+    <canvas id="chart" width="200" height="200"></canvas>
+  </div>  
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
