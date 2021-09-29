@@ -11,6 +11,19 @@ const myReposApi = `https://api.github.com/users/${username}/repos`;
 const usernamePictureAndBioApi = `https://api.github.com/users/${username}`;
 let pullRequestsApi;
 
+// Functions
+const toggleMenu = (menuName) => {
+  console.log("toggle", menuName);
+  let menu = document.getElementById(`${menuName}-menu`);
+  menu.classList.toggle(
+    "projects__commit-pulls-container__commits-accordion__active"
+  );
+};
+
+const toCapitalLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
 //Function in which we fetch the username, picture and bio from github and change the innerhtml of userInformation to contain these values.
 const getUsernameAndPicture = () => {
   fetch(usernamePictureAndBioApi)
@@ -113,21 +126,54 @@ const getcommits = (repoName) => {
     .then((res) => res.json())
     .then((data) => {
       console.log("getcommits data", data);
+      console.log("getcommits username", username);
       let commitMessage = data[0].commit.message;
-      amountOfCommits = data.length;
+      amountOfCommits = data.filter(
+        (element) => element.author && element.author.login === username
+      ).length;
 
-      console.log(commitMessage);
+      commitMessage = toCapitalLetter(commitMessage);
 
       let containerToChange = document.getElementById(
         `${repoName}-commit-pulls-container`
       );
-      containerToChange.innerHTML += `<div class="projects__commit-pulls-container__last-commit">Last commit message: ${commitMessage}</div>`;
+
+      containerToChange.innerHTML += `
+      <div class="projects__commit-pulls-container__commits-accordion" onclick="toggleMenu('${repoName}')">${commitMessage}
+        <ul class="projects__commit-pulls-container__commits-accordion__menu" id="${repoName}-menu"></ul>
+      </div>`;
       amountCommitmessages = document.getElementById(
         `${repoName}-amountCommitmessages`
       );
       amountCommitmessages.innerHTML += `${amountOfCommits}`;
+
+      let menu = document.getElementById(`${repoName}-menu`);
+      data
+        .slice(1)
+        .filter(
+          (element) => element.author && element.author.login === username
+        )
+        .forEach((element) => {
+          menu.innerHTML += `<li class="option">${toCapitalLetter(
+            element.commit.message
+          )}</li>`;
+        });
     });
 };
 
 getUsernameAndPicture();
 getRepos();
+
+//### **🔴  Red Level (Intermediary Goals)**
+
+// - Sort your list in different ways.
+// **Example of what you can sort by:** creation date, name, most commits, followers or stargazers
+// - Create the opportunity to filter the repos based on a condition, e.g. only JavaScript repos
+// - Display the actual commit messages for each repo in a good way. Maybe by adding a modal (popup) or an accordion?
+// - Display the comments you got from each pull request
+// - When you're browsing through the repo object, you'll see that there's a lot of data that we can use. Create a chart over some of the data.
+// **Example of data to use:** Repo size, people that starred your repo (stargazers) or amount of commits on each repo.
+
+// ### **⚫  Black Level (Advanced Goals)**
+
+// - Implement a search field to find a specific repo based on name
