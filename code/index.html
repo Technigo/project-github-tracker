@@ -9,9 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
     <main>
+      <nav class="nav-mobile">
+        <img class="nav-menu" src="images/menu (1).png" alt="menu" />
+        <a class="nav-icon" href="https://github.com/" target="_blank"
+          ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
+        /></a>
+        <img class="nav-notif" src="images/notification.png" alt="bell" />
+      </nav>
       <section id="userInfo"></section>
       <section id="projects"></section>
       <section id="comments"></section>
@@ -19,7 +24,7 @@
     </main>
 
     <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
+    <section class="canvas-box"><canvas id="chart"></canvas></section>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

@@ -13,11 +13,12 @@ const getUserData = () => {
     .then((response) => response.json())
     .then((data) => {
       userContainer.innerHTML = `
-      <h1> Username: ${data.login}</h1>
-      <h2> Fullname: ${data.name}</h2>
-      <h3> Location: ${data.location}</h3>
-      <img src="${data.avatar_url}"/>
-      
+      <div class="user-profile-box">
+        <h1 class="user-username"> <span class="user-span">${data.login}</span></h1>
+        <h2 class="user-fullname"> <span class="user-span">${data.name}</span></h2>
+        <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${data.location}</span></h3>
+        <img class="user-img" src="${data.avatar_url}"/>
+      </div>
       `;
     })
     .catch(() => {
@@ -37,19 +38,31 @@ const fetchRepos = () => {
       forkedRepos.forEach(
         (repo) =>
           (reposContainer.innerHTML += `
-        <h3>${repo.name}</h3>
-        <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
-        <p>with default branch ${repo.default_branch}</p>
-        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p id="commit-${repo.name}">Commits: </p>
-        `)
+          <div class="repo-box">
+            <h3 class="repo-name"><img class="repo-book-img"src="images/book.png" alt="book"/>${
+              repo.name
+            }</h3>
+            <p class="repo-url">Url: <a href="${
+              repo.html_url
+            }" target="blank">${repo.html_url}</a></p>
+            <p>Default branch <span class="repo-branch">${
+              repo.default_branch
+            }</span></p>
+            <p>Recent push: <span class="repo-date">${new Date(
+              repo.pushed_at
+            ).toDateString()}</span></p>
+            <p>Commits:<span id="commit-${
+              repo.name
+            }" class="repo-commit"> </span></p>
+          </div>
+          `)
       );
       drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
       //   console.log(forkedRepos);
     });
-  // .catch(() => {
-  //   reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
+  // .catch(error => {
+  //   return Promise.reject()
   // });
 };
 
