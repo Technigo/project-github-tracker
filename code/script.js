@@ -1,10 +1,3 @@
-const options = {
-  method: `GET`,
-  headers: {
-    Authorization: `token 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`,
-  },
-};
-
 //Global variables
 let username = "Zancotti";
 let filteredRepos = [];
