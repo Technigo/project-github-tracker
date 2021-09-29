@@ -12,13 +12,16 @@ const getUserData = () => {
   fetch(USER_URL)
     .then((response) => response.json())
     .then((data) => {
-      reposContainer.innerHTML = `
+      userContainer.innerHTML = `
       <h1> Username: ${data.login}</h1>
+      <h2> Fullname: ${data.name}</h2>
+      <h3> Location: ${data.location}</h3>
       <img src="${data.avatar_url}"/>
+      
       `;
     })
     .catch(() => {
-      reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
+      userContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
     });
 };
 
@@ -37,15 +40,16 @@ const fetchRepos = () => {
         <h3>${repo.name}</h3>
         <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
         <p>${repo.default_branch}</p>
+        <p>${repo.pushed_at.toString().slice(0, 10)}</p>
         `)
       );
       drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
       //   console.log(forkedRepos);
-    })
-    .catch(() => {
-      reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
     });
+  // .catch(() => {
+  //   reposContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
+  // });
 };
 
 const getPullRequests = (repos) => {
@@ -53,7 +57,7 @@ const getPullRequests = (repos) => {
   //Get all the PRs for each project.
   repos.forEach((repo) => {
     fetch(
-      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100/page=3`
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
     )
       .then((res) => res.json())
       .then((data) => {
