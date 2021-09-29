@@ -4,11 +4,8 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 const headerContainer = document.getElementById('header')
 const projectContainer = document.getElementById('projects')
 
-let PROJECT = ""
-let PROJECT_API = ""
-
-
-const getRepos =() => {
+// ------------FIRST FETCH FUNCTION------------
+const fetchRepos =() => {
 fetch(REPOS_URL)
     .then ((response) => {
         return response.json()
@@ -17,45 +14,59 @@ fetch(REPOS_URL)
         repoInfo(data)   
 })
 }
-getRepos()
+fetchRepos()
 
-
+// ------------This is what happens inside FIRST FETCH FUNCTION------------
 
 const repoInfo = ((data) =>{
-console.log(data[0].owner.login)
-console.log(data[0].fork)
+    headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>`
+    projectContainer.innerHTML += `<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">`
+    const forkedRepo = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
 
-const forkedRepo = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-console.log(forkedRepo)
-forkedRepo.forEach((repo) => {
-    projectContainer.innerHTML += `<div class ="project"> ${repo.name}</div>`
-})
-headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>
-<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">` 
-
-getProjectInfo(forkedRepo)
+    forkedRepo.forEach((repo) => {
+        projectContainer.innerHTML += `<div class ="project"> ${repo.name}
+        <p id="commit-${repo.name}">Commits amount: </p></div>`
+    })
+    getProjectInfo(forkedRepo)
 })
 
-getProjectInfo = (forkedRepo) => {
-    console.log('from getProjectInfo', forkedRepo[0].name )
-    PROJECT = forkedRepo[0].name
-    console.log(PROJECT)
-    PROJECT_API = `https://api.github.com/repos/technigo/${forkedRepo[0].name}/pulls?per_page=100`
-    console.log(PROJECT_API)
-    fetchProjectinfo()
+getProjectInfo = (allRepositories) => {
+    console.log('from getProjectInfo från första fetchen', allRepositories)
+    allRepositories.forEach((project)=>{
+        const PULL_API = `https://api.github.com/repos/technigo/${project.name}/pulls?per_page=100`
+        console.log(PULL_API)
+   
+    const fetchProjectinfo = () => {
+        fetch(PULL_API)
+            .then ((response) => {
+            return response.json()
+            })
+            .then ((json) => {
+            console.log('json',json)
+            const myPullRequest = json.filter((project) => project.user.login === USER)
+            console.log('project.owner.login', project.owner.login)
+            console.log('myPullRequest', myPullRequest)
+            console.log('project.name',project.name)
+            // if (myPullRequest) {
+            //     // fetchCommits(myPullRequest.commit_url, project.name)
+            // }else{
+            //     document.getElementById(`commit-${project.name}`).innerHTML += 'No pull request done yet'
+            // }
+        })
+        
+    } 
+    fetchProjectinfo()   
+}) 
+//    const fetchCommits = () =>{
+//        fetch()
+//        .then (response)
+//         return respons.json()
+//        .then ((data) => {
+           
+//        })
+//    }
+ 
 } 
 
-const fetchProjectinfo = () => {
-    fetch(PROJECT_API)
-    .then ((response) => {
-        return response.json()
-    })
-    .then ((json) => {
-        const userProject = json.find(repo => repo.user.login === USER)
-        console.log(userProject)
-    })
-}
- 
-    
 
-// getProjectInfo(data)
+
