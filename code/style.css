@@ -1,5 +1,21 @@
 body {
   background: #FFECE9;
+  margin: auto;
+}
+
+h1 {
+  size: 12em;
+  text-align: center;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.profile-img {
+  width: 100px;
+  border-radius: 50%;
 }
 
 .main-area, footer, header {
