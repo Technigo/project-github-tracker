@@ -2,6 +2,11 @@ body {
   background: #FFECE9;
 }
 
+.main-area, footer, header {
+  background: white;
+  width: 90%;
+}
+
 footer p {
   width: 200px;
   margin: 0px;
