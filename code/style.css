@@ -1,3 +1,33 @@
 body {
-  background: #FFECE9;
+  background: #f7dd74;
+  font-family: "Sora", sans-serif;
+}
+
+h1 {
+  color: #d342c1;
+}
+
+h2 h3 p {
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+.grid-parent {
+  display: grid;
+  /* grid-template-rows: 1fr 1fr 1fr; */
+}
+
+.user-container {
+  width: 80%;
+  /* grid-row: span 1;
+  display: grid;
+  grid-template-rows: 1fr 1fr; */
+}
+
+.user-container img {
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: grayscale(50%);
+  /* grid-row: span 1; */
 }

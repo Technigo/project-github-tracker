@@ -14,8 +14,10 @@ const drawChart = (amount) => {
           label: "Repos chart",
           data: [amount, 19 - amount], //length of repo array ,
           backgroundColor: [
-            "rgb(255, 99, 132)", //own colors
-            "rgb(54, 162, 235)",
+            // "rgb(255, 99, 132)", //own colors
+            // "rgb(54, 162, 235)",
+            "rgb(211,66,193)",
+            "rgb(255,152,91)",
           ],
           hoverOffset: 4,
         },
