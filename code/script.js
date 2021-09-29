@@ -40,7 +40,7 @@ getProjectInfo = (forkedRepo) => {
     console.log('from getProjectInfo', forkedRepo[0].name )
     PROJECT = forkedRepo[0].name
     console.log(PROJECT)
-    PROJECT_API = `https://api.github.com/repos/technigo/${forkedRepo[0].name}/pulls`
+    PROJECT_API = `https://api.github.com/repos/technigo/${forkedRepo[0].name}/pulls?per_page=100`
     console.log(PROJECT_API)
     fetchProjectinfo()
 } 
@@ -51,7 +51,7 @@ const fetchProjectinfo = () => {
         return response.json()
     })
     .then ((json) => {
-        const userProject = json.filter(repo => repo.user.login === "Ajliin")
+        const userProject = json.find(repo => repo.user.login === USER)
         console.log(userProject)
     })
 }
