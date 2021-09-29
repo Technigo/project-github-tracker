@@ -4,7 +4,6 @@ const USERS_URL = `https://api.github.com/users/${username}`;
 //const PULLREQUEST_URL = `https://api.github.com/repos/technigo/${repo.name}/pulls`;
 const container = document.getElementById("projects");
 const userInformation = document.getElementById("user-information");
-const commitsContainer = document.getElementById("commit-container");
 
 const getRepos = () => {
   fetch(REPOS_URL)
@@ -30,10 +29,10 @@ const getRepos = () => {
         container.innerHTML += `
         <div class="repo-cards">
           <a href=${repo.html_url}><h3>${repo.name}</h3></a>
-          <p>Recent push: ${pushedDate}</p>
           <p>${repo.default_branch}</p>
-          <p id="commit-${repo.name}"> Commits amount: </p>
-          </div>
+          <p>Recent push: ${pushedDate}</p>
+          <p id="commit-${repo.name}"> Commits: </p>
+        </div>
           `;
       });
       drawChart(forkedRepos.length);
@@ -82,10 +81,12 @@ fetch(USERS_URL)
   .then((data) => {
     console.log(data);
     userInformation.innerHTML = `
-    <h3>Name: ${data.name}</3>
-    <h3>Username: ${data.login}</h3>
-    <h3>Location: ${data.location}</3>
-    <h3>Bio: ${data.bio}</h3>
     <img src="${data.avatar_url}"/>
+    <h3>${data.name}</h3>
+    <div class="user-information">
+      <h4>${data.login}</h4>
+      <h4>Location: ${data.location}</h4>
+      <h4>Bio: ${data.bio}</h4>
+    </div>
     `;
   });

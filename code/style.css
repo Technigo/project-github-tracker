@@ -1,19 +1,79 @@
 body {
-  background: #ffece9;
+  background: #383c4b;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+hr {
+  height: 1px;
+  width: 80%;
+  border-style: solid;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+.user-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+img {
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgb(11, 11, 46);
+  width: 250px;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+h2 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 30px;
+}
+h3 {
+  font-size: 25px;
+  margin: 5px;
+}
+h4 {
+  font-size: 15px;
+  align-self: flex-start;
+  margin: auto;
+  padding: 4px;
+}
+p {
+  font-size: 15px;
+  color: black;
+  margin: 3px;
+}
+a {
+  text-decoration: none;
+  color: black;
+  justify-content: center;
+}
+.user-information {
+  max-width: 90%;
+  justify-content: center;
 }
 
 .repo-cards {
-  border: 3px solid black;
-  margin: 10px;
-  padding: 5px;
+  border-radius: 10px;
+  margin: 15px;
+  padding: auto;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+  background-color: white;
 }
 
-img {
-  border-radius: 50%;
-  box-shadow: 5px 5px 1px black;
+canvas {
+  max-height: 100%;
+  max-width: 100%;
+  margin: 50px 0px;
 }
