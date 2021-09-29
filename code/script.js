@@ -3,6 +3,7 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const USER_URL = `https://api.github.com/users/${USER}`;
 
 const projectsContainer = document.getElementById("projects");
+const userDataContainer = document.getElementById("user-data");
 
 const presentRepoData = () => {
   fetch(REPOS_URL)
@@ -29,7 +30,11 @@ const presentRepoData = () => {
             let commitDate = filteredCommits[0].commit.author.date;
             let commitMessage = filteredCommits[0].commit.message;
             projectsContainer.innerHTML += `
-                <h3>${project.name}</h3>
+            <div class="project">
+            <div class="project-header"><h3>${
+              project.name
+            }</h3><span>X</span></div>
+            <div class="project-text">
                 <p>Main branch for this project is: ${
                   project.default_branch
                 }</p>
@@ -42,6 +47,8 @@ const presentRepoData = () => {
                   10
                 )} at ${commitDate.slice(11, 16)}</p>
                 <p>And the commit message was: ${commitMessage}</p>
+                </div>
+            </div>
         `;
           });
       });
@@ -56,14 +63,17 @@ const presentUserData = () => {
     })
     .then((json) => {
       console.log(json);
-      projectsContainer.innerHTML = `
+      userDataContainer.innerHTML = `
+      <header class="my-header"><h1>Welcome to my Github tracker</h1><span>X</span></header>
       <img src="${json.avatar_url}"/>
+      <div class="user-text">
       <h1>${json.login}</h1>
-      <p>${json.name}</p>
-      <p>This account has a total of ${json.public_repos}</p>)
+      <p class="user-name">${json.name}</p>
+      <p>This account has a total of ${json.public_repos} repos</p>
+      </div>
       `;
     });
 };
 
 presentRepoData();
-//presentUserData();
+presentUserData();

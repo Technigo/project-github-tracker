@@ -7,4 +7,4 @@ X- Name of your default branch for each repo
 X- URL to the actual GitHub repo
 X- Number of commits for each repo
 - It should be responsive (mobile first)
-- A visualisation, for example through a pie chart, of how many projects you've done so far, compared to how many you will do (in total it will be 19 weekly projects 🥳) using [Chart.js](https://www.chartjs.org/).
+X- A visualisation, for example through a pie chart, of how many projects you've done so far, compared to how many you will do (in total it will be 19 weekly projects 🥳) using [Chart.js](https://www.chartjs.org/).

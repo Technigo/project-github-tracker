@@ -1,3 +1,115 @@
 body {
-  background: #FFECE9;
+  background: #00807F;
+  margin:0px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin:0px;
+}
+
+h1 {
+  font-size: 15px;
+  font-weight:400;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+.my-header, .project-header {
+  background:#000080;
+  color:white;
+  padding:2px;
+  display:flex;
+  position:relative;
+}
+
+.my-header span {
+  position:absolute;
+  right:1px;
+  background:#c0c0c0;
+  width:15px;
+  font-size: 12px;
+  text-align: center;
+  color:black;
+  border:2px outset;
+}
+
+.project-header span {
+  position:absolute;
+  right:1px;
+  background:#c0c0c0;
+  width:15px;
+  font-size: 12px;
+  text-align: center;
+  color:black;
+  border:2px outset;
+}
+
+.user-data {
+  display:block;
+  margin:10px;
+  background:#c0c0c0;
+  border:2px outset;
+}
+
+.user-data img {
+  margin:10px 10px 0px 10px;
+  width:calc(100% - 20px);
+  border:2px outset;
+}
+
+.user-data p {
+  margin:5px 0px;
+}
+
+.user-text {
+  margin:10px;
+  padding:10px;
+  background:#fffbf0;
+  border:2px inset;
+}
+
+.user-text h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.project-text {
+  border:2px inset;
+  margin:10px;
+  background:#fffbf0;
+}
+
+.projects {
+  margin:0px 10px;
+  display:block;
+}
+
+.projects h3 {
+  font-size:16px;
+  font-weight: 400;
+  background:#000080;
+  color:white;
+}
+
+.projects p {
+  font-size: 14px;
+  margin:10px;
+}
+
+.projects a {
+  font-size: 12px;
+  margin:5px 10px;
+}
+
+.project {
+  border: 2px outset;
+  margin-bottom:10px;
+  background:#c0c0c0;
+}
+
+@media only screen and (min-width:599px) {
+
 }
