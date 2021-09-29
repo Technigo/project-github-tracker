@@ -1,3 +1,97 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
-  background: #FFECE9;
+  background-color: rgb(204, 194, 193);
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  color: rgb(50, 50, 51);
+  height: 100%;
+  width: 100%;
+}
+
+.hero-img {
+  background-image: url("https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2t5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  height: 40vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  position: relative;
+  background-size: auto;
+  background-color: rgb(189, 194, 189);
+  z-index: -1;
+}
+
+.welcome-message {
+  text-align: center;
+  position: absolute;
+  /* top: 20vh; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  width: 100%;
+}
+
+.profile-container {
+  background-color: rgb(189, 174, 100);
+  width: 95%;
+  height: 100%;
+  margin: 1vw;
+  padding: 5px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-info-container {
+  text-align: center;
+}
+
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.profile-img {
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  margin-top: -13vh;
+}
+
+.profile-text {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.repo-card {
+  background-color: rgb(189, 174, 100);
+  margin: 5px;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.chart {
+  max-width: 300px;
+  max-height: 300px;
 }
