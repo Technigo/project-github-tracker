@@ -4,21 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Github Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
-  <div id="project-container">
-  </div>
+  <main>
+    <section id="profile-container">
+    </section>
 
-  <div id="profile-container">
-  </div>
+    <section id="repo-container">
+      <h2>Projects:</h2>
+    </section>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <!-- This will be used to draw the chart 👇 -->
+    <canvas id="chart"></canvas>
+  </main>
+  <footer>
+    <footer id="foot">
+      <p>Made by Sofia Willebrand 🐘 </p>
+      <div class="nav-socials">
+          <li><a class="navigation-link" href="https://www.linkedin.com/in/sofia-willebrand/" target="_blank"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+          <li><a class="navigation-link" href="https://github.com/sofiawillebrand" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a></li>
+          <li><a class="navigation-link" href="https://stackoverflow.com/users/7478955/sofia-willebrand" target="_blank"><i class="fa fa-stack-overflow" style="font-size:24px"></i></a></li>
+      </div>
+    </footer>
+  </footer>
+
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
