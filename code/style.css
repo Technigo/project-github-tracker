@@ -5,7 +5,7 @@ body {
 }
 
 .big-container {
-  margin-bottom: 5%;
+  margin: 5% 0;
 }
 
 h1 {
@@ -39,19 +39,19 @@ h2 {
 }
 
 .chart-container {
-  width: 100%;
-  margin-bottom: 20%;
-}
-
-.chart {
-  width: 20%;
-  align-items: center;
+  width: 70%;
+  margin: 0 0 10% 15%;
 }
 
 .projects {
+  border-bottom: 1px solid #b8c3bd;
+}
+
+.projects-list {
   border: 1px solid #b8c3bd;
   color: #4a707a;
   font-size: 17px;
+  padding: 4%;
 }
 
 /* unvisited link */
@@ -70,6 +70,17 @@ a:hover {
 }
 
 @media (min-width: 668px) and (max-width: 1024px) {
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 1025px) {
