@@ -3,6 +3,10 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+input[type=button] {
+  font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
   size: 12em;
   text-align: center;
@@ -42,8 +46,4 @@ footer {
 footer li {
   display: inline;
   list-style: none;
-}
-
-.nav-socials {
-  width: 100px;
 }
