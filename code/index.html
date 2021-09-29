@@ -8,34 +8,43 @@
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
+  <!--Title font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <!--Bread font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
   
-  <main id="projects">
-    <div class="header-title">
-      <h1>Technigo GitHub Tracker</h1>
-    </div>
-
-    
-
-    <div class="search-container">
-      <form id="search-field">
-        <input
-          class="input-field"
-          id="gitusername"
-          type="text"
-          placeholder="Github Username"
-          autocomplete="off"
-          required
-        />
-        <input type="submit" id="searchbtn" class="search-button">
+ 
+    <header>
+      <h1 class="header-title">Technigo GitHub Tracker</h1>
+  
+      <div class="search-container">
+        <form id="search-field">
+          <input
+            class="input-field"
+            id="gitusername"
+            type="text"
+            placeholder="Github Username"
+            autocomplete="off"
+            required
+          />
+          <input type="submit" id="searchbtn" class="search-button" value="Search">
       </form>
-  </div>
-  <div id="userProfile" class="user-profile"></div>
-
+    </div>
+    <div id="userProfile" class="user-profile">
+    </div>
     
-    <h2>Projects:</h2>
+  </header>
+<main id="projects">
+    
     <div id="projectsContainer" class="projects-container">
+      
+      <h2 class="project-title">Projects</h2>
 
       <div id="myModal" class="modal">
         <div class="modal-content">

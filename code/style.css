@@ -3,22 +3,156 @@
 }
 
 body {
-  background: #FFECE9;
+  background: #fff;
+  margin: 0;
+  font-family: 'Nunito Sans';
+  letter-spacing: 0.8px;
+}
+
+header {
+  background-color:#1A1E22 ;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+
+.header-title {
+  font-family: 'Bebas Neue';
+  letter-spacing: 5px;
+  font-size: 30px;
+}
+
+.user-section {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 150px;
+}
+
+.user-section p {
+margin: 0px;
+height: 30px;
+font-size: 18px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.input-field {
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Nunito Sans';
+  font-size: 15px;
+  color: #7b7d7e;
+  border: 3px solid #8390FA;
+}
+
+.search-button {
+  padding: 10px 25px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #1D2F6F;
+  font-family: 'Nunito Sans';
+  font-size: 15px;
+  border: 3px solid #8390FA;
+}
+
+.search-button:hover {
+  background-color: #8390FA;
+  color: #fff;
+}
+
+.user-profile {
+  text-align: center;
+  margin-top: 30px;
+  height: 375px;
+}
+
+.swap-on-hover {
+  position: relative;
+}
+
+.swap-on-hover img {
+  border-radius: 100%;
+  height: 250px;
+  display:block;
+  margin-left: 41.5%;
+  border: 8px solid #8390FA;
+  position: absolute;
+}
+
+.swap-on-hover .front-image {
+  z-index: 9999;
+  transition: opacity .5s linear;
+  cursor: pointer;
+}
+
+.swap-on-hover:hover .front-image {
+  opacity: 0;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.link-icon, .github-icon {
+  border-radius: 0;
+  border: none;
+}
+
+.link-icon {
+  height: 30px;
+  margin-right: 8px;
+}
+
+.github-icon {
+  height: 30px;
+  margin-right: 90%
 }
 
 .repo-item {
-  background-color: #fff;
-  padding: 10px;
-  margin: 20px 10px;
+  background-color: #1D2F6F;
+  padding: 15px 20px;
+  margin: 20px 20px;
+  border-radius: 30px;
+  text-align: center;
 }
 
 h3 a {
   text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+}
+
+h2 {
+  color: #fff;
+  
+}
+
+.project-title {
+  color: #1D2F6F;
+  padding-top: 60px;
+  margin-top: 520px;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-size: 40px;
+}
+
+p {
+  color: #fff;
+  font-size: 20px;
 }
 
 h3 a:hover {
   color: red;
 }
+
+
 
 /* The Modal (background) */
 .modal {
@@ -39,10 +173,11 @@ h3 a:hover {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 100px;
   border: 1px solid #888;
   width: 80%;
 }
+
 
 /* The Close Button */
 .close {

@@ -4,9 +4,9 @@ const inputValue = document.getElementById('gitusername')
 const user = 'Asivol93'
 const REPOS_URL = `https://api.github.com/users/${user}/repos`
 const USER_URL = `https://api.github.com/users/${user}`
-const container = document.getElementById('projects')
 const userContainer = document.getElementById('userProfile')
 const projectsContainer = document.getElementById('projectsContainer')
+const userDetailContainer = document.getElementById('userDetails')
 // Get the modal
 const modal = document.getElementById("myModal")
 // Get the button that opens the modal
@@ -24,18 +24,23 @@ const userProfile = () => {
   .then(data => {
       //console.log(data);
       userContainer.innerHTML += `
-      <div>
+      <div class="user-section">
         <h2>Username: ${data.login}</h2>
         <p>Full name: ${data.name}</p>
         <p>Location: ${data.location}</p>
       </div>
 
-      <div class="github-avatar">
+      <div class=swap-on-hover>
         <a href="https://github.com/Asivol93" target="blank">
-          <img src="${data.avatar_url}"/>
+          <img class="front-image" src="${data.avatar_url}"/>
+          <img class="back-image" src="./images/big-github_icon.png">
         </a>
       </div>
+
       `
+  
+        
+    
     })
 }
 
@@ -60,6 +65,12 @@ const fetchAll = () => {
     
     projectsContainer.innerHTML += `
     <div class="repo-item">
+      <div class="icon-container">
+      <a href="${repo.html_url}" target="blank">
+        <img src="./images/github_icon.png" class="github-icon">
+      </a>
+      </div>
+
       <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
       <p>Branch: ${repo.default_branch}<p>
       <p>Latest push: ${pushedDate}</p>
@@ -74,7 +85,7 @@ const fetchAll = () => {
   
     
     .catch(() => {
-      container.innerHTML = `
+      userContainer.innerHTML = `
     <h1>Sorry we could not find any data!</h1>
     <p>Please try again!</p>
     `
@@ -112,17 +123,26 @@ const showCommits = (url, myRepoName) => {
       <button id="myBtn-${myRepoName}">Open Modal</button>
           
       `
-      modal.innerHTML += `
-      <p>${commitMessage}</p>
+      document.getElementById("myModal").innerHTML += `
+      <p class="modal-message">${commitMessage}</p>
       `
       const btn = document.getElementById(`myBtn-${myRepoName}`)
 
       btn.onclick = function() {
         console.log(modal)
-        modal.style.display = "block";
+        document.getElementById("myModal").style.display = "block";
+      }
+
+      span.onclick = function() {
+        document.getElementById("myModal").style.display = "none";
       }
       
-    
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          document.getElementById("myModal").style.display = "none";
+        }
+      }
+
     })
     
 }
@@ -153,13 +173,13 @@ searchBtn.addEventListener('click', () => {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+  document.getElementById("myModal").style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    document.getElementById("myModal").style.display = "none";
   }
 }
 
