@@ -5,21 +5,16 @@ const fullName = document.getElementById('full-name')
 const username = document.getElementById('username')
 
 // LIST OF APIS TO FETCH FROM
-const user = "annathunberg"
-const API_MY_REPOS = 'https://api.github.com/users/annathunberg/repos'
+const USER = 'annathunberg'
+const API_MY_REPOS = `https://api.github.com/users/${USER}/repos`// user-variable instead of my login
 const API_MY_PROFILE = 'https://api.github.com/users/annathunberg'
-const API_PULL_REQUESTS = ''
-const API_COMMITS = ''
-const API_PUSH = ''
-const API_BRANCH = ''
 
 // FETCHES THE PROFILE PIC, NAME AND USERNAME
 fetch(API_MY_PROFILE)
 .then((response) => response.json())
 .then((data) => {
-    // console.log("my profile", data)
-    fullName.innerHTML = `Hi! I'm ${data.name}.`
-    username.innerHTML = `Username: ${data.login}`
+    fullName.innerHTML = `Hi! I'm  <a href="${data.html_url}">${data.name}</a.`
+    username.innerHTML = `Username: <a href="${data.html_url}">${data.login}</a>`
     avatar.src = data.avatar_url
 })
 
@@ -27,14 +22,37 @@ fetch(API_MY_PROFILE)
   fetch(API_MY_REPOS)
   .then((response) => response.json())
   .then((data) => {
-      //console.log("all the repos", data)
-      const forkedRepos = data.filter(isFork)
-      const sortedForkedRepos = forkedRepos.sort(sortingFunctionFromStackOverflow)
-      sortedForkedRepos.forEach(addForkedRepoToList)
-      
+        const forkedRepos = data.filter(isFork)
+        const sortedForkedRepos = forkedRepos.sort(sortingFunctionFromStackOverflow)
+        sortedForkedRepos.forEach(addRepoToList)
+        drawChart(sortedForkedRepos.length)
+        addCommits(sortedForkedRepos)
+        addPullRequests(sortedForkedRepos)
   })
 
- 
+function addCommits(repos) {
+    repos.forEach((repo) => {
+        const commitsUrl = `https://api.github.com/repos/${USER}/${repo.name}/commits`;
+        fetch(commitsUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById(`commit-${repo.name}`).innerHTML = `Number of commits: ${data.length}`
+        })
+    });
+ }
+
+ function addPullRequests(repos) {
+    repos.forEach((repo) => {
+        const pullRequestsUrl = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
+        fetch(pullRequestsUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === USER);
+                console.log("grejer jag pullat", myPullRequests)
+                document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull requests: ${myPullRequests.length}`
+            });
+    });
+ }
   
 // RETURNS REPOS THAT ARE FORKED AND START WITH PROJECTS
 function isFork(repo) {
@@ -42,44 +60,22 @@ function isFork(repo) {
 }
 
 // CREATES THE LIST OF REPOS
-function addForkedRepoToList(forkedRepo) {
-    list.innerHTML += `<li><a href="${forkedRepo.html_url}">${forkedRepo.name}</a></li>`
+function addRepoToList(repo) {
+    list.innerHTML += `<div>
+        <a href="${repo.html_url}">${repo.name}</a>
+        <p>Default branch: ${repo.default_branch}</p>
+        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p id="commit-${repo.name}"></p>
+        <p id="pull-request-${repo.name}"></p>
+    </div>`
 }
 
 // SORTS THE REPOS IN CHRONOLOGICAL ORDER BY DATE
 function sortingFunctionFromStackOverflow(a, b) {
     // https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
     return new Date(a.created_at) - new Date(b.created_at)
-  }
+}
 
-// FETCHES THE PULL REQUESTS
-fetch(API_PULL_REQUESTS)
-.then((response) => response.json())
-.then((data) => {
-    console.log("my pullrequests", data)
-})
 
-// FETCHES THE DEFAULT BRANCH
-fetch(API_BRANCH)
-.then((response) => response.json())
-.then((data) => {
-    console.log("the default branch is..", data)
-    // the default branch is...
-})
 
-// FETCHES THE LATEST PUSH
-fetch(API_PUSH)
-.then((response) => response.json())
-.then((data) => {
-    console.log("the last update (push) was..", data)
-    // the last update (push) was .....
-})
-
-//FETCHES THE COMMIT MESSAGES (latest one or count the number of?)
-fetch(API_COMMITS)
-.then((response) => response.json())
-.then((data) => {
-    console.log("the latest commit was..", data)
-    // there are ... commits (messages)
-})
 

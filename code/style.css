@@ -52,7 +52,7 @@ img {
   text-align: center;
 }
 
-li {
+#list div {
   display: inline-block;
   width: 90%;
   margin: 5px auto;
@@ -60,16 +60,18 @@ li {
   font-size: 20px;
 }
 
-li a {
+#list div a {
   text-decoration: none;
   margin: 10px auto;
   color: #daff05;
   font-size: 1.2em;
 }
 
-li a:hover {
+#list div a:hover {
   text-decoration: none;
-  background-color:#d2c1fc;
+  background-color:#f1fabd;
+  color: #EA86B6;
+  padding: 5px;
 }
 
 
@@ -120,7 +122,7 @@ li a:hover {
   }
 
   /* text list */
-  li a {
+  #list div a {
     text-decoration: none;
     margin: auto;
     font-size: 40px;
@@ -170,13 +172,14 @@ li a:hover {
   }
 
   /* text list */
-  li a {
+  #list div a {
     text-decoration: none;
     margin: auto;
     font-size: 24px;
   }
 
   #chart {
+  width: 50%;
   padding: 8%;
   }
 }
