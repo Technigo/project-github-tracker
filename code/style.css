@@ -55,7 +55,7 @@ td {
 }
 
 .profile-image-icons {
-  border: 1px dotted yellow;
+  /* border: 1px dotted yellow; */
   grid-column: span 1;
   /* margin: auto; */
   width: 90%;
@@ -98,7 +98,7 @@ a:visited {
 }
 
 .projects {
-  border: 3px dotted blue;
+  /* border: 3px dotted blue; */
   width: 90%;
   margin: auto;
 }
