@@ -5,6 +5,7 @@ console.log('hello from the chart.js')
 
 //"Draw" the chart here 👇
 
+
 const drawChart = (amount) => {
 const config = {
     type: 'doughnut',
