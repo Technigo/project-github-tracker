@@ -45,6 +45,18 @@ const fetchFullRepo = (repo) => {
 		.catch((err) => console.log('fetchFullRepo error:', err));
 };
 
+const fetchCommits = (myCommitsUrl, repo) => {
+	fetch(myCommitsUrl)
+		.then((res) => res.json())
+		.then((data) => {
+			// console.log('fetchCommits data: ', data);
+			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
+			const authors = data.map((commit) => commit.author.login);
+			fetchPullRequestsArray(repo, authors);
+		})
+		.catch((err) => console.log('fetchCommits error: ', err));
+};
+
 const fetchPullRequestsArray = (repo, authors) => {
 	// fetch all pull requests from repo
 	const PULL_URL = `https://api.github.com/repos/${PARENT_OWNER}/${repo.name}/pulls?per_page=100`;
@@ -62,18 +74,6 @@ const fetchPullRequestsArray = (repo, authors) => {
 			}
 		})
 		.catch((err) => console.log('fetchPullRequestsArray error:', err));
-};
-
-const fetchCommits = (myCommitsUrl, repo) => {
-	fetch(myCommitsUrl)
-		.then((res) => res.json())
-		.then((data) => {
-			// console.log('fetchCommits data: ', data);
-			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
-			const authors = data.map((commit) => commit.author.login);
-			fetchPullRequestsArray(repo, authors);
-		})
-		.catch((err) => console.log('fetchCommits error: ', err));
 };
 
 const fetchUser = () => {
