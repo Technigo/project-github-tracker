@@ -1,8 +1,7 @@
-//DOM-selector for the canvas 👇
+//DOM-selector
 const ctx = document.getElementById("chart").getContext("2d");
 
-//"Draw" the chart here 👇
-
+//Chart
 const config = {
   type: "pie",
   data: {
@@ -10,8 +9,8 @@ const config = {
     datasets: [
       {
         label: "My First Dataset",
-        data: [5, 20 - 5],
-        backgroundColor: ["rgb(0,250,154,0.20)", "rgb(250, 250, 250, 0.60)"],
+        data: [5, 19 - 5],
+        backgroundColor: ["rgb(0,250,154,0.20)", "rgb(228, 228, 228)"],
         hoverOffset: 4,
       },
     ],

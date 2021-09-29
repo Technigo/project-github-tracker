@@ -20,7 +20,7 @@ const getUsernameAndPicture = () => {
       const pictureOfUser = data.avatar_url;
       const userBio = data.bio;
 
-      userInformation.innerHTML = `
+      userInformation.innerHTML += `
         <img class="user-information__picture" src="${pictureOfUser}" alt="Picture of gitHub-user"/>
         <div class="user-information__username-bio-container">
           <div class="user-information__username-bio-container__username">${username}</div>
@@ -96,7 +96,7 @@ const getPullRequests = (repoName) => {
         let containerToChange = document.getElementById(
           `${repoName}-commit-pulls-container`
         );
-        containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request"><div>Pull request link:</div><a href="${prUrl}">${prTitle}</a></div>`;
+        containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request"><div>Pull request:</div><a href="${prUrl}">${prTitle}</a></div>`;
       } else {
         let containerToChange = document.getElementById(
           `${repoName}-commit-pulls-container`
@@ -128,8 +128,6 @@ const getcommits = (repoName) => {
       amountCommitmessages.innerHTML += `${amountOfCommits}`;
     });
 };
-
-// - A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).*/
 
 getUsernameAndPicture();
 getRepos();
