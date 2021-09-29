@@ -26,21 +26,13 @@ const getRepos = () => {
             day: "numeric",
           }
         );
-        const commits = (url) => {
-          fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-              //console.log(data);
-              commitsContainer.innerHTML += `
-              <p>Commit messages: ${data.length}</p>
-              `;
-            });
-        };
+
         container.innerHTML += `
         <div class="repo-cards">
-          <a href=https://github.com/${username}/${repo.name}><h3>${repo.name}</h3></a>
-          <p>${pushedDate}</p>
+          <a href=${repo.html_url}><h3>${repo.name}</h3></a>
+          <p>Recent push: ${pushedDate}</p>
           <p>${repo.default_branch}</p>
+          <p id="commit-${repo.name}"> Commits amount: </p>
           </div>
           `;
       });
@@ -58,16 +50,16 @@ const getPullRequests = (repos) => {
   //Get all the PRs for each project.
   repos.forEach((repo) => {
     fetch(
-      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
+      `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
     )
       .then((res) => res.json())
       .then((data) => {
         const filteredPullrequests = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
-        const myCommits = filteredPullrequests.commits_url;
-        console.log(filteredPullrequests);
-        commits(myCommits);
+        //const myCommits = filteredPullrequests.commits_url;
+        //console.log(filteredPullrequests);
+        commits(filteredPullrequests.commits_url, repo.name);
         //TODO
         //2. Now you're able to get the commits for each repo by using
         // the commits_url as an argument to call another function
@@ -77,14 +69,11 @@ const getPullRequests = (repos) => {
   });
 };
 
-const commits = (url) => {
+const commits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      //console.log(data);
-      commitsContainer.innerHTML += `
-      <p>Commit messages: ${data.length}</p>
-      `;
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
 
@@ -96,6 +85,7 @@ fetch(USERS_URL)
     <h3>Name: ${data.name}</3>
     <h3>Username: ${data.login}</h3>
     <h3>Location: ${data.location}</3>
+    <h3>Bio: ${data.bio}</h3>
     <img src="${data.avatar_url}"/>
     `;
   });
