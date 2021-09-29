@@ -5,38 +5,20 @@ let API_ALL_REPOS = `https://api.github.com/users/${USER}/repos`
 let REPO_API = `https://api.github.com/repos/${USER}/${PROJECT}/commits`
 let repoContainer = document.getElementById('repo-container')
 let profileContainer = document.getElementById('profile-container')
-let commitMessage
+let repositorys = []
 
-const getCommits = (REPO_API) => {
-  fetch(REPO_API)
-  .then(res => res.json()) 
-  .then(commitData => {
-    console.log('här borde det vara commit', commitData[0].commit.message)
-    commitMessage = commitData[0].commit.message
+
+const insertRepoInfo = (repository) => {
     repoContainer.innerHTML += /*html*/ `
-    <h2>There have been ${commitData.length} commits and the latest commit was ${commitMessage}</h2>
+      <div class="repo-card">
+        <h3>${repository.name}</h3>
+        <p>Date of latest push: ${repository.latest_push}</p>
+        <p>Default branch: ${repository.default_branch}</p>
+        <p>Latest commit-message: ${repository.commit_message}</p>
+        <p>Number of commits: ${repository.number_commits}</p>
+        <a>Link to GitHub repo: ${repository.project_url}</a>
+      </div>
     `
-  })
-}
-
-const getRepos = () => {
-  console.log('working')
-  fetch(API_ALL_REPOS)
-  .then(res => res.json()) 
-  .then(reposData => {
-    console.log('Repodata: ', reposData)
-    const technigoRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-    technigoRepos.forEach(project => {
-      repoContainer.innerHTML += /*html*/ `
-        <div>
-          <a href="${project.html_url}">${project.name} with default branch ${project.default_branch}</a>
-          <p>Recent push: ${new Date(project.pushed_at).toDateString()}</p>
-        </div>
-      `
-      let REPO_API = `https://api.github.com/repos/${USER}/${project.name}/commits`
-      getCommits(REPO_API)
-    })
-  })
 }
 
 const getProfile = () => {
@@ -44,16 +26,45 @@ const getProfile = () => {
   .then(res => res.json()) 
   .then(profileData => {
     profileContainer.innerHTML += /*html*/`
-      <div class="circle">
-        <img src=${profileData.avatar_url} class="profile-img"> 
-      </div>     
+      <img src=${profileData.avatar_url} class="profile-img">    
       <h1>${profileData.name}</h1>
     `
     });
 }
 
+
+const getRepos = () => {
+  fetch(API_ALL_REPOS)
+  .then(res => res.json()) 
+  .then(reposData => {
+    console.log('Repodata: ', reposData)
+    const technigoRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith('project-'))
+    technigoRepos.forEach(project => {
+      let latestPush = new Date(project.pushed_at).toDateString()
+      repositorys[`${project.name}`] = {}
+      repositorys[`${project.name}`]["name"] = project.name
+      repositorys[`${project.name}`]["latest_push"] = latestPush
+      repositorys[`${project.name}`]["default_branch"] = project.default_branch
+      repositorys[`${project.name}`]["project_url"] = project.html_url
+
+      let REPO_API = `https://api.github.com/repos/${USER}/${project.name}/commits`
+ 
+      fetch(REPO_API)
+      .then(res => res.json()) 
+      .then(commitData => {
+        let commitMessage = commitData[0].commit.message
+        let repository = repositorys[project.name]
+        repository["commit_message"] = `${commitMessage}`
+        repository["number_commits"] = `${commitData.length}`
+        insertRepoInfo(repository)
+      })
+    })
+  })
+}
 getRepos()
 getProfile()
+
+
 
 // create dynamic ID from for eaxmple the name of the project 
 // avoid using global variables
