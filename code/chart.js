@@ -15,6 +15,8 @@ const drawChart = amount => {
           data: [amount, 20 - amount],
           backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
           hoverOffset: 4,
+          responsive: true,
+          maintainAspectRatio: false,
         },
       ],
     },

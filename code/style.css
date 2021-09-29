@@ -1,3 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  background: #ffece9;
+}
+
+.chart {
+  height: 300px;
+  width: 300px;
+}
+
+.grid-container {
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid green;
+}
+
+.cards {
+  border: 2px solid orange;
+  display: grid;
+  width: 100%;
 }
