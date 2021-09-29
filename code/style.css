@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(238, 229, 220);
+  background-color: #313638;
+  color: #e0dfd585;
   font-family: "Cabin", sans-serif;
   background-image: url("https://i.ibb.co/vDY4RQR/burger.png");
   background-size: 15px;
@@ -8,38 +9,41 @@ body {
 
 /* Profile */
 .profile-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width: 100%;
+  margin: auto;
 }
 
 .profile {
-  display: flex;
-  margin: auto;
   border-radius: 100%;
-  width: 80%;
+  border: #e0dfd585 2px solid;
+  width: 100%;
 }
 
 fieldset {
   border: 3px solid;
-  border-radius: 2%;
-  border-color: #d5a021;
-  background-color: rgb(255, 99, 71);
+  border-radius: 1%;
+  border-color: #e0dfd585;
+  background-color: rgb(34, 33, 33);
 }
 
 /* Projects */
-.projects-container {
-  flex-flow: column;
-  flex-wrap: wrap;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
   margin: auto;
-  align-items: center;
+  width: 100%;
 }
 
 .project-cards {
   padding: 10px;
+  border-radius: 1%;
 }
 .project-cards a {
   text-decoration: none;
-  color: black;
+  color: #e4e4e2c5;
   font-weight: bold;
   cursor: pointer;
   transition: all 200ms ease-in;
@@ -52,4 +56,10 @@ fieldset {
 .chart {
   width: 200px;
   margin: auto;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
 }
