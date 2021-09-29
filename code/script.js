@@ -39,7 +39,8 @@ const fetchRepos = () => {
       <h3>${repo.name}</h3>
       <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
       <p>${repo.default_branch}</p>
-      <p>${repo.pushed_at}</p>
+      <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+      <p id="commits-${repo.name}">Number of commits: </p>
       `)
       drawChart(forkedRepos.length)
       getPullRequests(forkedRepos)
@@ -61,7 +62,7 @@ const getPullRequests = (repos) => {
     .then(data => {
         const myPull = data.find(pull => pull.user.login === repo.owner.login) 
         // console.log(myPull)
-        fetchCommits(myPull.commits_url)
+        fetchCommits(myPull.commits_url, repo.name)
       // if (data.user.login === userName && data.repo.owner.login === userName) {
       // }
 
@@ -76,14 +77,12 @@ const getPullRequests = (repos) => {
   })
 }
 
-const fetchCommits = (url) => {
+const fetchCommits = (url, myRepoName) => {
   fetch(url)
   .then(response => response.json())
   .then(data => {
     // console.log(data)
-    pullRequestData.innerHTML += `
-    <p>${data.length}</p>
-    `
+    document.getElementById(`commits-${myRepoName}`).innerHTML += data.length
   })
 }
 
