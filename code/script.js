@@ -15,7 +15,7 @@ const getUserInfo = () => {
          infoBox.innerHTML = `
         
         <h2 class="user-name">${data.login}</h2>
-        <img class="profile-pic" src="${data.avatar_url}"/>
+        <img class="profile-pic" src="${data.avatar_url}" alt="profile picture"/>
         `
     }) 
 }
