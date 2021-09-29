@@ -12,3 +12,20 @@ body {
   height: 10%;
 }
 /* Styles for tablet  and desktop : */
+
+.active {
+  display: block;
+}
+
+.unactive {
+  display: none;
+}
+
+.comment-container {
+  width: 200px;
+  height: 200px;
+}
+
+.comments-button {
+  background-color: aqua;
+}

@@ -86,21 +86,50 @@ const getComments = (COMMENTS_URL, repo) => {
 };
 
 const renderComments = (comments, repo) => {
+  // separating code review comments from user answers
   const filteredComments = comments.filter((com) => !com.in_reply_to_id);
   const reposStats = document.getElementById(`each-${repo.name}`);
   const commentContainer = document.createElement("div");
-  commentContainer.className = "comment-container";
+  commentContainer.classList.add("comment-container", "active", "unactive");
   reposStats.appendChild(commentContainer);
-
-  // const commentsButton = document.createElement("button");
-  // document.getElementById(`each-${repo.name}`).appendChild(commentsButton)
 
   filteredComments.forEach((comment) => {
     commentContainer.innerHTML += `
     <p>${comment.body}</p>
    `;
   });
+  const commentsButton = document.createElement("button");
+  commentsButton.innerText = "Comments";
+  reposStats.appendChild(commentsButton);
+  commentsButton.className = "comments-button";
+
+  commentsButton.addEventListener("click", classToggle(commentContainer));
 };
+
+const classToggle = (commentContainer) => {
+  if (commentContainer.className === "active") {
+    commentContainer.classList.remove("active");
+  } else if (commentContainer.className === "unactive") {
+    commentContainer.classList.toggle("active");
+  } else {
+    console.log("error in event listener", error);
+  }
+};
+
+// (commentContainer) => {
+//   if (commentContainer.className === "active") {
+//     commentContainer.classList.toggle("unactive");
+//   } else {
+//     commentContainer.classList.toggle("active");
+//   }
+// };
+
+// for (let j=0; j<question.length; j++) {
+//   if (question[j] === this) {
+//    this.classList.toggle("active");
+//   } else {question[j].classList.remove("active")}
+//   }
+//  });
 
 // https://stackoverflow.com/c/technigo/questions/2918
 // https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100
