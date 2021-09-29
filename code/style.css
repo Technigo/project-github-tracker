@@ -67,6 +67,11 @@ td {
   height: 74px;
   box-shadow: 0px 6px 5px #ccc;
   margin-bottom: 10px;
+  filter: grayscale(1);
+}
+
+.profile-image:hover {
+  filter: grayscale(0);
 }
 
 .contact-icons {
