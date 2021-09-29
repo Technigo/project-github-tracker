@@ -1,3 +1,23 @@
 body {
   background: #FFECE9;
+  font-family: Overpass, sans-serif;
+  box-sizing: border-box;
+}
+
+.chart-wrapper {
+  width: 200px;
+  border: 1px black solid;
+}
+
+.avatar {
+  width: 200px;
+  border-radius: 100px;
+  margin: 0px auto;
+}
+
+.project-card {
+  border-radius: 10px;
+  background-color: white;
+  margin: 5px auto;
+  padding: 5px 20px;
 }
