@@ -120,7 +120,7 @@ const showCommits = (url, myRepoName) => {
     
       document.getElementById(`commit-${myRepoName}`).innerHTML += ` 
       <p>Number of commits: ${data.length}</p>
-      <button id="myBtn-${myRepoName}">Open Modal</button>
+      <button id="myBtn-${myRepoName}" class="modal-button">Read commit</button>
           
       `
       document.getElementById("myModal").innerHTML += `
@@ -165,8 +165,9 @@ fetchAll()
 //showComments()
 
 //Eventlisteners
-searchBtn.addEventListener('click', () => {
-  fetchAll()
+searchBtn.addEventListener('click', (user) => {
+  userProfile(user)
+  fetchAll(user)
 })
 
 

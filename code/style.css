@@ -178,6 +178,22 @@ h3 a:hover {
   width: 80%;
 }
 
+.modal-button {
+    padding: 10px 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #1D2F6F;
+    font-family: 'Nunito Sans';
+    font-size: 15px;
+    border: 3px solid #8390FA;
+  }
+  
+.modal-button:hover {
+    background-color: #8390FA;
+    color: #fff;
+  }
+
+
 
 /* The Close Button */
 .close {
