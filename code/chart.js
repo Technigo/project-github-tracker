@@ -5,12 +5,12 @@ const ctx = document.getElementById("chart").getContext("2d");
 
 const drawChart = (amount) => {
   const data = {
-    labels: ["Fineshed Projects", "Total Projects"],
+    labels: ["Finished Projects", "Total Projects"],
     datasets: [
       {
         label: "My First Dataset",
         data: [amount, 20 - amount],
-        backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+        backgroundColor: ["#8AA2A0", "#D6A495"],
         hoverOffset: 4,
       },
     ],

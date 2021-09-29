@@ -2,10 +2,25 @@
 const projectsContainer = document.getElementById("projects");
 const profileInfo = document.getElementById("profileInfo");
 
-// -- GLOBAL VARIABLES -- //
+// -- API -- //
 const USER = "brunsant";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const USER_API = `https://api.github.com/users/${USER}`;
+
+// -- PROFILE INFO -- //
+const getUser = () => {
+  fetch(USER_API)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log("USER DATA", data);
+      profileInfo.innerHTML += `
+          <h3> Profile Info </h3>
+          <img src = "https://avatars.githubusercontent.com/u/80712035?v=4" alt="Profile picture">
+          <h4> ${data.name}</h4>
+          <h4> ${data.login}</h4>
+          `;
+    });
+};
 
 // -- REPOS -- //
 const getRepos = () => {
@@ -14,11 +29,12 @@ const getRepos = () => {
       return response.json();
     })
     .then((json) => {
-      console.log("DATA", json);
+      // console.log("DATA", json);
       const forkedRepos = json.filter(
         (project) => project.fork && project.name.startsWith("project-")
       );
 
+      // -- COMMIT --
       forkedRepos.forEach((project) => {
         const COMMIT_URL = `https://api.github.com/repos/${USER}/${project.name}/commits`;
         fetch(COMMIT_URL)
@@ -26,18 +42,22 @@ const getRepos = () => {
             return response.json();
           })
           .then((json) => {
-            console.log("COMMITS", json);
+            // console.log("COMMITS", json);
             const filteredCommits = json.filter(
               (project) => project.commit.author.name === "Bruna Santos Araujo"
             );
-            console.log("FILTERED", filteredCommits);
-            console.log("NUMBER OF COMMITS", filteredCommits.length);
-            // console.log("COMMIT MESSAGE", filteredCommits.commit.message);
-            //TRYING TO PUT THE MESSAGE ON THE LAST COMMIT//
+
+            const upperCaseName =
+              project.name.charAt(0).toUpperCase() + project.name.slice(1);
+
+            // console.log("FILTERED", filteredCommits);
+            // console.log("NUMBER OF COMMITS", filteredCommits.length);
 
             projectsContainer.innerHTML += `
-          <div>
+          <div class="projects">
+          <div class="project-header">
           <h3> Project Name: ${project.name}</h3>
+          </div>
           <a href = ${project.html_url}> ${project.name} </a>
           <p> Main branch: ${project.default_branch}</p>
           <p> Number of commits: ${filteredCommits.length}</p>
@@ -46,49 +66,39 @@ const getRepos = () => {
             10
           )}, ${project.pushed_at.slice(11, 16)} 
           </p>
+          <p id="pull-${project.name}">Pull request: </p>
           </div>
           `;
-
-            // const getPulls = (forkedRepos) => {
-            //   forkedRepos.forEach((project) => {
-            //     fetch(
-            //       `https://api.github.com/repos/technigo/${project.name}/pulls`
-            //     )
-            //       .then((response) => response.json())
-            //       .then((data) => {
-            //         console.log("PULLS", data);
-            //       });
-            //   });
-            // };
           });
       });
+      getPulls(forkedRepos);
       drawChart(forkedRepos.length);
     });
 };
 
-// const getPulls = (forkedRepos) => {
-//   forkedRepos.forEach((project) => {
-//     fetch(`https://api.github.com/repos/technigo/${project.name}/pulls`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         console.log("PULLS", data);
-//       });
-//   });
-// };
+const getPulls = (forkedRepos) => {
+  forkedRepos.forEach((project) => {
+    fetch(
+      `https://api.github.com/repos/Technigo/${project.name}/pulls?per_page=100`
+    )
+      .then((response) => response.json())
+      .then((pulldata) => {
+        // console.log("PULLS", pulldata);
+        const myPullRequest = pulldata.find(
+          (pull) => pull.user.login === project.owner.login
+        );
+        // console.log("MY PULL", myPullRequest);
+        // console.log("MY URL", myPullRequest.url);
 
-// -- PROFILE INFO -- //
-const getUser = () => {
-  fetch(USER_API)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("USER DATA", data);
-      profileInfo.innerHTML = `
-          <h3> Profile Info </h3>
-          <img src = "https://avatars.githubusercontent.com/u/80712035?v=4">
-          <h4> ${data.name}</h4>
-          <h4> ${data.login}</h4>
-          `;
-    });
+        if (myPullRequest) {
+          document.getElementById(`pull-${project.name}`).innerHTML = `
+            <a href = ${myPullRequest.url}>Pull request</>`;
+        } else {
+          document.getElementById(`pull-${project.name}`).innerHTML = `
+            No pull request available`;
+        }
+      });
+  });
 };
 
 getRepos();
