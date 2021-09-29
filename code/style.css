@@ -1,3 +1,32 @@
 body {
   background: #FFECE9;
 }
+
+.avatar {
+  border-radius: 50%;
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.repo-container {
+  border: solid black 1px;
+}
+
+
+
+
+
+
+@media (min-width: 662px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
