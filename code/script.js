@@ -35,7 +35,7 @@ const presentRepoData = () => {
         (project) => project.fork && project.name.startsWith("project-")
       );
 
-      technigoRepos.forEach((project) => {
+      technigoRepos.forEach((project, position) => {
         let currentProject = project.name;
         const COMMIT_COUNT_URL = `https://api.github.com/repos/${USER}/${currentProject}/commits`;
         fetch(COMMIT_COUNT_URL)
@@ -49,7 +49,7 @@ const presentRepoData = () => {
             let commitDate = filteredCommits[0].commit.author.date;
             let commitMessage = filteredCommits[0].commit.message;
             projectsContainer.innerHTML += `
-            <div id="project" class="project">
+            <div class="project" id="${position}">
             <div class="project-header"><h3>${
               project.name
             }</h3><span id="deleteRepo">X</span></div>
@@ -69,15 +69,16 @@ const presentRepoData = () => {
                 </div>
             </div>
         `;
-            document.getElementById("project").addEventListener("click", deleteElement);
+            document.getElementById(position).addEventListener("click", deleteElement);
           });
       });
       drawChart(technigoRepos.length);
     });
 };
 
+// A function that deletes the box you click on
 const deleteElement = () => {
-  document.getElementById("project").remove(this);
+  document.getElementById(this).remove(this);
 };
 
 presentRepoData();
