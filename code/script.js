@@ -56,9 +56,9 @@ const getRepos = () => {
             projectsContainer.innerHTML += `
           <div class="projects">
           <div class="project-header">
-          <h3> Project Name: ${project.name}</h3>
+          <h3> Project Name: ${upperCaseName}</h3>
           </div>
-          <a href = ${project.html_url}> ${project.name} </a>
+          <a href = ${project.html_url}> ${upperCaseName} </a>
           <p> Main branch: ${project.default_branch}</p>
           <p> Number of commits: ${filteredCommits.length}</p>
           <p> Latest push: ${project.pushed_at.slice(

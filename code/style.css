@@ -1,10 +1,18 @@
 body {
   background-color: #d5dad6;
+  font-family: "Roboto Mono", monospace;
+  min-width: 325px;
+}
+
+.big-container {
+  margin-bottom: 5%;
 }
 
 h1 {
   text-align: center;
+  font-size: 30px;
   color: #d6a495;
+  margin-top: 10%;
 }
 
 .profile-container {
@@ -12,30 +20,57 @@ h1 {
   color: #8aa2a0;
 }
 
+h4 {
+  font-size: 28px;
+  margin: 2% 0;
+}
+
 img {
-  width: 150px;
-  display: block;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
-  margin-left: 42%;
   border: 1px solid white;
+  filter: grayscale(40%);
 }
 
 h2 {
   color: #d6a495;
+  text-align: center;
+}
+
+.chart-container {
+  width: 100%;
+  margin-bottom: 20%;
 }
 
 .chart {
-  width: 30%;
+  width: 20%;
   align-items: center;
 }
 
-/* .projects {
-  background-color: crimson;
-  span: 2;
-  border: 1px solid black;
+.projects {
+  border: 1px solid #b8c3bd;
+  color: #4a707a;
+  font-size: 17px;
 }
 
-.chart {
-  margin: auto;
-  width: 80%;
-}  */
+/* unvisited link */
+a:link {
+  color: #8aa2a0;
+}
+
+/* visited link */
+a:visited {
+  color: #8aa2a0;
+}
+
+/* mouse over link */
+a:hover {
+  color: #d6a495;
+}
+
+@media (min-width: 668px) and (max-width: 1024px) {
+}
+
+@media (min-width: 1025px) {
+}

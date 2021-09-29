@@ -7,6 +7,12 @@
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="big-container">
@@ -17,12 +23,12 @@
       <div class="profile-container" id="profileInfo">
         <!-- profile info -->
       </div>
-      <div class="chart">
-        <h2>Progress:</h2>
-        <canvas id="chart"> </canvas>
+      <div class="chart-container">
+        <h2>Progress</h2>
+        <canvas class="chart" id="chart"> </canvas>
       </div>
       <div class="projects">
-        <h2>Projects:</h2>
+        <h2>Projects</h2>
         <main class="projects" id="projects"></main>
       </div>
       <!-- This will be used to draw the chart 👇 -->
