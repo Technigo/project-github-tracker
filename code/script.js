@@ -1,17 +1,19 @@
 const projects = document.getElementById('projects')
+const personData = document.getElementById('personData')
 const USER = 'jakobxlindstrom'
 const USER_URL = `https://api.github.com/users/${USER}`
+const tracerBtn = document.getElementById('tracerBtn')
 
 const getUserData = () => {
   fetch(USER_URL)
     .then((res) => res.json())
     .then((data) => {
-      projects.innerHTML = `
-      <div class="personal-info">
-    <h1>Username: ${data.login}</h1>
-    <h4>Full name: ${data.name}</h4>
-    <h4>Location : ${data.location}</h4>
-    <img class="img" src="${data.avatar_url}"/>
+      personData.innerHTML = `
+      <div class="personal-info">    
+      <img class="img" src="${data.avatar_url}"/>
+      <h1>Username: ${data.login}</h1>
+      <h4>Full name: ${data.name}</h4>
+      <h4>Location: ${data.location}</h4>
     </div>
      `
     })
@@ -21,7 +23,7 @@ const getRepos = () => {
   fetch(`https://api.github.com/users/${USER}/repos`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       const filtered = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-')
       )
@@ -49,7 +51,6 @@ const getRepos = () => {
 
       `
       })
-      // drawTimeLine(filtered.length)
       drawChart(filtered.length)
       getPR(filtered)
     })
@@ -61,10 +62,10 @@ const getPR = (repos) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.review_comments_url)
+        // console.log(data.review_comments_url)
         const myPR = data.find((pull) => pull.user.login === repo.owner.login)
         const myCommits = myPR.commits_url
-        console.log(myCommits)
+        // console.log(myCommits)
         getCommits(myCommits, repo.name)
       })
   })
@@ -81,10 +82,12 @@ const getCommits = (url, myRepoName) => {
 }
 
 getUserData()
-getRepos()
-
-// add eventlistener here
 
 {
-  /* <p id="commit-${repo.name}">Amount of commits </p> */
 }
+
+// add eventlistener here
+tracerBtn.addEventListener('click', (event) => {
+  event.preventDefault()
+  getRepos()
+})

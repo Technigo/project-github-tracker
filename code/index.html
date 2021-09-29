@@ -5,21 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
+    <header class="hero">
+      <h1>GitHub Tracker</h1>
+      <div class="btn-div">
+        <a href="" class="button1" id="tracerBtn">Start the Github tracer</a>
+      </div>
+    </header>
+    <section class="person-data" id="personData"></section>
     <main id="projects" class="projects"></main>
 
-    <div
-      class="chart-container"
-      style="position: relative; height: 10vh; width: 40vw"
-    >
+    <div class="chart-container">
       <canvas id="chart"></canvas>
     </div>
-    <canvas id="chart2"></canvas>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
