@@ -7,24 +7,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mamites GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
-  <header id="header">
+  <header class="header"></header>
+  <section class="profile-container" id="profile-container">
+    <img class="profile-image" src="" id="image" />
+    <div>
+      <h1></h1>
+    </div>
+  </section>
+  <div class="tracker">
     <h1>Welcome! This is my github tracker</h1>
-    <h2>Projects:</h2>
-  </header>
-  <main id="projects" class="projects-grid"></main>
-
+    <h2>Recent projects:</h2>
+  </div>
+  <main id="projects" class="projects"></main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <canvas id="chart" class="chart"></canvas>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
-
-
 </body>
 
 </html>
