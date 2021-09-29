@@ -16,10 +16,13 @@ const presentUserData = () => {
       <header class="my-header"><h1>Welcome to my Github tracker</h1><span>X</span></header>
       <img src="${json.avatar_url}"/>
       <div class="user-text">
-      <h1>${json.login}</h1>
-      <p class="user-name">${json.name}</p>
+      <h1>GitHub user ${json.login}</h1>
+      <p class="user-name">Full name: ${json.name}</p>
+      <p>Workplace: ${json.company}</p>
+      <p>Current location: ${json.location}
+      <p>Portfolio: <a href="${json.blog}">${json.blog}</a></p>
       <p>This account has a total of ${json.public_repos} repos</p>
-      <canvas id="myChart"></canvas>
+      <p>Bio: ${json.bio}</p>
       </div>
       `;
     });
@@ -58,14 +61,14 @@ const presentRepoData = () => {
                   project.default_branch
                 }</p>
                 <a href="${project.html_url}">${project.html_url}</a>
-                <p>This repo has been commited to ${
+                <p>There has been ${
                   filteredCommits.length - 1
-                } times</p>
-                <p>The last commit was made: ${commitDate.slice(
+                } commits</p>
+                <p>Commit date: ${commitDate.slice(
                   0,
                   10
                 )} at ${commitDate.slice(11, 16)}</p>
-                <p>And the commit message was: ${commitMessage}</p>
+                <p>Message: ${commitMessage}</p>
                 </div>
             </div>
         `;

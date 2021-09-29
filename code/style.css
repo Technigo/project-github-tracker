@@ -151,6 +151,10 @@ h2 {
   display: none;
 }
 
+.main-container {
+  margin-bottom:60px;
+}
+
 .my-footer {
   background: #c0c0c0;
   border: 2px outset;
@@ -189,14 +193,35 @@ h2 {
 .menu-program {
   border: 2px inset;
   padding: 3px;
-  width: 200px;
+  min-width: 120px;
 }
+
+.my-chart-container {
+  background: #c0c0c0;
+  border: 2px outset;
+  margin: 10px;
+  position: relative;
+}
+
+.my-chart {
+  padding: 10px;
+}
+
+.chart-header {
+  background: #000080;
+  color: white;
+}
+
 
 @media only screen and (min-width: 599px) {
   .user-data {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 23px 1fr;
+  }
+
+  .menu-program {
+    min-width: 200px;
   }
 
   .my-header {
@@ -232,24 +257,6 @@ h2 {
     max-width: 768px;
     margin: 0 auto;
   }
-
-  .my-chart-container {
-    background: #c0c0c0;
-    border: 2px outset;
-    margin: 10px;
-    position: absolute;
-    right: 20px;
-    z-index: 5;
-  }
-
-  .my-chart {
-    padding: 10px;
-  }
-
-  .chart-header {
-    background: #000080;
-    color: white;
-  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -275,5 +282,14 @@ h2 {
     font-size: 12px;
     margin: 0px 10px 10px 10px;
     z-index: 0;
+  }
+
+  .my-chart-container {
+    background: #c0c0c0;
+    border: 2px outset;
+    margin: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 5;
   }
 }
