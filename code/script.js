@@ -39,8 +39,9 @@ const fetchRepos = () => {
           (reposContainer.innerHTML += `
         <h3>${repo.name}</h3>
         <p><a href="${repo.html_url}" target="blank">${repo.html_url}</a></p>
-        <p>${repo.default_branch}</p>
-        <p>${repo.pushed_at.toString().slice(0, 10)}</p>
+        <p>with default branch ${repo.default_branch}</p>
+        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p id="commit-${repo.name}">Commits: </p>
         `)
       );
       drawChart(forkedRepos.length);
@@ -67,7 +68,7 @@ const getPullRequests = (repos) => {
           (pull) => pull.user.login === repo.owner.login
         );
 
-        showCommits(filteredPull.commits_url);
+        showCommits(filteredPull.commits_url, repo.name);
 
         //TODO
         //1. Find only the PR that you made by comparing pull.user.login
@@ -81,14 +82,12 @@ const getPullRequests = (repos) => {
   });
 };
 
-const showCommits = (url) => {
+const showCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      commitsContainer.innerHTML += `
-      <p>Commit: ${data.length}</p>
-      `;
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
 
