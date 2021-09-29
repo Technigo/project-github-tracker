@@ -9,13 +9,9 @@ const drawChart = (amount) => {
       labels: ["Finished projects", "Projects left"],
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Projects",
           data: [amount, 19 - amount],
-          backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
-            "rgb(255, 205, 86)",
-          ],
+          backgroundColor: ["#76b5c5", "#eab676"],
           hoverOffset: 4,
         },
       ],
