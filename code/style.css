@@ -113,7 +113,7 @@ a:visited {
 h3 {
   font-size: 16px;
   text-transform: uppercase;
-  margin-left: 10px;
+  text-align: center;
 }
 
 .project-container {

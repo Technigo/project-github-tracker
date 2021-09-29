@@ -21,13 +21,11 @@ const drawProgressChart = (amountOfRepos) => {
     data: data,
     options: {
       plugins: {
-        // 'legend' now within object 'plugins {}'
         legend: {
           labels: {
-            color: 'white', // not 'fontColor:' anymore
-            // fontSize: 18  // not 'fontSize:' anymore
+            color: 'white',
             font: {
-              size: 12, // 'size' now within object 'font {}'
+              size: 12,
             },
           },
         },
@@ -46,7 +44,7 @@ const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
     labels: ['HTML', 'CSS', 'Javascript'],
     datasets: [
       {
-        label: 'Usage of languages (percentage)',
+        label: 'Language usage (percentage)',
         data: [html_percent, css_percent, js_percent],
         backgroundColor: [
           'rgb(255, 159, 64)',
