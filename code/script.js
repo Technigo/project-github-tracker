@@ -1,3 +1,4 @@
+"use strict";
 const USER = "Alisebrink";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const USER_URL = `https://api.github.com/users/${USER}`;
@@ -5,13 +6,31 @@ const USER_URL = `https://api.github.com/users/${USER}`;
 const projectsContainer = document.getElementById("projects");
 const userDataContainer = document.getElementById("user-data");
 
+const presentUserData = () => {
+  fetch(USER_URL)
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      userDataContainer.innerHTML = `
+      <header class="my-header"><h1>Welcome to my Github tracker</h1><span>X</span></header>
+      <img src="${json.avatar_url}"/>
+      <div class="user-text">
+      <h1>${json.login}</h1>
+      <p class="user-name">${json.name}</p>
+      <p>This account has a total of ${json.public_repos} repos</p>
+      <canvas id="myChart"></canvas>
+      </div>
+      `;
+    });
+};
+
 const presentRepoData = () => {
   fetch(REPOS_URL)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
-      console.log(json);
       const technigoRepos = json.filter(
         (project) => project.fork && project.name.startsWith("project-")
       );
@@ -33,7 +52,7 @@ const presentRepoData = () => {
             <div class="project">
             <div class="project-header"><h3>${
               project.name
-            }</h3><span>X</span></div>
+            }</h3><span id="deleteRepo" onclick="deleteElement(this)">X</span></div>
             <div class="project-text">
                 <p>Main branch for this project is: ${
                   project.default_branch
@@ -56,23 +75,8 @@ const presentRepoData = () => {
     });
 };
 
-const presentUserData = () => {
-  fetch(USER_URL)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      console.log(json);
-      userDataContainer.innerHTML = `
-      <header class="my-header"><h1>Welcome to my Github tracker</h1><span>X</span></header>
-      <img src="${json.avatar_url}"/>
-      <div class="user-text">
-      <h1>${json.login}</h1>
-      <p class="user-name">${json.name}</p>
-      <p>This account has a total of ${json.public_repos} repos</p>
-      </div>
-      `;
-    });
+const deleteElement = (project) => {
+  project.parentNode.remove(project)
 };
 
 presentRepoData();

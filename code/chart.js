@@ -6,15 +6,16 @@ const drawChart = (amount) => {
   const config = {
     type: "doughnut",
     data: {
-      labels: ["Red", "Blue"],
+      labels: ["Finished projects", "Unfinished projects"],
       datasets: [
         {
           label: "My First Dataset",
           data: [amount, 20-amount],
           backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
+            "#ff0000",
+            "#2a1fff",
           ],
+          borderColor:"black",
           hoverOffset: 4,
         },
       ],
