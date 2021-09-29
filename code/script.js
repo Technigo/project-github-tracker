@@ -1,6 +1,22 @@
 const USER = "ebbadelsol";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const projectsContainer = document.getElementById("projects");
+const userContainer = document.getElementById("user-container");
+
+const getUser = () => {
+  fetch(`https://api.github.com/users/${USER}`)
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log("Image URL: ", data.avatar_url);
+      // console.log("User: ", data.login);
+      userContainer.innerHTML += /*html*/ `
+        <img class="user-image" src="${data.avatar_url}"/>
+        <h1>${data.login}</h1>
+      `;
+    });
+};
+
+getUser();
 
 const getRepos = () => {
   fetch(REPOS_URL)
@@ -15,7 +31,7 @@ const getRepos = () => {
             <a href="${repo.html_url}" target="_blank">${repo.name}</a>
             <p>Default branch ${repo.default_branch}</p>
             <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commits-${repo.name}">Commits amount: </p>
+            <p id="commits-${repo.name}">Amount of commits: </p>
           </div>
         `;
       });
