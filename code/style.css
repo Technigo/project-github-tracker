@@ -15,8 +15,8 @@ body {
   border-width: 1px;
   align-items: center;
   padding: 5px;
-  padding-right: 20px;
-  justify-content: center;
+  padding-left: 10px;
+  justify-content: left;
 }
 
 .profile-pic {
@@ -68,12 +68,12 @@ h1 {
     text-align: center;
   }
   .repositories {
-    width: 90%;
+    width: 70%;
     margin: auto;
     margin-top: 20px;
   }
   .chart-container {
-    padding: 50px;
+    padding: 80px;
   }
 }
 
@@ -81,7 +81,41 @@ h1 {
   h1 {
     display: contents;
   }
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* width: 1000px; */
+  }
   .profile-container {
-    /* display: row; */
+    grid-column: span 1;
+    height: 375px;
+    display: table-column;
+    text-align: center;
+    padding: 20px;
+  }
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    padding: 20px;
+    margin: auto;
+  }
+  .repo-container {
+    grid-column: 2/ 5;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px; */
+  }
+  .repositories {
+    width: 30%;
+    /* grid columns: span 1; */
+    /* padding-left: 10px; */
+    margin-top: 10px;
+  }
+  .chart-container {
+    /* display: block; */
+    /* width: 50px;
+    height: 50px; */
+    padding: 500px;
   }
 }

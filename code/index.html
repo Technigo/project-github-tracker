@@ -10,19 +10,20 @@
   </head>
   <body>
     <header class="header"></header>
-    <section class="profile-container" id="profile-container">
-      <img class="profile-pic" src="" id="image" />
-      <div><h1></h1></div>
-    </section>
     <section class="main-container">
+      <section class="profile-container" id="profile-container">
+        <img class="profile-pic" src="" id="image" />
+        <div><h1></h1></div>
+      </section>
+
       <section class="repo-container">
         <h2>Popular repositories:</h2>
         <main id="projects"></main>
       </section>
-
-      <!-- This will be used to draw the chart 👇 -->
-      <canvas class="chart-container" id="chart"></canvas>
     </section>
+
+    <!-- This will be used to draw the chart 👇 -->
+    <canvas class="chart-container" id="chart"></canvas>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
