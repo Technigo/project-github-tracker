@@ -27,7 +27,7 @@ const drawProgressChart = (amountOfRepos) => {
             color: 'white', // not 'fontColor:' anymore
             // fontSize: 18  // not 'fontSize:' anymore
             font: {
-              size: 10, // 'size' now within object 'font {}'
+              size: 12, // 'size' now within object 'font {}'
             },
           },
         },
@@ -80,7 +80,7 @@ const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
           labels: {
             color: 'black',
             font: {
-              size: 10,
+              size: 12,
             },
           },
         },

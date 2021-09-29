@@ -32,7 +32,7 @@ body {
 
 .profile {
   /* border: 0.5px dotted red; */
-  width: 80%;
+  width: 90%;
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -55,29 +55,37 @@ td {
 }
 
 .profile-image-icons {
-  /* border: 1px dotted yellow; */
+  border: 1px dotted yellow;
   grid-column: span 1;
-  margin: auto;
+  /* margin: auto; */
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .profile-image {
   border: 2px solid #fff;
   border-radius: 50%;
-  width: 54px;
-  height: 54px;
+  width: 74px;
+  height: 74px;
   box-shadow: 0px 6px 5px #ccc;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .contact-icons {
-  border: 1px dotted pink;
+  /* border: 2px dotted pink; */
   border-radius: 5px;
   background-color: #ccc;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
-  padding: 1px;
+  padding: 4px;
 }
 
 a {
@@ -109,10 +117,10 @@ h3 {
 }
 
 .project-card {
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 5px;
-  grid-column: span 1;
-  font-size: 12px;
+  grid-column: span 2;
+  font-size: 14px;
   padding: 10px 0 10px 10px;
   display: flex;
   flex-direction: row;
@@ -126,7 +134,7 @@ h3 {
 }
 
 .project-emoji {
-  margin-right: 14px;
+  margin-right: 18px;
 }
 
 .modal-project {
@@ -149,12 +157,16 @@ h3 {
   border-radius: 5px;
   margin: 15% auto;
   padding: 34px;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.modal-div {
+  margin: 6px;
 }
 
 .project-name {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 14px;
   text-align: center;
   color: #b76501;
 }
@@ -178,15 +190,16 @@ h3 {
 }
 
 .progress-chart {
-  width: 150px;
-  height: 150px;
-  margin: auto;
+  width: 200px;
+  height: 200px;
+  margin: 10px auto;
 }
 
 .languages-chart {
-  width: 150px;
-  height: 150px;
-  margin: 20px auto;
+  width: 90%;
+  height: 90%;
+  /* margin: 20px auto; */
+  margin-top: 20px;
 }
 
 /****** GIF ******/
@@ -197,9 +210,9 @@ h3 {
 }
 
 footer {
-  position: relative;
+  /* position: relative;
   bottom: 0;
-  left: 0;
+  left: 0; */
   font-size: 10px;
   margin: 20px 0 5px 10px;
 }
@@ -222,14 +235,14 @@ footer p {
   }
 
   .profile-image {
-    width: 114px;
-    height: 114px;
+    width: 134px;
+    height: 134px;
   }
 
   .icon {
-    padding: 5px;
-    width: 26px;
-    height: 26px;
+    padding: 6px;
+    width: 30px;
+    height: 30px;
   }
 
   h3 {
@@ -238,16 +251,18 @@ footer p {
 
   .project-card {
     font-size: 22px;
-    padding: 20px 0 20px 20px;
+    padding: 26px 0 26px 26px;
+    grid-column: span 1;
   }
 
   .modal-content {
     font-size: 20px;
+    width: 60%;
   }
 
   .project-name {
     font-size: 34px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
   .close-btn {
@@ -261,8 +276,7 @@ footer p {
   }
 
   .languages-chart {
-    width: 300px;
-    height: 300px;
+    margin-top: 26px;
   }
 
   .loading-gif {

@@ -223,22 +223,22 @@ const getModal = (projectName) => {
       getPullRequest(projectName).then(([pullRequestUrl, commitLength]) => {
         modalContent.innerHTML = `
         <div class="project-name">${projectName}</div>
-        <div>
-          Most recent update (push): ${pushDateTime.getFullYear()}-
+        <div class="modal-div">
+          Most recent push: ${pushDateTime.getFullYear()}-
           ${addZero(pushDateTime.getMonth() + 1)}-
           ${addZero(pushDateTime.getDate())}
         </div>
-        <div>Default branch: ${json.default_branch}</div>
-        <div>
+        <div class="modal-div">Default branch: ${json.default_branch}</div>
+        <div class="modal-div">
           URL to the GitHub repo: 
             <a href="${json.html_url}" 
               target="blank">
               ${json.html_url}
             </a>
         </div>
-        <div>Number of commit messages: ${commitLength} </div>
-        <div>
-          Pull request: 
+        <div class="modal-div">Number of commit messages: ${commitLength} </div>
+        <div class="modal-div">
+          URL to the pull request: 
             <a href="${pullRequestUrl}" 
               target="blank">
               ${pullRequestUrl}
