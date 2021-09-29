@@ -14,7 +14,7 @@ const config = {
     datasets: [{
       label: 'Projects during Bootcamp',
       data: [amount, 20-amount],
-      barPercentage: 25,
+      barPercentage: 10,
       barThickness: 100,
       maxBarThickness: 100,
       borderRadius: 4,
