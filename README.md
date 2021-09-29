@@ -1,8 +1,6 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Creating a place to keep track of the GitHub repos that I am using at Technigo. Using JavaScript, html, css and fetching data from API's from the JSON response.
 
 ## The problem
 
@@ -10,4 +8,4 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elegant-pasteur-b7cf22.netlify.app/
