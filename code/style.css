@@ -1,7 +1,55 @@
 body {
-  background: #ffece9;
+  background-color: rgb(238, 229, 220);
+  font-family: "Cabin", sans-serif;
+  background-image: url("https://i.ibb.co/vDY4RQR/burger.png");
+  background-size: 15px;
+  background-repeat: repeat-x;
 }
 
+/* Profile */
+.profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  margin: auto;
+  border-radius: 100%;
+  width: 80%;
+}
+
+fieldset {
+  border: 3px solid;
+  border-radius: 2%;
+  border-color: #d5a021;
+  background-color: rgb(255, 99, 71);
+}
+
+/* Projects */
+.projects-container {
+  flex-flow: column;
+  flex-wrap: wrap;
+  margin: auto;
+  align-items: center;
+}
+
+.project-cards {
+  padding: 10px;
+}
+.project-cards a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.project-cards a:hover {
+  color: rgb(116, 15, 15);
+}
+/* Chart */
 .chart {
   width: 200px;
+  margin: auto;
 }
