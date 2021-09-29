@@ -11,14 +11,20 @@ const getProfile = () => {
     fetch (`https://api.github.com/users/${USER}`)
     .then (response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
     profileContainer.innerHTML += `
-    <div class"user-img">
-        <img src=${data.avatar_url}></img>
-    </div
+    <div class="profile-area">
+        <div class="user-img">
+            <img src=${data.avatar_url}></img>
+        </div>
+        <div class="user">
+            <h2>Jessi Nygren Walhed</h2>
+            <h3 class="user-name">${data.login}</h3>
+        </div>
+    </div>
     <div>
-        <h2>Jessi Nygren Walhed</h2>
-        <h3 class="user-name">${data.login}</h3>
+        <p class="bio">${data.bio}</p>
+        <button class="button" id="followButton">Follow</button>
     </div>
     `
     })
@@ -31,83 +37,66 @@ const getRepos = () => {
     fetch(REPOS_URL)
     .then(response => (response.json()))
     .then(data => {
-        console.log(data)
+        // console.log(data)
         // data.forEach(repo => console.log(repo.name))
+
         const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+        console.log('My forked repos', forkedRepos)
+
         forkedRepos.forEach(repo => projectsContainer.innerHTML += `
         <div class="project-card"> 
-            <h3>${repo.name}</h3>
-            <div class="most-recent">
-                <p>Most recent push</p>
-                <h4>${repo.pushed_at}</h4>
-            </div>
-            <div class="default-branch">
-                <p>Default branch name</p>
-                <h4>${repo.default_branch}</h4>
-            </div>
-            <div class="url">
-                <p>Default branch URL</p>
-                <h4 class="break">${repo.url}</h4>
-            </div>
+                <a class="break" href="${repo.html_url}">${repo.name}</a>
+                <div class="most-recent">
+                    <p>Most recent push</p>
+                    <h4>${new Date(repo.pushed_at).toDateString()}</h4>
+                </div>
+                <div class="default-branch">
+                    <p>Default branch name</p>
+                    <h4>${repo.default_branch}</h4>
+                </div>
+                <div class="commits">
+                        <p>No of commits</p>
+                        <h4 id="commit-${repo.name}"></h4>
+                </div>
         </div>`)
         drawChart(forkedRepos.length)
+
+        fetchPullRequests(forkedRepos)
     })
 }
-getRepos()
 
+// ---- PULL REQUESTS PER PROJECT / COMMIT MESSAGES PER PULL REQUEST -----//
 
-// ---- MOST RECENT PUSH -----//
+const fetchPullRequests = (allRepositories) => {
+    allRepositories.forEach(repo => {
+        fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
+        .then(response => (response.json()))
+        .then(data => {
+            const myPullRequests = data.find(
+                (pull) => pull.user.login === repo.owner.login)
+            console.log('My Pull requests', myPullRequests)
 
-// const getMostRecentPush = () => {
-//     fetch(``)
-//     .then(response => (response.json()))
-//     .then(data => {
-
-// }
-// getMostRecentPush()
-
-// ---- COMMITS -----//
-
-// const getCommitAmount = () => {
-//     fetch(`https://api.github.com/${USER}/repos/{owner}/{repo}/pulls/{pull_number}/commits`)
-//     .then(response => (response.json()))
-//     .then(data => {
-//         console.log(data)
-// })
-// }
-// getCommitAmount()
-
-// "https://api.github.com/repos/octocat/Hello-World/commits{/sha}
-
-
-
-
-
-
-// const getPullRequests = (repos) => {
-//     //Get all the PRs for each project.
-//     repos.forEach(repo => {
-//       fetch(PULLS_URL + repo.name + PULLS)
-//       .then(res => res.json())
-//       .then(data => {
-//         console.log(data)
-//       })
+            if (myPullRequests) {
+                fetchCommits(myPullRequests.commits_url, repo.name);
+            } else {
+                document.getElementById(`commit-${repo.name}`).innerHTML =
+                    'No pull request done 🙃';
+            }
+            
+        })
+    })
     
-//     })
+}
 
-// }
+const fetchCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl)
+    .then(response => (response.json()))
+    .then(data => {
+        console.log('My commits', data)
+        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+    })
+}
 
-//     getPullRequests()
-
-
-// const getPullRequests = () => {
-//     fetch(PULLS_URL)
-//     .then(response => (response.json()))
-//     .then(data => {
-//         console.log(data)
-//     })
-// }
-
-// getPullRequests()
+getRepos()
 
 

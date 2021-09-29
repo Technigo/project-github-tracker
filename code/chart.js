@@ -12,8 +12,13 @@ const config = {
       'Projects left',
     ],
     datasets: [{
-      label: 'My first dataset',
+      label: 'Projects during Bootcamp',
       data: [amount, 20-amount],
+      barPercentage: 25,
+      barThickness: 100,
+      maxBarThickness: 100,
+      borderRadius: 4,
+      // minBarLength: 10,
       backgroundColor: [
         'rgba(255, 99, 132)',
         'rgba(255, 159, 64)',
@@ -28,6 +33,7 @@ const theChart = new Chart (ctx, config)
 
 
 
+//DOUGHNUT CHART//
 
   // const drawChart = (amount)=> {
   //   const config = {

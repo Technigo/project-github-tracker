@@ -14,7 +14,7 @@ html {
 body {
   background-color: #0d1117;
   font-family: poppins;
-  color: #dedede;
+  color: #c9d1d9;
   padding-right: 7%;
   padding-left: 7%;
   padding-bottom: 7%;
@@ -29,8 +29,12 @@ body {
 }
 
 .header {
-  width: 100%;
   padding: 2rem 0 2rem 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 h2 {
@@ -52,18 +56,32 @@ h4 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 100;
   margin: 0.5rem 0 0 0;
 }
+a {
+  color: #58a6ff;
+  font-weight: 600;
+  text-decoration: none;
+  
+}
+
+a:hover {
+  text-decoration-line: underline;
+}
 
 
-/* // LEFT AREA // */
+/* LEFT AREA */
 
 
 .left-area {
   width: 30%;
   align-content: center;
+}
+
+.profile-area {
+  flex-direction: column;
 }
 
 .user-name {
@@ -73,11 +91,6 @@ p {
 .profile h2 {
   margin-bottom: 0;
 }
-
-/* .user-img {
-  display: inline-block;
-  vertical-align: center;
-} */
 
 img {
   border-radius: 50%;
@@ -98,24 +111,23 @@ img {
 }
 
 .chart {
-  /* width: 250px; */
   width: 100%;
   height: auto;
   padding-top: 3rem;
 }
 
+
+/* RIGHT AREA */
+
 .right-area {
-  display: flex;
-  flex-wrap: wrap;
   width: 100%;
   padding-left: 3rem;
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: auto;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 2rem;
 }
 
 
@@ -123,14 +135,111 @@ img {
   background-color: #161b22;
   padding: 1rem 2rem 2rem 2rem;
   border-radius: 12px;
-  width: auto;
+  min-width: auto;
+  border: 1px solid #31363C;
+  /* box-shadow: 10px 10px 30px rgba(0,0,0,0,1); */
 }
 
-/* // Line breaks the url // */
-.break {
+/* // Line breaks the url, needed when I showed the url // */
+
+/* .break {
   overflow-wrap: break-word;
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
   font-size: 1rem;
-}
+} */
+
+
+ @media (max-width: 768px) {
+
+  body {
+    padding: 0;
+    /* padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 3rem; */
+    max-width: 100%;
+  }
+
+  .header {
+    width: 100%;
+    padding: 0.5rem 0 0.5rem 0;
+    border-bottom: 0.5px solid #31363C;
+  }
+  
+  h1 {
+    font-size: 12px;
+    padding-left: 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  h4 {
+    font-size: 14px;
+  }
+
+  .break {
+    font-size: 14px;
+  }
+
+  .main {
+    flex-direction: column;
+    margin: 1rem;
+  }
+
+  .left-area {
+    width: 100%;
+    align-content: flex-start;
+  }
+
+  .profile-area {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile h2 {
+    font-size: 1.5rem;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 64px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .chart {
+    padding-top: 1rem;
+  }
+
+  .right-area {
+    padding-left: 0;
+    margin-top: 1.5rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 1rem;
+  }
+  
+  .project-card {
+    padding: 1rem;
+    border-radius: 12px;
+    width: auto;
+  }
+  
+ }
