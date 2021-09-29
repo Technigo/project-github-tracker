@@ -15,66 +15,73 @@ const getRepos = () => {
 			const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
 			console.log('List of forked Repos: ', forkedRepos)
 			
-			//My username and profile picture
+			//My name, username and profile picture
 			const userName = data[0].owner.login
 			const profilePic = data[0].owner.avatar_url
-			console.log('Username & Pic: ', userName, profilePic)
-			userSection.innerHTML = `
-				<img id="userImage" src="${profilePic}" alt="Github Avatar">
+
+			userSection.innerHTML += /* html */`
+				<div class="userImageDiv">
+					<img class="userImage" id="userImage" src="${profilePic}" alt="Github Avatar">
+				</div>
+				<div class=userTextDiv>
+					<p><b>Birgit</b></p>
+					<p>${userName}</p>
+				</div>	
 			`
-
-
-			getPushBranchURL(forkedRepos);
-			getCommits(forkedRepos);
+			drawProjects(forkedRepos);	
 			drawChart(forkedRepos.length)
 		})
 }
 
-const getPushBranchURL = (filteredArray) => {
-	//Most recent update (push) for each repo
-	console.log('Most recent update (push) for each repo:')
-	filteredArray.forEach(repo => {
-		console.log(repo.pushed_at)
-	});
+const drawProjects = (forkedRepositories) => {
 
-	//Name of my default branch for each repo
-	console.log('Name of my default branch for each repo:')
-	filteredArray.forEach(repo => {
-		console.log(repo.default_branch)
-	});	
-
-	//URL to the actual GitHub repo
-	console.log('URL to the actual GitHub repo:')
-	filteredArray.forEach(repo => {
-		console.log(repo.html_url)
+	forkedRepositories.forEach((repo) => {
+		document.getElementById('projects-section').innerHTML += `
+			<div class="projects-div" id="projects">
+				<a href="${repo.html_url}">${repo.name}</a>
+				<p>default branch: ${repo.default_branch}</p>
+				<p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
+				<p id="commit-${repo.name}">Commits: </p>
+			</div>	
+		`
+		getCommits(forkedRepositories, repo.name);
 	});		
 }
 
-const getCommits = (filteredArray) => {
-	
+const getCommits = (filteredArray, myRepoName) => {
+	console.log('Reponame: ', myRepoName)
 	//First make a new array with all the needed APIs (found under commit_urls in forkedRepos)
 	const allCommitUrls = filteredArray.map(repo => repo.commits_url)
-	console.log('Here is the array with all the commits: ', allCommitUrls)
-
-	//the URLs end with {/sha}, therefore the last 6 chars need to be sliced
+	
 	allCommitUrls.forEach(commitAPI => {
+		//the URLs end with {/sha}, therefore the last 6 chars need to be sliced
 		commitAPI = commitAPI.slice(0, -6)
-		console.log(commitAPI)
 
 		//now the URLs can be passed on to get data about number and content of commits 
 		fetch(commitAPI)
 			.then((res) => res.json())
 			.then((data) => {
 				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein')
-				//Number of commit messages for each repo
 				const noOfCommits = authorCommits.length
-				console.log('These are my commits: ',authorCommits)
+				console.log('authorCommits: ', authorCommits)
 				console.log('Number of commits: ', noOfCommits)
+
+					document.getElementById(`commit-${myRepoName}`).innerHTML += `
+					${noOfCommits}
+				`
+
+				//Number of commit messages for each repo
+				
+	
+				
+
 				authorCommits.forEach(entry => {
-					const textOfCommit = entry.commit.message
-					console.log('This is the commit-text: ', textOfCommit)
+					document.getElementById(`commit-${myRepoName}`).innerHTML += `
+					${entry.length}
+				`
+					//console.log('This is the commit-text: ', textOfCommit)
 				})   
-			})
+			})		
 	});
 }
 

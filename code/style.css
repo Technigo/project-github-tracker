@@ -17,6 +17,7 @@ html {
 
 body {
   background: white;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
 }
 
@@ -42,6 +43,51 @@ header {
   font-size: 16px;
 }
 
+
+/* USER-SECTION */
+.user {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.userImageDiv {
+  display: inline-block;
+}
+
+.userImage {
+  border-radius: 50%;
+  width: 57px;
+  margin-right: 10px;
+}
+
+.userTextDiv {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.userTextDiv p {
+  margin: 0;
+}
+
+/* PROJECTS-SECTION */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.projects-div {
+  border: 1px solid lightgray;
+  padding-left: 16px;
+}
+
+.projects-div a {
+  color: #0969DA;
+  font-size: 20px;
+}
+
+/* CHART */
 .chart {
   width: 250px;
   height: 250px;
