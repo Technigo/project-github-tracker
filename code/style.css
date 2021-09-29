@@ -1,3 +1,11 @@
+html {
+  font-family: 'Nunito', sans-serif;
+}
+
 body {
   background: #FFECE9;
+}
+
+img {
+  border-radius: 50%;
 }
