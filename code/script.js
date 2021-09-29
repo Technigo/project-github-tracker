@@ -51,6 +51,7 @@ const getRepos = () => {
         
         <p id="commit-${repo.name}">number of commits: </p></div>`)
       );
+
       fetchPullRequestsArray(forkedRepos);
       drawChart(forkedRepos.length);
     });

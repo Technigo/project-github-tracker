@@ -1,30 +1,67 @@
 * {
   box-sizing: border-box;
+  text-align: center;
 }
 
 body {
-  background: #ffece9;
-}
-
-.chart {
-  height: 300px;
-  width: 300px;
-}
-
-.grid-container {
-  border: 2px solid red;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.project-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 2px solid green;
+  background: #f9f3ec;
+  font-family: "Stick No Bills", sans-serif;
+  letter-spacing: 2px;
 }
 
 .cards {
-  border: 2px solid orange;
+  border: 2px solid #5f939a;
+  background-color: rgba(169, 169, 169, 0.397);
   display: grid;
-  width: 100%;
+  align-items: center;
+  width: 90%;
+  text-align: center;
+  margin: 10px auto;
+  border-radius: 20px;
+  padding: 5px 5px;
+}
+
+.grid-container {
+  margin: auto;
+}
+
+fieldset {
+  border: 4px solid;
+  border-color: #5f939a;
+  border-radius: 20px;
+}
+
+legend {
+  font-size: 28px;
+}
+
+img {
+  border-radius: 50%;
+  border: 4px solid black;
+}
+.chart {
+  margin: auto;
+  height: 200px;
+  width: 200px;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+  .grid-container {
+    border: 2px solid red;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .project-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards {
+    border: 2px solid #d8ac9c;
+    display: grid;
+    width: 100%;
+  }
 }
