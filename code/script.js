@@ -11,8 +11,9 @@ const getRepos = () => {
 
       technigoProjects.forEach((repo) => {
         projectsContainer.innerHTML += /*html*/ `
-          <div>
-            <a href="${repo.html_url}" target="_blank">${repo.name} with default branch ${repo.default_branch}</a>
+          <div class="${repo.name}-container" id="${repo.name}-container">
+            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            <p>Default branch ${repo.default_branch}</p>
             <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
             <p id="commits-${repo.name}">Commits amount: </p>
           </div>
@@ -40,7 +41,7 @@ const getPullRequests = (repos) => {
 
         getCommits(filteredPull.commits_url, repo.name);
 
-        getReview(filteredPull.review_comments_url);
+        getReview(filteredPull.review_comments_url, repo.name);
       });
   });
 };
@@ -49,16 +50,19 @@ const getCommits = (url, repoName) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      console.log("My commits:", data);
-      console.log(repoName);
+      //console.log("My commits:", data);
       document.getElementById(`commits-${repoName}`).innerHTML += data.length;
     });
 };
 
-const getReview = (url) => {
+const getReview = (url, repoName) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       //console.log("My review:", data);
+      // console.log(`Reviewed by ${data[0].user.login}`);
+      document.getElementById(`${repoName}-container`).innerHTML += /*html*/ `
+      <p>Reviewed by: ${data[0].user.login}</p>
+      `;
     });
 };
