@@ -49,10 +49,10 @@ const presentRepoData = () => {
             let commitDate = filteredCommits[0].commit.author.date;
             let commitMessage = filteredCommits[0].commit.message;
             projectsContainer.innerHTML += `
-            <div class="project">
+            <div id="project" class="project">
             <div class="project-header"><h3>${
               project.name
-            }</h3><span id="deleteRepo" onclick="deleteElement(this)">X</span></div>
+            }</h3><span id="deleteRepo">X</span></div>
             <div class="project-text">
                 <p>Main branch for this project is: ${
                   project.default_branch
@@ -69,14 +69,15 @@ const presentRepoData = () => {
                 </div>
             </div>
         `;
+            document.getElementById("project").addEventListener("click", deleteElement);
           });
       });
       drawChart(technigoRepos.length);
     });
 };
 
-const deleteElement = (project) => {
-  project.parentNode.remove(project)
+const deleteElement = () => {
+  document.getElementById("project").remove(this);
 };
 
 presentRepoData();
