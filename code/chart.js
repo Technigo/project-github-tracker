@@ -9,8 +9,8 @@ const drawProgressChart = (amountOfRepos) => {
     datasets: [
       {
         label: 'Technigo boot camp projects',
-        data: [amountOfRepos, 20 - amountOfRepos],
-        // length of the repo array, 20 - length of the repo array
+        data: [amountOfRepos, 19 - amountOfRepos],
+        // length of the repo array, 19 - length of the repo array
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)'],
         hoverOffset: 4,
       },
