@@ -2,7 +2,7 @@ const USER_ID = "MarySnopok";
 const REPOS_URL = `https://api.github.com/users/${USER_ID}/repos`;
 const reposDataContainer = document.getElementById("projects");
 const userDetails = document.getElementById("user-details");
-const commentsContainer = document.getElementById("comments");
+// const commentsContainer = document.getElementById("comments");
 
 // - A list of all repos that are forked once from Technigo
 const fetchUserRepos = () => {
@@ -34,7 +34,7 @@ const getReposDetails = (data) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
     <a class="repo-links" href="${repo.html_url}">View on Github</a>
-    <div class="repos-stats" id="${repo.name}">
+    <div class="repos-stats" id="each-${repo.name}">
     <p class="stats">branch: ${repo.default_branch}<p>
     <p class="stats">last update: ${lastUpdate}<p>
     <p class="stats link">commits: ${commits.length}<p>
@@ -56,15 +56,15 @@ const getPullRequests = (userForkedRepos) => {
       .then((pulls) => {
         console.log("technigo", pulls);
         const userPRs = pulls.filter((pull) => pull.user.login === repo.owner.login);
-        console.log("userPR review ");
+        console.log("userPR review ", userPRs);
         userPRs.forEach((pull) => {
           const COMMENTS_URL = pull.review_comments_url;
           const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
-          document.getElementById(`${repo.name}`).innerHTML += `
-        <div class="repos-stats" id="${repo.name}">
+          document.getElementById(`each-${repo.name}`).innerHTML += `
+        <div class="repos-stats" id="pull-${repo.name}">
         <p class="stats">PR date: ${pullDate}<p>
         </div>`;
-          // getComments(COMMENTS_URL);
+          getComments(COMMENTS_URL, repo);
         });
       })
       .catch((error) => {
@@ -73,22 +73,34 @@ const getPullRequests = (userForkedRepos) => {
   });
 };
 
-// const getComments = (COMMENTS_URL) => {
-//   fetch(COMMENTS_URL)
-//     .then((res) => res.json())
-//     .then((comments) => {
-//       console.log("comments", comments);
-//       comments.forEach((comment) => {
-//         commentsContainer.innerHTML += `
-//         <div class="comment-container"> </div>
-//         `
-//       })
+const getComments = (COMMENTS_URL, repo) => {
+  fetch(COMMENTS_URL)
+    .then((res) => res.json())
+    .then((comments) => {
+      console.log("comments", comments);
+      renderComments(comments, repo);
+    })
+    .catch((error) => {
+      console.error("getComments", error);
+    });
+};
 
-//     })
-//     .catch((error) => {
-//       console.error("getComments", error);
-//     });
-// };
+const renderComments = (comments, repo) => {
+  const filteredComments = comments.filter((com) => !com.in_reply_to_id);
+  const reposStats = document.getElementById(`each-${repo.name}`);
+  const commentContainer = document.createElement("div");
+  commentContainer.className = "comment-container";
+  reposStats.appendChild(commentContainer);
+
+  // const commentsButton = document.createElement("button");
+  // document.getElementById(`each-${repo.name}`).appendChild(commentsButton)
+
+  filteredComments.forEach((comment) => {
+    commentContainer.innerHTML += `
+    <p>${comment.body}</p>
+   `;
+  });
+};
 
 // https://stackoverflow.com/c/technigo/questions/2918
 // https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100
