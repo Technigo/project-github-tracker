@@ -13,10 +13,10 @@ const getUserInfo = () => {
     .then((data) => {
          console.log('testar min nya url', data)
          infoBox.innerHTML = `
-        <div>
-        <h2>${data.login}</h2>
+        
+        <h2 class="user-name">${data.login}</h2>
         <img class="profile-pic" src="${data.avatar_url}"/>
-        </div>`
+        `
     }) 
 }
 
@@ -32,9 +32,9 @@ const getRepos = () => {
         //data.forEach(repo => console.log(repo.name))
         const forkedRepos = data.filter(repo => repo.fork && repo.name.includes('project-'))
         forkedRepos.forEach(repo => projectContainer.innerHTML += `
-        <div> 
-        <h3>${repo.name}</h3>
-        <a href="${repo.html_url}" target="_blank">${repo.name}with default branch ${repo.default_branch}</a>
+        <div class="project-card"> 
+        <h3 class="project-name">${repo.name}</h3>
+        <a href="${repo.html_url}" target="_blank">${repo.name}with default branch ${repo.default_branch}</a> 
         <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
         <p id="commits-${repo.name}">Commits amount: </p>
 

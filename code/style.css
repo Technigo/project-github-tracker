@@ -19,9 +19,14 @@ body {
 
 .info-chart-box {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding-bottom: 50px;
+}
+
+.user-name {
+  text-align: center;
 }
 
 .profile-pic {
@@ -34,6 +39,11 @@ body {
   padding: 20px;
 }
 
+.project-container {
+  background-color: white;
+  padding: 20px;
+}
+
 .project-title {
   text-align: center;
   font-size: 30px;
@@ -41,7 +51,65 @@ body {
 
 .github-project {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   justify-items: center;
+  gap: 15px;
 }
+
+.project-card {
+  background-color: #FFECE9;
+  width: 350px;
+  height: 250px;
+  padding: 15px;
+  border-radius: 5%;
+}
+
+.project-name {
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px 1px #000000;
+}
+
+ /* Tablet */
+@media (min-width:768px) {
+
+  .info-chart-box {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .user-name {
+    text-align: center;
+  }
+  
+  .profile-pic {
+    width: 400px;
+    border-radius: 50%;
+  }
+  
+  .chart-box {
+    width: 400px;
+    padding: 20px;
+  }
+
+  .github-project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+/* Desktop */
+@media (min-width: 992px) {
+
+  .github-project {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+
+
+
+
+
 
