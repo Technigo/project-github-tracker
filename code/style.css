@@ -18,6 +18,10 @@ h2 {
   font-size: 28px;
 }
 
+p {
+  color: #f1fabd;
+}
+
 img {
   width: 150px;
   display: block;
@@ -42,6 +46,18 @@ img {
   margin: 5px auto 50px;
 }
 
+#username a {
+  color: #daff05;
+  text-decoration: none;
+}
+
+#username a:hover {
+  text-decoration: none;
+  background-color:#f1fabd;
+  color: #EA86B6;
+  padding: 3px;
+}
+
 /* THE LIST SECTION */
 
 #list {
@@ -55,9 +71,13 @@ img {
 #list div {
   display: inline-block;
   width: 90%;
-  margin: 5px auto;
+  padding: 3%;
+  margin: 10px;
   color: #daff05;
   font-size: 20px;
+  border-style: solid;
+  border-color: #f1fabd;
+  border-width: 1px;
 }
 
 #list div a {
@@ -77,8 +97,12 @@ img {
 
 /* THE CHART SECTION */
 
+#chart-wrapper {
+  width: 90%;
+  margin: 20px auto 40px;
+}
+
 #chart {
-  width: 50%;
   padding: 5%;
 }
 
@@ -121,6 +145,18 @@ img {
     margin: 0px auto 50px;
   }
 
+  #list div {
+    display: inline-block;
+    width: 40%;
+    padding: 3%;
+    margin: 10px;
+    color: #daff05;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #f1fabd;
+    border-width: 1px;
+  }
+
   /* text list */
   #list div a {
     text-decoration: none;
@@ -130,10 +166,12 @@ img {
   
   
   /* THE CHART SECTION */
-  #chart {
-    width: 20%;
-    padding: 5%;
+
+  #chart-wrapper {
+    width: 60%;
+    margin: 20px auto 80px;
   }
+
 }
 
 /* SMALL DESKTOP SIZE SCREEN */
@@ -171,6 +209,18 @@ img {
     margin: 0px auto 50px;
   }
 
+  #list div {
+    display: inline-block;
+    width: 20%;
+    padding: 3%;
+    margin: 10px;
+    color: #daff05;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #f1fabd;
+    border-width: 1px;
+  }
+
   /* text list */
   #list div a {
     text-decoration: none;
@@ -178,8 +228,8 @@ img {
     font-size: 24px;
   }
 
-  #chart {
-  width: 50%;
-  padding: 8%;
+  #chart-wrapper {
+    width: 40%;
+    margin: 20px auto 100px;
   }
 }

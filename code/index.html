@@ -10,30 +10,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="shortcut icon" href="/tracker.png" type="image/x-icon">
 </head>
+
 <body>
   <h1>GitHub Tracker</h1>
 
+<section class="profile-section">
 
   <img id="avatar"> </img>
 
   <p id="full-name"></p>
+
   <p id="username"></p>
+
+</section>
+
+<section class="projects-section">
 
   <h2>Projects:</h2>
 
-  
   <main>
 
     <div id="list"></div>
     
   </main>
 
-  <!-- This will be used to draw the chart 👇 -->
+</section>
+
+ <section class="progress-section">
 
   <h2>Progress:</h2>
+
+  <div id="chart-wrapper">
+    
+  <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
+
+  </div>
+
+</section>  
 
   <script src="./token.js"></script>
   <script src="./script.js"></script>

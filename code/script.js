@@ -13,7 +13,7 @@ const API_MY_PROFILE = 'https://api.github.com/users/annathunberg'
 fetch(API_MY_PROFILE)
 .then((response) => response.json())
 .then((data) => {
-    fullName.innerHTML = `Hi! I'm  <a href="${data.html_url}">${data.name}</a.`
+    fullName.innerHTML = `Hi! I'm ${data.name}`
     username.innerHTML = `Username: <a href="${data.html_url}">${data.login}</a>`
     avatar.src = data.avatar_url
 })
@@ -36,7 +36,7 @@ function addCommits(repos) {
         fetch(commitsUrl)
         .then((response) => response.json())
         .then((data) => {
-            document.getElementById(`commit-${repo.name}`).innerHTML = `Number of commits: ${data.length}`
+            document.getElementById(`commit-${repo.name}`).innerHTML = `Commits: ${data.length}`
         })
     });
  }
@@ -48,7 +48,6 @@ function addCommits(repos) {
             .then((response) => response.json())
             .then((data) => {
                 const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === USER);
-                console.log("grejer jag pullat", myPullRequests)
                 document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull requests: ${myPullRequests.length}`
             });
     });
@@ -63,8 +62,8 @@ function isFork(repo) {
 function addRepoToList(repo) {
     list.innerHTML += `<div>
         <a href="${repo.html_url}">${repo.name}</a>
-        <p>Default branch: ${repo.default_branch}</p>
-        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p>Default Branch: ${repo.default_branch}</p>
+        <p>Updated: ${new Date(repo.pushed_at).toDateString()}</p>
         <p id="commit-${repo.name}"></p>
         <p id="pull-request-${repo.name}"></p>
     </div>`
