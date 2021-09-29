@@ -3,7 +3,62 @@ const userData = document.getElementById('userData');
 
 const username = 'gustavfrid';
 const parentOwner = 'Technigo';
+const apiEndPoints = ['repo', 'commits', 'pulls'];
 const data = [];
+
+const fetchAllReposFromUser = () => {
+	fetch(`https://api.github.com/users/${username}/repos`)
+		.then((res) => res.json())
+		.then((allRepos) => {
+			let filteredRepos = allRepos.filter((repo) => repo.fork);
+			console.log('filtered repos: ', filteredRepos);
+			return filteredRepos.slice(0, 2);
+		})
+		.then((repos) => {
+			return repos.forEach((repo) => {
+				// fetch all data for each repo
+				fetch(`https://api.github.com/repos/${username}/${repo.name}`)
+					.then((res) => res.json())
+					.then((fullRepo) => {
+						// only continue with repos that have parentOwner as parent
+						if (fullRepo.parent.owner.login === parentOwner) {
+							// fetch all needed endpoints at same time
+							Promise.all([
+								fetch(`https://api.github.com/repos/${username}/${repo.name}/${apiEndPoints[1]}`),
+								fetch(`https://api.github.com/repos/${parentOwner}/${repo.name}/${apiEndPoints[2]}?per_page=100`),
+							])
+								.then((responses) => {
+									return Promise.all(responses.map((res) => res.json()));
+								})
+								.then((resData) => {
+									resData.unshift(fullRepo);
+									// console.log('resData: ', resData);
+									const newResData = {};
+									resData.forEach((item, i) => {
+										newResData[apiEndPoints[i]] = item;
+									});
+									data.push(newResData);
+								});
+						}
+					});
+			});
+			// .then((data) => console.log(data));
+		})
+		// .then(() => generateList)
+		.catch((err) => console.log(err));
+};
+
+const generateList = () => {
+	data.forEach((data) => {
+		console.log('generateList:');
+		projects.innerHTML += /*html*/ `
+		<p><a href=${data.repo.html_url} target="_blank">${data.repo.name}</a> from ${data.repo.parent.owner.login} default branch: ${data.repo.default_branch} updated: ${data.repo.pushed_at} commits: ${data.commits.length} </p>
+		`;
+	});
+};
+
+// fetchAllRepos();
+fetchAllReposFromUser();
 
 // const fetchAllRepos = () => {
 // 	fetch(`https://api.github.com/users/${username}/repos`)
@@ -48,48 +103,3 @@ const data = [];
 // 		})
 // 		.catch((err) => console.log(err));
 // };
-
-const fetchAllReposFromUser = () => {
-	fetch(`https://api.github.com/users/${username}/repos`)
-		.then((res) => res.json())
-		.then((allRepos) => allRepos.filter((repo) => repo.fork))
-		.then((filteredRepos) => {
-			console.log(filteredRepos);
-			return filteredRepos;
-		})
-		.then((repos) => {
-			repos.forEach((repo) => {
-				//slice(0, 2).
-				// fetch all data for each repo
-				fetch(`https://api.github.com/repos/${username}/${repo.name}`)
-					.then((res) => res.json())
-					.then((fullRepo) => {
-						// only continue with repos that have parentOwner as parent
-						if (fullRepo.parent.owner.login === parentOwner) {
-							// fetch all needed endpoints at same time
-
-							// console.log('data length: ', data.length);
-							const fetchArr = ['repo', 'commits', 'pulls'];
-							Promise.all([fetch(`https://api.github.com/repos/${username}/${repo.name}/${fetchArr[1]}`), fetch(`https://api.github.com/repos/${parentOwner}/${repo.name}/${fetchArr[2]}`)])
-								.then((responses) => {
-									return Promise.all(responses.map((res) => res.json()));
-								})
-								.then((resData) => {
-									resData.unshift(fullRepo);
-									// console.log('resData: ', resData);
-									const newResData = {};
-									resData.forEach((item, i) => {
-										newResData[fetchArr[i]] = { ...item };
-									});
-									data.push(newResData);
-								});
-						}
-					});
-			});
-		})
-		.then(() => console.log(data))
-		.catch((err) => console.log(err));
-};
-
-// fetchAllRepos();
-fetchAllReposFromUser();
