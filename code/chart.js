@@ -1,8 +1,7 @@
-//DOM-selector for the canvas 👇
+// DOM-selector for the canvas
 const ctx = document.getElementById('progressChart').getContext('2d');
 
-//"Draw" the chart here 👇
-
+// function to draw the Progress Chart, we have passed in amount of repos as an argument
 const drawProgressChart = (amountOfRepos) => {
   const data = {
     labels: ['Finished Projects', 'Projects Left'],
@@ -10,7 +9,7 @@ const drawProgressChart = (amountOfRepos) => {
       {
         label: 'Technigo boot camp projects',
         data: [amountOfRepos, 19 - amountOfRepos],
-        // length of the repo array, 19 - length of the repo array
+        // length of the repo array, 19 minus length of the repo array
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)'],
         hoverOffset: 4,
       },
@@ -35,9 +34,10 @@ const drawProgressChart = (amountOfRepos) => {
   const progressChart = new Chart(ctx, config);
 };
 
+// function to draw the Language Chart with three arguments
 const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
-  // put the DOM-selector for the second canvas here because
-  // the id="languageChart" hasn't been created yet because of innerHTML i script.js
+  // put the variable for the second canvas here because
+  // the id="languageChart" hasn't been created yet because of innerHTML in script.js
   // if we put it at start of the chart.js, we wouldn't know what languageChart is
   const ctx_languages = document.getElementById('languagesChart');
   const data_2 = {
