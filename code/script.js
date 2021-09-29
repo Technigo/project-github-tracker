@@ -9,13 +9,23 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
+        // (repo) => repo.fork === true && repo.name.includes('project-')
       );
       forkedRepos.forEach(
-        (repo) => (projectContainer.innerHTML += `<h3>${repo.name}</h3>`)
+        (repo) =>
+          (projectContainer.innerHTML += `
+        <div>
+        <a href="${repo.html_url}">${repo.name} with default branch ${
+            repo.default_branch
+          }</a>
+        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p id="commit-${repo.name}"> Commits amount: </p>
+        </div>
+        `)
       );
       getPullRequests(forkedRepos);
     });
@@ -28,23 +38,26 @@ const getPullRequests = (repos) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        //   console.log(data);
-        const userPullRequests = data.filter(
+        const userPullRequests = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
-        console.log(userPullRequests);
-        const commitsURL = userPullRequests[0].commits_url;
-        console.log(commitsURL);
-        // getCommits(commitsURL);
 
-        const commentsURL = userPullRequests[0].review_comments_url;
-        console.log(commentsURL);
+        if (userPullRequests) {
+          fetchCommits(userPullRequests.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML =
+            "No pull request yet";
+        }
       });
   });
 };
 
-// const getCommits = (commits) => {
-//   projectContainer.innerHTML += `<h2>${commits}</h2>`;
-// };
+const fetchCommits = (myCommitsUrl, myRepoName) => {
+  fetch(myCommitsUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
+    });
+};
 
 getRepos();
