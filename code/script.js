@@ -4,9 +4,9 @@ const generalInfoContainer = document.getElementById('generalInfo')
 
 
 // URLs defined in variables
-const username = 'JuliaNiki'
-const REPOS_URL = `https://api.github.com/users/${username}/repos`
-const GENERAL_URL = `https://api.github.com/users/${username}`
+const USERNAME = 'JuliaNiki'
+const REPOS_URL = `https://api.github.com/users/${USERNAME}/repos`
+const GENERAL_URL = `https://api.github.com/users/${USERNAME}`
 
 
 const getRepos = () => {
@@ -14,20 +14,24 @@ const getRepos = () => {
         .then(response => response.json())
         .then(data => {
             console.log(data)
-            const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-') && !repo.name.endsWith('github-tracker'))
+            const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
             forkedRepos.forEach(repo => {
                 console.log(repo)
                 //console.log('owner login', repo.owner.login)
                 projectsContainer.innerHTML += `<div class ="my-divs" id='${repo.name}'>
-                <h3 class="repo-name">${repo.name}</h3>
-                <a class="links" href ="${repo.html_url}" target="_blank">Click to view more info</a>
-                <h5 id="languageName">${repo.language}</h5>
-                <h5>Most recent update: ${new Date(repo.updated_at).toDateString()}</h5>
+                <a class="links" href ="${repo.html_url}" target="_blank"><h3 class="repo-name">${repo.name}</h3></a>
+                <span class="repo-language-color"></span>
+                <span class="language-name">${repo.language}</span>
+                <h5>Updated: ${new Date(repo.pushed_at).toDateString()}</h5>
                 <h5>Default branch: ${repo.default_branch}</h5>
                 </div>`
+                const repoLanguage = document.querySelector(".repo-language-color")
+                console.log(repoLanguage)
+                repoLanguage.style.backgroundColor = "yellow"
             })
             getPullRequests(forkedRepos)
             drawChart(forkedRepos.length)
+
         })
 }
 getRepos()
@@ -38,15 +42,15 @@ const getGeneralInfo = () => {
         .then(data => {
             console.log(data)
             generalInfoContainer.innerHTML += `
-            <img class="profile-image" src="${data.avatar_url} alt ="avatar"/>
-            <div class="names"><h1 class="name">${data.name}</h1>
-            <h1 class="username">${data.login}</h1></div>
+            <img class="profile-image" src = "${data.avatar_url} alt ="avatar"/>
+            <div class="names" ><h1 class="name">${data.name}</h1>
+            <h1 class="username">${data.login}</h1></div >
             <p class="bio">${data.bio}</p>
             <div class="location-info"><img class="location-icon" src="location.png" alt="location" /><p> ${data.location}</p></div>
             <div class="linkedin-info">
             <img class="linkedin-icon" src="chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}">https://www.linkedin.com/in/julia-nikitinashlm/</a>
             </div>
-            `
+                `
         })
 }
 getGeneralInfo()
@@ -57,9 +61,9 @@ const getPullRequests = (forkedRepos) => {
             .then(response => response.json())
             .then(data => {
                 //console.log(data)
-                const myPulls = data.filter(pulls => pulls.user.login === repo.owner.login)
+                const myPulls = data.find(pulls => pulls.user.login === repo.owner.login)
                 console.log(myPulls)
-                const commitsURL = myPulls[0].commits_url
+                const commitsURL = myPulls.commits_url
                 console.log(commitsURL)
                 getCommits(commitsURL, repo)
             })
@@ -74,6 +78,7 @@ getCommits = (commitsURL, repo) => {
             console.log(data.length)
             //console.log('INFO', document.getElementById(`${repo.name}`))
             document.getElementById(`${repo.name}`).innerHTML += `<h5>This repo has been committed ${data.length} times</h5>`
+            // console.log(data[data.length - 1].commit.message)
         })
 
 }

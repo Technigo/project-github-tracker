@@ -36,7 +36,7 @@ body {
   background-color:#242728;
 }
 .my-divs h5 {
-  margin: 15px;
+  margin: 5px;
 }
 
 .github-image {
@@ -91,12 +91,22 @@ body {
 .linkedin-info {
   display: none;
 }
+.repo-language-color {
+  position: relative;
+  top: 2px;
+  right: 8px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid;
+}
 
 @media (min-width:768px) {
   .chart {
     max-width: 300px;
     max-height: 300px;
-    margin-left: 700px;
+    margin-left: 580px;
   }
   .main-section {
     display: flex;
@@ -142,6 +152,19 @@ body {
   }
   .profile-image {
     width: 300px;
+  }
+  .repo-language-color {
+    position: relative;
+    top: 17px;
+    right: -177px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid;
+  }
+  .language-name {
+    margin-left: 10px;
   }
 }
 
