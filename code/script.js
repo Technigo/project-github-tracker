@@ -1,105 +1,101 @@
 const projects = document.getElementById('projects');
 const userData = document.getElementById('userData');
 
-const username = 'gustavfrid';
-const parentOwner = 'Technigo';
-const apiEndPoints = ['repo', 'commits', 'pulls'];
-const data = [];
+const USER = 'gustavfrid';
+const PARENT_OWNER = 'Technigo';
+const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
+const USER_URL = `https://api.github.com/users/${USER}`;
 
 const fetchAllReposFromUser = () => {
-	fetch(`https://api.github.com/users/${username}/repos`)
+	// fetch all repos from user
+	fetch(REPOS_URL)
 		.then((res) => res.json())
 		.then((allRepos) => {
+			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.fork);
-			console.log('filtered repos: ', filteredRepos);
-			return filteredRepos.slice(0, 2);
-		})
-		.then((repos) => {
-			return repos.forEach((repo) => {
-				// fetch all data for each repo
-				fetch(`https://api.github.com/repos/${username}/${repo.name}`)
-					.then((res) => res.json())
-					.then((fullRepo) => {
-						// only continue with repos that have parentOwner as parent
-						if (fullRepo.parent.owner.login === parentOwner) {
-							// fetch all needed endpoints at same time
-							Promise.all([
-								fetch(`https://api.github.com/repos/${username}/${repo.name}/${apiEndPoints[1]}`),
-								fetch(`https://api.github.com/repos/${parentOwner}/${repo.name}/${apiEndPoints[2]}?per_page=100`),
-							])
-								.then((responses) => {
-									return Promise.all(responses.map((res) => res.json()));
-								})
-								.then((resData) => {
-									resData.unshift(fullRepo);
-									// console.log('resData: ', resData);
-									const newResData = {};
-									resData.forEach((item, i) => {
-										newResData[apiEndPoints[i]] = item;
-									});
-									data.push(newResData);
-								});
-						}
-					});
+			// console.log('filtered repos: ', filteredRepos);
+			filteredRepos.slice(0, 2).forEach((repo) => {
+				// fetch all data for each repo use .slice(0, 2) to limit
+				fetchFullRepo(repo);
 			});
-			// .then((data) => console.log(data));
 		})
-		// .then(() => generateList)
-		.catch((err) => console.log(err));
+		.catch((err) => console.log('fetchAllReposFromUser error: ', err));
 };
 
-const generateList = () => {
-	data.forEach((data) => {
-		console.log('generateList:');
-		projects.innerHTML += /*html*/ `
-		<p><a href=${data.repo.html_url} target="_blank">${data.repo.name}</a> from ${data.repo.parent.owner.login} default branch: ${data.repo.default_branch} updated: ${data.repo.pushed_at} commits: ${data.commits.length} </p>
-		`;
-	});
+const fetchFullRepo = (repo) => {
+	// fetch all data from each repo
+	fetch(`https://api.github.com/repos/${USER}/${repo.name}`)
+		.then((res) => res.json())
+		.then((fullRepo) => {
+			// only continue with repos that have PARENT_OWNER as parent
+			if (fullRepo.parent.owner.login === PARENT_OWNER) {
+				// put data in html
+				// console.log('fullRepo', fullRepo);
+				projects.innerHTML += /*html*/ `
+				<p><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
+				<p>updated: ${fullRepo.pushed_at}</p>
+				<p id="commit-${fullRepo.name}">Commits</p>
+				`;
+				// fetchPullRequestsArray(fullRepo);
+				// fetchCollaborators(fullRepo);
+				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
+				fetchCommits(COMMITS_URL, fullRepo);
+			}
+		})
+		.catch((err) => console.log('fetchFullRepo error:', err));
 };
 
-// fetchAllRepos();
-fetchAllReposFromUser();
+const fetchPullRequestsArray = (repo, authors) => {
+	// fetch all pull requests from repo
+	const PULL_URL = `https://api.github.com/repos/${PARENT_OWNER}/${repo.name}/pulls?per_page=100`;
+	fetch(PULL_URL)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log('fetchPullRequestsArray data: ', data);
+			// only pick pull requests connected to user
+			const myPullReq = data.find((pull) => authors.includes(pull.user.login)); // pull.user.login === repo.owner.login);
+			console.log('myPullReq', myPullReq);
+			if (myPullReq) {
+				console.log('my pullreq', myPullReq); //fetchCommits(myPullReq.commits_url, repo.name);
+			} else {
+				document.getElementById(`commit-${repo.name}`).innerHTML = 'No pull request yet done :(';
+			}
+		})
+		.catch((err) => console.log('fetchPullRequestsArray error:', err));
+};
 
-// const fetchAllRepos = () => {
-// 	fetch(`https://api.github.com/users/${username}/repos`)
-// 		.then((response) => {
-// 			return response.json();
+const fetchCommits = (myCommitsUrl, repo) => {
+	fetch(myCommitsUrl)
+		.then((res) => res.json())
+		.then((data) => {
+			// console.log('fetchCommits data: ', data);
+			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
+			const authors = data.map((commit) => commit.author.login);
+			fetchPullRequestsArray(repo, authors);
+		})
+		.catch((err) => console.log('fetchCommits error: ', err));
+};
+
+const fetchUser = () => {
+	fetch(USER_URL)
+		.then((res) => res.json())
+		.then((data) => {
+			// console.log(data);
+			userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+		})
+		.catch((err) => console.log('fetchCommits error: ', err));
+};
+
+// const fetchCollaborators = (repo) => {
+// 	const COLLABORATOR_URL = `https://api.github.com/repos/${USER}/${repo.name}/commits`;
+// 	fetch(COLLABORATOR_URL)
+// 		.then((res) => res.json())
+// 		.then((data) => {
+// 			console.log(data);
+// 			//	userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
 // 		})
-// 		.then((allRepos) => {
-// 			console.log(allRepos);
-// 			// filter out repos that are forked
-// 			let filteredRepos = filterForkedRepos(allRepos);
-// 			// fetch all detailed info for each forked repo, to be able to get and filter the owner
-// 			filteredRepos.forEach((repo) => {
-// 				fetch(`https://api.github.com/repos/${username}/${repo.name}`)
-// 					.then((response) => {
-// 						return response.json();
-// 					})
-// 					.then((someRepos) => {
-// 						// only pick repos with owner = Technigo
-// 						if (someRepos.parent.owner.login === parentOwner) {
-// 							fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`)
-// 								.then((response) => {
-// 									return response.json();
-// 								})
-// 								.then((res) => {
-// 									projects.innerHTML += /*html*/ `
-// 										<p><a href=${repo.html_url} target="_blank">${repo.name}</a> from ${someRepos.parent.owner.login} default branch: ${repo.default_branch} updated: ${repo.pushed_at} commits: ${res.length} </p>
-// 										`;
-// 									// console.log('commits:', res);
-// 								});
-// 							console.log(someRepos);
-// 						}
-// 					})
-// 					.catch((err) => console.log(err));
-// 			});
-// 			userData.innerHTML = /*html*/ `
-// 			<p>${username}</p>
-// 			<a href="${filteredRepos[0].owner.html_url}" target="_blank">
-// 				<img class="avatar" src="${filteredRepos[0].owner.avatar_url}" alt="avatar" />
-// 			</a>
-// 				`;
-// 			console.log(filteredRepos);
-// 		})
-// 		.catch((err) => console.log(err));
+// 		.catch((err) => console.log('fetchCommits error: ', err));
 // };
+
+fetchAllReposFromUser();
+fetchUser();
