@@ -61,26 +61,33 @@ a.button1:hover {
   }
 }
 
+.grid {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .repo-cards {
+  height: 300px;
   color: white;
   font-family: 'Bebas Neue', cursive;
-  border-style: solid;
   margin: 1em;
   padding: 1em;
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column-reverse;
-  width: 300px;
+  width: 200px;
   border-radius: 1em;
   box-shadow: 0.25em 0.25em 0.25em grey;
-  background-color: silver;
+  background-color: rgb(20, 23, 38);
 }
 
 .projects {
+  width: 100%;
   display: flex;
-  gap: 2em;
+  grid-column: span 1;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
@@ -88,6 +95,7 @@ a.button1:hover {
 }
 
 .personal-info {
+  max-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,10 +113,22 @@ a.button1:hover {
 
 .chart-container {
   border-style: solid;
-  padding: 1em;
+  display: grid;
+  grid-column: span 1;
   position: sticky;
   height: 10vh;
-  width: 40vw;
+  width: 30vw;
+  margin: 0 auto;
+  margin-top: 3em;
+}
+
+.footer {
+  margin: 1em;
+  padding-top: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ***** CARD *****

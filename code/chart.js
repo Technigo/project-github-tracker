@@ -6,13 +6,13 @@ const drawChart = (amount) => {
   const config = {
     type: 'doughnut',
     data: {
-      labels: ['finished', 'not finished'],
+      labels: ['Finished', 'Not finished'],
       datasets: [
         {
-          label: 'My technigo projects',
+          label: 'Technigo projects rate ',
           data: [amount, 19 - amount],
-          backgroundColor: ['rgb(255, 99, 132)', '#e6e6e6'],
-          hoverOffset: 4,
+          backgroundColor: ['#0f0c29', '#e6e6e6'],
+          hoverOffset: 50,
         },
       ],
     },

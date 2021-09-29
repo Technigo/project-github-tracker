@@ -11,9 +11,9 @@ const getUserData = () => {
       personData.innerHTML = `
       <div class="personal-info">    
       <img class="img" src="${data.avatar_url}"/>
-      <h1>Username: ${data.login}</h1>
-      <h4>Full name: ${data.name}</h4>
-      <h4>Location: ${data.location}</h4>
+      <h3>Username: ${data.login}</h3>
+      <h5>${data.name}</h5>
+      <h5>${data.location}</h5>
     </div>
      `
     })
@@ -41,12 +41,12 @@ const getRepos = () => {
         )
 
         projects.innerHTML += `<div id="${repo.name}"" class="repo-cards">
-        <p id="commit-${repo.name}"></p>
-        <button id="commits">Show latest commit message</button>
-        <p><a href="${repo.html_url}" target="blank"> My Repo ${repo.name}</a></p>
-        <p>Branch ${repo.default_branch}</p> 
-        <p>Recent push ${pushedDate}</p>
         
+        <button id="commits">Show latest commit message</button>
+        <p id="commit-${repo.name}"></p>
+        <p>Recent push ${pushedDate}</p>
+        <p>Branch ${repo.default_branch}</p> 
+        <p><a href="${repo.html_url}" target="blank">Repository ${repo.name}</a></p>
         </div>
 
       `
@@ -77,7 +77,7 @@ const getCommits = (url, myRepoName) => {
     .then((data) => {
       document.getElementById(
         `commit-${myRepoName}`
-      ).innerHTML += `<p>Commits from each pull requests ${data.length}</p>`
+      ).innerHTML += `<p>Amount of commits ${data.length}</p>`
     })
 }
 
