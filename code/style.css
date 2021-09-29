@@ -13,6 +13,10 @@ body {
   display: flex;
   border-bottom: solid rgb(163, 160, 160);
   border-width: 1px;
+  align-items: center;
+  padding: 5px;
+  padding-right: 20px;
+  justify-content: center;
 }
 
 .profile-pic {
@@ -20,7 +24,7 @@ body {
   height: 20%;
   object-fit: cover;
   border-radius: 70%;
-  margin: 5px;
+  margin-right: 20px;
 }
 
 h1 {
@@ -31,7 +35,7 @@ h1 {
   display: flex;
   flex-direction: column;
   background-color: #e5e2e2;
-  padding: 5px;
+  padding: 10px;
 }
 
 .repositories {
@@ -41,8 +45,8 @@ h1 {
   border: solid rgb(163, 160, 160);
   border-radius: 6px;
   border-width: 1px;
-  padding: 5px;
-  margin-top: 2px;
+  padding-left: 10px;
+  margin-top: 10px;
 }
 
 .chart-container {
@@ -50,7 +54,30 @@ h1 {
   padding: 20px;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 668px) {
+  .profile-container {
+    padding: 10px;
+    justify-content: left;
+  }
+  .profile-pic {
+    width: 10%;
+    height: 10%;
+  }
+  .repo-container {
+    padding: 20px;
+    text-align: center;
+  }
+  .repositories {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .chart-container {
+    padding: 50px;
+  }
+}
+
+@media (min-width: 1024px) {
   h1 {
     display: contents;
   }

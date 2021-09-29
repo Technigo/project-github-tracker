@@ -1,5 +1,5 @@
 // DOM selectors - store the URL
-// My username to GitHub + url to repos
+// My username to GitHub + URL to repos
 const USER = "camekman";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const INFO_URL = `https://api.github.com/users/${USER}`;
@@ -12,7 +12,7 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       //data.forEach((repo) => console.log(repo.name));
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
@@ -79,7 +79,7 @@ const getCommits = (commitsURL, repo) => {
   fetch(commitsURL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       document.getElementById(
         `${repo.name}`
       ).innerHTML += ` <h5> number of pull requests: ${data.length} </h5>`;
