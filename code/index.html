@@ -10,26 +10,45 @@
   
 </head>
 <body>
-  <h1>Technigo GitHub Tracker</h1>
+  
   <main id="projects">
+    <div class="header-title">
+      <h1>Technigo GitHub Tracker</h1>
+    </div>
+
     
-    <form id="search-field">
-      <input
-        class="input-field"
-        id="gitusername"
-        type="text"
-        placeholder="Github Username"
-        autocomplete="off"
-        required
-      />
-      <input type="submit" id="searchbtn" class="search-button">
-    </form>
-    <div id="userProfile" class="user-profile"></div>
+
+    <div class="search-container">
+      <form id="search-field">
+        <input
+          class="input-field"
+          id="gitusername"
+          type="text"
+          placeholder="Github Username"
+          autocomplete="off"
+          required
+        />
+        <input type="submit" id="searchbtn" class="search-button">
+      </form>
+  </div>
+  <div id="userProfile" class="user-profile"></div>
+
+    
     <h2>Projects:</h2>
+    <div id="projectsContainer" class="projects-container">
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+        </div>
+      </div>
+      
+    </div>
   </main>
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
+  <canvas id="chart2"></canvas>
   
 
   <script src="./script.js"></script>

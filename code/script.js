@@ -6,6 +6,16 @@ const REPOS_URL = `https://api.github.com/users/${user}/repos`
 const USER_URL = `https://api.github.com/users/${user}`
 const container = document.getElementById('projects')
 const userContainer = document.getElementById('userProfile')
+const projectsContainer = document.getElementById('projectsContainer')
+// Get the modal
+const modal = document.getElementById("myModal")
+// Get the button that opens the modal
+
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0]
+
+
 
 
 const userProfile = () => {
@@ -13,11 +23,18 @@ const userProfile = () => {
   .then(res => res.json())
   .then(data => {
       //console.log(data);
-      userContainer.innerHTML = `
-      <h2>Username: ${data.login}</h2>
-      <p>Full name: ${data.name}</p>
-      <p>Location: ${data.location}</p>
-      <img src="${data.avatar_url}"/>
+      userContainer.innerHTML += `
+      <div>
+        <h2>Username: ${data.login}</h2>
+        <p>Full name: ${data.name}</p>
+        <p>Location: ${data.location}</p>
+      </div>
+
+      <div class="github-avatar">
+        <a href="https://github.com/Asivol93" target="blank">
+          <img src="${data.avatar_url}"/>
+        </a>
+      </div>
       `
     })
 }
@@ -26,19 +43,35 @@ const fetchAll = () => {
   fetch(REPOS_URL)
     .then(res => res.json())
     .then(data => {
+      
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-'))
-      forkedRepos.forEach(repo =>
-    container.innerHTML += `
-    <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
-    <p>Branch: ${repo.default_branch}<p>
-    <p>${repo.pushed_at}</p>
-    `
+      forkedRepos.forEach(repo => {
+        const pushedDate = new Date(repo.pushed_at).toLocaleDateString('en-se', {  
+        hour: '2-digit',
+        minute: '2-digit',
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',           
+      }
+     
     )
-    drawChart(forkedRepos.length)
+    
+    projectsContainer.innerHTML += `
+    <div class="repo-item">
+      <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
+      <p>Branch: ${repo.default_branch}<p>
+      <p>Latest push: ${pushedDate}</p>
+      <p id="commit-${repo.name}"></p>
+    </div>
+    `
+    })
+      //drawTimeLine(createdAt)
+      drawChart(forkedRepos.length)
       pullRequests(forkedRepos)
     })
-    
+  
     
     .catch(() => {
       container.innerHTML = `
@@ -46,7 +79,7 @@ const fetchAll = () => {
     <p>Please try again!</p>
     `
     })
-}
+  }
 
 
 
@@ -60,22 +93,38 @@ const pullRequests = (repos) => {
         //console.log(data)
         //showComments(COMMENTS_URL)
         //console.log(myPulls)
-        showCommits(myPulls.commits_url)
+        showCommits(myPulls.commits_url, repo.name)
       })
       
-    
     })
 }
 
-const showCommits = (url) => {
+const showCommits = (url, myRepoName) => {
   fetch(url)
   .then(res => res.json())
   .then(data => {
-    container.innerHTML += `
-    <p>${data.length}</p>
-    `
-  })
+    //console.log(data)
+    let commitMessage = data[0].commit.message
+    //console.log(commitMessage)
+    
+      document.getElementById(`commit-${myRepoName}`).innerHTML += ` 
+      <p>Number of commits: ${data.length}</p>
+      <button id="myBtn-${myRepoName}">Open Modal</button>
+          
+      `
+      modal.innerHTML += `
+      <p>${commitMessage}</p>
+      `
+      const btn = document.getElementById(`myBtn-${myRepoName}`)
 
+      btn.onclick = function() {
+        console.log(modal)
+        modal.style.display = "block";
+      }
+      
+    
+    })
+    
 }
 
 /*const showComments = (repos) =>
@@ -99,30 +148,22 @@ fetchAll()
 searchBtn.addEventListener('click', () => {
   fetchAll()
 })
-/*
-const fetchUsers = async (user) => {
-const api_call = await fetch(`https://api.github.com/users/${user}`)
 
-const data = await api_call.json()
-return { data: data }
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
 }
 
-const showData = () => {
-  fetchUsers(inputValue.value)
-}
-/*function insertUserName (username) {
-  let GIT_USER_API = 'https://api.github.com/users/${username}'
-  return {GIT_USER_API}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
-function doFetch (URLs) {
-  GIT_USER_API = URLs.GIT_USER_API
 
-  fetch(GIT_USER_API)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data)
-  })
-}*/
+
 
 
