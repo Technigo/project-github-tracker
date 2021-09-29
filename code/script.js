@@ -1,9 +1,22 @@
 const USER = "amandatilly";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
-const NEWSSITE_URL =
-  "https://api.github.com/repos/Technigo/project-news-site/pulls/222/commits";
+const USER_URL = `https://api.github.com/users/${USER}`;
 
 const projectContainer = document.getElementById("projects");
+const profileContainer = document.getElementById("userProfile");
+
+const fetchUser = () => {
+  fetch(USER_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      profileContainer.innerHTML = /*html*/ `
+      <section class="user">
+      <h2>Username: ${data.login}</h2>
+      <img class="picture" src="${data.avatar_url}" alt="profile picture" />
+      </section>
+      `;
+    });
+};
 
 const getRepos = () => {
   fetch(REPOS_URL)
@@ -17,7 +30,7 @@ const getRepos = () => {
       );
       forkedRepos.forEach(
         (repo) =>
-          (projectContainer.innerHTML += `
+          (projectContainer.innerHTML += /*html*/ `
         <div>
         <a href="${repo.html_url}">${repo.name} with default branch ${
             repo.default_branch
@@ -61,3 +74,4 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 };
 
 getRepos();
+fetchUser();
