@@ -1,3 +1,24 @@
 body {
   background: #FFECE9;
 }
+
+footer p {
+  width: 200px;
+  margin: 0px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+footer li {
+  display: inline;
+  list-style: none;
+}
+
+.nav-socials {
+  width: 100px;
+}
