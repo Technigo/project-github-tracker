@@ -89,13 +89,13 @@ const getUserInfo = () => {
         <img class="profile-image" src="${json.avatar_url}"/>
         <div class="contact-icons"> 
           <a href="https://www.linkedin.com/in/katie-wu-213a82150/" target="blank">
-            <img class="icon" src="/assets/linkedin.png" alt="linkedin icon" width="16px" height="16px"/>
+            <img class="icon" src="./assets/linkedin.png" alt="linkedin icon" width="16px" height="16px"/>
           </a>
           <a href="https://github.com/katiewu1/" target="blank">
-            <img class="icon" src="/assets/github.png" alt="github icon" width="16px" height="16px"/>
+            <img class="icon" src="./assets/github.png" alt="github icon" width="16px" height="16px"/>
           </a>
           <a href="mailto:katiewu.92@gmail.com">
-            <img class="icon" src="/assets/email.png" alt="email icon" width="16px" height="16px"/>
+            <img class="icon" src="./assets/email.png" alt="email icon" width="16px" height="16px"/>
           </a>
         </div>
       </div>
@@ -108,7 +108,7 @@ const getModal = (projectName) => {
   // modalContent.innerHTML = 'loading';
   // put a loading gif so the user know that it's fetching the data that will present in the modal
   modalContent.innerHTML = `
-  <img src="/assets/loading.gif" class="loading-gif" alt="loading gif"/>
+  <img src="./assets/loading.gif" class="loading-gif" alt="loading gif"/>
   `;
 
   modalProject.style.display = 'block'; // pop up the modal when clicking on a project card?
