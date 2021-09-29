@@ -6,8 +6,6 @@ const user = 'anndimi'
 const USER_URL = `https://api.github.com/users/${user}`
 const userContainer = document.getElementById("userProfile")
 
-
-
 const userProfile = () => {
     fetch(USER_URL)
         .then(res => res.json())
@@ -30,57 +28,43 @@ const fetchRepos = () => {
             const forkedRepos =
                 data.filter(repo => repo.fork && repo.name.startsWith("project-"))
 
-
-            const commitDate = new Date()
-            const formattedDate = commitDate.toISOString().split('T')[0]
-            console.log(formattedDate)
-
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
                       <div class="repo" id=${repo.name}>
-                        <h2>${repo.name}</h2>
-                        <p>${repo.default_branch}</p>
-                        <a href="${repo.html_url}" target="blank">Click here to see!</a>
-                        <p>${repo.updated_at}</p>
+                        <a href="${repo.html_url}" target="blank">${repo.name} with default branch ${repo.default_branch}</a>
+                        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+                        <p id="commit-${repo.name}">Commits amount: </p>
                       </div>
-                    `
+                        `
             })
-
-
             drawChart(forkedRepos.length)
             fetchPullRequests(forkedRepos)
-            console.log(forkedRepos)
+            //console.log(forkedRepos)
         })
-
-
 }
 
 const fetchPullRequests = (repos) => {
     repos.forEach(repo => {
-        fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
+        const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
+
+        fetch(PULL_URL)
             .then(res => res.json())
             .then((data) => {
-                const myPull =
+                const myPullRequest =
                     data.find(pull => pull.user.login === repo.owner.login)
-                console.log(myPull)
-                fetchCommits(myPull.commits_url)
 
+                fetchCommits(myPullRequest.commits_url, repo.name)
             })
     })
 }
 
-const fetchCommits = (url) => {
-    fetch(url)
+const fetchCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-
-            //document.getElementById(repoName).innerHTML += commits_url.length
+            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
         })
-
 }
-
-
 
 userProfile()
 fetchRepos()
