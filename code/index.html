@@ -7,12 +7,19 @@
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6d22e315f0.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
     <div class="wrapper">
       <header class="navbar__container">
         <h1>GitHub Tracker</h1>
+        <i class="fa-brands fa-js-square icon" onclick="filter(`js`)"></i>
+        <i class="fal fa-file-code icon" onclick="filter(`html`)"></i>
+        <i class="fal fa-undo-alt icon" onclick="filter(`undo`)"></i>
       </header>
       <div id="userInformation" class="user-information"></div>
       <div id="projects" class="projects">
