@@ -6,15 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://kit.fontawesome.com/745bd96b12.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
+  <header>
+    <i class="fas fa-bars"></i>
+    <a href="https://github.com/nehrwein" target="_blank"><i class="fab fa-github"></i></a>
+    <i class="far fa-bell"></i>
+  </header>
+  <section class="user" id="user-section">
+    <span></span>
+    <span></span>
+  </section>
   <main id="projects"></main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <div>
+  <div class="chart">
     <canvas id="chart" width="200" height="200"></canvas>
   </div>  
   <script src="./script.js"></script>

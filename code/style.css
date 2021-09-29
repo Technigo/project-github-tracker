@@ -1,4 +1,48 @@
-body {
-  background: #FFECE9;
+/* GLOBAL STYLES */
+
+:root {
+  --border-width: 1px;
+  --border-style: solid;
+  --font-size-small: 12px;
+  --font-weight-semibold: 500;
+  --size-2: 20px;
 }
 
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: white;
+  margin: 0;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: white;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fab {
+  color: white;
+  font-size: 32px;
+}
+
+.far {
+  font-size: 16px;
+}
+
+.chart {
+  width: 250px;
+  height: 250px;
+}

@@ -1,6 +1,11 @@
+//DOM SELECTORS
+const userSection = document.getElementById("user-section")
+
+//GLOBAL VARIABLES
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
 
+//FUNCTIONS
 const getRepos = () => {
 	fetch(REPO_API)
 		.then((res) => res.json())
@@ -14,6 +19,9 @@ const getRepos = () => {
 			const userName = data[0].owner.login
 			const profilePic = data[0].owner.avatar_url
 			console.log('Username & Pic: ', userName, profilePic)
+			userSection.innerHTML = `
+				<img id="userImage" src="${profilePic}" alt="Github Avatar">
+			`
 
 
 			getPushBranchURL(forkedRepos);
