@@ -3,7 +3,7 @@ let PROJECT = 'project-weather-app'
 let API_PROFILE = `https://api.github.com/users/${USER}`
 let API_ALL_REPOS = `https://api.github.com/users/${USER}/repos`
 let REPO_API = `https://api.github.com/repos/${USER}/${PROJECT}/commits`
-let projectContainer = document.getElementById('project-container')
+let repoContainer = document.getElementById('repo-container')
 let profileContainer = document.getElementById('profile-container')
 let commitMessage
 
@@ -13,7 +13,7 @@ let commitMessage
 //   .then(commitData => {
 //     console.log('här borde det vara commit', commitData[0].commit.message)
 //     commitMessage = commitData[0].commit.message
-//     projectContainer.innerHTML += /*html*/ `
+//     repoContainer.innerHTML += /*html*/ `
 //     <h2>There have been ${commitData.length} commits and the latest commit was ${commitMessage}</h2>
 //     `
 //   })
@@ -27,7 +27,7 @@ let commitMessage
 //     console.log('Repodata: ', reposData)
 //     const technigoRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith('project-'))
 //     technigoRepos.forEach(project => {
-//       projectContainer.innerHTML += /*html*/ `
+//       repoContainer.innerHTML += /*html*/ `
 //         <div>
 //           <a href="${project.html_url}">${project.name} with default branch ${project.default_branch}</a>
 //           <p>Recent push: ${new Date(project.pushed_at).toDateString()}</p>
