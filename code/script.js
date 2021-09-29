@@ -44,7 +44,9 @@ const getProfile = () => {
   .then(res => res.json()) 
   .then(profileData => {
     profileContainer.innerHTML += /*html*/`
-      <img src=${profileData.avatar_url} class="profile-img">      
+      <div class="circle">
+        <img src=${profileData.avatar_url} class="profile-img"> 
+      </div>     
       <h1>${profileData.name}</h1>
     `
     });

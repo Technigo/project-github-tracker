@@ -1,6 +1,6 @@
 body {
   background: #FFECE9;
-  margin: auto;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -15,12 +15,16 @@ h1 {
 
 .profile-img {
   width: 100px;
+  height: 100px;
   border-radius: 50%;
+  border-style: solid;
+  object-fit: cover;
 }
 
 .main-area, footer, header {
   background: white;
   width: 90%;
+  margin: auto;
 }
 
 footer p {
