@@ -8,7 +8,17 @@ const getRepos = () => {
     .then((data) => {
       //console.log("All Repos from the json:", data);
       const technigoProjects = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
-      technigoProjects.forEach((repo) => (projectsContainer.innerHTML += /*html*/ `<h3>${repo.name}</h3>`));
+
+      technigoProjects.forEach((repo) => {
+        projectsContainer.innerHTML += /*html*/ `
+          <div>
+            <a href="${repo.html_url}" target="_blank">${repo.name} with default branch ${repo.default_branch}</a>
+            <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p id="commits-${repo.name}">Commits amount: </p>
+          </div>
+        `;
+      });
+
       getPullRequests(technigoProjects);
       drawChart(technigoProjects.length);
     });
@@ -28,18 +38,20 @@ const getPullRequests = (repos) => {
 
         //console.log("My pull request for:", filteredPull);
 
-        getCommits(filteredPull.commits_url);
+        getCommits(filteredPull.commits_url, repo.name);
 
         getReview(filteredPull.review_comments_url);
       });
   });
 };
 
-const getCommits = (url) => {
+const getCommits = (url, repoName) => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      //console.log("My commits:", data);
+      console.log("My commits:", data);
+      console.log(repoName);
+      document.getElementById(`commits-${repoName}`).innerHTML += data.length;
     });
 };
 

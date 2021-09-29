@@ -6,7 +6,7 @@ const drawChart = (numberOfProjects) => {
   const config = {
     type: "doughnut",
     data: {
-      labels: ["Red", "Yellow"], //Change the label
+      labels: ["Finished projects", "Projects left"], //Change the label
       datasets: [
         {
           label: "My First Dataset", //Change the label
