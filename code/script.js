@@ -11,7 +11,7 @@ const getRepos = ()=>{
     .then(response => response.json())
     .then(data => {
         
-        //console.log(data)
+        //console.log('DATA', data)
       //Here, I filter only the projects forked from Technigo, starting from 2021 (since I have earlier projects also forked from Technigo)  
         const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-') && repo.created_at.startsWith('2021-'))
       // Here I update the projectsContainer.innerHTML to show a list of all forked repos  
@@ -20,21 +20,21 @@ const getRepos = ()=>{
         forkedProjects.forEach(repo => cardsContainer.innerHTML += `
         <section class="js-card">
       <div class="card-projectname" id="cardProjectName">   
-        Project Name: <span>${repo.name}</span></div>
+        Project Name: <span class="space">${repo.name}</span></div>
         <div class="updated" id="cardUpdated">
-      Most recent update:   
+      Most recent update: <span class="space"> ${new Date(repo.pushed_at).toDateString()}</span>   
         </div>
         <div class= "branch" id="cardBranch">
-      Name of default branch:  ${repo.default_branch}    
+      Name of default branch:<span class="space">${repo.default_branch}</span>    
         </div>
          <div class= "URL" id="cardURL">
-      URL: <a href="${repo.svn_url} ">Clicky</a> 
+      URL: <span class="space"><a href="${repo.html_url} ">Clicky</a></span> 
         </div>
-        <div class= "number-commits" id="cardCommits">
+        <div class= "number-commits" id="commit-${repo.name}">
       Number of commit Messages:   
         </div>
          <div class= "times-forked" id="cardForked">
-      Number of times forked: ${repo.forks}  
+      Number of times forked: <span class="space">${repo.forks}</span>  
         </div>
         <div class= "blank-line" id="cardBlank">
       blank   
@@ -59,24 +59,28 @@ const getPullRequests = (forkedProjects) => {
         .then((response) => response.json())
         .then((data) => {
             //console.log(data)
-            const myPullRequests = data.filter(pull => pull.user.login === repo.owner.login)
-            //console.log(myPullRequests)
+            const myPullRequests = data.find(pull => pull.user.login === repo.owner.login)
+            //console.log('howdy', myPullRequests)
           
+            getCommits(myPullRequests.commits_url, repo.name) 
         })
-     getCommits(commits_url)   
+
+      
     })
 }
 
-const getCommits = (commits_url) =>{
+const getCommits = (myCommitsUrl, myRepoName) => {
 
-    commits_url.forEach((repo)=> {
+  fetch(myCommitsUrl)
+  .then((response) => response.json())
+  .then ((data) => {
 
-        fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls/${repo.number}/commits`)
-        .then((response)=> response.json())
-        .then((data)=>{
-            console.log(data)
-        })
+    console.log(data)
+    document.getElementById(`commit-${myRepoName}`).innerHTML+=data.length
 
-    })
+  }
+    
+  )
 
 }
+
