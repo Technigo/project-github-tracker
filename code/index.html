@@ -15,19 +15,30 @@
     />
   </head>
   <body>
-
     <main>
-      <section class="user-data" id="user-data"><div>
-      
-    </div></section>
+      <div class="icon-container">
+        <img src="images/bin.png" alt="bin"/>
+        <p>Recycle Bin</p>
+        <img src="images/network.png" alt="network"/>
+        <p>C://Harddrive</p>
+        <img src="images/network2.png" alt="network2"/>
+        <p>Network</p>
+      </div>
+      <div class="my-chart-container">
+        <div class="chart-header">My project chart<span id="deleteRepo">X</span></div>
+        <canvas class="my-chart" id="myChart"></canvas>
+      </div>
+      <section class="user-data" id="user-data"><div></div></section>
       <section class="projects" id="projects"></section>
     </main>
     <!-- This will be used to draw the chart 👇 -->
-    <div>
-      <canvas class="my-chart" id="myChart"></canvas>
-    </div>
-    <footer class="my-footer">
 
+    <footer class="my-footer">
+      <span class="menu-start-button"
+        ><img src="images/logo.png" alt="logo" />Start</span
+      >
+      <span class="menu-program">Welcome</span>
+      <span class="menu-time">14:34</span>
     </footer>
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

@@ -78,7 +78,7 @@ const presentRepoData = () => {
 
 // A function that deletes the box you click on
 const deleteElement = () => {
-  document.getElementById(this).remove(this);
+  document.getElementById(project).remove(this);
 };
 
 presentRepoData();

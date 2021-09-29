@@ -2,78 +2,105 @@
   box-sizing: border-box;
 }
 body {
-  background: #00807F;
-  margin:0px;
-  font-family: 'Source Sans Pro', sans-serif;
+  background: #00807f;
+  margin: 0px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin:0px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
 }
 
 h1 {
   font-size: 15px;
-  font-weight:400;
+  font-weight: 400;
 }
 
 h2 {
   font-size: 20px;
 }
 
-.my-header, .project-header {
-  background:#000080;
-  color:white;
-  padding:2px;
-  display:flex;
-  position:relative;
+.my-header,
+.project-header {
+  background: #000080;
+  color: white;
+  padding: 2px;
+  display: flex;
+  position: relative;
+}
+
+.user-data,
+.projects {
+  z-index: 5;
 }
 
 .my-header span {
-  position:absolute;
-  right:1px;
-  background:#c0c0c0;
-  width:15px;
+  position: absolute;
+  right: 1px;
+  background: #c0c0c0;
+  width: 15px;
   font-size: 12px;
   text-align: center;
-  color:black;
-  border:2px outset;
+  color: black;
+  border: 2px outset;
   cursor: pointer;
 }
 
 .project-header span {
-  position:absolute;
-  right:1px;
-  background:#c0c0c0;
-  width:15px;
+  position: absolute;
+  right: 1px;
+  background: #c0c0c0;
+  width: 15px;
   font-size: 12px;
   text-align: center;
-  color:black;
-  border:2px outset;
-  cursor:pointer;
+  color: black;
+  border: 2px outset;
+  cursor: pointer;
+}
+
+.chart-header span {
+  position: absolute;
+  right: 1px;
+  background: #c0c0c0;
+  width: 15px;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+  border: 2px outset;
+  cursor: pointer;
+}
+
+.icon-container {
+  display: none;
 }
 
 .user-data {
-  display:block;
-  margin:10px;
-  background:#c0c0c0;
-  border:2px outset;
+  display: block;
+  margin: 10px;
+  background: #c0c0c0;
+  border: 2px outset;
 }
 
 .user-data img {
-  margin:10px 10px 0px 10px;
-  width:calc(100% - 20px);
-  border:2px outset;
+  margin: 10px 10px 0px 10px;
+  width: calc(100% - 20px);
+  border: 2px outset;
 }
 
 .user-data p {
-  margin:5px 0px;
+  margin: 5px 0px;
 }
 
 .user-text {
-  margin:10px;
-  padding:10px;
-  background:#fffbf0;
-  border:2px inset;
+  margin: 10px;
+  padding: 10px;
+  background: #fffbf0;
+  border: 2px inset;
 }
 
 .user-text h1 {
@@ -82,47 +109,86 @@ h2 {
 }
 
 .project-text {
-  border:2px inset;
-  margin:10px;
-  background:#fffbf0;
+  border: 2px inset;
+  margin: 10px;
+  background: #fffbf0;
 }
 
 .projects {
-  margin:0px 10px;
-  display:block;
+  margin: 0px 10px;
+  display: block;
 }
 
 .projects h3 {
-  font-size:16px;
+  font-size: 16px;
   font-weight: 400;
-  background:#000080;
-  color:white;
+  background: #000080;
+  color: white;
 }
 
 .projects p {
   font-size: 14px;
-  margin:10px;
+  margin: 10px;
 }
 
 .projects a {
   font-size: 12px;
-  margin:5px 10px;
+  margin: 5px 10px;
 }
 
 .project {
   border: 2px outset;
-  margin-bottom:10px;
-  background:#c0c0c0;
+  margin-bottom: 10px;
+  background: #c0c0c0;
 }
 
-.my-chart{
-  width:250px !important;
-  height:250px !important;
+.my-chart {
+  width: 250px !important;
+  height: 250px !important;
 }
 
-@media only screen and (min-width:599px) {
+.icon-container {
+  display: none;
+}
+
+.my-footer {
+  background: #c0c0c0;
+  border: 2px outset;
+  display: flex;
+  padding: 2px;
+  margin-top: 40px;
+}
+
+.menu-time {
+  position: absolute;
+  right: 0;
+  padding: 3px;
+  border: 2px inset;
+  width: 70px;
+  text-align: center;
+}
+
+.menu-start-button {
+  border: 2px outset;
+  display: flex;
+  width: 70px;
+  padding: 3px;
+  margin-right: 5px;
+}
+.menu-start-button img {
+  height: 20px;
+  margin-right: 2px;
+}
+
+.menu-program {
+  border: 2px inset;
+  padding: 3px;
+  width: 200px;
+}
+
+@media only screen and (min-width: 599px) {
   .user-data {
-    display:grid;
+    display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 23px 1fr;
   }
@@ -135,30 +201,73 @@ h2 {
   .user-data img {
     grid-row: 2 / span 1;
     grid-column: 1 / span 1;
-    margin:10px 0px 10px 10px;
+    margin: 10px 0px 10px 10px;
     min-width: 280px;
   }
 
   .user-text {
     grid-column: 2 / span 1;
-    grid-row: 2 /span 1;
-    margin:10px 10px 10px 0px;
+    grid-row: 2 / span 1;
+    margin: 10px 10px 10px 0px;
   }
 
   .projects {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
-    gap:10px;
+    gap: 10px;
   }
 
   .project {
-    width:calc(50% - 5px);
-    margin:0px;
+    width: calc(50% - 5px);
+    margin: 0px;
   }
 
-  body {
+  main {
     max-width: 768px;
-    margin:0 auto;
+    margin: 0 auto;
   }
 
+  .my-chart-container {
+    background: #c0c0c0;
+    border: 2px outset;
+    margin: 10px;
+    position: absolute;
+    right: 20px;
+    z-index: 5;
+  }
+
+  .my-chart {
+    padding: 10px;
+  }
+
+  .chart-header {
+    background: #000080;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .icon-container {
+    display: flex;
+  }
+
+  .icon-container {
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    left: 0;
+  }
+
+  .icon-container img {
+    margin: 10px 10px 2px 10px;
+    width: 40px;
+  }
+
+  .icon-container p {
+    color: white;
+    margin: 0px;
+    font-size: 12px;
+    margin: 0px 10px 10px 10px;
+    z-index: 0;
+  }
 }
