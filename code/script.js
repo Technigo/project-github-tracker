@@ -26,6 +26,8 @@ const getUserNameAndPic = (data) => {
 
 const getReposDetails = (data) => {
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
+  // const smth = UserForkedRepos sort here
+  // smth.for echa
   userForkedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
     fetch(repo.commits_url.replace("{/sha}", ""))
@@ -88,9 +90,17 @@ const getComments = (COMMENTS_URL, repo) => {
 const renderComments = (comments, repo) => {
   // separating code review comments from user answers
   const filteredComments = comments.filter((com) => !com.in_reply_to_id);
+  if (filteredComments.length === 0) {
+    return;
+  }
   const reposStats = document.getElementById(`each-${repo.name}`);
+
+  const commentsButton = document.createElement("button");
+  commentsButton.innerText = "Comments";
+  reposStats.appendChild(commentsButton);
+  commentsButton.className = "comments-button";
   const commentContainer = document.createElement("div");
-  commentContainer.classList.add("comment-container", "active", "unactive");
+  commentContainer.classList.add("comment-container");
   reposStats.appendChild(commentContainer);
 
   filteredComments.forEach((comment) => {
@@ -98,22 +108,12 @@ const renderComments = (comments, repo) => {
     <p>${comment.body}</p>
    `;
   });
-  const commentsButton = document.createElement("button");
-  commentsButton.innerText = "Comments";
-  reposStats.appendChild(commentsButton);
-  commentsButton.className = "comments-button";
 
-  commentsButton.addEventListener("click", classToggle(commentContainer));
+  commentsButton.addEventListener("click", () => classToggle(commentContainer));
 };
 
 const classToggle = (commentContainer) => {
-  if (commentContainer.className === "active") {
-    commentContainer.classList.remove("active");
-  } else if (commentContainer.className === "unactive") {
-    commentContainer.classList.toggle("active");
-  } else {
-    console.log("error in event listener", error);
-  }
+  commentContainer.classList.toggle("active");
 };
 
 // (commentContainer) => {
@@ -123,13 +123,6 @@ const classToggle = (commentContainer) => {
 //     commentContainer.classList.toggle("active");
 //   }
 // };
-
-// for (let j=0; j<question.length; j++) {
-//   if (question[j] === this) {
-//    this.classList.toggle("active");
-//   } else {question[j].classList.remove("active")}
-//   }
-//  });
 
 // https://stackoverflow.com/c/technigo/questions/2918
 // https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100

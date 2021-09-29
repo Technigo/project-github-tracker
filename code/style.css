@@ -13,19 +13,16 @@ body {
 }
 /* Styles for tablet  and desktop : */
 
-.active {
-  display: block;
-}
-
-.unactive {
-  display: none;
-}
-
 .comment-container {
-  width: 200px;
-  height: 200px;
+  display: none;
+  width: 600px;
+  height: inherit;
 }
 
 .comments-button {
   background-color: aqua;
+}
+
+.comment-container.active {
+  display: block;
 }
