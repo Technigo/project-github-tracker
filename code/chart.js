@@ -22,21 +22,21 @@ const drawChart = (amount) => {
   const myProjects = new Chart(ctx, config)
 }
 
-const drawTimeLine = (created) => {
-  const config = {
-    type: 'pie',
-    data: {
-      labels: ['Javascript', 'HTML', 'CSS', 'REACT'],
-      datasets: [
-        {
-          label: 'Created projects',
-          data: [created],
-          backgroundColor: ['#444444', '#e6e6e6'],
-          hoverOffset: 100,
-        },
-      ],
-    },
-  }
+// const drawTimeLine = (created) => {
+//   const config = {
+//     type: 'pie',
+//     data: {
+//       labels: ['Javascript', 'HTML', 'CSS', 'REACT'],
+//       datasets: [
+//         {
+//           label: 'Created projects',
+//           data: [created],
+//           backgroundColor: ['#444444', '#e6e6e6'],
+//           hoverOffset: 100,
+//         },
+//       ],
+//     },
+//   }
 
-  const line = new Chart(ctx2, config)
-}
+//   const line = new Chart(ctx2, config)
+// }

@@ -7,10 +7,12 @@ const getUserData = () => {
     .then((res) => res.json())
     .then((data) => {
       projects.innerHTML = `
+      <div class="personal-info">
     <h1>Username: ${data.login}</h1>
     <h4>Full name: ${data.name}</h4>
     <h4>Location : ${data.location}</h4>
-    <img src="${data.avatar_url}"/>
+    <img class="img" src="${data.avatar_url}"/>
+    </div>
      `
     })
 }
@@ -36,13 +38,18 @@ const getRepos = () => {
           }
         )
 
-        projects.innerHTML += `<div id="repoCards" class="repo-cards">
+        projects.innerHTML += `<div id="${repo.name}"" class="repo-cards">
+        <p id="commit-${repo.name}"></p>
         <button id="commits">Show latest commit message</button>
-        <p>Amount of commits..</p><p><a href="${repo.html_url}" target="blank"> My Repo ${repo.name}</a></p>
-        <p>Branch ${repo.default_branch}</p> <p>${pushedDate}</p></div>
+        <p><a href="${repo.html_url}" target="blank"> My Repo ${repo.name}</a></p>
+        <p>Branch ${repo.default_branch}</p> 
+        <p>Recent push ${pushedDate}</p>
+        
+        </div>
+
       `
       })
-      drawTimeLine(filtered.length)
+      // drawTimeLine(filtered.length)
       drawChart(filtered.length)
       getPR(filtered)
     })
@@ -58,18 +65,18 @@ const getPR = (repos) => {
         const myPR = data.find((pull) => pull.user.login === repo.owner.login)
         const myCommits = myPR.commits_url
         console.log(myCommits)
-        getCommits(myCommits)
+        getCommits(myCommits, repo.name)
       })
   })
 }
 
-const getCommits = (url) => {
+const getCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      const amountOfCommits = data.length
-      console.log(amountOfCommits)
-      projects.innerHTML += `<div id="repoCards" class="repo-cards"><p>Commits from each pull requests ${data.length}</p></div>`
+      document.getElementById(
+        `commit-${myRepoName}`
+      ).innerHTML += `<p>Commits from each pull requests ${data.length}</p>`
     })
 }
 
@@ -77,3 +84,7 @@ getUserData()
 getRepos()
 
 // add eventlistener here
+
+{
+  /* <p id="commit-${repo.name}">Amount of commits </p> */
+}

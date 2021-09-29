@@ -1,5 +1,7 @@
 body {
-  background: #ffece9;
+  width: 1024px;
+  margin: 0 auto;
+  background: #b3b3b3;
 }
 
 .repo-cards {
@@ -9,6 +11,25 @@ body {
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: column-reverse;
+  width: 400px;
+  border-radius: 2em;
+  box-shadow: 0.25em 0.25em 0.25em black;
+  background-color: #e6e6e2;
+}
+
+.projects {
+  margin: 0 auto;
+  align-items: center;
+}
+
+.personal-info {
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+}
+
+.img {
+  border-radius: 50%;
 }
