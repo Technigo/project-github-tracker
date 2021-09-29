@@ -1,3 +1,49 @@
+/* mobile first styling */
 body {
   background: #FFECE9;
+  display: grid;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0.5rem;
+  margin: 2rem;
+}
+
+.profile-div {
+  grid-column: span 4;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.profile-img {
+  width: 50%;
+  height: inherit;
+  border-radius: 50%;
+}
+
+.project-container {
+
+}
+
+.repo-div {
+
+}
+
+.repo-chart {
+
+}
+
+/* styling for tablet */
+@media min max {
+
+}
+
+/* styling for desktop */
+@media min {
+
 }
