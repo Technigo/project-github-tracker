@@ -1,3 +1,10 @@
+const options = {
+  method: `GET`,
+  headers: {
+    Authorization: `token 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`,
+  },
+};
+
 //Global variables
 let username = "Zancotti";
 let filteredRepos = [];
@@ -23,8 +30,8 @@ const getUsernameAndPicture = () => {
       userInformation.innerHTML = `
         <img class="user-information__picture" src="${pictureOfUser}" alt="Picture of gitHub-user"/>
         <div class="user-information__username-bio-container">
-          <div class="user-information__username">${username}</div>
-          <div class="user-information__bio">${userBio}</div>
+          <div class="user-information__username-bio-container__username">${username}</div>
+          <div class="user-information__username-bio-container__bio">${userBio}</div>
         </div>`;
     });
 };
@@ -68,6 +75,7 @@ const getRepos = () => {
             </div>
             <div class="projects__repo-container__header__amount-commitmessages" id="${repoName}-amountCommitmessages"></div>
           </div>
+          <div class="projects__commit-pulls-container" id="${repoName}-commit-pulls-container"></div>
         </div>`;
 
         repoDefaultBranch = e.default_branch;
@@ -92,11 +100,15 @@ const getPullRequests = (repoName) => {
       if (data.length > 0) {
         let prTitle = data[0].title;
         let prUrl = data[0].url;
-        let containerToChange = document.getElementById(repoName);
-        containerToChange.innerHTML += `<div class="projects__pull-request__content"><div>Pull request link:</div><a href="${prUrl}">${prTitle}</a></div>`;
+        let containerToChange = document.getElementById(
+          `${repoName}-commit-pulls-container`
+        );
+        containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request"><div>Pull request link:</div><a href="${prUrl}">${prTitle}</a></div>`;
       } else {
-        let containerToChange = document.getElementById(repoName);
-        containerToChange.innerHTML += `<div class="projects__pull-request__content">No pull request made</div>`;
+        let containerToChange = document.getElementById(
+          `${repoName}-commit-pulls-container`
+        );
+        containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request">No pull request made</div>`;
       }
     });
 };
@@ -113,8 +125,10 @@ const getcommits = (repoName) => {
 
       console.log(commitMessage);
 
-      let containerToChange = document.getElementById(repoName);
-      containerToChange.innerHTML += `<div class="projects__repo-container__last-commit">Last commit message: ${commitMessage}</div>`;
+      let containerToChange = document.getElementById(
+        `${repoName}-commit-pulls-container`
+      );
+      containerToChange.innerHTML += `<div class="projects__commit-pulls-container__last-commit">Last commit message: ${commitMessage}</div>`;
       amountCommitmessages = document.getElementById(
         `${repoName}-amountCommitmessages`
       );
