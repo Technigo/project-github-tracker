@@ -1,6 +1,6 @@
 const USER = "ebbadelsol";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
-const projectsContainer = document.getElementById("projects");
+const projectsContainer = document.getElementById("projects-container");
 const userContainer = document.getElementById("user-container");
 
 const getUser = () => {
@@ -11,7 +11,7 @@ const getUser = () => {
       // console.log("User: ", data.login);
       userContainer.innerHTML += /*html*/ `
         <img class="user-image" src="${data.avatar_url}"/>
-        <h1>${data.login}</h1>
+        <h2 class="user-name">${data.login}</h2>
       `;
     });
 };
@@ -27,12 +27,13 @@ const getRepos = () => {
 
       technigoProjects.forEach((repo) => {
         projectsContainer.innerHTML += /*html*/ `
-          <div class="${repo.name}-container" id="${repo.name}-container">
-            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-            <p>Default branch ${repo.default_branch}</p>
-            <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commits-${repo.name}">Amount of commits: </p>
+          <div class="project" id="${repo.name}-container">
+            <a class="project-name" href="${repo.html_url}" target="_blank">${repo.name}</a>
+            <p class="project-info">Default branch ${repo.default_branch}</p>
+            <p class="project-info">Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p class="project-info" id="commits-${repo.name}">Amount of commits: </p>
           </div>
+          <hr>
         `;
       });
 
@@ -78,7 +79,7 @@ const getReview = (url, repoName) => {
       //console.log("My review:", data);
       // console.log(`Reviewed by ${data[0].user.login}`);
       document.getElementById(`${repoName}-container`).innerHTML += /*html*/ `
-      <p>Reviewed by: ${data[0].user.login}</p>
+      <p class="project-info">Reviewed by: ${data[0].user.login}</p>
       `;
     });
 };

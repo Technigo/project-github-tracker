@@ -5,23 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
+
+    <!-- Roboto fontfamily -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+
+    <!-- Open Sans fontfamily -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css" />
+
     <!-- Chart -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
-
+    <header class="background-image"></header>
     <main>
-      <section id="user-container"></section>
-      <section id="projects"></section>
+      <section class="user-container" id="user-container"></section>
+      <section class="projects-container" id="projects-container"></section>
+      <section class="chart-container">
+        <div>
+          <canvas id="chart"></canvas>
+        </div>
+      </section>
     </main>
-
-    <!-- This will be used to draw the chart 👇 -->
-    <div>
-      <canvas id="chart"></canvas>
-    </div>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

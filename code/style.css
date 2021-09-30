@@ -1,3 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: #FFECE9;
+  font-family: "Roboto", sans-serif;
+  color: #222222;
+}
+
+.background-image {
+  width: 100vw;
+  height: 225px;
+  background-image: url("https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"); /* Change image */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.user-container {
+  position: relative;
+  text-align: center;
+  bottom: 72px;
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 126px;
+  border: solid 6px #ffffff;
+}
+
+.user-name {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.projects-container {
+  line-height: 1.8;
+  margin-top: -40px;
+}
+
+.projects-container :hover {
+  background: linear-gradient(90deg, white, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, white);
+}
+
+.project-info {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666666;
+}
+
+.project-info :hover {
+  background: none;
+}
+
+.project-name {
+  font-family: "Open Sans", sans-serif;
+  color: #222222;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+hr {
+  margin: auto;
+  width: 75vw;
+  background: linear-gradient(90deg, white, #e6e6e6, #e6e6e6, #e6e6e6, white);
+  height: 1px;
+  border: none;
 }
