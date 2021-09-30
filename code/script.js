@@ -87,8 +87,8 @@ fetch(USERS_URL)
     console.log(data);
     userInformation.innerHTML = `
     <img src="${data.avatar_url}"/>
-    <h3>${data.name}</h3>
     <div class="user-information">
+      <h3>${data.name}</h3>
       <h4>${data.login}</h4>
       <h4>Location: ${data.location}</h4>
       <h4>Bio: ${data.bio}</h4>
