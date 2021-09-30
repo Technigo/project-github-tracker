@@ -1,8 +1,7 @@
-1) fetch the repos and console log them 
-2) get them in the browser 
-3) filter out the technigo repos
-4) test chart library
-
+// 1) fetch the repos and console log them
+// 2) get them in the browser
+// 3) filter out the technigo repos
+// 4) test chart library
 
 //1. Find only the PR that you made by comparing pull.user.login // with repo.owner.login
 //2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
@@ -10,4 +9,3 @@
 // another function with the review_comments_url as argume
 //Remember to pass along your filtered repos as an argument when
 //you are calling this function
-

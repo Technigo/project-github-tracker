@@ -7,18 +7,36 @@
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab&display=swap" rel="stylesheet">
   </head>
   <body>
     <h1>GitHub Tracker</h1>
+    <img class ="picture" id="avatar"></img>
+
+    <section class ="profile-section">
+      <p id="full-name"></p>
+      <p id="bio"></p>
+      <p id="username"></p>
+    </section>
+
     <h2>Projects:</h2>
-    <main id="projects"></main>
+    <section class= projects-section>
+      <main id="projects"></main>
+    </section>
 
-    <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
 
-    <script src="./script.js"></script>
+    <section class="progress-chart">
+  <!-- This will be used to draw the chart 👇 -->
+  <canvas id="chart"></canvas>
+      
+    </section>
+   
+<!-- <script src="./token.js"></script> -->
+   
     <!-- Links to the js file -->
+    <script src="./script.js"></script>
     <script src="./chart.js"></script>
-    <!-- Links to the chart -->
+  
+ 
   </body>
 </html>
