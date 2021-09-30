@@ -1,16 +1,34 @@
 :root {
   --background: white;
-  /* background-color: rgb(255, 85, 204); */
+  --borders: rgb(237, 255, 72);
+  --attenion: rgb(255, 85, 204);
+  --font: rgb(69, 69, 69, 1);
+  --buttons: #06fff3;
 }
 
 body {
   background: var(--background);
+  color: var(--font);
+}
+
+a {
+  text-decoration: none;
+  color: var(--font);
+}
+
+a:hover {
+  color: var(--attenion);
 }
 
 .avatar {
   border-radius: 100%;
+  border: 2px solid transparent;
   width: 10%;
   height: 10%;
+}
+
+.avatar:hover {
+  border: 2px solid var(--borders);
 }
 /* Styles for tablet  and desktop : */
 
@@ -34,8 +52,8 @@ body {
 }
 
 .custom-input:focus:invalid {
-  background-color: rgba(218, 165, 32, 0.26);
-  border: 2px solid goldenrod;
+  background-color: whitesmoke;
+  border: 2px solid var(--borders);
 }
 
 .custom-input:valid {
@@ -49,7 +67,7 @@ body {
 }
 
 .comments-button {
-  background-color: aqua;
+  background-color: var(--buttons);
 }
 
 .chart {

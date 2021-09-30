@@ -14,3 +14,5 @@ Dashbord provides vital stats on each project along with motivational progress b
 ## Tech Stack: JS, CSS, HTML, ChartJS
 
 ## View it live
+
+Netlify: https://github-tracker-marysnopok.netlify.app/

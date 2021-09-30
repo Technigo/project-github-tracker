@@ -42,13 +42,14 @@ const getUserNameAndPic = (data) => {
 };
 
 const getReposDetails = (data) => {
-  // filtering out user forked repos
+  // filtering out user forked repaos
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
-  console.log("data", userForkedRepos);
   // sorting repos by creation date
   const sortedRepos = userForkedRepos.sort((a, b) => {
-    return new Date(a.created_at) - new Date(b.created_at);
+    return new Date(b.created_at) - new Date(a.created_at);
   });
+
+  sortedRepos.forEach((r) => console.log(r.created_at, r.name));
   sortedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
     fetch(repo.commits_url.replace("{/sha}", ""))
@@ -56,7 +57,7 @@ const getReposDetails = (data) => {
       .then((commits) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
-    <a class="repo-links" href="${repo.html_url}">View on Github</a>
+    <a class="repo-links" href="${repo.html_url}">view on Github</a>
     <div class="repos-stats" id="${repo.name}">
     <p class="stats">branch: ${repo.default_branch}<p>
     <p class="stats">last update: ${lastUpdate}<p>
@@ -139,15 +140,3 @@ const classToggle = (commentContainer) => {
 };
 
 fetchUserRepos();
-
-// - Your username and profile picture first fetch DONE
-// - URL to the actual GitHub repo first fetch  OK
-// - Name of your default branch for each repo -  first fetch OK
-// number of views OK
-// - Most recent update (push) for each repo - first fetch OK
-// - Number of commit messages for each repo - OK
-// - visualise projects via chart js
-// - PRs
-// - comments via pop ups
-// - Sort your list in different ways.
-// - Implement a search field to find a specific repo based on name
