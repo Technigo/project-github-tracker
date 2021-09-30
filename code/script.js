@@ -53,12 +53,13 @@ const getGeneralInfo = () => {
             console.log(data)
             generalInfoContainer.innerHTML += `
             <img class="profile-image" src = "${data.avatar_url} alt ="avatar"/>
-            <div class="names" ><h1 class="name">${data.name}</h1>
+
+            <div class="names" >
             <h1 class="username">${data.login}</h1></div >
             <p class="bio">${data.bio}</p>
             <div class="location-info"><img class="location-icon" src="location.png" alt="location" /><p> ${data.location}</p></div>
             <div class="linkedin-info">
-            <img class="linkedin-icon" src="chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}">https://www.linkedin.com/in/julia-nikitinashlm/</a>
+            <img class="linkedin-icon" src="chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}" target="_blank">https://www.linkedin.com/in/julia-nikitinashlm/</a>
             </div>
                 `
         })
@@ -70,7 +71,6 @@ const getPullRequests = (forkedRepos) => {
         fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
             .then(response => response.json())
             .then(data => {
-                //console.log(data)
                 const myPulls = data.find(pulls => pulls.user.login === repo.owner.login)
                 console.log(myPulls)
                 // document.getElementById(`${repo.name}`).innerHTML += `<a class="links" href="${myPulls._links.html.href}">Pull request: ${myPulls.title}</a>`
@@ -87,12 +87,9 @@ getCommits = (commitsURL, repo) => {
         .then(data => {
             console.log(data)
             console.log(data.length)
-            //console.log('INFO', document.getElementById(`${repo.name}`))
             document.getElementById(`${repo.name}`).innerHTML += `<h5>This repo has been committed ${data.length} times</h5>`
             // console.log(data[data.length - 1].commit.message)
 
         })
 
 }
-
-

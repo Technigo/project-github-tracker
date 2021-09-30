@@ -1,9 +1,10 @@
+
 body {
   background:#181a1b;
   margin:0;
   box-sizing: border-box;
 }
-
+/*----------------- Phone view --------------- */
 .header {
   background-color: #2d333b;
   color: #adbac7;
@@ -25,12 +26,11 @@ body {
   justify-content: space-around;
   margin: 20px;
   color: #768390;
-  
 }
 
 .my-divs {
   border: 1px solid #444c56;
-  margin-bottom: 20px;
+  margin: 20px 15px;
   border-radius: 15px;
   text-align: center;
   background-color:#242728;
@@ -81,7 +81,7 @@ body {
   font-size: 26px;
 }
 .username {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 300;
 }
 .location-info {
@@ -120,36 +120,78 @@ body {
   border: none;
   display: block;
 }
-
+.chart {
+  max-width: 90%;
+  margin-left: 20px;
+}
+.general {
+  margin-left: 10px;
+}
+/*----------------- IPAD view --------------- */
 @media (min-width:768px) {
   .chart {
-    max-width: 300px;
-    max-height: 300px;
-    margin-left: 300px;
+    max-width: 80%;
+    margin-left: 75px;
   }
-  .main-section {
+  .my-divs {
+    margin: 20px 50px;
+  }
+
+  .general {
+    margin-left: 50px;
+  }
+  .repo-language {
+    top: 3px;
+    right: 10px;
+  }
+  .statistics {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+/*----------------- Small desktop view --------------- */
+@media (min-width:992px) {
+  .projects-section {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+  }
+  .my-divs {
+    margin-left: 20px;
+    display: grid;
+    font-size: 15px;
+    min-width: 300px;
+    max-width: 450px;
+    height: 150px;
+  } 
+  .repo-language {
+    top: 17px;
+    right: -160px;
+  }
+  .charts {
+    max-width: 550px;
     display: flex;
     flex-direction: row;
   }
-  .my-divs {
-    display: grid;
-    font-size: 15px;
-    width: 450px;
-    height: 150px;
-  }
 
-  .my-divs h5 {
-    margin: 5px;
-    margin-top:0;
+  .general {
+    text-align: center;
   }
+  .location-info {
+    display: none;
+  }
+ 
+}
 
+/*----------------- Big desktop view --------------- */
+@media (min-width:1200px) {
   .projects-section {
     display: grid;
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2,1fr);
   }
-
-  .my-divs {
-    margin-left: 20px;
+  .my-divs h5 {
+    margin: 0px;
+    margin-top:0;
   }
   .linkedin-info {
     display: inline;
@@ -158,6 +200,40 @@ body {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+  }
+  .my-divs {
+    display: grid;
+    margin:10px;
+    font-size: 15px;
+    min-width: 380px;
+    max-width: 450px;
+    height: 150px;
+  }
+  .chart {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .main-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+  }
+  .repo-language {
+    top: 20px;
+    right: -140px;
+    
+  }
+  .profile-image {
+    margin-right: 50px;
+    width: 300px;
+  }
+  .language-name {
+    margin-left: 10px;
+  }
+  .charts {
+    display: flex;
+    flex-direction: row;
+    margin-left: 320px;
   }
   .link-linkedin {
     text-decoration: none;
@@ -168,33 +244,7 @@ body {
   .link-linkedin:hover {
     color: #539bf5;
   }
-  .profile-image {
-    width: 300px;
-  }
-  .repo-language {
-    position: relative;
-    top: 18px;
-    right: -178px;
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1px solid;
-  }
-  .language-name {
-    margin-left: 7px;
-  }
-  .charts {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-@media (min-width:992px) {
-  .main-section {
-    margin: 50px 200px 50px 200px;
-  }
-  .profile-image {
-    margin-right: 50px;
+  .general {
+    text-align: left;
   }
 }
