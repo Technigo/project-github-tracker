@@ -9,7 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <header class="header"></header>
+    <header class="header">
+      <img class="github-icon" src="./assest/img_github.png" id="icon" />
+    </header>
     <section class="main-container">
       <section class="profile-container" id="profile-container">
         <img class="profile-pic" src="" id="image" />
@@ -23,9 +25,12 @@
     </section>
 
     <!-- This will be used to draw the chart 👇 -->
-    <section class="chart-box">
-      <canvas id="chart"></canvas>
+    <section class="chart-container">
+      <section class="canvas-container">
+        <canvas class="canvas" id="chart"></canvas>
+      </section>
     </section>
+    <footer></footer>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>

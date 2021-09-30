@@ -1,17 +1,24 @@
 body {
   background: #f3f0ef;
   font-family: Arial, Helvetica, sans-serif;
+  color: rgb(45, 64, 75);
 }
 
 .header {
   display: flex;
-  background: rgb(36, 36, 36);
-  padding: 30px;
+  background: rgb(80, 99, 110);
+  padding: 10px;
+  justify-content: center;
+}
+
+.github-icon {
+  width: 10%;
+  height: 10%;
 }
 
 .profile-container {
   display: flex;
-  border-bottom: solid rgb(163, 160, 160);
+  border-bottom: solid rgb(153, 160, 165);
   border-width: 1px;
   align-items: center;
   padding: 10px;
@@ -30,8 +37,8 @@ body {
   object-fit: cover;
   border-radius: 70%;
   margin-right: 10px;
-  border-bottom: solid rgb(163, 160, 160);
-  border-top: solid rgb(163, 160, 160);
+  border-bottom: solid rgb(0, 130, 204);
+  border-top: solid rgb(160, 0, 204);
   border-width: 1px;
   padding: 5px;
 }
@@ -43,7 +50,8 @@ h1 {
 .repo-container {
   display: flex;
   flex-direction: column;
-  background-color: #e5e2e2;
+  background-color: #e2e4e5;
+  border-radius: 6px;
   padding: 10px;
 }
 
@@ -55,7 +63,7 @@ h3 {
 h2 {
   font-size: 20px;
   display: block;
-  border-bottom: solid rgb(163, 160, 160);
+  border-bottom: solid rgb(153, 160, 165);
   border-width: 1px;
   padding-bottom: 10px;
 }
@@ -64,7 +72,7 @@ h2 {
   background: #f3f0ef;
   display: flex;
   flex-direction: column;
-  border: solid rgb(163, 160, 160);
+  border: solid rgb(153, 160, 165);
   border-radius: 6px;
   border-width: 1px;
   padding-left: 10px;
@@ -76,12 +84,31 @@ h2 {
   font-size: 12px;
   margin: 5px;
 }
-
+.canvas-container {
+  display: flex;
+  background-color: #e2e4e5;
+  border-radius: 6px;
+  margin-top: 10px;
+}
 canvas {
   padding: 10px;
 }
+footer {
+  background: rgb(80, 99, 110);
+  /* margin-top: 10px; */
+  padding: 20px;
+  /* justify-content: center; */
+}
 
 @media (min-width: 668px) {
+  .header {
+    justify-content: right;
+  }
+  .github-icon {
+    width: 5%;
+    height: 5%;
+  }
+
   .profile-container {
     padding: 10px;
     justify-content: left;
@@ -110,17 +137,22 @@ canvas {
 }
 
 @media (min-width: 1024px) {
+  .github-icon {
+    width: 2.5%;
+    height: 2.5%;
+  }
   .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .profile-container {
     grid-column: span 1;
-    height: 550px;
+    height: 725px;
     display: table-column;
     text-align: center;
     padding: 20px;
     margin-top: 20px;
+    margin-right: 5px;
   }
   .profile-pic {
     width: 250px;
@@ -128,9 +160,6 @@ canvas {
     align-items: center;
     padding: 20px;
     margin-bottom: 50px;
-    border-bottom: solid rgb(163, 160, 160);
-    border-top: solid rgb(163, 160, 160);
-    border-width: 1px;
   }
   h1 {
     display: contents;
@@ -171,14 +200,24 @@ canvas {
     font-size: 10px;
     margin: 0;
   }
-  .chart-box {
-    border: solid green;
-    width: auto;
-    align-items: center;
-    padding: 0;
-    align-self: center;
-  }
   .chart-container {
-    padding: 0;
+    display: flex;
+    background-color: #e2e4e5;
+    border-radius: 6px;
+    justify-content: center;
+    margin-top: 10px;
   }
+  .canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 800px; 
+  }
+
+  canvas {
+    padding: 50px;
+    margin-top: 10px;
+    max-width: 600px;
+    max-height: 600px;
 }

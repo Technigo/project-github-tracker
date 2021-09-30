@@ -14,8 +14,8 @@ const drawChart = (amount) => {
           label: "My First Dataset",
           data: [amount, 20 - amount],
           backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
+            "rgb(0, 130, 204)",
+            "rgb(160, 0, 204)",
             "rgb(255, 205, 86)",
           ],
           hoverOffset: 4,
