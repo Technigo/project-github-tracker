@@ -1,10 +1,12 @@
 const ctx = document.getElementById("chart").getContext("2d");
-
+let chart;
 const drawChart = (repos) => {
   const completedProjects = repos.length;
   const upcommingProjects = 20 - repos.length;
-
-  new Chart(ctx, {
+  if (chart) {
+    chart.destroy();
+  }
+  chart = new Chart(ctx, {
     type: "doughnut",
     data: {
       labels: ["Completed projects", "Upcomming projects"],

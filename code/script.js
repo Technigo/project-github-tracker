@@ -2,15 +2,32 @@ const USER_ID = "MarySnopok";
 const REPOS_URL = `https://api.github.com/users/${USER_ID}/repos`;
 const reposDataContainer = document.getElementById("projects");
 const userDetails = document.getElementById("user-details");
-const input = document.getElementById("request").value;
-// const commentsContainer = document.getElementById("comments");
+const input = document.getElementById("request");
 
-// - A list of all repos that are forked once from Technigo
+// fetching all user repos
 const fetchUserRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log("data", data);
+      input.addEventListener("change", () => {
+        const searchString = input.value;
+        // checking input validity by searching for exact repo name =>
+        const anyRepo = data.find((repo) => repo.name === searchString);
+        console.log("any repo", anyRepo);
+        reposDataContainer.innerHTML = "";
+        if (searchString === "") {
+          // if input is empty
+          getReposDetails(data);
+        } else {
+          // if input is not empty and match for the repo name was found do this =>
+          if (anyRepo) {
+            getReposDetails([anyRepo]);
+            // otherwise if returned as undefined do this =>
+          } else {
+            reposDataContainer.innerHTML = "repo not found";
+          }
+        }
+      });
       getUserNameAndPic(data);
       getReposDetails(data);
     })
@@ -18,7 +35,6 @@ const fetchUserRepos = () => {
       console.error("fetchUserRepos", error);
     });
 };
-fetchUserRepos();
 
 const getUserNameAndPic = (data) => {
   userDetails.innerHTML = `<img class="avatar" src="${data[0].owner.avatar_url}"/>
@@ -26,12 +42,14 @@ const getUserNameAndPic = (data) => {
 };
 
 const getReposDetails = (data) => {
+  // filtering out user forked repos
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
-  // const smth = UserForkedRepos sort here
-  // smth.for echa
-  // chartData.datasets.data[1].push(userForkedRepos.length);
-  drawChart(userForkedRepos);
-  userForkedRepos.forEach((repo) => {
+  console.log("data", userForkedRepos);
+  // sorting repos by creation date
+  const sortedRepos = userForkedRepos.sort((a, b) => {
+    return new Date(a.created_at) - new Date(b.created_at);
+  });
+  sortedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
     fetch(repo.commits_url.replace("{/sha}", ""))
       .then((response) => response.json())
@@ -39,7 +57,7 @@ const getReposDetails = (data) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
     <a class="repo-links" href="${repo.html_url}">View on Github</a>
-    <div class="repos-stats" id="each-${repo.name}">
+    <div class="repos-stats" id="${repo.name}">
     <p class="stats">branch: ${repo.default_branch}<p>
     <p class="stats">last update: ${lastUpdate}<p>
     <p class="stats link">commits: ${commits.length}<p>
@@ -51,11 +69,12 @@ const getReposDetails = (data) => {
         console.error("repo commits url", error);
       });
   });
-  getPullRequests(userForkedRepos);
+  drawChart(sortedRepos);
+  getPullRequests(sortedRepos);
 };
 
-const getPullRequests = (userForkedRepos) => {
-  userForkedRepos.forEach((repo) => {
+const getPullRequests = (sortedRepos) => {
+  sortedRepos.forEach((repo) => {
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
       .then((res) => res.json())
       .then((pulls) => {
@@ -65,7 +84,7 @@ const getPullRequests = (userForkedRepos) => {
         userPRs.forEach((pull) => {
           const COMMENTS_URL = pull.review_comments_url;
           const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
-          document.getElementById(`each-${repo.name}`).innerHTML += `
+          document.getElementById(`${repo.name}`).innerHTML += `
         <div class="repos-stats" id="pull-${repo.name}">
         <p class="stats">PR date: ${pullDate}<p>
         </div>`;
@@ -93,11 +112,11 @@ const getComments = (COMMENTS_URL, repo) => {
 const renderComments = (comments, repo) => {
   // separating code review comments from user answers
   const filteredComments = comments.filter((com) => !com.in_reply_to_id);
+  // withdrawing from execution if no comments were available
   if (filteredComments.length === 0) {
     return;
   }
-  const reposStats = document.getElementById(`each-${repo.name}`);
-
+  const reposStats = document.getElementById(`${repo.name}`);
   const commentsButton = document.createElement("button");
   commentsButton.innerText = "Comments";
   reposStats.appendChild(commentsButton);
@@ -108,22 +127,19 @@ const renderComments = (comments, repo) => {
 
   filteredComments.forEach((comment) => {
     commentContainer.innerHTML += `
-    <p>${comment.body}</p>
+    <p class="comments">${comment.body}</p>
    `;
   });
-
   commentsButton.addEventListener("click", () => classToggle(commentContainer));
 };
 
+// showing comments container when active class applied
 const classToggle = (commentContainer) => {
   commentContainer.classList.toggle("active");
 };
 
-// - Sort your list in different ways.
-// **Example of what you can sort by:** creation date, name, most commits, followers or stargazers
-// - Implement a search field to find a specific repo based on name
+fetchUserRepos();
 
-// DONE
 // - Your username and profile picture first fetch DONE
 // - URL to the actual GitHub repo first fetch  OK
 // - Name of your default branch for each repo -  first fetch OK
@@ -133,3 +149,5 @@ const classToggle = (commentContainer) => {
 // - visualise projects via chart js
 // - PRs
 // - comments via pop ups
+// - Sort your list in different ways.
+// - Implement a search field to find a specific repo based on name
