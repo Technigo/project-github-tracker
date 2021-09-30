@@ -100,8 +100,8 @@ const fetchPullRequestsArray = (repo, authors) => {
 			// console.log('myPullReq', repo.name, myPullReq);
 			if (myPullReq) {
 				document.getElementById(`pull-${repo.name}`).innerHTML = `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
-				pullReqData.pullRequests++;
-				drawPieChart(pullReqData);
+				pullReqData.done++;
+				updatePieChart(pieChart, pullReqData.done);
 			} else {
 				document.getElementById(`pull-${repo.name}`).innerHTML = 'No pull request yet done :(';
 			}
@@ -121,3 +121,4 @@ const fetchUser = () => {
 
 fetchAllReposFromUser();
 fetchUser();
+// drawPieChart(19,0);
