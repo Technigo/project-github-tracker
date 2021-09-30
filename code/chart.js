@@ -4,32 +4,29 @@ const ctx = document.getElementById('chart').getContext('2d')
 //"Draw" the chart here 👇
 
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-]
 
-const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-}
+const drawChart = (numberRepos) => {
+  const config = {
+    type: 'bar',
+    data: {
+      labels: [
+        'Finished projects',
+        'Number of projects left',
+      ],
+      datasets: [{
+        label: 'Technigo Projects',
+        data: [numberRepos, 19-numberRepos],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+  }
 
-const config = {
-    type: 'line',
-    data: data,
-    options: {}
-}
-
-var myChart = new Chart(
-    document.getElementById('myChart'),
+  const myChart = new Chart(
+    ctx,
     config
-)
+  )   
+}

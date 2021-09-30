@@ -59,6 +59,7 @@ const getRepos = () => {
         insertRepoInfo(repository)
       })
     })
+    drawChart(technigoRepos.length)
   })
 }
 getRepos()
@@ -66,6 +67,6 @@ getProfile()
 
 
 
-// create dynamic ID from for eaxmple the name of the project 
-// avoid using global variables
-// use info about reponame to get element from dynamic id and update innerhtml
+// // create dynamic ID from for eaxmple the name of the project 
+// // avoid using global variables
+// // use info about reponame to get element from dynamic id and update innerhtml
