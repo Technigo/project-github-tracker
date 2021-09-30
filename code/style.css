@@ -2,23 +2,83 @@
   box-sizing: border-box;
   text-align: center;
 }
+/* variables to style the dark mode, add these in another variable in dark mode and add those to the selectors */
+:root {
+  --borderColor: 2px solid white;
+  --linkColor: white;
+  --usernameColor: white;
+}
 
 body {
   background: #f9f3ec;
   font-family: "Stick No Bills", sans-serif;
   letter-spacing: 2px;
+  margin: 0;
+}
+
+.dark-mode {
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  --borderImgColor: var(--borderColor);
+  --colorOfLink: var(--linkColor);
+  --colorOfUsername: var(--usernameColor);
+}
+
+.toggleBtn {
+  border-radius: 20px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.toggleBtn:hover {
+  border: 2px solid #fff;
+  background: #5f939a;
+}
+
+header {
+  background: #5f939a;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.username {
+  color: var(--colorOfUsername);
+  font-size: 24px;
+}
+
+.repo-title {
+  text-transform: uppercase;
+}
+
+.push-date {
+  width: 100%;
+}
+
+.push-title {
+  font-weight: bold;
+  display: block;
 }
 
 .cards {
   border: 2px solid #5f939a;
-  background-color: rgba(169, 169, 169, 0.397);
+  background-color: rgba(169, 169, 169, 0.534);
   display: grid;
-  align-items: center;
   width: 90%;
   text-align: center;
   margin: 10px auto;
   border-radius: 20px;
-  padding: 5px 5px;
+  padding: 0 5px;
+}
+
+.branch {
+  border: 2px solid black;
+  border-radius: 30px;
+  width: 30%;
+  margin: auto;
+  background: #5f939a;
+  color: white;
 }
 
 .grid-container {
@@ -29,6 +89,7 @@ fieldset {
   border: 4px solid;
   border-color: #5f939a;
   border-radius: 20px;
+  margin: 0 10px;
 }
 
 legend {
@@ -36,20 +97,39 @@ legend {
 }
 
 img {
+  border: var(--borderImgColor);
+  width: 70%;
   border-radius: 50%;
-  border: 4px solid black;
 }
 .chart {
-  margin: auto;
+  margin: 10px auto;
   height: 200px;
   width: 200px;
+}
+
+.links {
+  color: var(--colorOfLink);
+  width: 80%;
+  margin: auto;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.links:hover {
+  transition: all 1s;
+  background: #5f939a;
+}
+
+footer {
+  background: #5f939a;
+  padding: 10px;
+  margin-top: 20px;
 }
 
 /* MEDIA QUERIES */
 
 @media (min-width: 768px) {
   .grid-container {
-    border: 2px solid red;
     display: grid;
     grid-template-columns: 1fr 2fr;
   }
@@ -62,6 +142,12 @@ img {
   .cards {
     border: 2px solid #d8ac9c;
     display: grid;
-    width: 100%;
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .chart {
+    width: 300px;
+    height: 300px;
   }
 }

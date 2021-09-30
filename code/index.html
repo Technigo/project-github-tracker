@@ -12,20 +12,36 @@
       href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
+    <header>
+      <button class="toggleBtn" onclick="myFunction()">Toggle dark mode</button>
+      <h1>GitHub Tracker</h1>
+    </header>
+
     <section class="grid-container">
       <div>
         <div id="profile"></div>
         <div class="chart"><canvas id="chart"></canvas></div>
       </div>
+
       <fieldset>
         <legend>Projects</legend>
         <main class="project-cards" id="projects"></main>
       </fieldset>
     </section>
+
+    <footer>
+      <p>TEXT</p>
+    </footer>
 
     <!-- This will be used to draw the chart 👇 -->
 

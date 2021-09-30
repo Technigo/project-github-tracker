@@ -16,12 +16,16 @@ const profile = () => {
     .then(json => {
       profileInfo.innerHTML += `
         <img src=${json.avatar_url}>
-        <h3>Username: ${json.login}</h3>
+        <h3 class="username"><i class="fab fa-github"></i>
+
+        ${json.login}</h3>
         <p>This account has a total of ${json.public_repos} repos</p>
         `;
     });
 };
 profile(); // invoking the profile function
+
+//
 
 // function to get all of the repos and commits
 const getRepos = () => {
@@ -36,28 +40,32 @@ const getRepos = () => {
         repo => repo.fork && repo.name.startsWith("project-")
       );
 
-      // this creates a forEach function to get all of the projects and commits
+      // this creates a forEach function to get all of the projects
       forkedRepos.forEach(
         repo =>
-          (projectsContainer.innerHTML += `<div class="cards"><h3>Name of repo: ${
+          (projectsContainer.innerHTML += `<div class="cards"><h3 class="repo-title">${
             repo.name
           }</h3>
-        <p>Most recent push: ${new Date(
-          repo.pushed_at
-        ).toDateString()} at ${repo.pushed_at.slice(11, 16)} from ${
-            repo.default_branch
-          } branch</p>
-        URL: <a href=${repo.html_url}>CLICK HERE</a>
-        
-        <p id="commit-${repo.name}">number of commits: </p></div>`)
+          <a class="links" href=${
+            repo.html_url
+          }>LINK TO REPOSITORY PAGE ON GITHUB</a>
+          <div class="push-date">
+        <p><span class="push-title">Most recent push</span>
+    ${new Date(repo.pushed_at).toDateString()} at ${repo.pushed_at.slice(
+            11,
+            16
+          )}</p>
+        </div>
+        <p class="branch">${repo.default_branch}</p>
+        <p id="commit-${repo.name}">Number of commits: </p></div>`)
       );
 
       fetchPullRequestsArray(forkedRepos);
       drawChart(forkedRepos.length);
     });
 };
-// invoking the function
 
+// this fetches all of the pull requests and commit made to those
 const fetchPullRequestsArray = allRepositories => {
   allRepositories.forEach(repo => {
     const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
@@ -87,13 +95,10 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
       console.log("FETCH", fetchCommits);
     });
 };
-getRepos();
+getRepos(); // invoking the function
 
-// CODE WITH MAKS
-
-/* fetch commits
-fetchPullRequestSingle(repo)   // the repo is in the forEach 
-we place the fetchPullRequestSingle(repo) inside the forEach loop on line 50
-
-https://api.github.com/repos/Technigo/${repo.name}/pulls).then(response => response.json()).then(json) => console.log(json)
- */
+// function to toggle the dark mode
+const myFunction = () => {
+  const element = document.body;
+  element.classList.toggle("dark-mode");
+};
