@@ -13,7 +13,8 @@ const getUserInfo = () => {
       userContainer.innerHTML = `
       <div class="user-container">
       <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
-       alt="Profile picture"><h2>User name: ${data.name}</h2><p>${data.bio}</p>
+       alt="Profile picture"><h2>User name: ${data.name}</h2>
+       <h3>${data.bio}</h3>
        </div>
       `;
     });

@@ -5,23 +5,39 @@ body {
 
 h1 {
   color: #d342c1;
+  font-size: 2em;
 }
 
-h2 h3 p {
+h3,
+p {
   font-weight: 300;
   margin-bottom: 0;
 }
 
+.header {
+  display: grid;
+  justify-content: center;
+  /* margin: 15px; */
+}
+
 .grid-parent {
   display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-content: center;
   /* grid-template-rows: 1fr 1fr 1fr; */
 }
 
+.chart-container {
+  width: 20em;
+}
+
 .user-container {
-  width: 80%;
-  /* grid-row: span 1;
+  /* width: 100%; */
   display: grid;
-  grid-template-rows: 1fr 1fr; */
+  justify-items: center;
+  margin: 1em;
+  grid-row: span 1;
 }
 
 .user-container img {
