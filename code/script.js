@@ -15,23 +15,33 @@ const getRepos = () => {
         .then(data => {
             console.log(data)
             const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+            console.log('forked Repos', forkedRepos)
+            //sorted repos by creation date
+            forkedRepos.sort((a, b) => new Date(a.created_at) - new Date(b.created_at))
             forkedRepos.forEach(repo => {
                 console.log(repo)
                 //console.log('owner login', repo.owner.login)
                 projectsContainer.innerHTML += `<div class ="my-divs" id='${repo.name}'>
                 <a class="links" href ="${repo.html_url}" target="_blank"><h3 class="repo-name">${repo.name}</h3></a>
-                <span class="repo-language-color"></span>
+                <span class="repo-language"></span>
                 <span class="language-name">${repo.language}</span>
                 <h5>Updated: ${new Date(repo.pushed_at).toDateString()}</h5>
                 <h5>Default branch: ${repo.default_branch}</h5>
+                <div class="commits-container" id="commits"></div>
                 </div>`
-                const repoLanguage = document.querySelector(".repo-language-color")
-                console.log(repoLanguage)
-                repoLanguage.style.backgroundColor = "yellow"
+                const repoLanguage = document.querySelectorAll('.repo-language')
+                //Nodelist is like an array, only forEach method
+                repoLanguage.forEach(span => {
+                    if (span.nextElementSibling.innerText === 'JavaScript') {
+                        span.style.backgroundColor = "#f1e05a"
+                    } else if (span.nextElementSibling.innerText === 'HTML') {
+                        span.style.backgroundColor = "#e34c26"
+                    }
+                })
             })
             getPullRequests(forkedRepos)
             drawChart(forkedRepos.length)
-
+            drawChartTwo(forkedRepos)
         })
 }
 getRepos()
@@ -63,6 +73,7 @@ const getPullRequests = (forkedRepos) => {
                 //console.log(data)
                 const myPulls = data.find(pulls => pulls.user.login === repo.owner.login)
                 console.log(myPulls)
+                // document.getElementById(`${repo.name}`).innerHTML += `<a class="links" href="${myPulls._links.html.href}">Pull request: ${myPulls.title}</a>`
                 const commitsURL = myPulls.commits_url
                 console.log(commitsURL)
                 getCommits(commitsURL, repo)
@@ -79,7 +90,9 @@ getCommits = (commitsURL, repo) => {
             //console.log('INFO', document.getElementById(`${repo.name}`))
             document.getElementById(`${repo.name}`).innerHTML += `<h5>This repo has been committed ${data.length} times</h5>`
             // console.log(data[data.length - 1].commit.message)
+
         })
 
 }
+
 
