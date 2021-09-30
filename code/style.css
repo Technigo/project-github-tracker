@@ -19,6 +19,7 @@ body {
 }
 
 .profile-container h5 {
+  font-weight: lighter;
   font-size: 10px;
   margin: 5px;
 }
@@ -29,6 +30,10 @@ body {
   object-fit: cover;
   border-radius: 70%;
   margin-right: 10px;
+  border-bottom: solid rgb(163, 160, 160);
+  border-top: solid rgb(163, 160, 160);
+  border-width: 1px;
+  padding: 5px;
 }
 
 h1 {
@@ -49,6 +54,10 @@ h3 {
 
 h2 {
   font-size: 20px;
+  display: block;
+  border-bottom: solid rgb(163, 160, 160);
+  border-width: 1px;
+  padding-bottom: 10px;
 }
 
 .repositories {
@@ -68,9 +77,8 @@ h2 {
   margin: 5px;
 }
 
-.chart-container {
-  display: flex;
-  padding: 20px;
+canvas {
+  padding: 10px;
 }
 
 @media (min-width: 668px) {
@@ -79,8 +87,8 @@ h2 {
     justify-content: left;
   }
   .profile-pic {
-    width: 10%;
-    height: 10%;
+    width: 15%;
+    height: 15%;
   }
   .profile-container h5 {
     font-size: 14px;
@@ -96,7 +104,7 @@ h2 {
     margin: auto;
     margin-top: 10px;
   }
-  .chart-container {
+  canvas {
     padding: 80px;
   }
 }
@@ -108,34 +116,35 @@ h2 {
   }
   .profile-container {
     grid-column: span 1;
-    height: 375px;
+    height: 550px;
     display: table-column;
     text-align: center;
     padding: 20px;
+    margin-top: 20px;
   }
   .profile-pic {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     align-items: center;
     padding: 20px;
-    margin: auto;
+    margin-bottom: 50px;
+    border-bottom: solid rgb(163, 160, 160);
+    border-top: solid rgb(163, 160, 160);
+    border-width: 1px;
   }
   h1 {
     display: contents;
   }
   .profile-container h5 {
-    margin-top: 20px;
-  }
-  .repo-container {
-    grid-column: 2/ 5;
-    height: 700px;
+    margin: 20px;
   }
   h2 {
     text-align: left;
-    display: block;
-    border-bottom: solid rgb(163, 160, 160);
-    border-width: 1px;
     padding-bottom: 20px;
+  }
+  .repo-container {
+    grid-column: 2/ 5;
+    height: 750px;
   }
   .projects-container {
     display: flex;
@@ -155,14 +164,21 @@ h2 {
     flex-grow: 1;
     margin: 5px;
   }
+  h3 {
+    margin-left: 0;
+  }
   .repositories h5 {
     font-size: 10px;
     margin: 0;
   }
+  .chart-box {
+    border: solid green;
+    width: auto;
+    align-items: center;
+    padding: 0;
+    align-self: center;
+  }
   .chart-container {
-    /* display: block; */
-    /* width: 50px;
-    height: 50px; */
-    padding: 500px;
+    padding: 0;
   }
 }

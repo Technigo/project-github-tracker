@@ -41,7 +41,7 @@ const getInfo = () => {
   fetch(INFO_URL)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
+      console.log(data);
       // console.log(data.name);
       // console.log(data.login);
       // console.log(data.bio);
@@ -51,6 +51,8 @@ const getInfo = () => {
       <tr><h1>${data.name}</h1></tr>
       <tr><h5>${data.login}</h5></tr>
       <tr><h5>${data.bio}</h5></tr>
+      <tr><h5>Location @${data.location}</h5></tr>
+      <tr><h5> Website@ ${data.blog}</h5></tr>
        </div>`;
     });
 };
