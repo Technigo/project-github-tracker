@@ -69,8 +69,8 @@ a.button1:hover {
 
 .repo-cards {
   height: 300px;
-  width: 180px;
-  color: white;
+  width: 200px;
+  color: #0f0c29;
   font-family: 'Bebas Neue', cursive;
   margin: 1em;
   padding: 1em;
@@ -81,7 +81,7 @@ a.button1:hover {
   flex-direction: column-reverse;
   border-radius: 1em;
   box-shadow: 0.25em 0.25em 0.25em grey;
-  background-color: rgb(20, 23, 38);
+  background-color: #afbfc0;
 }
 
 .projects {
@@ -119,11 +119,15 @@ a.button1:hover {
 .chart-container {
   display: grid;
   grid-column: span 1;
-  position: sticky;
   height: 10vh;
   width: 30vw;
-  margin: 0 auto;
-  margin-top: 3em;
+  margin-top: 2em;
+  margin-bottom: 4em;
+}
+
+#chart.chart {
+  display: grid;
+  margin-top: 1em;
 }
 
 .footer {
@@ -160,10 +164,36 @@ a.button1:hover {
     display: flex;
     flex-direction: column;
   }
+  .projects {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  }
 
-  .footer {
-    margin: 0;
-    padding-top: 0;
+  .repo-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #8d86c9;
+    max-height: 200px;
+    min-width: 50%;
+    margin: 1em;
+  }
+
+  .card-info {
+    margin: 5px;
+  }
+
+  .chart-container {
+    margin-bottom: 2em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  #chart.chart {
+    padding-bottom: 2em;
   }
 }
 
@@ -185,7 +215,7 @@ a.button1:hover {
 
   .img {
     margin-top: -2em;
-    max-width: 20vw;
+    max-width: 40vw;
   }
 
   .grid {
@@ -209,7 +239,7 @@ a.button1:hover {
   .card-info {
     margin: 2px;
   }
-  .chart {
-    border-style: solid;
+  #chart.chart {
+    max-width: 100;
   }
 }

@@ -42,7 +42,7 @@ const getRepos = () => {
 
         projects.innerHTML += `<div id="${repo.name}"" class="repo-cards">
         
-        <button id="commits">Show latest commit message</button>
+        <a href="${repo.html_url}" id="commits">Show latest commit message</a>
         <p class="card-info" id="commit-${repo.name}"></p>
         <p class="card-info">Recent push ${pushedDate}</p>
         <p class="card-info">Branch ${repo.default_branch}</p> 
