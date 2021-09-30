@@ -2,12 +2,18 @@
 const userSection = document.getElementById("user-section")
 
 //GLOBAL VARIABLES
+const options = {
+	method: 'GET',
+	headers: {
+		Authorization: `token xxx`
+	},
+};
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
 
 //FUNCTIONS
 const getRepos = () => {
-	fetch(REPO_API)
+	fetch(REPO_API, options)
 		.then((res) => res.json())
 		.then((data) => {
 
@@ -41,7 +47,7 @@ const drawProjects = (forkedRepositories) => {
 				<a href="${repo.html_url}">${repo.name}</a>
 				<p>default branch: ${repo.default_branch}</p>
 				<p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
-				<p id="commit-${repo.name}">Commits: </p>
+				<p id="commit-${repo.name}">No commits yet</p>
 			</div>	
 		`
 		getCommits(forkedRepositories, repo.name);
@@ -58,29 +64,16 @@ const getCommits = (filteredArray, myRepoName) => {
 		commitAPI = commitAPI.slice(0, -6)
 
 		//now the URLs can be passed on to get data about number and content of commits 
-		fetch(commitAPI)
+		fetch(commitAPI, options)
 			.then((res) => res.json())
 			.then((data) => {
-				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein')
-				const noOfCommits = authorCommits.length
-				console.log('authorCommits: ', authorCommits)
-				console.log('Number of commits: ', noOfCommits)
-
-					document.getElementById(`commit-${myRepoName}`).innerHTML += `
-					${noOfCommits}
-				`
-
-				//Number of commit messages for each repo
+				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
 				
-	
-				
-
-				authorCommits.forEach(entry => {
-					document.getElementById(`commit-${myRepoName}`).innerHTML += `
-					${entry.length}
-				`
-					//console.log('This is the commit-text: ', textOfCommit)
-				})   
+        if (authorCommits.length > 0) {
+          document.getElementById(`commit-${myRepoName}`).innerHTML = `
+					Commits: ${authorCommits.length}
+          `
+				} 
 			})		
 	});
 }
