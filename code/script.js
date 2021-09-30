@@ -1,16 +1,30 @@
 const USER = 'hejmaria'
 const REPOS_URL = `http://api.github.com/users/${USER}/repos`;
+const USER_URL = `http://api.github.com/users/${USER}`;
 
 
 const projectContainer = document.getElementById('projects');
 
-
+const getProfile = () => {
+    fetch(USER_URL)
+    .then((res) => res.json())
+    .then((data) => {
+        console.log('ME DATA', data)
+        projectContainer.innerHTML = `
+    <div>
+        <img src ="${data.avatar_url}" alt ="avatar picture" />
+        <h2>Github: <a href="${data.html_url}">${data.login}</h2></a>
+        <h3>${data.name}</h3>
+    </div>
+    `;
+    })
+}
 
 const getRepos = () => {
     fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-    console.log('The data', data)
+    console.log('SHOW ME THE DATA', data)
 
     data.forEach (repo => console.log(repo.name))
 
@@ -24,7 +38,7 @@ const getRepos = () => {
                 <h3>${repo.name}</h3>
                 <a href="${repo.html_url}">${repo.name} with defalut branch ${repo.default_branch}</a>.
                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()} </p>
-                <p id="commit-${repo.name}">Commits ammount: </p>
+                <p id="commit-${repo.name}">Number of commits: </p>
             </div> 
             `;
         });
@@ -54,7 +68,7 @@ const fetchPullRequestsArray = (allRepos) => {
                 fetchCommits(userPullRequest.commits_url, repo.name);
             } else {
                 document.getElementById(`commit-${repo.name}`).innerHTML = 
-                'Nope, no pull request done yet. You just wait.';
+                `Nope, ${USER} hasn't done a pull request yet.`;
             }
         });
     });
@@ -67,5 +81,5 @@ const fetchCommits = (myCommitsUrl, MyRepoName) => {
     });
 };
 
-
+getProfile()
 getRepos()
