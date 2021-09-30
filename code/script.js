@@ -14,7 +14,7 @@ fetch(repos)
   .then(data => {
 
       //Fetching only the forked repos and the ones starts with "project" from my GitHub account. 
-      const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-guess-who'))
+      const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project'))
       // change back to only "project" later 
 
     //Username and userpic
@@ -30,7 +30,7 @@ fetch(repos)
         <p>The default branch is: ${repo.default_branch}</p>
         <p>The latest push: ${repo.pushed_at.substring(0, 10)}</p>
         <p id="pull-${repo.name}">No pull request is yet made 🤷 </p>
-       
+        <p id="commits-${repo.name}">There are no commits yet...</p>
       </div>
     `)
 
@@ -40,13 +40,7 @@ fetch(repos)
   })
   
 
-
-
-
-
 //^^^^^^^^^^^^^^^^^ fetching pull requests ^^^^^^^^^^^^^^^^^^^^^^^^^^//
-
-
 const getPullRequests = (repos) => {
   //Get all the PRs for each project.
   repos.forEach(repo => {
@@ -59,15 +53,15 @@ const getPullRequests = (repos) => {
       document.getElementById(`pull-${repo.name}`).innerHTML = `Pull request was made ${hedvigsPulls[0].created_at.substring(0, 10)}`;
       //allt som skrivs inom parentesen efter get ElementById är en del av   ID:t.
       console.log('Hedvigs PULLS. Arrey med ett objekt', hedvigsPulls)
-      getCommitsForPullRequests(hedvigsPulls)
+      getCommitsForPullRequests(hedvigsPulls, repo)
       
     })
   })
 }
 
-
+//^^^^^^^^^^^^^^^ fetching commits from the pull requests ^^^^^^^^^^^^^^^^^//
 //Funktionen skall ta infon från det sorterade pullrequestet(hedvigsPulls) och sortera fram mitt commit_url från det.
-const getCommitsForPullRequests = (pullRequests) => {
+const getCommitsForPullRequests = (pullRequests, repo) => {
   pullRequests.forEach(pullRequest => {
       console.log('Kolla här på pullRequest', pullRequest)
 
@@ -75,12 +69,9 @@ const getCommitsForPullRequests = (pullRequests) => {
     fetch(pullRequest.commits_url)
     .then(res => res.json())
     .then(fetchedCommits => {
-      console.log('kolla här 2:', fetchedCommits
-      )
-      
-    
-
-
+      console.log('kolla här 2:', fetchedCommits.length)
+  
+      document.getElementById(`commits-${repo.name}`).innerHTML = `Number of commits: ${fetchedCommits.length}`;
       //Funktionen skall gå ner en nivå till och bara visa commits_URL
 
     })
