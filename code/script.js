@@ -16,10 +16,10 @@ const profile = () => {
     .then(json => {
       profileInfo.innerHTML += `
         <img src=${json.avatar_url}>
+        <a class="username-link" href="https://github.com/efstasia">
         <h3 class="username"><i class="fab fa-github"></i>
-
-        ${json.login}</h3>
-        <p>This account has a total of ${json.public_repos} repos</p>
+      ${json.login}</a></h3>
+        <p class="repo-amount">This account has a total of ${json.public_repos} repos</p>
         `;
     });
 };
@@ -82,7 +82,7 @@ const fetchPullRequestsArray = allRepositories => {
           fetchCommits(myPullRequest.commits_url, repo.name);
         } else {
           document.getElementById(`commit-${repo.name}`).innerHTML =
-            "No pull requests done 😞";
+            "No pull requests done";
         }
       });
   });

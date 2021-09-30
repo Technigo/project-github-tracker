@@ -25,14 +25,17 @@ body {
 }
 
 .toggleBtn {
+  font-family: "Stick No Bills", sans-serif;
   border-radius: 20px;
   padding: 8px;
   cursor: pointer;
+  font-size: 20px;
 }
 
 .toggleBtn:hover {
   border: 2px solid #fff;
   background: #5f939a;
+  color: #fff;
 }
 
 header {
@@ -46,6 +49,18 @@ header {
 .username {
   color: var(--colorOfUsername);
   font-size: 24px;
+}
+
+.username-link {
+  text-decoration: none;
+  color: var(--colorOfLink);
+}
+
+.username-link:hover {
+  transition: all 1s;
+  background: #5f939a;
+  border-radius: 30px;
+  padding: 5px;
 }
 
 .repo-title {
@@ -118,6 +133,7 @@ img {
 .links:hover {
   transition: all 1s;
   background: #5f939a;
+  border-radius: 30px;
 }
 
 footer {
@@ -128,7 +144,19 @@ footer {
 
 /* MEDIA QUERIES */
 
+/* TABLET */
 @media (min-width: 768px) {
+  .cards {
+    font-size: 28px;
+  }
+
+  .links {
+    font-size: 24px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1023px) {
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -140,14 +168,26 @@ footer {
   }
 
   .cards {
-    border: 2px solid #d8ac9c;
     display: grid;
     width: 90%;
     margin: 10px auto;
+    font-size: 18px;
+  }
+
+  .cards:hover {
+    transform: scale(1.05);
   }
 
   .chart {
     width: 300px;
     height: 300px;
+  }
+
+  .links {
+    font-size: 12px;
+  }
+
+  .repo-amount {
+    margin: 30px 0;
   }
 }
