@@ -3,14 +3,16 @@ const REPOS_URL = `https://api.github.com/users/${USER_ID}/repos`;
 const reposDataContainer = document.getElementById("projects");
 const userDetails = document.getElementById("user-details");
 const input = document.getElementById("request");
+const searchButton = document.getElementById("search");
 
 // fetching all user repos
 const fetchUserRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      input.addEventListener("change", () => {
+      searchButton.addEventListener("click", () => {
         const searchString = input.value;
+        input.value = "";
         // checking input validity by searching for exact repo name =>
         const anyRepo = data.find((repo) => repo.name === searchString);
         console.log("any repo", anyRepo);
@@ -57,7 +59,7 @@ const getReposDetails = (data) => {
       .then((commits) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
-    <a class="repo-links" href="${repo.html_url}">view on Github</a>
+    <a href="${repo.html_url}">view on Github</a>
     <div class="repos-stats" id="${repo.name}">
     <p class="stats">branch: ${repo.default_branch}<p>
     <p class="stats">last update: ${lastUpdate}<p>
@@ -86,7 +88,7 @@ const getPullRequests = (sortedRepos) => {
           const COMMENTS_URL = pull.review_comments_url;
           const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
           document.getElementById(`${repo.name}`).innerHTML += `
-        <div class="repos-stats" id="pull-${repo.name}">
+        <div id="pull-${repo.name}">
         <p class="stats">PR date: ${pullDate}<p>
         </div>`;
           getComments(COMMENTS_URL, repo);

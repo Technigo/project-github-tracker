@@ -14,8 +14,8 @@ const drawChart = (repos) => {
         {
           label: "My Projects",
           data: [completedProjects, upcommingProjects],
-          backgroundColor: ["rgb(255, 85, 204)", "#06fff3", "rgb(255, 205, 86)"],
-          hoverBorderColor: "rgb(243, 255, 134)",
+          backgroundColor: ["rgb(255, 151, 112)", "rgb(112, 214, 255)", "rgb(255, 205, 86)"],
+          hoverBorderColor: "rgb(233, 255, 112)",
           weight: 3,
           hoverOffset: 4,
         },
