@@ -5,6 +5,7 @@ const USER_URL = `https://api.github.com/users/${userName}`;
 const REPOS_API_URL = `https://api.github.com/users/${userName}/repos`;
 const userContainer = document.getElementById("userInfo");
 const reposContainer = document.getElementById("projects");
+const reposSubContainer = document.getElementById("project-box");
 const commentsContainer = document.getElementById("comments");
 const commitsContainer = document.getElementById("commits");
 
@@ -15,20 +16,20 @@ const getUserData = () => {
       console.log(data);
       userContainer.innerHTML = `
       <div class="user-profile-box">
-      <div class="user-info-box">
-        <h1 class="user-username"> <span class="user-span">${
-          data.login
-        }</span></h1>
-        <h2 class="user-fullname"> <span class="user-span">${
-          data.name
-        }</span></h2>
-        <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${
-          data.location
-        }</span></h3>
-        <h3 class="user-join"> Member since: ${new Date(data.created_at)
-          .toDateString()
-          .slice(4)}</h3>
-      </div>
+        <div class="user-info-box">
+          <h1 class="user-username"> <span class="user-span">${
+            data.login
+          }</span></h1>
+          <h2 class="user-fullname"> <span class="user-span">${
+            data.name
+          }</span></h2>
+          <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${
+            data.location
+          }</span></h3>
+          <h3 class="user-join"> Member since: ${new Date(data.created_at)
+            .toDateString()
+            .slice(4)}</h3>
+        </div>
       <div class="user-img-box">
         <img class="user-img" src="${data.avatar_url}"/>
       </div>
@@ -56,7 +57,7 @@ const fetchRepos = () => {
       console.log(forkedRepos);
       forkedRepos.forEach(
         (repo) =>
-          (reposContainer.innerHTML += `
+          (reposSubContainer.innerHTML += `
           <div class="repo-box">
             <h3 class="repo-name"><img class="repo-book-img"src="images/book.png" alt="book"/>${
               repo.name

@@ -9,32 +9,32 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
+    <nav class="nav-mobile">
+      <img class="nav-menu" src="images/menu (1).png" alt="menu" />
+      <a class="nav-icon" href="https://github.com/" target="_blank"
+        ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
+      /></a>
+      <img class="nav-notif" src="images/notification.png" alt="bell" />
+    </nav>
+    <nav class="nav-desktop">
+      <a class="nav-icon" href="https://github.com/" target="_blank"
+        ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
+      /></a>
+      <input class="nav-input" type="text" placeholder="Search" />
+      <div class="nav-a">
+        <a href="#">Pulls</a>
+        <a href="#">Issues</a>
+        <a href="#">Marketplace</a>
+        <a href="#">Explore</a>
+      </div>
+      <img class="nav-notif" src="images/notification.png" alt="bell" />
+    </nav>
     <main>
-      <nav class="nav-mobile">
-        <img class="nav-menu" src="images/menu (1).png" alt="menu" />
-        <a class="nav-icon" href="https://github.com/" target="_blank"
-          ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
-        /></a>
-        <img class="nav-notif" src="images/notification.png" alt="bell" />
-      </nav>
-      <nav class="nav-desktop">
-        <a class="nav-icon" href="https://github.com/" target="_blank"
-          ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
-        /></a>
-        <input class="nav-input" type="text" placeholder="Search" />
-        <div class="nav-a">
-          <a href="#">Pulls</a>
-          <a href="#">Issues</a>
-          <a href="#">Marketplace</a>
-          <a href="#">Explore</a>
-        </div>
-        <img class="nav-notif" src="images/notification.png" alt="bell" />
-      </nav>
-
       <section id="userInfo"></section>
 
       <section id="projects">
         <h2 class="project-title">My Project Repositories with Technigo</h2>
+        <div id="project-box"></div>
       </section>
     </main>
 

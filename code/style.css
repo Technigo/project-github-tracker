@@ -55,17 +55,14 @@ body {
     "pic info";
 }
 
-.user-profile-box :not(.user-span) {
-  color: rgb(46, 107, 129);
-}
-
-.user-profile-box > * {
-  padding: 0.3rem;
-}
-
 .user-info-box {
+  color: rgb(46, 107, 129);
   grid-area: info;
   align-self: end;
+}
+
+.user-span {
+  color: rgb(248, 239, 239);
 }
 
 .user-img-box {
@@ -128,10 +125,13 @@ body {
   padding-left: 1rem;
 }
 
-.repo-box {
+.project-box {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
+}
+
+.repo-box {
   border: 1px solid rgb(97, 97, 97);
   border-radius: 0.5rem;
   align-items: center;
@@ -222,11 +222,48 @@ footer img {
     justify-content: space-around;
   }
 
+  .nav-a > * {
+    color: rgb(161, 118, 231);
+  }
+
   .nav-a > *:hover {
     color: rgb(54, 162, 255);
   }
 
   .nav-notif {
     grid-area: bell;
+  }
+
+  main {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 15rem auto;
+    grid-template-rows: auto;
+    grid-template-areas: "info projects";
+  }
+
+  #userInfo {
+    grid-area: info;
+  }
+
+  #projects {
+    grid-area: projects;
+  }
+
+  .user-profile-box {
+    display: grid;
+    padding: 5rem 0 1rem 1rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "pic"
+      "info";
+  }
+
+  #project-box {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
   }
 }
