@@ -20,6 +20,37 @@ body {
   grid-column: span 8/12;
 }
 
+.search-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column: span 12;
+}
+
+.input-field {
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-size: 15px;
+  color: #7aa094;
+  border: 1px solid #7aa094;
+  font-family: 'Barlow', sans-serif;
+}
+
+.button-search {
+  float: right;
+  padding: 10px 20px;
+  border-radius: 15px;
+  background-color: #7aa094;
+  color: #fff;
+  font-size: 15px;
+  border: 1px solid #7aa094;
+  font-family: 'Barlow', sans-serif;
+}
+
+.search-button:hover {
+  background-color: #7aa094;
+  color: #7aa094;
+}
+
 .main-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
