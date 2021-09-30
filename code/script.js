@@ -1,16 +1,13 @@
 console.log("script works?");
 
-const userName = "Loulunds";
-const USER_URL = `https://api.github.com/users/${userName}`;
-const REPOS_API_URL = `https://api.github.com/users/${userName}/repos`;
+// let userName = "Loulunds";
 const userContainer = document.getElementById("userInfo");
 const reposContainer = document.getElementById("projects");
 const reposSubContainer = document.getElementById("project-box");
-const commentsContainer = document.getElementById("comments");
-const commitsContainer = document.getElementById("commits");
+const input = document.getElementById("navInput");
 
-const getUserData = () => {
-  fetch(USER_URL)
+const getUserData = (user) => {
+  fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -44,8 +41,8 @@ const getUserData = () => {
     });
 };
 
-const fetchRepos = () => {
-  fetch(REPOS_API_URL)
+const fetchRepos = (user) => {
+  fetch(`https://api.github.com/users/${user}/repos`)
     .then((response) => response.json())
     .then((data) => {
       //   console.log(data);
@@ -87,6 +84,7 @@ const fetchRepos = () => {
           </div>
           `)
       );
+
       drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
       // console.log(forkedRepos);
@@ -133,6 +131,16 @@ const showCommits = (url, myRepoName) => {
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
+
+// event listener
+
+input.addEventListener("keypress", (event) => {
+  if (event.key === "Enter" && input.value) {
+    let userName = input.value;
+    getUserData(userName);
+    fetchRepos(userName);
+  }
+});
 
 getUserData();
 fetchRepos();

@@ -1,6 +1,18 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById("chart").getContext("2d");
 
+const plugin = {
+  id: "custom_canvas_background_color",
+  beforeDraw: (chart) => {
+    const ctx = chart.canvas.getContext("2d");
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-over";
+    ctx.fillStyle = "rgb(189,219,227)";
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  },
+};
+
 //"Draw" the chart here 👇
 const drawChart = (amount) => {
   const config = {
@@ -44,16 +56,5 @@ const drawChart = (amount) => {
   };
 
   const myChart = new Chart(ctx, config);
-};
-
-const plugin = {
-  id: "custom_canvas_background_color",
-  beforeDraw: (chart) => {
-    const ctx = chart.canvas.getContext("2d");
-    ctx.save();
-    ctx.globalCompositeOperation = "destination-over";
-    ctx.fillStyle = "rgb(189,219,227)";
-    ctx.fillRect(0, 0, chart.width, chart.height);
-    ctx.restore();
-  },
+  myChart.destroy();
 };
