@@ -29,11 +29,13 @@ font-family: Arial, Helvetica, sans-serif;
 
 .userinfo {
   display: flex;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 img {
   border-radius: 50%;
-  width: 70px;
+  width: 60px;
   border: rgb(161, 161, 161) solid 1px;
   margin-top: 5px;
   margin-left: 20px;
@@ -48,11 +50,49 @@ img {
   font-family: 'Inconsolata', monospace;
 }
 
-.cards {
-  border: rgb(161, 161, 161) solid 1px;
-  margin: 20px;
-
+#projectscontainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
 }
+
+.card {
+  border: rgb(161, 161, 161) solid 1px;
+  margin: 3px;
+  width: 350px;
+  max-width: 350px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-title {
+  font-weight: bold;
+  /* margin-top: 20px; why does this not work?*/
+  margin-bottom: 2px;
+  margin-left: 3px;
+}
+
+.card-info {
+  margin-left: 3px;
+}
+
+a:link {
+  text-decoration: none;
+  cursor: pointer;
+  color: rgb(68, 98, 138);
+}
+
+a:visited {
+  color: rgb(68, 98, 138);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 
 
 
@@ -83,3 +123,5 @@ img {
   display: block;
   }
 }
+
+

@@ -31,11 +31,11 @@ fetch (REPOS_URL)
         //display the data in the browser  
         technigoProjects.forEach((repo => {
             projectContainer.innerHTML += `
-            <div>
-            <a href=">${repo.html_url}">${repo.name}</a>
-            <p>Default branch: ${repo.default_branch}</p>
-            <p>Latest update: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commit-${repo.name}">Number of commit messages: </p>
+            <div class="card">
+            <a class="card-title" href=">${repo.html_url}">${repo.name}</a>
+            <p class="card-info">Default branch: ${repo.default_branch}</p>
+            <p class="card-info">Latest update: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p class="card-info" id="commit-${repo.name}">Number of commit messages: </p>
             </div>`
         }))
 
