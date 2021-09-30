@@ -62,13 +62,26 @@ const fetchCommits = (myCommitsUrl, repo) => {
 		.then((data) => {
 			// console.log('fetchCommits data: ', repo.name, data);
 			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
-			const authors = data.map((commit) => {
-				return commit.author ? commit.author.login : '';
-			});
+			// const authors = data.map((commit) => {
+			// 	return commit.author ? commit.author.login : '';
+			// });
 			// console.log('fetchCommits authors', authors);
-			fetchPullRequestsArray(repo, authors);
+			// fetchPullRequestsArray(repo, authors);
 		})
 		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
+};
+
+const fetchCollaborators = (repo) => {
+	const COLLABORATOR_URL = `https://api.github.com/repos/${USER}/${repo.name}/collaborators`;
+	fetch(COLLABORATOR_URL, options)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log('fetchCollaborators', data);
+			const authors = data.map((author) => author.login);
+			//	userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+			fetchPullRequestsArray(repo, authors);
+		})
+		.catch((err) => console.log('fetchCollaborators error: ', err));
 };
 
 const fetchPullRequestsArray = (repo, authors) => {
@@ -100,17 +113,6 @@ const fetchUser = () => {
 			userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
 		})
 		.catch((err) => console.log('fetchCommits error: ', err));
-};
-
-const fetchCollaborators = (repo) => {
-	const COLLABORATOR_URL = `https://api.github.com/repos/${USER}/${repo.name}/collaborators`;
-	fetch(COLLABORATOR_URL, options)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log('fetchCollaborators', data);
-			//	userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
-		})
-		.catch((err) => console.log('fetchCollaborators error: ', err));
 };
 
 fetchAllReposFromUser();
