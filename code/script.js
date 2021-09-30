@@ -21,8 +21,10 @@ const getRepos = () => {
         (repo) =>
           (projectsContainer.innerHTML += `<div class="repositories" id="${
             repo.name
-          }"> <h3>${repo.name}</h3> 
-          <h5>${repo.default_branch}</h5> <h5> latest update: ${new Date(
+          }"> 
+          <h3>${repo.name}</h3> 
+          <h5>${repo.default_branch}</h5> 
+          <h5>latest update: ${new Date(
             repo.updated_at
           ).toLocaleDateString()} </h5>
           <h5>Git URL: <a href="${repo.html_url}">${repo.name}</a></h5>

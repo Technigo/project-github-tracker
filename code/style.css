@@ -14,9 +14,13 @@ body {
   border-bottom: solid rgb(163, 160, 160);
   border-width: 1px;
   align-items: center;
-  padding: 5px;
-  padding-left: 10px;
+  padding: 10px;
   justify-content: left;
+}
+
+.profile-container h5 {
+  font-size: 10px;
+  margin: 5px;
 }
 
 .profile-pic {
@@ -24,7 +28,7 @@ body {
   height: 20%;
   object-fit: cover;
   border-radius: 70%;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 h1 {
@@ -38,6 +42,15 @@ h1 {
   padding: 10px;
 }
 
+h3 {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
 .repositories {
   background: #f3f0ef;
   display: flex;
@@ -46,7 +59,13 @@ h1 {
   border-radius: 6px;
   border-width: 1px;
   padding-left: 10px;
+  padding-bottom: 10px;
   margin-top: 10px;
+}
+
+.repositories h5 {
+  font-size: 12px;
+  margin: 5px;
 }
 
 .chart-container {
@@ -63,14 +82,19 @@ h1 {
     width: 10%;
     height: 10%;
   }
+  .profile-container h5 {
+    font-size: 14px;
+    margin: 5px;
+  }
   .repo-container {
     padding: 20px;
     text-align: center;
   }
   .repositories {
     width: 70%;
+    height: 30%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .chart-container {
     padding: 80px;
@@ -78,13 +102,9 @@ h1 {
 }
 
 @media (min-width: 1024px) {
-  h1 {
-    display: contents;
-  }
   .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    /* width: 1000px; */
   }
   .profile-container {
     grid-column: span 1;
@@ -100,17 +120,44 @@ h1 {
     padding: 20px;
     margin: auto;
   }
+  h1 {
+    display: contents;
+  }
+  .profile-container h5 {
+    margin-top: 20px;
+  }
   .repo-container {
     grid-column: 2/ 5;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px; */
+    height: 700px;
+  }
+  h2 {
+    text-align: left;
+    display: block;
+    border-bottom: solid rgb(163, 160, 160);
+    border-width: 1px;
+    padding-bottom: 20px;
+  }
+  .projects-container {
+    display: flex;
+    flex-direction: row;
+    height: 700px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
   .repositories {
-    width: 30%;
-    /* grid columns: span 1; */
-    /* padding-left: 10px; */
-    margin-top: 10px;
+    display: flex;
+    width: 45%;
+    height: 20%;
+    text-align: left;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    margin: 5px;
+  }
+  .repositories h5 {
+    font-size: 10px;
+    margin: 0;
   }
   .chart-container {
     /* display: block; */
