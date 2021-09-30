@@ -16,7 +16,10 @@
     <div id="user-details"></div>
   </header>
   <section>
-
+    <label for="request">
+      <input class="input custom-input" id="request" type="text" name="request" placeholder="Search for repository"
+        value="" pattern="[a-zA-Z ]{1-32}" oninvalid="setCustomValidity('Please enter alphabets only.')" required>
+    </label>
   </section>
   <main>
     <h2>Projects:</h2>
