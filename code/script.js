@@ -58,6 +58,7 @@ const getRepos = () => {
           <div class="project-header">
           <h3> Project Name: ${upperCaseName}</h3>
           </div>
+          <div class="project-info">
           <a href = ${project.html_url}> ${upperCaseName} </a>
           <p> Main branch: ${project.default_branch}</p>
           <p> Number of commits: ${filteredCommits.length}</p>
@@ -66,7 +67,8 @@ const getRepos = () => {
             10
           )}, ${project.pushed_at.slice(11, 16)} 
           </p>
-          <p id="pull-${project.name}">Pull request: </p>
+          <p id="pull-${project.name}"></p>
+          </div>
           </div>
           `;
           });
