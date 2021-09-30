@@ -1,3 +1,244 @@
 body {
-  background: #FFECE9;
+  background: #222831;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 450px;
+  color: #EEEEEE;
+  /* font-family: 'Gruppo', cursive; */
+font-family: 'Nixie One', cursive;
+/* font-family: "Droid Sans Mono",Courier,monospace;
+font-family: 'Fira Code', monospace; */
+  
 }
+
+
+header {
+  font-size: 24px;
+}
+
+p.header{
+width: 45%;
+min-width: 250px;
+border: solid 0.1px;
+background-color: #679B9B;
+color: #222831;
+/* background-color: #00000038; */
+/* position: fixed; */
+text-align: end;
+padding: 5px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+margin-top: 20px;
+}
+
+
+.repo-chart {
+  width: 50%;
+  margin: auto;
+  padding: 20px;  
+}
+
+
+/* .languages-chart{
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+} */
+
+
+.user-info-container {
+  display: flex;
+  /* height: 500px; */
+  /* background-image: url("stardust.png"); */
+  padding: 20px;
+  color: white;
+  margin: auto;
+}
+
+.user-information-container {
+margin: auto 10px;
+text-align: center;
+}
+.user-picture {
+  width: 200px; 
+  max-width: 30%;
+  max-height: 30%;
+  border-radius: 50%;
+  border: solid 1px #679B9B;
+  margin: 20px;
+}
+
+.user-info-name {
+  font-size: 24px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.user-info-name:hover {
+  color: #679B9B;
+}
+.user-info-bio {
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.projects-title {
+font-size: 36px;
+/* border: solid 3px rgb(206, 203, 203); */
+/* border-radius: 10px; */
+margin: auto;
+padding: 10px;
+width: 80%;
+max-width: 700px; 
+text-align: center;
+
+
+
+}
+#projects {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+} 
+.each-project {
+  font-size: 18px;
+  border: solid 1px rgb(133, 133, 133);
+  border-radius: 10px;
+  margin: 5px 10px;
+  padding: 10px;
+  max-width: 500px;
+ 
+}
+
+.project-names-with-pr {
+  display: flex;
+  color:#EEEEEE;
+  text-decoration: none;
+  background-color: #393E46 ;
+  padding: 5px;
+  border:solid 1px #679B9B;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.project-names-with-pr:hover {
+  background-color:#AACFCF;
+  font-weight: 800;
+  color: #393E46 ;
+}
+
+  .fa {
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+    color: white;
+  }
+  
+
+  @media (min-width: 768px) {
+  
+    #projects {
+    
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+      justify-self: center;
+      /* align-self: center; */
+      margin: 10px ;
+      width: auto;
+      
+    } 
+    .each-project  {
+      border: 2px solid white;
+      border-radius: 10px;
+      grid-column: span 1;
+      font-size: 18px;
+      padding: 30px;
+      width: 80%;
+      min-width: 320px;
+      /* display: flex;
+      flex-direction: row; */
+      justify-content: space-between;
+      margin: 0 auto;
+      border: 2px solid #393E46;
+    
+      /* place-self: center ; */
+      }
+  
+      .repo-chart {
+        width: 30%;
+        margin: auto;
+        padding: 20px;  
+      }
+
+  }
+
+  @media (min-width: 1024px) {
+  
+    .main {
+      display: flex;
+      flex-direction: row;
+      margin: 1rem;
+    }
+    .right-section {
+      padding-left: 0;
+      margin-top: 1.5rem;
+      /* background-color: #aacfcf30; */
+      margin: 0 auto;
+      min-width: 30%;
+    }
+
+    .left-section {
+      width: 100%;
+      align-content: flex-start;
+      margin: 50px 30px 30px 30px;
+      
+    }
+  
+    .user-info-container {
+ 
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        align-items: center
+      }
+      .user-picture {
+        width: 200px; 
+        max-width: 80%;
+        max-height: 80%;
+        border-radius: 50%;
+        border: solid 1px #679B9B;
+        margin: 20px;
+      }
+      
+      .user-info-name {
+        font-size: 24px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+      }
+      
+      .user-info-bio {
+        font-size: 18px;
+        text-decoration: none;
+      }
+  
+      p.header{
+        width: 30%;
+  
+      }
+  
+      .repo-chart {
+        width: 80%;
+        margin: auto;
+        padding: 20px; 
+        
+      }
+
+
+
+  }

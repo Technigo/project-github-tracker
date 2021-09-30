@@ -1,24 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Nixie+One&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <header>
+    <p class="header">
+      <a href="https://github.com/" target="blank"><i class="fa fa-github"></i></a>
+      GitHub Tracker
+    </p>
+  </header>
 
+  <main class="main">
+
+    <section class="right-section">
+      <div id="userInfoContainer" class="user-info-container"> </div>
+      <div class="repo-chart">
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+    <section class="left-section">
+      <p class="projects-title">Projects at Technigo</p>
+      <div id="projects"></div>
+
+      <!-- This will be used to draw the chart 👇 -->
+      <div class="repo-chart-left">
+        <canvas id="chart"></canvas>
+      </div>
+      <!-- <div class="language-chart">
+    <canvas id="languageChart"></canvas>
+    </div> -->
+    </section>
+  </main>
 
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
 </html>
