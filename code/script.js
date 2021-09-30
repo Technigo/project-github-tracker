@@ -9,11 +9,10 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project")
       );
+      console.log(forkedRepos);
       forkedRepos.forEach(
         (repo) =>
           (projects.innerHTML += `
@@ -25,6 +24,7 @@ const getRepos = () => {
                <h4 class="repo-item3">Last updated: ${new Date(
                  repo.updated_at
                ).toLocaleDateString()}</h4>
+               <h5 class="repo-item4">${repo.language}</h5>
                </div>
           `)
       );
@@ -36,6 +36,7 @@ const getRepos = () => {
       const profileName = data.forEach(
         (nickname) => (userName.innerHTML = nickname.owner.login)
       );
+
       getPullRequest(forkedRepos);
     });
 };
@@ -47,14 +48,17 @@ const getPullRequest = (forkedRepos) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
-        const myPulls = data.filter(
+        const myPulls = data.find(
           (pulls) => pulls.user.login === repo.owner.login
         );
         console.log(myPulls);
-        const commitsURL = myPulls[0].commits_url;
-        // console.log(commitsURL);
-        getCommits(commitsURL, repo);
+        if (myPulls) {
+          const commitsURL = myPulls.commits_url;
+          getCommits(commitsURL, repo);
+        } else
+          document.getElementById(
+            `${repo.name}`
+          ).innerHTML += `<h4 class="repo-item5">Group assignment or not yet pulled</h4>`;
       });
   });
 };
@@ -64,14 +68,9 @@ const getCommits = (commitsURL, repo) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      if (data.length === undefined) {
-        document.getElementById(
-          `${repo.name}`
-        ).innerHTML += `Pair or group project`;
-      } else
-        document.getElementById(
-          `${repo.name}`
-        ).innerHTML += `<h4 class="repo-item4"> Number of commits: ${data.length}</h4>`;
+      document.getElementById(
+        `${repo.name}`
+      ).innerHTML += `<h4 class="repo-item5"> Number of commits: ${data.length}</h4>`;
     });
 };
 
