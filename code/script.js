@@ -15,8 +15,9 @@ const getRepos = ()=>{
       //Here, I filter only the projects forked from Technigo, starting from 2021 (since I have earlier projects also forked from Technigo)  
         const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-') && repo.created_at.startsWith('2021-'))
       // Here I update the projectsContainer.innerHTML to show a list of all forked repos  
-        forkedProjects.forEach(repo => projectsContainer.innerHTML += `<h3>${repo.name}</h3>`)
+        forkedProjects.forEach(repo => projectsContainer.innerHTML += `<p>${repo.name}</p>`)
         // Here I update the cards.Container to show cards with data extracted from the GitHUb API
+        
         forkedProjects.forEach(repo => cardsContainer.innerHTML += `
         <section class="js-card">
       <div class="card-projectname" id="cardProjectName">   

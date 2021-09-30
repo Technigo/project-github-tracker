@@ -1,27 +1,58 @@
 body {
-  background-color: aquamarine;
+  background-color: white;
   font-family: 'Special Elite', cursive;
+  margin: 0;
 }
 
-.canvas-chart{
-  max-width: 500px;
- 
+/* Header*/
+.header {
+  width: 100%;
+  background-color: black;
+}
+/* hamburger */
+.hamburger {
+  display: flex;
+  height: 25px;
+  width: 30px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 0 20px; 
+}
+  
+.hamburger div {
+  width: 30px; 
+  height: 5px;
+  background: white;
+}
+
+.header img {
+  width: 250px;
+  margin: 0 0 5px 50px;
+}
+/* Profile styling and image*/
+
+
+/* Cards styling*/
+.projects-container{
+width: 90%;
+margin: 20px, auto;
 }
 
 .cards-container {
   width: 90%;
+  margin: 20px auto;
 }
-.html-card {
-  width: 80%;
+/*.html-card {
+  width: 90%;
   background-color: white;
   border: 1px solid #DADBDB;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   margin: 50px;
   
 }
-
+*/
 .js-card {
-  width: 80%;
+  width: 90%;
   background-color: white;
   border: 1px solid #DADBDB;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
@@ -41,6 +72,12 @@ body {
   border-bottom: 1px solid #B2B3B4; 
 }
 
-.space{
+.space {
   margin-left: 5px;
+} 
+
+/* Chart styling*/
+.canvas-chart{
+  max-width: 500px;
+ 
 }
