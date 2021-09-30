@@ -1,30 +1,38 @@
 
 //see: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
-const PAT = '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'
+// require('dotenv').config();
+
+const PersonalAccessToken = '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'
+console.log("PersonalAccessToken", PersonalAccessToken)
 const username = "PriscilaAlfaro";
 
 const projectsInfo = document.getElementById('projects-info');
 const userName = document.getElementById('user-name');
 const profileImage = document.getElementById('profile-image');
-// const pullRequest = document.getElementById('pull-request');
-
-// const defaultBranch = document.getElementById('default-branch');
-
 
 const reposFetch = async () => {
     try {
+
         const response = await fetch(`https://api.github.com/users/${username}/repos`, {
             headers: {
-                'Authorization': `token ${PAT}`
+                'Authorization': `token ${PersonalAccessToken}`
             },
         });
         if (response.ok) {
             const repositories = await response.json();
-            const forkedRepositories = repositories.filter(repo => repo.fork === true);
+            const forkedRepositories = repositories.filter(repo => repo.fork && repo.name.includes("project-"));
+            drawChart(forkedRepositories.length);
+
             forkedRepositories.map(async repo => {
                 const allPullRequest = await pullRequestFetch(repo.name);
                 repo.allPullRequest = allPullRequest;
                 builRepoHtml(repo);
+
+                new Collapsible({
+                    node: document.querySelectorAll('.collapsible'),
+                    eventNode: '.collapsible_title',
+                    isCollapsed: true
+                });
             })
 
         } else {
@@ -37,54 +45,58 @@ const reposFetch = async () => {
 
 
 const builRepoHtml = (repo) => {
-
-    console.log("repo", repo)
     projectsInfo.innerHTML +=
         `<div class="card">
-            <div>
-                <h2>Project: </h2>
-                <h3 class="project-name">${repo.name}</h3>
-                <h2>Default branch:</h2>
-                <h3 id="default-branch">${repo.default_branch}</h3>
-                <h2>Url:</h2>
-                <h3 id="url-repo">${repo.url}</h3>
+            <div class="general-info project-title">
+                <h2 class="project-name">Project: <a href=${repo.url}>${repo.name}<a></h2>
+                <h3 id="default-branch"> Default branch: ${repo.default_branch}</h3>
+                <h3 id="recent-push"> Most recent push: ${new Date(repo.pushed_at).toDateString()}</h3>
             </div>
 
-            <div>
-                <h3>Pull requests</h3>
-                    <div id="pull-request">
-                        <h4>Total pullrequest ${repo.allPullRequest.total_count}</h4>
-                        ${repo.allPullRequest.total_count === 0 ?
-            `<h3>This repository don't have PR</h3>` : repo.allPullRequest.items.map(pullRequest =>
-                `<h4>PullRequest #${pullRequest.number}</h4>
-                    
-                        <div id = "commit-messages">
-                            <h5>Commits</h5>
-                            ${pullRequest.commits.length === 0 ?
-                    `<h3>This repository don't have commits for this PR</h3>` :
-                    pullRequest.commits.map(individualCommit =>
-                        ` <ol>
-                                <li>Commit #${individualCommit.sha}</li>
-                                <li>Message${individualCommit.commit.message}</li>
-                                <li>Autor${individualCommit.commit.author.name}</li>
-                              </ol>`).join('')}
-                        </div>
 
-                        <div id="comments-commenter">
-                            <h5>Comments</h5>
-                            ${pullRequest.comments.length === 0 ?
-                    `<h3>This repository don't have comments for this PR</h3>` :
-                    pullRequest.comments.map(individualComment =>
-                        `<ol>
-                                <li>Created at ${individualComment.created_at}</li>
-                                <li>Message${individualComment.body}</li>
-                                <li>Autor${individualComment.user.login}</li>
-                             </ol>`).join('')}
-                             </div>`
-            )}
+
+            <div class="pr-info">
+            <h3>Pull requests</h3>
+                    <div id="pr">
+                        <h4>Total pullrequest: ${repo.allPullRequest.total_count}</h4>
+                        ${repo.allPullRequest.total_count === 0 ?
+            `<h4>This repository don't any have Pull Request</h4>` :
+            repo.allPullRequest.items.map(pullRequest =>
+                `<h4>Pull Request #${pullRequest.number}</h4>
+                            ${pullRequest.commits.length === 0 ?
+                    `<h4>This repository don't have commits for this PR</h4>` :
+                    `<div class="collapsible" data-collapsible>
+                        <div class="collapsible_title"><button>Total commits: ${pullRequest.commits.length}</button></div>
+                        <div class="collapsible_content">
+                        <ol>
+                        ${pullRequest.commits.map(individualCommit =>
+                        `<li>
+                            <div>Commit #: ${individualCommit.sha}</div>
+                            <div>Message: ${individualCommit.commit.message}</div>
+                            <div> Autor: ${individualCommit.commit.author.name}</div>
+                        </li>`).join('')
+                    }
+                        </ol>
                         </div>
+                        </div>
+                        <div class="collapsible" data-collapsible>
+                        <div class="collapsible_title"><button>Total comments: ${pullRequest.comments.length}</button></div>
+                        <div class="collapsible_content">
+                        <ol>
+                    ${pullRequest.comments.map(individualComment =>
+                        `<li>
+                        <div>Created at: ${new Date(individualComment.created_at).toDateString()}</div>
+                        <div>Message: ${individualComment.body}</div>
+                        <div> Autor: ${individualComment.user.login}</div>
+                        </li>`).join('')
+                    }
+                    </ol>
                     </div>
-            </div>`
+                    </div>`}
+                    </div> `
+            )}
+             </div>
+        </div>`
 
 }
 
@@ -94,7 +106,7 @@ const userNameFetch = async () => {
     try {
         const response = await fetch(`https://api.github.com/users/${username}`, {
             headers: {
-                'Authorization': `token ${PAT}`
+                'Authorization': `token ${PersonalAccessToken}`
             },
         });
         if (response.ok) {
@@ -123,7 +135,7 @@ const pullRequestFetch = async (repoName) => {
     try {
         const response = await fetch(url, {
             headers: {
-                'Authorization': `token ${PAT}`
+                'Authorization': `token ${PersonalAccessToken}`
             },
         });
         if (response.ok) {
@@ -149,7 +161,7 @@ const fetchCommentsFromPullRequest = async (repoName, pullRequestNumber) => {
         if (pullRequestNumber) {
             const response = await fetch(`https://api.github.com/repos/Technigo/${repoName}/pulls/${pullRequestNumber}/comments`, {
                 headers: {
-                    'Authorization': `token ${PAT}`
+                    'Authorization': `token ${PersonalAccessToken}`
                 },
             });
             if (response.ok) {
@@ -182,7 +194,7 @@ const fetchCommitsFromPullRequest = async (repoName, pullRequestNumber) => {
     try {
         const response = await fetch(`https://api.github.com/repos/Technigo/${repoName}/pulls/${pullRequestNumber}/commits`, {
             headers: {
-                'Authorization': `token ${PAT}`
+                'Authorization': `token ${PersonalAccessToken}`
             },
         });
         if (response.ok) {
@@ -197,6 +209,8 @@ const fetchCommitsFromPullRequest = async (repoName, pullRequestNumber) => {
         console.log(`Error: ${error}`);
     }
 }
+
+
 
 reposFetch();
 userNameFetch();

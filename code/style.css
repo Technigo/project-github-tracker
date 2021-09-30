@@ -1,13 +1,30 @@
 body {
   background: #FFECE9; 
+  font-family: Arial, Helvetica, sans-serif;
+    margin: 0px
+}
+
+.main-section{
+  border: 1px solid blue;
+
+
 }
 
 .general-info{
-  background-color: rgb(194, 138, 235);
+  background-color: rgb(25, 23, 27);
+  color: white;
+  width: auto;
   padding: 20px;
-  display: flex;
-  justify-content:flex-start;
-  flex-direction: column;
+}
+
+
+.project-title{
+  background-color: rgb(21, 3, 63);
+  width: 100%;
+}
+
+.pr-info{
+  padding: 10px 20px;
 }
 
 .general-title{
@@ -18,6 +35,8 @@ body {
   max-width: 100px;
   max-height: 100px;
   border-radius: 50%;
+  border: 2px solid white;
+  justify-content: center;
 }
 
 .profile-info-wraper{
@@ -25,23 +44,70 @@ body {
   display: grid;
 }
 
-.main-section{
-  border: 1px solid blue
-}
 
 
 .projects-info {
-  background-color: aquamarine;
+  background-color: rgb(138, 161, 154);
   border: 1px solid red;
   display: flex;
   margin: 10px;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card{
-  background-color: palegoldenrod;
+  background-color:rgb(197, 206, 236);
   border: 1px solid black;
   display: flex;
-  margin: 10px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 400px;
+  height: auto;
+  font-size: 60%;
+  box-shadow: 0px 0px 5px 1px gray;
+  margin: 20px 0px;
+}
+
+.collapsible{
+  overflow: hidden;
+  background-color:rgb(197, 206, 236);
+
+
+}
+
+.collapsible_title {
+  color: darkgrey;
+  height: auto;
+  display: grid;
+  width: 160px;
+}
+
+.collapsible_content{
+  background-color:rgb(197, 206, 236);
+}
+
+.chart{
+  display: flex;
+  width: 80%;
+  padding: 30px;
+  border: 1px solid black;
+  margin: 30px auto;
+}
+
+
+.footer{
+  background-color: rgb(12, 10, 19);
+    margin-top: 3rem;
+    padding: 1rem 0rem;
+    display: grid;
+    justify-content: center;
+    font-size: small;
+    font-style: italic;
+    text-align: center;
+    color: white
 }
 
 @media screen and (min-width: 768px){
@@ -54,6 +120,9 @@ body {
     flex-direction: row;
 }
 
+.chart{
+  width: 40%;
+}
 
 }
 
