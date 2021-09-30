@@ -26,14 +26,14 @@ fetch(repos)
     // Repos and fetched pulls from the functions down under.
     forkedRepos.forEach((repo) => projects.innerHTML += `
       <div class="repos" id="repos">
-        <a href="${repo.html_url}"><h3>${repo.name}</h3></a>
+        <a href="${repo.html_url}"><h3>${repo.name.substring(8).replace("-"," ")}</h3></a>
         <p>The default branch is: ${repo.default_branch}</p>
         <p>The latest push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
         <p id="pull-${repo.name}">No pull request is yet made 🤷 </p>
         <p id="commits-${repo.name}">There are no commits yet...</p>
       </div>
     `)
-
+  
     drawChart(forkedRepos.length)
     getPullRequests(forkedRepos)
     //getCommitsForPullRequests(forkedRepos)
