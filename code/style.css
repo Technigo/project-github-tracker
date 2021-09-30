@@ -1,5 +1,5 @@
 body {
-	background: grey;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .avatar-user {
@@ -10,6 +10,7 @@ body {
 .avatar-collaborator {
 	height: 20px;
 	border-radius: 50%;
+	padding: 0 2px;
 }
 
 .projects {
@@ -26,8 +27,10 @@ body {
 }
 .repo-info {
 	display: flex;
+	flex-wrap: wrap;
 }
 
+.info,
 .update,
 .commit,
 .pull,

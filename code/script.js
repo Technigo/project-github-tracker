@@ -41,11 +41,12 @@ const fetchFullRepo = (repo) => {
 				// put data in html
 				// console.log('fullRepo', fullRepo.name);
 				projects.innerHTML += /*html*/ `
-				<p class="repo"><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
+				<h3 class="repo"><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a></h3>
 				<div class="repo-info">
-					<p class="update">Updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
-					<p class="commit" id="commit-${fullRepo.name}">Commits: </p>
+					<p class="info">From ${fullRepo.parent.owner.login}, default branch: ${fullRepo.default_branch}</p>
 					<p class="pull" id="pull-${fullRepo.name}">Pull request</p>
+					<p class="commit" id="commit-${fullRepo.name}">Commits: </p>
+					<p class="update">Updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
 				</div>
 				<p class="collaboration" id="collaborators-${fullRepo.name}">Collaborators:</p>
 				`;
