@@ -2,7 +2,7 @@ body {
 	background: grey;
 }
 
-.avatar {
+.avatar-user {
 	height: 50px;
 	border-radius: 50%;
 }

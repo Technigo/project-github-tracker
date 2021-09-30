@@ -21,7 +21,7 @@ const fetchAllReposFromUser = () => {
 		.then((res) => res.json())
 		.then((allRepos) => {
 			// filter forked repos
-			let filteredRepos = allRepos.filter((repo) => repo.fork);
+			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			console.log('filtered repos: ', filteredRepos);
 			filteredRepos.slice(0, 2).forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
@@ -45,7 +45,7 @@ const fetchFullRepo = (repo) => {
 					fullRepo.default_branch
 				}</p>
 				<p>updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
-				<p id="commit-${fullRepo.name}">Commits</p>
+				<p class="" id="commit-${fullRepo.name}">Commits</p>
 				<p id="pull-${fullRepo.name}">Pull request</p>
 				<p id="collaborators-${fullRepo.name}">Collaborators</p>
 				`;
@@ -78,9 +78,9 @@ const fetchCollaborators = (repo) => {
 				if (data.length > 1) {
 					document.getElementById(
 						`collaborators-${repo.name}`
-					).innerHTML += `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
+					).innerHTML = /*html*/ `Group project: <a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
 				} else {
-					document.getElementById(`collaborators-${repo.name}`).innerHTML = 'No collaborators, so lonely...';
+					document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
 				}
 			});
 			fetchPullRequestsArray(repo, authors);
@@ -99,11 +99,11 @@ const fetchPullRequestsArray = (repo, authors) => {
 			const myPullReq = data.find((pull) => authors.includes(pull.user.login)); // pull.user.login === repo.owner.login);
 			// console.log('myPullReq', repo.name, myPullReq);
 			if (myPullReq) {
-				document.getElementById(`pull-${repo.name}`).innerHTML = `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
+				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
 				pullReqData.done++;
 				updatePieChart(pieChart, pullReqData.done);
 			} else {
-				document.getElementById(`pull-${repo.name}`).innerHTML = 'No pull request yet done :(';
+				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ 'No pull request yet done :(';
 			}
 		})
 		.catch((err) => console.log('fetchPullRequestsArray error:', err));
@@ -114,7 +114,7 @@ const fetchUser = () => {
 		.then((res) => res.json())
 		.then((data) => {
 			// console.log(data);
-			userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+			userData.innerHTML += /*html*/ `<a href="${data.html_url}" target="_blank"><img class="avatar-user" src="${data.avatar_url}"></a><p>${data.login}</p>`;
 		})
 		.catch((err) => console.log('fetchCommits error: ', err));
 };
