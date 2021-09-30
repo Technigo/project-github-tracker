@@ -5,47 +5,40 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 
 
-// const drawChart = (amount) => {
-//     const config = {
-//         type: 'doughnut',
-//         data: {
-//             labels: [
-//                 'HTML',
-//                 'CSS',
-//                 'JavaScript'
-//             ],
-//             datasets: [{
-//                 label: 'My First Dataset',
-//                 data: [amount, 20 - amount],
-//                 backgroundColor: [
-//                     'rgb(255, 99, 132)',
-//                     'rgb(54, 162, 235)',
-//                     'rgb(54, 180, 235)',
-//                 ],
-//                 hoverOffset: 4
-//             }]
-//         },
-//     };
-//     const myChart = new Chart(ctx, config);
-
-// }
-
-
-const drawChartforRepo = (languages, element) => {
+const drawChart = (amount) => {
     const config = {
         type: 'doughnut',
         data: {
-            labels: Object.keys(languages),
+            labels: [
+                'Finished projects',
+                'Projects left',
+            ],
             datasets: [{
-                label: '# Frecuencies Words',
-                data: Object.keys(languages).map(function (key) { return languages[key]; }),
-                borderWidth: 1
+                label: 'My First Dataset',
+                data: [amount, 20 - amount],
+                backgroundColor: [
+                    '#a07a99',
+                    '#a7c0b8',
+                ],
+
+
+                hoverOffset: 4
             }]
+        },
+        options: {
+            layout: {
+                padding: 25 
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 15
+                        }
+                    }
+                }
+            }
         }
     };
-    return new Chart(element, config);
-
+    const myChart = new Chart(ctx, config);
 }
-
-
-

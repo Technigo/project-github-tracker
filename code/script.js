@@ -1,13 +1,13 @@
 const USER = 'Rosanna86'
 const userContainer = document.getElementById('myProfile')
-const searchBtn = document.getElementById('repo-search')
+const searchField = document.getElementById('search-field')
+const searchForm = document.getElementById('search-form')
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 const USER_URL = `https://api.github.com/users/${USER}`
 const projectsContainer = document.getElementById('projects')
 const ldsripple = document.getElementById('loading')
 const Auth = { headers: { authorization: '' } }
 
-let charts =[];
 let repos;
 
 
@@ -20,7 +20,7 @@ const userProfile = () => {
       userContainer.innerHTML = `
       <div class="profileinfo">
       <h2>${data.name}</h2>
-      <p>@${data.login}</p>
+      <a href="https://github.com/Rosanna86">@${data.login}</a>
       <p>${data.location}</p>
       </div>
       <div class="profileimg"><img src="${data.avatar_url}"/></div>
@@ -38,6 +38,7 @@ const getRepos = () => {
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
       repos = forkedRepos
       getPullRequests(repos)
+      drawChart(forkedRepos.length)
     })
 
 }
@@ -45,6 +46,7 @@ getRepos()
 
 //function to get the repos
 const getPullRequests = (repos) => {
+  projectsContainer.innerHTML = '';
   repos.forEach(repo => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, Auth) //added 100 (was 30)
       .then(res => res.json())
@@ -52,7 +54,6 @@ const getPullRequests = (repos) => {
         const myPullRequest = data.filter((pull) => {
           return pull.user.login === repo.owner.login
         })
-        console.log(myPullRequest)
         if (myPullRequest.length === 0) {
           return
         }
@@ -60,23 +61,14 @@ const getPullRequests = (repos) => {
           const numberOfCommits = data.length
           //added function so the DOM do not self close tags
           let boxHtml = `<div class="box-repo ${repo.name}">`; // https://stackoverflow.com/questions/46300108/innerhtml-closes-tags
-          boxHtml += `<div class="box-repo-left">`
           boxHtml += `<h3>${repo.name}</h3>`
           boxHtml += `<p id="commit-${repo.name}">Number of commits: ${numberOfCommits}</p>`
           boxHtml += `<p>Last update: ${new Date(repo.pushed_at).toDateString()}</p>`
           boxHtml += `<p>Default branch: ${repo.default_branch}</p>`
           boxHtml += `<p><a href="${repo.html_url}" target="_blank">Go to repo</a></p>`
-          boxHtml += `</div>`
-          boxHtml += `<div class="box-repo-right"><canvas id="chart-${repo.name}"></canvas></div>`
-          boxHtml += `</div>`
+          boxHtml += '</div>'
           projectsContainer.innerHTML += boxHtml; //closing the div tag
           ldsripple.style.display = 'none' //loading icon
-          fetch(repo.languages_url, Auth)
-          .then(res => res.json())
-            .then(data => {
-              const chartElement = document.getElementById('chart-'+repo.name)
-              charts.push(drawChartforRepo(data, chartElement));
-            })
         })
       })
   })
@@ -91,11 +83,11 @@ const getCommits = (url, callbackFunction) => {
     })
 }
 
+//eventlistener on form-submit
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-
-
-
-
-  // searchBtn.addEventListener('click', () => {
-  //   getRepos()
-  // })
+  // this function filters your repos where name contains searchField.value. Where IndexOf returns the position of substring and -1 = doesn't exist in string
+  const found = repos.filter(r => r.name.indexOf(searchField.value) > -1);
+  getPullRequests(found);
+})

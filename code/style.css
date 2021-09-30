@@ -12,6 +12,19 @@ body {
   justify-content: center;
 }
 
+.header-text {
+  color: #fff;
+  display: grid;
+  grid-column: span 2/8;
+  font-weight: 300;
+  font-size: 25px;
+}
+
+form#search-form {
+  grid-column: span 12;
+  margin-bottom: 10px;
+}
+
 .icon_header {
   padding: 10px 0px 10px 0px;
   height: 50px;
@@ -21,34 +34,39 @@ body {
 }
 
 .search-container {
-  display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column: span 12;
 }
 
 .input-field {
+  margin: 7px 0px 8px 0px;
+  grid-column: 1/12;
   padding: 10px 20px;
   border-radius: 15px;
   font-size: 15px;
   color: #7aa094;
   border: 1px solid #7aa094;
   font-family: 'Barlow', sans-serif;
+  font-weight: 500;
 }
 
 .button-search {
-  float: right;
+  margin: 7px 0px 7px 0px;
+  grid-column: 2/4;
   padding: 10px 20px;
   border-radius: 15px;
-  background-color: #7aa094;
   color: #fff;
+  background-color: #56786d;
   font-size: 15px;
   border: 1px solid #7aa094;
   font-family: 'Barlow', sans-serif;
+  font-weight: 500;
 }
 
-.search-button:hover {
-  background-color: #7aa094;
-  color: #7aa094;
+.button-search:hover {
+  color: #364b45;
+  background-color: #56786d;
+  font-weight: 500;
 }
 
 .main-grid {
@@ -75,11 +93,16 @@ body {
 
 .profileinfo {
   background-color: #f0f0f0;
-  grid-column: span 1/3;
+  grid-column: span 2/4;
+}
+
+.profileinfo a {
+  color: black;
+  text-decoration: none;
 }
 
 .profileimg {
-  grid-column: span 9/13;
+  grid-column: 6/12;
 }
 
 .profileimg img {
@@ -93,43 +116,38 @@ body {
   padding: 10px;
   background-color: #7aa094;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
   grid-column: span 12;
   border-radius: 25px 0px;
 }
 
-.box-repo-left {
-  grid-column: 1/8;
-}
-
-.box-repo-right {
-  grid-column: 9/12;
-}
-
 .box-repo p {
+  text-align:center;
   margin-block-start: 0em;
   margin-block-end: 0.2em;
-  font-size: 17px;
+  font-size: 15px;
 }
 
-.box-repo-left h3 {
+.box-repo h3 {
+  text-align:center;
   margin-block-start: 0.2em;
   margin-block-end: 0.3em;
-  font-size: 25px;
+  font-size: 22px;
 }
 
-.box-repo-left a {
+.box-repo a {
+  text-align:center;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
   font-size: 20px;
 }
 
-.chartrepos {
+
+.chart {
+  grid-column: span 12;
+  max-width: 100%;
+  max-height: 500px;
   display: grid;
-  grid-column: 4/7;
-  width: 200px;
-  height: 200px;
 }
 
 .my-profile {
@@ -180,28 +198,83 @@ body {
 
 @media (min-width: 768px) {
   .box-repo {
-    display: grid;
     grid-column: span 6;
-    column-gap: 10px;
-    row-gap: 10px;
-    border-radius: 25px;
+    border-radius: 20px;
   }
+
+  .chart {
+    grid-column: 4/10;
+  }
+  
+  .my-profile {
+    grid-template-areas: ". info ."
+                        ". image .";
+    grid-template-columns: 4fr 4fr 4fr;
+  }
+
+  .profileimg {
+    grid-area: image;
+  }
+  
+  .profileimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .profileinfo {
+    grid-column: span 5/11;
+    grid-area: info;
+  }
+
+  .profileinfo h2 {
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+  }
+
+  .profileinfo p {
+    margin-block-start: 0.3em;
+  }
+
 }
 
 /* desktop */
-
 @media (min-width: 992px) {
-  .box-repo {
+  
+
+  .header {
+    background-color: #7aa094;
     display: grid;
-    grid-column: span 6;
-    column-gap: 10px;
-    row-gap: 10px;
-    border-radius: 25px;
+    grid-column: span 12;
   }
+
+  .my-profile {
+    grid-template-areas: ". info image";
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+  }
+
+  .profileinfo {
+    text-align: right;
+    padding-right: 10px;
+    }
+
+  .profileimg {
+    grid-area: image;
+  }
+  
   .profileimg img {
-    max-width: 500px;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 25px 0px;
+    max-height: 200px;
+
   }
+
+  .box-repo {
+    grid-column: span 4;
+    border-radius: 20px;
+  }
+
+  .grid-container {
+    grid-column: 2/12;
+  }
+
 }
