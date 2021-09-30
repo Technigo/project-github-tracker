@@ -5,6 +5,7 @@ let API_ALL_REPOS = `https://api.github.com/users/${USER}/repos`
 let REPO_API = `https://api.github.com/repos/${USER}/${PROJECT}/commits`
 let repoContainer = document.getElementById('repo-container')
 let profileContainer = document.getElementById('profile-container')
+let commitsSort = document.getElementById('commit-btn')
 let repositorys = []
 
 
@@ -65,7 +66,22 @@ const getRepos = () => {
 getRepos()
 getProfile()
 
+function compare( a, b ) {
+  if ( a < b ){
+    return -1;
+  }
+  if ( a > b ){
+    return 1;
+  }
+  return 0;
+}
 
+commitsSort.addEventListener("click", () => {
+  repoContainer.innerHTML = ''
+  console.log(repositorys)
+  console.log(repositorys.sort(compare(repositorys)))
+  sortedRepos.forEach((repo) => insertRepoInfo(repo))
+})
 
 // // create dynamic ID from for eaxmple the name of the project 
 // // avoid using global variables
