@@ -54,7 +54,7 @@ const getRepos = () => {
             // console.log("NUMBER OF COMMITS", filteredCommits.length);
 
             projectsContainer.innerHTML += `
-          <div class="projects">
+            <div class="projects-individual">
           <h3> Project Name: ${upperCaseName}</h3>
           <a href = ${project.html_url}> ${upperCaseName} </a>
           <p> Main branch: ${project.default_branch}</p>
@@ -65,9 +65,8 @@ const getRepos = () => {
           )}, ${project.pushed_at.slice(11, 16)} 
           </p>
           <p id="pull-${project.name}"></p>
-         
           </div>
-          `;
+                   `;
           });
       });
       getPulls(forkedRepos);

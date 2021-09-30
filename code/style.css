@@ -1,6 +1,7 @@
 body {
   background-color: #d5dad6;
   font-family: "Roboto Mono", monospace;
+  box-sizing: border-box;
   min-width: 325px;
 }
 
@@ -43,16 +44,15 @@ h2 {
   margin: 0 0 10% 15%;
 }
 
-.projects {
-  border-bottom: 1px solid #b8c3bd;
-}
-
 .projects-list {
   border: 1px solid #b8c3bd;
   color: #4a707a;
   font-size: 17px;
   padding: 4%;
   height: 100%;
+}
+.projects-individual {
+  border-bottom: 1px solid #b8c3bd;
 }
 
 /* unvisited link */
@@ -93,16 +93,7 @@ a:hover {
     margin: 5% 0 5% 27%;
   }
 
-  .project-wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .projects {
-    width: 100%;
-    border: 1px solid #b8c3bd;
-    display: grid;
-    grid-template-columns: 1fr;
+  .projects-list {
     text-align: center;
   }
 }
@@ -110,7 +101,8 @@ a:hover {
 @media (min-width: 1025px) {
   .big-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    margin: 2%;
   }
 
   h1 {
@@ -123,31 +115,15 @@ a:hover {
     font-size: 40px;
   }
 
-  .info-wrapper {
-    grid-column: span 1;
-  }
-
-  .project-wrapper {
-    grid-column: span 2;
-    display: grid;
+  .projects-list {
+    padding: 0 0 0 5%;
+    font-size: 16px;
+    border-bottom: 1px solid #b8c3bd;
   }
 
   .projects {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 1px solid #b8c3bd;
-  }
-
-  .projects-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 200%;
-    padding: 0;
-    font-size: 16px;
-  }
-
-  .project-info {
-    display: flex;
-    flex-direction: column;
+    /* text-align: center; */
   }
 }
