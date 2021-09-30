@@ -16,18 +16,19 @@
   </head>
   <body>
     <header class="hero-img">
-      <h1 class="welcome-message">Welcome to GitHub Tracker!</h1>
+      <h1 class="welcome-message">GitHub Tracker</h1>
     </header>
     <main class="wrapper" id="wrapper">
       <div class="profile-container" id="profileContainer"></div>
-      <h2>Projects:</h2>
+      <hr />
+      <h2>Projects</h2>
       <section class="projects" id="projects"></section>
     </main>
 
-    <!-- This will be used to draw the chart 👇 -->
-
-    <canvas class="chart" id="chart"></canvas>
-
+    <section class="chart-container">
+      <p class="chart-text">Overview of projects</p>
+      <canvas class="chart" id="chart"></canvas>
+    </section>
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
   </body>

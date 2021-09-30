@@ -4,23 +4,23 @@
 }
 
 body {
-  background-color: rgb(204, 194, 193);
+  background-color: rgb(50, 50, 51);
   font-family: "Montserrat", sans-serif;
   margin: 0;
-  color: rgb(50, 50, 51);
+  color: black;
   height: 100%;
   width: 100%;
 }
 
 .hero-img {
-  background-image: url("https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8c2t5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-  height: 40vh;
+  background-image: url("./assets/gitimg.jpeg");
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  height: 70vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  object-fit: cover;
   position: relative;
-  background-size: auto;
   background-color: rgb(189, 194, 189);
   z-index: -1;
 }
@@ -28,11 +28,12 @@ body {
 .welcome-message {
   text-align: center;
   position: absolute;
-  /* top: 20vh; */
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 30px;
+  font-size: 40px;
+  color: rgb(189, 194, 189);
+  width: 90%;
 }
 
 .wrapper {
@@ -44,7 +45,8 @@ body {
 }
 
 .profile-container {
-  background-color: rgb(189, 174, 100);
+  background-color: rgb(50, 50, 51);
+  color: rgb(204, 194, 193);
   width: 95%;
   height: 100%;
   margin: 1vw;
@@ -71,12 +73,27 @@ body {
   border-radius: 50%;
   width: 50%;
   height: 50%;
-  margin-top: -13vh;
+  margin-top: -14vh;
+  -webkit-filter: grayscale(60%);
+  filter: grayscale(60%);
+  border: 10px solid rgb(50, 50, 51);
 }
 
 .profile-text {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 5px;
+}
+
+.icon {
+  height: 2px;
+  width: 2px;
+}
+
+hr {
+  border-top: 1px solid rgb(204, 194, 193);
+  border-radius: 50%;
+  width: 95%;
+  margin: auto;
 }
 
 .projects {
@@ -84,14 +101,132 @@ body {
   flex-direction: column;
 }
 
+h2 {
+  color: rgb(204, 194, 193);
+  padding: 20px;
+  text-align: center;
+}
+
 .repo-card {
-  background-color: rgb(189, 174, 100);
-  margin: 5px;
-  padding: 5px;
+  background-color: rgb(204, 194, 193);
+  margin: 10px 20px;
+  padding: 20px;
   border-radius: 15px;
+}
+
+h3 {
+  margin-bottom: 15px;
+  margin-left: 20px;
+}
+
+.project-info {
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: black;
+}
+
+.chart-container {
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  font-weight: bold;
+  color: rgb(204, 194, 193);
+}
+
+.chart-text {
+  padding: 20px;
 }
 
 .chart {
   max-width: 300px;
   max-height: 300px;
+  display: initial !important;
+}
+
+@media (min-width: 768px) {
+  .welcome-message {
+    font-size: 60px;
+    background-position: 25% 40%;
+  }
+
+  .profile-text {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .repo-card {
+    margin: 10px;
+    width: 40%;
+  }
+
+  h3 {
+    font-size: 23px;
+    margin-left: 10px;
+  }
+
+  .project-info {
+    margin-left: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 992px) {
+  .welcome-message {
+    font-size: 60px;
+    top: 20%;
+  }
+
+  .profile-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .profile-info-container {
+    text-align: left;
+    margin-top: -8vh;
+    width: 50%;
+  }
+
+  .profile-img-container {
+    width: 50%;
+  }
+
+  .profile-text {
+    margin-bottom: 7px;
+  }
+
+  .icon-container {
+    margin-top: -15vh;
+  }
+
+  .repo-card {
+    margin: 10px 5px;
+    width: 27%;
+  }
+
+  .chart-container {
+    margin: 20px, 0px;
+  }
 }
