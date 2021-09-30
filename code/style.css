@@ -154,12 +154,8 @@ body {
   color: rgb(54, 162, 255);
 }
 
-.repo-url a:hover {
-  color: rgba(208, 127, 204, 1);
-}
-
-.repo-url a {
-  color: rgb(34, 117, 59);
+.repo-name:hover {
+  color: rgb(127, 208, 145);
 }
 
 .repo-branch {
@@ -189,6 +185,10 @@ footer {
 
 footer img {
   height: 8rem;
+}
+
+.canvas-box {
+  padding-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -250,20 +250,43 @@ footer img {
     grid-area: projects;
   }
 
+  .project-title {
+    padding: 2rem 0 2rem 1rem;
+  }
+
   .user-profile-box {
     display: grid;
+    justify-items: center;
     padding: 5rem 0 1rem 1rem;
     align-items: center;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2.5fr 1fr;
     grid-template-areas:
       "pic"
       "info";
   }
 
+  .user-info-box {
+    padding-left: 2rem;
+  }
+
   #project-box {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1281px) {
+  body {
+    max-width: 60vw;
+    margin: 0 auto;
+  }
+
+  .canvas-box {
+    max-width: 40vw;
+    margin: 0 auto;
+    padding-bottom: 2rem;
   }
 }

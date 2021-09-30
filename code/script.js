@@ -17,15 +17,19 @@ const getUserData = () => {
       userContainer.innerHTML = `
       <div class="user-profile-box">
         <div class="user-info-box">
+          
           <h1 class="user-username"> <span class="user-span">${
             data.login
           }</span></h1>
+          
           <h2 class="user-fullname"> <span class="user-span">${
             data.name
           }</span></h2>
+          
           <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${
             data.location
           }</span></h3>
+          
           <h3 class="user-join"> Member since: ${new Date(data.created_at)
             .toDateString()
             .slice(4)}</h3>
@@ -59,19 +63,24 @@ const fetchRepos = () => {
         (repo) =>
           (reposSubContainer.innerHTML += `
           <div class="repo-box">
-            <h3 class="repo-name"><img class="repo-book-img"src="images/book.png" alt="book"/>${
-              repo.name
-            }</h3>
-            <p class="repo-url">Url: <a href="${
+          
+           
+            <a href="${
               repo.html_url
-            }" target="blank">${repo.html_url}</a></p>
+            }" target="blank"> <h3 class="repo-name"><img class="repo-book-img"src="images/book.png" alt="book"/>
+            ${repo.name}</h3>
+           </a>
+
             <p>Default branch <span class="repo-branch">${
               repo.default_branch
             }</span></p>
+
             <p>Language: <span class="repo-language">${repo.language}</span></p>
+            
             <p>Recent push: <span class="repo-date">${new Date(
               repo.pushed_at
             ).toDateString()}</span></p>
+            
             <p>Commits:<span id="commit-${
               repo.name
             }" class="repo-commit"> </span></p>
