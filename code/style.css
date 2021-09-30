@@ -1,3 +1,30 @@
 body {
-  background: #FFECE9;
+  background: rgb(105, 104, 104);
 }
+#chart {
+  border: black solid;
+  position: absolute;
+  padding: 40px;
+  aspect-ratio: 300px;
+}
+.user-info_picture {
+  border-radius: 50%;
+}
+.user-info {
+  font-size: 40pxß;
+}
+.header-container {
+  position: relative;
+}
+.octocat {
+  height: 50px;
+}
+
+/*.background-image {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  //opacity: 0.4;
+  z-index: -1; /* keep the image behind the content 
+}*/

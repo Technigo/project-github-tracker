@@ -6,11 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="header__container">
+    
+    <image class="octocat" src="./github.png"></image>
+    <h1>GitHub Tracker</h1>
+  </header>
+  <div id="userInfo" class="user-info"></div>
+  <button id= "Btn"></button>
+ 
+  <main id="projects" class="container">
+    <table>
+      <tr>
+        <td"></td>
+      </tr>
+    </table>
+  </main>
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
