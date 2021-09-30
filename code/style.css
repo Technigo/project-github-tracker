@@ -111,6 +111,12 @@ a.button1:hover {
   position: sticky;
 }
 
+.btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .info {
   margin: 12px;
   letter-spacing: 5px;
@@ -231,9 +237,10 @@ a.button1:hover {
   }
 
   .repo-cards {
+    justify-content: space-between;
     background-color: #8d86c9;
-    max-height: 150px;
-    margin: 10px;
+    max-height: 200px;
+    margin: 15px;
   }
 
   .card-info {
