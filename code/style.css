@@ -1,3 +1,63 @@
+* {
+  box-sizing: border-box;
+  }
+
 body {
-  background: #FFECE9;
+  background: #939F5C;
 }
+
+/* .section {
+  display: grid;
+  grid-template-columns: 1fr;
+} */
+
+.user-profile {
+  /* max-height: 60vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: auto;
+  width: 100%;
+  grid-gap: 5px;
+  text-align: center;
+  padding: 20px;
+} 
+
+.grid {
+  /* display: grid;
+  grid-template-columns: 1fr; */
+  
+}
+
+.repo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding: 10px; */
+  border: 1px solid black;
+  /* box-shadow: 5px 5px black; */
+  /* margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  max-width: 400px; */
+
+
+
+  @media (min-width: 768px) {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .projects {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }

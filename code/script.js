@@ -11,8 +11,8 @@ const fetchUser = () => {
     .then((data) => {
       profileContainer.innerHTML = /*html*/ `
       <section class="user">
-      <h2>Username: ${data.login}</h2>
       <img class="picture" src="${data.avatar_url}" alt="profile picture" />
+      <h2>Username: ${data.login}</h2>
       </section>
       `;
     });
@@ -31,15 +31,15 @@ const getRepos = () => {
       forkedRepos.forEach(
         (repo) =>
           (projectContainer.innerHTML += /*html*/ `
-        <div>
-        <a href="${repo.html_url}">${repo.name} with default branch ${
-            repo.default_branch
-          }</a>
-        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p id="commit-${repo.name}"> Commits amount: </p>
-        </div>
+        <div class="repo-card" id=${repo.name}>
+          <a href="${repo.html_url}">${repo.name}</a>
+				  <p>Branch: ${repo.default_branch} </p>
+            <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p id="commit-${repo.name}">Amount of commits: </p>
+            </div>
         `)
       );
+      drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
     });
 };
