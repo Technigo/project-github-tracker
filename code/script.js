@@ -28,6 +28,8 @@ const getReposDetails = (data) => {
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
   // const smth = UserForkedRepos sort here
   // smth.for echa
+  // chartData.datasets.data[1].push(userForkedRepos.length);
+  drawChart(userForkedRepos);
   userForkedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
     fetch(repo.commits_url.replace("{/sha}", ""))
@@ -115,15 +117,6 @@ const renderComments = (comments, repo) => {
 const classToggle = (commentContainer) => {
   commentContainer.classList.toggle("active");
 };
-
-// (commentContainer) => {
-//   if (commentContainer.className === "active") {
-//     commentContainer.classList.toggle("unactive");
-//   } else {
-//     commentContainer.classList.toggle("active");
-//   }
-// };
-
 // https://stackoverflow.com/c/technigo/questions/2918
 // https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100
 // - All pull requests

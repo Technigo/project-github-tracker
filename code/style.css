@@ -1,5 +1,6 @@
 :root {
-  --background: #ffece9;
+  --background: white;
+  /* background-color: rgb(255, 85, 204); */
 }
 
 body {
@@ -23,6 +24,32 @@ body {
   background-color: aqua;
 }
 
+.chart {
+  margin-top: 20px;
+  max-width: 400px;
+  max-height: 400px;
+}
+
 .comment-container.active {
   display: block;
+}
+
+.active {
+  animation: active 1s;
+}
+@keyframes active {
+  0% {
+    display: none;
+    transform: translate3d(0, -1rem, 0);
+    opacity: 0;
+  }
+  1% {
+    display: block;
+    transform: translate3d(0, -1rem, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 }
