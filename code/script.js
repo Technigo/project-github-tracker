@@ -5,7 +5,7 @@ const userSection = document.getElementById("user-section")
 const options = {
 	method: 'GET',
 	headers: {
-		Authorization: `token xxx`
+		Authorization: `token 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`
 	},
 };
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
@@ -13,10 +13,6 @@ const totalProjects = 19;
 
 //FUNCTIONS
 
-function toggle() {
-  this.classList.toggle("active");
-  console.log(this)
-}
 
 const getRepos = () => {
 	fetch(REPO_API, options)
@@ -34,9 +30,9 @@ const getRepos = () => {
 				<div class="userImageDiv">
 					<img class="userImage" id="userImage" src="${profilePic}" alt="Github Avatar">
 				</div>
-				<div class=userTextDiv>
-					<p><b>Birgit</b></p>
-					<p>${userName}</p>
+				<div class="userTextDiv">
+					<p class="myName">Birgit</p>
+					<p class="userName">${userName}</p>
 				</div>	
 			`
 			drawProjects(forkedRepos);	
@@ -45,30 +41,30 @@ const getRepos = () => {
 }
 
 const drawProjects = (forkedRepositories) => {
-
 	forkedRepositories.forEach((repo) => {
 		document.getElementById('projects-section').innerHTML += `
 			<div class="projects-div" id="projects">
 				<a href="${repo.html_url}">${repo.name}</a>
 				<p>default branch: ${repo.default_branch}</p>
-				<p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
-				<p onclick="click()" id="commit-${repo.name}">Commits: 0</p>
+				<p>Last push: ${new Date(repo.pushed_at).toDateString([], { Style: "short" })}</p>
+				<p class="noOfCommits" id="commit-${repo.name}">Commits: 0</p>
         <ul id="commitMessages-${repo.name}"></ul>
 			</div>	
-		`
-    console.log(document.getElementById(`commit-${repo.name}`))
-    
+		`;
+
 		getCommits(forkedRepositories, repo.name);
-    const click = () => {
-      console.log('clicked')
-      document.getElementById(`commitMessages-${repo.name}`).classList.toggle('active')
-    }
-   /*  document.getElementById(`commit-${repo.name}`).addEventListener('click',  () => {
-      console.log('clicked')
-      document.getElementById(`commitMessages-${repo.name}`).classList.toggle('active')
-    }) */
-	});		
-}
+	});
+
+	forkedRepositories.forEach((repo) => {
+		document
+			.getElementById(`commit-${repo.name}`)
+			.addEventListener('click', () => {
+				document
+					.getElementById(`commitMessages-${repo.name}`)
+					.classList.toggle('active');
+			});
+	});
+};
 
 const getCommits = (filteredArray, myRepoName) => {
 	console.log('Reponame: ', myRepoName)
@@ -88,6 +84,7 @@ const getCommits = (filteredArray, myRepoName) => {
         if (authorCommits.length > 0) {
           document.getElementById(`commit-${myRepoName}`).innerHTML = `
 					Commits: ${authorCommits.length}
+          <i class="fas fa-bars"></i>
           `
           authorCommits.forEach(element => {
             document.getElementById(`commitMessages-${myRepoName}`).innerHTML += `
@@ -98,12 +95,6 @@ const getCommits = (filteredArray, myRepoName) => {
 			})		
 	});
 }
-
-/* const toggleCommits = (myRepoName) => {
-  document.getElementById(`commitMessages-${myRepoName}`).onclick = toggle;
-} */
-
-
 
 
 

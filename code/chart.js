@@ -15,10 +15,10 @@ const drawChart = (doneProjects) => {
 							label: 'My First Dataset',
 							data: [doneProjects, totalProjects - doneProjects],
 							backgroundColor: [
-							'rgb(255, 99, 132)',
-							'rgb(54, 162, 235)',
+							'rgb(120, 129, 131)',
+							'rgb(198, 207, 215)',
 							],
-							hoverOffset: 4
+							hoverOffset: 2
 					}]
 			},
 		};
