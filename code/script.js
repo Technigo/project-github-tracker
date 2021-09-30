@@ -20,7 +20,9 @@ const getRepos = () => {
                <a class="repo-item1" href="${repo.html_url}" target="_blank">${
             repo.name
           }</a>
-               <span class="repo-item2">${repo.default_branch}</span>
+               <div class="repo-item2"><span class="branch">${
+                 repo.default_branch
+               }</span></div>
                <h4 class="repo-item3">Last updated: ${new Date(
                  repo.updated_at
                ).toLocaleDateString()}</h4>
