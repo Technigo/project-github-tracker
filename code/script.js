@@ -10,7 +10,7 @@ const getUserData = () => {
     .then((data) => {
       personData.innerHTML = `
       <div class="personal-info">    
-      <img class="img" src="${data.avatar_url}"/>
+      <img class="img" src="${data.avatar_url}">
       <h2 class="info">Full name: ${data.name}</h2>
       <h2 class="info">Located in ${data.location}, Sweden</h2>
       <h2 class="info">Github account:  ${data.login}</h2>
@@ -40,13 +40,18 @@ const getRepos = () => {
           }
         )
 
-        projects.innerHTML += `<div id="${repo.name}"" class="repo-cards">
+        projects.innerHTML += `
         
-        <a href="${repo.html_url}" id="commits">Show latest commit message</a>
-        <p class="card-info" id="commit-${repo.name}"></p>
-        <p class="card-info">Recent push ${pushedDate}</p>
-        <p class="card-info">Branch ${repo.default_branch}</p> 
-        <p class="card-info"><a href="${repo.html_url}" target="blank">Repository ${repo.name}</a></p>
+          <div id="${repo.name}"" class="repo-cards">
+
+            <p class="card-info" id="commit-${repo.name}"></p>
+            <p class="card-info">Recent push ${pushedDate}</p>
+            <p class="card-info">Branch ${repo.default_branch}</p> 
+            <p class="card-info"><a href="${repo.html_url}" target="blank">Repository ${repo.name}</a></p>
+          <div class="small-logo"><a href="${repo.html_url}" target="blank">
+            <img src="./github_icon.png" class="logo">
+            </a>
+          </div>
         </div>
 
       `
@@ -65,8 +70,12 @@ const getPR = (repos) => {
         // console.log(data.review_comments_url)
         const myPR = data.find((pull) => pull.user.login === repo.owner.login)
         const myCommits = myPR.commits_url
-        // console.log(myCommits)
-        getCommits(myCommits, repo.name)
+        if (myPR) {
+          getCommits(myCommits, repo.name)
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML +=
+            'No pull request yet done :('
+        }
       })
   })
 }
@@ -75,9 +84,12 @@ const getCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
+      let commitMessage = data[data.length - 1].commit.message
       document.getElementById(
         `commit-${myRepoName}`
-      ).innerHTML += `<p class="card-info">Amount of commits ${data.length}</p>`
+      ).innerHTML += `<p class="card-info">Amount of commits ${data.length}</p>
+      <p>${commitMessage}</p>
+      `
     })
 }
 

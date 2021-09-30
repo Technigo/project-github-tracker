@@ -68,20 +68,30 @@ a.button1:hover {
 }
 
 .repo-cards {
-  height: 300px;
-  width: 200px;
+  height: 350px;
+  width: 250px;
   color: #0f0c29;
   font-family: 'Bebas Neue', cursive;
   margin: 1em;
   padding: 1em;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
   border-radius: 1em;
-  box-shadow: 0.25em 0.25em 0.25em grey;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   background-color: #afbfc0;
+}
+
+.logo {
+  height: 30px;
+}
+
+.small-logo {
+  display: flex;
+  width: 100%;
 }
 
 .projects {
@@ -91,7 +101,6 @@ a.button1:hover {
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
-  align-items: center;
 }
 
 .personal-info {
@@ -130,15 +139,6 @@ a.button1:hover {
   margin-top: 1em;
 }
 
-.footer {
-  margin: 1em;
-  padding-top: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 @media screen and (max-width: 780px) {
   .hero {
     display: flex;
@@ -175,7 +175,7 @@ a.button1:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column-reverse;
     background-color: #8d86c9;
     max-height: 200px;
     min-width: 50%;
