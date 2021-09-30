@@ -26,63 +26,37 @@ header {
   font-size: 30px;
 }
 
-.user-section {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  height: 150px;
-}
-
 .user-section p {
-margin: 0px;
-height: 30px;
-font-size: 18px;
-}
-
-.search-container {
-  margin-bottom: 20px;
-}
-
-.input-field {
-  padding: 10px;
-  border-radius: 10px;
-  font-family: 'Nunito Sans';
-  font-size: 15px;
-  color: #7b7d7e;
-  border: 3px solid #8390FA;
-}
-
-.search-button {
-  padding: 10px 25px;
-  border-radius: 10px;
-  background-color: #fff;
-  color: #1D2F6F;
-  font-family: 'Nunito Sans';
-  font-size: 15px;
-  border: 3px solid #8390FA;
-}
-
-.search-button:hover {
-  background-color: #8390FA;
+  margin: 0px;
+  height: 30px;
+  font-size: 18px;
   color: #fff;
 }
 
 .user-profile {
   text-align: center;
-  margin-top: 30px;
-  height: 375px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.swap-on-hover {
+.swap-on-hover a {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .swap-on-hover img {
   border-radius: 100%;
-  height: 250px;
+  max-height: 250px;
   display:block;
-  margin-left: 41.5%;
-  border: 8px solid #8390FA;
+  border: 3px solid #6440c5;
   position: absolute;
+  margin-top: 45vh;
+  box-shadow: rgba(49, 46, 240, 0.4) 4px 4px, rgba(61, 33, 221, 0.3) 8px 8px, rgba(35, 11, 141, 0.2) 13px 13px, rgba(33, 17, 104, 0.1) 18px 18px, rgba(39, 22, 117, 0.05) 23px 23px;
 }
 
 .swap-on-hover .front-image {
@@ -97,35 +71,26 @@ font-size: 18px;
 
 .icon-container {
   display: flex;
-  align-items: center;
-}
-
-.link-icon, .github-icon {
-  border-radius: 0;
-  border: none;
-}
-
-.link-icon {
-  height: 30px;
-  margin-right: 8px;
 }
 
 .github-icon {
   height: 30px;
-  margin-right: 90%
+  position: relative;
+  border: none;
 }
 
 .repo-item {
-  background-color: #1D2F6F;
+  background-color: #fff;
   padding: 15px 20px;
-  margin: 20px 20px;
-  border-radius: 30px;
+  margin: 30px 40px;
+  border: 3px solid #1D2F6F;
   text-align: center;
+  box-shadow: rgba(49, 46, 240, 0.4) 5px 5px, rgba(61, 33, 221, 0.3) 10px 10px, rgba(35, 11, 141, 0.2) 15px 15px, rgba(33, 17, 104, 0.1) 20px 20px, rgba(39, 22, 117, 0.05) 25px 25px;
 }
 
 h3 a {
   text-decoration: none;
-  color: #fff;
+  color: black;
   font-size: 30px;
 }
 
@@ -141,15 +106,16 @@ h2 {
   text-align: center;
   font-family: 'Bebas Neue';
   font-size: 40px;
+  
 }
 
 p {
-  color: #fff;
+  color: black;
   font-size: 20px;
 }
 
 h3 a:hover {
-  color: red;
+  color: #a170da;
 }
 
 
@@ -172,28 +138,14 @@ h3 a:hover {
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
-  margin: auto;
-  padding: 100px;
+  padding: 15px;
   border: 1px solid #888;
   width: 80%;
 }
 
-.modal-button {
-    padding: 10px 25px;
-    border-radius: 10px;
-    background-color: #fff;
-    color: #1D2F6F;
-    font-family: 'Nunito Sans';
-    font-size: 15px;
-    border: 3px solid #8390FA;
-  }
-  
-.modal-button:hover {
-    background-color: #8390FA;
-    color: #fff;
-  }
-
-
+.modal-message {
+  color: #1A1E22;
+}
 
 /* The Close Button */
 .close {
@@ -208,4 +160,55 @@ h3 a:hover {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+
+/* CSS */
+.modal-button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #9f5aff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.modal-button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.modal-button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.modal-button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.chart-canvas {
+  margin-top: 70px;
 }

@@ -1,12 +1,16 @@
-const searchBtn = document.getElementById('searchbtn')
-let username = searchBtn.value
-const inputValue = document.getElementById('gitusername')
+
+
+
 const user = 'Asivol93'
 const REPOS_URL = `https://api.github.com/users/${user}/repos`
 const USER_URL = `https://api.github.com/users/${user}`
+const githubImg = './images/big-github_icon.png'
+const githubProfile = `https://github.com/${user}`
 const userContainer = document.getElementById('userProfile')
 const projectsContainer = document.getElementById('projectsContainer')
 const userDetailContainer = document.getElementById('userDetails')
+
+
 // Get the modal
 const modal = document.getElementById("myModal")
 // Get the button that opens the modal
@@ -29,13 +33,14 @@ const userProfile = () => {
         <p>Full name: ${data.name}</p>
         <p>Location: ${data.location}</p>
       </div>
-
+    
       <div class=swap-on-hover>
-        <a href="https://github.com/Asivol93" target="blank">
-          <img class="front-image" src="${data.avatar_url}"/>
-          <img class="back-image" src="./images/big-github_icon.png">
-        </a>
+      <a href="${githubProfile}" target="blank">
+        <img class="front-image" src="${data.avatar_url}"/>
+        <img class="back-image" src="${githubImg}">
+      </a>
       </div>
+    
 
       `
   
@@ -66,9 +71,9 @@ const fetchAll = () => {
     projectsContainer.innerHTML += `
     <div class="repo-item">
       <div class="icon-container">
-      <a href="${repo.html_url}" target="blank">
-        <img src="./images/github_icon.png" class="github-icon">
-      </a>
+        <a href="${repo.html_url}" target="blank">
+          <img src="./images/github_icon.png" class="github-icon">
+        </a>
       </div>
 
       <h3><a href="${repo.html_url}" target="blank">${repo.name}</a></h3>
@@ -104,6 +109,13 @@ const pullRequests = (repos) => {
         //console.log(data)
         //showComments(COMMENTS_URL)
         //console.log(myPulls)
+        /*if (myPulls) {
+					showCommits(myPulls.commits_url, repo.name);
+				} else {
+					document.getElementById(`commit-${repo.name}`).innerHTML +=
+						'No pull request yet done :(';
+				}*/
+
         showCommits(myPulls.commits_url, repo.name)
       })
       
@@ -115,25 +127,30 @@ const showCommits = (url, myRepoName) => {
   .then(res => res.json())
   .then(data => {
     //console.log(data)
-    let commitMessage = data[0].commit.message
+    let commitMessage = data[data.length -1].commit.message
     //console.log(commitMessage)
-    
+
       document.getElementById(`commit-${myRepoName}`).innerHTML += ` 
       <p>Number of commits: ${data.length}</p>
-      <button id="myBtn-${myRepoName}" class="modal-button">Read commit</button>
-          
+      <button id="myBtn-${myRepoName}" class="modal-button">Read commit</button>  
       `
       document.getElementById("myModal").innerHTML += `
-      <p class="modal-message">${commitMessage}</p>
+      <div id="modalContent" class="modal-content">
+        <p class="modal-message">${myRepoName} latest commit: ${commitMessage}</p>
+      </div> 
       `
+    
+    
+      
       const btn = document.getElementById(`myBtn-${myRepoName}`)
+
 
       btn.onclick = function() {
         console.log(modal)
         document.getElementById("myModal").style.display = "block";
       }
 
-      span.onclick = function() {
+      document.getElementsByClassName("close")[0].onclick = function() {
         document.getElementById("myModal").style.display = "none";
       }
       
@@ -164,11 +181,7 @@ fetchAll()
 //pullRequests()
 //showComments()
 
-//Eventlisteners
-searchBtn.addEventListener('click', (user) => {
-  userProfile(user)
-  fetchAll(user)
-})
+
 
 
 
