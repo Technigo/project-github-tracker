@@ -10,8 +10,8 @@ fetch (`https://api.github.com/users/${USER}`)
     .then(response => response.json())
     .then(data => {
         profileContainer.innerHTML = `
-        <h2>${data.login}</h2>
         <img class="profile-picture" src=${data.avatar_url}>
+        <h2 class="profile-title">Profile: ${data.login}</h2>
         `
     })
 }
@@ -28,11 +28,13 @@ const getRepos = () => {
 
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML += `
-                <h3>${repo.name}</h3>
-                <h3>${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</h3>
-                <h3>${repo.default_branch}</h3>
-                <a href="${repo.html_url}">GitHub address</a>
-                <h3 id="commit-${repo.name}">Commits amount:</h3>
+                <div class="single-project">
+                    <h3>${repo.name}</h3>
+                    <h3>${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</h3>
+                    <h3>Branch name: ${repo.default_branch}</h3>
+                    <a href="${repo.html_url}">GitHub address</a>
+                    <h3 id="commit-${repo.name}">Commits amount:</h3>
+                </div>
                 `
         })
         drawChart(forkedRepos.length)
@@ -67,7 +69,6 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
     })
     }
-
 
 getRepos()
 
