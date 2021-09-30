@@ -5,7 +5,7 @@ const userSection = document.getElementById("user-section")
 const options = {
 	method: 'GET',
 	headers: {
-		Authorization: `token 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`
+		Authorization: `token xxx`
 	},
 };
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
