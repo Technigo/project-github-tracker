@@ -73,3 +73,36 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 };
 
 fetchRepositories();
+
+
+
+/* TODO:
+1. få ut infon om commits på sidan
+2. få ut commitsen i den rätta rutan
+
+
+3. titta på hur Max hanterade "dates" från lektionen 
+*/
+
+
+// Trying to push up into the innerHTML projects
+  /*  console.log('FETCHED COMMITS', fetchedCommits)
+      document.getElementById(`commit-${repo.name}`).innerHTML =
+      `Number of commits in this project: ${fetchedCommits.length}`; */ 
+    /*   projects.innerHTML += `
+      <p>Number of commits in this project: ${fetchedCommits.length}</p>
+      `
+
+
+
+	  document.getElementById(`commits-${pullRequest.commits_url}`).innerHTML = `There are ${fetchedCommits.length} commits`)};
+
+	 
+<p id="commits-${pullRequest.commits_url}">ooops, there are no commits in this projet</p>
+
+ document.getElementById(`commits-${pullRequest.commits_url}`).innerHTML += `Number of commits: ${fetchedCommits.commits_url}`;
+
+_____________
+ <p id="commits-${.name}">No Commit Yet</p>
+
+  document.getElementById(`commits-${fetchedCommits.name}`).innerHTML += `Antalet Commits: ${fetchedCommits.length}`;

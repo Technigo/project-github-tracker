@@ -1,6 +1,7 @@
 const projects = document.getElementById("projects")
 const profile = document.getElementById("profile")
 const profileContainer = document.getElementById("profile-container")
+const projectContainer = document.getElementById("project-container")
 const test = document.getElementById("test")
 const userName = 'HedvigM'
 
@@ -12,8 +13,9 @@ fetch(repos)
   .then(response => response.json())
   .then(data => {
 
-      //Fetching only the forked repos
-      const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project'))
+      //Fetching only the forked repos and the ones starts with "project" from my GitHub account. 
+      const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-guess-who'))
+      // change back to only "project" later 
 
     //Username and userpic
     profileContainer.innerHTML+= `
@@ -21,22 +23,20 @@ fetch(repos)
       <h2 class="profile-name">${data[0].owner.login}</h2>
     ` 
 
-    // Repos and pulls
+    // Repos and fetched pulls from the functions down under.
     forkedRepos.forEach((repo) => projects.innerHTML += `
       <div class="repos" id="repos">
         <a href="${repo.html_url}"><h3>${repo.name}</h3></a>
         <p>The default branch is: ${repo.default_branch}</p>
         <p>The latest push: ${repo.pushed_at.substring(0, 10)}</p>
         <p id="pull-${repo.name}">No pull request is yet made 🤷 </p>
-        <p id="commit-${repo.name}">ooops, there are no commits in this projet</p>
+       
       </div>
     `)
-   
-      // substring(0, 10) - betyder att vi tar bort de tecknen som kommer efter 10st. 
 
     drawChart(forkedRepos.length)
     getPullRequests(forkedRepos)
-    getCommitsForPullRequests(forkedRepos)
+    //getCommitsForPullRequests(forkedRepos)
   })
   
 
@@ -45,6 +45,8 @@ fetch(repos)
 
 
 //^^^^^^^^^^^^^^^^^ fetching pull requests ^^^^^^^^^^^^^^^^^^^^^^^^^^//
+
+
 const getPullRequests = (repos) => {
   //Get all the PRs for each project.
   repos.forEach(repo => {
@@ -52,11 +54,11 @@ const getPullRequests = (repos) => {
     .then(res => res.json())
     .then(fetchedPulls => {
       const hedvigsPulls = fetchedPulls.filter(fetchedPull => fetchedPull.user.login === repo.owner.login) 
+      //This fetch is fetching all the pulls at the technigo user, so we have to sort everyone exept my user out "of the bag". Only my pulls for each project will show after this "hedvigsPulls" function. 
           
-         document.getElementById(`pull-${repo.name}`).innerHTML =
-        `Pull request was made ${hedvigsPulls[0].created_at.substring(0, 10)}`;
-        //allt som skrivs inom parentesen efter get ElementById är en del av   ID:t.
-
+      document.getElementById(`pull-${repo.name}`).innerHTML = `Pull request was made ${hedvigsPulls[0].created_at.substring(0, 10)}`;
+      //allt som skrivs inom parentesen efter get ElementById är en del av   ID:t.
+      console.log('Hedvigs PULLS. Arrey med ett objekt', hedvigsPulls)
       getCommitsForPullRequests(hedvigsPulls)
       
     })
@@ -64,38 +66,34 @@ const getPullRequests = (repos) => {
 }
 
 
-
-const getCommitsForPullRequests = (pullRequests, hedvigsPulls) => {
+//Funktionen skall ta infon från det sorterade pullrequestet(hedvigsPulls) och sortera fram mitt commit_url från det.
+const getCommitsForPullRequests = (pullRequests) => {
   pullRequests.forEach(pullRequest => {
+      console.log('Kolla här på pullRequest', pullRequest)
+
+    //borde visa ett pullrequest CHECK
     fetch(pullRequest.commits_url)
     .then(res => res.json())
     .then(fetchedCommits => {
-     /*  console.log('FETCHED COMMITS', fetchedCommits)
-      document.getElementById(`commit-${repo.name}`).innerHTML =
-      `Number of commits in this project: ${fetchedCommits.length}`; */ 
-      projects.innerHTML += `
-      <p>Number of commits in this project: ${fetchedCommits.length}</p>
-      `
+      console.log('kolla här 2:', fetchedCommits
+      )
       
+    
+
+
+      //Funktionen skall gå ner en nivå till och bara visa commits_URL
+
     })
   })
-} 
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    
+ 
+      
+      
+      
 
