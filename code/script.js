@@ -56,9 +56,14 @@ const getPullRequests = (repos) => {
         const filteredPullrequests = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
+        if (filteredPullrequests) {
+          commits(filteredPullrequests.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML = "No data";
+        }
         //const myCommits = filteredPullrequests.commits_url;
         //console.log(filteredPullrequests);
-        commits(filteredPullrequests.commits_url, repo.name);
+        //commits(filteredPullrequests.commits_url, repo.name);
         //TODO
         //2. Now you're able to get the commits for each repo by using
         // the commits_url as an argument to call another function
