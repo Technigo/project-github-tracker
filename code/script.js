@@ -2,28 +2,27 @@
 let username = "Zancotti";
 let filteredRepos = [];
 let global__UserData, global__ReposData;
-let global_ListCommitData = [];
 
-//DOM selectors
-let projectsPullRequest = document.getElementById(`projectsPullRequest`);
+// ------------Functions--------------------
 
-// Used APIs
-const myReposApi = `https://api.github.com/users/${username}/repos`;
-const usernamePictureAndBioApi = `https://api.github.com/users/${username}`;
-
-// Functions
+// Function in which I toggleMenu to to put on an active class for the commits accordion.
 const toggleMenu = (menuName) => {
-  console.log("toggle", menuName);
   let menu = document.getElementById(`${menuName}-menu`);
   menu.classList.toggle(
     "projects__commit-pulls-container__commits-accordion__active"
   );
 };
 
-const filter = (type) => {
-  console.log(type);
-  filteredRepos = [];
+// Function in which I toggleMenu to to put on an active class for the comments accordion.
+const toggleMenuComments = (menuName) => {
+  let menu = document.getElementById(`${menuName}-comments-menu`);
+  menu.classList.toggle(
+    "projects__commit-comments-container__comments-accordion__active"
+  );
+};
 
+// a filter function to function out repos depending on the language of them.
+const filter = (type) => {
   if (type === `js`) {
     const projects = document.getElementsByClassName(`projects__HTML`);
 
@@ -46,16 +45,17 @@ const filter = (type) => {
   }
 };
 
+// A function to make the first character in a string into a capital letter.
 const toCapitalLetter = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
 //Function in which I fetch data from the json and save the data from the json into a global variable.
 const getUsernameAndPicture = () => {
+  const usernamePictureAndBioApi = `https://api.github.com/users/${username}`;
   fetch(usernamePictureAndBioApi)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       global__UserData = data;
     })
     .then(() => renderUsernameAndPicture());
@@ -74,13 +74,13 @@ const renderUsernameAndPicture = () => {
     </div>`;
 };
 
-// Function in which we fetch the repository data and filter them to the ones that includes `project` in the name.
+// Function in which I fetch the repository data and save it into a global variable. I also after the data has been fetched
+// call for the functions renderrepos, get commits and getpullrequests.
 const getRepos = () => {
+  const myReposApi = `https://api.github.com/users/${username}/repos`;
   fetch(myReposApi)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
-
       global__ReposData = data;
     })
     .then(() => renderRepos())
@@ -88,6 +88,7 @@ const getRepos = () => {
     .then(() => getPullRequests());
 };
 
+// Function in which I filter the repodata.
 const renderRepos = () => {
   global__ReposData.forEach((e) => {
     if (e.fork === true && e.name.includes(`project`)) {
@@ -95,11 +96,11 @@ const renderRepos = () => {
     }
   });
 
-  // sort the filtered repoList after created dates and then reverse it.
+  // I sort the filtered repoList after creation dates and then reverse it.
   filteredRepos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   filteredRepos = filteredRepos.reverse();
 
-  // ForEach function over filteredRepos which picks up default branch and creation date and html Url.
+  // ForEach function over filteredRepos which picks up repoName, default branch, html Url and repoLanguage.
   filteredRepos.forEach((e) => {
     const repoName = e.name;
     const repoNameDisplay = toCapitalLetter(repoName);
@@ -123,12 +124,13 @@ const renderRepos = () => {
         <div class="projects__repo-container__header__amount-commitmessages" id="${repoName}-amountCommitmessages"></div>
       </div>
       <div class="projects__commit-pulls-container" id="${repoName}-commit-pulls-container"></div>
+      <div class="projects__commit-comments-container" id="${repoName}-commit-comments-container"></div>
     </div>`;
   });
 };
 
-// function that fetches the commits and sets the first commit message (which is the last made) until commit message. The last commit message and
-// amount of commits is fetched and printed put by changing the innerHTML.
+// function that fetches the commits from the repo data and saved the data unto a global variable. It also sends data through to the new function
+// renderCommits.
 const getCommits = () => {
   filteredRepos.forEach((repo) => {
     const repoName = repo.name;
@@ -137,20 +139,20 @@ const getCommits = () => {
     fetch(commitsUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log("getcommits data", data);
-        global_ListCommitData.push(data);
         return data;
       })
       .then((data) => renderCommits(data, repoName));
   });
 };
 
+// A function which filter the amount of commits into just counting the ones that I have made in my name.
 const renderCommits = (data, repoName) => {
   const commitMessage = toCapitalLetter(data[0].commit.message);
   const amountOfCommits = data.filter(
     (element) => element.author && element.author.login === username
   ).length;
 
+  // Set the containerToChange into the dynamic reponame-commit-pulls-container and then switch the inner html of that container.
   let containerToChange = document.getElementById(
     `${repoName}-commit-pulls-container`
   );
@@ -160,12 +162,14 @@ const renderCommits = (data, repoName) => {
         <ul class="projects__commit-pulls-container__commits-accordion__menu" id="${repoName}-menu"></ul>
       </div>`;
 
+  // Change the innerhtml of to registrer amount of commits on the website.
   const amountCommitmessages = document.getElementById(
     `${repoName}-amountCommitmessages`
   );
   amountCommitmessages.innerHTML += `${amountOfCommits}`;
 
   let menu = document.getElementById(`${repoName}-menu`);
+  // I slice,filter and make a foreach and then change the innerhtml of menu (the commit message accordion)
   data
     .slice(1)
     .filter((element) => element.author && element.author.login === username)
@@ -176,33 +180,37 @@ const renderCommits = (data, repoName) => {
     });
 };
 
-// function that gets the pullrequests. If data.length > 0 it changes the inner html of "container to change" else it writes "no pull request made"
+// function that for each repo set default branch and repo name and then fetch the pullrequests.
 const getPullRequests = () => {
   filteredRepos.forEach((repo) => {
     const repoDefaultBranch = repo.default_branch;
     const repoName = repo.name;
 
-    // add reponame username and repodefault branch to the api to get into the right api adress depending on which repo.
+    // add reponame username and repodefault branch to the api to get into the right api adress depending on repo.
     const pullRequestsApi = `https://api.github.com/repos/technigo/${repoName}/pulls?head=${username}:${repoDefaultBranch}`;
 
     fetch(pullRequestsApi)
       .then((res) => res.json())
       .then((data) => {
-        console.log("pullRequestsApi data", data);
         return data;
       })
-      .then((data) => renderPullRequest(data, repoName));
+      .then((data) => {
+        renderPullRequest(data, repoName);
+        return data;
+      })
+      .then((data) => getCommentsOnPullRequest(data, repoName));
   });
 };
 
+// Function that renderPullrequest and changes the innerhtml of the dynamic containerToChange.
 const renderPullRequest = (data, repoName) => {
   if (data.length > 0) {
     const prTitle = data[0].title;
-    const prUrl = data[0].url;
+    const prUrl = data[0].html_url;
     let containerToChange = document.getElementById(
       `${repoName}-commit-pulls-container`
     );
-    containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request"><div>Pull request:</div><a href="${prUrl}">${prTitle}</a></div>`;
+    containerToChange.innerHTML += `<div class="projects__commit-pulls-container__pull-request"><div>Pull request:</div><a href="${prUrl}" target="_blank">${prTitle}</a></div>`;
   } else {
     let containerToChange = document.getElementById(
       `${repoName}-commit-pulls-container`
@@ -211,19 +219,40 @@ const renderPullRequest = (data, repoName) => {
   }
 };
 
+// function that fetches the comments of the PR and then wait for the data and sends it through to the renderCommentsOnPullRequest function.
+const getCommentsOnPullRequest = (data, repoName) => {
+  if (data.length > 0) {
+    const commentsOnPrApi = data[0].review_comments_url;
+
+    fetch(commentsOnPrApi)
+      .then((res) => res.json())
+      .then((data) => {
+        return data;
+      })
+      .then((data) => renderCommentsOnPullRequest(data, repoName));
+  }
+};
+
+// Function that renders the information on the of the container to change and pick up the information through a foreach.
+const renderCommentsOnPullRequest = (data, repoName) => {
+  const containerToChange = document.getElementById(
+    `${repoName}-commit-comments-container`
+  );
+
+  containerToChange.innerHTML += `
+      <div class="projects__commit-comments-container__comments-accordion" onclick="toggleMenuComments('${repoName}')">Show all PR comments:
+        <ul class="projects__commit-comments-container__comments-accordion__menu" id="${repoName}-comments-menu"></ul>
+      </div>`;
+
+  const commentsContainer = document.getElementById(
+    `${repoName}-comments-menu`
+  );
+
+  data.forEach((comment) => {
+    commentsContainer.innerHTML += `<li>${comment.user.login}: ${comment.body}</li>`;
+  });
+};
+
+// Start the website by calling these functions.
 getUsernameAndPicture();
 getRepos();
-
-//### **🔴  Red Level (Intermediary Goals)**
-
-// - Sort your list in different ways.
-// **Example of what you can sort by:** creation date, name, most commits, followers or stargazers
-// - Create the opportunity to filter the repos based on a condition, e.g. only JavaScript repos
-// - Display the actual commit messages for each repo in a good way. Maybe by adding a modal (popup) or an accordion?
-// - Display the comments you got from each pull request
-// - When you're browsing through the repo object, you'll see that there's a lot of data that we can use. Create a chart over some of the data.
-// **Example of data to use:** Repo size, people that starred your repo (stargazers) or amount of commits on each repo.
-
-// ### **⚫  Black Level (Advanced Goals)**
-
-// - Implement a search field to find a specific repo based on name

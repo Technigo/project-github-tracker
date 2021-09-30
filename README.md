@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+They assignment was to make a Github tracker with information fetched from githubs apis.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Initially I didnt split up the fetch and the actual rendering of the content on my site. After doing a couple of functions I realised that it would probably be a better solution to split the fetching of the data and the rendering up into different functions. This made me lose some time on the project. If I would have had more time I would probably implement a search field to find a specific repo based on the name. I would also try to make the website visually more appealing for the viewer.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://app.netlify.com/sites/zancotti-githubtracker/overview
