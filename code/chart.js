@@ -4,7 +4,6 @@ const ctx = document.getElementById('myChart').getContext('2d')
 //"Draw" the chart here 👇
 
 const drawChart = (amount) => {
-
     const config = {
         type: 'doughnut',
         data: {
@@ -37,7 +36,6 @@ const drawChart = (amount) => {
             },
         },
     }
-
     const myChart = new Chart(ctx, config)
 }
 

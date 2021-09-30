@@ -83,6 +83,13 @@ h2 {
   color: rgba(26, 26, 24, 0.849);
 }
 
+.ckeckbox-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
   border: transparent;
   border-radius: 10px;

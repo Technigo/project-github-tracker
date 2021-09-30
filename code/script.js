@@ -6,6 +6,12 @@ const user = 'anndimi'
 const USER_URL = `https://api.github.com/users/${user}`
 const userContainer = document.getElementById("userProfile")
 
+const checkHTML = document.getElementById("HTML")
+const checkCSS = document.getElementById("CSS")
+const checkJavaScript = document.getElementById("JavaScript")
+let selectedLanguages = ['HTML', 'CSS', 'JavaScript']
+let chartDrawn = false
+
 //Create link images to social media
 const createSocialMediaImg = (url, alt) => {
     let image = document.createElement("img")
@@ -41,8 +47,11 @@ const fetchRepos = () => {
     fetch(MY_REPOS)
         .then((res) => res.json())
         .then((data) => {
+            projectsContainer.innerHTML = `` //Clear innerHTML to prevent duplicated repos
             const forkedRepos =
-                data.filter(repo => repo.fork && repo.name.startsWith("project-"))
+                data.filter(repo => {
+                    return repo.fork && repo.name.startsWith("project-") && selectedLanguages.includes(repo.language)
+                })
             //Function to sort repos by latest date
             forkedRepos.sort(function (a, b) {
                 return new Date(b.pushed_at) - new Date(a.pushed_at)
@@ -58,8 +67,14 @@ const fetchRepos = () => {
                       </div>
                         `
             })
-            drawChart(forkedRepos.length)
+
             fetchPullRequests(forkedRepos)
+
+            //Only draw the chart once
+            if (!chartDrawn) {
+                drawChart(forkedRepos.length)
+                chartDrawn = true
+            }
         })
 }
 
@@ -89,6 +104,38 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
         })
 }
+
+const filterLanguages = (event) => {
+    console.log(event)
+    const language = event.target.id
+    const checked = event.target.checked
+
+    console.log(language, checked)
+
+    //Adds language string in array if checked language is missing
+    if (checked && !selectedLanguages.includes(language)) {
+        selectedLanguages.push(language)
+        //Removes language string in array if unchecked language is in array     
+    } else if (!checked && selectedLanguages.includes(language)) {
+        for (let i = 0; i < selectedLanguages.length; i++) {
+            console.log("i=", i)
+            console.log("selectedLanguages[i]=", selectedLanguages[i])
+            if (selectedLanguages[i] === language) {
+                selectedLanguages.splice(i, 1)
+                break
+            }
+        }
+    }
+
+    fetchRepos()
+}
+
+
+checkHTML.addEventListener('change', filterLanguages)
+
+checkCSS.addEventListener('change', filterLanguages)
+
+checkJavaScript.addEventListener('change', filterLanguages)
 
 userProfile()
 fetchRepos()
