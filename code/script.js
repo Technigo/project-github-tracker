@@ -43,11 +43,15 @@ const fetchRepos = () => {
         .then((data) => {
             const forkedRepos =
                 data.filter(repo => repo.fork && repo.name.startsWith("project-"))
-
+            //Function to sort repos by latest date
+            forkedRepos.sort(function (a, b) {
+                return new Date(b.pushed_at) - new Date(a.pushed_at)
+            })
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
                       <div class="repo" id=${repo.name}>
-                      Name: <a href="${repo.html_url}" target="blank">${repo.name}</a> 
+                        <p>Name: ${repo.name} </p> 
+                        <a href="${repo.html_url}" target="blank">Go to repo!</a> 
                         <p>Branch: ${repo.default_branch}</p>
                         <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
                         <p id="commit-${repo.name}">Amount of commits: </p> 
@@ -56,7 +60,6 @@ const fetchRepos = () => {
             })
             drawChart(forkedRepos.length)
             fetchPullRequests(forkedRepos)
-            //console.log(forkedRepos)
         })
 }
 
@@ -69,8 +72,12 @@ const fetchPullRequests = (repos) => {
             .then((data) => {
                 const myPullRequest =
                     data.find(pull => pull.user.login === repo.owner.login)
-
-                fetchCommits(myPullRequest.commits_url, repo.name)
+                if (myPullRequest) {
+                    fetchCommits(myPullRequest.commits_url, repo.name);
+                } else {
+                    document.getElementById(`commit-${repo.name}`).innerHTML =
+                        "No pull request yet!";
+                }
             })
     })
 }

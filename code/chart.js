@@ -14,15 +14,30 @@ const drawChart = (amount) => {
             ],
             datasets: [{
                 label: ['Finished Projects', 'Projects Left'],
-                data: [amount, 20 - amount],
+                data: [amount, 19 - amount],
                 backgroundColor: [
                     '#BFADA3',
                     '#504746',
                 ],
                 hoverOffset: 4
             }]
-        }
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 12,
+                            family: "'Spartan', sans-serif",
+                            color: "rgba(26, 26, 24, 0.849)",
+                            weight: "bold",
+                        }
+                    }
+                }
+            },
+        },
     }
+
     const myChart = new Chart(ctx, config)
 }
 
