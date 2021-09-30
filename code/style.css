@@ -8,6 +8,7 @@ body {
   width: 100vw;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -15,6 +16,7 @@ body {
   color: #FFECE9;
   font-weight: bold;
   font-size: 70px;
+  text-align: center;
 }
 
 .github-logo {
