@@ -36,6 +36,10 @@ body {
   font-size: 18px;
 }
 
+.icon:hover {
+  cursor: pointer;
+}
+
 h1 {
   font-size: 18px;
   font-weight: 100;
