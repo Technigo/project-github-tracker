@@ -31,6 +31,9 @@ const drawChart = (amount) => {
           display: true,
           text: "My Github Repositories",
           color: "#138",
+          font: {
+            size: 25,
+          },
         },
       },
       responsive: true,

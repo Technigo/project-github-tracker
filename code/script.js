@@ -12,11 +12,24 @@ const getUserData = () => {
   fetch(USER_URL)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       userContainer.innerHTML = `
       <div class="user-profile-box">
-        <h1 class="user-username"> <span class="user-span">${data.login}</span></h1>
-        <h2 class="user-fullname"> <span class="user-span">${data.name}</span></h2>
-        <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${data.location}</span></h3>
+      <div class="user-info-box">
+        <h1 class="user-username"> <span class="user-span">${
+          data.login
+        }</span></h1>
+        <h2 class="user-fullname"> <span class="user-span">${
+          data.name
+        }</span></h2>
+        <h3 class="user-location"> <img class="user-pin-img" src="images/pin-map.png" alt="pin"/><span class="user-span">${
+          data.location
+        }</span></h3>
+        <h3 class="user-join"> Member since: ${new Date(data.created_at)
+          .toDateString()
+          .slice(4)}</h3>
+      </div>
+      <div class="user-img-box">
         <img class="user-img" src="${data.avatar_url}"/>
       </div>
       `;
@@ -35,6 +48,12 @@ const fetchRepos = () => {
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
+
+      forkedRepos.sort((a, b) => {
+        return new Date(a.pushed_at) - new Date(b.pushed_at);
+      });
+
+      console.log(forkedRepos);
       forkedRepos.forEach(
         (repo) =>
           (reposContainer.innerHTML += `
@@ -48,6 +67,7 @@ const fetchRepos = () => {
             <p>Default branch <span class="repo-branch">${
               repo.default_branch
             }</span></p>
+            <p>Language: <span class="repo-language">${repo.language}</span></p>
             <p>Recent push: <span class="repo-date">${new Date(
               repo.pushed_at
             ).toDateString()}</span></p>
@@ -59,7 +79,7 @@ const fetchRepos = () => {
       );
       drawChart(forkedRepos.length);
       getPullRequests(forkedRepos);
-      //   console.log(forkedRepos);
+      // console.log(forkedRepos);
     });
   // .catch(error => {
   //   return Promise.reject()
