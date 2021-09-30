@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to creata a GitHub tracker that used APIs to keep track of all my projects forked by Technigo in Github. We also had to creat a chart to show our progress. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week it was most difficult to understand how to use the APIs from Github and collect the right information. Past week the APIs were more straight forward compared to this week. 
+
+I learnt a lot about how to style from the script file, something I was a bit worried about since we had to style things that didn't excist in the HTML from the beginning. But I noticed that it wasn't that complicated. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://lisapblome-w7-githubtracker.netlify.app/
