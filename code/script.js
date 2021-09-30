@@ -1,7 +1,11 @@
 // main fetch and function and put the DOM here
 const projectsContainer = document.getElementById('projects')
 const headerContainer = document.getElementById('header')
-const ALL_MY_REPOS = `https://api.github.com/users/DALA746/repos`
+const USER = 'DALA746'
+const ALL_MY_REPOS = `https://api.github.com/users/${USER}/repos`
+
+const button = document.getElementById('button')
+
 
 
 
@@ -11,42 +15,37 @@ const getRepos = () => {
         .then((json) => { // This json shows all of my repos on GitHub
             // console.log(json)
             // filter repos so I can only get tehcnigos repos 
-            const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-'))
+            const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-')) // or you can use includes method 
             drawChart(forkedRepos.length)
-            console.log(forkedRepos.length)
 
             forkedRepos.forEach((repo) => { 
-                // console.log(repo)
-
-                // need to do convert to right format? 
-                const pushUpdates = repo.pushed_at
-                const defaultBranch = repo.default_branch
-                const gitHubRepo = repo.clone_url 
-
+                console.log(repo)
                 // header container 
                 headerContainer.innerHTML = `
-                <div>
-                    <h1>${repo.owner.login}</h1>
+                <div class="info-about-user">
                     <img class="profile-img"src="${repo.owner.avatar_url}" />
+                    <h2>Darya Lapata</h2>
+                    <h3>${repo.owner.login}</h3>
+                    <p>Location: Stockholm</p>
                 </div>` 
-
                 // project container 
                 projectsContainer.innerHTML += `
-
-                <h3>Project Name: ${repo.name}</h3>
-                <p>Latest push update: ${pushUpdates}</p>
-                <p>Default branch: ${defaultBranch}</p>
-                <p>GitHub link: ${gitHubRepo}</p>
+                <div class="repo"> 
+                    <a href="${repo.clone_url }"  target="_blank"><h3>${repo.name}</h3> </a>
+                    <p id="commit-${repo.name}">Commits amount: </p>
+                    <p>Latest push update: ${ new Date(repo.pushed_at).toDateString()}</p>
+                    <p>Default branch: ${repo.default_branch}</p>
+                </div>
                 `
             })
-            // console.log(forkedRepos)
-            getPullRequests(forkedRepos) // passing all my forked repos to this function 
 
+            getPullRequests(forkedRepos) // passing all my forked repos to this function 
         })
 }
 
 // calling getRepos function
 getRepos()
+
 
 // GETTING ALL MY PULL REQUESTS 
 const getPullRequests = (forkedRepos) => { // repos är samma som forkedRepos
@@ -55,28 +54,33 @@ const getPullRequests = (forkedRepos) => { // repos är samma som forkedRepos
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`) // getting all pullrequest to the specific project
             .then(res => res.json())
             .then(data => {
-                const myPullRequests = data.find(pull => pull.user.login === repo.owner.login) // there is a different between filter and find function
-                // console.log(myPullRequests)
-                getCommits(myPullRequests.commits_url) // link 
+                const myPullRequests = data.find(pull => pull.user.login === repo.owner.login) // there is a different between filter and find function, with find you get a sandwich with a name on
+                getCommits(myPullRequests.commits_url, repo.name) // link 
             })
     })
 }
 
-const getCommits = (url) => {
-    console.log(url)
+const getCommits = (url, myRepoName) => {
+    // fetching url for commits 
         fetch(url)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             const numberOfCommits = data.length
-            projectsContainer.innerHTML += `
-            <p>Number of commits ${numberOfCommits}</p>
-
-            `
-            console.log(data.length)
+            document.getElementById(`commit-${myRepoName}`).innerHTML += numberOfCommits
         })
 }
 
+const getInputValue = () => {
+    const userValue = document.getElementById('inputValue').value
+    
+    console.log(userValue)
+}
+
+
+button.addEventListener('click', (e) => {
+    e.preventDefault()
+    getInputValue()
+})
 
 
 
