@@ -13,8 +13,10 @@ const getProfile = () => {
     .then(data => {
         console.log('Profile:',data)
         profileContainer.innerHTML += `
-        <img class="profile" src=${data.avatar_url}>
-        <h2>${data.login}</h2>`
+        <div class="profile-card">
+        <img class="profile-img" src=${data.avatar_url}>
+        <h2>${data.login}</h2>
+        </div>`
     })
 }
 getProfile()
@@ -31,14 +33,13 @@ const getRepos = () => {
         
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML += 
-            `<div class="project-cards">
-            <fieldset>
+            `
+            <div class="project-cards">
             <a href="${repo.html_url}"><h3>${repo.name}</h3></a>
              <p>Default branch: ${repo.default_branch}</p>
              <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
              <p id="commit-${repo.name}">Commits amount: </p>
-             </fieldset>
-             </div>
+            </div>
              `})
         fetchPullRequestsArray(forkedRepos)     
         drawChart(forkedRepos.length)   

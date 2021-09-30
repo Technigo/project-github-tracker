@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #313638;
   color: #e0dfd585;
@@ -5,42 +9,62 @@ body {
   background-image: url("https://i.ibb.co/vDY4RQR/burger.png");
   background-size: 15px;
   background-repeat: repeat-x;
+  padding: 5%;
+  margin: 0;
 }
 
-/* Profile */
-.profile-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  width: 100%;
-  margin: auto;
-}
-
-.profile {
-  border-radius: 100%;
-  border: #e0dfd585 2px solid;
-  width: 100%;
-}
-
-fieldset {
-  border: 3px solid;
-  border-radius: 1%;
-  border-color: #e0dfd585;
-  background-color: rgb(34, 33, 33);
-}
-
-/* Projects */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.section {
+  grid-template-columns: 1fr 2fr;
   grid-gap: 2rem;
   margin: auto;
   width: 100%;
 }
+/* Profile */
+.profile-card {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+}
+
+.profile-img {
+  align-self: center;
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  border: 2px solid #e0dfd585;
+}
+/* Chart */
+.chart {
+  display: none;
+}
+/* Projects */
+
+fieldset {
+  border: 2px solid;
+  border-radius: 1%;
+  border-color: #e0dfd585;
+  background-color: rgba(34, 33, 33, 0.671);
+}
+
+.project-container {
+  display: grid;
+}
+
+.project-grid {
+  border-radius: 2%;
+  min-width: auto;
+}
 
 .project-cards {
-  padding: 10px;
-  border-radius: 1%;
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  border-radius: 3%;
+  margin: 6px;
+  min-width: auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
+
 .project-cards a {
   text-decoration: none;
   color: #e4e4e2c5;
@@ -52,14 +76,31 @@ fieldset {
 .project-cards a:hover {
   color: rgb(116, 15, 15);
 }
-/* Chart */
-.chart {
-  width: 200px;
-  margin: auto;
-}
 
 @media (min-width: 768px) {
-}
+  .section {
+    display: grid;
+  }
+  /* Profile */
+  .profile-card {
+    width: 60%;
+  }
 
-@media (min-width: 992px) {
+  .profile-img {
+    width: 90%;
+  }
+  /* Chart */
+  .chart {
+    align-items: center;
+    width: 50%;
+    display: flex;
+    padding: 5px;
+  }
+  /* Projects */
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    line-height: 0.86;
+  }
 }
