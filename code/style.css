@@ -6,3 +6,8 @@ body {
 	height: 50px;
 	border-radius: 50%;
 }
+
+.avatar-collaborator {
+	height: 20px;
+	border-radius: 50%;
+}

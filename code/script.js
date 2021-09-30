@@ -47,6 +47,7 @@ const fetchFullRepo = (repo) => {
 				<p>updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
 				<p id="commit-${fullRepo.name}">Commits</p>
 				<p id="pull-${fullRepo.name}">Pull request</p>
+				<p id="collaborators-${fullRepo.name}">Collaborators</p>
 				`;
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
@@ -60,13 +61,7 @@ const fetchCommits = (myCommitsUrl, repo) => {
 	fetch(myCommitsUrl, options)
 		.then((res) => res.json())
 		.then((data) => {
-			// console.log('fetchCommits data: ', repo.name, data);
 			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
-			// const authors = data.map((commit) => {
-			// 	return commit.author ? commit.author.login : '';
-			// });
-			// console.log('fetchCommits authors', authors);
-			// fetchPullRequestsArray(repo, authors);
 		})
 		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
 };
@@ -78,7 +73,16 @@ const fetchCollaborators = (repo) => {
 		.then((data) => {
 			console.log('fetchCollaborators', data);
 			const authors = data.map((author) => author.login);
-			//	userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+			console.log('collaborators : ', authors);
+			data.forEach((author) => {
+				if (data.length > 1) {
+					document.getElementById(
+						`collaborators-${repo.name}`
+					).innerHTML += `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
+				} else {
+					document.getElementById(`collaborators-${repo.name}`).innerHTML = 'No collaborators, so lonely...';
+				}
+			});
 			fetchPullRequestsArray(repo, authors);
 		})
 		.catch((err) => console.log('fetchCollaborators error: ', err));
