@@ -11,3 +11,26 @@ body {
 	height: 20px;
 	border-radius: 50%;
 }
+
+.projects {
+	display: flex;
+	flex-direction: column;
+}
+
+.chart {
+	width: 50px;
+}
+
+.repo {
+	font-size: medium;
+}
+.repo-info {
+	display: flex;
+}
+
+.update,
+.commit,
+.pull,
+.collaboration {
+	margin: 2px 2px;
+}

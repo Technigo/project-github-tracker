@@ -23,7 +23,7 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			console.log('filtered repos: ', filteredRepos);
-			filteredRepos.forEach((repo) => {
+			filteredRepos.slice(0, 3).forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
 				fetchFullRepo(repo);
 			});
@@ -41,11 +41,13 @@ const fetchFullRepo = (repo) => {
 				// put data in html
 				// console.log('fullRepo', fullRepo.name);
 				projects.innerHTML += /*html*/ `
-				<p><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
-				<p>Updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
-				<p class="" id="commit-${fullRepo.name}">Commits: </p>
-				<p id="pull-${fullRepo.name}">Pull request</p>
-				<p id="collaborators-${fullRepo.name}">Collaborators:</p>
+				<p class="repo"><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
+				<div class="repo-info">
+					<p class="update">Updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
+					<p class="commit" id="commit-${fullRepo.name}">Commits: </p>
+					<p class="pull" id="pull-${fullRepo.name}">Pull request</p>
+				</div>
+				<p class="collaboration" id="collaborators-${fullRepo.name}">Collaborators:</p>
 				`;
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
