@@ -56,7 +56,7 @@ const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
           'rgb(128, 0, 128, 0.2)',
           'rgba(255, 205, 86, 0.2)',
         ],
-        borderWidth: 1,
+        borderWidth: 2,
       },
     ],
   };
@@ -66,11 +66,8 @@ const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
     data: data_2,
     options: {
       scales: {
-        x: {
-          stacked: true,
-        },
         y: {
-          stacked: true,
+          beginAtZero: true,
         },
       },
       plugins: {
