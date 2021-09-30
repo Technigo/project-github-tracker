@@ -16,7 +16,8 @@ const getRepos = () => {
       );
       forkedRepos.forEach(
         (repo) =>
-          (projects.innerHTML += `<div class="repo" id="${repo.name}"> 
+          (projects.innerHTML += `
+          <div class="repo" id="${repo.name}"> 
                <a class="repo-item1" href="${repo.html_url}" target="_blank">${
             repo.name
           }</a>
@@ -24,7 +25,8 @@ const getRepos = () => {
                <h4 class="repo-item3">Last updated: ${new Date(
                  repo.updated_at
                ).toLocaleDateString()}</h4>
-               </div>`)
+               </div>
+          `)
       );
 
       drawChart(forkedRepos.length);
@@ -53,8 +55,6 @@ const getPullRequest = (forkedRepos) => {
         const commitsURL = myPulls[0].commits_url;
         // console.log(commitsURL);
         getCommits(commitsURL, repo);
-
-        // const myComments =
       });
   });
 };
@@ -63,10 +63,15 @@ const getCommits = (commitsURL, repo) => {
   fetch(commitsURL)
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data.length);
-      document.getElementById(
-        `${repo.name}`
-      ).innerHTML += `<h4 class="repo-item4"> Number of commits: ${data.length}</h4>`;
+      console.log(data);
+      if (data.length === undefined) {
+        document.getElementById(
+          `${repo.name}`
+        ).innerHTML += `Pair or group project`;
+      } else
+        document.getElementById(
+          `${repo.name}`
+        ).innerHTML += `<h4 class="repo-item4"> Number of commits: ${data.length}</h4>`;
     });
 };
 
