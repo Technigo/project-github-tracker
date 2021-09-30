@@ -4,7 +4,7 @@ const ctx = document.getElementById('progressChart').getContext('2d');
 // function to draw the Progress Chart, we have passed in amount of repos as an argument
 const drawProgressChart = (amountOfRepos) => {
   const data = {
-    labels: ['Finished Projects', 'Projects Left'],
+    labels: ['Finished Projects', 'Unfinished Projects'],
     datasets: [
       {
         label: 'Technigo boot camp projects',
@@ -44,7 +44,7 @@ const drawLanguagesChart = (html_percent, css_percent, js_percent) => {
     labels: ['HTML', 'CSS', 'Javascript'],
     datasets: [
       {
-        label: 'Language usage (percentage)',
+        label: 'Language use (percentage)',
         data: [html_percent, css_percent, js_percent],
         backgroundColor: [
           'rgb(255, 159, 64)',

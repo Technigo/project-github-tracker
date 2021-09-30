@@ -34,7 +34,7 @@ const getRepos = () => {
       // with append we push each project card
       // and add an eventListener so we can click on each card and get a modal(popup)
       namesOfTheRepos.forEach((projectName) => {
-        const projectCard = document.createElement('div');
+        const projectCard = document.createElement('button');
         projectCard.classList.add('project-card');
         projectCard.innerHTML = `${projectName} <div class="project-emoji">👆</div>`;
         projectContainer.append(projectCard);
@@ -222,19 +222,20 @@ const getModal = (projectName) => {
 getRepos();
 getUserInfo();
 
-closeBtn.addEventListener('click', () => {
-  modalProject.style.display = 'none'; //close the modal
-  document.body.style.overflow = 'auto'; //enable the scrolling on the main page
-});
-// closeBtn.onclick = () => {
-//   modalProject.style.display = 'none'; //close the modal
-//   document.body.style.overflow = 'auto'; //enable the scrolling on the main page
-// };
-
-modalProject.onclick = () => {
+const closeModal = () => {
   modalProject.style.display = 'none'; //close the modal
   document.body.style.overflow = 'auto'; //enable the scrolling on the main page
 };
+
+// can close the modal with close button and when clicking outside of the modal content
+closeBtn.addEventListener('click', () => closeModal());
+modalProject.addEventListener('click', () => closeModal());
+// added an EventListener for esc-key so we can close the modal with esc-key too
+document.body.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    return closeModal();
+  }
+});
 
 // prevent closing the modal when clicking inside of the modal content
 modalContent.onclick = (event) => {
