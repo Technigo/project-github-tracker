@@ -1,5 +1,5 @@
 body {
-  background: #FFECE9;
+  background: #f7faf1;
   font-family: 'Baloo Chettan 2', cursive;
 }
 
@@ -15,6 +15,16 @@ body {
   color: #FFECE9;
   font-weight: bold;
   font-size: 70px;
+}
+
+.github-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #FFECE9;
+  background-color:#FFECE9;
+  align-self: center;
+  margin: 20px;
 }
 
 .info-chart-box {
@@ -41,7 +51,7 @@ body {
 
 .project-container {
   background-color: white;
-  padding: 20px;
+  padding: 20px 20px 60px 20px;
 }
 
 .project-title {
@@ -55,22 +65,58 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 .project-card {
-  background-color: #FFECE9;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f7faf1;
   width: 350px;
-  height: 250px;
+  height: 200px;
   padding: 15px;
-  border-radius: 5%;
+  border-radius: 2%;
+  border: 2px solid rgb(220, 220, 220);
+}
+
+.project-card:hover {
+  background-color: #FFECE9;
 }
 
 .project-name {
   font-size: 30px;
   color: white;
   text-shadow: 1px 1px 1px #000000;
+  margin-top: 10px;
+  text-transform: capitalize;;
 }
+
+.project-info {
+  margin: 2px;
+  font-size: 15px;
+}
+
+.project-links {
+  color: black;
+  font-size: 20px;
+}
+
+.footer {
+  height: 100px;
+  background-color: #f7faf1;
+  align-items: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.linkedin-link {
+  color: rgb(201, 200, 200);
+  text-decoration: none;
+  text-align: right;
+  margin: 35px 20px;
+  font-style: italic;
+}
+  
 
  /* Tablet */
 @media (min-width:768px) {
@@ -78,6 +124,9 @@ body {
   .info-chart-box {
     display: flex;
     flex-direction: row;
+    /*width: 1000px;*/
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .user-name {
@@ -97,21 +146,23 @@ body {
   .github-project {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Desktop */
-@media (min-width: 992px) {
+@media (min-width: 1192px) {
+
+  .info-chart-box {
+    width: 1250px; 
+  }
 
   .github-project {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    width: 1190px;
   }
-  
+
 
 }
-
-
-
-
-
-

@@ -8,24 +8,27 @@
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">>
 
 </head>
 
 <body>
   <header class="topbar">
     <h1 class="title">GitHub Tracker</h1>
+    <img class="github-logo" src="kisspng-github-pages-logo-repository-fork-github-logo-1-magentys-5b69de71b51265.8586076615336648817417.png" alt="github logo"/>
+    
   </header>
 
-  <section class="info-chart-box">
+  <section class="info-container">
+  <div class="info-chart-box">
     <div id="user-box"></div>
     
     <div class="chart-box">
       <canvas class id="chart"></canvas>
     </div>
+  </div>
+  </div>
   </section>
-  
-  
-
 
   <div class="project-container">
 
@@ -34,7 +37,11 @@
   
   </div>
   
-  <!-- This will be used to draw the chart 👇 -->
+  <footer>
+      <div class="footer">
+        <a class="linkedin-link" href="https://www.linkedin.com/in/lisa-pousette-blome/" target="_blank">More on me</a>
+      </div>
+  </footer>
   
 
   <script src="./script.js"></script>
