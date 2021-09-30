@@ -15,11 +15,11 @@ body {
   background-color: #0d1117;
   font-family: poppins;
   color: #c9d1d9;
-  padding-right: 7%;
-  padding-left: 7%;
+  /* padding-right: 5%;
+  padding-left: 5%; */
   padding-bottom: 7%;
   margin: 0;
-  max-width: 90%;
+  /* max-width: 90%; */
 }
 
 .main {
@@ -29,16 +29,29 @@ body {
 }
 
 .header {
-  padding: 2rem 0 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0 1rem 0;
+  margin: 0;
+  border-bottom: 0.5px solid #31363C;
+}
+
+.github-logo {
+  width: 56px;
+  height: 56px;
+  margin-right: 5%;
+  margin-bottom: 0;
 }
 
 h1 {
   font-size: 1.5rem;
   font-weight: 600;
+  padding-left: 5%;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 100;
   margin-top: 0;
 }
@@ -60,11 +73,11 @@ p {
   font-weight: 100;
   margin: 0.5rem 0 0 0;
 }
+
 a {
   color: #58a6ff;
   font-weight: 600;
   text-decoration: none;
-  
 }
 
 a:hover {
@@ -76,8 +89,10 @@ a:hover {
 
 
 .left-area {
-  width: 30%;
+  width: 25%;
   align-content: center;
+  padding-left: 5%;
+  padding-top: 4rem;
 }
 
 .profile-area {
@@ -122,6 +137,8 @@ img {
 .right-area {
   width: 100%;
   padding-left: 3rem;
+  padding-top: 4rem;
+  padding-right: 5%;
 }
 
 .project-grid {
@@ -137,7 +154,6 @@ img {
   border-radius: 12px;
   min-width: auto;
   border: 1px solid #31363C;
-  /* box-shadow: 10px 10px 30px rgba(0,0,0,0,1); */
 }
 
 /* // Line breaks the url, needed when I showed the url // */
@@ -151,7 +167,7 @@ img {
 } */
 
 
- @media (max-width: 768px) {
+ @media (max-width: 767px) {
 
   body {
     padding: 0;
@@ -163,17 +179,24 @@ img {
 
   .header {
     width: 100%;
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 0;
     border-bottom: 0.5px solid #31363C;
+  }
+
+  .github-logo {
+    width: 32px;
+    margin-right: 1rem;
   }
   
   h1 {
-    font-size: 12px;
+    font-size: 14px;
     padding-left: 1rem;
+    margin: 0;
   }
 
   h2 {
     font-size: 1rem;
+    font-weight: 100;
   }
 
   h3 {
@@ -196,6 +219,8 @@ img {
   .left-area {
     width: 100%;
     align-content: flex-start;
+    padding: 0;
+    margin-top: 1rem;
   }
 
   .profile-area {
@@ -227,7 +252,7 @@ img {
 
   .right-area {
     padding-left: 0;
-    margin-top: 1.5rem;
+    padding-top: 2rem;
   }
   
   .project-grid {
@@ -240,6 +265,95 @@ img {
     padding: 1rem;
     border-radius: 12px;
     width: auto;
+  }
+
+
+  @media (min-width: 768px) and (max-width: 991px) {
+
+    .header {
+      border-bottom: 0.5px solid #31363C;
+      padding: 2rem;
+    }
+  
+    .github-logo {
+      width: 64px;
+      height: 64px;
+      margin: 0;
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      padding: 0;
+    }
+  
+    h2 {
+      font-size: 1rem;
+    }
+  
+    h3 {
+      margin-top: 0;
+    }
+  
+    h4 {
+      font-size: 14px;
+    }
+  
+    .break {
+      font-size: 14px;
+    }
+  
+    .main {
+      flex-direction: column;
+      margin: 1rem;
+    }
+  
+    /* .left-area {
+      width: 100%;
+      align-content: flex-start;
+    } */
+  
+    .profile-area {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+  
+    /* .profile h2 {
+      font-size: 1.5rem;
+    } */
+  
+    .user {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+    }
+  
+    img {
+      border-radius: 50%;
+      width: 96px;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+  
+    /* .chart {
+      padding-top: 1rem;
+    } */
+  
+    .right-area {
+      /* padding-left: 0; */
+      padding: 2rem;
+    }
+    
+    .project-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .project-card {
+      padding: 1rem;
+    }
+  
+
   }
   
  }

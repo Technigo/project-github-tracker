@@ -22,7 +22,7 @@ const getProfile = () => {
             <h3 class="user-name">${data.login}</h3>
         </div>
     </div>
-    <div>
+    <div class="bio-button">
         <p class="bio">${data.bio}</p>
         <button class="button" id="followButton">Follow</button>
     </div>
