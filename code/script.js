@@ -23,7 +23,7 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			console.log('filtered repos: ', filteredRepos);
-			filteredRepos.slice(0, 2).forEach((repo) => {
+			filteredRepos.forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
 				fetchFullRepo(repo);
 			});
@@ -41,13 +41,11 @@ const fetchFullRepo = (repo) => {
 				// put data in html
 				// console.log('fullRepo', fullRepo.name);
 				projects.innerHTML += /*html*/ `
-				<p><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${
-					fullRepo.default_branch
-				}</p>
-				<p>updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
-				<p class="" id="commit-${fullRepo.name}">Commits</p>
+				<p><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
+				<p>Updated: ${new Date(fullRepo.pushed_at).toDateString()}</p>
+				<p class="" id="commit-${fullRepo.name}">Commits: </p>
 				<p id="pull-${fullRepo.name}">Pull request</p>
-				<p id="collaborators-${fullRepo.name}">Collaborators</p>
+				<p id="collaborators-${fullRepo.name}">Collaborators:</p>
 				`;
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
@@ -76,9 +74,7 @@ const fetchCollaborators = (repo) => {
 			console.log('collaborators : ', authors);
 			data.forEach((author) => {
 				if (data.length > 1) {
-					document.getElementById(
-						`collaborators-${repo.name}`
-					).innerHTML = /*html*/ `Group project: <a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
+					document.getElementById(`collaborators-${repo.name}`).innerHTML += /*html*/ `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
 				} else {
 					document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
 				}
@@ -96,14 +92,14 @@ const fetchPullRequestsArray = (repo, authors) => {
 		.then((data) => {
 			console.log('fetchPullRequestsArray data: ', data);
 			// only pick pull requests connected to user
-			const myPullReq = data.find((pull) => authors.includes(pull.user.login)); // pull.user.login === repo.owner.login);
+			const myPullReq = data.find((pull) => authors.includes(pull.user.login));
 			// console.log('myPullReq', repo.name, myPullReq);
 			if (myPullReq) {
 				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
 				pullReqData.done++;
 				updatePieChart(pieChart, pullReqData.done);
 			} else {
-				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ 'No pull request yet done :(';
+				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ 'No pull request done :(';
 			}
 		})
 		.catch((err) => console.log('fetchPullRequestsArray error:', err));
