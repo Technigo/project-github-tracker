@@ -15,34 +15,35 @@ const getRepos = ()=>{
       //Here, I filter only the projects forked from Technigo, starting from 2021 (since I have earlier projects also forked from Technigo)  
         const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-') && repo.created_at.startsWith('2021-'))
       // Here I update the projectsContainer.innerHTML to show a list of all forked repos  
-        forkedProjects.forEach(repo => projectsContainer.innerHTML += `<p>${repo.name}</p>`)
+        //forkedProjects.forEach(repo => projectsContainer.innerHTML += `<p>${repo.name}</p>`)
         // Here I update the cards.Container to show cards with data extracted from the GitHUb API
         
         forkedProjects.forEach(repo => cardsContainer.innerHTML += `
         <section class="js-card">
       <div class="card-projectname" id="cardProjectName">   
-        Project Name: <span class="space">${repo.name}</span></div>
+        <span class="field">Project Name:</span> <span class="space">${repo.name}</span></div>
         <div class="updated" id="cardUpdated">
-      Most recent update: <span class="space"> ${new Date(repo.pushed_at).toDateString()}</span>   
+        Most recent update:<span class="space"> ${new Date(repo.pushed_at).toDateString()}</span>   
         </div>
         <div class= "branch" id="cardBranch">
-      Name of default branch:<span class="space">${repo.default_branch}</span>    
+        Name of default branch:<span class="space">${repo.default_branch}</span>    
         </div>
          <div class= "URL" id="cardURL">
-      URL: <span class="space"><a href="${repo.html_url} ">Clicky</a></span> 
+         URL: <span class="space"><a href="${repo.html_url} ">Clicky</span></a> 
         </div>
         <div class= "number-commits" id="commit-${repo.name}">
-      Number of commit Messages:   
+        Number of commit Messages:  
         </div>
          <div class= "times-forked" id="cardForked">
-      Number of times forked: <span class="space">${repo.forks}</span>  
+         Number of times forked:<span class="space">${repo.forks}</span>  
         </div>
-        <div class= "blank-line" id="cardBlank">
-      blank   
-        </div>
+        
     
      
-    </section>`)
+    </section>`
+   
+    )
+    
         // Here we store the forkedProjects.length and console.log to make sure it is correct.
         drawChart(forkedProjects.length)
         //console.log('hello', forkedProjects.length)

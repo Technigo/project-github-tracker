@@ -1,9 +1,32 @@
+html {
+  font-size: 16px;
+}
 body {
   background-color: white;
   font-family: 'Special Elite', cursive;
   margin: 0;
 }
 
+h1 {
+  font-weight: 400;
+  font-size: 2rem;
+  padding: 0 5px;
+  margin:0;
+
+}
+h2 {
+  font-weight: 300;
+  font-size: 1.5 rem;
+  padding: 0 5px;
+  margin:0;
+
+}
+
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
 /* Header*/
 .header {
   width: 100%;
@@ -27,37 +50,59 @@ body {
 
 .header img {
   width: 250px;
-  margin: 0 0 5px 50px;
+  margin: 0 auto 5px auto;
+  display: block;
+
 }
 /* Profile styling and image*/
+.profile-container{
+  width:90%;
+  margin: 0 auto;
+  
+}
+.profile-wrapper{
+  display: flex;
+  flex-direction: row;
+}
+.profile-photo {
+  width:30%;
+}
+.profile-photo img{
+  width: 100%;
+  border-radius: 50%;
+  filter: grayscale(100%);
+  
+}
 
+.profile-username{
+  font-family: 'Roboto', sans-serif;
+  padding: 0 5px;
+  margin:0;
+  align-items: center;
+}
+
+.profile-text {
+  /*margin: 5px;
+  padding: 5px;*/
+  text-align: justify;
+}
 
 /* Cards styling*/
 .projects-container{
 width: 90%;
-margin: 20px, auto;
+margin: 0 auto;
 }
 
 .cards-container {
-  width: 90%;
-  margin: 20px auto;
-}
-/*.html-card {
-  width: 90%;
-  background-color: white;
-  border: 1px solid #DADBDB;
-  box-shadow: 1px 1px 3px rgba(0,0,0,.25);
-  margin: 50px;
+  width: 100%;
   
 }
-*/
 .js-card {
   width: 90%;
   background-color: white;
   border: 1px solid #DADBDB;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
-  margin: 50px;
-  
+  margin: 20px auto;
 }
 
 .card-projectname {
@@ -71,10 +116,25 @@ margin: 20px, auto;
   padding: 6px 0 0 0;
   border-bottom: 1px solid #B2B3B4; 
 }
+.URL a {
+  text-decoration: none;
 
+}
+.URL a:hover{
+  cursor: pointer;
+  color: #87bee7;
+}
+.URL a:visited{
+  color:#87bee7;
+}
 .space {
-  margin-left: 5px;
+  margin-left: 8px;
+  color: #87bee7;
 } 
+
+.field {
+  color:#87bee7;
+}
 
 /* Chart styling*/
 .canvas-chart{
