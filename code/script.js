@@ -12,6 +12,12 @@ const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
 
 //FUNCTIONS
+
+function toggle() {
+  this.classList.toggle("active");
+  console.log(this)
+}
+
 const getRepos = () => {
 	fetch(REPO_API, options)
 		.then((res) => res.json())
@@ -19,7 +25,6 @@ const getRepos = () => {
 
 			//forkedRepos shows a list of all repos that are forked ones from Technigo
 			const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-			console.log('List of forked Repos: ', forkedRepos)
 			
 			//My name, username and profile picture
 			const userName = data[0].owner.login
@@ -47,10 +52,21 @@ const drawProjects = (forkedRepositories) => {
 				<a href="${repo.html_url}">${repo.name}</a>
 				<p>default branch: ${repo.default_branch}</p>
 				<p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
-				<p id="commit-${repo.name}">No commits yet</p>
+				<p onclick="click()" id="commit-${repo.name}">Commits: 0</p>
+        <ul id="commitMessages-${repo.name}"></ul>
 			</div>	
 		`
+    console.log(document.getElementById(`commit-${repo.name}`))
+    
 		getCommits(forkedRepositories, repo.name);
+    const click = () => {
+      console.log('clicked')
+      document.getElementById(`commitMessages-${repo.name}`).classList.toggle('active')
+    }
+   /*  document.getElementById(`commit-${repo.name}`).addEventListener('click',  () => {
+      console.log('clicked')
+      document.getElementById(`commitMessages-${repo.name}`).classList.toggle('active')
+    }) */
 	});		
 }
 
@@ -73,10 +89,22 @@ const getCommits = (filteredArray, myRepoName) => {
           document.getElementById(`commit-${myRepoName}`).innerHTML = `
 					Commits: ${authorCommits.length}
           `
+          authorCommits.forEach(element => {
+            document.getElementById(`commitMessages-${myRepoName}`).innerHTML += `
+              <li>${element.commit.message}</li>
+            `
+          })
 				} 
 			})		
 	});
 }
+
+/* const toggleCommits = (myRepoName) => {
+  document.getElementById(`commitMessages-${myRepoName}`).onclick = toggle;
+} */
+
+
+
 
 
 getRepos();

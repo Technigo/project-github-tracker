@@ -1,13 +1,5 @@
 /* GLOBAL STYLES */
 
-:root {
-  --border-width: 1px;
-  --border-style: solid;
-  --font-size-small: 12px;
-  --font-weight-semibold: 500;
-  --size-2: 20px;
-}
-
 html {
   box-sizing: border-box;
 }
@@ -56,6 +48,7 @@ header {
 }
 
 .userImage {
+  border: 1px solid lightgray;
   border-radius: 50%;
   width: 57px;
   margin-right: 10px;
@@ -79,12 +72,30 @@ header {
 
 .projects-div {
   border: 1px solid lightgray;
-  padding-left: 16px;
+  padding: 5px 16px;
 }
 
 .projects-div a {
+  display: block;
+  margin-bottom: 8px;
   color: #0969DA;
-  font-size: 20px;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.projects p, ul {
+  font-size: 12px;
+  margin: 0;
+}
+
+.projects ul {
+ /*  display: none; */
+  padding-left: 16px;
+  margin-top: 2px;
+}
+
+.active + .projects ul {
+  display: block;
 }
 
 /* CHART */
