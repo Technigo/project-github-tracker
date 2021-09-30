@@ -6,21 +6,37 @@ const user = 'anndimi'
 const USER_URL = `https://api.github.com/users/${user}`
 const userContainer = document.getElementById("userProfile")
 
+//Create link images to social media
+const createSocialMediaImg = (url, alt) => {
+    let image = document.createElement("img")
+    image.src = url
+    image.alt = alt
+    return image
+}
+
+const linkedinIcon = createSocialMediaImg("./assets/linkedin-icon.png", "linkedin")
+const githubIcon = createSocialMediaImg("./assets/github-icon.png", "github")
+const facebookIcon = createSocialMediaImg("./assets/facebook-icon.png", "facebook")
+
+//Function to fetch and display profile information
 const userProfile = () => {
     fetch(USER_URL)
         .then(res => res.json())
         .then(data => {
             console.log(data)
             userContainer.innerHTML = `
-        <a href="${data.html_url}" target="blank"><img src="${data.avatar_url}" class="avatar"/></a>
+        <img src="${data.avatar_url}" class="avatar"/>
         <p class="full-name">${data.name}</p>
         <p class="username">Username: ${data.login}</p>
         <p class="location">${data.location}</p>
+        <a href="${data.html_url}" target="blank"><img src="${githubIcon.src}" alt="${githubIcon.alt}"  class="github-icon"/></a>
+        <a href="${data.blog}" target="blank"><img src="${linkedinIcon.src}" alt="${linkedinIcon.alt}" class="linkedin-icon"/></a>
+        <a href="https://www.facebook.com/anna.dimitrakopoulos" target="blank"><img src="${facebookIcon.src}" alt="${facebookIcon.alt}" class="facebook-icon"/></a>
         `
         })
 }
 
-//Function to fetch my repos
+//Function to fetch and display my repos
 const fetchRepos = () => {
     fetch(MY_REPOS)
         .then((res) => res.json())
@@ -31,7 +47,7 @@ const fetchRepos = () => {
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
                       <div class="repo" id=${repo.name}>
-                        <a href="${repo.html_url}" target="blank">Name: ${repo.name}</a> 
+                      Name: <a href="${repo.html_url}" target="blank">${repo.name}</a> 
                         <p>Branch: ${repo.default_branch}</p>
                         <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
                         <p id="commit-${repo.name}">Amount of commits: </p> 

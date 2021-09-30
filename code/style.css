@@ -1,5 +1,5 @@
 html {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Spartan', sans-serif;
   background: rgb(204, 202, 194);
 }
 
@@ -19,6 +19,7 @@ body {
   border: transparent;
   border-radius: 10px;
   z-index: -1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .hero-text {
@@ -34,6 +35,8 @@ body {
 .user-container {
   text-align: center;
   font-size: 16px;
+  font-weight: bold;
+  color: rgba(26, 26, 24, 0.849);
 }
 
 img.avatar {
@@ -41,6 +44,12 @@ img.avatar {
   max-width: 115px;
   margin-top: -13vh;
   border: solid rgb(204, 202, 194) 5px;
+}
+
+img.github-icon, img.linkedin-icon, img.facebook-icon {
+  opacity: 0.75;
+  width: 40px;
+  margin-top: 1vh;
 }
 
 hr {
@@ -61,11 +70,15 @@ a:visited {
   color: rgb(204, 202, 194);
 }
 
-a:hover {}
+a:hover {
+  text-decoration: underline;
+  color: #BFADA3;
+  font-weight: bold;
+}
 
 h2 {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
   margin: 10px;
   color: rgba(26, 26, 24, 0.849);
 }
@@ -73,9 +86,9 @@ h2 {
 #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
   border: transparent;
   border-radius: 10px;
-  background-color: rgba(26, 26, 24, 0.575);
+  background-color: rgba(26, 26, 24, 0.74);
   text-align: center;
-  box-shadow: 5px 5px 5px #8a8383;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 12px;
   padding: 10px;
   color: rgb(204, 202, 194);
@@ -91,11 +104,13 @@ p {
   text-align: center;
   font-size: 18px;
   padding: 20px;
-  color: rgb(26, 26, 24);
+  color: rgba(26, 26, 24, 0.849);
+  font-weight: bold;
 }
 
 #myChart.chart {
   max-width: 300px;
+  display: initial !important;
 }
 
 footer {
@@ -105,7 +120,7 @@ footer {
 }
 
 .creator {
-  margin-bottom: -7vh;
+  margin-bottom: 1vh;
   color: rgba(26, 26, 24, 0.699);
 }
 
@@ -121,8 +136,11 @@ footer {
     margin-top: -10vh;
     max-width: 145px;
   }
-  .creator {
-    margin-bottom: -4vh;
+  h2 {
+    font-size: 20px;
+  }
+  .chart-container {
+    font-size: 20px;
   }
 }
 
@@ -130,19 +148,51 @@ footer {
   .user-container {
     display: flex;
   }
+  img.avatar {
+    margin-top: -15vh;
+    max-width: 216px;
+    margin-left: -0.5vh;
+    transition: 0.5s;
+  }
+  p.full-name, p.username, p.location {
+    margin-right: 2vh;
+    align-self: center;
+  }
+  p.location {
+    margin-right: 80vh !important;
+  }
+  img.github-icon, img.linkedin-icon, img.facebook-icon {
+    margin-right: 1vh;
+    margin-top: 3.5vh;
+    transition: 0.5s;
+  }
+  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+    transform: scale(1.2);
+  }
+  hr {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  h2 {
+    margin-bottom: 2vh;
+  }
+  p {
+    margin-top: 3vh;
+  }
   .projects-container {
     display: flex;
     justify-content: space-around;
   }
   #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
-    width: 28vh;
+    width: 29vh;
+    transition: 0.5s;
+  }
+  #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
+    transform: scale(1.04);
   }
   img.avatar {
     margin-top: -15vh;
     max-width: 216px;
     margin-left: -1vh;
-  }
-  p.full-name, p.username, p.location {
-    margin-right: 2vh;
   }
 }
