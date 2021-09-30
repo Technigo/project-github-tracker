@@ -15,20 +15,22 @@
     />
   </head>
   <body>
+    <header>
+      <h1>GitHub Tracker</h1>
+    </header>
     <div class="big-container">
-      <header>
-        <h1>GitHub Tracker</h1>
-      </header>
+      <div class="info-wrapper">
+        <div class="profile-container" id="profileInfo">
+          <!-- profile info -->
+        </div>
+        <div class="chart-container">
+          <h2>Progress</h2>
+          <canvas class="chart" id="chart"> </canvas>
+        </div>
+      </div>
 
-      <div class="profile-container" id="profileInfo">
-        <!-- profile info -->
-      </div>
-      <div class="chart-container">
-        <h2>Progress</h2>
-        <canvas class="chart" id="chart"> </canvas>
-      </div>
-      <h2>Projects</h2>
       <div class="projects-wrapper">
+        <h2>Projects</h2>
         <div class="projects-list">
           <main class="projects" id="projects"></main>
         </div>

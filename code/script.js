@@ -14,7 +14,7 @@ const getUser = () => {
     .then((data) => {
       // console.log("USER DATA", data);
       profileInfo.innerHTML += `
-          <h3> Profile Info </h3>
+          <h2> Profile Info </h2>
           <img src = "https://avatars.githubusercontent.com/u/80712035?v=4" alt="Profile picture">
           <h4> ${data.name}</h4>
           <h4> ${data.login}</h4>
@@ -55,10 +55,7 @@ const getRepos = () => {
 
             projectsContainer.innerHTML += `
           <div class="projects">
-          <div class="project-header">
           <h3> Project Name: ${upperCaseName}</h3>
-          </div>
-          <div class="project-info">
           <a href = ${project.html_url}> ${upperCaseName} </a>
           <p> Main branch: ${project.default_branch}</p>
           <p> Number of commits: ${filteredCommits.length}</p>
@@ -68,7 +65,7 @@ const getRepos = () => {
           )}, ${project.pushed_at.slice(11, 16)} 
           </p>
           <p id="pull-${project.name}"></p>
-          </div>
+         
           </div>
           `;
           });
