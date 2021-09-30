@@ -19,7 +19,7 @@ body {
 .hero {
   border-bottom: solid;
   height: 70%;
-  padding: 3em;
+  padding: 2em;
   background: #0f0c29; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
@@ -64,11 +64,12 @@ a.button1:hover {
 .grid {
   margin-top: 2em;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .repo-cards {
   height: 300px;
+  width: 180px;
   color: white;
   font-family: 'Bebas Neue', cursive;
   margin: 1em;
@@ -78,7 +79,6 @@ a.button1:hover {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column-reverse;
-  width: 200px;
   border-radius: 1em;
   box-shadow: 0.25em 0.25em 0.25em grey;
   background-color: rgb(20, 23, 38);
@@ -87,7 +87,7 @@ a.button1:hover {
 .projects {
   width: 100%;
   display: flex;
-  grid-column: span 1;
+  grid-column: span 2;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
@@ -102,17 +102,21 @@ a.button1:hover {
   position: sticky;
 }
 
+.info {
+  margin: 12px;
+  letter-spacing: 5px;
+}
+
 .img {
-  max-width: 25em;
+  max-width: 20em;
   border-radius: 50%;
   margin-top: -4em;
   align-items: center;
-  border-color: white;
+  border-color: #cac4ce;
   border-style: double;
 }
 
 .chart-container {
-  border-style: solid;
   display: grid;
   grid-column: span 1;
   position: sticky;
@@ -124,84 +128,88 @@ a.button1:hover {
 
 .footer {
   margin: 1em;
-  padding-top: 10em;
+  padding-top: 2em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* ***** CARD *****
+@media screen and (max-width: 780px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.flip-card {
-  background-color: transparent;
-  perspective: 1000px;
+  a.button1 {
+    font-size: 20px;
+  }
+
+  .info {
+    font-size: 25px;
+    letter-spacing: 0;
+  }
+
+  .img {
+    margin-top: -2em;
+    max-width: 40vw;
+  }
+
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer {
+    margin: 0;
+    padding-top: 0;
+  }
 }
 
-.flip-card-inner {
-  position: relative;
-  transition: transform 1.2s;
-  transform-style: preserve-3d;
-}
+@media screen and (max-width: 480px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+  a.button1 {
+    font-size: 20px;
+  }
 
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
+  .info {
+    font-size: 90%;
+    letter-spacing: 0;
+  }
 
-.flip-card-back {
-  transform: rotateY(180deg);
-}
+  .img {
+    margin-top: -2em;
+    max-width: 20vw;
+  }
 
-.card {
-  width: 200px;
-  height: 250px;
-  overflow: hidden;
-  border: 5px solid #C9B446;
-  border-style: double;
-  margin: 3px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
+  .grid {
+    display: flex;
+    flex-direction: cloumn;
+  }
 
-.card p {
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 25px;
-  font-weight: 400;
-  color: #fff;
-  font-family: 'Pirata One';
-}
+  .projects {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+  }
 
-.card .guess {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  height: inherit;
-}
+  .repo-cards {
+    background-color: #8d86c9;
+    max-height: 150px;
+    margin: 10px;
+  }
 
-.card:hover {
-  background-color: var(--secondary);
+  .card-info {
+    margin: 2px;
+  }
+  .chart {
+    border-style: solid;
+  }
 }
-
-.card:hover img,
-.card:hover p {
-  display: none;
-}
-
-/* The div with the guess class is only shown on hover */
-/* .card:hover .guess {
-  display: flex;
-} */
