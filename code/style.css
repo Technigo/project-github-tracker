@@ -142,4 +142,23 @@ canvas {
     flex-direction: column;
     margin-left: 50px;
   }
+  .header-wrapper {
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    text-align: left;
+    margin-left: 50px;
+  }
+  hr {
+    height: 2px;
+    width: 90%;
+    border-style: solid #eab676;
+    border-radius: 10px;
+    background-color: #eab676;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+    align-self: flex-start;
+  }
 }
