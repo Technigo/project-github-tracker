@@ -249,7 +249,7 @@ const renderCommentsOnPullRequest = (data, repoName) => {
   );
 
   data.forEach((comment) => {
-    commentsContainer.innerHTML += `<li>${comment.user.login}: ${comment.body}</li>`;
+    commentsContainer.innerHTML += `<li class="option">${comment.user.login}: ${comment.body}</li>`;
   });
 };
 
