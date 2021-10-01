@@ -19,8 +19,7 @@ fetch(repos)
     //Username and userpic
     profileContainer.innerHTML+= `
       <img class="img" src="${data[0].owner.avatar_url}" alt="profile picture"> 
-      <h2 class="profile-name">${data[0].owner.login}</h2>
-
+      <a href="${data[0].owner.html_url}"><h2>${data[0].owner.login}</h2></a>
     ` 
 
     // Repos and fetched pulls from the functions down under.
