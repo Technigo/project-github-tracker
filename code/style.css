@@ -1,3 +1,286 @@
+
 body {
-  background: #FFECE9;
+  background:#181a1b;
+  margin:0;
+  box-sizing: border-box;
+}
+/*----------------- Phone view --------------- */
+.header {
+  background-color: #2d333b;
+  color: #adbac7;
+  height: 80px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-image {
+  width: 200px;
+  border-radius: 300px;
+  border: #adb4b6;
+  margin-bottom: 20px;
+}
+
+.main-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 20px;
+  color: #768390;
+}
+
+.my-divs {
+  border: 1px solid #444c56;
+  margin: 20px 15px;
+  border-radius: 15px;
+  text-align: center;
+  background-color:#242728;
+}
+
+
+.my-divs:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.my-divs h5 {
+  margin: 2px;
+}
+
+.github-image {
+  width: 30px;
+  filter: invert();
+  margin-top: 5px;
+}
+.github-image:hover {
+  opacity: 0.8;
+  transform: scale(1.5);
+}
+.repo-name {
+  color: #539bf5;
+  margin-bottom: 0;
+}
+.links {
+  color: #539bf5;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.statistics {
+  color: #768390;
+  text-align: center;
+}
+.link-github {
+  text-decoration: none;
+  color: #768390;
+  cursor: pointer;
+}
+.names h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.name {
+  font-size: 26px;
+}
+.username {
+  font-size: 26px;
+  font-weight: 300;
+}
+.location-info {
+  display: flex;
+  justify-content: row;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.location-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert();
+  margin-right:10px;
+  margin-top: 10px;
+}
+.bio {
+  margin-top:0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.linkedin-info {
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.repo-language {
+  position: relative;
+  top: 2px;
+  right: 8px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.btn-primary {
+  width: 200px;
+  margin-left: 120px;
+  border: none;
+  display: block;
+}
+.chart {
+  max-width: 90%;
+  margin-left: 20px;
+}
+
+.general {
+  margin-left: 10px;
+}
+/*----------------- IPAD view --------------- */
+@media (min-width:768px) {
+  .chart {
+    max-width: 80%;
+    margin-left: 75px;
+  }
+  .my-divs {
+    margin: 20px 50px;
+  }
+
+  .general {
+    margin-left: 50px;
+  }
+  .repo-language {
+    top: 3px;
+    right: 10px;
+  }
+  .statistics {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+/*----------------- Small desktop view --------------- */
+@media (min-width:992px) {
+  .projects-section {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+  }
+  .my-divs {
+    margin-left: 20px;
+    display: grid;
+    font-size: 15px;
+    min-width: 300px;
+    max-width: 450px;
+    height: 150px;
+  } 
+  .repo-language {
+    top: 17px;
+    right: -160px;
+  }
+  .charts {
+    max-width: 450px;
+    display: flex;
+    flex-direction: row;
+  }
+  .general {
+    text-align: center;
+  }
+  .location-info {
+    display: none;
+  }
+ 
+}
+
+/*----------------- Big desktop view --------------- */
+@media (min-width:1200px) {
+  .projects-section {
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+  }
+  .my-divs h5 {
+    margin: 0px;
+    margin-top:0;
+  }
+  .linkedin-info {
+    display: inline;
+  }
+  .linkedin-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+  .my-divs {
+    display: grid;
+    margin:10px;
+    font-size: 15px;
+    min-width: 380px;
+    max-width: 450px;
+    height: 150px;
+  }
+  .chart {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  .main-section {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+  }
+  .repo-language {
+    top: 20px;
+    right: -140px;
+    
+  }
+  .profile-image {
+    margin-right: 50px;
+    width: 300px;
+  }
+  .language-name {
+    margin-left: 10px;
+  }
+  .charts {
+    display: flex;
+    flex-direction: row;
+    margin-left: 300px;
+  }
+  .link-linkedin {
+    text-decoration: none;
+    color: #539bf5;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .link-linkedin:link{
+    color:#539bf5
+  }
+  .link-linkedin:hover {
+    color: blue;
+  }
+  .general {
+    text-align: left;
+    animation-name: moveFromTheLeft;
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
+  }
+  @keyframes moveFromTheLeft {
+    0% {
+      transform: translateX(-100px);
+    }
+    50% {
+      transform: translate(0);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+  .projects-section {
+    animation-name: moveFromTheRight;
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
+  }
+  @keyframes moveFromTheRight {
+    0% {
+      transform: translateY(-100px);
+    }
+    50% {
+      transform: translate(0);
+    }
+    100% {
+      transform: translate(0px);
+    }
+  }
+
 }

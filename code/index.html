@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
+<body>
+  <div class="header">
+    <a class="link-github" target="_blank" href="https://docs.github.com/en/rest">
+      <img class="github-image" title="GitHub REST API documentation" src="images/github-icon.png" alt="github-logo" />
+    </a>
+    <p class="github-tracker">GitHub Tracker</p>
+
+  </div>
+  <section class="main-section">
+    <main id="generalInfo" class="general"></main>
+    <!-- <h2>Projects:</h2> -->
+    <main id="projects" class="projects-section"></main>
+  </section>
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <h2 class="statistics">Progress and repositories data</h2>
+  <div class="charts">
+    <canvas id="chart" class="chart"></canvas>
+    <canvas id="chartTwo" class="chart"></canvas>
+  </div>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
+
 </html>
