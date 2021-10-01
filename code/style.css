@@ -11,6 +11,7 @@ body {
   background-repeat: repeat-x;
   padding: 5%;
   margin: 0;
+  font-size: 15px;
 }
 
 .section {
@@ -18,6 +19,7 @@ body {
   grid-gap: 2rem;
   margin: auto;
   width: 100%;
+  max-width: 1200px;
 }
 /* Profile */
 .profile-card {
@@ -48,11 +50,15 @@ fieldset {
 
 .project-container {
   display: grid;
+  width: 100%;
 }
 
 .project-grid {
   border-radius: 2%;
   min-width: auto;
+}
+.project-grid :hover {
+  background-color: rgba(34, 33, 33, 0.671);
 }
 
 .project-cards {
@@ -78,16 +84,22 @@ fieldset {
 }
 
 @media (min-width: 768px) {
+  body {
+    font-size: 12px;
+  }
   .section {
-    display: grid;
+    display: flex;
+    flex-direction: row;
   }
   /* Profile */
-  .profile-card {
-    width: 60%;
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
   }
 
   .profile-img {
-    width: 90%;
+    width: 50%;
   }
   /* Chart */
   .chart {
@@ -98,9 +110,12 @@ fieldset {
   }
   /* Projects */
 
+  .project-container {
+    width: 100%;
+  }
   .project-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     line-height: 0.86;
   }
 }

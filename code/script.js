@@ -14,7 +14,7 @@ const getProfile = () => {
         console.log('Profile:',data)
         profileContainer.innerHTML += `
         <div class="profile-card">
-        <img class="profile-img" src=${data.avatar_url}>
+        <img class="profile-img" src=${data.avatar_url} alt="profile-image">
         <h2>${data.login}</h2>
         </div>`
     })
@@ -30,7 +30,6 @@ const getRepos = () => {
         const forkedRepos = data.filter(
             (repo) => repo.name.includes('project-') && repo.fork
             )
-        
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML += 
             `
