@@ -4,7 +4,7 @@ const ctx = document.getElementById('chart').getContext('2d');
 //"Draw" the chart here 👇
 
 const data = {
-	labels: ['Soon', 'Done'],
+	// labels: ['Soon', 'Done'],
 	datasets: [
 		{
 			label: 'Technigo project progress',
