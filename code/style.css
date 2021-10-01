@@ -228,7 +228,26 @@ h3 a:hover {
   padding: 20px;
 }
 
-@media (min-width: 668px) and (max-width: 1024px) {
+.signature {
+  background: #1a1e22;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.signature h3 {
+  font-family: 'Nothing You Could Do';
+}
+
+.signature p {
+  font-size: 12px;
+  color: #fff;
+}
+
+@media (min-width: 750px) and (max-width: 1024px) {
   header {
     height: 55%;
   }
@@ -253,7 +272,7 @@ h3 a:hover {
   }
 
   .chart-title {
-    font-size: 30px;
+    font-size: 25px;
     padding: 20px;
   }
 
@@ -272,8 +291,8 @@ h3 a:hover {
   }
 
   .chart-container p {
-    text-align: center;
     padding: 20px;
+    font-size: 18px;
   }
 }
 
@@ -301,6 +320,10 @@ h3 a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+
+  .chart-title {
+    padding: 20px;
   }
 
   .chart-canvas {
