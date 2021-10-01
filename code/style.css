@@ -139,6 +139,7 @@ header,
 
 .search {
   padding: 5px;
+  font-size: 14px;
   display: block;
   flex: 0 0 40px;
   margin-left: 6px;
