@@ -5,20 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
+    <meta name="description" content="GitHub Technigo forked projects tracker">
+    <meta name="author" content="Isabel González">
     <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <main id="projects">
-      <h2>Projects:</h2>
-    </main>
-
-    <!-- This will be used to draw the chart 👇 -->
-    <div>
+    <header>
+      <h1>GitHub Tracker</h1>
+      <div id="user-info"></div>
+    </header>
+    <div class="divider-title">
+      <h2>Technigo Projects:</h2>
+    </div>
+    <section id="projects"></section>
+    
+    <!-- Draw a donut chart containing completed projects versus projects left -->
+    <div class="chart-container">
       <canvas id="myChart"></canvas>
     </div>
     <script src="./script.js"></script>
+    <!--Link the chart library-->
     <script src="./chart.js"></script>
   </body>
 </html>
