@@ -11,14 +11,14 @@ const userProfile = () => {
     console.log ('profile', data)
     profileContainer.innerHTML+= `
     <div class="profile-wrapper" id="profile-wrapper">
-    <div class="profile-photo" id=" profile-image">
-      <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
-    </div>
-    <div class="profile-username" id ="profile-username">
-      <h1>${data.name}</h1>
-      <h2>${data.login}</h2>
-      <h3>${data.location}, Switzerland</h3>
-    </div>
+      <div class="profile-photo" id=" profile-image">
+        <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
+      </div>
+      <div class="profile-username" id ="profile-username">
+        <div class="User-name">User name:<span class="space">${data.login}</span></div>
+        <div class="real-name">AKA:<span class="space">${data.name}</span></div>
+        <div class="location">Find me in:<span class="space">${data.location}, CH</span></div>
+      </div>
   </div>
   <div class="profile-text" id="profile-text">
     <p> ${data.bio}</p>
@@ -54,7 +54,7 @@ const getRepos = ()=>{
           URL: <span class="space"><a href="${repo.html_url} ">Clicky</span></a> 
           </div>
           <div class= "number-commits" id="commit-${repo.name}">
-          Number of commit Messages:  
+          Number of Commits:  
           </div>
           <div class= "times-forked" id="cardForked">
           Number of times forked:<span class="space">${repo.forks}</span>  
@@ -83,7 +83,7 @@ const getPullRequests = (forkedProjects) => {
             const myPullRequests = data.find(pull => pull.user.login === repo.owner.login)
            
           if (myPullRequests) {
-            getCommits(myPullRequests.commits_url, repo.name)
+            getCommits(myPullRequests.commits_url, repo.name,)
           } else {
             document.getElementById(`commit-${repo.name}`).innerHTML =
             'Sorry, no pull request done yet'
@@ -94,13 +94,13 @@ const getPullRequests = (forkedProjects) => {
     })
 }
 
-const getCommits = (myCommitsUrl, myRepoName) => {
+const getCommits = (myCommitsUrl, myRepoName,) => {
 
   fetch(myCommitsUrl)
   .then((response) => response.json())
   .then ((data) => {
+    console.log (data)
     document.getElementById(`commit-${myRepoName}`).innerHTML+=`<span class="space">${data.length}<span>`
-
   })
 }
 

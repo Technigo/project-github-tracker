@@ -7,30 +7,24 @@ body {
   margin: 0;
 }
 
-h1 {
+/*h1 {
   font-weight: 400;
   font-size: 2rem;
-  padding: 0 5px;
-  margin-bottom: 5px;
-
 }
 h2 {
   font-weight: 300;
   font-size: 1.5 rem;
-  padding: 0 5px;
-  margin-top: 3px;
-
+  
 }
 h3{
   font-weight: 300;
   font-size: 1rem;
-  padding: 0 5px;
-  margin-top: 3px;
 }
+
 p {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-}
+}*/
 /* Header*/
 .header {
   width: 100%;
@@ -57,17 +51,16 @@ p {
   margin: 0 auto 20px auto;
   padding-bottom: 10px;
   display: block;
-
 }
 /* Profile styling and image*/
 .profile-container{
   width:90%;
-  margin: 0 auto;
-  
+  margin: 0 auto; 
 }
 .profile-wrapper{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .profile-photo {
   width:30%;
@@ -75,17 +68,21 @@ p {
 .profile-photo img{
   width: 100%;
   border-radius: 50%;
+  border: 5px solid black;
   filter: grayscale(100%);
   
 }
 
 .profile-username{
-  font-family: 'Roboto', sans-serif;
-  padding: 0 5px;
-  margin:0;
-  align-content: center;
-}
+  width: 70%;
+  border: 1px solid #DADBDB;
 
+}
+.User-name, .real-name, .location {
+  margin: 6px 0 0 0;
+  padding: 6px 0 0 0;
+  border-bottom: 1px solid #B2B3B4; 
+}
 .profile-text {
  
   text-align: justify;
@@ -95,11 +92,13 @@ p {
 .projects-container{
 width: 90%;
 margin: 0 auto;
+
 }
 
 .cards-container {
   width: 100%;
-  
+  display: flex;
+  flex-direction: column;
 }
 .js-card {
   width: 90%;
@@ -107,6 +106,7 @@ margin: 0 auto;
   border: 1px solid #DADBDB;
   box-shadow: 2px 2px 4px rgba(0,0,0,.25);
   margin: 20px auto;
+  max-width: 500px;
 }
 
 .card-projectname {
@@ -115,7 +115,7 @@ margin: 0 auto;
   border-bottom: 3px solid rgb(255, 192, 203);
   
 }
-.updated, .branch, .URL, .number-commits, .blank-line, .times-forked {
+.updated, .branch, .URL, .number-commits, .blank-line, .times-forked, .commit-message {
   margin: 6px 0 0 0;
   padding: 6px 0 0 0;
   border-bottom: 1px solid #B2B3B4; 
@@ -141,11 +141,20 @@ margin: 0 auto;
 }
 
 /* Chart styling*/
+
+.chart-section {
+  width: 100%;
+  
+}
 .canvas-chart{
-  max-width: 500px;
- 
+  max-width: 300px;
+  margin: 0 auto;
+  
+  
+   
 }
 
+/* Footer styling*/
 .footer{
   width: 100%;
   border-top: 1px solid #B2B3B4;
@@ -159,4 +168,29 @@ margin: 0 auto;
   width: 50px;
   margin: 20px auto;
   display: block;
+}
+
+/***Media Queries***/
+
+@media (min-width: 768px) {
+.cards-container{
+  flex-wrap: wrap;
+   flex-direction: row;
+}
+.js-card{
+  width: 40%;
+}
+.canvas-chart {
+  min-width: 400px;
+}
+}
+
+@media (min-width: 992px) {
+
+  .js-card{
+    width: 30%;
+  }
+  .canvas-chart {
+    min-width: 400px;
+  }
 }
