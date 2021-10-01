@@ -1,6 +1,6 @@
 html {
-  font-family: 'Spartan', sans-serif;
-  background: rgb(204, 202, 194);
+  font-family: 'Poiret One', cursive;
+  background: rgb(207, 203, 185);
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.171), rgba(0, 0, 0, 0.774)), url("./assets/hero-img.jpg");
+  background: linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)), url("./assets/img1.webp");
   height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,6 +19,7 @@ body {
   border: transparent;
   border-radius: 10px;
   z-index: -1;
+  transition: 3s;
 }
 
 .hero-text {
@@ -28,51 +29,135 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(204, 202, 194);
-  font-size: 15px;
+  font-family: 'Cabin Sketch', cursive;
+  font-size: 20px;
 }
 
 .user-container {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  color: rgba(26, 26, 24, 0.849);
+  color: #545454;
 }
 
 img.avatar {
   border-radius: 50%;
   max-width: 115px;
   margin-top: -13vh;
-  border: solid rgb(204, 202, 194) 5px;
+  border: solid rgb(207, 203, 185) 5px;
 }
 
 img.github-icon, img.linkedin-icon, img.facebook-icon {
-  opacity: 0.75;
+  opacity: 0.65;
   width: 40px;
   margin-top: 1vh;
+}
+
+h4 {
+  color: #545454;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul.checkbox-tags {
+  list-style: none;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+ul.checkbox-tags li label {
+  display: inline-block;
+  background-color: rgba(250, 247, 231, 0.9);
+  border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+}
+
+ul.checkbox-tags li label {
+  padding: 8px 12px;
+  margin-right: 1vh;
+  cursor: pointer;
+}
+
+ul.checkbox-tags li label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "\f067";
+  transition: transform .3s ease-in-out;
+}
+
+ul.checkbox-tags li input[type="checkbox"]:checked+label::before {
+  content: "\f00c";
+  transform: rotate(-360deg);
+  transition: transform .3s ease-in-out;
+}
+
+ul.checkbox-tags li input[type="checkbox"]:checked+label {
+  border: 2px solid #BF8B85;
+  background-color: #BF8B85;
+  color: rgb(255, 255, 255);
+  transition: all .2s;
+}
+
+ul.checkbox-tags li input[type="checkbox"] {
+  display: absolute;
+}
+
+ul.checkbox-tags li input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+ul.checkbox-tags li input[type="checkbox"]:focus+label {
+  border: 2px solid #BF8B85;
 }
 
 hr {
   width: 95%;
   height: 5px;
-  background-color: rgba(26, 26, 24, 0.637);
+  background-color: rgba(172, 116, 78, 0.404);
   border: transparent;
   border-radius: 5px;
 }
 
 a:link {
   text-decoration: none;
-  color: rgb(204, 202, 194);
+  color: #545454;
   font-weight: bold;
 }
 
 a:visited {
   text-decoration: none;
-  color: #BFADA3;
+  color: #7a6d65;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #BFADA3;
+  color: #7a6d65;
   font-weight: bold;
 }
 
@@ -80,26 +165,24 @@ h2 {
   text-align: center;
   font-size: 18px;
   margin: 10px;
-  color: rgba(26, 26, 24, 0.849);
+  color: #545454;
 }
 
-.ckeckbox-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+h4 {
+  margin-bottom: 2vh;
 }
 
 #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
   border: transparent;
   border-radius: 10px;
-  background-color: rgba(26, 26, 24, 0.74);
+  background-color: #af896059;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 12px;
   padding: 10px;
-  color: rgb(204, 202, 194);
+  color: #545454;
+  font-weight: bold;
 }
 
 p {
@@ -113,7 +196,7 @@ p {
   text-align: center;
   font-size: 18px;
   padding: 20px;
-  color: rgba(26, 26, 24, 0.849);
+  color: #545454;
   font-weight: bold;
 }
 
@@ -130,7 +213,8 @@ footer {
 
 .creator {
   margin-bottom: 1vh;
-  color: rgba(26, 26, 24, 0.699);
+  color: #545454;
+  font-size: 14px;
 }
 
 .logo {
@@ -138,8 +222,11 @@ footer {
 }
 
 @media screen and (min-width: 425px) {
+  .hero-text {
+    font-size: 30px;
+  }
   .user-container {
-    font-size: 20px;
+    font-size: 22px;
   }
   img.avatar {
     margin-top: -13vh;
@@ -152,7 +239,10 @@ footer {
     transform: scale(1.2);
   }
   h2 {
-    font-size: 20px;
+    font-size: 22px;
+  }
+  h4 {
+    font-size: 18px;
   }
   p {
     line-height: 3vh;
@@ -164,7 +254,7 @@ footer {
     justify-content: space-evenly;
   }
   #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
-    font-size: 16px;
+    font-size: 18px;
     width: 40%;
     transition: 0.5s;
   }
@@ -177,14 +267,17 @@ footer {
 }
 
 @media screen and (min-width: 1441px) {
+  .hero-text {
+    font-size: 45px;
+  }
   .user-container {
     display: flex;
+    font-size: 26px;
   }
   img.avatar {
     margin-top: -15vh;
-    max-width: 216px;
+    max-width: 225px;
     margin-left: -0.5vh;
-    transition: 0.5s;
   }
   p.full-name, p.username, p.location {
     margin-right: 2vh;
@@ -209,20 +302,25 @@ footer {
   h2 {
     margin-bottom: 2vh;
   }
+  .checkbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .language-checkbox {
+    margin-bottom: 0;
+  }
   p {
     line-height: 3vh;
   }
   #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
     transition: 0.5s;
     width: 30%;
+    font-size: 20px;
   }
   #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
     transform: scale(1.04);
-  }
-  img.avatar {
-    margin-top: -15vh;
-    max-width: 216px;
-    margin-left: -1vh;
   }
   #myChart.chart {
     width: 370px !important;

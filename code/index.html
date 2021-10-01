@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Poiret+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <title>My GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<div class="hero-image">
+<div class="hero-image" id="heroImg">
   <div class="hero-text">
     <h1>GitHub Tracker</h1>
   </div>
@@ -25,21 +26,24 @@
   <hr>
   <h2>My projects</h2>
 
-  <section class="ckeckbox-container">
-    <h4>Filter by language:</h4>
-    <form id="language" class="language-checkbox">
-      <div>
-        <input type="checkbox" id="HTML" value="HTML" checked>
-        <label for="HTML">HTML</label>
-      </div>
-      <div>
-        <input type="checkbox" id="CSS" value="CSS" checked>
-        <label for="CSS">CSS</label>
-      </div>
-      <div>
-        <input type="checkbox" id="JavaScript" value="JavaScript" checked>
-        <label for="JavaScript">JavaScript</label>
-      </div>
+  <section class="checkbox-container">
+    <h4>Filter by language: </h4>
+    <div id="language" class="language-checkbox">
+      <ul class="checkbox-tags">
+        <li>
+          <input type="checkbox" id="HTML" value="HTML" checked>
+          <label for="HTML" class="">HTML</label>
+        </li>
+        <li>
+          <input type="checkbox" id="CSS" value="CSS" checked>
+          <label for="CSS">CSS</label>
+        </li>
+        <li>
+          <input type="checkbox" id="JavaScript" value="JavaScript" checked>
+          <label for="JavaScript">JavaScript</label>
+        </li>
+      </ul>
+    </div>
     </form>
   </section>
 

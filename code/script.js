@@ -24,7 +24,33 @@ const linkedinIcon = createSocialMediaImg("./assets/linkedin-icon.png", "linkedi
 const githubIcon = createSocialMediaImg("./assets/github-icon.png", "github")
 const facebookIcon = createSocialMediaImg("./assets/facebook-icon.png", "facebook")
 
-//Function to fetch and display profile information
+let heroImgArray = ['img1.webp', "img2.webp", "img3.webp"],
+    base = "./assets/",
+    seconds = 20
+heroImgArray.forEach(function (img) {
+    new Image().src = base + img
+    // Caches images, avoiding white flash between background replacements.
+})
+
+//Function to loop through hero images.
+function heroImgSequence() {
+    window.clearTimeout();
+    let k = 0;
+    for (i = 0; i < heroImgArray.length; i++) {
+        setTimeout(function () {
+            document.getElementById("heroImg").style.background = "linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)),url(" + base + heroImgArray[k] + ")"
+            document.getElementById("heroImg").style.backgroundPosition = "center"
+            document.getElementById("heroImg").style.backgroundRepeat = "no-repeat"
+            document.getElementById("heroImg").style.backgroundPosition = "relative"
+            document.getElementById("heroImg").style.backgroundSize = "cover"
+            if ((k + 1) === heroImgArray.length) {
+                setTimeout(function () { heroImgSequence() }, (seconds * 1000))
+            } else { k++; }
+        }, (seconds * 1000) * i)
+    }
+}
+
+//Function to fetch and display profile information.
 const userProfile = () => {
     fetch(USER_URL)
         .then(res => res.json())
@@ -42,17 +68,18 @@ const userProfile = () => {
         })
 }
 
-//Function to fetch and display my repos
+//Function to fetch and display my repos.
 const fetchRepos = () => {
     fetch(MY_REPOS)
         .then((res) => res.json())
         .then((data) => {
-            projectsContainer.innerHTML = `` //Clear innerHTML to prevent duplicated repos
+            //Clear innerHTML to prevent duplicated repos.
+            projectsContainer.innerHTML = ``
             const forkedRepos =
                 data.filter(repo => {
                     return repo.fork && repo.name.startsWith("project-") && selectedLanguages.includes(repo.language)
                 })
-            //Function to sort repos by latest date
+            //Function to sort repos by latest date.
             forkedRepos.sort(function (a, b) {
                 return new Date(b.pushed_at) - new Date(a.pushed_at)
             })
@@ -70,7 +97,7 @@ const fetchRepos = () => {
 
             fetchPullRequests(forkedRepos)
 
-            //Only draw the chart once
+            //Only draw the chart once.
             if (!chartDrawn) {
                 drawChart(forkedRepos.length)
                 chartDrawn = true
@@ -112,10 +139,10 @@ const filterLanguages = (event) => {
 
     console.log(language, checked)
 
-    //Adds language string in array if checked language is missing
+    //Adds language string in array if checked language is missing.
     if (checked && !selectedLanguages.includes(language)) {
         selectedLanguages.push(language)
-        //Removes language string in array if unchecked language is in array     
+        //Removes language string in array if unchecked language is in array.  
     } else if (!checked && selectedLanguages.includes(language)) {
         for (let i = 0; i < selectedLanguages.length; i++) {
             console.log("i=", i)
@@ -130,13 +157,13 @@ const filterLanguages = (event) => {
     fetchRepos()
 }
 
-
 checkHTML.addEventListener('change', filterLanguages)
 
 checkCSS.addEventListener('change', filterLanguages)
 
 checkJavaScript.addEventListener('change', filterLanguages)
 
+heroImgSequence()
 userProfile()
 fetchRepos()
 
