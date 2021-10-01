@@ -1,3 +1,6 @@
+
+
+
 body {
 	margin: 0 0;
 	padding: 0 0;
@@ -14,6 +17,7 @@ body {
 	display: grid;
 	grid-template-rows: repeat(6, 1fr);
 	grid-template-columns: repeat(6, 1fr);
+	grid-gap: 25px;
 	grid-template-areas:
 		"img img img img img img img img img img img img"
 		"img img img img img img img img img img img img"
@@ -38,7 +42,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	padding: 1em 1em;
+	padding: 1em 0.5em;
 }
 
 img {
@@ -59,9 +63,14 @@ img {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
-	padding: 5em 1em;
-	padding: 3em 3em;
+	padding: 1em 1em;
 }
+
+
+
+
+
+
 
 .projectlist {
 	grid-area: projects;
@@ -82,8 +91,9 @@ img {
 	align-items: flex-start;
 	justify-content: space-evenly;
 	font-size: 2.5vw;
-	padding: 25px 0 0 25px;
+	padding: 0 0 0 5px;
 	height: 80%;
+	margin: 0 1%;
 	background-color: rgba(217, 223, 214, 0.63);
 	backdrop-filter: blur(25px);
 	border-radius: 1%;
@@ -184,10 +194,8 @@ img {
 	padding-right: 2%;
 	font-size: 2vw;
 }
+ 
 
-/* MEDIA QUERIES */
-
-/*  DESKTOP  */
 
 @media (min-width: 992px) {
 	.container {
@@ -218,7 +226,7 @@ img {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
-		padding: 1em 0;
+		padding: 5em 0;
 	}
 
 	.userimg h3 {
@@ -243,12 +251,41 @@ img {
 	.projectlist div {
 		height: 90%;
 		font-size: 1.3vw;
+		
 	}
 
 	.chart {
 		justify-content: flex-start;
-		padding: 1em 1em 0 0;
+		padding: 5em 1em 0 0;
 	}
+
+
+
+	.repon {
+		border: 1px solid rgba(151, 184, 148, 0.596);
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-evenly;
+		font-size: 2.5vw;
+		padding: 0 0 0 35px;
+		height: 60%;
+		margin: 0 1%;
+		background-color: rgba(217, 223, 214, 0.63);
+		backdrop-filter: blur(25px);
+		border-radius: 1%;
+	}
+
+
+
+
+
+
+
+
+
+
+
 
 	#textrepo {
 		font-size: 2.4vw;

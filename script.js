@@ -33,11 +33,15 @@ const getPull = (repos) => {
 							
 
 							<div id="push">
-							<i class="far fa-clock"></i> <p>pushed:${repo.pushed_at}</p>
+							<i class="far fa-clock"></i> <p>pushed:${new Date(
+								repo.pushed_at
+							).toDateString()}</p>
 							</div>
 							<div class="content" id=${repo.name}>
 
-							<div id="repobranch"> <i class="fas fa-code-branch"></i><p> ${repo.default_branch} </p></div>
+							<div id="repobranch"> <i class="fas fa-code-branch"></i><p> ${
+								repo.default_branch
+							} </p></div>
 							
 							</div>
 							`;
