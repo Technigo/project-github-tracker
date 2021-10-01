@@ -1,11 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  background: #FFECE9;
+  background-color: #000;
+}
+
+/*Header*/
+.header {
+  height: 90vh;
+  background-image: url(./img/clouds.png);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.heading-one {
+  text-align: center;
+  padding-top:30px;
+  background-color: #000;
+  padding-bottom: 50px;
+  color:#fff;
+}
+
+.profile-section {
+  padding-top:70px;
+}
+
+.myPicture {
+  text-align: center;
+}
+
+img.profile-pic {
+  width: 250px;
+  border-radius: 50%;
+  padding-bottom: 25px;
+}
+
+.myProfile {
+  /* border: 2px dashed pink; */
+  color: whitesmoke;
+  padding-top: 20px;
+  text-align: center;
+  line-height: 30px;
+}
+.bio {
+  color:orange;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.search-form {
+  border:2px solid red;
 }
 
 
-div {
-  border: 2px solid red;
-}
+
+
+
+
 .chart {
   width: 300px;
   height: 200px;
