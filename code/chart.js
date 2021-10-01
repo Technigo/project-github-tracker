@@ -26,7 +26,7 @@ const drawChart = (amount) => {
     options: {
       plugins: {
         legend: {
-          position: "right",
+          position: "bottom",
         },
       },
     },

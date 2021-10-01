@@ -1,6 +1,7 @@
 const USER = "IdaAspen";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const USER_INFO_URL = `https://api.github.com/users/${USER}`;
+
 const projectsContainer = document.getElementById("projects-container");
 const userContainer = document.getElementById("user-container");
 
@@ -20,11 +21,7 @@ const getUserInfo = () => {
     });
 };
 
-//Started w function for capital letter
-// const capitalLetter = ((name) => {
-//   name.charAt(0).toUpperCase() + name.slice(1)
-// }
-
+/////////////////////// GET REPOS /////////////////////////////////////////
 //Get all repos w/ details
 const getRepos = () => {
   fetch(REPOS_URL)
@@ -38,7 +35,6 @@ const getRepos = () => {
       forkedRepos.sort(
         (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
-
       forkedRepos = forkedRepos.reverse();
 
       forkedRepos.forEach(
@@ -56,24 +52,23 @@ const getRepos = () => {
           </div>`),
 
         console.log("FORKED REPOS", forkedRepos),
-        //pass along filtered repos as an argument when calling getPullRequest
+        //pass along filtered repos as an argument when invoke getPullRequest
         getPullRequests(forkedRepos)
       );
       drawChart(forkedRepos.length);
     });
 };
 
+/////////////////////// GET PR /////////////////////////////////////////
+//Get all PRs for each project
 const getPullRequests = (repos) => {
-  //Get all the PRs for each project.
   repos.forEach((repo) => {
-    //put in another container?
     fetch(
       `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
     )
       .then((res) => res.json())
       .then((data) => {
         const myPulls = data.find(
-          //find
           (pull) => pull.user.login === repo.owner.login
         );
         if (myPulls) {
@@ -82,24 +77,21 @@ const getPullRequests = (repos) => {
           document.getElementById(`commit-${repo.name}`).innerHTML =
             "No pull request done ✖️";
         }
-        // console.log("MY PULLS", myPulls);
-        // console.log("PULL DATA", data);
       });
   });
 };
 
-//Testing commits, going not so good....
-// const COMMITS_URL = `https://api.github.com/repos/${USER}/project-business-site/commits`;
-
+/////////////////////// GET COMMITS /////////////////////////////////////////
+//Get commits for each project
 const fetchCommits = (myCommitsUrl, myRepoName) => {
   fetch(myCommitsUrl)
     .then((response) => response.json())
     .then((data) => {
-      //dynamic id
+      //creating dynamic id
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
 
+//Invoke the functions
 getUserInfo();
 getRepos();
-// getPullRequests();
