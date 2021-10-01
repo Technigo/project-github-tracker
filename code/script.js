@@ -1,6 +1,5 @@
 const USER = "efstasia";
 const GITHUB_URL = `https://api.github.com/users/${USER}/repos`;
-const COMMIT_URL = `https://api.github.com/repos/efstasia/project-news-site/commits`;
 const projectsContainer = document.getElementById("projects");
 const pullContainer = document.getElementById("pull-requests");
 const profileInfo = document.getElementById("profile");
@@ -17,7 +16,7 @@ const profile = () => {
         <a class="username-link" href="https://github.com/efstasia">
         <h3 class="username"><i class="fab fa-github"></i>
       ${json.login}</a></h3>
-      <p>Current location: ${json.location}</p>
+      <p class="location">Current location: ${json.location}</p>
         <p class="repo-amount">This account has a total of ${json.public_repos} repos</p>
         `;
     });
@@ -36,7 +35,7 @@ const getRepos = () => {
         repo => repo.fork && repo.name.startsWith("project-")
       );
 
-      // this creates a forEach function to get all of the projects
+      // this creates a forEach function to get all of the projects + inner HTML for the project section
       forkedRepos.forEach(
         repo =>
           (projectsContainer.innerHTML += `<div class="cards"><h3 class="repo-title">${
@@ -55,7 +54,6 @@ const getRepos = () => {
         <p class="branch">${repo.default_branch}</p>
         <p id="commit-${repo.name}">Number of commits: </p></div>`)
       );
-
       fetchPullRequestsArray(forkedRepos);
       drawChart(forkedRepos.length);
     });
@@ -78,7 +76,7 @@ const fetchPullRequestsArray = allRepositories => {
           fetchCommits(myPullRequest.commits_url, repo.name);
         } else {
           document.getElementById(`commit-${repo.name}`).innerHTML =
-            "No pull requests done";
+            "No pull requests done / team project";
         }
       });
   });
@@ -93,7 +91,7 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 };
 getRepos(); // invoking the function
 
-// function to toggle the dark mode
+// function to toggle the dark mode, connected to the button in HTML
 const myFunction = () => {
   const element = document.body;
   element.classList.toggle("dark-mode");

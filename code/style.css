@@ -64,6 +64,10 @@ header {
   padding: 5px;
 }
 
+.repo-amount {
+  font-style: italic;
+}
+
 .repo-title {
   text-transform: uppercase;
 }
@@ -117,6 +121,7 @@ img {
   width: 70%;
   border-radius: 50%;
 }
+
 .chart {
   margin: 10px auto;
   height: 200px;
@@ -146,18 +151,29 @@ footer {
 /* MEDIA QUERIES */
 
 /* TABLET */
-@media (min-width: 767px) {
+@media (min-width: 767px) and (max-width: 1023px) {
   .cards {
     font-size: 28px;
+    margin: 20px auto;
   }
-
   .links {
     font-size: 24px;
+  }
+  .repo-amount {
+    font-size: 24px;
+  }
+  .location {
+    font-size: 22px;
+  }
+  .chart {
+    margin: 10px auto;
+    height: 275px;
+    width: 275px;
   }
 }
 
 /* DESKTOP */
-@media (min-width: 1023px) {
+@media (min-width: 1024px) {
   /* container for the whole page (profile section and cards) */
   .grid-container {
     display: grid;
