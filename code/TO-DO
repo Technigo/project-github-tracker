@@ -1,5 +1,16 @@
 TODO:
 
+JS
+Ist för subString //{new Date (repo.pushed_at).toDateString()}
+
+Gör användarnamnet klickbart ✅
+Hover effects ✅
+Github logo
+Change position of legends in chart! ✅
+
+const upperCaseName =
+project.name.charAt(0).toUpperCase() + project.name.slice(1);
+
 // ### What to include
 
 // - A list of all repos that are forked ones from Technigo ✅
@@ -10,9 +21,3 @@ TODO:
 // - Number of commit messages for each repo ✅
 // - All pull requests ✅
 // - A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html). ✅
-
-Design
-Gör en parent i html och använd grid
-
-JS
-Ist för subString //{new Date (repo.pushed_at).toDateString()}

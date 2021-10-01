@@ -23,6 +23,13 @@ const drawChart = (amount) => {
         },
       ],
     },
+    options: {
+      plugins: {
+        legend: {
+          position: "right",
+        },
+      },
+    },
   };
 
   const repoChart = new Chart(ctx, config);

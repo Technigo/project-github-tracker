@@ -11,10 +11,10 @@ const getUserInfo = () => {
     .then((data) => {
       console.log(data); //REMOVE
       userContainer.innerHTML = `
-      <div class="user-container">
+      <div class="user-card">
       <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
-       alt="Profile picture"><h2>User name: ${data.name}</h2>
-       <h3>${data.bio}</h3>
+       alt="Profile picture"><h2>User name: <a href="https://github.com/IdaAspen">${data.name}</a></h2>
+       <p>${data.bio}</p>
        </div>
       `;
     });
@@ -44,13 +44,15 @@ const getRepos = () => {
       forkedRepos.forEach(
         (repo) =>
           (projectsContainer.innerHTML += `
-          <div>
-          <h3>${repo.name}</h3>
+          <div class="project-card">
+          <h3><a href=${repo.html_url} target="_blank">${repo.name.replace(
+            "-",
+            " "
+          )}</a></h3>
           <p>Most recent push: ${repo.pushed_at.substring(0, 10)}
           </p><p>Name of default branch: ${
             repo.default_branch
           }</p><p id="commit-${repo.name}">No of commits: </p>
-          <a href=${repo.html_url} target="_blank">LINK TO REPO</a>
           </div>`),
 
         console.log("FORKED REPOS", forkedRepos),
