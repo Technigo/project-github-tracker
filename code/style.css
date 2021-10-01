@@ -162,7 +162,7 @@ a.button1:hover {
 .spinner2 {
   margin: 25px auto;
   height: 50px;
-  width: px;
+  width: 50px;
   animation: spin 2s infinite linear;
 }
 
@@ -268,7 +268,7 @@ a.button1:hover {
     align-items: center;
     justify-content: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .repo-cards {

@@ -87,7 +87,7 @@ const getCommits = (url, myRepoName) => {
       document.getElementById(
         `commit-${myRepoName}`
       ).innerHTML += `<p class="card-info">Amount of commits ${data.length}</p>
-      <p>${commitMessage}</p>
+      <p class="card-info">${commitMessage}</p>
       `
     })
 }
