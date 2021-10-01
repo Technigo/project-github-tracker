@@ -82,25 +82,22 @@ const getCommits = (commitsURL, repo) => {
       `;
     });
 };
+// Adding a comment button width hidden kontext
 const getComment = (commentsURL, repo) => {
   fetch(commentsURL)
     .then((response) => response.json())
     .then((data) => {
       console.log(data[data.length - 1].body);
       document.getElementById(`${repo.name}`).innerHTML += `
-      <button id="my${repo.name}">Repo Comment</button>`;
-      const toggleComment = () => {
-        document
-          .getElementById(`my${repo.name}`)
-          .addEventListener("click", () => {
-            document.getElementById(
-              `${repo.name}`
-            ).innerHTML += `<p id="coment">${data[1].body}</p>`;
-          });
-      };
-      toggleComment();
+      <button id="my${repo.name}" class="comment-button">Repo Comment</button>
+      <p id="coment" class="comment">${data[1].body}</p>`;
+
+      //Show the comment when clicking on the button
+      function toggle() {
+        this.classList.toggle("active");
+      }
+      document.getElementById(`my${repo.name}`).onclick = toggle;
     });
 };
-
 getRepos();
 getinfo();

@@ -9,7 +9,7 @@ a {
   color: black;
 }
 a:hover {
-  color: green;
+  color: #b3ffd9;
 }
 
 .headline {
@@ -101,6 +101,26 @@ a:hover {
 }
 .github-logo {
   width: 40px;
+}
+.comment {
+  display: none;
+}
+.comment-button {
+  padding: 3px;
+  border-radius: 15px;
+  font-family: "Space Mono", monospace;
+  font-size: 17px;
+  background-color: lightseagreen;
+  border-color: white;
+  cursor: pointer;
+}
+.comment-button:hover {
+  background-color: #b3ffd9;
+  border-color: teal;
+}
+
+.active + .comment {
+  display: block;
 }
 
 @media (min-width: 800px) {
