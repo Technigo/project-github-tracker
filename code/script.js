@@ -12,8 +12,6 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data);
-      //data.forEach((repo) => console.log(repo.name));
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
@@ -42,10 +40,6 @@ const getInfo = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      // console.log(data.name);
-      // console.log(data.login);
-      // console.log(data.bio);
-      // console.log(data.avatar_url);
       image.src = data.avatar_url;
       profileContainer.innerHTML += `<div> 
       <tr><h1>${data.name}</h1></tr>
@@ -67,13 +61,10 @@ const getPullRequests = (forkedRepos) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
         const myPulls = data.filter(
           (pulls) => pulls.user.login === repo.owner.login
         );
-        //console.log(myPulls);
         const commitsURL = myPulls[0].commits_url;
-        //console.log(commitsURL);
         getCommits(commitsURL, repo);
       });
   });
@@ -83,9 +74,8 @@ const getCommits = (commitsURL, repo) => {
   fetch(commitsURL)
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data);
       document.getElementById(
         `${repo.name}`
-      ).innerHTML += ` <h5> number of pull requests: ${data.length} </h5>`;
+      ).innerHTML += ` <h5>number of commits: ${data.length}</h5>`;
     });
 };

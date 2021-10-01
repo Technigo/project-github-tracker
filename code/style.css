@@ -53,6 +53,7 @@ h1 {
   background-color: #e2e4e5;
   border-radius: 6px;
   padding: 10px;
+  padding-bottom: 30px;
 }
 
 h3 {
@@ -80,30 +81,42 @@ h2 {
   margin-top: 10px;
 }
 
+.repositories:hover{
+  background: rgb(80, 99, 110);
+  color: #cbcecf;
+}
+
 .repositories h5 {
   font-size: 12px;
   margin: 5px;
 }
-.canvas-container {
+
+.chart-container {
   display: flex;
   background-color: #e2e4e5;
   border-radius: 6px;
+  justify-content: center;
   margin-top: 10px;
 }
-canvas {
-  padding: 10px;
+
+.canvas-container {
+  display: flex;
+ justify-content: center;
 }
+
+canvas {
+  padding: 20px;
+}
+
 footer {
   background: rgb(80, 99, 110);
-  /* margin-top: 10px; */
-  padding: 20px;
-  /* justify-content: center; */
+  text-align: center;
+  padding: 5px;
+  font-size: 10px;
 }
 
 @media (min-width: 668px) {
-  .header {
-    justify-content: right;
-  }
+
   .github-icon {
     width: 5%;
     height: 5%;
@@ -113,47 +126,65 @@ footer {
     padding: 10px;
     justify-content: left;
   }
+
   .profile-pic {
-    width: 15%;
-    height: 15%;
+    width: 12%;
+    height: 12%;
   }
+
   .profile-container h5 {
     font-size: 14px;
     margin: 5px;
   }
+
   .repo-container {
     padding: 20px;
+    padding-bottom: 30px;
     text-align: center;
   }
+
   .repositories {
     width: 70%;
     height: 30%;
     margin: auto;
     margin-top: 10px;
   }
+  
+  .canvas-container {
+    width: 500px;
+  }
+
   canvas {
-    padding: 80px;
+    padding: 30px;
   }
 }
 
 @media (min-width: 1024px) {
+
+  .header {
+    justify-content: right;
+  }
+
   .github-icon {
     width: 2.5%;
     height: 2.5%;
   }
+
   .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
   .profile-container {
     grid-column: span 1;
-    height: 725px;
+    height: 707px;
     display: table-column;
     text-align: center;
     padding: 20px;
     margin-top: 20px;
     margin-right: 5px;
   }
+
   .profile-pic {
     width: 250px;
     height: 250px;
@@ -161,20 +192,26 @@ footer {
     padding: 20px;
     margin-bottom: 50px;
   }
+
   h1 {
     display: contents;
   }
+
   .profile-container h5 {
     margin: 20px;
   }
+
   h2 {
     text-align: left;
     padding-bottom: 20px;
   }
+
   .repo-container {
     grid-column: 2/ 5;
     height: 750px;
+    padding: 10px;
   }
+
   .projects-container {
     display: flex;
     flex-direction: row;
@@ -183,6 +220,7 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
   }
+
   .repositories {
     display: flex;
     width: 45%;
@@ -193,31 +231,23 @@ footer {
     flex-grow: 1;
     margin: 5px;
   }
+
   h3 {
     margin-left: 0;
   }
+
   .repositories h5 {
     font-size: 10px;
     margin: 0;
   }
-  .chart-container {
-    display: flex;
-    background-color: #e2e4e5;
-    border-radius: 6px;
-    justify-content: center;
-    margin-top: 10px;
-  }
+
   .canvas-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
     width: 800px; 
   }
 
   canvas {
-    padding: 50px;
-    margin-top: 10px;
     max-width: 600px;
     max-height: 600px;
 }
+
+
