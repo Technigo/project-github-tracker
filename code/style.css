@@ -1,28 +1,29 @@
 * {
-  background: #fff;
+  background: #22272e; 
   padding: 0;
   margin: 0;
 }
 
 .header {
-background-color: rgb(49, 49, 49);
+background-color: #2d333b;
 display: flex;
 width: 100%;
 height: 50px;
 }
 
 .github-icon {
-width: 50px;
-border: none;
-margin-left: 10px;
+width: 20px;
+height: auto;
+margin: 10px;
+
 }
 
 .main-title {
 display: flex; 
 align-items: center;
 margin-left: 20px;
-background-color: rgb(49, 49, 49);
-color: #fff;
+background-color: #2d333b;
+color: #cdd9e5;
 font-size: 14px;
 font-family: Arial, Helvetica, sans-serif;
 }
@@ -33,10 +34,9 @@ font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
 }
 
-img {
+.user-img {
   border-radius: 50%;
   width: 60px;
-  border: rgb(161, 161, 161) solid 1px;
   margin-top: 5px;
   margin-left: 20px;
   }
@@ -44,7 +44,7 @@ img {
 .userid {
   display: flex;
   align-items: center;
-  color:rgb(161, 161, 161);
+  color:#cdd9e5;
   margin-left: 20px;
   font-size: 28px;
   font-family: 'Inconsolata', monospace;
@@ -57,7 +57,8 @@ img {
 }
 
 .card {
-  border: rgb(161, 161, 161) solid 1px;
+  border: #545d68 solid 1px;
+  border-radius: 6px;
   margin: 3px;
   width: 350px;
   max-width: 350px;
@@ -77,20 +78,27 @@ img {
 
 .card-info {
   margin-left: 3px;
+  color: #545d68;
 }
 
 a:link {
   text-decoration: none;
   cursor: pointer;
-  color: rgb(68, 98, 138);
+  color: #4184e4;
 }
 
 a:visited {
-  color: rgb(68, 98, 138);
+  color: #4184e4;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+.chart-section {
+  width: 350px;
+  max-width: 350px;
+  margin: 30px auto 200px auto;
 }
 
 
@@ -99,14 +107,14 @@ a:hover {
 
 /* mobile */
 @media (min-width: 0px) and (max-width: 668px){
-  img {
+  .user-img {
     width: 70px;
     }
 }
 
 /* tablet */
 @media (min-width: 768px) and (max-width: 1024px){
-  img {
+  .user-img {
     width: 150px;
     }
 }
@@ -114,7 +122,7 @@ a:hover {
 
 /* desktop */
 @media (min-width: 1025px){
-img {
+  .user-img {
   width: 280px;
   margin-top: 30px;
   }

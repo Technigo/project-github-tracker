@@ -12,7 +12,7 @@ fetch (API_USER_KALIINE)
     })
     .then ((json) => {
         username.innerHTML = json.login //display username
-        profilepic.innerHTML += `<img width="150" src="https://avatars.githubusercontent.com/u/80845418?v=4" alt="profilepic" />` //display profile pic
+        profilepic.innerHTML += `<img width="150" src="https://avatars.githubusercontent.com/u/80845418?v=4" class="user-img" alt="profilepic" />` //display profile pic
     })
 
 
@@ -39,7 +39,8 @@ fetch (REPOS_URL)
             </div>`
         }))
 
-    
+    //Call the drawChart function. Connect the two JS files with my number of technigo repos.
+        drawChart(technigoProjects.length)
 
     //Call the fetchPullRequestArray function
     fetchPullRequestsArray(technigoProjects)
@@ -59,14 +60,23 @@ const fetchPullRequestsArray = (allRepositories) => {
 
         console.log(myPullRequest)
 
-        //call the fetchCommits function
-        fetchCommits(myPullRequest.commits_url, repo.name)
+        // Detect if I have pull requests or not.
+				// If yes - call fetchCommits function
+				// If no - inform user that no pull request has been done yet
+        if (myPullRequest) {
+            fetchCommits(myPullRequest.commits_url, repo.name);
+            
+            //3. You can also get the comments for each PR by calling another function with the review_comments_url as argument
+            /* getReview(myPullRequest.review_comments_url, repo.name); */
+
+        } else {
+            document.getElementById(`commit-${repo.name}`).innerHTML = "No pull request yet";
+        }
+
+
         })
     })
 }
-
-/* //My commits_url, do I need it?
-`https://api.github.com/repos/Technigo/${repo.name}/pulls/90/comments` */
 
 
 //fetch number of commits
@@ -78,7 +88,7 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
     })
 }
 
-//3. You can also get the comments for each PR by calling another function with the review_comments_url as argument
+
 
 
 
@@ -89,7 +99,6 @@ getRepos()
 
   /* To do:
     - review_comments_url
-    - A chart 
-    - dynamic ID for the styling of cards */
+    - A chart  */
 
  
