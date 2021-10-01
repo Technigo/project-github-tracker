@@ -48,6 +48,7 @@ function addCommits(repos) {
             .then((response) => response.json())
             .then((data) => {
                 const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === USER);
+                // IF ELSE STATEMENT FOR 0 PULLS?
                 document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull requests: ${myPullRequests.length}`
             });
     });

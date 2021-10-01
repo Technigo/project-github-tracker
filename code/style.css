@@ -1,5 +1,5 @@
 body {
-  background: #EA86B6;
+  background: #E05297;
   font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -54,11 +54,16 @@ img {
 #username a:hover {
   text-decoration: none;
   background-color:#f1fabd;
-  color: #EA86B6;
+  color: #E05297;
   padding: 3px;
 }
 
 /* THE LIST SECTION */
+
+.projects-section {
+  display: flex;
+  flex-direction: column;
+}
 
 #list {
   display: block;
@@ -77,7 +82,9 @@ img {
   font-size: 20px;
   border-style: solid;
   border-color: #f1fabd;
-  border-width: 1px;
+  border-width: 2px;
+  border-radius: 5px;
+  
 }
 
 #list div a {
@@ -90,7 +97,7 @@ img {
 #list div a:hover {
   text-decoration: none;
   background-color:#f1fabd;
-  color: #EA86B6;
+  color: #E05297;
   padding: 5px;
 }
 
@@ -122,19 +129,34 @@ img {
     font-size: 50px;
   }
 
+  .profile-section {
+    width: 80%;
+    display: block;
+    margin: 20px auto;
+  }
+
   #full-name {
-    font-size: 30px;
-    margin: 20px auto 10px;
+    font-size: 36px;
+    margin: 10px auto;
+  }
+
+  img {
+    display: block;
+    width: 250px;
+    margin: 10px auto 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #daff05;
   }
 
   #username {
     font-size: 30px;
-    margin: 10px auto 80px;
+    margin: 10px auto 50px;
   }
-  
-  img {
-    width: 200px;
-    margin: 10px auto 30px;
+
+  .projects-section {
+    display: flex;
+    flex-direction: column;
   }
   
  
@@ -154,7 +176,9 @@ img {
     font-size: 20px;
     border-style: solid;
     border-color: #f1fabd;
-    border-width: 1px;
+    border-width: 2px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 2px 1px #f1fabd;
   }
 
   /* text list */
