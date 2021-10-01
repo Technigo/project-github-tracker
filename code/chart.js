@@ -23,7 +23,8 @@ const drawChart = (amount) => {
             'rgb(255, 99, 132)',
             'rgb(54, 162, 235)',
           ],
-          hoverOffset: 1
+          hoverOffset: 2,
+          borderWidth: 0,
         }]
       },
     };

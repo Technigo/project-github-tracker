@@ -1,36 +1,51 @@
+:root {
+  --gblue: rgb(87, 166, 255);
+}
+
 body {
   background: black;
   color: white;
+}
+.content {
   max-width: 300px;
   margin: auto;
 }
 .title {
   text-align: center;
 }
-.profile {
-  border: 1px solid white;
-  padding: 10px;
-}
 .profile-picture {
   width: 100%;
   border-radius: 100%;
+  padding: 20px 0;
 }
-.profile-title {
+.profile-name {
+  display: flex;
+  justify-content: center;
+}
+.github-icon {
+  border-radius: 100%;
+  width: 30px;
+  margin-right: 10px;
+}
+.bio {
   text-align: center;
 }
+
 .projects-title {
-  border: 1px solid white;
-  padding: 10px;
+  border-top: 1px solid white;
+  padding: 40px 0 10px 0;
   text-align: center;
 }
-.projects {
-  border: 1px solid white;
-  padding: 10px;
+.repo-name {
+  font-size: 1.4rem;
+  color: var(--gblue);
+  text-decoration: none;
 }
 .single-project {
   border: 1px solid white;
-  padding: 10px;
-  margin: 10px 0;
+  border-radius: 5px;
+  padding: 10px 0 10px 20px;
+  margin: 10px 10px;
 }
 
 .chart {
@@ -43,4 +58,27 @@ footer {
   padding: 10px;
   margin-top: 10px;
   text-align: center;
+}
+
+/* Tablet > */
+@media (min-width: 768px) {
+  .content {
+    max-width: none;
+  }
+  .profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chart {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
 }

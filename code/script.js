@@ -9,9 +9,14 @@ const getProfile = () => {
 fetch (`https://api.github.com/users/${USER}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         profileContainer.innerHTML = `
         <img class="profile-picture" src=${data.avatar_url}>
-        <h2 class="profile-title">Profile: ${data.login}</h2>
+        <div class = "profile-name">
+            <img class="github-icon" src="./github-icon-black.svg">
+            <h2 class="profile-title">${data.login}</h2>
+        </div>
+            <p class="bio">"${data.bio}"</p>
         `
     })
 }
@@ -29,21 +34,20 @@ const getRepos = () => {
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML += `
                 <div class="single-project">
-                    <h3>${repo.name}</h3>
-                    <h3>${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</h3>
-                    <h3>Branch name: ${repo.default_branch}</h3>
-                    <a href="${repo.html_url}">GitHub address</a>
-                    <h3 id="commit-${repo.name}">Commits amount:</h3>
+                    <a href="${repo.html_url}" class="repo-name" target="_blank">${repo.name}</a>
+                    <p>Recent push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
+                    <p>Branch: ${repo.default_branch}</p>
+                    <p id="commit-${repo.name}">Commits: </p>
                 </div>
                 `
         })
         drawChart(forkedRepos.length)
-        fetchPullRequestsArray(forkedRepos)
+        fetchPulls(forkedRepos)
         })
 }
 
 //fetch pull request
-const fetchPullRequestsArray = (allRepositories) => {
+const fetchPulls = (allRepositories) => {
     allRepositories.forEach((repo) => {
         const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
         fetch(PULL_URL)
@@ -55,31 +59,22 @@ const fetchPullRequestsArray = (allRepositories) => {
             if (myPullRequest){
                 fetchCommits(myPullRequest.commits_url, repo.name)
             } else {
-                document.getElementById(`commit-${repo.name}`).innerHTML = 'Commits amount: No pull'
+                document.getElementById(`commit-${repo.name}`).innerHTML = 'Commits: 0'
             }
         })
     })
 }
 
 //fetch nr of commits
-const fetchCommits = (myCommitsUrl, myRepoName) => {
+const fetchCommits = (myCommitsUrl, RepoName) => {
     fetch(myCommitsUrl)
     .then ((response) => response.json())
     .then((data) => {
-        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+        document.getElementById(`commit-${RepoName}`).innerHTML += data.length
     })
     }
 
 getRepos()
 
-
-
-// commit count test
-/* fetch ('https://api.github.com/repos/dandeloid/project-guess-who/commits')
-        .then(response => response.json())
-        .then(data => {
-            const count = data.filter(nr => nr.commit.committer.name === 'dandeloid')
-            console.log(count.length)
-        }) */
 
 
