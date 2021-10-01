@@ -12,19 +12,19 @@ height: 50px;
 }
 
 .github-icon {
-width: 20px;
+max-width: 40%;
 height: auto;
-margin: 10px;
+margin: 10px 20px 10px 20px;
+border-radius: 50%;
 
 }
 
 .main-title {
 display: flex; 
 align-items: center;
-margin-left: 20px;
 background-color: #2d333b;
 color: #cdd9e5;
-font-size: 14px;
+font-size: 1.2rem;
 font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -41,14 +41,27 @@ font-family: Arial, Helvetica, sans-serif;
   margin-left: 20px;
   }
 
+.name-box {
+  display: block;
+  padding: 10px;
+  margin-left: 10px;
+}
+
 .userid {
-  display: flex;
   align-items: center;
   color:#cdd9e5;
-  margin-left: 20px;
-  font-size: 28px;
+  font-size: 1.75rem;
+  font-family: 'Inconsolata', monospace;
+  padding-top: 7px;
+}
+
+.real-name {
+  color:#cdd9e5;
+  font-size: 1rem;
+  font-weight: bold;
   font-family: 'Inconsolata', monospace;
 }
+
 
 #projectscontainer {
   display: grid;
