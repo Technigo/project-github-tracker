@@ -6,17 +6,15 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 const USER_URL = `https://api.github.com/users/${USER}`
 const projectsContainer = document.getElementById('projects')
 const ldsripple = document.getElementById('loading')
-const Auth = {  }
+const Auth = { headers: { authorization: 'token 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' } }
 
 let repos;
-
 
 //profile image and info
 const userProfile = () => {
   fetch(USER_URL, Auth)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       userContainer.innerHTML = `
       <div class="profileinfo">
       <h2>${data.name}</h2>
@@ -34,7 +32,6 @@ const getRepos = () => {
   fetch(REPOS_URL, Auth)
     .then(response => response.json())
     .then(data => {
-      //console.log(data)
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
       repos = forkedRepos
       getPullRequests(repos)

@@ -5,6 +5,7 @@ body {
   font-family: 'Barlow', sans-serif;
 }
 
+/*header*/
 .header {
   background-color: #7aa094;
   display: grid;
@@ -33,6 +34,7 @@ form#search-form {
   grid-column: span 8/12;
 }
 
+/*search field*/
 .search-container {
   grid-template-columns: repeat(12, 1fr);
   grid-column: span 12;
@@ -69,6 +71,7 @@ form#search-form {
   font-weight: 500;
 }
 
+/*main grid*/
 .main-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -82,6 +85,7 @@ form#search-form {
   row-gap: 10px;
 }
 
+/*profile*/
 .my-profile {
   background-color: #f0f0f0;
   display: grid;
@@ -112,6 +116,7 @@ form#search-form {
   border-radius: 25px 0px;
 }
 
+/*repos*/
 .box-repo {
   padding: 10px;
   background-color: #7aa094;
@@ -142,7 +147,7 @@ form#search-form {
   font-size: 20px;
 }
 
-
+/*chart*/
 .chart {
   grid-column: span 12;
   max-width: 100%;
@@ -150,13 +155,8 @@ form#search-form {
   display: grid;
 }
 
-.my-profile {
-  display: grid;
-  grid-column: span 12;
-}
 
 /*Loading icon*/
-
 .lds-ripple {
   position: relative;
   display: grid;
@@ -194,8 +194,8 @@ form#search-form {
   }
 }
 
-/* tablet */
 
+/* tablet */
 @media (min-width: 768px) {
   .box-repo {
     grid-column: span 6;
