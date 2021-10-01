@@ -1,30 +1,33 @@
 console.log("script works?");
 
-// let userName = "Loulunds";
-let userContainer = document.getElementById("userInfo");
+const userContainer = document.getElementById("userInfo");
 const reposContainer = document.getElementById("projects");
 const reposSubContainer = document.getElementById("project-box");
+const navSub = document.getElementById("nav-sub");
 const input = document.getElementById("navInput");
+const inputMobile = document.getElementById("navInputMobile");
 const githubImg = document.getElementById("nav-github-img");
 const turnLightMode = document.getElementById("btn-light");
 const turnLightModeMobile = document.getElementById("btn-light-nav");
 
+// for removing previous chart
 let chartDrawn = false;
 
+//  shows my profile as default profile upon loading the website
 showMyProfileOnLoad = () => {
-  let userName = "Loulunds";
+  let userName = "loulunds";
   getUserData(userName);
   fetchRepos(userName);
 };
 
 window.onload = showMyProfileOnLoad;
 
+// for getting user data
 const getUserData = (user) => {
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      userContainer.innerHTML = "";
+      userContainer.innerHTML = ``;
 
       userContainer.innerHTML = `
       <div class="user-profile-box">
@@ -56,17 +59,19 @@ const getUserData = (user) => {
     });
 };
 
+// for fetching the repos of the user
 const fetchRepos = (user) => {
   fetch(`https://api.github.com/users/${user}/repos`)
     .then((response) => response.json())
     .then((data) => {
-      //   console.log(data);
       reposSubContainer.innerHTML = ``;
 
+      // filters the repos that are only from Technigo
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
 
+      // sorts the repos from oldest to newest
       forkedRepos.sort((a, b) => {
         return new Date(a.pushed_at) - new Date(b.pushed_at);
       });
@@ -101,29 +106,26 @@ const fetchRepos = (user) => {
           `)
       );
 
+      // renders the chart
       if (!chartDrawn) {
         drawChart(forkedRepos.length);
         chartDrawn = true;
       }
       getPullRequests(forkedRepos);
-      // console.log(forkedRepos);
     });
-  // .catch(error => {
-  //   return Promise.reject()
-  // });
 };
 
+//Get all the PRs for each project.
 const getPullRequests = (repos) => {
   console.log(repos);
-  //Get all the PRs for each project.
+
   repos.forEach((repo) => {
     fetch(
       `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-
+        // filters user's pull requests
         const filteredPull = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
@@ -134,19 +136,11 @@ const getPullRequests = (repos) => {
           document.getElementById(`commit-${repo.name}`).innerHTML =
             " No pull request from me";
         }
-
-        //TODO
-        //1. Find only the PR that you made by comparing pull.user.login
-        // with repo.owner.login
-        //2. Now you're able to get the commits for each repo by using
-        // the commits_url as an argument to call another function
-        //3. You can also get the comments for each PR by calling
-        // another function with the review_comments_url as argument
-        // showComments(COMMENTS_URL);
       });
   });
 };
 
+// shows number of commits
 const showCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
@@ -157,7 +151,6 @@ const showCommits = (url, myRepoName) => {
 };
 
 // event listener
-
 input.addEventListener("keypress", (event) => {
   if (event.key === "Enter" && input.value) {
     let userName = "";
@@ -167,8 +160,18 @@ input.addEventListener("keypress", (event) => {
   }
 });
 
-// lightmode
+// for mobile input
+inputMobile.addEventListener("keypress", (event) => {
+  if (event.key === "Enter" && inputMobile.value) {
+    let userName = "";
+    userName = inputMobile.value;
+    getUserData(userName);
+    fetchRepos(userName);
+    toggleNav();
+  }
+});
 
+// turns the light mode on
 const toLightMode = () => {
   document.body.classList.toggle("light");
   document.getElementById("userSpan").classList.toggle("user-span-light");
@@ -181,4 +184,14 @@ turnLightMode.addEventListener("click", (e) => {
 
 turnLightModeMobile.addEventListener("click", (e) => {
   toLightMode();
+});
+
+// toggles the mobile-nav menu
+
+const toggleNav = () => {
+  navSub.classList.toggle("active");
+};
+
+navSub.addEventListener("click", (e) => {
+  toggleNav();
 });

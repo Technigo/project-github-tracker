@@ -8,16 +8,33 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
+
   <body>
+    <!-- mobile nav -->
     <nav class="nav-mobile">
-      <img class="nav-menu" src="images/menu (1).png" alt="menu" />
+      <img id="nav-sub" class="nav-menu" src="images/menu (1).png" alt="menu" />
+      <div class="nav-links">
+        <input
+          id="navInputMobile"
+          class="nav-input"
+          type="text"
+          placeholder="Search"
+        />
+        <a href="#">Pulls</a>
+        <a href="#">Issues</a>
+        <a href="#">Marketplace</a>
+        <a href="#">Explore</a>
+      </div>
       <a class="nav-icon" href="https://github.com/" target="_blank"
         ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
       /></a>
+
       <button id="btn-light-nav">
         <img class="nav-notif" src="images/notification.png" alt="bell" />
       </button>
     </nav>
+
+    <!-- desktop nav -->
     <nav class="nav-desktop">
       <a class="nav-icon" href="https://github.com/" target="_blank"
         ><img
@@ -36,9 +53,13 @@
         <img class="nav-notif" src="images/notification.png" alt="bell" />
       </button>
     </nav>
+
+    <!-- main content -->
     <main>
+      <!-- where the user info is -->
       <section id="userInfo"></section>
 
+      <!-- where the repos are -->
       <section id="projects">
         <h2 class="project-title">My Project Repositories with Technigo</h2>
         <div id="project-box"></div>
@@ -47,7 +68,9 @@
 
     <!-- This will be used to draw the chart 👇 -->
     <section class="canvas-box"><canvas id="chart"></canvas></section>
+
     <footer><img src="images/mylogo.png" alt="logo" /></footer>
+
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
   </body>

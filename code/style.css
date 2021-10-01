@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto&display=swap");
-/* font-family: 'Roboto', sans-serif; */
 
+/* resets the default stylings on all elements */
 * {
   margin: 0;
   padding: 0;
@@ -11,15 +11,41 @@
 body {
   background-color: rgb(29, 27, 27);
   color: rgb(248, 239, 239);
+  font-weight: 500;
 }
 
+/* light mode */
 .light {
   background-color: rgb(248, 239, 239);
   color: rgb(29, 27, 27);
 }
 
+/* bec of mobile-first approach */
 .nav-desktop {
   display: none;
+}
+
+.nav-links {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgb(189, 219, 227);
+  padding: 5rem;
+}
+
+.nav-links > * {
+  padding: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(0, 0, 0, 0.88);
+  position: relative;
+}
+
+.nav-input {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .nav-mobile {
@@ -36,6 +62,15 @@ body {
 .nav-menu {
   grid-area: menu;
   height: 2rem;
+  z-index: 10;
+}
+
+.nav-menu.active {
+  transform: rotate(90deg);
+}
+
+.nav-menu.active + .nav-links {
+  display: block;
 }
 
 .nav-icon {
@@ -66,6 +101,8 @@ body {
   align-self: end;
 }
 
+/* !important overrules the #userSpan styling */
+/* for toggle */
 .user-span-light {
   color: rgb(29, 27, 27) !important;
 }
@@ -102,6 +139,7 @@ body {
   padding-top: 0.2rem;
 }
 
+/* rainbow border 😍 */
 .user-img {
   margin-left: 0.7rem;
   height: 8rem !important;
@@ -148,6 +186,7 @@ body {
   padding: 0.3rem 1.3rem;
 }
 
+/* sets padding to all children of .repo-box */
 .repo-box > * {
   padding: 0.2rem 0;
 }
@@ -260,6 +299,7 @@ footer img {
     background-color: rgb(175, 170, 170);
   }
 
+  /* sets two major columns for the contents  */
   main {
     display: grid;
     justify-items: center;
