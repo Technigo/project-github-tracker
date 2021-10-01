@@ -219,6 +219,8 @@ h2 {
 
 
 @media only screen and (min-width: 599px) {
+
+  /* Displaying the user data with a grid on tablet and desktop */
   .user-data {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -247,6 +249,7 @@ h2 {
     margin: 10px 10px 10px 0px;
   }
 
+  /* Displaying the projects with flexbox and gap for desktop */
   .projects {
     display: flex;
     flex-wrap: wrap;
