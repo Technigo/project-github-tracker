@@ -23,13 +23,12 @@ const getRepos = () => {
       // the repos from Technigo always start with 'project-'
       const filteredTechnigoRepos = json.filter(
         (repo) => repo.fork && repo.name.includes('project-')
-        // can also use repo.name.startsWith('project-')
       );
 
       // store the project names in a new array called namesOfTheRepos
       const namesOfTheRepos = filteredTechnigoRepos.map((repo) => repo.name);
 
-      // for each project, create a div element and class project-card
+      // for each project, create a button element and class project-card
       // inside each card display the project name and a emoji
       // with append we push each project card
       // and add an eventListener so we can click on each card and get a modal(popup)
@@ -153,7 +152,7 @@ const getModal = (projectName) => {
           });
       };
 
-      // function to get a chart of language usage of each repo
+      // function to get a chart of language use of each repo
       const getLanguagesChart = (projectName) => {
         fetch(
           `https://api.github.com/repos/${username}/${projectName}/languages`
@@ -218,7 +217,7 @@ const getModal = (projectName) => {
     });
 };
 
-// these two functions will be invoke in the beginning
+// these two functions will be invoked in the beginning
 getRepos();
 getUserInfo();
 

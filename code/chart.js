@@ -1,4 +1,3 @@
-// DOM-selector for the canvas
 const ctx = document.getElementById('progressChart').getContext('2d');
 
 // function to draw the Progress Chart, we have passed in amount of repos as an argument
@@ -9,7 +8,7 @@ const drawProgressChart = (amountOfRepos) => {
       {
         label: 'Technigo boot camp projects',
         data: [amountOfRepos, 19 - amountOfRepos],
-        // length of the repo array, 19 minus length of the repo array
+        // length of the repo array, total 19 projects minus length of the repo array
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)'],
         hoverOffset: 4,
       },
