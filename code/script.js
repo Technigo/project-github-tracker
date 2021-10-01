@@ -39,6 +39,8 @@ const getRepos = () => {
   .then(reposData => {
     console.log('Repodata: ', reposData)
     const technigoRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith('project-'))
+    technigoRepos.sort((a, b) => 
+    (a.pushed_at > b.pushed_at ? -1 : 1))
     technigoRepos.forEach(project => {
       let latestPush = new Date(project.pushed_at).toDateString()
       repositorys.push({
@@ -81,34 +83,3 @@ commitsSort.addEventListener("click", () => {
 // // create dynamic ID from for eaxmple the name of the project 
 // // avoid using global variables
 // // use info about reponame to get element from dynamic id and update innerhtml
-
-// const objectList = [
-//   {
-//     asort: "project-business-site",
-//     number_commits: 20,
-//     sort: "project-chatbot"
-//   },
-//   {
-//     number_commits: 15,
-//     sort: "project-business-site"
-//   },
-//   {
-//     number_commits: 5,
-//     sort: "project-github-tracke"
-//   },
-//   {
-//     csort: "c",
-//     number_commits: 150,
-//     sort: "project-news-site"
-//   }
-// ];
-
-// console.log('unsorted', objectList)
-
-// objectList.sort((a, b) => (a.sort > b.sort ? 1 : -1));
-// console.log('sorted', objectList)
-
-// repositorys[`${project.name}`]["name"] = project.name
-// repositorys[`${project.name}`]["latest_push"] = latestPush
-// repositorys[`${project.name}`]["default_branch"] = project.default_branch
-// repositorys[`${project.name}`]["project_url"] = project.html_url
