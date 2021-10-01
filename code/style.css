@@ -275,6 +275,7 @@ a.button1:hover {
     background-color: #8d86c9;
     max-height: 200px;
     margin: 15px;
+    width: 90%;
   }
 
   .card-info {
