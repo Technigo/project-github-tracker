@@ -19,7 +19,7 @@ const getRepos = () => {
             drawChart(forkedRepos.length)
 
             forkedRepos.forEach((repo) => { 
-                console.log(repo)
+
                 // header container 
                 headerContainer.innerHTML = `
                 <div class="info-about-user">
@@ -35,16 +35,28 @@ const getRepos = () => {
                     <p id="commit-${repo.name}">Commits amount: </p>
                     <p>Latest push update: ${ new Date(repo.pushed_at).toDateString()}</p>
                     <p>Default branch: ${repo.default_branch}</p>
+
                 </div>
                 `
+                getLanguages(repo.languages_url)
             })
 
             getPullRequests(forkedRepos) // passing all my forked repos to this function 
+
         })
 }
 
 // calling getRepos function
 getRepos()
+
+const getLanguages = (languageUrl) => {
+    fetch(languageUrl)
+        .then(res => res.json())
+        .then(data => {
+            showLanguages(data.HTML, data.CSS, data.JavaScript)
+            console.log(data.CSS)
+        })
+}
 
 
 // GETTING ALL MY PULL REQUESTS 
@@ -54,8 +66,10 @@ const getPullRequests = (forkedRepos) => { // repos är samma som forkedRepos
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`) // getting all pullrequest to the specific project
             .then(res => res.json())
             .then(data => {
+
                 const myPullRequests = data.find(pull => pull.user.login === repo.owner.login) // there is a different between filter and find function, with find you get a sandwich with a name on
                 getCommits(myPullRequests.commits_url, repo.name) // link 
+
             })
     })
 }
@@ -77,7 +91,7 @@ const getInputValue = () => {
 }
 
 
-button.addEventListener('click', (e) => {
+button.addEventListener('submit', (e) => {
     e.preventDefault()
     getInputValue()
 })
