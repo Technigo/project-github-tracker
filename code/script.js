@@ -12,12 +12,12 @@ const getUser = () => {
   fetch(USER_API)
     .then((response) => response.json())
     .then((data) => {
-      // console.log("USER DATA", data);
+      console.log("USER DATA", data);
       profileInfo.innerHTML += `
           <h2> Profile Info </h2>
           <img src = "https://avatars.githubusercontent.com/u/80712035?v=4" alt="Profile picture">
           <h4> ${data.name}</h4>
-          <h4> ${data.login}</h4>
+          <h4> <a href =${data.html_url}>${data.login}</h4>
           `;
     });
 };
@@ -90,7 +90,7 @@ const getPulls = (forkedRepos) => {
 
         if (myPullRequest) {
           document.getElementById(`pull-${project.name}`).innerHTML = `
-            <a href = ${myPullRequest.url}>Pull request</>`;
+            <a href = ${myPullRequest.html_url}>Pull request</>`;
         } else {
           document.getElementById(`pull-${project.name}`).innerHTML = `
             No pull request available`;
