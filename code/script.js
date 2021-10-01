@@ -7,8 +7,6 @@ const ALL_MY_REPOS = `https://api.github.com/users/${USER}/repos`
 const button = document.getElementById('button')
 
 
-
-
 const getRepos = () => {
     fetch(ALL_MY_REPOS)
         .then(res => res.json())
@@ -38,7 +36,7 @@ const getRepos = () => {
 
                 </div>
                 `
-                getLanguages(repo.languages_url)
+                // getLanguages(repo.languages_url)
             })
 
             getPullRequests(forkedRepos) // passing all my forked repos to this function 
@@ -49,14 +47,14 @@ const getRepos = () => {
 // calling getRepos function
 getRepos()
 
-const getLanguages = (languageUrl) => {
-    fetch(languageUrl)
-        .then(res => res.json())
-        .then(data => {
-            showLanguages(data.HTML, data.CSS, data.JavaScript)
-            console.log(data.CSS)
-        })
-}
+// const getLanguages = (languageUrl) => {
+//     fetch(languageUrl)
+//         .then(res => res.json())
+//         .then(data => {
+//             showLanguages(data.HTML, data.CSS, data.JavaScript)
+//             console.log(data.CSS)
+//         })
+// }
 
 
 // GETTING ALL MY PULL REQUESTS 
@@ -84,17 +82,8 @@ const getCommits = (url, myRepoName) => {
         })
 }
 
-const getInputValue = () => {
-    const userValue = document.getElementById('inputValue').value
-    
-    console.log(userValue)
-}
 
 
-button.addEventListener('submit', (e) => {
-    e.preventDefault()
-    getInputValue()
-})
 
 
 

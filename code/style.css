@@ -89,6 +89,7 @@ form.example::after {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px;
 }
 
 .info-about-user {
@@ -98,7 +99,7 @@ form.example::after {
 }
 
 .profile-img {
-  width: 100px;
+  width: 150px;
   border-radius: 50%;
   margin:10px;
 }
@@ -114,7 +115,10 @@ form.example::after {
   border: 2px solid rgb(63, 63, 63);
   border-radius: 5px;
   padding:10px;
+}
 
+.doughnut {
+  width: 100%;
 }
 
 .logo-img {
@@ -122,8 +126,13 @@ form.example::after {
 }
 
 .chart-container {
-  width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+
 
 
 
@@ -131,6 +140,10 @@ form.example::after {
 
 /*tablet*/ 
 @media (min-width:667px) and (max-width: 1024px) {
+    .profile-img {
+      width: 200px;
+    }
+
   .project-container {
     flex-direction: row;
     flex-wrap:wrap;
@@ -138,8 +151,7 @@ form.example::after {
   }
 
   .repo {
-    width: 340px;
-    height: 200px;
+    width: 46%;
   }
 
   .search-container {
@@ -151,11 +163,15 @@ form.example::after {
   .example {
     width: 70%;
   }
+
+  .doughnut {
+    width: 60%;
+  }
 }
 
 /*desktop*/ 
 
-@media(min-width: 1266px) {
+@media(min-width: 1025px) {
   .container {
     display: flex;
     flex-direction: column;
@@ -184,11 +200,11 @@ form.example::after {
   .repo {
     width: 340px;
     height: 200px;
- 
   }
 
   .user-information {
     height: auto;
+
   }
 
   .profile-img {
@@ -204,5 +220,9 @@ form.example::after {
 
   .example {
     width: 50%;
+  }
+
+  .doughnut {
+    width: 30%;
   }
 }
