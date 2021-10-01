@@ -22,7 +22,8 @@ const getPull = (repos) => {
 		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
 			.then((res) => res.json())
 			.then((data) => {
-				const pull = data.find((pull) => pull.user.login === repo.owner.login);
+const pulls = data.find((pull) => pull.user.login === repo.owner.login);
+
 
 				document.getElementById("projects").innerHTML += `
 							
@@ -46,32 +47,50 @@ const getPull = (repos) => {
 							</div>
 							`;
 
-				getComment(repo.name, pull.review_comments_url);
-				getCommit(repo.name, pull.commits_url);
-				console.log(pull);
+
+
+							
+							
+
+
+
+
+				getComment(repo.name, pulls.review_comments_url);
+				getCommit(repo.name, pulls.commits_url);
+				
+				
 			});
+		
 	});
 };
 
-const getComment = (name, url) => {
-	fetch(url)
-		.then((res) => res.json())
-		.then((data) => {
-			document.getElementById(name).innerHTML += `
-			
-			<div id="commentss">
-			<i class="far fa-comment-alt"></i>
-			<p>comments:${data.length}</p>
-			</div>
-			
-	`;
-		});
-};
 
-const getCommit = (name, url) => {
-	fetch(url)
+
+const getCommit = (name, urll) => {
+	fetch(urll)
 		.then((res) => res.json())
 		.then((data) => {
+
+
+if(data.length >= 30){
+
+
+	document.getElementById(name).innerHTML += `
+			
+			
+	<div id="commitss">
+	<i class="fas fa-file-upload"></i>
+	<p>commits:30+</p>
+	</div>
+	
+	
+`;
+
+}else{  
+
+
+
+
 			document.getElementById(name).innerHTML += `
 			
 			
@@ -81,9 +100,43 @@ const getCommit = (name, url) => {
 			</div>
 			
 			
-	`;
+	`; }
 		});
 };
+
+
+
+const getComment = (name, url) => {
+	
+	fetch(url)
+		.then((res) => res.json())
+		.then((data) => {
+			
+			document.getElementById(name).innerHTML += `
+			
+			<div id="commentss">
+			<i class="far fa-comment-alt"></i>
+			<p>comments:${data.length}</p>
+			</div>
+			
+	`
+		  
+		});
+		
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* USER - info & img */
 
