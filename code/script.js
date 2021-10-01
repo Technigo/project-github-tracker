@@ -11,11 +11,11 @@ const profileInfo = () => {
     .then(userProfile => {
         // console.log('profilinfo:', userProfile)
         projectInfo.innerHTML += /* html */`
-        <div class="profile-div">
             <img src="${userProfile.avatar_url}" class="profile-img" alt="Profile picture"/>
-            <h3>${userProfile.name}</h3><br>
-            <p>${userProfile.login}</p>
-        </div>
+            <div class="profile-div">
+                <a href="https://github.com/Skrosen"><h3 class="username">${userProfile.name}</h3></a>
+                <a href="https://github.com/Skrosen"><p class="login">${userProfile.login}</p></a>
+            </div>
         `
     })
 }
@@ -33,9 +33,10 @@ const getRepos = () => {
         forkedRepos.forEach(repo => console.log(repo.name))
         forkedRepos.forEach(repo => {repoContainer.innerHTML += /* html */ `
         <div class="repo-div">
-        <p><a href="${repo.html_url}">${repo.name}</a> (default branch ${repo.default_branch})</p>
-        <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p id="commit-${repo.name}">Number of commits: </p>
+        <a href="${repo.html_url}" class="repo-a">${repo.name}</a>
+        <p class="repo-p">Default branch: ${repo.default_branch}</p>
+        <p class="repo-p">Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p id="commit-${repo.name}" class="repo-p">Number of commits: </p>
         </div>
         `
      })

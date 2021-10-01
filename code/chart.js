@@ -5,7 +5,7 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 const repoChart = (amount) => {
     const config = {
-        type: 'doughnut',
+        type: 'pie',
         data: {
             labels: [
                 'Projects done',
@@ -13,12 +13,12 @@ const repoChart = (amount) => {
                 //'Blue'
             ],
             datasets: [{
-                label: 'My Projects',
+                // label: 'My Projects',
                 data: [amount, 19-amount],
                 backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 205, 86)',
-                //'rgb(54, 162, 235)'
+                    'rgb(63, 185, 79)',
+                    '#161b22',
+                    // 'rgb(88, 166, 255)',
                 ],
                 hoverOffset: 4
             }]
