@@ -72,7 +72,7 @@ const fetchAll = () => {
     <div class="repo-item">
       <div class="icon-container">
         <a href="${repo.html_url}" target="blank">
-          <img src="./images/github_icon.png" class="github-icon">
+          <img src="./images/github-icon_black.png" class="github-icon">
         </a>
       </div>
 
