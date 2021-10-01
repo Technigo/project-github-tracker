@@ -25,7 +25,6 @@ const fetchUserRepos = () => {
         input.value = "";
         // checking input validity by searching for exact repo name =>
         const anyRepo = data.find((repo) => repo.name === searchString);
-        console.log("any repo", anyRepo);
         reposDataContainer.innerHTML = "";
         if (searchString === "") {
           // if input is empty
@@ -60,8 +59,6 @@ const getReposDetails = (data) => {
   const sortedRepos = userForkedRepos.sort((a, b) => {
     return new Date(b.created_at) - new Date(a.created_at);
   });
-
-  sortedRepos.forEach((r) => console.log(r.created_at, r.name));
   sortedRepos.forEach((repo) => {
     const lastUpdate = new Date(repo.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
     fetch(repo.commits_url.replace("{/sha}", ""))
@@ -91,9 +88,7 @@ const getPullRequests = (sortedRepos) => {
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
       .then((res) => res.json())
       .then((pulls) => {
-        console.log("technigo", pulls);
         const userPRs = pulls.filter((pull) => pull.user.login === repo.owner.login);
-        console.log("userPR review ", userPRs);
         userPRs.forEach((pull) => {
           const COMMENTS_URL = pull.review_comments_url;
           const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
@@ -114,7 +109,6 @@ const getComments = (COMMENTS_URL, repo) => {
   fetch(COMMENTS_URL)
     .then((res) => res.json())
     .then((comments) => {
-      console.log("comments", comments);
       renderComments(comments, repo);
     })
     .catch((error) => {
@@ -151,22 +145,23 @@ const classToggle = (commentContainer) => {
   commentContainer.classList.toggle("active");
 };
 
-//go to top button
-window.onscroll = function () {
+//"go to top" button
+window.onscroll = () => {
   scrollToTop();
 };
 
-function scrollToTop() {
+const scrollToTop = () => {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     toTopBtn.style.display = "block";
   } else {
     toTopBtn.style.display = "none";
   }
-}
+};
 
-function topFunction() {
+const topFunction = () => {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+};
+topFunction();
 
 fetchUserRepos();
