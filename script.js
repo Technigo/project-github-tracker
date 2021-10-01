@@ -1,33 +1,28 @@
-const USER = "jsfrulle"
-const API_Projects = `https://api.github.com/users/${USER}/repos`
-const API_USER = `https://api.github.com/users/${USER}`
+const USER = "jsfrulle";
+const API_Projects = `https://api.github.com/users/${USER}/repos`;
+const API_USER = `https://api.github.com/users/${USER}`;
 
 const getResponse = () => {
 	fetch(API_Projects)
 		.then((response) => response.json())
 		.then((data) => {
 			const repos = data.filter(
-				(repo) => repo.fork && repo.name.startsWith("project-"))
+				(repo) => repo.fork && repo.name.startsWith("project-")
+			);
 
-			getPull(repos)
-			drawChart(repos.length)
-			
-		})
-}
+			getPull(repos);
+			drawChart(repos.length);
+		});
+};
 
-getResponse()
+getResponse();
 
 const getPull = (repos) => {
 	repos.forEach((repo) => {
 		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
 			.then((res) => res.json())
 			.then((data) => {
-				
-			
-
-				const pull = data.find(pull => pull.user.login === repo.owner.login);
-
-
+				const pull = data.find((pull) => pull.user.login === repo.owner.login);
 
 				document.getElementById("projects").innerHTML += `
 							
@@ -45,23 +40,19 @@ const getPull = (repos) => {
 							<div id="repobranch"> <i class="fas fa-code-branch"></i><p> ${repo.default_branch} </p></div>
 							
 							</div>
-							`
+							`;
 
-
-
-
-				getComment(repo.name, pull.review_comments_url)
-				getCommit(repo.name, pull.commits_url)
-			console.log(pull)
-	})})
-}
+				getComment(repo.name, pull.review_comments_url);
+				getCommit(repo.name, pull.commits_url);
+				console.log(pull);
+			});
+	});
+};
 
 const getComment = (name, url) => {
-	
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-
 			document.getElementById(name).innerHTML += `
 			
 			<div id="commentss">
@@ -69,16 +60,14 @@ const getComment = (name, url) => {
 			<p>comments:${data.length}</p>
 			</div>
 			
-	`
-					 } ) } 
- 
+	`;
+		});
+};
 
 const getCommit = (name, url) => {
-	
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-
 			document.getElementById(name).innerHTML += `
 			
 			
@@ -90,7 +79,7 @@ const getCommit = (name, url) => {
 			
 	`;
 		});
-}
+};
 
 /* USER - info & img */
 

@@ -1,7 +1,7 @@
 body {
 	margin: 0 0;
 	padding: 0 0;
-	font-family: 'Inconsolata', monospace;
+	font-family: "Inconsolata", monospace;
 	background-image: url(./images/pexels-photo-5701851.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -34,16 +34,12 @@ body {
 
 .userimg {
 	grid-area: img;
-flex-direction: column;
+	flex-direction: column;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 	padding: 1em 1em;
 }
-
-
-
-
 
 img {
 	width: 95%;
@@ -51,14 +47,11 @@ img {
 	border-radius: 2%;
 }
 
-
 .userimg h3 {
 	color: rgb(53, 80, 45);
 	font-size: 5vw;
 	text-shadow: 0 0 1px rgb(25, 36, 14);
-	
 }
-
 
 .chart {
 	grid-area: chart;
@@ -80,158 +73,117 @@ img {
 	grid-gap: 0px;
 	padding: 1px 1px;
 	font-weight: 400;
-	
 }
 
-
-
 .repon {
-	border:1px solid rgba(151, 184, 148, 0.596);
+	border: 1px solid rgba(151, 184, 148, 0.596);
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	justify-content:space-evenly;
+	justify-content: space-evenly;
 	font-size: 2.5vw;
 	padding: 25px 0 0 25px;
 	height: 80%;
 	background-color: rgba(217, 223, 214, 0.63);
 	backdrop-filter: blur(25px);
 	border-radius: 1%;
-	
 }
 
-#repoiconname{
-
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
-background-color: transparent; 
-font-weight: bold;
-
-
+#repoiconname {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: transparent;
+	font-weight: bold;
 }
-#repoiconname i{
-padding-top: 2%;
-padding-right: 2%;
-opacity: 95%;
-
-
+#repoiconname i {
+	padding-top: 2%;
+	padding-right: 2%;
+	opacity: 95%;
 }
 
 #textrepo {
-	
 	font-size: 4.5vw;
 	color: rgb(53, 80, 45);
 	text-shadow: 0 0 1px rgb(25, 36, 14);
 	text-decoration: none;
 	white-space: nowrap;
-	
 }
 
-#textrepo:hover{
-
-text-decoration: underline;
-
+#textrepo:hover {
+	text-decoration: underline;
 }
 
-
-
-.content{
-
+.content {
 	display: flex;
 	flex-direction: row;
-margin: 0 0 0 0.5%;
-	 
-
+	margin: 0 0 0 0.5%;
 }
 
-#push{
-
+#push {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: transparent; 
+	background-color: transparent;
 	align-items: center;
 	white-space: nowrap;
-	margin: 0 5% 0 0 ;
-
-
+	margin: 0 5% 0 0;
 }
 
-#push i{
-
+#push i {
 	padding: 0 1.5% 0 0;
-opacity: 95%;
-		font-size: 2vw;
-	
-	}
-
-
+	opacity: 95%;
+	font-size: 2vw;
+}
 
 #repobranch {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: transparent;
+	align-items: center;
+	white-space: nowrap;
+	margin: 0 5% 0 0;
+}
 
-
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		background-color: transparent; 
-		align-items: center;
-		white-space: nowrap;
-		margin: 0 5% 0 0 ;
-		
-		
-		}
-
-#repobranch i{
+#repobranch i {
 	padding: 0 1.5% 0 0;
-padding-right: 7%;
-opacity: 95%;
-		font-size: 2vw;
-		
-		}
+	padding-right: 7%;
+	opacity: 95%;
+	font-size: 2vw;
+}
 
+#commentss {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: transparent;
+	align-items: center;
+	white-space: nowrap;
+	margin: 0 5%;
+}
 
-		#commentss{
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			background-color: transparent; 
-			align-items: center;
-			white-space: nowrap;	
-            margin: 0 5%;
+#commentss i {
+	padding-right: 2%;
+	font-size: 1.7vw;
+}
 
-		}
+#commitss {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: transparent;
+	align-items: center;
+	white-space: nowrap;
+	margin: 0 5%;
+}
 
-
-		#commentss i{
-			padding-right: 2%;
-		font-size: 1.7vw;
-		
-		}
-
-		#commitss{
-			
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			background-color: transparent; 
-			align-items: center;
-			white-space: nowrap;
-			margin: 0 5%;
-
-		}
-
-
-		#commitss i{
-			padding-right: 2%;
-		font-size: 2vw;
-		
-		}
-
-
-
+#commitss i {
+	padding-right: 2%;
+	font-size: 2vw;
+}
 
 /* MEDIA QUERIES */
 
@@ -242,7 +194,6 @@ opacity: 95%;
 		grid-template-columns: repeat(12, 1fr);
 		grid-template-rows: repeat(6, 1fr);
 		grid-template-areas:
-			
 			"img img img space  space space space space space chart chart chart"
 			"img img img space  space space space space space chart chart chart"
 			"projects projects projects projects projects projects projects projects projects projects projects projects"
@@ -254,39 +205,30 @@ opacity: 95%;
 			"projects projects projects projects projects projects projects projects projects projects projects projects"
 			"projects projects projects projects projects projects projects projects projects projects projects projects"
 			"projects projects projects projects projects projects projects projects projects projects projects projects"
-			"projects projects projects projects projects projects projects projects projects projects projects projects"
-			
-			
-			;
+			"projects projects projects projects projects projects projects projects projects projects projects projects";
 	}
 
+	body {
+		margin: 0 4%;
+	}
 
-body{
-margin: 0 4%;
-
-}
-
-.userimg {
-	grid-area: img;
-flex-direction: column;
-	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
-	padding: 1em 0;
-}
-
+	.userimg {
+		grid-area: img;
+		flex-direction: column;
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		padding: 1em 0;
+	}
 
 	.userimg h3 {
 		font-size: 3vw;
-		
 	}
-	
-	.space{
 
+	.space {
 		grid-area: space;
-		
-			}
-		
+	}
+
 	.projectinfo {
 		font-size: 1.2vw;
 	}
@@ -298,98 +240,41 @@ flex-direction: column;
 		grid-gap: 50px;
 	}
 
-
-
-
-
 	.projectlist div {
 		height: 90%;
 		font-size: 1.3vw;
 	}
 
-
-
-
 	.chart {
-		
 		justify-content: flex-start;
 		padding: 1em 1em 0 0;
 	}
-
-
-
-
-
-
-
-
-
 
 	#textrepo {
 		font-size: 2.4vw;
 	}
 
-
-
-
-
-
-
-
-	
-	#push i{
-	
+	#push i {
 		padding: 0 1.5% 0 0;
-	opacity: 95%;
-			font-size: 1vw;
-		
-		}
-	
-	
-	
-	
-	#repobranch i{
+		opacity: 95%;
+		font-size: 1vw;
+	}
+
+	#repobranch i {
 		padding: 0 1.5% 0 0;
-	padding-right: 7%;
-	opacity: 95%;
-			font-size: 1vw;
-			
-			}
-	
-	
-			
-	
-	
-			#commentss i{
-				padding-right: 2%;
-	
-			font-size: 1vw;
-			
-			}
-	
-			
-	
-			#commitss i{
-				padding-right: 2%;
-	;
-			font-size: 1vw;
-			
-			}
-	
-	
+		padding-right: 7%;
+		opacity: 95%;
+		font-size: 1vw;
+	}
 
+	#commentss i {
+		padding-right: 2%;
 
+		font-size: 1vw;
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
+	#commitss i {
+		padding-right: 2%;
+		font-size: 1vw;
+	}
 }
