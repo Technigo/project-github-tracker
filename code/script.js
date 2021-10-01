@@ -39,6 +39,7 @@ const reposFetch = async () => {
             throw new Error('Request failed!')
         }
     } catch (error) {
+        main - section
         console.log(`Error: ${error}`);
     }
 }
@@ -48,16 +49,17 @@ const builRepoHtml = (repo) => {
     projectsInfo.innerHTML +=
         `<div class="card">
             <div class="general-info project-title">
-                <h2 class="project-name">Project: <a href=${repo.url}>${repo.name}<a></h2>
+                <h2 class="project-name"><a href=${repo.html_url} target="_blank">${repo.name.toUpperCase()}<a></h2>
                 <h3 id="default-branch"> Default branch: ${repo.default_branch}</h3>
+                <h3>Main language: ${repo.language ? repo.language : "No information"}</h3>
                 <h3 id="recent-push"> Most recent push: ${new Date(repo.pushed_at).toDateString()}</h3>
             </div>
 
 
 
             <div class="pr-info">
-            <h3>Pull requests</h3>
-                    <div id="pr">
+                        <h3>Pull requests</h3>
+                    
                         <h4>Total pullrequest: ${repo.allPullRequest.total_count}</h4>
                         ${repo.allPullRequest.total_count === 0 ?
             `<h4>This repository don't any have Pull Request</h4>` :
@@ -65,8 +67,11 @@ const builRepoHtml = (repo) => {
                 `<h4>Pull Request #${pullRequest.number}</h4>
                             ${pullRequest.commits.length === 0 ?
                     `<h4>This repository don't have commits for this PR</h4>` :
-                    `<div class="collapsible" data-collapsible>
-                        <div class="collapsible_title"><button>Total commits: ${pullRequest.commits.length}</button></div>
+                    `<h4>Total commits: ${pullRequest.commits.length}</h4>
+                        <div class="collapsible" data-collapsible>
+                        <div class="collapsible_title">
+                        <h3>Click here for commits details</h3>
+                        </div>
                         <div class="collapsible_content">
                         <ol>
                         ${pullRequest.commits.map(individualCommit =>
@@ -79,8 +84,13 @@ const builRepoHtml = (repo) => {
                         </ol>
                         </div>
                         </div>
+                
+
+                        <h4>Total comments: ${pullRequest.comments.length}</h4>
                         <div class="collapsible" data-collapsible>
-                        <div class="collapsible_title"><button>Total comments: ${pullRequest.comments.length}</button></div>
+                        <div class="collapsible_title">
+                        <h3>Click here for comments details</h3>
+                        </div>
                         <div class="collapsible_content">
                         <ol>
                     ${pullRequest.comments.map(individualComment =>
@@ -93,8 +103,7 @@ const builRepoHtml = (repo) => {
                     </ol>
                     </div>
                     </div>`}
-                    </div> `
-            )}
+                   `)}
              </div>
         </div>`
 

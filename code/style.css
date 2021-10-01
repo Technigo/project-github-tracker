@@ -1,26 +1,28 @@
 body {
-  background: #FFECE9; 
+  background-color: rgb(182 185 194);
   font-family: Arial, Helvetica, sans-serif;
-    margin: 0px
+  margin: 0px
 }
 
 .main-section{
-  border: 1px solid blue;
-
-
+  padding: 15px;
 }
 
 .general-info{
-  background-color: rgb(25, 23, 27);
+  background-color: rgb(92 92 93);
   color: white;
   width: auto;
-  padding: 20px;
+  text-align: -webkit-center;
+  padding: 20px 0px;
 }
 
 
 .project-title{
-  background-color: rgb(21, 3, 63);
+  background-color: rgb(38 117 120);
   width: 100%;
+  border-radius: 3%;
+  margin: 0px;
+  padding: 20px;
 }
 
 .pr-info{
@@ -37,45 +39,41 @@ body {
   border-radius: 50%;
   border: 2px solid white;
   justify-content: center;
-}
+} 
 
 .profile-info-wraper{
-  margin-left: 10px;
   display: grid;
 }
 
-
+.general-info h1, h4, h5{
+  margin: 0px;
+  padding: 3px;
+}
 
 .projects-info {
-  background-color: rgb(138, 161, 154);
-  border: 1px solid red;
   display: flex;
-  margin: 10px;
-  display: inline-flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 .card{
-  background-color:rgb(197, 206, 236);
+  background-color:rgb(210 208 227);
   border: 1px solid black;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  width: 400px;
+  width: 80% auto;
   height: auto;
-  font-size: 60%;
-  box-shadow: 0px 0px 5px 1px gray;
+  box-sizing: border-box;
+  margin: 10px;
+  box-shadow: 0px 0px 5px 1px rgb(39, 38, 38);
   margin: 20px 0px;
+  border-radius: 3%;
+  font-size: 60%;
+  text-align: center;
+  justify-content: center;
 }
 
 .collapsible{
   overflow: hidden;
-  background-color:rgb(197, 206, 236);
-
-
+  text-align: -webkit-center;
 }
 
 .collapsible_title {
@@ -83,49 +81,86 @@ body {
   height: auto;
   display: grid;
   width: 160px;
+  cursor: pointer;
 }
 
 .collapsible_content{
   background-color:rgb(197, 206, 236);
+  text-align: -webkit-auto;
+  max-width: 80%;
 }
 
 .chart{
   display: flex;
-  width: 80%;
+  width: 75%;
   padding: 30px;
   border: 1px solid black;
-  margin: 30px auto;
+  margin: 40px auto;
+  background-color: #d2d9df;
 }
 
 
 .footer{
-  background-color: rgb(12, 10, 19);
-    margin-top: 3rem;
-    padding: 1rem 0rem;
-    display: grid;
-    justify-content: center;
-    font-size: small;
-    font-style: italic;
-    text-align: center;
-    color: white
+  background-color: rgb(92 92 93);
+  margin-top: 3rem;
+  padding: 1rem 0rem;
+  display: grid;
+  justify-content: center;
+  font-size: small;
+  font-style: italic;
+  text-align: center;
+  color: white
+}
+.github-icon{
+  justify-self: center;
 }
 
 @media screen and (min-width: 768px){
-  .general-title {
-    width: 100%;
-
+.general-title {
+  min-width: 309px;
 }
 
 .general-info{
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .chart{
   width: 40%;
 }
 
+.projects-info{
+  flex-direction: column;
+}
+
+.project-title{
+  max-width: 35%;
+  min-width: 35%;
+  border-radius: 0;
+}
+
+.main-section{
+  margin: 20px 120px;
+}
+
+.card{
+  margin: 30px;
+  flex-wrap: nowrap;
+  border-radius: 0;
+  text-align: justify;
+  justify-content: right;
+}
+
+.collapsible{
+  text-align: left;
+}
+
+.collapsible_title {
+  width: 200px;
+}
 }
 
 @media screen and (min-width: 991px){
-
+.main-section{
+  margin: 20px 180px;
+}
 }

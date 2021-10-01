@@ -6,7 +6,7 @@ const drawChart = (numberOfFinishedProjects) => {
     config = {
         type: 'pie',
         data: {
-            labels: ['Finished Projects', 'Left Projects'],
+            labels: ['Finished Projects', 'Projects Left'],
             datasets: [{
                 label: 'Technigo Projects',
                 data: [numberOfFinishedProjects, 20 - numberOfFinishedProjects],
@@ -25,7 +25,7 @@ const drawChart = (numberOfFinishedProjects) => {
             plugins: {
                 title: {
                     display: true,
-                    text: "Comparison Technigo Project left-projects built",
+                    text: "Comparison Technigo Course Finished projects vs Projects left",
                     position: 'top',
                     padding: {
                         top: 10,

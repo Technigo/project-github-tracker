@@ -12,37 +12,39 @@
 
 <body>
 
-  <main class="main-section" id="projects-info">
-
+  <header>
     <section class="general-info">
 
       <h1 class="general-title">GitHub Tracker</h1>
-
       <img class="profile-image" id="profile-image"></img>
       <div class="profile-info-wraper">
-        <h3>User name: <span id="user-name"></span></h3>
+        <h4><span id="user-name"></span></h4>
+        <h5>Junior Full Stack Engineer</h5>
+        <h5>Stockholm, Sweden</h5>
       </div>
     </section>
+  </header>
 
 
-    <section class="projects-info">
-
-    </section>
+  <main class="main-section" id="projects-info">
+    <section class="projects-info"></section>
+    <!-- This will be used to draw the chart 👇 -->
 
   </main>
 
-  <!-- This will be used to draw the chart 👇 -->
   <section class="chart">
     <canvas id="chart"></canvas>
   </section>
 
   <footer class="footer">
+    <img class="github-icon" src="../images/github-icon.svg">
     <a href="mailto: priscila24n@hotmail.com" target="_blank" alt="email">
       <p>Contact us</p>
     </a>
     <a href="#" target="_blank" alt="email">
       <p>GitHub Tracker</p>
     </a>
+
     <p>Copyright @2021 | Designed by PAS | Stockholm, Sweden. 2021</p>
   </footer>
   <script src="./collapsible.js"></script>
