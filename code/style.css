@@ -1,3 +1,29 @@
 body {
-  background: #FFECE9;
+  background: #e0fbfc;
+}
+
+h1 {
+  color: #293241;
+}
+
+h2 {
+  color: #88b7d3;
+}
+
+.chart {
+  margin: auto;
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .chart {
+    width: 50%;
+  }
+}
+
+@media (min-width: 999px) {
+  .chart {
+    width: 30%;
+  }
 }
