@@ -31,7 +31,7 @@ fetch(repos)
 
 
         <p>The default branch is: ${repo.default_branch}</p>
-        <p>The latest push: ${new Date(repo.pushed_at).toLocaleDateString().capitalizeFirstLetter}</p>
+        <p>The latest push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
         <p id="pull-${repo.name}">No pull request is yet made 🤷 </p>
         <p id="commits-${repo.name}">There are no commits yet...</p>
       </div>
