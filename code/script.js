@@ -1,7 +1,27 @@
 const USER = "AschwinSiaila";
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
-
+const nameAndPicture = document.getElementById("nameandpicture");
 const projectsContainer = document.getElementById("projects");
+
+const getUsernameAndPicture = () => {
+  const usernamePictureAndBioApi = `https://api.github.com/users/${USER}`;
+  fetch(usernamePictureAndBioApi)
+    .then((res) => res.json())
+    .then((data) => {
+      global__UserData = data;
+    })
+    .then(() => renderUsernameAndPicture());
+};
+
+const renderUsernameAndPicture = () => {
+  const picture = global__UserData.avatar_url;
+
+  nameAndPicture.innerHTML += `
+      <img class="user-information__picture" src="${picture}" alt="Picture of gitHub-user"/>
+      <div class="user-information__username-bio-container">
+        <div class="user-information__username-bio-container__username">${USER}</div>
+      </div>`;
+};
 
 const fetchRepositories = () => {
   fetch(REPOS_URL)
@@ -48,4 +68,5 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
+getUsernameAndPicture();
 fetchRepositories();
