@@ -4,7 +4,18 @@ Creating a place to keep track of the GitHub repos that I am using at Technigo. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Focused on the blue requirements and mostly on JavaScript this week. I found it challenging but asked for help and worked a lot with my team. I feel like I learned a lot this week and I am happy with the final result.
+
+My page includes:
+
+- A list of all repos that are forked from Technigo
+- Username and profile picture
+- Most recent update (push) for each repo
+- Name of default branch for each repo
+- URL to the actual GitHub repo
+- Number of commits for each repo
+- It is responsive (mobile first)
+- A visualisation, a donut chart, of how many projects I've done so far, compared to how many I will do.
 
 ## View it live
 
