@@ -13,6 +13,11 @@ body {
   color: rgb(248, 239, 239);
 }
 
+.light {
+  background-color: rgb(248, 239, 239);
+  color: rgb(29, 27, 27);
+}
+
 .nav-desktop {
   display: none;
 }
@@ -61,7 +66,11 @@ body {
   align-self: end;
 }
 
-.user-span {
+.user-span-light {
+  color: rgb(29, 27, 27) !important;
+}
+
+#userSpan {
   color: rgb(248, 239, 239);
 }
 
@@ -181,6 +190,7 @@ footer {
   background-color: rgb(189, 219, 227);
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 footer img {
@@ -189,6 +199,14 @@ footer img {
 
 .canvas-box {
   padding-bottom: 2rem;
+}
+
+#btn-light-nav {
+  background-color: rgb(37, 35, 35);
+}
+
+#btn-light-nav:hover {
+  background-color: rgb(175, 170, 170);
 }
 
 @media (min-width: 768px) {
@@ -232,6 +250,14 @@ footer img {
 
   .nav-notif {
     grid-area: bell;
+  }
+
+  #btn-light {
+    background-color: rgb(37, 35, 35);
+  }
+
+  #btn-light:hover {
+    background-color: rgb(175, 170, 170);
   }
 
   main {

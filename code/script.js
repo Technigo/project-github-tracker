@@ -1,25 +1,40 @@
 console.log("script works?");
 
 // let userName = "Loulunds";
-const userContainer = document.getElementById("userInfo");
+let userContainer = document.getElementById("userInfo");
 const reposContainer = document.getElementById("projects");
 const reposSubContainer = document.getElementById("project-box");
 const input = document.getElementById("navInput");
+const githubImg = document.getElementById("nav-github-img");
+const turnLightMode = document.getElementById("btn-light");
+const turnLightModeMobile = document.getElementById("btn-light-nav");
+
+let chartDrawn = false;
+
+showMyProfileOnLoad = () => {
+  let userName = "Loulunds";
+  getUserData(userName);
+  fetchRepos(userName);
+};
+
+window.onload = showMyProfileOnLoad;
 
 const getUserData = (user) => {
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      userContainer.innerHTML = "";
+
       userContainer.innerHTML = `
       <div class="user-profile-box">
         <div class="user-info-box">
           
-          <h1 class="user-username"> <span class="user-span">${
+          <h1 class="user-username"> <span id="userSpan">${
             data.login
           }</span></h1>
           
-          <h2 class="user-fullname"> <span class="user-span">${
+          <h2 class="user-fullname"> <span id="userSpanSub">${
             data.name
           }</span></h2>
           
@@ -46,6 +61,7 @@ const fetchRepos = (user) => {
     .then((response) => response.json())
     .then((data) => {
       //   console.log(data);
+      reposSubContainer.innerHTML = ``;
 
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
@@ -85,7 +101,10 @@ const fetchRepos = (user) => {
           `)
       );
 
-      drawChart(forkedRepos.length);
+      if (!chartDrawn) {
+        drawChart(forkedRepos.length);
+        chartDrawn = true;
+      }
       getPullRequests(forkedRepos);
       // console.log(forkedRepos);
     });
@@ -109,7 +128,12 @@ const getPullRequests = (repos) => {
           (pull) => pull.user.login === repo.owner.login
         );
 
-        showCommits(filteredPull.commits_url, repo.name);
+        if (filteredPull) {
+          showCommits(filteredPull.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML =
+            " No pull request from me";
+        }
 
         //TODO
         //1. Find only the PR that you made by comparing pull.user.login
@@ -136,11 +160,25 @@ const showCommits = (url, myRepoName) => {
 
 input.addEventListener("keypress", (event) => {
   if (event.key === "Enter" && input.value) {
-    let userName = input.value;
+    let userName = "";
+    userName = input.value;
     getUserData(userName);
     fetchRepos(userName);
   }
 });
 
-getUserData();
-fetchRepos();
+// lightmode
+
+const toLightMode = () => {
+  document.body.classList.toggle("light");
+  document.getElementById("userSpan").classList.toggle("user-span-light");
+  document.getElementById("userSpanSub").classList.toggle("user-span-light");
+};
+
+turnLightMode.addEventListener("click", (e) => {
+  toLightMode();
+});
+
+turnLightModeMobile.addEventListener("click", (e) => {
+  toLightMode();
+});
