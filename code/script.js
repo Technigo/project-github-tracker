@@ -6,7 +6,7 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 const USER_URL = `https://api.github.com/users/${USER}`
 const projectsContainer = document.getElementById('projects')
 const ldsripple = document.getElementById('loading')
-const Auth = { headers: { authorization: 'token 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' } }
+const Auth = {  }
 
 let repos;
 
