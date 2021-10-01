@@ -56,16 +56,31 @@ a:hover {
   font-weight: 300;
 }
 
+.icon {
+  width: 12px;
+  height: 12px;
+  opacity: 0.5;
+}
+
+.icon-bigger {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+
 .stats {
   font-family: "Lato", sans-serif;
   font-size: 14px;
+  margin-top: 10px;
 }
 
-.comments-button {
+.comments-button,
+.to-top-btn {
   width: 80px;
   padding: 5px;
   cursor: pointer;
   font-family: "Lato", sans-serif;
+  margin-top: 20px;
 }
 
 .search {
@@ -74,7 +89,8 @@ a:hover {
 }
 
 .comments-button:hover,
-.search:hover {
+.search:hover,
+.to-top-btn:hover {
   color: var(--theme-sub-color);
 }
 
@@ -87,7 +103,8 @@ a:hover {
 
 .input,
 .search,
-.comments-button {
+.comments-button,
+.to-top-btn {
   background-color: white;
   cursor: pointer;
   border: 2px solid var(--theme-sub-color);
@@ -126,6 +143,7 @@ a:hover {
   width: 600px;
   height: inherit;
   font-family: "Lato", sans-serif;
+  font-size: 12px;
 }
 
 .chart {

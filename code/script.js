@@ -4,6 +4,16 @@ const reposDataContainer = document.getElementById("projects");
 const userDetails = document.getElementById("user-details");
 const input = document.getElementById("request");
 const searchButton = document.getElementById("search");
+const toTopBtn = document.getElementById("to-top-btn");
+
+const icons = {
+  branch: "assets/branch.svg",
+  commit: "assets/commit.svg",
+  pull: "assets/pull.svg",
+  update: "assets/update.svg",
+  view: "assets/view.svg",
+  github: "assets/github.svg",
+};
 
 // fetching all user repos
 const fetchUserRepos = () => {
@@ -59,12 +69,12 @@ const getReposDetails = (data) => {
       .then((commits) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
-    <a href="${repo.html_url}">view on Github</a>
+    <a href="${repo.html_url}">view on Github   <img class="icon-bigger" src=${icons.github}></a>
     <div class="repos-stats" id="${repo.name}">
-    <p class="stats">branch: ${repo.default_branch}<p>
-    <p class="stats">last update: ${lastUpdate}<p>
-    <p class="stats link">commits: ${commits.length}<p>
-    <p class="stats">views: ${repo.watchers}<p>
+    <div class="stats"><img class="icon" src=${icons.branch}>   ${repo.default_branch}</div>
+    <div class="stats link"><img class="icon-bigger" src=${icons.commit}>   ${commits.length}</div>
+    <div class="stats"><img class="icon" src=${icons.view}>   ${repo.watchers}</div>
+    <div class="stats"><img class="icon" src=${icons.update}>   ${lastUpdate}</div>
     </div>
     `;
       })
@@ -89,7 +99,7 @@ const getPullRequests = (sortedRepos) => {
           const pullDate = new Date(pull.updated_at).toLocaleDateString("nb-NO", { day: "2-digit", month: "2-digit", year: "2-digit" });
           document.getElementById(`${repo.name}`).innerHTML += `
         <div id="pull-${repo.name}">
-        <p class="stats">PR date: ${pullDate}<p>
+        <div class="stats"><img class="icon-bigger" src=${icons.pull}>  ${pullDate}</div>
         </div>`;
           getComments(COMMENTS_URL, repo);
         });
@@ -140,5 +150,23 @@ const renderComments = (comments, repo) => {
 const classToggle = (commentContainer) => {
   commentContainer.classList.toggle("active");
 };
+
+//go to top button
+window.onscroll = function () {
+  scrollToTop();
+};
+
+function scrollToTop() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    toTopBtn.style.display = "block";
+  } else {
+    toTopBtn.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
 fetchUserRepos();
