@@ -1,13 +1,11 @@
 # GitHub Tracker
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to fetch repos from GitHub and use the information on the website. 
 
 ## The problem
+I had a methodological approach to the problem and solved one task at the time. I thing the fetching and the javaScript part of the task went really well, but i have struggled a bit with the CSS part. I did'nt have the same methodological approach to the CSS, i guess i miss calculated how difficult it was. So i had to redo some things in the very end. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I'm still not so pleased with the CSS turnout. If i had more time i would make the username and profile picture appear nicer, in line. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://elegant-curran-a4a3c9.netlify.app
