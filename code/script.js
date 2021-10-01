@@ -11,7 +11,6 @@ const getProfile = () => {
     fetch(PROFILE_URL)
     .then(response => response.json())
     .then(data => {
-        console.log('Profile:',data)
         profileContainer.innerHTML += `
         <div class="profile-card">
         <img class="profile-img" src=${data.avatar_url} alt="profile-image">
@@ -26,7 +25,6 @@ const getRepos = () => {
     fetch(REPOS_URL)
     .then(res => res.json())
     .then(data => {
-        console.log('json:',data)
         const forkedRepos = data.filter(
             (repo) => repo.name.includes('project-') && repo.fork
             )
@@ -48,7 +46,6 @@ const getRepos = () => {
 const fetchPullRequestsArray = (allRepositories) => {
 	allRepositories.forEach((repo) => {
 		const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
-
 		fetch(PULL_URL)
 			.then((res) => res.json())
 			.then((data) => {
