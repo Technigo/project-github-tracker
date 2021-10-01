@@ -47,10 +47,20 @@ a:visited {
   opacity: 80%;
 
 }
+#profile {
+  display: grid;
+  width: 70%;
+  margin: auto;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  justify-items: center;
+
+}
 
 
 .profile-box {
-  grid-column: span 2;
+  border: 1px solid lime;
+  grid-column: span 1;
 
 }
 
@@ -89,7 +99,7 @@ a:visited {
 
 
 
-
+/* 
 tablet
 margin: 0% 10%;
 
@@ -101,7 +111,7 @@ margin: 0% 15%;
 grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 
 .chart-box
-40%
+40% */
 
 /* COLORS
 #a14329
@@ -115,5 +125,4 @@ grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 #447270
 #6B9493
 
-#f6e271
-#f6B915 */
+ */
