@@ -22,8 +22,8 @@ const getPull = (repos) => {
 		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
 			.then((res) => res.json())
 			.then((data) => {
-const pulls = data.find((pull) => pull.user.login === repo.owner.login);
 
+				const pulls = data.find((pull) => pull.user.login === repo.owner.login)
 
 				document.getElementById("projects").innerHTML += `
 							
@@ -49,25 +49,42 @@ const pulls = data.find((pull) => pull.user.login === repo.owner.login);
 
 
 
-							
-							
-
-
-
-
 				getComment(repo.name, pulls.review_comments_url);
 				getCommit(repo.name, pulls.commits_url);
-				
+			
 				
 			});
 		
 	});
 };
 
+const getComment = (name, url) => {
+	
+	fetch(url)
+		.then((res) => res.json())
+		.then((data) => {
+
+			
+			const com = data.body
+			console.log(data.body)
+			
+			document.getElementById(name).innerHTML += `
+			
+			<div id="commentss">
+			<i class="far fa-comment-alt"></i>
+			<p>comments:${com.length}</p>
+			</div>
+			
+	`
+		  
+		});
+		
+	
+	}
 
 
-const getCommit = (name, urll) => {
-	fetch(urll)
+const getCommit = (name, url) => {
+	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
 
@@ -103,33 +120,6 @@ if(data.length >= 30){
 	`; }
 		});
 };
-
-
-
-const getComment = (name, url) => {
-	
-	fetch(url)
-		.then((res) => res.json())
-		.then((data) => {
-			
-			document.getElementById(name).innerHTML += `
-			
-			<div id="commentss">
-			<i class="far fa-comment-alt"></i>
-			<p>comments:${data.length}</p>
-			</div>
-			
-	`
-		  
-		});
-		
-	
-	}
-
-
-
-
-
 
 
 
