@@ -13,23 +13,31 @@ const getRepos = () => {
         (repo) => repo.fork && repo.name.startsWith("project")
       );
       console.log(forkedRepos);
-      forkedRepos.forEach(
-        (repo) =>
-          (projects.innerHTML += `
+
+      forkedRepos.forEach((repo) => {
+        fetch(`${repo.languages_url}`)
+          .then((language) => language.json())
+          .then((data) => {
+            const language = Object.keys(data)[0];
+
+            console.log(data);
+
+            projects.innerHTML += `
           <div class="repo" id="${repo.name}"> 
                <a class="repo-item1" href="${repo.html_url}" target="_blank">${
-            repo.name
-          }</a>
+              repo.name
+            }</a>
                <div class="repo-item2"><span class="branch">${
                  repo.default_branch
                }</span></div>
                <h4 class="repo-item3">Last updated: ${new Date(
                  repo.updated_at
                ).toLocaleDateString()}</h4>
-               <h5 class="repo-item4">${repo.language}</h5>
-               </div>
-          `)
-      );
+               <h5 class="repo-item4">${language}</h5>
+             </div>
+          `;
+          });
+      });
 
       drawChart(forkedRepos.length);
       const profileImg = data.forEach(
@@ -40,6 +48,7 @@ const getRepos = () => {
       );
 
       getPullRequest(forkedRepos);
+      // getLanguages(languageURL);
     });
 };
 
@@ -75,5 +84,6 @@ const getCommits = (commitsURL, repo) => {
       ).innerHTML += `<h4 class="repo-item5"> Number of commits: ${data.length}</h4>`;
     });
 };
-
 getRepos();
+
+/* <h5 class="repo-item4">${data.language}</h5> */

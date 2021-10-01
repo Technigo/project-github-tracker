@@ -16,17 +16,18 @@ body {
 
 .upper-section {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .profile-container {
   display: flex;
-  width: 48%;
+  width: 35%;
   flex-direction: column;
+  margin-left: 10px;
 }
 
 .profile-image {
-  width: 50%;
+  width: 65%;
   border-radius: 50%;
 }
 
