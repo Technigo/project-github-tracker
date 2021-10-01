@@ -1,7 +1,7 @@
 const USER = `Ajliin`
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 
-const headerContainer = document.getElementById('header')
+const firstContainer = document.getElementById('first')
 const projectContainer = document.getElementById('projects')
 
 // ------------FIRST FETCH FUNCTION------------
@@ -19,13 +19,15 @@ fetchRepos()
 // ------------fetching reop for first lines inside FIRST FETCH FUNCTION------------
 
 const repoInfo = ((data) =>{
-    headerContainer.innerHTML = `
+    first.innerHTML = `
+    <div class=header-image>
     <h1>Welcome to ${data[0].owner.login}s GitHub Tracker</h1>
     <img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">
+    </div>
     <div class=info-square>
     <h2>Elin Diczfalusy</h2>
     <p>User name: ${data[0].owner.login}</p>
-    <p>GitHub page: ${data[0].owner.html_url}</p>
+    <p>GitHub page: <a href="${data[0].owner.html_url}">${data[0].owner.html_url}</a></p>
     </div>`
 
     const forkedRepo = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
@@ -39,7 +41,7 @@ const repoInfo = ((data) =>{
         
         projectContainer.innerHTML += `<div class ="project"> 
         <p>Project name: ${repo.name}</p>
-        <p>Project url: ${repo.html_url}</p>
+        <p>Project url: <a href="${repo.html_url}"> ${repo.html_url}</a></p>
         <p>Default branch: ${repo.default_branch}</p>
 
         <p>Last push: ${dateString.toUTCString()}
