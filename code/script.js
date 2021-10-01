@@ -31,11 +31,16 @@ const getRepos = () => {
         <div class="project-card"> 
         <h3 class="project-name">${repo.name}</h3> 
         <a class="project-links" href="${repo.html_url}" target="_blank">${repo.name}</a> <br><i>With default branch ${repo.default_branch}</i>
-        <p class="project-info">Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p class="project-info" id="commits-${repo.name}">Number of commits: </p>
+        <p class="project-info"><b>Created:</b> ${new Date(repo.created_at).toDateString()}</>
+        <p class="project-info"><b>Latest push:</b> ${new Date(repo.pushed_at).toDateString()}</p>
+        <p class="project-info" id="commits-${repo.name}"><b>Number of commits:</b> </p>
         </div>
         `)
         
+    
+
+        //forkedRepos.sort(function(a, b){return a.created_at - b.created_at});
+
         getPullRequests(forkedRepos)
         drawChart(forkedRepos.length)
     })

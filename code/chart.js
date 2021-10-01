@@ -13,20 +13,22 @@ const config = {
         labels: [
           'Projects done',
           'Projects left',
+          'Projects in total'
           //'Blue'
         ],
         datasets: [{
           label: 'My Projects',
-          data: [amount, 19-amount],
+          data: [amount, 19-amount, 19],
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 205, 86)',
-            //'rgb(54, 162, 235)'
+            '#e3f7ba',
+            'rgb(252, 241, 175)',
+            '#FFECE9'
           ],
           hoverOffset: 4
         }]
       },
     };
+
 
 
 const repoChart = new Chart(ctx, config);

@@ -44,6 +44,12 @@ body {
 .profile-pic {
   width: 400px;
   border-radius: 50%;
+  opacity: 0.5;
+}
+
+.profile-pic:hover {
+  opacity: 1;
+  transition: 1s;
 }
 
 .chart-box {
@@ -73,7 +79,7 @@ body {
 .project-card {
   font-family: 'Quicksand', sans-serif;
   background-color: #f7faf1;
-  width: 350px;
+  width: 330px;
   height: 200px;
   padding: 15px;
   border-radius: 2%;
@@ -119,6 +125,11 @@ body {
   font-style: italic;
 }
   
+.linkedin-link:hover {
+  color: rgb(123, 122, 122);
+  font-size: 20px;
+  transition: 1s;
+}
 
  /* Tablet */
 @media (min-width:768px) {
