@@ -12,7 +12,9 @@ const fetchUser = () => {
       profileContainer.innerHTML = /*html*/ `
       <section class="user">
       <img class="picture" src="${data.avatar_url}" alt="profile picture" />
-      <h2>Username: ${data.login}</h2>
+      <h2>Hi I'm ${data.name}</h2>
+      <p>An ${data.bio} based in ${data.location}</p>
+      <a href="${data.html_url}">@${data.login}</a>
       </section>
       `;
     });
@@ -34,8 +36,8 @@ const getRepos = () => {
         <div class="repo-card" id=${repo.name}>
           <a href="${repo.html_url}">${repo.name}</a>
 				  <p>Branch: ${repo.default_branch} </p>
-            <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commit-${repo.name}">Amount of commits: </p>
+            <p>Latest update: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p id="commit-${repo.name}">Number of commits: </p>
             </div>
         `)
       );

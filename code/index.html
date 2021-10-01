@@ -7,21 +7,27 @@
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <header class="header">
-      <h1>GitHub Tracker</h1>
+      <div class="user-profile" id="userProfile"></div>
     </header>
 
-    <div class="user-profile" id="userProfile"></div>
-
     <section class="grid">
-      <h2>Projects:</h2>
+      <h1>GitHub Tracker</h1>
       <main class="projects" id="projects"></main>
 
       <!-- This will be used to draw the chart 👇 -->
-      <canvas id="chart"></canvas>
+      <div class="chart-container">
+        <canvas id="chart"></canvas>
+      </div>
     </section>
 
     <script src="./script.js"></script>
