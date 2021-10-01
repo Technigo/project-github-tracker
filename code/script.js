@@ -49,7 +49,7 @@ const fetchUserRepos = () => {
 };
 
 const getUserNameAndPic = (data) => {
-  userDetails.innerHTML = `<img class="avatar" src="${data[0].owner.avatar_url}"/>
+  userDetails.innerHTML = `<div class="avatar-container"><img class="avatar" src="${data[0].owner.avatar_url}"/></div>
         <h3 class=user-name>${data[0].owner.login}</h3>`;
 };
 

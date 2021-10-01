@@ -18,24 +18,22 @@
 <body>
   <header>
     <h1 class="title">GitHub Tracker</h1>
-    <div id="user-details"></div>
+    <div class="user-details" id="user-details"></div>
   </header>
-  <section>
-    <label for="request">
-      <input class="input custom-input" id="request" type="text" name="request" placeholder="repository name" value=""
-        pattern="[-a-zA-Z ]{1,32}" oninvalid="setCustomValidity('Please enter alphabets only.')" required>
-    </label>
-    <button class="search" id="search">Search</button>
-  </section>
-  <main>
-    <section id="projects"></section>
+  <main class="main-grid">
+    <section class="search-container">
+      <label for="request">
+        <input class="input" id="request" type="text" name="request" placeholder="repository name" value=""
+          pattern="[-a-zA-Z ]{1,32}" oninvalid="setCustomValidity('Please enter alphabets only.')" required>
+      </label>
+      <button class="search" id="search">Search</button>
+    </section>
+    <article class="repo-list">
+      <section id="projects"></section>
+    </article>
+    <canvas class="chart" id="chart"></canvas>
+    <button onclick="topFunction()" class="to-top-btn" id="to-top-btn">Go to Top</button>
   </main>
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas class="chart" id="chart"></canvas>
-
-  <div class="back-to-top"><button onclick="topFunction()" class="to-top-btn" id="to-top-btn">Go to Top</button></div>
-
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
