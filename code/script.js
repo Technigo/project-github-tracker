@@ -11,7 +11,6 @@ const getRepos = () => {
   fetch(repoApi)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
@@ -24,8 +23,8 @@ const getRepos = () => {
         <p>Recent Push: ${new Date(repo.pushed_at).toDateString()}</p>
         <p>Default Branch: ${repo.default_branch}</p>
         <p>Github Repo: <a href="${repo.html_url}">Visit</a></p>
-        <p>Language: ${repo.language}</p>
-        <p>${repo.size}</p>`;
+        <p>Size Of Repo: ${repo.size} byte</p>
+        <p>Language: ${repo.language}</p>`;
       });
 
       getPulls(forkedRepos);
@@ -63,7 +62,6 @@ const getPulls = (forkedRepos) => {
         const myPulls = data.filter(
           (pulls) => repo.owner.login === pulls.user.login
         );
-        console.log(myPulls);
         const commitsURL = myPulls[0].commits_url;
         const commentsURL = myPulls[0].review_comments_url;
         getCommits(commitsURL, repo);
@@ -87,7 +85,6 @@ const getComment = (commentsURL, repo) => {
   fetch(commentsURL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data[data.length - 1].body);
       document.getElementById(`${repo.name}`).innerHTML += `
       <button id="my${repo.name}" class="comment-button">Repo Comment</button>
       <p id="coment" class="comment">${data[1].body}</p>`;

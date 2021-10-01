@@ -11,7 +11,6 @@ a {
 a:hover {
   color: #b3ffd9;
 }
-
 .headline {
   padding-top: 20px;
   background-color: #b3ffd9;
@@ -20,42 +19,11 @@ a:hover {
   font-family: "Orbitron", sans-serif;
   font-weight: 300;
 }
-
-.chart-wrapper {
-  display: flex;
-  flex-direction: row;
-  border-bottom: solid black 1px;
+.profile-img {
+  position: absolute;
+  border-radius: 50%;
+  width: 130px;
 }
-.contact {
-  display: flex;
-  flex-direction: column;
-  font-family: "Space Mono", monospace;
-  font-size: 20px;
-  line-height: 1.5;
-  padding: 70px 0 0 20px;
-  width: 25%;
-}
-
-.contact-logo {
-  font-size: 30px;
-}
-.logos {
-  display: flex;
-  flex-direction: column;
-}
-.technigo-img {
-  width: 70px;
-}
-.github-img {
-  width: 50px;
-  padding-left: 15px;
-}
-.chart {
-  padding: 5px;
-  width: 75%;
-  max-height: 300px;
-}
-
 .heading-wrapper {
   font-family: "Orbitron", sans-serif;
   background-color: #b3ffd9;
@@ -68,39 +36,42 @@ a:hover {
   margin: 1rem 9rem;
   font-size: 20px;
 }
+.chart-wrapper {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid black 1px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Mono", monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  padding: 70px 0 0 20px;
+  width: 300px;
+}
+.contact-logo {
+  font-size: 30px;
+}
+.chart {
+  padding: 5px;
+  width: 75%;
+  max-height: 300px;
+}
+.projects {
+  padding: 10px;
+}
 .projects-cards {
   background-color: lightseagreen;
   border: solid black 1px;
   font-size: 20px;
-  margin: 0.5rem 0.1rem;
-  padding: 0.5rem;
+  margin: 5px;
+  padding: 7px;
   width: auto;
   height: auto;
 }
 .projects-cards p {
   font-family: "Space Mono", monospace;
-}
-.profile-img {
-  position: absolute;
-  border-radius: 50%;
-  width: 130px;
-}
-.contact {
-  width: 300px;
-}
-.footer {
-  font-family: "Orbitron", sans-serif;
-  text-align: center;
-  font-size: 30px;
-  background-color: #b3ffd9;
-  width: 100vw;
-  bottom: 0;
-}
-.technigo-logo {
-  width: 70px;
-}
-.github-logo {
-  width: 40px;
 }
 .comment {
   display: none;
@@ -118,16 +89,23 @@ a:hover {
   background-color: #b3ffd9;
   border-color: teal;
 }
-
 .active + .comment {
   display: block;
 }
-
+.footer {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  background-color: #b3ffd9;
+  padding: 10px;
+}
+.technigo-logo {
+  width: 70px;
+}
+.github-logo {
+  width: 40px;
+}
 @media (min-width: 800px) {
-  .header-chart-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
   .headline {
     font-size: 40px;
     padding: 40px;
@@ -137,26 +115,36 @@ a:hover {
     display: flex;
     flex-direction: row;
   }
+  .profile-img {
+    position: absolute;
+    margin-top: -100px;
+    margin-left: 20px;
+    width: 300px;
+  }
   .heading-wrapper {
     border: none;
     background-color: white;
     width: 280px;
-
-    /*height: 300px; */
   }
   .heading-text {
     margin-top: 220px;
     margin-left: 80px;
     font-size: 30px;
   }
+  .header-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
   .chart-wrapper {
     flex-direction: column;
     border: none;
     justify-items: center;
     text-align: center;
-
-    /* margin-top: 270px; */
     height: 100%;
+  }
+  .chart {
+    padding: 5px;
+    width: 100%;
   }
   .projects {
     display: flex;
@@ -170,13 +158,6 @@ a:hover {
     margin: 10px;
     min-width: 200px;
   }
-  .profile-img {
-    position: absolute;
-    margin-top: -100px;
-    margin-left: 20px;
-    width: 300px;
-  }
-
   .technigo-img {
     width: 90px;
   }
@@ -184,11 +165,4 @@ a:hover {
     width: 80px;
     padding-left: 15px;
   }
-  .chart {
-    padding: 5px;
-    width: 100%;
-  }
-}
-
-@media (min-width: 992px) {
 }

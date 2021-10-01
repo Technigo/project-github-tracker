@@ -29,23 +29,21 @@
   <body>
     <!--Heading-->
     <h1 class="headline">Github tracker</h1>
+    <!--Wrapping all the content except the H1 -->
     <div id="wrapper" class="wrapper">
       <section class="header-chart-wrapper">
         <heading id="headingWrapper" class="heading-wrapper"></heading>
-        <!-- This will be used to draw the chart 👇 -->
+        <!--section for the chart and the contact info-->
         <section class="chart-wrapper" id="chartWrapper">
           <div class="contact" id="contact"></div>
           <div class="chart">
+            <!-- This will be used to draw the chart 👇 -->
             <canvas class="chart" id="chart"> </canvas>
           </div>
         </section>
       </section>
-
       <!--Projectscards-->
       <section id="projects" class="projects"></section>
-
-      <script src="./script.js"></script>
-      <script src="./chart.js"></script>
     </div>
     <footer class="footer">
       <img
@@ -55,5 +53,7 @@
       />Made By Me 2021
       <img class="github-logo" src="./img/github.png" alt="Github logo" />
     </footer>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
   </body>
 </html>
