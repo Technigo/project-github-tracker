@@ -11,7 +11,7 @@ body {
 .background-image {
   width: 100vw;
   height: 225px;
-  background-image: url("https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80"); /* Change image */
+  background-image: url("https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -46,27 +46,32 @@ body {
   margin-top: -40px;
 }
 
-.projects-container :hover {
+/* .projects-container :hover {
   background: linear-gradient(90deg, white, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, white);
-}
+} */
 
 .project-info {
   font-family: "Open Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: #666666;
-}
-
-.project-info :hover {
-  background: none;
+  pointer-events: none;
 }
 
 .project-name {
   font-family: "Open Sans", sans-serif;
   color: #222222;
-  text-decoration: none;
   font-size: 18px;
   font-weight: 700;
+  pointer-events: none;
+}
+
+.project-link {
+  text-decoration: none;
+}
+
+.project-link :hover {
+  background: linear-gradient(90deg, white, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, white);
 }
 
 hr {
