@@ -12,7 +12,7 @@ const getUserInfo = () => {
       console.log("USER DATA", data)
       userContainer.innerHTML += `
       <img class="profile-img" src="https://avatars.githubusercontent.com/u/84201089?v=4" alt="User profile picture">
-      <span id="profile-name"> <a href="https://github.com/waliem"><h2>${data.login}</h2></a> <h3>Front end developer student</h3></span>`
+      <span id="profile-name"> <a class="usr-name" href="https://github.com/waliem"><h2>${data.login}</h2></a> <h3>Front end developer student</h3><h3>Based in Gothenburg</h3></span>`
     })
 }
 
@@ -28,9 +28,9 @@ const getRepos = () => {
         (repo) =>
           (projectsContainer.innerHTML += `
         <div class="project-box"> 
-        <a href="${repo.html_url}"> ${repo.name}</a> <p>Default branch: ${
-            repo.default_branch
-          }</p>
+        <a style="font-weight:bold" href="${repo.html_url}"> ${
+            repo.name
+          } </a> <p>Default branch: ${repo.default_branch}</p>
         <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
         <p id="commit-${repo.name}">Commits: </p></div>`)
       )
