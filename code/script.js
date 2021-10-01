@@ -21,7 +21,7 @@ const getUser = () => {
                     <div class="links-text">${data.name}</div>
                     <div class="text">${data.login}</div>
                     <div class="location">
-                        <img src="/assets/location_icon.svg">
+                        <img src="./assets/location_icon.svg">
                         <div class="text">${data.location}</div>
                     </div>
                     <div class="text">${data.bio}</div>

@@ -69,7 +69,7 @@ a:hover {
 }
 
 .main-wrapper {
-  background-image: url('/assets/background.png');
+  background-image: url('./assets/background.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
