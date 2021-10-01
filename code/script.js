@@ -1,8 +1,8 @@
-const userName = "JohannaMJ";
+const userName = 'JohannaMJ';
 const REPOS_API_URL = `https://api.github.com/users/${userName}/repos`;
 const USER_URL = `https://api.github.com/users/${userName}`;
-const reposContainer = document.getElementById("projects");
-const profileContainer = document.getElementById("profileContainer");
+const reposContainer = document.getElementById('projects');
+const profileContainer = document.getElementById('profileContainer');
 
 const userProfile = () => {
   fetch(USER_URL)
@@ -29,7 +29,7 @@ const fetchRepos = () => {
     .then((response) => response.json())
     .then((data) => {
       const forkedRepos = data.filter(
-        (repo) => repo.fork && repo.name.startsWith("project-")
+        (repo) => repo.fork && repo.name.startsWith('project-')
       );
 
       // sort function (shows latest to oldest repo)
@@ -77,7 +77,7 @@ const fetchPullRequests = (repos) => {
           fetchCommits(myPullRequests.commits_url, repo.name);
         } else {
           document.getElementById(`commits-${repo.name}`).innerHTML =
-            "No pull request yet";
+            'No pull request yet';
         }
       });
   });
