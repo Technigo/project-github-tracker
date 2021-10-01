@@ -1,29 +1,31 @@
 body {
-  background-color: #d5dad6;
-  font-family: "Roboto Mono", monospace;
   box-sizing: border-box;
   min-width: 325px;
+  background-color: #d5dad6;
+  font-family: "Roboto Mono", monospace;
 }
 
 .big-container {
   margin: 5% 0;
 }
 
+/* HEADER */
 h1 {
+  margin-top: 10%;
+  color: #d6a495;
   text-align: center;
   font-size: 30px;
-  color: #d6a495;
-  margin-top: 10%;
 }
 
+/* PROFILE INFO */
 .profile-container {
   text-align: center;
   color: #8aa2a0;
 }
 
 h4 {
-  font-size: 28px;
   margin: 2% 0;
+  font-size: 28px;
 }
 
 img {
@@ -35,21 +37,23 @@ img {
 }
 
 h2 {
-  color: #d6a495;
   text-align: center;
+  color: #d6a495;
 }
 
+/* CHART */
 .chart-container {
   width: 70%;
   margin: 0 0 10% 15%;
 }
 
+/* PROJECTS */
 .projects-list {
   border: 1px solid #b8c3bd;
-  color: #4a707a;
-  font-size: 17px;
   padding: 4%;
   height: 100%;
+  color: #4a707a;
+  font-size: 17px;
 }
 .projects-individual {
   border-bottom: 1px solid #b8c3bd;
@@ -70,11 +74,14 @@ a:hover {
   color: #d6a495;
 }
 
+/* TABLET LAYOUT */
 @media (min-width: 668px) and (max-width: 1024px) {
+  /* HEADER */
   h1 {
     font-size: 45px;
   }
 
+  /* PROFILE */
   h4 {
     font-size: 38px;
   }
@@ -88,16 +95,19 @@ a:hover {
     font-size: 40px;
   }
 
+  /* CHART */
   .chart-container {
     width: 50%;
     margin: 5% 0 5% 27%;
   }
 
+  /* PROJECTS */
   .projects-list {
     text-align: center;
   }
 }
 
+/* DESKTOP LAYOUT */
 @media (min-width: 1025px) {
   .big-container {
     display: grid;
@@ -105,16 +115,19 @@ a:hover {
     margin: 2%;
   }
 
+  /* HEADER */
   h1 {
     font-size: 60px;
     margin-top: 4%;
   }
 
+  /* PROFILE */
   h4,
   h2 {
     font-size: 40px;
   }
 
+  /* PROJECTS */
   .projects-list {
     padding: 0 0 0 5%;
     font-size: 16px;
@@ -124,6 +137,5 @@ a:hover {
   .projects {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* text-align: center; */
   }
 }

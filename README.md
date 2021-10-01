@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assingment was to create a tracker for the projects we have done in the boot camp and pushed into Github. We should fetch multiple informations through API and display it in a responsive way for different sizes.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started the project by listing all the info we should fetch into small tasks and then I went through it step by step. The JavaScript part was challenging but I managed it without major problems. The styling was a little bit more complicated, being the biggest challange of the project for me. Having the HTML file and HTML inside the JavaScript made the styling more confusing, but with the help of my teammates I was able to complete the design I invisioned from the beginning. Another part that made it complicated was that the API kept having errors on the last days which made it more complicated to edit the code. If I had more time, I would probably try to add more information and features.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://brunsant-githubtracker.netlify.app/
