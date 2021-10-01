@@ -1,56 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-  <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <header>
-    <h1>GitHub Tracker</h1>
-    <div id="user-info"></div>
-  </header>
-  <hr>
-  <h2>Projects</h2>
-  <div>
-    <p class="dark">Filter Repos by main language:</p>
-    <button id="HTML-button">HTML</button>  
-    <button id="CSS-button">CSS</button>
-    <button id ="Javascript-button">Javascript</button>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>GitHub Tracker</h1>
+      <div id="user-info"></div>
+    </header>
+    <hr />
+    <h2>Projects</h2>
+    <div>
+      <p class="dark">Filter Repos by main language:</p>
+      <button id="HTML-button">HTML</button>
+      <button id="CSS-button">CSS</button>
+      <button id="Javascript-button">Javascript</button>
+    </div>
 
-  <main id="projects"></main>
+    <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <section class="chart-container">
-    <canvas id="chart"></canvas>
-  </section>
+    <!-- This will be used to draw the chart 👇 -->
+    <section class="chart-container">
+      <canvas id="chart"></canvas>
+    </section>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
+    <footer>
+      <div class = "icon-link">
+        <a target="_blank" href="https://icons8.com/icon/87310/code">Code</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+      </div>
+    </footer>
 
-</body>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
 
-<!-- <div class="flip-card">
-  <div class="flip-card-inner repo-container ${repo.language}" id="${repo.name}>
-    <div class="flip-card-front">
-      <p class="repo-name">${repo.name}</p>
-      <p>Default branch: ${repo.default_branch}</p>
-      <p>Last pushed: ${new Date(repo.pushed_at).toDateString()}</p>
-      <div id="commit-${repo.name}"></div>
-    </div>
-    <div class="flip-card-back">
-      <a href="${repo.html_url}">
-        Click here to visit ${repo.name}
-      </a>
-    </div>
-  </div>
-</div> -->

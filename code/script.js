@@ -37,35 +37,39 @@ const createHTMLForUser = (repo) => {
 };
 
 const createHTMLForRepo = (repo) => {
-  return `<a href="${
-    repo.html_url
-  }" class="repo-container ${repo.language}" id="${repo.name}"><p class="repo-name">${repo.name}</p><p>Default branch: ${
-    repo.default_branch
-  }</p><p>Last pushed: ${new Date(
-    repo.pushed_at
-  ).toDateString()}</p><div id="commit-${
+  return `<a href="${repo.html_url}" class="repo-container ${repo.language}" id="${repo.name}"><p class="repo-name">${
     repo.name
+  }</p><p>Default branch: ${repo.default_branch}</p><p>Last pushed: ${new Date(
+    repo.pushed_at
+  ).toDateString()}</p><div id="commit-${repo.name}"></div><div class="${
+    repo.language
   }"></div></a>`;
 };
 
 // const createHTMLForRepo = (repo) => {
-//   return `<div class="flip-card">
-//     <div class="flip-card-inner ${repo.language} repo-container" id="${
-//     repo.name
-//   }>
-//       <div class="flip-card-front repo-container">
-//         <p class="repo-name">${repo.name}</p>
-//         <p>Default branch: ${repo.default_branch}</p>
-//         <p>Last pushed: ${new Date(repo.pushed_at).toDateString()}</p>
-//         <div id="commit-${repo.name}"></div>
-//       </div>
-//       <div class="flip-card-back">
-//       <a href="${repo.html_url}">
-//           Click here to visit ${repo.name}
-//           </a>
-//           </div>
-//     </div>
-//   </div>`;
+//   return `<div class="flip-card ${repo.language}" id="${repo.name}">
+//             <div class="flip-card-inner">
+//             <div class="flip-card-front">
+//                 <p class="repo-name">${repo.name}</p>
+//                 <p>Default branch: ${repo.default_branch}</p>
+//                 <p>Last pushed: ${new Date(repo.pushed_at).toDateString()}</p>
+//                 <div id="commit-${repo.name}">
+//                  </div>
+//             </div>
+//             <div class="flip-card-back">
+//                 <div>
+//                     <a 
+//                     href="${repo.html_url}">
+//                         <p>Go to: project-business-site</p>
+//                     </a>
+//                 </div>
+//                 <div>
+//                     <p>Show commit messages</p>
+//                 </div>
+
+//             </div>
+//         </div>
+//     </div>`;
 // };
 
 const fetchPullRequests = (repo) => {
