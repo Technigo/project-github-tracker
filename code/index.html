@@ -4,23 +4,27 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;500;800&display=swap" rel="stylesheet">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   
-  <section class= "main-container">
+<section class= "main-container">
    <!-- This will be used to draw the chart 👇 -->
-   <header id="header">
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
-  </header>
-  <canvas id="chart" class="chart-container"></canvas>
+  <div class ="first-column">
+    <div id ="header" ></div>
+    <canvas id="chart" class="chart-container"></canvas>
+  </div>
   <main id="projects" class ="projects-grid"></main>
 
  
-  </section>
+</section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

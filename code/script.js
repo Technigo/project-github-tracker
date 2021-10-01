@@ -19,8 +19,15 @@ fetchRepos()
 // ------------fetching reop for first lines inside FIRST FETCH FUNCTION------------
 
 const repoInfo = ((data) =>{
-    headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>`
-    headerContainer.innerHTML += `<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">`
+    headerContainer.innerHTML = `
+    <h1>Welcome to ${data[0].owner.login}s GitHub Tracker</h1>
+    <img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">
+    <div class=info-square>
+    <h2>Elin Diczfalusy</h2>
+    <p>User name: ${data[0].owner.login}</p>
+    <p>GitHub page: ${data[0].owner.html_url}</p>
+    </div>`
+
     const forkedRepo = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log('outside forkedRepo-function', forkedRepo)
         drawChart(forkedRepo.length)
@@ -28,7 +35,7 @@ const repoInfo = ((data) =>{
         
         let dateString = new Date(repo.pushed_at)
         console.log(dateString)
-        // projectContainer.innerHTML += dateString.toString()
+        
         
         projectContainer.innerHTML += `<div class ="project"> 
         <p>Project name: ${repo.name}</p>
