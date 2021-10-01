@@ -172,7 +172,7 @@ body {
     right: -160px;
   }
   .charts {
-    max-width: 550px;
+    max-width: 450px;
     display: flex;
     flex-direction: row;
   }
@@ -235,7 +235,7 @@ body {
   .charts {
     display: flex;
     flex-direction: row;
-    margin-left: 320px;
+    margin-left: 300px;
   }
   .link-linkedin {
     text-decoration: none;
