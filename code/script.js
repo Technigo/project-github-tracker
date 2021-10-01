@@ -7,7 +7,7 @@ let repoContainer = document.getElementById('repo-container')
 let profileContainer = document.getElementById('profile-container')
 let commitsSort = document.getElementById('commit-btn')
 let repositorys = []
-
+let repoNr = 0
 
 const insertRepoInfo = (repository) => {
     repoContainer.innerHTML += /*html*/ `
@@ -33,7 +33,6 @@ const getProfile = () => {
     });
 }
 
-
 const getRepos = () => {
   fetch(API_ALL_REPOS)
   .then(res => res.json()) 
@@ -42,11 +41,12 @@ const getRepos = () => {
     const technigoRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith('project-'))
     technigoRepos.forEach(project => {
       let latestPush = new Date(project.pushed_at).toDateString()
-      repositorys[`${project.name}`] = {}
-      repositorys[`${project.name}`]["name"] = project.name
-      repositorys[`${project.name}`]["latest_push"] = latestPush
-      repositorys[`${project.name}`]["default_branch"] = project.default_branch
-      repositorys[`${project.name}`]["project_url"] = project.html_url
+      repositorys.push({
+        'name': project.name,
+        'latest_push': latestPush,
+        'default_branch': project.default_branch,
+        'project_url': project.html_url
+      })
 
       let REPO_API = `https://api.github.com/repos/${USER}/${project.name}/commits`
  
@@ -54,9 +54,10 @@ const getRepos = () => {
       .then(res => res.json()) 
       .then(commitData => {
         let commitMessage = commitData[0].commit.message
-        let repository = repositorys[project.name]
-        repository["commit_message"] = `${commitMessage}`
-        repository["number_commits"] = `${commitData.length}`
+        let repository = repositorys[repoNr]
+        repoNr += 1
+        repository['commit_message'] = commitMessage
+        repository['number_commits'] = commitData.length
         insertRepoInfo(repository)
       })
     })
@@ -66,23 +67,48 @@ const getRepos = () => {
 getRepos()
 getProfile()
 
-function compare( a, b ) {
-  if ( a < b ){
-    return -1;
-  }
-  if ( a > b ){
-    return 1;
-  }
-  return 0;
-}
-
 commitsSort.addEventListener("click", () => {
   repoContainer.innerHTML = ''
   console.log(repositorys)
-  console.log(repositorys.sort(compare(repositorys)))
-  sortedRepos.forEach((repo) => insertRepoInfo(repo))
+
+  let sortRepo = repositorys.sort((a, b) => 
+    (a.number_commits > b.number_commits ? 1 : -1))
+  sortRepo.forEach((repo) => {
+    insertRepoInfo(repo)
+  })
 })
 
 // // create dynamic ID from for eaxmple the name of the project 
 // // avoid using global variables
 // // use info about reponame to get element from dynamic id and update innerhtml
+
+// const objectList = [
+//   {
+//     asort: "project-business-site",
+//     number_commits: 20,
+//     sort: "project-chatbot"
+//   },
+//   {
+//     number_commits: 15,
+//     sort: "project-business-site"
+//   },
+//   {
+//     number_commits: 5,
+//     sort: "project-github-tracke"
+//   },
+//   {
+//     csort: "c",
+//     number_commits: 150,
+//     sort: "project-news-site"
+//   }
+// ];
+
+// console.log('unsorted', objectList)
+
+// objectList.sort((a, b) => (a.sort > b.sort ? 1 : -1));
+// console.log('sorted', objectList)
+
+// repositorys[`${project.name}`]["name"] = project.name
+// repositorys[`${project.name}`]["latest_push"] = latestPush
+// repositorys[`${project.name}`]["default_branch"] = project.default_branch
+// repositorys[`${project.name}`]["project_url"] = project.html_url
