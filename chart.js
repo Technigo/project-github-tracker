@@ -2,6 +2,9 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
 Chart.defaults.font.size = 26;
+
+
+
 const drawChart = () => {
 	const config = {
 		type: "doughnut",

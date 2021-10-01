@@ -2,6 +2,10 @@ const USER = "jsfrulle";
 const API_Projects = `https://api.github.com/users/${USER}/repos`;
 const API_USER = `https://api.github.com/users/${USER}`;
 
+
+
+/* Get all repos */
+
 const getResponse = () => {
 	fetch(API_Projects)
 		.then((response) => response.json())
@@ -17,13 +21,17 @@ const getResponse = () => {
 
 getResponse();
 
+
+
+ /* Get all the pull requests and info like default branch, push, url */
+
+
 const getPull = (repos) => {
 	repos.forEach((repo) => {
 		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls`)
 			.then((res) => res.json())
 			.then((data) => {
-
-				const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+				const pulls = data.find((pull) => pull.user.login === repo.owner.login);
 
 				document.getElementById("projects").innerHTML += `
 							
@@ -47,25 +55,23 @@ const getPull = (repos) => {
 							</div>
 							`;
 
-
-
 				getComment(repo.name, pulls.review_comments_url);
 				getCommit(repo.name, pulls.commits_url);
-			
-				
 			});
-		
 	});
 };
 
+
+
+
+
+/* get all the comments, problem to get teh information to every project
+(forEach dint work for me so need help here), this featur is not mandatory("blue level") */
+
 const getComment = (name, url) => {
-	
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-			
-			
-			
 			document.getElementById(name).innerHTML += `
 			
 			<div id="commentss">
@@ -73,54 +79,46 @@ const getComment = (name, url) => {
 			<p>comments:${data.length}</p>
 			</div>
 			
-	`
-		  
+	`;
 		});
-		
-	
-	}
+};
+
+
+
+
+
+/* Get commits here  */
 
 
 const getCommit = (name, url) => {
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-
-
-if(data.length >= 30){
-
-
-	document.getElementById(name).innerHTML += `
+			if (data.length >= 30) {
+				document.getElementById(name).innerHTML += `
 			
 			
 	<div id="commitss">
 	<i class="fas fa-file-upload"></i>
-	<p>commits:30+</p>
+	<p>commits: 30+</p>
 	</div>
 	
 	
 `;
-
-}else{  
-
-
-
-
-			document.getElementById(name).innerHTML += `
+			} else {
+				document.getElementById(name).innerHTML += `
 			
 			
 			<div id="commitss">
 			<i class="fas fa-file-upload"></i>
-			<p>commits:${data.length}</p>
+			<p>commits: ${data.length}</p>
 			</div>
 			
 			
-	`; }
+	`;
+			}
 		});
 };
-
-
-
 
 
 
