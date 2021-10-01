@@ -110,15 +110,6 @@ header,
   flex-direction: row;
 }
 
-.search {
-  max-width: 60px;
-  max-height: 40px;
-  padding: 5px;
-  display: block;
-  flex: 0 0 40px;
-  margin-left: 6px;
-}
-
 .comments-button:hover,
 .search:hover,
 .to-top-btn:hover {
@@ -143,7 +134,14 @@ header,
   border: 2px solid var(--theme-sub-color);
   font-family: "Lato", sans-serif;
   color: var(--alternate-tags);
-  border-radius: 20px;
+  border-radius: 18px;
+}
+
+.search {
+  padding: 5px;
+  display: block;
+  flex: 0 0 40px;
+  margin-left: 6px;
 }
 
 .input:focus {
