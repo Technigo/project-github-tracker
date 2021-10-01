@@ -20,16 +20,21 @@ fetchRepos()
 
 const repoInfo = ((data) =>{
     headerContainer.innerHTML = `<h3>Welcome to ${data[0].owner.login}s GitHub Tracker</h3>`
-    projectContainer.innerHTML += `<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">`
+    headerContainer.innerHTML += `<img class="profile-img" src="https://avatars.githubusercontent.com/u/84288114?v=4" alt="profile pic Ajliin">`
     const forkedRepo = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log('outside forkedRepo-function', forkedRepo)
-
+        drawChart(forkedRepo.length)
     forkedRepo.forEach((repo) => {
+        
         let dateString = new Date(repo.pushed_at)
         console.log(dateString)
         // projectContainer.innerHTML += dateString.toString()
         
-        projectContainer.innerHTML += `<div class ="project"> ${repo.name}
+        projectContainer.innerHTML += `<div class ="project"> 
+        <p>Project name: ${repo.name}</p>
+        <p>Project url: ${repo.html_url}</p>
+        <p>Default branch: ${repo.default_branch}</p>
+
         <p>Last push: ${dateString.toUTCString()}
         <p id="commit-${repo.name}">Commits amount: </p></div>`
     })
