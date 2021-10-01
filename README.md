@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was about fetching data from the github API and create your own github tracker.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I think this project was a fun one, it went well and I understood a big part of it until the fetch commits. That was the hardest part, and if I had more time I would had put more functions and styling into it.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify link: https://gifted-stonebraker-86699f.netlify.app

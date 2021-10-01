@@ -1,3 +1,121 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  background-color: #313638;
+  color: #e0dfd585;
+  font-family: "Cabin", sans-serif;
+  background-image: url("https://i.ibb.co/vDY4RQR/burger.png");
+  background-size: 15px;
+  background-repeat: repeat-x;
+  padding: 5%;
+  margin: 0;
+  font-size: 15px;
+}
+
+.section {
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 2rem;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+/* Profile */
+.profile-card {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+}
+
+.profile-img {
+  align-self: center;
+  border-radius: 50%;
+  width: 50%;
+  height: auto;
+  border: 2px solid #e0dfd585;
+}
+/* Chart */
+.chart {
+  display: none;
+}
+/* Projects */
+
+fieldset {
+  border: 2px solid;
+  border-radius: 1%;
+  border-color: #e0dfd585;
+  background-color: rgba(34, 33, 33, 0.671);
+}
+
+.project-container {
+  display: grid;
+  width: 100%;
+}
+
+.project-grid {
+  border-radius: 2%;
+  min-width: auto;
+}
+.project-grid :hover {
+  background-color: rgba(34, 33, 33, 0.671);
+}
+
+.project-cards {
+  grid-template-columns: 1fr 1fr;
+  padding: 5px;
+  border-radius: 3%;
+  margin: 6px;
+  min-width: auto;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.project-cards a {
+  text-decoration: none;
+  color: #e4e4e2c5;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.project-cards a:hover {
+  color: rgb(116, 15, 15);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 12px;
+  }
+  .section {
+    display: flex;
+    flex-direction: row;
+  }
+  /* Profile */
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .profile-img {
+    width: 50%;
+  }
+  /* Chart */
+  .chart {
+    align-items: center;
+    width: 50%;
+    display: flex;
+    padding: 5px;
+  }
+  /* Projects */
+
+  .project-container {
+    width: 100%;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    line-height: 0.86;
+  }
 }
