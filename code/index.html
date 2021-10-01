@@ -7,16 +7,30 @@
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <style>
+      body {
+        background-image: url("body-background.jpg");
+      }
+    </style> -->
   </head>
   <body>
-    <h1>My GitHub Tracker</h1>
+    <header>
+      <h1>GITHUB TRACKER</h1>
+      <img class="github-icon" src="./octocat.png" />
+    </header>
+
     <section id="user-info"></section>
 
-    <h2 class="titel-project">Projects:</h2>
     <main id="projects"></main>
 
-    <!-- This will be used to draw the chart 👇 -->
-    <div><canvas id="chart"></canvas></div>
+    <div class="chart-box"><canvas id="chart"></canvas></div>
 
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
