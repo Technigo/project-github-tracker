@@ -1,13 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
-
-// console.log('Chart is here') //just checks if Chart.js is on
-
-
-// needs fixing... went to fast
-
+//Doughnut chart for projects
 const drawChart = (amount) => {
   const config = { 
     type: 'doughnut',
@@ -20,15 +14,14 @@ const drawChart = (amount) => {
           label: 'My First Dataset',
           data: [amount, 20-amount],
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            'rgb(87, 166, 255)',
+            'rgb(128, 128, 128)',
           ],
           hoverOffset: 2,
           borderWidth: 0,
         }]
       },
     };
-
   const myChart = new Chart (ctx, config)
 }
 
