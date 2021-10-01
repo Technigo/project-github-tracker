@@ -26,8 +26,7 @@ const getRepos = () => {
                 <span class="repo-language"></span>
                 <span class="language-name">${repo.language}</span>
                 <h5>Updated: ${new Date(repo.pushed_at).toDateString()}</h5>
-                <h5>Default branch: ${repo.default_branch}</h5>
-                <div class="commits-container" id="commits"></div>
+                <h5>${repo.default_branch}</h5>
                 </div>`
                 const repoLanguage = document.querySelectorAll('.repo-language')
                 //Nodelist is like an array, only forEach method
@@ -57,9 +56,9 @@ const getGeneralInfo = () => {
             <div class="names" >
             <h1 class="username">${data.login}</h1></div >
             <p class="bio">${data.bio}</p>
-            <div class="location-info"><img class="location-icon" src="location.png" alt="location" /><p> ${data.location}</p></div>
+            <div class="location-info"><img class="location-icon" src="images/location.png" alt="location" /><p> ${data.location}</p></div>
             <div class="linkedin-info">
-            <img class="linkedin-icon" src="chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}" target="_blank">https://www.linkedin.com/in/julia-nikitinashlm/</a>
+            <img class="linkedin-icon" src="images/chain.png" alt="location" /><a class="link-linkedin" href="${data.blog}" target="_blank">https://www.linkedin.com/in/julia-nikitinashlm/</a>
             </div>
                 `
         })
@@ -73,10 +72,14 @@ const getPullRequests = (forkedRepos) => {
             .then(data => {
                 const myPulls = data.find(pulls => pulls.user.login === repo.owner.login)
                 console.log(myPulls)
+                //display pull request name
                 // document.getElementById(`${repo.name}`).innerHTML += `<a class="links" href="${myPulls._links.html.href}">Pull request: ${myPulls.title}</a>`
                 const commitsURL = myPulls.commits_url
+                const commentsURL = myPulls.review_comments_url
+                console.log('Comments', commentsURL)
                 console.log(commitsURL)
                 getCommits(commitsURL, repo)
+                getComments(commentsURL, repo)
             })
     })
 }
@@ -87,9 +90,29 @@ getCommits = (commitsURL, repo) => {
         .then(data => {
             console.log(data)
             console.log(data.length)
-            document.getElementById(`${repo.name}`).innerHTML += `<h5>This repo has been committed ${data.length} times</h5>`
-            // console.log(data[data.length - 1].commit.message)
+            document.getElementById(`${repo.name}`).innerHTML += `<h5>This repo has been committed ${data.length} times</h5>
+            <h5>Latest commit message: "${data[data.length - 1].commit.message}"</h5>`
 
         })
-
 }
+
+/*------Tried to do accordion, but did not have time to style it----*/
+// here is the function to display commit messages
+// getComments = (commentsURL, repo) => {
+//     fetch(commentsURL)
+//         .then(res => res.json())
+//         .then(data => {
+//             console.log(data)
+//             document.getElementById(`${repo.name}-container-comments`).innerHTML += `
+//             <div class="comments-container-accordion">
+//             <ul class="accordion-container-list" id="${repo.name}-commentsList"></ul>
+//             </div>`
+
+//             const unorderedList = document.getElementById(`${repo.name}-commentsList`)
+
+//             data.forEach((comment) => {
+//                 unorderedList.innerHTML += `<li>${comment.body}</li>`
+//             })
+//         })
+// }
+// getComments()
