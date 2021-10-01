@@ -63,16 +63,14 @@ const getComment = (name, url) => {
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-
 			
-			const com = data.body
-			console.log(data.body)
+			
 			
 			document.getElementById(name).innerHTML += `
 			
 			<div id="commentss">
 			<i class="far fa-comment-alt"></i>
-			<p>comments:${com.length}</p>
+			<p>comments:${data.length}</p>
 			</div>
 			
 	`
