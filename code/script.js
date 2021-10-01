@@ -20,6 +20,10 @@ const getUser = () => {
                     </div>
                     <div class="links-text">${data.name}</div>
                     <div class="text">${data.login}</div>
+                    <div class="location">
+                        <img src="/assets/location_icon.svg">
+                        <div class="text">${data.location}</div>
+                    </div>
                     <div class="text">${data.bio}</div>
                 </div>
             `
@@ -45,7 +49,7 @@ const getRepos = () => {
                         }
                         let newProjectName = formattedProjectName.join(" ")
                         // Date for most recent update of project
-                        let latestCommit = `${new Date(repo.pushed_at).toDateString()}`   
+                        let latestCommit = `${new Date(repo.pushed_at).toLocaleString("zh-TW", { dateStyle: 'short' })}`   
                         
                         // Tried to use moment.js
                         // console.log(moment(latestCommit).format('LL'))
@@ -75,29 +79,30 @@ const getRepos = () => {
                                         <div class="project-card" id="${repo.name}">
                                             <p class="project-headline">${newProjectName}</p>
                                             <p class="links-text"><a href="${repo.html_url}">GitHub repository ➔</a> | <a href="${repo.homepage}">View it live ➔</a></p>
-                                            <p class="text">Edited ${latestCommit} | ${commits.length} commits</p>
+                                            <p class="text">Updated ${latestCommit} | ${commits.length} commits</p>
                                             <p class="text">Default branch: ${repo.default_branch}</p>
                                             <div class="languages">
                                                 <p class="small-headline">Languages</p>
 
                                                 <div class="progress">
-                                                    <div class="progress-js" style="width:${js_percent}%;"></div>
-                                                    <div class="progress-css" style="width:${css_percent}%;"></div>
                                                     <div class="progress-html" style="width:${html_percent}%;"></div>
+                                                    <div class="progress-css" style="width:${css_percent}%;"></div>
+                                                    <div class="progress-js" style="width:${js_percent}%;"></div>
+                                                    
                                                 </div>
                                                 
                                                 <section class="the-languages">
-                                                    <div class="js-wrapper">
-                                                        <div class="language-dot" style="background-color:#F59B99;"></div>
-                                                        <div class="language-text">JavaScript</div>
+                                                    <div class="html-wrapper">
+                                                        <div class="language-dot" style="background-color:#56B093;"></div>
+                                                        <div class="language-text">HTML</div>
                                                     </div>
                                                     <div class="css-wrapper">
                                                         <div class="language-dot" style="background-color:#EBBC4E;"></div>
                                                         <div class="language-text">CSS</div>
                                                         </div>
-                                                    <div class="html-wrapper">
-                                                        <div class="language-dot" style="background-color:#56B093;"></div>
-                                                        <div class="language-text">HTML</div>
+                                                    <div class="js-wrapper">
+                                                        <div class="language-dot" style="background-color:#F59B99;"></div>
+                                                        <div class="language-text">JavaScript</div>
                                                     </div>
                                                 </section>
                                             </div>

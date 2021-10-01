@@ -8,29 +8,32 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;400;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
   <header class="header">
-    <h3>GitHub Tracker</h3>
+    <h3 class="header-text">GitHub Tracker</h3>
   </header>
-  
-  <section class="profile-wrapper">
-    <div id="profile" class="profile"></div>
+
+  <div class="main-wrapper">
+    <div class="profile-wrapper">
+      <div id="profile" class="profile">
+      </div>
       <div class="chart-section">
+        <div class="headline-wrapper">
+          <p class="small-headline">Technigo progress</p>
+        </div>
         <div class="chart-wrapper">
           <canvas id="chart" class="chart"></canvas>
         </div>
-        <div class="headline-wrapper">
-          <p class="text">Projects</p>
-        </div>
       </div>
     </div>
-  </section>
-
-  <main id="projects" class="projects-wrapper"></main>
+    <div class="projects-wrapper">
+      <main id="projects" class="projects"></main>
+    </div>
+  </div>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
