@@ -6,14 +6,10 @@ const githubProfile = `https://github.com/${user}`
 const userContainer = document.getElementById('userProfile')
 const projectsContainer = document.getElementById('projectsContainer')
 const userDetailContainer = document.getElementById('userDetails')
+const modal = document.getElementById('myModal') // Get the modal
+const span = document.getElementsByClassName('close')[0] // Get the <span> element that closes the modal
 
-// Get the modal
-const modal = document.getElementById('myModal')
-// Get the button that opens the modal
-
-// Get the <span> element that closes the modal
-const span = document.getElementsByClassName('close')[0]
-
+//Fetches general user info
 const userProfile = () => {
   fetch(USER_URL)
     .then((res) => res.json())
@@ -31,12 +27,11 @@ const userProfile = () => {
         <img class="back-image" src="${githubImg}">
       </a>
       </div>
-    
-
       `
     })
 }
 
+//Fetches all repositories that are forked and starts with "project-" to get the ones from Technigo
 const fetchAll = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
@@ -44,10 +39,11 @@ const fetchAll = () => {
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-')
       )
-
+      //Sorts and displays the projects by the newest to the latest projects
       forkedRepos.sort((a, b) => {
         return new Date(b.pushed_at) - new Date(a.pushed_at)
       })
+      //Formates the date nicely
       forkedRepos.forEach((repo) => {
         const pushedDate = new Date(repo.pushed_at).toLocaleDateString(
           'en-se',
@@ -88,6 +84,7 @@ const fetchAll = () => {
     })
 }
 
+//Gets the PR from the forked repos.
 const pullRequests = (repos) => {
   repos.forEach((repo) => {
     fetch(
@@ -102,6 +99,7 @@ const pullRequests = (repos) => {
         if (myPulls) {
           showCommits(myPulls.commits_url, repo.name)
         } else {
+          //Displays message if not commits are made
           document.getElementById(`commit-${repo.name}`).innerHTML = `
             <h3>No pull request done</h3>
             <p>(either ongoing project or a group/pair project)</p>`
@@ -110,6 +108,7 @@ const pullRequests = (repos) => {
   })
 }
 
+//Displayes the commit messages for the repos that have a PR
 const showCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
@@ -130,15 +129,18 @@ const showCommits = (url, myRepoName) => {
 
       const btn = document.getElementById(`myBtn-${myRepoName}`)
 
+      //Opens the commit msg in a modal by clicking at the button
       btn.onclick = function () {
         console.log(modal)
         document.getElementById('myModal').style.display = 'block'
       }
 
+      //Closes the modal when clicking at X
       document.getElementsByClassName('close')[0].onclick = function () {
         document.getElementById('myModal').style.display = 'none'
       }
 
+      //Have not made this function work yet, closes the modal when clicking outside of it
       window.onclick = function (event) {
         if (event.target == modal) {
           document.getElementById('myModal').style.display = 'none'

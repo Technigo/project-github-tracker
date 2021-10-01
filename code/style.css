@@ -67,6 +67,7 @@ header {
   cursor: pointer;
 }
 
+/*Shows the github-icon on hower since the profil pic get opacity 0*/
 .swap-on-hover:hover .front-image {
   opacity: 0;
 }
@@ -137,9 +138,9 @@ h3 a:hover {
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #fff;
   padding: 15px;
-  border: 1px solid #888;
+  border: 1px solid #6440c5;
   width: 80%;
 }
 
@@ -247,6 +248,7 @@ h3 a:hover {
   color: #fff;
 }
 
+/*Tablet view*/
 @media (min-width: 750px) and (max-width: 1024px) {
   header {
     height: 55%;
@@ -296,6 +298,7 @@ h3 a:hover {
   }
 }
 
+/*Desktop view*/
 @media (min-width: 1025px) {
   header {
     height: 57%;

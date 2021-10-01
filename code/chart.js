@@ -1,7 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
+//Draws the chart and displays progress in projects finished vs left
 const drawChart = (amount) => {
   const config = {
     type: 'doughnut',
