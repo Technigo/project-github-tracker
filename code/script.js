@@ -1,6 +1,26 @@
 const user = "Rephili";
 const REPOS_URL = `https://api.github.com/users/${user}/repos`;
 const projectsContainer = document.getElementById("projects");
+const USER_URL = `https://api.github.com/users/${user}`;
+const userContainer = document.getElementById("userProfile");
+
+//Picture, name and location
+const userProfile = () => {
+  fetch(USER_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      userContainer.innerHTML = `
+      <div class="userinfo">
+      <div class="userimg"><img src="${data.avatar_url}"/></div>
+      <h2>${data.name}</h2>
+      <a href="https://github.com/Rephili">@${data.login}</a>
+      <p>${data.location}</p>
+      </div>
+      </div>`;
+    });
+};
+
+userProfile();
 
 // Function to fetch all my repositories and then filter out the forked projects from Technigo
 const fetchRepos = () => {

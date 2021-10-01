@@ -6,6 +6,10 @@ h1 {
   color: #293241;
 }
 
+.userimg img {
+  border-radius: 50%;
+}
+
 h2 {
   color: #88b7d3;
 }
