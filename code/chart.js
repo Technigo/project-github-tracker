@@ -11,15 +11,14 @@ const config = {
     labels: [
       'Finished projects',
       'Upcoming projects',
-      'Yellow'
     ],
+    
     datasets: [{
-      label: 'My First Dataset',
+      label: 'My projects at Technigo',
       data: [amount, 19-amount],
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
+        '#f6e271',
+        '#f6B915',
       ],
       hoverOffset: 4
     }]
@@ -29,3 +28,5 @@ const config = {
 
 const projectsChart = new Chart(ctx, config);
 } 
+
+

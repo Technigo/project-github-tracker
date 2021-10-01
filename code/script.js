@@ -15,8 +15,9 @@ const getProfile = () => {
         profileContainer.innerHTML = `
     <div class="profile-box">
         <img src ="${data.avatar_url}" alt ="avatar picture" />
-        <h2>Github: <a href="${data.html_url}">${data.login}</h2></a>
-        <h3>${data.name}</h3>
+        <h3>Hello! I'm ${data.name}. This is my github tracker.</h3>
+        <h3>Username: <a href="${data.html_url}">${data.login}</h3></a>
+        
     </div>
     `;
     })
@@ -37,7 +38,7 @@ const getRepos = () => {
             projectContainer.innerHTML += `
             
             <div class="projects-box">
-                <h3>${repo.name}</h3>
+                <h4>${repo.name}</h4>
                 <a href="${repo.html_url}">${repo.name} with defalut branch ${repo.default_branch}</a>.
                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()} </p>
                 <p id="commit-${repo.name}">Number of commits: </p>
