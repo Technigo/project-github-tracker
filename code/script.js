@@ -13,15 +13,16 @@ const getUserPicture = ()=> {
         const location = data.location;
         const userBio = data.bio;
         const url = data.followers_url;
-        const button = document.getElementById("Btn")
+        
 
         
     
 
         userInfo.innerHTML += `
-        
+         
          <img class="user-info_picture" src="${picture}" alt="Picture of gitHub user"/>
-         <div class="user-info_username">User name: ${username}</div>
+         <div class="user-whole_name"> Aleksandra Safranko</div>
+         <div class="user-info_username">${username}</div>
          <div class="user-info_location">Location: ${location}</div>
          <div class="user-info_bio">${userBio} 🐒</div>
         `
@@ -47,10 +48,10 @@ const fetchRepo = ()=> {
             projectsContainer.innerHTML += `
             
              <div class="repo-card">
-              <div>PROJECT: ${repo.name}</div>
+              <a href="${repo.html_url}">${repo.name}</a>
               <div>default branch:${repo.default_branch}</div>
-              <a href="${repo.html_url}" target="_blank">Go to "${repo.name}"</a>
               <div>most recent push:"${repo.pushed_at}"
+              <p id="commit-${repo.name}">Commites amount:</p>
             `
         });
         fetchPull(technigoRepo);
@@ -69,14 +70,31 @@ const fetchPull = (allRepo)=> {
         .then((res)=> res.json())
         .then((data)=>{
             console.log("aleksa", data);
+            const myPullRequests = data.find (
+                (pull)=>pull.user.login === repo.owner.login)
+                console.log('My Pull requests', myPullRequests);
+
+                if (myPullRequests){
+                    fetchCommits(myPullRequests.commits_url, repo.name);
+                } else {
+                    document.getElementById(`commit-${repo.name}`).innerHTML += 'No pull request';
+                    
+                }   
 
         });
         
-    
 
     });
-    
 
 };
+
+const fetchCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl)
+    .then(response => (response.json()))
+    .then(data => {
+        console.log('My commits', data)
+        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+    })
+}
 
 fetchRepo()

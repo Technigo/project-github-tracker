@@ -7,13 +7,13 @@ const config = {
     data: {
         labels: [
           'Finished projects',
-          'Future projects'
+          
         ],
         datasets: [{
           label: 'My First Dataset',
           data: [5, 20-5],
           backgroundColor: [
-            '#603F83FF',
+            `#e35809`,
             '#C7D3D4FF'
           ],
           hoverOffset: 4
