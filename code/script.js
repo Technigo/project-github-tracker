@@ -48,7 +48,7 @@ const getRepos = () => {
           }</h3>
           <a class="links" href=${
             repo.html_url
-          }>LINK TO REPOSITORY PAGE ON GITHUB</a>
+          }>LINK TO THE REPOSITORY ON GITHUB</a>
           <div class="push-date">
         <p><span class="push-title">Most recent push</span>
     ${new Date(repo.pushed_at).toDateString()} at ${repo.pushed_at.slice(
