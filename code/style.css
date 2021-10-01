@@ -7,9 +7,8 @@ body {
 hr {
   height: 2px;
   width: 80%;
-  border-style: solid #eab676;
-  border-radius: 10px;
   background-color: #eab676;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 .user-container {
@@ -18,11 +17,15 @@ hr {
   flex-direction: column;
   align-items: center;
 }
+.user-information {
+  max-width: 300px;
+}
 img {
   border-radius: 50%;
   box-shadow: 0px 0px 13px -2px #000000;
   width: 250px;
   justify-content: center;
+  border: 5px solid #eab676;
 }
 
 h1 {
@@ -116,6 +119,7 @@ canvas {
     width: 100%;
     justify-content: space-around;
   }
+
   canvas {
     max-width: 500px;
     max-height: 500px;
@@ -141,6 +145,7 @@ canvas {
   .user-information {
     flex-direction: column;
     margin-left: 50px;
+    max-width: 300px;
   }
   .header-wrapper {
     justify-content: flex-start;
@@ -160,5 +165,9 @@ canvas {
     margin-bottom: 20px;
     justify-content: flex-start;
     align-self: flex-start;
+  }
+  :hover.repo-cards {
+    box-shadow: 0px 0px 13px -2px #000000;
+    transform: translateY(-2px);
   }
 }

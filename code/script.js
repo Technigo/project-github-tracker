@@ -5,14 +5,20 @@ const USERS_URL = `https://api.github.com/users/${username}`;
 const container = document.getElementById("projects");
 const userInformation = document.getElementById("user-information");
 
+const formattedRepoName = (name) => name.replace(/-/g, " ");
+
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      //console.log(data);
+      console.log(data);
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
+
+      forkedRepos.sort(function (a, b) {
+        return new Date(b.pushed_at) - new Date(a.pushed_at);
+      });
       forkedRepos.forEach((repo) => {
         const pushedDate = new Date(repo.pushed_at).toLocaleDateString(
           "en-GB",
@@ -28,9 +34,9 @@ const getRepos = () => {
 
         container.innerHTML += `
         <div class="repo-cards">
-          <a href=${repo.html_url}><h3>${repo.name}</h3></a>
+          <a href=${repo.html_url}><h3>${formattedRepoName(repo.name)}</h3></a>
           <p>${repo.default_branch}</p>
-          <p>Recent push: ${pushedDate}</p>
+          <p>Latest update: ${pushedDate}</p>
           <p id="commit-${repo.name}"> Commits: </p>
         </div>
           `;
