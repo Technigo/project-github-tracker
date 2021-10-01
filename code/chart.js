@@ -1,6 +1,7 @@
 const ctx = document.getElementById("chart").getContext("2d");
+const allProjects = 19;
 
-const drawChart = (amount) => {
+const drawChart = (finishedProjects) => {
   const config = {
     type: "doughnut",
     data: {
@@ -8,8 +9,8 @@ const drawChart = (amount) => {
       datasets: [
         {
           label: "Technigo projects",
-          data: [amount, 19 - amount],
-          backgroundColor: ["rgb(204, 194, 193)", "rgb(107, 60, 56)"],
+          data: [finishedProjects, allProjects - finishedProjects],
+          backgroundColor: ["rgb(204, 194, 193)", "rgb(140, 100, 114)"],
           hoverOffset: 4,
         },
       ],

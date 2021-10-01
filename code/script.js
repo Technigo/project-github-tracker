@@ -9,16 +9,14 @@ const userProfile = () => {
     .then((response) => response.json())
     .then((data) => {
       profileContainer.innerHTML = `
-      <div class="icon-container">
-      <a href="${data.blog}" target="blank"><img class="linkedin-icon" src="./assets/icon.png"></a>
-    </div>  
+        <div class="icon-container">
+          <a href="${data.blog}" target="blank"><img class="linkedin-icon" src="./assets/icon.png"></a>
+        </div>  
         <div class="profile-info-container">
           <p class="profile-text">${data.name}</p>
           <p class="profile-text">Located in ${data.location}</p>
           <p class="profile-text">GitHub name: ${data.login}</p>
-        </div>
-          
-        
+        </div>  
         <div class="profile-img-container">
           <img class="profile-img" src="${data.avatar_url}"/>
         </div>
@@ -33,9 +31,12 @@ const fetchRepos = () => {
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
-      forkedRepos.sort(function (a, b) {
-        return new Date(b.pushed_at) - new Date(a.pushed_at);
+
+      // sort function (shows latest to oldest repo)
+      forkedRepos.sort(function (oldestRepo, newestRepo) {
+        return new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at);
       });
+
       forkedRepos.forEach(
         (repo) =>
           (reposContainer.innerHTML += `
