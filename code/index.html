@@ -11,23 +11,23 @@
 </head>
 
 <body>
-  <header class="header"> 
+<header class="header"> 
     <h1>GitHub Tracker</h1>
   </header>
-  
-  <main class="main">
 
+  <section class="grid-container">
   <div class="profile" id="profile"></div>
 
-  <section class="right-area">
+  <section class="repos-area">
       <h2>Project repositories:</h2>
       <div class="project-grid" id="projects">  
     </section>  
   
    <!-- This will be used to draw the chart 👇 -->
-    <div>
+    <div class='chart'>
       <canvas id="chart"></canvas>
     </div>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
@@ -35,3 +35,4 @@
   
 </body>
 </html>
+

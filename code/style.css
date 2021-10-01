@@ -1,4 +1,21 @@
+*{box-sizing: border-box;
+text-align: center;
+}
+
 body {
   background: #e9f3ff;
 }
 
+img {
+  border-radius: 50%;
+}
+
+.card {
+  border: 2px solid red;
+}
+
+.chart {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
