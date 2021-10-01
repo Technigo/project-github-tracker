@@ -73,7 +73,7 @@ const getUserInfo = () => {
         <p>Bio: ${json.bio}</p>
       </div>
       <div class="profile-image-icons">
-        <img class="profile-image" src="${json.avatar_url}"/>
+        <img class="profile-image" src="${json.avatar_url}" alt="profile image"/>
         <div class="contact-icons"> 
           <a href="https://www.linkedin.com/in/katie-wu-213a82150/" target="blank">
             <img class="icon" src="./assets/linkedin.png" alt="linkedin icon" width="16px" height="16px"/>
