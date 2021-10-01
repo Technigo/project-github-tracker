@@ -1,4 +1,3 @@
-const main = document.getElementById('projects')
 const username = document.getElementById('username')
 const profilepic = document.getElementById('profilepic')
 const projectContainer = document.getElementById('projectscontainer')
