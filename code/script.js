@@ -1,6 +1,3 @@
-
-
-
 const user = 'Asivol93'
 const REPOS_URL = `https://api.github.com/users/${user}/repos`
 const USER_URL = `https://api.github.com/users/${user}`
@@ -10,23 +7,17 @@ const userContainer = document.getElementById('userProfile')
 const projectsContainer = document.getElementById('projectsContainer')
 const userDetailContainer = document.getElementById('userDetails')
 
-
 // Get the modal
-const modal = document.getElementById("myModal")
+const modal = document.getElementById('myModal')
 // Get the button that opens the modal
 
-
 // Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0]
-
-
-
+const span = document.getElementsByClassName('close')[0]
 
 const userProfile = () => {
   fetch(USER_URL)
-  .then(res => res.json())
-  .then(data => {
-      //console.log(data);
+    .then((res) => res.json())
+    .then((data) => {
       userContainer.innerHTML += `
       <div class="user-section">
         <h2>Username: ${data.login}</h2>
@@ -43,32 +34,34 @@ const userProfile = () => {
     
 
       `
-  
-        
-    
     })
 }
 
 const fetchAll = () => {
   fetch(REPOS_URL)
-    .then(res => res.json())
-    .then(data => {
-      
+    .then((res) => res.json())
+    .then((data) => {
       const forkedRepos = data.filter(
-        (repo) => repo.fork && repo.name.startsWith('project-'))
-      forkedRepos.forEach(repo => {
-        const pushedDate = new Date(repo.pushed_at).toLocaleDateString('en-se', {  
-        hour: '2-digit',
-        minute: '2-digit',
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',           
-      }
-     
-    )
-    
-    projectsContainer.innerHTML += `
+        (repo) => repo.fork && repo.name.startsWith('project-')
+      )
+
+      forkedRepos.sort((a, b) => {
+        return new Date(b.pushed_at) - new Date(a.pushed_at)
+      })
+      forkedRepos.forEach((repo) => {
+        const pushedDate = new Date(repo.pushed_at).toLocaleDateString(
+          'en-se',
+          {
+            hour: '2-digit',
+            minute: '2-digit',
+            weekday: 'short',
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          }
+        )
+
+        projectsContainer.innerHTML += `
     <div class="repo-item">
       <div class="icon-container">
         <a href="${repo.html_url}" target="blank">
@@ -82,122 +75,77 @@ const fetchAll = () => {
       <p id="commit-${repo.name}"></p>
     </div>
     `
-    })
-      //drawTimeLine(createdAt)
+      })
+
       drawChart(forkedRepos.length)
       pullRequests(forkedRepos)
     })
-  
-    
+
     .catch(() => {
       userContainer.innerHTML = `
     <h1>Sorry we could not find any data!</h1>
-    <p>Please try again!</p>
     `
     })
-  }
-
-
+}
 
 const pullRequests = (repos) => {
-  repos.forEach(repo => {
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
-      .then(res => res.json())
-      .then(data => {
-        const myPulls = data.find(pull => pull.user.login === repo.owner.login)
-        //const COMMENTS_URL = myPulls.review_comments_url
-        //console.log(data)
-        //showComments(COMMENTS_URL)
-        //console.log(myPulls)
-        /*if (myPulls) {
-					showCommits(myPulls.commits_url, repo.name);
-				} else {
-					document.getElementById(`commit-${repo.name}`).innerHTML +=
-						'No pull request yet done :(';
-				}*/
+  repos.forEach((repo) => {
+    fetch(
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const myPulls = data.find(
+          (pull) => pull.user.login === repo.owner.login
+        )
 
-        showCommits(myPulls.commits_url, repo.name)
+        if (myPulls) {
+          showCommits(myPulls.commits_url, repo.name)
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML = `
+            <h3>No pull request done</h3>
+            <p>(either ongoing project or a group/pair project)</p>`
+        }
       })
-      
-    })
+  })
 }
 
 const showCommits = (url, myRepoName) => {
   fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    //console.log(data)
-    let commitMessage = data[data.length -1].commit.message
-    //console.log(commitMessage)
+    .then((res) => res.json())
+    .then((data) => {
+      let commitMessage = data[data.length - 1].commit.message
+      console.log(data)
 
       document.getElementById(`commit-${myRepoName}`).innerHTML += ` 
       <p>Number of commits: ${data.length}</p>
       <button id="myBtn-${myRepoName}" class="modal-button">Read commit</button>  
       `
-      document.getElementById("myModal").innerHTML += `
+      document.getElementById('myModal').innerHTML += `
       <div id="modalContent" class="modal-content">
+      <button class="close">&times;</button>
         <p class="modal-message">${myRepoName} latest commit: ${commitMessage}</p>
       </div> 
       `
-    
-    
-      
+
       const btn = document.getElementById(`myBtn-${myRepoName}`)
 
-
-      btn.onclick = function() {
+      btn.onclick = function () {
         console.log(modal)
-        document.getElementById("myModal").style.display = "block";
+        document.getElementById('myModal').style.display = 'block'
       }
 
-      document.getElementsByClassName("close")[0].onclick = function() {
-        document.getElementById("myModal").style.display = "none";
+      document.getElementsByClassName('close')[0].onclick = function () {
+        document.getElementById('myModal').style.display = 'none'
       }
-      
-      window.onclick = function(event) {
+
+      window.onclick = function (event) {
         if (event.target == modal) {
-          document.getElementById("myModal").style.display = "none";
+          document.getElementById('myModal').style.display = 'none'
         }
       }
-
     })
-    
 }
-
-/*const showComments = (repos) =>
-repos.forEach(repo => {
-  fetch(COMMENTS_URL)
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-  })
-})*/
-
-
-
 
 userProfile()
 fetchAll()
-//pullRequests()
-//showComments()
-
-
-
-
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  document.getElementById("myModal").style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    document.getElementById("myModal").style.display = "none";
-  }
-}
-
-
-
-
-

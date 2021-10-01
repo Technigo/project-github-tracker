@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Technigo GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
-  <!--Title font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-  <!--Bread font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
-</head>
-<body>
-  
- 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technigo GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--Title font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!--Bread font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
       <h1 class="header-title">Technigo GitHub Tracker</h1>
-  
-    <div id="userProfile" class="user-profile">
-    </div>
-    
-  </header>
-<main id="projects">
-  <h2 class="project-title">Projects</h2>
-    <div id="projectsContainer" class="projects-container">
-      
-      
 
-      <div id="myModal" class="modal">
-        <button class="close">&times;</button>
+      <div id="userProfile" class="user-profile"></div>
+    </header>
+    <main id="projects">
+      <h2 class="project-title">Projects</h2>
+      <div id="projectsContainer" class="projects-container">
+        <div id="myModal" class="modal"></div>
       </div>
+    </main>
 
+    <!-- This will be used to draw the chart 👇 -->
+    <div class="chart-container">
+      <h2 class="chart-title">
+        Follow my project progress at Technigo Frontend Boot camp
+      </h2>
+      <p>
+        During the boot camp we will have 19 weekly projects and you can follow
+        the progress in the chart below
+      </p>
+      <canvas class="chart-canvas" id="chart"></canvas>
     </div>
-      
-    
-  </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <div class="canvas-container">
-    <h2 class="chart-title">Follow my project progress at Technigo Frontend Boot camp</h2>
-    <canvas class="chart-canvas" id="chart"></canvas>
-    <canvas id="chart2"></canvas>
-  </div>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
