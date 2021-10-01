@@ -8,25 +8,29 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
 
-  <section id="profile" class="profile">
-    <!-- <div id="gitHubAvatar"></div>
-    <div id="profileName"></div> -->
-
+  <header class="header">
+    <h3>GitHub Tracker</h3>
+  </header>
+  
+  <section class="profile-wrapper">
+    <div id="profile" class="profile"></div>
+      <div class="chart-section">
+        <div class="chart-wrapper">
+          <canvas id="chart" class="chart"></canvas>
+        </div>
+        <div class="headline-wrapper">
+          <p class="text">Projects</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <div class="chart-wrapper">
-    <canvas id="chart" class="chart"></canvas>
-  </div>
-
-  <h2>My Technigo projects</h2>
-
-  <main id="projects"></main>
+  <main id="projects" class="projects-wrapper"></main>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

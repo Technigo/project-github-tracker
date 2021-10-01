@@ -6,17 +6,28 @@ const drawChart = (amount) => {
         data: {
             labels: [
               'Finished projects',
-              'Projects to go'
+              'Projects to go',
             ],
             datasets: [{
               label: 'Technigo progress',
               data: [amount, 20-amount],
               backgroundColor: [
-                'rgb(255, 99, 132)',
-                'rgb(54, 162, 235)'
+                '#F59B99',
+                '#FBD9D9'
+              ],
+              borderColor: [
+                'transparent',
+                'transparent'
               ],
               hoverOffset: 4
             }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: '',
+            }
+          }
         }
     }
     const myChart = new Chart(ctx, config)
