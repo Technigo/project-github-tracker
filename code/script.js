@@ -1,16 +1,25 @@
 "use strict";
+// Settig my user name
 const USER = "Alisebrink";
+// getting my repos
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
-const USER_URL = `https://api.github.com/users/${USER}`;
+// getting my user info
+const USER_URL = `https://api.github.com/users/${USER}`; 
 
+// getting the container for my projects
 const projectsContainer = document.getElementById("projects");
-const userDataContainer = document.getElementById("user-data");
+// getting the container for my user data
+const userDataContainer = document.getElementById("user-data"); 
 
+// My function that fetches the user data from the GitHub API
 const presentUserData = () => {
-  fetch(USER_URL)
+  // fetching using my global variable
+  fetch(USER_URL) 
+    // This first then handles the json data and returns it
     .then((response) => {
       return response.json();
     })
+    // The second one I use to present my user data with the innerHTML functionality
     .then((json) => {
       userDataContainer.innerHTML = `
       <header class="my-header"><h1>Welcome to my Github tracker</h1><span>X</span></header>
@@ -28,29 +37,43 @@ const presentUserData = () => {
     });
 };
 
+// This function is used to present the repo data for my projects
 const presentRepoData = () => {
-  fetch(REPOS_URL)
+  // fetching my data using the global variable
+  fetch(REPOS_URL) 
     .then((response) => {
-      return response.json();
+      // this handles the json data that is fetched from the api
+      return response.json(); 
     })
     .then((json) => {
+      // creating a filter that filters out every repo that has been forked and starts with "project-"
       const technigoRepos = json.filter(
         (project) => project.fork && project.name.startsWith("project-")
       );
-
+      
+      // The data that is fetched from the API is put in an array and I use my forEach loop to present every project
       technigoRepos.forEach((project, position) => {
+        // creates a variable to use for the current project
         let currentProject = project.name;
+        // creates a new url to fetch from where i use the current project and my user name
         const COMMIT_COUNT_URL = `https://api.github.com/repos/${USER}/${currentProject}/commits`;
-        fetch(COMMIT_COUNT_URL)
+        // fetches the data from the API with the variable above
+        // I do a fetch within the fetch because I want to use the data from the first fetch to create the url for the second fetch
+        fetch(COMMIT_COUNT_URL) 
           .then((response) => {
-            return response.json();
+            // this return handles the json data
+            return response.json(); 
           })
           .then((json) => {
+            // This filter outs the commits to only show the ones that has been made by me
             const filteredCommits = json.filter(
               (project) => project.commit.committer.name === "Linnea Isebrink"
             );
+            // This is the date and it gets the latest post
             let commitDate = filteredCommits[0].commit.author.date;
+            // This is the commit message and it gets the latest
             let commitMessage = filteredCommits[0].commit.message;
+            // I present the data with innerHTML
             projectsContainer.innerHTML += `
             <div class="project" id="${position}">
             <div class="project-header"><h3>${
@@ -64,25 +87,28 @@ const presentRepoData = () => {
                 <p>There has been ${
                   filteredCommits.length - 1
                 } commits</p>
-                <p>Commit date: ${commitDate.slice(
+                <p>Commit date: ${commitDate.slice( // I use slice() to make the date look prettier
                   0,
                   10
-                )} at ${commitDate.slice(11, 16)}</p>
+                )} at ${commitDate.slice(11, 16) // I use slice to make the time look prettier
+                }</p> 
                 <p>Message: ${commitMessage}</p>
                 </div>
             </div>
         `;
-            document.getElementById(position).addEventListener("click", deleteElement);
+            // Failed attempt to make a click effect
+            // document.getElementById(position).addEventListener("click", deleteElement);
           });
       });
       drawChart(technigoRepos.length);
     });
 };
 
+// This is a failed attempt to make a click function
 // A function that deletes the box you click on
-const deleteElement = () => {
+/* const deleteElement = () => {
   document.getElementById(project).remove(this);
-};
+}; */
 
 presentRepoData();
 presentUserData();

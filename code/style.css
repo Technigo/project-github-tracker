@@ -39,6 +39,7 @@ h2 {
   z-index: 5;
 }
 
+/* Placing the X-button with positon:absolute */
 .my-header span {
   position: absolute;
   right: 1px;
@@ -51,6 +52,7 @@ h2 {
   cursor: pointer;
 }
 
+/* Placing the X-button with positon:absolute */
 .project-header span {
   position: absolute;
   right: 1px;
@@ -63,6 +65,7 @@ h2 {
   cursor: pointer;
 }
 
+/* Placing the X-button with positon:absolute */
 .chart-header span {
   position: absolute;
   right: 1px;
@@ -75,6 +78,7 @@ h2 {
   cursor: pointer;
 }
 
+/* Desktop icons are not showing on mobile */
 .icon-container {
   display: none;
 }
@@ -155,6 +159,7 @@ h2 {
   margin-bottom:60px;
 }
 
+/* Fixing my footer at the bottom of the page with position:fixed */
 .my-footer {
   background: #c0c0c0;
   border: 2px outset;
