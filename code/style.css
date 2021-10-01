@@ -33,6 +33,8 @@ a {
   text-align: center;
   text-decoration: none;
   line-height: 2.5em;
+  text-transform:capitalize;
+
 }
 
 a:hover {
