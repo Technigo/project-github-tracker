@@ -27,6 +27,7 @@ const getUserData = (user) => {
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       userContainer.innerHTML = ``;
 
       userContainer.innerHTML = `
@@ -50,7 +51,9 @@ const getUserData = (user) => {
             .slice(4)}</h3>
         </div>
       <div class="user-img-box">
+        <a href="${data.html_url}" target="_blank">
         <img class="user-img" src="${data.avatar_url}"/>
+        </a>
       </div>
       `;
     })
@@ -76,13 +79,11 @@ const fetchRepos = (user) => {
         return new Date(a.pushed_at) - new Date(b.pushed_at);
       });
 
-      console.log(forkedRepos);
       forkedRepos.forEach(
         (repo) =>
           (reposSubContainer.innerHTML += `
           <div class="repo-box">
           
-           
             <a href="${
               repo.html_url
             }" target="blank"> <h3 class="repo-name"><img class="repo-book-img"src="images/book.png" alt="book"/>
@@ -102,6 +103,7 @@ const fetchRepos = (user) => {
             <p>Commits:<span id="commit-${
               repo.name
             }" class="repo-commit"> </span></p>
+
           </div>
           `)
       );
@@ -117,8 +119,6 @@ const fetchRepos = (user) => {
 
 //Get all the PRs for each project.
 const getPullRequests = (repos) => {
-  console.log(repos);
-
   repos.forEach((repo) => {
     fetch(
       `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
@@ -145,7 +145,6 @@ const showCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
