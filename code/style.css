@@ -1,31 +1,25 @@
 
 html {
   box-sizing: border-box;
-  } */
+  }
 
 *:before, *:after {
   box-sizing: inherit;
   } 
 
-
-    /* background: linear-gradient(45deg, #1a1a1a 60%, #111 60%);
-  background-repeat: no-repeat; */
-
 body {
   background-color: #0d1117;
   font-family: poppins;
   color: #c9d1d9;
-  /* padding-right: 5%;
-  padding-left: 5%; */
   padding-bottom: 7%;
   margin: 0;
-  /* max-width: 90%; */
 }
 
 .main {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .header {
@@ -38,20 +32,20 @@ body {
 }
 
 .github-logo {
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   margin-right: 5%;
   margin-bottom: 0;
 }
 
 h1 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 300;
   padding-left: 5%;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 100;
   margin-top: 0;
 }
@@ -84,19 +78,16 @@ a:hover {
   text-decoration-line: underline;
 }
 
+.main {
+  padding-right: 5%;
+  padding-left: 5%;
+}
 
 /* LEFT AREA */
 
-
 .left-area {
   width: 25%;
-  align-content: center;
-  padding-left: 5%;
   padding-top: 4rem;
-}
-
-.profile-area {
-  flex-direction: column;
 }
 
 .user-name {
@@ -138,42 +129,96 @@ img {
   width: 100%;
   padding-left: 3rem;
   padding-top: 4rem;
-  padding-right: 5%;
 }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
+  grid-gap: 1.5rem;
 }
-
 
 .project-card {
   background-color: #161b22;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1.5rem 1rem 1.5rem 1.5rem;
   border-radius: 12px;
   min-width: auto;
   border: 1px solid #31363C;
 }
 
-/* // Line breaks the url, needed when I showed the url // */
+.open-modal {
+  float: right;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #21262d;
+  border: none;
+  
+}
 
-/* .break {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  hyphens: auto;
-  font-size: 1rem;
-} */
+.link-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+}
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-area {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    padding-top: 2rem;
+    width: 100%;
+  }
+
+  .user {
+    font-size: 1.5rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .profile {
+    width: 50%;
+    padding-right: 1.5rem;
+  }
+
+  .chart {
+    width: 50%;
+  }
+
+  .right-area {
+    padding-left: 0;
+    padding-top: 3rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+  }
+
+}
 
 
  @media (max-width: 767px) {
 
   body {
-    padding: 0;
-    /* padding-right: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 3rem; */
     max-width: 100%;
   }
 
@@ -214,6 +259,7 @@ img {
   .main {
     flex-direction: column;
     margin: 1rem;
+    padding: 0;
   }
 
   .left-area {
@@ -265,95 +311,6 @@ img {
     padding: 1rem;
     border-radius: 12px;
     width: auto;
-  }
-
-
-  @media (min-width: 768px) and (max-width: 991px) {
-
-    .header {
-      border-bottom: 0.5px solid #31363C;
-      padding: 2rem;
-    }
-  
-    .github-logo {
-      width: 64px;
-      height: 64px;
-      margin: 0;
-    }
-    
-    h1 {
-      font-size: 1.5rem;
-      padding: 0;
-    }
-  
-    h2 {
-      font-size: 1rem;
-    }
-  
-    h3 {
-      margin-top: 0;
-    }
-  
-    h4 {
-      font-size: 14px;
-    }
-  
-    .break {
-      font-size: 14px;
-    }
-  
-    .main {
-      flex-direction: column;
-      margin: 1rem;
-    }
-  
-    /* .left-area {
-      width: 100%;
-      align-content: flex-start;
-    } */
-  
-    .profile-area {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-    }
-  
-    /* .profile h2 {
-      font-size: 1.5rem;
-    } */
-  
-    .user {
-      display: flex;
-      flex-direction: column;
-      margin-left: 1rem;
-    }
-  
-    img {
-      border-radius: 50%;
-      width: 96px;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-  
-    /* .chart {
-      padding-top: 1rem;
-    } */
-  
-    .right-area {
-      /* padding-left: 0; */
-      padding: 2rem;
-    }
-    
-    .project-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    
-    .project-card {
-      padding: 1rem;
-    }
-  
-
   }
   
  }

@@ -12,11 +12,11 @@ const config = {
       'Projects left',
     ],
     datasets: [{
-      label: 'Projects during Bootcamp',
+      label: 'Bootcamp projects',
       data: [amount, 19-amount],
-      barPercentage: 10,
+      barPercentage: 5,
       barThickness: 100,
-      maxBarThickness: 100,
+      maxBarThickness: 150,
       borderRadius: 4,
       // minBarLength: 10,
       backgroundColor: [
@@ -30,33 +30,3 @@ const config = {
 }
 const theChart = new Chart (ctx, config)
 }
-
-
-
-//DOUGHNUT CHART//
-
-  // const drawChart = (amount)=> {
-  //   const config = {
-  //       type: 'doughnut',
-  //       data: {
-  //           labels: [
-  //             'Finished projects',
-  //             'Projects left',
-  //           ],
-  //           datasets: [{
-  //             label: 'My First Dataset',
-  //             data: [amount, 20-amount],
-  //             backgroundColor: [
-  //               'rgb(255, 99, 132)',
-  //               'rgb(54, 162, 235)',
-  //             ],
-  //             hoverOffset: 4
-  //           }]
-  //         },
-  //     };
-      
-  //   const theChart = new Chart (ctx, config)
-  // }
-
-
-  
