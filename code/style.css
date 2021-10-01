@@ -10,6 +10,8 @@ body {
   line-height: 1.5;
 }
 
+/* Hero */
+
 .header {
   height: 90vh;
   width: auto;
@@ -52,6 +54,8 @@ h2 {
 .user {
   text-shadow: 5px 5px 10px black;
 }
+
+/* Main Section */
 
 .projects {
   display: flex;
@@ -117,6 +121,8 @@ h2 {
 .chart-container {
   max-width: 400px;
 }
+
+/* Media Queries */
 
 @media (min-width: 768px) {
   .projects {

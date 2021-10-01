@@ -5,11 +5,12 @@ const USER_URL = `https://api.github.com/users/${USER}`;
 const projectContainer = document.getElementById("projects");
 const profileContainer = document.getElementById("userProfile");
 
+// function to fetch and display user profile info
 const fetchUser = () => {
   fetch(USER_URL)
     .then((res) => res.json())
     .then((data) => {
-      profileContainer.innerHTML = /*html*/ `
+      profileContainer.innerHTML = `
       <section class="user">
       <img class="picture" src="${data.avatar_url}" alt="profile picture" />
       <h2>Hi I'm ${data.name}</h2>
@@ -20,19 +21,18 @@ const fetchUser = () => {
     });
 };
 
+//function to fetch and display repos
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data);
-
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
-        // (repo) => repo.fork === true && repo.name.includes('project-')
       );
+
       forkedRepos.forEach(
         (repo) =>
-          (projectContainer.innerHTML += /*html*/ `
+          (projectContainer.innerHTML += `
         <div class="repo-card" id=${repo.name}>
           <a href="${repo.html_url}">${repo.name}</a>
 				  <p>Branch: ${repo.default_branch} </p>
@@ -46,6 +46,7 @@ const getRepos = () => {
     });
 };
 
+//function to fetch pull
 const getPullRequests = (repos) => {
   repos.forEach((repo) => {
     fetch(
@@ -53,10 +54,13 @@ const getPullRequests = (repos) => {
     )
       .then((res) => res.json())
       .then((data) => {
+        //compares repo user info to pull user info and title with my name
         const userPullRequests = data.find(
-          (pull) => pull.user.login === repo.owner.login
+          (pull) =>
+            repo.owner.login === pull.user.login ||
+            pull.title.includes("Amanda")
         );
-
+        // displays number of commits if a pull request has been made, if not it displays message
         if (userPullRequests) {
           fetchCommits(userPullRequests.commits_url, repo.name);
         } else {
@@ -67,6 +71,7 @@ const getPullRequests = (repos) => {
   });
 };
 
+//function to fetch and display commits
 const fetchCommits = (myCommitsUrl, myRepoName) => {
   fetch(myCommitsUrl)
     .then((res) => res.json())
