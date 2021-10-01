@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <title>GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Ru's GitHub Tracker</h1>
+  </div>
+</div>
+
+<body>
+
+  <div id="userProfile" class="user-container"></div>
+  <hr>
+  <h2>My projects</h2>
+
+  <section class="checkbox-container">
+    <h4>Filter by language:</h4>
+    <form id="language" class="language-checkbox">
+      <div>
+        <input type="checkbox" id="HTML" value="HTML" checked>
+        <label for="HTML">HTML</label>
+      </div>
+      <div>
+        <input type="checkbox" id="CSS" value="CSS" checked>
+        <label for="CSS">CSS</label>
+      </div>
+      <div>
+        <input type="checkbox" id="JavaScript" value="JavaScript" checked>
+        <label for="JavaScript">JavaScript</label>
+      </div>
+    </form>
+  </section>
+
+  <main id="projects" class="projects-container"></main>
+
+  <section class="chart-container">
+    <p>Overview of finished projects</p>
+    <canvas id="myChart" class="chart"></canvas>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
+<footer>
+  <h5 class="creator">Ru's</h5>
+  <img src="./img/Haru Ahn.png" alt="creator-logo" class="logo">
+</footer>
+
 </html>

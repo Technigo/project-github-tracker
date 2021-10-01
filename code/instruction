@@ -1,0 +1,56 @@
+//### What to include
+
+//- A list of all repos that are forked ones from Technigo
+//- Your username and profile picture
+//- Most recent update (push) for each repo
+//- Name of your default branch for each repo
+//- URL to the actual GitHub repo
+//- Number of commit messages for each repo
+//- All pull requests
+//- A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+
+//### Where to begin
+
+//1. To get started with the project, **fetch all of your repos and log them to the console**.
+//2. We only care about the ones you forked from Technigo, so be sure to filter out and only show the *forked* ones. In the response you'll get, there'll be a "flag" in each repo that says if it is a *fork* or not. We can use that property to filter out only the *forks*. PS. If you haven't already, fork any group projects that you are not the owner of, so that these also show up amongst your repos.
+//3. Then it's time to filter out only the forks from *Technigo*. Let's use the fact that Technigo projects *start* with 'project-' and filter based on that.
+
+//Apart from this you also have to fetch pull requests and commits, but a suggestion is to work with one thing at a time since the API has a rate limit of 60 calls per hour. Here are some hints that might come in useful:
+
+
+
+//When fetching the pull requests we need to do a fetch for each repo. Here's an example of how you could do it.
+//Remember to pass along your filtered repos as an argument when
+//you are calling this function
+
+const getPullRequests = (repos) => {
+  //Get all the PRs for each project.
+  repos.forEach(repo => {
+    fetch('https://api.github.com/repos/technigo/' + repo.name + '/pulls')
+    .then(res => res.json())
+    .then(data => {
+			//TODO
+	    //1. Find only the PR that you made by comparing pull.user.login
+			// with repo.owner.login
+			//2. Now you're able to get the commits for each repo by using
+			// the commits_url as an argument to call another function
+			//3. You can also get the comments for each PR by calling
+			// another function with the review_comments_url as argument
+		})
+  })
+}
+//Example of setting a dynamic id
+//Let's say you have a function where you fetch data. You create your HTML elements inside this function and inject your data. All good so far. But what if you create another function that *also* should inject some data in the HTML elements created in another function 🤔  We could set an `id` when we create the element, but what if the elements are created in a loop? They can't all have the same `id`. The solution is: dynamic `id`!
+
+repos.forEach(repo => {
+    document.getElementById('container').innerHTML += `
+      <div class="repo" id=${repo.name}>
+        <h2>${repo.name}</h2>
+      </div>
+    `
+  })
+
+  //That way, we can reach it by DOM-selector in another function, as long as we have the `repo.name`
+  document.getElementById(repoName).innerHTML += 'New data to inject'
+
+//When you have the data that you need from the API, it's time to display it in a good way on the page. Think about how you want your page to look. Do you want to use an HTML table? Maybe the repos could be displayed in a grid format, with all the information inside? Maybe you want to make it look as closely to GitHub as possible? 

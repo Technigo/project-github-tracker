@@ -1,3 +1,230 @@
+html {
+  font-family: 'Libre Baskerville', serif;
+  background: rgb(204, 202, 194);
+}
+
 body {
-  background: #FFECE9;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.hero-image {
+  background-image: url("./img/hero\ image.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  border: transparent;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(204, 202, 194);
+  font-size: 30px;
+}
+
+.user-container {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(26, 26, 24, 0.849);
+}
+
+img.avatar {
+  border-radius: 50%;
+  max-width: 115px;
+  margin-top: -13vh;
+  border: solid rgb(204, 202, 194) 5px;
+}
+
+img.github-icon, img.linkedin-icon, img.facebook-icon {
+  opacity: 0.75;
+  width: 40px;
+  margin-top: 1vh;
+}
+
+hr {
+  width: 95%;
+  height: 5px;
+  background-color: rgba(26, 26, 24, 0.637);
+  border: transparent;
+  border-radius: 5px;
+}
+
+a:link {
+  text-decoration: none;
+  color: rgb(204, 202, 194);
+  font-weight: bold;
+}
+
+a:visited {
+  text-decoration: none;
+  color: #BFADA3;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #BFADA3;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px;
+  color: rgba(26, 26, 24, 0.849);
+}
+
+.ckeckbox-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
+  border: transparent;
+  border-radius: 10px;
+  background-color: rgba(26, 26, 24, 0.74);
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 12px;
+  padding: 10px;
+  color: rgb(204, 202, 194);
+}
+
+p {
+  margin-top: 1vh;
+  margin-bottom: 0vh;
+  line-height: 4vh;
+}
+
+.chart-container {
+  align-self: center;
+  text-align: center;
+  font-size: 18px;
+  padding: 20px;
+  color: rgba(26, 26, 24, 0.849);
+  font-weight: bold;
+}
+
+#myChart.chart {
+  display: initial !important;
+  width: 300px;
+}
+
+footer {
+  flex-direction: column;
+  align-self: center;
+  text-align: center;
+}
+
+.creator {
+  margin-bottom: 1vh;
+  color: rgba(26, 26, 24, 0.699);
+}
+
+.logo {
+  width: 150px;
+}
+
+@media screen and (min-width: 425px) {
+  .user-container {
+    font-size: 20px;
+  }
+  img.avatar {
+    margin-top: -13vh;
+    max-width: 190px;
+  }
+  img.github-icon, img.linkedin-icon, img.facebook-icon {
+    transition: 0.5s;
+  }
+  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+    transform: scale(1.2);
+  }
+  h2 {
+    font-size: 20px;
+  }
+  p {
+    line-height: 3vh;
+  }
+  .projects-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
+    font-size: 16px;
+    width: 40%;
+    transition: 0.5s;
+  }
+  #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
+    transform: scale(1.04);
+  }
+  .chart-container {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .user-container {
+    display: flex;
+  }
+  img.avatar {
+    margin-top: -15vh;
+    max-width: 216px;
+    margin-left: -0.5vh;
+    transition: 0.5s;
+  }
+  p.full-name, p.username, p.location {
+    margin-right: 2vh;
+    align-self: center;
+    margin-top: 3vh;
+  }
+  p.location {
+    margin-right: 80vh !important;
+  }
+  img.github-icon, img.linkedin-icon, img.facebook-icon {
+    margin-right: 1vh;
+    margin-top: 3.5vh;
+    transition: 0.5s;
+  }
+  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+    transform: scale(1.2);
+  }
+  hr {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+  }
+  h2 {
+    margin-bottom: 2vh;
+  }
+  p {
+    line-height: 3vh;
+  }
+  #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
+    transition: 0.5s;
+    width: 30%;
+  }
+  #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
+    transform: scale(1.04);
+  }
+  img.avatar {
+    margin-top: -15vh;
+    max-width: 216px;
+    margin-left: -1vh;
+  }
+  #myChart.chart {
+    width: 370px !important;
+  }
 }
