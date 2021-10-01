@@ -1,9 +1,33 @@
 const USER = 'KaraHowes'
+const USER_URL = `https://api.github.com/users/${USER}`
 const repoURL = `https://api.github.com/users/${USER}/repos`
+const profileContainer = document.getElementById('profile-container')
 const projectsContainer = document.getElementById('projects')
 const cardsContainer = document.getElementById('cards-container')
+const profileText = document.getElementById('profile-text')
+const profileImage = document.getElementById('profile-image') 
 
-
+const userProfile = () => {
+  fetch (USER_URL)
+  .then (response => response.json())
+  .then (data => {
+    console.log ('profile', data)
+    profileContainer.innerHTML+= `
+    <div class="profile-wrapper" id="profile-wrapper">
+    <div class="profile-photo" id=" profile-image">
+      <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
+    </div>
+    <div class="profile-username" id ="profile-username">
+      <h1>${data.name}</h1>
+      <h2>${data.login}</h1>
+    </div>
+  </div>
+  <div class="profile-text" id="profile-text">
+    <p> ${data.bio}</p>
+  </div>`
+  })
+}
+userProfile()
 
 const getRepos = ()=>{
     // This function fetches the data from the Githug API
@@ -62,9 +86,14 @@ const getPullRequests = (forkedProjects) => {
         .then((data) => {
             //console.log(data)
             const myPullRequests = data.find(pull => pull.user.login === repo.owner.login)
-            //console.log('howdy', myPullRequests)
-          
-            getCommits(myPullRequests.commits_url, repo.name) 
+           
+          if (myPullRequests) {
+            getCommits(myPullRequests.commits_url, repo.name)
+          } else {
+            document.getElementById(`commit-${repo.name}`).innerHTML =
+            'Sorry, no pull request done yet'
+          }
+             
         })
 
       
@@ -77,7 +106,7 @@ const getCommits = (myCommitsUrl, myRepoName) => {
   .then((response) => response.json())
   .then ((data) => {
 
-    console.log(data)
+    //console.log(data)
     document.getElementById(`commit-${myRepoName}`).innerHTML+=data.length
 
   }
