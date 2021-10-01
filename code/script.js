@@ -69,11 +69,10 @@ const getPR = (repos) => {
       .then((data) => {
         // console.log(data.review_comments_url)
         const myPR = data.find((pull) => pull.user.login === repo.owner.login)
-        const myCommits = myPR.commits_url
         if (myPR) {
-          getCommits(myCommits, repo.name)
+          getCommits(myPR.commits_url, repo.name)
         } else {
-          document.getElementById(`commit-${repo.name}`).innerHTML +=
+          document.getElementById(`commit-${repo.name}`).innerHTML =
             'No pull request yet done :('
         }
       })

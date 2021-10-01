@@ -208,22 +208,23 @@ a.button1:hover {
     align-items: center;
     justify-content: center;
     display: flex;
-    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-direction: column;
   }
 
   .repo-cards {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column-reverse;
     background-color: #8d86c9;
-    max-height: 200px;
-    min-width: 50%;
+    width: 80%;
     margin: 1em;
   }
 
   .card-info {
-    margin: 5px;
+    margin: 10px;
+    font-size: 1em;
   }
 
   .chart-container {
