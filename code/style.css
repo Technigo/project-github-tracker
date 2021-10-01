@@ -17,8 +17,7 @@ body {
 
 header {
   display: flex;
-  padding: 16px;
-  font-size: 14px;
+  font-size: 9px;
   line-height: 1.5;
   color: white;
   background-color: black;
@@ -28,7 +27,8 @@ header {
 
 .fab {
   color: white;
-  font-size: 32px;
+  font-size: 22px;
+  margin-right: 4px;
 }
 
 
@@ -115,8 +115,9 @@ header {
 
 /* CHART */
 .chart {
-  width: 210px;
-  height: 210px;
+  margin-left: 16px;
+  width: 330px;
+  height: 165px;
 }
 
 /* ***********MEDIA QUERIES*************** */
@@ -124,9 +125,15 @@ header {
 /* TABLET */
 @media (min-width: 667px) {
 
+  header {
+    justify-content: flex-start;
+    padding-left: 16px;
+  }
+
+
+
   main {
-    display:flex;
-    
+    display:flex;    
   }
 
   .user {
@@ -159,8 +166,8 @@ header {
   }
 
   .chart {
-    width: 258px;
-    height: 258px;
+    width: 380px;
+    height: 190px;
   }
 
 }

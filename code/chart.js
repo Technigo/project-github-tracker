@@ -18,9 +18,16 @@ const drawChart = (doneProjects) => {
 							'rgb(120, 129, 131)',
 							'rgb(198, 207, 215)',
 							],
-							hoverOffset: 2
-					}]
+							/* hoverOffset: 5 */
+					}],
 			},
+			options: {
+				plugins: {
+					legend: {
+						position: 'right',
+					}
+				}
+			}
 		};
 
 	//rendering the chart in the browser/ newChart(where to put it, what to put)

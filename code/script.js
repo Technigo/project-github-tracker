@@ -5,7 +5,7 @@ const userSection = document.getElementById("user-section")
 const options = {
 	method: 'GET',
 	headers: {
-		Authorization: `token xxx`
+		Authorization: `token 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`
 	},
 };
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
@@ -46,9 +46,9 @@ const drawProjects = (forkedRepositories) => {
 			<div class="projects-div" id="projects">
 				<a href="${repo.html_url}">${repo.name}</a>
 				<p>default branch: ${repo.default_branch}</p>
-				<p>Last push: ${new Date(repo.pushed_at).toDateString([], { Style: "short" })}</p>
+				<p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
 				<p class="noOfCommits" id="commit-${repo.name}">Commits: 0</p>
-        <ul id="commitMessages-${repo.name}"></ul>
+        		<ul id="commitMessages-${repo.name}"></ul>
 			</div>	
 		`;
 
