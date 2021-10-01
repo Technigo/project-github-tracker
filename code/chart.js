@@ -1,10 +1,4 @@
-//DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
-
-console.log('hello from the chart.js')
-
-//"Draw" the chart here 👇
-
 
 const drawChart = (amount) => {
 const config = {
@@ -14,7 +8,7 @@ const config = {
           'Projects done',
           'Projects left',
           'Projects in total'
-          //'Blue'
+    
         ],
         datasets: [{
           label: 'My Projects',
@@ -28,10 +22,6 @@ const config = {
         }]
       },
     };
-
-
-
+    
 const repoChart = new Chart(ctx, config);
 }
-
-

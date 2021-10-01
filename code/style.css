@@ -140,21 +140,7 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
-
-  .user-name {
-    text-align: center;
-  }
   
-  .profile-pic {
-    width: 400px;
-    border-radius: 50%;
-  }
-  
-  .chart-box {
-    width: 400px;
-    padding: 20px;
-  }
-
   .github-project {
     display: grid;
     grid-template-columns: 1fr 1fr;
