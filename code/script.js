@@ -54,7 +54,7 @@ const getPullRequests = (repos) => {
           getCommits(filteredPull.commits_url, repo.name);
           getReview(filteredPull.review_comments_url, repo.name);
         } else {
-          document.getElementById(`commits-${repo.name}`).innerHTML = "No pull request made";
+          document.getElementById(`commits-${repo.name}`).innerHTML = "No pull request";
         }
       });
   });

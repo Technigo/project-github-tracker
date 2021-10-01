@@ -6,13 +6,13 @@ const drawChart = (numberOfProjects) => {
   const config = {
     type: "doughnut",
     data: {
-      labels: ["Finished projects", "Projects left"], //Change the label
+      labels: ["Finished projects", "Projects left"],
       datasets: [
         {
-          label: "My First Dataset", //Change the label
-          data: [numberOfProjects, 19 - numberOfProjects], // Change the data
+          label: "Technigo Projects",
+          data: [numberOfProjects, 19 - numberOfProjects],
           backgroundColor: ["rgb(255, 99, 132)", "rgb(255, 205, 86)"],
-          hoverOffset: 4,
+          hoverOffset: 5,
         },
       ],
     },
