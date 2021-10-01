@@ -1,6 +1,6 @@
 html {
   font-family: 'Libre Baskerville', serif;
-  background: rgb(204, 202, 194);
+  background: #FFD56B;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 }
 
 .hero-image {
-  background-image: url("./img/hero\ image.png");
+  background-image: url("./img/hero\ image.jpg");
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -27,7 +27,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: rgb(204, 202, 194);
+  color: #FFD56B;
   font-size: 30px;
 }
 
@@ -35,17 +35,17 @@ body {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
-  color: rgba(26, 26, 24, 0.849);
+  color: black;
 }
 
 img.avatar {
   border-radius: 50%;
   max-width: 115px;
   margin-top: -13vh;
-  border: solid rgb(204, 202, 194) 5px;
+  border: solid #939B62 5px;
 }
 
-img.github-icon, img.linkedin-icon, img.facebook-icon {
+img.github-icon {
   opacity: 0.75;
   width: 40px;
   margin-top: 1vh;
@@ -54,7 +54,7 @@ img.github-icon, img.linkedin-icon, img.facebook-icon {
 hr {
   width: 95%;
   height: 5px;
-  background-color: rgba(26, 26, 24, 0.637);
+  background-color: #939B62;
   border: transparent;
   border-radius: 5px;
 }
@@ -67,12 +67,12 @@ a:link {
 
 a:visited {
   text-decoration: none;
-  color: #BFADA3;
+  color: #FFB26B;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #BFADA3;
+  color:beige;
   font-weight: bold;
 }
 
@@ -80,10 +80,10 @@ h2 {
   text-align: center;
   font-size: 18px;
   margin: 10px;
-  color: rgba(26, 26, 24, 0.849);
+  color: black;
 }
 
-.ckeckbox-container {
+.checkbox-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -93,7 +93,7 @@ h2 {
 #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
   border: transparent;
   border-radius: 10px;
-  background-color: rgba(26, 26, 24, 0.74);
+  background-color: #939B62;
   text-align: center;
   font-size: 14px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -113,12 +113,12 @@ p {
   text-align: center;
   font-size: 18px;
   padding: 20px;
-  color: rgba(26, 26, 24, 0.849);
+  color: black;
   font-weight: bold;
 }
 
 #myChart.chart {
-  display: initial !important;
+  display: initial;
   width: 300px;
 }
 
@@ -126,11 +126,6 @@ footer {
   flex-direction: column;
   align-self: center;
   text-align: center;
-}
-
-.creator {
-  margin-bottom: 1vh;
-  color: rgba(26, 26, 24, 0.699);
 }
 
 .logo {
@@ -145,10 +140,10 @@ footer {
     margin-top: -13vh;
     max-width: 190px;
   }
-  img.github-icon, img.linkedin-icon, img.facebook-icon {
+  img.github-icon{
     transition: 0.5s;
   }
-  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+  img.github-icon:hover {
     transform: scale(1.2);
   }
   h2 {
@@ -192,14 +187,14 @@ footer {
     margin-top: 3vh;
   }
   p.location {
-    margin-right: 80vh !important;
+    margin-right: 80vh;
   }
-  img.github-icon, img.linkedin-icon, img.facebook-icon {
+  img.github-icon{
     margin-right: 1vh;
     margin-top: 3.5vh;
     transition: 0.5s;
   }
-  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+  img.github-icon:hover {
     transform: scale(1.2);
   }
   hr {
@@ -225,6 +220,6 @@ footer {
     margin-left: -1vh;
   }
   #myChart.chart {
-    width: 370px !important;
+    width: 370px;
   }
 }

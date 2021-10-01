@@ -15,8 +15,8 @@ const drawChart = (amount) => {
                 label: ['Finished Projects', 'Projects Left'],
                 data: [amount, 19 - amount],
                 backgroundColor: [
-                    '#BFADA3',
-                    '#504746',
+                    '#FFB26B',
+                    '#939B62',
                 ],
                 hoverOffset: 4
             }]
