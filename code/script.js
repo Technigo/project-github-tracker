@@ -4,14 +4,16 @@ const USER_URL = `http://api.github.com/users/${USER}`;
 
 
 const projectContainer = document.getElementById('projects');
+const profileContainer = document.getElementById('profile');
+
 
 const getProfile = () => {
     fetch(USER_URL)
     .then((res) => res.json())
     .then((data) => {
         console.log('ME DATA', data)
-        projectContainer.innerHTML = `
-    <div>
+        profileContainer.innerHTML = `
+    <div class="profile-box">
         <img src ="${data.avatar_url}" alt ="avatar picture" />
         <h2>Github: <a href="${data.html_url}">${data.login}</h2></a>
         <h3>${data.name}</h3>
@@ -24,7 +26,6 @@ const getRepos = () => {
     fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-    console.log('SHOW ME THE DATA', data)
 
     data.forEach (repo => console.log(repo.name))
 
@@ -34,7 +35,8 @@ const getRepos = () => {
         
         forkedRepos.forEach((repo) => {
             projectContainer.innerHTML += `
-            <div>
+            
+            <div class="projects-box">
                 <h3>${repo.name}</h3>
                 <a href="${repo.html_url}">${repo.name} with defalut branch ${repo.default_branch}</a>.
                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()} </p>
