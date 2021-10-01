@@ -5,21 +5,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!--Heading-->
-    <heading id="info" class="profile-info"></heading>
-    <!-- This will be used to draw the chart 👇 -->
-    <section id="projectsInfo" class="projects-info">
-      <!-- <h3 class="info-text">My Projects so far:</h3> -->
-      <canvas class="chart" id="chart"></canvas>
-    </section>
-    <!--Projectscards-->
-    <main id="projects"></main>
+    <h1 class="headline">Github tracker</h1>
+    <div id="wrapper" class="wrapper">
+      <section class="header-chart-wrapper">
+        <heading id="headingWrapper" class="heading-wrapper"></heading>
+        <!-- This will be used to draw the chart 👇 -->
+        <section class="chart-wrapper" id="chartWrapper">
+          <div class="contact" id="contact"></div>
+          <div class="chart">
+            <canvas class="chart" id="chart"> </canvas>
+          </div>
+        </section>
+      </section>
 
-    <script src="./script.js"></script>
-    <script src="./chart.js"></script>
+      <!--Projectscards-->
+      <section id="projects" class="projects"></section>
+
+      <script src="./script.js"></script>
+      <script src="./chart.js"></script>
+    </div>
+    <footer class="footer">
+      <img
+        class="technigo-logo"
+        src="./img/technigo-logo.png"
+        alt="Technigo logo"
+      />Made By Me 2021
+      <img class="github-logo" src="./img/github.png" alt="Github logo" />
+    </footer>
   </body>
 </html>
