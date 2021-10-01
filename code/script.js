@@ -2,7 +2,6 @@ const projects = document.getElementById("projects")
 const profile = document.getElementById("profile")
 const profileContainer = document.getElementById("profile-container")
 const projectContainer = document.getElementById("project-container")
-const test = document.getElementById("test")
 const userName = 'HedvigM'
 
 
@@ -12,7 +11,7 @@ const repos = `https://api.github.com/users/${userName}/repos`
 fetch(repos)
   .then(response => response.json())
   .then(data => {
-
+    console.log(data)
       //Fetching only the forked repos and the ones starts with "project" from my GitHub account. 
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project'))
       // change back to only "project" later 
@@ -21,6 +20,7 @@ fetch(repos)
     profileContainer.innerHTML+= `
       <img class="img" src="${data[0].owner.avatar_url}" alt="profile picture"> 
       <h2 class="profile-name">${data[0].owner.login}</h2>
+
     ` 
 
     // Repos and fetched pulls from the functions down under.
@@ -36,7 +36,6 @@ fetch(repos)
   
     drawChart(forkedRepos.length)
     getPullRequests(forkedRepos)
-    //getCommitsForPullRequests(forkedRepos)
   })
   
 
@@ -59,15 +58,19 @@ const getPullRequests = (repos) => {
   })
 }
 
-//^^^^^^^^^^^^^^^ fetching commits from the pull requests ^^^^^^^^^^^^^^^^^//
-//Funktionen skall ta infon från det sorterade pullrequestet(hedvigsPulls) och sortera fram mitt commit_url från det.
+//^^^^^^^^^^^^^^^ Fetching commits from the pull requests ^^^^^^^^^^^^^^^^^//
+
 const getCommitsForPullRequests = (pullRequests, repo) => {
   pullRequests.forEach(pullRequest => {
 
     fetch(pullRequest.commits_url)
     .then(res => res.json())
     .then(fetchedCommits => {
-  
+    //This function takes the sorted pull request (hedvigsPulls) and sorts out my commit_url from that.   
+
+
+
+
       document.getElementById(`commits-${repo.name}`).innerHTML = `Number of commits: ${fetchedCommits.length}`;
       //Funktionen skall gå ner en nivå till och bara visa commits_URL
 

@@ -1,24 +1,14 @@
-
-
-body {
-  background: #ECE0D0;
-  width: 100%;
-  margin: 0px;
-}
-
-header {
-  background-color: #A1A88F;
-}
-
-h1, h2 {
-  font-family: 'Stardos Stencil', cursive;
-}
+/* TEXT STYLING */
 
 h1 {
   margin: 0px;
   padding: 10px 50px;
   text-align: center;
   font-size: 4em;
+}
+
+h1, h2 {
+  font-family: 'Stardos Stencil', cursive;
 }
 
 h3 {
@@ -57,6 +47,29 @@ a:hover {
   text-align: center;
 }
 
+footer h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+
+/* CONTAINERS */
+body {
+  background: #ECE0D0;
+  width: 100%;
+  margin: 0px;
+}
+
+header {
+  background-color: #A1A88F;
+}
+
+/* PROFILE */
+.profile-container {
+  display: grid;
+  Grid-template-columns: 1fr 1fr;
+  margin: 100px;
+}
 
 img {
   border-radius: 50%;
@@ -64,16 +77,11 @@ img {
   grid-column: span 1;
 }
 
-.profile-container {
-  display: grid;
-  Grid-template-columns: 1fr 1fr;
-  margin: 100px;
-}
-
 profile-name {
   grid-column: span 1;
 }
 
+/* PROJECTS */
 .projects {
   display: grid;
   Grid-template-columns: 1fr;
@@ -89,31 +97,28 @@ profile-name {
   padding: 5px;
 }
 
+.canvas {
+  margin: 50px 100px;
+}
+
 footer{
   background-color:#A1A88F;
   margin-top: 30px;
   padding: 10px;
 }
 
-footer h1 {
-  padding: 0px;
-  margin: 0px;
-}
 
-.canvas {
-  margin: 50px 100px;
 
-}
+
 
 
 
 
 /* Mobile */
 @media (min-width: 0px) and (max-width: 767px) {
-.not-break {
-  display: none;
-}
-
+  .not-break {
+    display: none;
+  }
 }
 
 /* Tablet */
@@ -145,28 +150,6 @@ footer h1 {
     width: 300px;
   }
 
-  h2 {
-    font-size: 5em;
-  }
-  
-  .projects {
-    Grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-/* big laptop */
-@media (min-width: 1200px) {
-
-
-  
-  .break {
-    display: none;
-  }
-  
-  img {
-    width: 300px;
-  }
-  
   h2 {
     font-size: 5em;
   }
