@@ -112,7 +112,7 @@ const hideProject = (project) => {
   project.style.display === "none";
 };
 
-fetchUserRepos(TEST_USERS_REPOS_API);
+fetchUserRepos(USERS_REPOS_API);
 
 // Event Listeners
 hTMLButton.addEventListener("click", () => {
