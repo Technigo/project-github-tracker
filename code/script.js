@@ -26,6 +26,7 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
+      // filters out repos for user name and that starts with project-
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
@@ -41,8 +42,8 @@ const getRepos = () => {
             </div>
         `)
       );
-      drawChart(forkedRepos.length);
-      getPullRequests(forkedRepos);
+      drawChart(forkedRepos.length); // calling function and passing value to chart.js (amount)
+      getPullRequests(forkedRepos); // calling function and passing value
     });
 };
 
@@ -62,7 +63,7 @@ const getPullRequests = (repos) => {
         );
         // displays number of commits if a pull request has been made, if not it displays message
         if (userPullRequests) {
-          fetchCommits(userPullRequests.commits_url, repo.name);
+          fetchCommits(userPullRequests.commits_url, repo.name); //calling function and passing values
         } else {
           document.getElementById(`commit-${repo.name}`).innerHTML =
             "No pull request yet";
