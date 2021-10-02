@@ -25,10 +25,9 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			sort(filteredRepos, 'pushed_at', true);
-			console.log('filtered repos: ', filteredRepos);
-			fetchFullRepo(filteredRepos.slice(0, 2));
+			fetchFullRepo(filteredRepos);
 		})
-		.catch((err) => console.log('fetchAllReposFromUser error: ', err));
+		.catch((err) => alert('fetchAllReposFromUser error: ', err));
 };
 
 const fetchFullRepo = (repos) => {
@@ -36,47 +35,51 @@ const fetchFullRepo = (repos) => {
 	Promise.all(repos.map((repo) => fetch(repo.url)))
 		.then((res) => Promise.all(res.map((res) => res.json())))
 		.then((repos) => {
-			console.log(repos);
 			repos.forEach((repo) => {
 				if (repo.parent.owner.login === PARENT_OWNER) {
+					// push data to store for use when sorting projects
 					reposArr.push(repo);
 					reposData[repo.name] = { pullRequest: '', authors: '', commits: '' };
-					// put data in html
-					// console.log('fullRepo', fullRepo.name);
+
 					generateProjectCard(repo);
 					const COMMITS_URL = `https://api.github.com/repos/${USER}/${repo.name}/commits?per_page=100`;
 					fetchCommits(COMMITS_URL, repo);
 				}
 			});
 		})
-		.catch((err) => console.log('fetchFullRepo error:', err));
+		.catch((err) => alert('fetchFullRepo error:', err));
 };
 
 const generateProjectCard = (repo) => {
+	// generating project cards
 	projects.innerHTML += /*html*/ `
 	<div class="repo-info">
 		<p class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></p>
 		<p class="info">From ${repo.parent.owner.login}, default branch: ${repo.default_branch}</p>
 		<p class="pull" id="pull-${repo.name}">Pull request</p>
-		<p class="commit" id="commit-${repo.name}">Commits: </p>
+		<div class="numbers">
+			<p class="commit" id="commit-${repo.name}">Commits: </p>
+			<p class="size">Size: ${repo.size}</p>
+		</div>
 		<p class="update">Updated: ${new Date(repo.pushed_at).toDateString()}</p>
-		<p class="collaboration" id="collaborators-${repo.name}">Collaborators:</p>
+		<p class="collaboration" id="collaborators-${repo.name}">Commit authors:</p>
 	</div>
 	`;
 };
 
 const fetchCommits = (myCommitsUrl, repo) => {
+	// fetch all commits from repo
 	fetch(myCommitsUrl)
 		.then((res) => res.json())
 		.then((data) => {
-			// console.log(data);
+			// filter only commits done after repo was forked
 			const commitsSinceFork = data.filter((commit) => commit.commit.author.date > repo.created_at);
-			// console.log(commitsSinceFork);
+			// storing necessary data for later sorting
 			reposData[repo.name].commits = commitsSinceFork;
 			populateCommits(repo, commitsSinceFork);
 			getCollaborators(commitsSinceFork, repo);
 		})
-		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
+		.catch((err) => alert('fetchCommits error: ', repo.name, err));
 };
 
 const populateCommits = (repo, commits) => {
@@ -84,15 +87,14 @@ const populateCommits = (repo, commits) => {
 };
 
 const getCollaborators = (commits, repo) => {
+	// filter out each commit author and stor for later sort
 	let authors = {};
 	commits.forEach((commit) => {
 		if (!Object.keys(authors).includes(commit.author.login)) {
 			authors[commit.author.login] = { avatar_url: commit.author.avatar_url, html_url: commit.author.html_url };
-			// reposData[repo.name].authors = { [commit.author.login]: { avatar_url: commit.author.avatar_url, html_url: commit.author.html_url } };
 		}
 	});
 	reposData[repo.name].authors = authors;
-	console.log('authirs', authors);
 	populateCollaborators(authors, repo);
 	fetchPullRequestsArray(repo, Object.keys(authors));
 };
@@ -115,10 +117,8 @@ const fetchPullRequestsArray = (repo, authors) => {
 	fetch(PULL_URL)
 		.then((res) => res.json())
 		.then((data) => {
-			// console.log('fetchPullRequestsArray data: ', data);
 			// only pick pull requests connected to user
 			const myPullReq = data.find((pull) => authors.includes(pull.user.login));
-			// console.log('myPullReq', repo.name, myPullReq);
 			if (myPullReq) {
 				pullReqData.done++;
 				reposData[repo.name].pullRequest = myPullReq;
@@ -126,7 +126,7 @@ const fetchPullRequestsArray = (repo, authors) => {
 			}
 			populatePullRequest(myPullReq, repo);
 		})
-		.catch((err) => console.log('fetchPullRequestsArray error:', err));
+		.catch((err) => alert('fetchPullRequestsArray error:', err));
 };
 
 const populatePullRequest = (myPullReq, repo) => {
@@ -141,10 +141,9 @@ const fetchUser = () => {
 	fetch(USER_URL)
 		.then((res) => res.json())
 		.then((data) => {
-			// console.log(data);
 			userData.innerHTML += /*html*/ `<a href="${data.html_url}" target="_blank"><img class="avatar-user" src="${data.avatar_url}"></a><p class="user-name">${data.login}</p>`;
 		})
-		.catch((err) => console.log('fetchCommits error: ', err));
+		.catch((err) => alert('fetchCommits error: ', err));
 };
 
 const sort = (array, param, init) => {
@@ -176,4 +175,3 @@ filterCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', fa
 
 fetchAllReposFromUser();
 fetchUser();
-// drawPieChart(19,0);
