@@ -39,7 +39,6 @@ const fetchFullRepo = (repo) => {
 				generateProjectCard(fullRepo);
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
-				fetchCollaborators(fullRepo);
 			}
 		})
 		.catch((err) => console.log('fetchFullRepo error:', err));
@@ -62,29 +61,31 @@ const fetchCommits = (myCommitsUrl, repo) => {
 	fetch(myCommitsUrl)
 		.then((res) => res.json())
 		.then((data) => {
-			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${data.length}`;
+			const commitsSinceFork = data.filter((commit) => commit.commit.author.date > repo.created_at);
+			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commitsSinceFork.length}`;
+			getCollaborators(commitsSinceFork);
 		})
 		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
 };
 
-const fetchCollaborators = (repo) => {
-	const COLLABORATOR_URL = `https://api.github.com/repos/${USER}/${repo.name}/collaborators`;
-	fetch(COLLABORATOR_URL, options)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log('fetchCollaborators', data);
-			const authors = data.map((author) => author.login);
-			console.log('collaborators : ', authors);
-			data.forEach((author) => {
-				if (data.length > 1) {
-					document.getElementById(`collaborators-${repo.name}`).innerHTML += /*html*/ `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
-				} else {
-					document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
-				}
-			});
-			fetchPullRequestsArray(repo, authors);
-		})
-		.catch((err) => console.log('fetchCollaborators error: ', err));
+const getCollaborators = (commits) => {
+	console.log('commits', commits);
+	// const commitsSinceFork = commits.map((commit) => console.log('author', commit.author.login, 'date', commit.commit.author.date > repoForkDate));
+
+	// console.log('commitsSinceFork ', commitsSinceFork);
+	const authors = commits.map((commit) => commit.commit.author);
+	console.log('collaborators : ', authors);
+	const filteredAuthors = authors.filter((v, i, a) => a.indexOf(v) === i);
+	console.log('filteredAuthors : ', filteredAuthors);
+
+	// data.forEach((author) => {
+	// 	if (data.length > 1) {
+	// 		document.getElementById(`collaborators-${repo.name}`).innerHTML += /*html*/ `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
+	// 	} else {
+	// 		document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
+	// 	}
+	// });
+	// fetchPullRequestsArray(repo, authors);
 };
 
 const fetchPullRequestsArray = (repo, authors) => {
