@@ -1,13 +1,21 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+A site made to practice fetching from the GitHub API. 
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+## Features
 
-## The problem
+- Dynamic styling through DOM manipulation in JavaScript. 
+- Mobile-first styling. 
+- Data retrieved from GitHub's API: Basic user info, projects forked from Technigo (filtered by date of creation), number of commits,  and whether there has been a pull request yet. 
+- Use of methods like filter, find, and sort to organize the data. 
+- A chart visualization of completed projects vs. projects left to do, using chart.js. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## Challenges and Lessons learned
 
-## View it live
+- The biggest challenge in terms of fetching was the getCommits function, since the API didn't have a direct path to fetch each commit. The solution was to first fetch all repos, then filter the forked ones. Then get their pull requests, and finally invoke the getCommits function within a conditional (if the project had any pull requests). 
+- Dynamic CSS with JavaScript was also a challenge, since the styling mindset was purely based on the HTML document up to this point. I learned to check the dev tools more often, to make sure the dynamic structure of the document was still coherent.
+- The responsiveness of the chart was tricky because of the quirky nature of chart.js. I used a combination of the library's documentation and Stack Overflow answers to get ahead. In the end, I decided to go for a bar graphic instead of a donut. Its rectangular forms matched my layout better. 
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+## Deployed version
+
+github-tracker-gonzalez.netlify.app

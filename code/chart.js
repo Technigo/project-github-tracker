@@ -2,17 +2,16 @@
 const ctx = document.getElementById('myChart').getContext('2d');
 
 // Generate the chart based on the data fetched on script.js
-
   const drawChart = (amount) => {
     const config = {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             labels: [
               'Finished Projects',
               'Projects Left',
             ],
             datasets: [{
-              label: 'My First Dataset',
+            label: 'Completed Projects',
               data: [amount, 19-amount],
               backgroundColor: [
                 '#D365C8',
@@ -27,13 +26,16 @@ const ctx = document.getElementById('myChart').getContext('2d');
             maintainAspectRatio: false,
             plugins: {
               legend: {
-                labels: {
-                  color: "white",
-                  font: {
-                    size: 20
-                  }
-                }
-              }
+                display: false,
+              },
+                tooltips: {
+                  callbacks: {
+                    label: function(tooltipItem) {
+                    console.log(tooltipItem)
+                      return tooltipItem.yLabel;
+                    },
+                },
+              }, 
             }
           }
       };

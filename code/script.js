@@ -6,7 +6,7 @@ const USER = 'isomoth';
 const USER_URL = `https://api.github.com/users/${USER}`;
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const userInfo = document.getElementById('user-info');
-const projectsContainer = document.getElementById('projects');
+const projectsContainer = document.getElementById('project-grid');
 
 // Fetch user info and inject it into a div
 const getUserProfile = () => {
@@ -15,13 +15,15 @@ const getUserProfile = () => {
     .then((data) => {
       userInfo.innerHTML += `
       <div class="user-info">
-      <img class="user-image" src='${data.avatar_url}'/>
-      <span class="user-names">
-        <h2 class="nickname">${data.name}</h2>
-        <h3><a href="https://github.com/isomoth">${data.login}</a></h3>
-      </span>
+        <img class="user-image" src='${data.avatar_url}'/>
+        <div class="user-names">
+          <h2 class="nickname">${data.name}</h2>
+          <h3><a href="https://github.com/isomoth">${data.login}</a></h3>
+          <p class="bio">${data.bio}</p>
+          <p class= "public">Public repos: ${data.public_repos}</p>
+          <p class= "twitter">Twitter: <a href="https://twitter.com/isomoth">@${data.twitter_username}</a></p>
+        </div>
       </div>
-      <p class="bio">${data.bio}</p>
       `;
     });
 };
@@ -51,7 +53,7 @@ const getPullRequests = (allRepos) => {
 
 //Fetch all commits from filtered projects
 const getCommits = (myCommitsUrl, myRepoName) => {
-	fetch(myCommitsUrl) // this will be 'commits_url' from line 46
+	fetch(myCommitsUrl) // this will be 'commits_url' from line 45
 		.then((res) => res.json())
 		.then((data) => {
       // Count amount of commits 
