@@ -18,8 +18,9 @@ const fetchAllReposFromUser = () => {
 		.then((allRepos) => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
+			filteredRepos.sort((a, b) => b.pushed_at - a.pushed_at);
 			console.log('filtered repos: ', filteredRepos);
-			filteredRepos.slice(0, 3).forEach((repo) => {
+			filteredRepos.slice(0, 2).forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
 				fetchFullRepo(repo);
 			});
@@ -46,14 +47,14 @@ const fetchFullRepo = (repo) => {
 
 const generateProjectCard = (repo) => {
 	projects.innerHTML += /*html*/ `
-	<h3 class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></h3>
 	<div class="repo-info">
+		<p class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></p>
 		<p class="info">From ${repo.parent.owner.login}, default branch: ${repo.default_branch}</p>
 		<p class="pull" id="pull-${repo.name}">Pull request</p>
 		<p class="commit" id="commit-${repo.name}">Commits: </p>
 		<p class="update">Updated: ${new Date(repo.pushed_at).toDateString()}</p>
+		<p class="collaboration" id="collaborators-${repo.name}">Collaborators:</p>
 	</div>
-	<p class="collaboration" id="collaborators-${repo.name}">Collaborators:</p>
 	`;
 };
 
@@ -61,31 +62,34 @@ const fetchCommits = (myCommitsUrl, repo) => {
 	fetch(myCommitsUrl)
 		.then((res) => res.json())
 		.then((data) => {
+			// console.log(data);
 			const commitsSinceFork = data.filter((commit) => commit.commit.author.date > repo.created_at);
+			// console.log(commitsSinceFork);
 			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commitsSinceFork.length}`;
-			getCollaborators(commitsSinceFork);
+			getCollaborators(commitsSinceFork, repo);
 		})
 		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
 };
 
-const getCollaborators = (commits) => {
-	console.log('commits', commits);
-	// const commitsSinceFork = commits.map((commit) => console.log('author', commit.author.login, 'date', commit.commit.author.date > repoForkDate));
+const getCollaborators = (commits, repo) => {
+	let authors = {};
+	commits.forEach((commit) => {
+		if (!Object.keys(authors).includes(commit.author.login)) {
+			authors[commit.author.login] = { avatar_url: commit.author.avatar_url, html_url: commit.author.html_url };
+		}
+	});
 
-	// console.log('commitsSinceFork ', commitsSinceFork);
-	const authors = commits.map((commit) => commit.commit.author);
-	console.log('collaborators : ', authors);
-	const filteredAuthors = authors.filter((v, i, a) => a.indexOf(v) === i);
-	console.log('filteredAuthors : ', filteredAuthors);
+	for (const author in authors) {
+		if (Object.keys(authors).length > 1) {
+			document.getElementById(
+				`collaborators-${repo.name}`
+			).innerHTML += /*html*/ `<a href="${authors[author].html_url}" target="_blank"><img class="avatar-collaborator" src="${authors[author].avatar_url}"></a>`;
+		} else {
+			document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
+		}
+	}
 
-	// data.forEach((author) => {
-	// 	if (data.length > 1) {
-	// 		document.getElementById(`collaborators-${repo.name}`).innerHTML += /*html*/ `<a href="${author.html_url}" target="_blank"><img class="avatar-collaborator" src="${author.avatar_url}"></a>`;
-	// 	} else {
-	// 		document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
-	// 	}
-	// });
-	// fetchPullRequestsArray(repo, authors);
+	fetchPullRequestsArray(repo, Object.keys(authors));
 };
 
 const fetchPullRequestsArray = (repo, authors) => {
@@ -94,7 +98,7 @@ const fetchPullRequestsArray = (repo, authors) => {
 	fetch(PULL_URL)
 		.then((res) => res.json())
 		.then((data) => {
-			console.log('fetchPullRequestsArray data: ', data);
+			// console.log('fetchPullRequestsArray data: ', data);
 			// only pick pull requests connected to user
 			const myPullReq = data.find((pull) => authors.includes(pull.user.login));
 			// console.log('myPullReq', repo.name, myPullReq);
@@ -114,7 +118,7 @@ const fetchUser = () => {
 		.then((res) => res.json())
 		.then((data) => {
 			// console.log(data);
-			userData.innerHTML += /*html*/ `<a href="${data.html_url}" target="_blank"><img class="avatar-user" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+			userData.innerHTML += /*html*/ `<a href="${data.html_url}" target="_blank"><img class="avatar-user" src="${data.avatar_url}"></a><p class="user-name">${data.login}</p>`;
 		})
 		.catch((err) => console.log('fetchCommits error: ', err));
 };

@@ -1,7 +1,18 @@
 body {
 	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(27, 27, 27);
+	color: white;
 }
 
+.user-data {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+}
+.user-name {
+	font-size: 30px;
+	margin: 0;
+}
 .avatar-user {
 	height: 50px;
 	border-radius: 50%;
@@ -16,18 +27,26 @@ body {
 .projects {
 	display: flex;
 	flex-direction: column;
+	gap: 10px;
 }
 
 .chart {
 	width: 50px;
 }
 
-.repo {
-	font-size: medium;
-}
 .repo-info {
 	display: flex;
 	flex-wrap: wrap;
+	flex-direction: column;
+	border: 1px solid rgb(133, 133, 133);
+	border-radius: 3px;
+	padding: 10px;
+	margin: 0;
+}
+
+.repo {
+	font-size: 20px;
+	margin: 5px 0;
 }
 
 .info,
@@ -35,5 +54,25 @@ body {
 .commit,
 .pull,
 .collaboration {
-	margin: 2px 2px;
+	margin: 2px 0;
+}
+
+/* unvisited link */
+a:link {
+	color: red;
+}
+
+/* visited link */
+a:visited {
+	color: green;
+}
+
+/* mouse over link */
+a:hover {
+	color: hotpink;
+}
+
+/* selected link */
+a:active {
+	color: blue;
 }
