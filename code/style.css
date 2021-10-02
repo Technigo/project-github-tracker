@@ -18,7 +18,7 @@ a:hover {
 
 .text {
   font-size: 14px;
-  line-height: 1.25;
+  line-height: 1.4;
   margin: 0;
   margin-bottom: 5px;
   font-weight: 300;
@@ -31,7 +31,7 @@ a:hover {
 }
 
 .links-text {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   margin: 8px 0;
 }
@@ -43,7 +43,7 @@ a:hover {
 
 .small-headline {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   margin: 10px 0;
 }
 
@@ -57,7 +57,7 @@ a:hover {
   margin: 0 auto;
   background-color: #56B093;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.15);
 }
 
 .header-text {
@@ -149,8 +149,8 @@ chart {
   border-radius: 1000px;
   margin: 0 auto;
   text-align: center;
-  border: 6px lightgray solid;
-  padding: 5px;
+  border: 5px lightgrey solid;
+  padding: 3px;
 }
 
 .projects {
@@ -230,7 +230,6 @@ chart {
   font-size: 11px;
   line-height: 1.5;
   box-sizing: border-box;
-  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 668px) {

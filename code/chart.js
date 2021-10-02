@@ -5,27 +5,27 @@ const drawChart = (amount) => {
         type: 'doughnut',
         data: {
             labels: [
-              `${amount} projects pushed`,
-              `${20-amount} to go`,
+              `Pushed projects`,
+              `Projects to go`,
             ],
             datasets: [{
               label: 'Technigo progress',
               data: [amount, 20-amount],
               backgroundColor: [
                 '#F59B99',
-                '#FBD9D9'
+                '#FAECD2'
               ],
               borderColor: [
                 'transparent',
                 'transparent'
               ],
-              hoverOffset: 4
+              hoverOffset: 0
             }]
         },
         options: {
           plugins: {
             legend: {
-              position: 'bottom',
+              position: '',
             }
           }
         }
