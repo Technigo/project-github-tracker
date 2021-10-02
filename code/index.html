@@ -10,23 +10,21 @@
  
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <main id="projects">
-    <!-- <section>
-      <div id="Repos">
-        <h2>Repos:</h2>
-      </div>
-      <div id="pullrequests">
-        <h2>Pull Requests:</h2>
-      </div>
-      <div id="comments"></div>
-    </section> -->
-  </main>
+  <header class="header">
+    <nav class="topnav">
+      <h1>GitHub Tracker</h1>
+    </nav>
+  </header>
 
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <section class="profile-container">
+    <div id="user-info" class="user-info"></div>
   
+  <main id="projects" class="projects"></main>
+   
+  <section class="chart-container">
+    <canvas id="chart" class="chart"></canvas>
+  </section>
+
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
