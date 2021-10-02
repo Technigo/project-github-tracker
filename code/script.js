@@ -18,8 +18,8 @@ const userProfile = () => {
       </div>
       <div class="user-information">  
         <h2>${data.name}</h2>
-        <a href="https://github.com/jenquach">${data.login}</a>
-        <p>${data.location}</p>
+        <a href="https://github.com/jenquach"><i class="fab fa-github"></i> ${data.login}</a>
+        <p><i class="fas fa-map-marker-alt"></i> ${data.location}</p>
       </div>
       `
     })
@@ -35,13 +35,18 @@ const getRepositories = () => {
       technigoRepositories.forEach(repo => {
         projectsContainer.innerHTML += `
           <div class="project">
-            <a href="${repo.html_url}">${repo.name}</a>
-            <p>Recent push ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commit-${repo.name}">Commits </p>
-            <p>Branch ${repo.default_branch}</p>
+            <div class="repo-info">
+              <a href="${repo.html_url}">${repo.name}</a>
+              <p class="push">Recent push ${new Date(repo.pushed_at).toDateString()}</p>
+            </div>
+            <div class="repo-details">
+              <p id="branch">${repo.default_branch}</p>
+              <p class="commit" id="commit-${repo.name}"><i class="fas fa-code-branch"></i> </p>
+            </div>
           </div>
         `
       })  
+      //               
       // Draw chart with technigoRepositories data
       drawChart(technigoRepositories.length)
       getPullRequests(technigoRepositories)  
@@ -65,7 +70,7 @@ const getPullRequests = (allRepositories) => {
       // If no - commits 0 is shown.
     } else {
       document.getElementById(`commit-${repo.name}`).innerHTML =
-        'Commits 0';
+        '<i class="fas fa-code-branch"></i> 0';
       }  
     })    
   })

@@ -1,12 +1,21 @@
+:root {
+  --bg-color: rgb(13,17,23);
+  --primary-color: rgb(160,168,175);
+}
+
 body {
-  background: #eee1dd;
+  font-family: Helvetica,Arial;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(13,17,23);
 }
 
 .topnav{
   width: 100%;
   height: 100%;
-  background-color: aliceblue;
-  border: 2px solid black;
+  background-color: rgb(22,27,34);
+  border: 2px solid transparent;
+  color: var(--primary-color);
 }
 
 h1 {
@@ -15,7 +24,7 @@ h1 {
 }
 
 .user-info {
-  margin-bottom: 50px;
+  margin: 40px 0;
 }
 
 .picture {
@@ -26,7 +35,7 @@ h1 {
 }
 
 .user-picture {
-  width: 300px;
+  width: 250px;
   border-radius: 50%;
   border: 2px solid black;
   border-color: #9fd6f0;
@@ -35,23 +44,38 @@ h1 {
 }
 
 .user-information {
-  text-align: center;
-  border: 2px solid black;
+  color: var(--primary-color);
+}
+
+.user-information a {
+  text-decoration: none;
+  color: rgb(42, 78, 98);
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
 }
 
 .projects {
   display: grid;
   justify-content: center;
-  width: 100%;
+}
+
+.repo-title {
+  font-size: 25px;
+  font-weight: 400;
+  color: rgb(160,168,175);
+  margin: 0;
+  padding-left: 12px;
 }
 
 .project {
-  display: grid;
-  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid grey;
+  color: grey;
   padding: 10px;
   border-radius: 10px;
-  text-align: center;
-  height: 200px;
+  height: 100px;
   width: 420px;
   margin-top: 20px;
 }
@@ -65,4 +89,51 @@ p {
   align-items: center;
   margin-top: 30px;
   text-align: center;
+}
+
+.project a {
+  text-decoration: none;
+  color: rgb(42, 78, 98);
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#branch {
+  border: 1px solid black;
+  border-radius: 25px;
+  margin-top: 10px;
+  padding: 6px;
+  margin-right: 10px;
+  line-height: 12px;
+  border-color: grey;
+}
+
+.repo-info {
+  margin-top: 10px;
+}
+
+.repo-details {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.push {
+  font-style: italic;
+  text-align: left;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.chartdiv {
+  width: 400px;
+  margin: 40px 0;
+}
+
+@media only screen and (min-width: 950px) {
+  
 }
