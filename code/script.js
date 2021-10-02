@@ -24,15 +24,7 @@ const fetchAllReposFromUser = () => {
 		.then((allRepos) => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
-			filteredRepos.sort((a, b) => {
-				if (a.pushed_at > b.pushed_at) {
-					return -1;
-				} else if (a.pushed_at < b.pushed_at) {
-					return 1;
-				} else {
-					return 0;
-				}
-			});
+			sort(filteredRepos, 'pushed_at', true);
 			console.log('filtered repos: ', filteredRepos);
 			fetchFullRepo(filteredRepos.slice(0, 2));
 		})
@@ -155,9 +147,8 @@ const fetchUser = () => {
 		.catch((err) => console.log('fetchCommits error: ', err));
 };
 
-const sort = (param) => {
-	projects.innerHTML = '';
-	reposArr.sort((a, b) => {
+const sort = (array, param, init) => {
+	array.sort((a, b) => {
 		if (a[param] > b[param]) {
 			return -1;
 		} else if (a[param] < b[param]) {
@@ -166,10 +157,15 @@ const sort = (param) => {
 			return 0;
 		}
 	});
-	regenerateProjectCards();
+	if (init) {
+		return array;
+	} else {
+		regenerateProjectCards();
+	}
 };
 
 const regenerateProjectCards = () => {
+	projects.innerHTML = '';
 	reposArr.forEach((repo) => {
 		generateProjectCard(repo);
 		populateCommits(repo, reposData[repo.name].commits);
@@ -178,9 +174,9 @@ const regenerateProjectCards = () => {
 	});
 };
 
-filterSizeBtn.addEventListener('click', () => sort('size'));
-filterUpdateBtn.addEventListener('click', () => sort('updated_at'));
-filterCreatedBtn.addEventListener('click', () => sortSize('created_at'));
+filterSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
+filterUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
+filterCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
 
 fetchAllReposFromUser();
 fetchUser();
