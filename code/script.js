@@ -16,7 +16,7 @@ const getMyProfile = () => {
   .then(data => {
     console.log(data)
     profileSection.innerHTML = `
-    <div class=myPicture>
+    <div class=picture-container>
        <img class="profile-pic" alt="profile picture" src = ${data.avatar_url}/>
      </div>
      <div class=myProfile>
