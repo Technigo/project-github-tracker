@@ -12,11 +12,15 @@
 </head>
 <body>
   <header id="profile-container" class="profile-container">
+    <div class="chart-area" id="chart-area">
+      <canvas id="chart"></canvas>
+    </div>
   </header>
 
   <main class="main-area">
+
+    
     <section id="sort-container">
-      
       <div>
         <h3>Sort by: </h3>
         <input type="button" value="Date" id="date-btn">
@@ -24,10 +28,10 @@
         <input type="button" value="Number of commits" id="commit-btn">
       </div>
 
-      <h3>Filter</h3>
+      <!-- <h3>Filter</h3>
       <div>
         <input type="button" value="Javascript">
-      </div>
+      </div> -->
     </section>
 
     <section id="repo-container" class="repo-container">
@@ -35,7 +39,7 @@
     </section>
 
     <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
+
   </main>
   <footer>
     <footer>

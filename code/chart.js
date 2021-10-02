@@ -11,10 +11,10 @@ const drawChart = (numberRepos) => {
     data: {
       labels: [
         'Finished projects',
-        'Number of projects left',
+        'Projects left',
       ],
       datasets: [{
-        label: 'Technigo Projects',
+        label: 'Technigo Projects fall 21',
         data: [numberRepos, 19-numberRepos],
         backgroundColor: [
           'rgb(255, 99, 132)',

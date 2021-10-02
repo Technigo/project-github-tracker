@@ -1,5 +1,10 @@
+:root {
+  --primary: rgb(207, 235, 207);
+  --secondary: green;
+}
+
 body {
-  background: #FFECE9;
+  background-color: var(--secondary);
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -14,6 +19,11 @@ h1 {
 
 .profile-container {
   display: flex;
+  flex-direction: column;
+}
+
+.profile-area {
+  display: flex;
   flex-direction: row;
 }
 
@@ -26,8 +36,8 @@ h1 {
   margin: auto 10px;
 }
 
-.main-area, .profile-container, footer {
-  background: white;
+.main-area, .profile-container, .chart-area, footer {
+  background-color:  var(--primary);
   width: 90%;
   margin: 50px auto;
   border-radius: 5px;
@@ -40,7 +50,7 @@ h1 {
 }
 
 .repo-card {
-  background: rgb(231, 207, 191);
+  background: white;
   border-radius: 2%;
   padding: 5px;
   margin: 10px;
@@ -65,4 +75,10 @@ footer li {
 
 .nav-socials {
   width: 100px;
+}
+
+@media (min-width: 1192px) {
+  .main-area {
+    max-width: 1000px;
+  }
 }
