@@ -1,13 +1,25 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+This project is all about working with the Github-API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The tracker shows
+- username/pic
+- all the repos that are done by me during the Technigo bootcamp 
+- no. of commits and commit messages for each repository
+- a doughnut pie from chart.js
+
+
+
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I focussed in this project on gaining data from the API and filter/sort it in a way that I get all the entries I want to show in my tracker.
+
+I kept the design simple and made it look close to the original GitHub-website. 
+
+If I would have more time, I would like to add "no. of commits" to the sort field and maybe add a search field also.
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Take a look at the project here: https://github-tracker-nehrwein.netlify.app/
