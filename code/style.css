@@ -10,7 +10,7 @@
 
 body {
   /* background-color: var(--beige); */
-  background-image: url(./img/background2.jpg);
+  background-image: url(./img/background2.png);
   font-family: raleway;
   margin: 0;
   box-sizing: border-box;
@@ -54,10 +54,7 @@ header{
   width: 100%;
   margin: auto;
 }
-.header-image{
-  width: 80%;
-  margin: auto;
-}
+
 .profile-img{
   width: 70%;
   align-self: center;
@@ -78,7 +75,6 @@ header{
   border-right: 4px solid black;
 }
 
-
 .chart-container{
   display: flex;
   width: 100%;
@@ -88,7 +84,6 @@ header{
   width: 250px;
   align-self: center;
 }
-
 
 .projects-grid {
   display: flex;
@@ -122,24 +117,25 @@ a:hover {
   font-size: larger;
 }
 
-footer{
+.footer{
   box-sizing: border-box;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.564);
   height: auto;
   padding: 2vh;
-  display: absolute;
+  right: 0;
   bottom: 0;
-
+  left: 0;
+  padding: 1rem;
+  
 }
 
 @media (min-width: 1000px){
 
 .main-container {
-  /* max-width: 1600px; */
+  max-width: 1800px;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  /* margin: 0 auto; */
 }
 
 .first-coloumn{
@@ -154,8 +150,6 @@ footer{
 
 }
 
-
-
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -163,7 +157,6 @@ footer{
   grid-row-gap: 1rem;
   margin: 4vh 2rem 0 2rem;
   padding: 1vh 4vh 4vh 4vh;
-  /* max-height: 75vh; */
   row-gap: 20px;
   grid-auto-rows: max-content;
   
@@ -172,6 +165,7 @@ footer{
 .project{
   min-width:300px;
   margin: 0;
+  width:100%;
 }
 
 }
