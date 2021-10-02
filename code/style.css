@@ -17,12 +17,19 @@ body {
 
 header {
   display: flex;
-  font-size: 9px;
-  line-height: 1.5;
-  color: white;
   background-color: black;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+header a {
+  text-decoration: none;
 }
 
 .fab {
@@ -32,15 +39,23 @@ header {
 }
 
 
+
+
 /* USER-SECTION */
 .user {
   padding: 16px;
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.userImage_Text {
+  display: flex;
+  align-items: flex-end;
 }
 
 .userImageDiv {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .userImage {
@@ -69,6 +84,15 @@ header {
   font-weight: 100;
 }
 
+.sort {
+  margin-left: 25px;
+  height: 25px;
+  background-color: #F3F4F6;
+  border: 0.75px solid lightgray;
+  border-radius: 4px;
+}
+
+
 /* PROJECTS-SECTION */
 
 .projects {
@@ -78,7 +102,8 @@ header {
 }
 
 .projects-div {
-  border: 1px solid lightgray;
+  border: 0.75px solid lightgray;
+  border-radius: 4px;
   padding: 5px 16px;
   margin: 0 16px;
 }
@@ -115,6 +140,7 @@ header {
 
 /* CHART */
 .chart {
+  margin-top: -60px;
   margin-left: 16px;
   width: 330px;
   height: 165px;
@@ -137,9 +163,12 @@ header {
   }
 
   .user {
+    align-items: flex-start;
+  }
+
+  .userImage_Text {
     flex-direction: column;
     align-items: flex-start;
-
   }
 
   .userImage {
