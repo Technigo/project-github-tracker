@@ -157,11 +157,7 @@ const sort = (array, param, init) => {
 			return 0;
 		}
 	});
-	if (init) {
-		return array;
-	} else {
-		regenerateProjectCards();
-	}
+	if (!init) regenerateProjectCards();
 };
 
 const regenerateProjectCards = () => {
