@@ -1,4 +1,5 @@
 body {
+  background:rgb(139, 133, 133) ;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -6,11 +7,35 @@ body {
  
 h1{
 font-family: 'Open Sans', sans-serif;
+color: azure;
 }
 h2{
 font-family: 'Open Sans', sans-serif;
+color: azure;
 }
-.profile-container {
+
+h4{
+font-family: 'Montserrat', sans-serif;
+color: azure;
+}
+p{
+  color: azure;
+}
+.topnav{
+  overflow: hidden;
+  background-color: rgb(187, 138, 207);
+  padding: 10px;
+}
+
+.githublogo-container{
+  float: left;
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  margin-left: 16px;
+}
+
+.profile-container{
   width: 70px;
   height: 70px;
   display: flex;
@@ -19,6 +44,7 @@ font-family: 'Open Sans', sans-serif;
   margin-top: 25px;
   margin-left: 25px;
   font-family: 'Open Sans', sans-serif;
+
 }
 
 .profile-image {
@@ -88,4 +114,3 @@ a:hover {
     grid-row-gap: 1rem;
     margin: 0 2rem 0 2rem;
   }
-
