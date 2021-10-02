@@ -185,13 +185,16 @@ font-family: Arial, Helvetica, sans-serif;
       display: grid;
       justify-items: stretch;
       grid-template-columns: 1fr 1fr;
+      column-gap: 8px;
       grid-gap: 8px;
       margin-top: 80px;
       margin-right: 20px;
+      width: 100%;
     }
 
     .card {
       max-width: 300px;
+      width: 100%;
     }
   
     .main-section {
@@ -226,7 +229,6 @@ font-family: Arial, Helvetica, sans-serif;
     top: 70px;
     z-index: 1;
     }
-  }
 
 .userinfo {
   display: block;
@@ -250,19 +252,23 @@ font-family: Arial, Helvetica, sans-serif;
 
   #projectscontainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 3fr;
+    column-gap: 8px;
     grid-gap: 8px;
-    margin-top: 100px;
     justify-items: stretch;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
   }
 
   .card {
-    max-width: 400px;
+    width: 100%;
   }
 
   .main-section {
     display: grid;
-    grid-template-columns: 0.3fr 1.7fr;
+    grid-template-columns: 0.8fr 1.7fr;
     grid-gap: 8px;
   }
 
