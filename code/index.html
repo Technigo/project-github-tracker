@@ -8,19 +8,22 @@
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://kit.fontawesome.com/37108c2ba1.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <header>
-    <section class="general-info">
+    <section class="general-info" id="general-info">
 
       <h1 class="general-title">GitHub Tracker</h1>
       <img class="profile-image" id="profile-image"></img>
       <div class="profile-info-wraper">
         <h4><span id="user-name"></span></h4>
-        <h5>Junior Full Stack Engineer</h5>
-        <h5>Stockholm, Sweden</h5>
+        <span><i class="fas fa-map-marker-alt"></i>&nbsp;Stockholm, Sweden</span>
       </div>
     </section>
   </header>
@@ -37,15 +40,15 @@
   </section>
 
   <footer class="footer">
-    <img class="github-icon" src="../images/github-icon.svg">
-    <a href="mailto: priscila24n@hotmail.com" target="_blank" alt="email">
-      <p>Contact us</p>
-    </a>
-    <a href="#" target="_blank" alt="email">
+    <a href="https://github.com/PriscilaAlfaro"><img class="github-icon" src="../images/github-icon.svg"></a>
+    <a href="#general-info" target="_blank" alt="email">
       <p>GitHub Tracker</p>
     </a>
-
-    <p>Copyright @2021 | Designed by PAS | Stockholm, Sweden. 2021</p>
+    <p>Contact us</p>
+    <a href="mailto: priscila24n@hotmail.com" target="_blank" alt="email">
+    </a>
+    <p>Copyright @2021 | Designed by Priscila Alfaro</p>
+    <p><i class="fas fa-map-marker-alt"></i>&nbsp;Stockholm, Sweden. 2021</p>
   </footer>
   <script src="./collapsible.js"></script>
   <script src="./script.js"></script>

@@ -1,6 +1,6 @@
 body {
   background-color: rgb(182 185 194);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Signika Negative', sans-serif;
   margin: 0px
 }
 
@@ -9,7 +9,7 @@ body {
 }
 
 .general-info{
-  background-color: rgb(92 92 93);
+  background-color: rgb(56 69 114);
   color: white;
   width: auto;
   text-align: -webkit-center;
@@ -27,6 +27,8 @@ body {
 
 .pr-info{
   padding: 10px 20px;
+  font-size: 1rem;
+  font-size: 100%;
 }
 
 .general-title{
@@ -69,6 +71,7 @@ body {
   font-size: 60%;
   text-align: center;
   justify-content: center;
+  border: 3px solid #6b6b78;
 }
 
 .collapsible{
@@ -77,11 +80,14 @@ body {
 }
 
 .collapsible_title {
-  color: darkgrey;
+  color: black;
+  font-style: italic;
   height: auto;
   display: grid;
   width: 160px;
   cursor: pointer;
+  font-size: 90%;
+
 }
 
 .collapsible_content{
@@ -97,11 +103,12 @@ body {
   border: 1px solid black;
   margin: 40px auto;
   background-color: #d2d9df;
+  border: 3px solid #6b6b78;
 }
 
 
 .footer{
-  background-color: rgb(92 92 93);
+  background-color: rgb(56 69 114);
   margin-top: 3rem;
   padding: 1rem 0rem;
   display: grid;

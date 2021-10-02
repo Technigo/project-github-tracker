@@ -11,12 +11,12 @@ const drawChart = (numberOfFinishedProjects) => {
                 label: 'Technigo Projects',
                 data: [numberOfFinishedProjects, 20 - numberOfFinishedProjects],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
+                    'rgba(223, 198, 124, 1)',
+                    'rgba(63, 111, 166, 1)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
+                    'rgba(223, 198, 104, 1)',
+                    'rgba(63, 111, 144, 1)',
                 ],
                 borderWidth: 1
             }]
