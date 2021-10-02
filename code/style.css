@@ -305,6 +305,10 @@ a:hover {
     padding: 1rem;
   }
 
+  .tooltip {
+    display: none;
+  }
+
 }
 
 
@@ -407,6 +411,10 @@ a:hover {
     padding: 1rem;
     border-radius: 12px;
     width: auto;
+  }
+
+  .tooltip {
+    display: none;
   }
 
   .footer {
