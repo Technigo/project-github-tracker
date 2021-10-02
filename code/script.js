@@ -2,12 +2,12 @@
 const userSection = document.getElementById("user-section")
 
 //GLOBAL VARIABLES
-const options = {
+/* const options = {
 	method: 'GET',
 	headers: {
 		Authorization: `token xxx`
 	},
-};
+}; */
 
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
@@ -17,7 +17,7 @@ let commitslength = []
 
 
 const getRepos = () => {
-	fetch(REPO_API, options)
+	fetch(REPO_API, /* options */)
 		.then((res) => res.json())
 		.then((data) => {
 
@@ -122,7 +122,7 @@ const getCommits = (filteredArray, myRepoName) => {
 		commitAPI = commitAPI.slice(0, -6)
 
 		//now the URLs can be passed on to get data about number and content of commits 
-		fetch(commitAPI, options)
+		fetch(commitAPI, /* options */)
 			.then((res) => res.json())
 			.then((data) => {
 				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
