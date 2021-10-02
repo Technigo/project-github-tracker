@@ -1,3 +1,173 @@
 body {
-  background: #FFECE9;
+  background-color: rgb(182 185 194);
+  font-family: 'Signika Negative', sans-serif;
+  margin: 0px
+}
+
+.main-section{
+  padding: 15px;
+}
+
+.general-info{
+  background-color: rgb(56 69 114);
+  color: white;
+  width: auto;
+  text-align: -webkit-center;
+  padding: 20px 0px;
+}
+
+
+.project-title{
+  background-color: rgb(38 117 120);
+  width: 100%;
+  border-radius: 3%;
+  margin: 0px;
+  padding: 20px;
+}
+
+.pr-info{
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-size: 100%;
+}
+
+.general-title{
+  font-weight: 600;
+}
+
+.profile-image{
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 50%;
+  border: 2px solid white;
+  justify-content: center;
+} 
+
+.profile-info-wraper{
+  display: grid;
+}
+
+.general-info h1, h4, h5{
+  margin: 0px;
+  padding: 3px;
+}
+
+.projects-info {
+  display: flex;
+}
+
+.card{
+  background-color:rgb(210 208 227);
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80% auto;
+  height: auto;
+  box-sizing: border-box;
+  margin: 10px;
+  box-shadow: 0px 0px 5px 1px rgb(39, 38, 38);
+  margin: 20px 0px;
+  border-radius: 3%;
+  font-size: 60%;
+  text-align: center;
+  justify-content: center;
+  border: 3px solid #6b6b78;
+}
+
+.collapsible{
+  overflow: hidden;
+  text-align: -webkit-center;
+}
+
+.collapsible_title {
+  color: black;
+  font-style: italic;
+  height: auto;
+  display: grid;
+  width: 160px;
+  cursor: pointer;
+  font-size: 90%;
+
+}
+
+.collapsible_content{
+  background-color:rgb(197, 206, 236);
+  text-align: -webkit-auto;
+  max-width: 80%;
+}
+
+.chart{
+  display: flex;
+  width: 75%;
+  padding: 30px;
+  border: 1px solid black;
+  margin: 40px auto;
+  background-color: #d2d9df;
+  border: 3px solid #6b6b78;
+}
+
+
+.footer{
+  background-color: rgb(56 69 114);
+  margin-top: 3rem;
+  padding: 1rem 0rem;
+  display: grid;
+  justify-content: center;
+  font-size: small;
+  font-style: italic;
+  text-align: center;
+  color: white
+}
+.github-icon{
+  justify-self: center;
+}
+
+@media screen and (min-width: 768px){
+.general-title {
+  min-width: 309px;
+}
+
+.general-info{
+  flex-direction: row;
+}
+
+.chart{
+  width: 40%;
+}
+
+.projects-info{
+  flex-direction: column;
+}
+
+.project-title{
+  max-width: 35%;
+  min-width: 35%;
+  border-radius: 0;
+}
+
+.main-section{
+  margin: 20px 120px;
+}
+
+.card{
+  margin: 30px;
+  flex-wrap: nowrap;
+  border-radius: 0;
+  text-align: justify;
+  justify-content: right;
+}
+
+.collapsible{
+  text-align: left;
+}
+
+.collapsible_title {
+  width: 200px;
+}
+}
+
+@media screen and (min-width: 991px){
+.main-section{
+  margin: 20px 180px;
+}
 }

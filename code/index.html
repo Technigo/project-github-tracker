@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://kit.fontawesome.com/37108c2ba1.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <header>
+    <section class="general-info" id="general-info">
 
+      <h1 class="general-title">GitHub Tracker</h1>
+      <img class="profile-image" id="profile-image"></img>
+      <div class="profile-info-wraper">
+        <h4><span id="user-name"></span></h4>
+        <span><i class="fas fa-map-marker-alt"></i>&nbsp;Stockholm, Sweden</span>
+      </div>
+    </section>
+  </header>
+
+
+  <main class="main-section" id="projects-info">
+    <section class="projects-info"></section>
+    <!-- This will be used to draw the chart 👇 -->
+
+  </main>
+
+  <section class="chart">
+    <canvas id="chart"></canvas>
+  </section>
+
+  <footer class="footer">
+    <a href="https://github.com/PriscilaAlfaro"><img class="github-icon" src="./images/github-icon.svg"></a>
+    <a href="#general-info" target="_blank" alt="email">
+      <p>GitHub Tracker</p>
+    </a>
+
+    <a href="mailto: priscila24n@hotmail.com" target="_blank" alt="email">
+      <p>Contact us</p>
+    </a>
+    <p>Copyright @2021 | Designed by Priscila Alfaro</p>
+    <p><i class="fas fa-map-marker-alt"></i>&nbsp;Stockholm, Sweden. 2021</p>
+  </footer>
+  <script src="./collapsible.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
 </html>
