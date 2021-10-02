@@ -77,6 +77,12 @@
   color:#fff;
 }
 
+.fas {
+  color:#fff;
+  font-weight: 800;
+  margin-right: 5px;
+}
+
 /* Main */
 .main {
   background-color:#B8DFD8;
@@ -149,7 +155,7 @@ span {
 /* Footer */
 .footer {
   background-color: #000;
-  height: 100px;
+  height: 150px;
 }
 
 .icon-footer {
@@ -160,6 +166,10 @@ span {
   color:#FFB319;
   font-size:26px;
   margin:30px auto;
+}
+
+.copyright {
+  color:#B8DFD8;
 }
 
 /* Media Queries */

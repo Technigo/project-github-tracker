@@ -23,7 +23,7 @@ const getMyProfile = () => {
        <p>${data.name}</p>
        <a href = "http://gitHub.com/Fatima-GR" class="account" target="_blank">${data.login}</a>
        <a href = "mailto:fatigr2692@gmail.com" class="email">fatigr2692@gmail.com</a>
-       <p>${data.location}<p/>
+       <p><i class="fas fa-map-marker-alt"></i>${data.location}<p/>
      </div>
      
     `
