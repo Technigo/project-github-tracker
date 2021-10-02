@@ -7,28 +7,17 @@ body {
   margin: 0;
 }
 
-/*h1 {
-  font-weight: 400;
-  font-size: 2rem;
-}
-h2 {
-  font-weight: 300;
-  font-size: 1.5 rem;
-  
-}
-h3{
-  font-weight: 300;
-  font-size: 1rem;
-}
-
-p {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-}*/
 /* Header*/
 .header {
   width: 100%;
   background-color: black;
+  height: 175px;
+}
+.header img {
+  width: 250px;
+  margin: 0 auto 20px auto;
+  padding-bottom: 10px;
+  display: block;
 }
 /* hamburger */
 .hamburger {
@@ -46,21 +35,19 @@ p {
   background: white;
 }
 
-.header img {
-  width: 250px;
-  margin: 0 auto 20px auto;
-  padding-bottom: 10px;
-  display: block;
-}
+
 /* Profile styling and image*/
 .profile-container{
   width:90%;
   margin: 0 auto; 
 }
+
 .profile-wrapper{
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 500px;
+  margin: 20px auto 40px auto;
 }
 .profile-photo {
   width:30%;
@@ -68,31 +55,40 @@ p {
 .profile-photo img{
   width: 100%;
   border-radius: 50%;
-  border: 5px solid black;
-  filter: grayscale(100%);
-  
+  border: 3px solid black;
+  filter: grayscale(100%);  
 }
-
+/* Styles profile card*/
 .profile-username{
-  width: 70%;
+  width: 60%;
   border: 1px solid #DADBDB;
-
+  margin-left: 25px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.25);
 }
-.User-name, .real-name, .location {
+/* styles individual rows in profile card*/
+.user-name {
+  margin: 6px 0 0 0;
+  padding: 6px 0 0 0;
+  border-bottom: 3px solid rgb(255, 192, 203); 
+}
+
+.real-name, .location {
   margin: 6px 0 0 0;
   padding: 6px 0 0 0;
   border-bottom: 1px solid #B2B3B4; 
 }
+/* styles bio from GitHub*/
 .profile-text {
  
   text-align: justify;
+  margin-bottom: 40px;
+  border-bottom: 7px dashed black;
 }
 
 /* Cards styling*/
 .projects-container{
 width: 90%;
 margin: 0 auto;
-
 }
 
 .cards-container {
@@ -100,6 +96,7 @@ margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
+
 .js-card {
   width: 90%;
   background-color: white;
@@ -112,33 +109,33 @@ margin: 0 auto;
 .card-projectname {
   margin: 20px 0 0 0;
   padding: 20px 0 0 0;
-  border-bottom: 3px solid rgb(255, 192, 203);
-  
+  border-bottom: 3px solid rgb(255, 192, 203); 
 }
+/* styles individual rows in JScard*/
 .updated, .branch, .URL, .number-commits, .blank-line, .times-forked, .commit-message {
   margin: 6px 0 0 0;
   padding: 6px 0 0 0;
   border-bottom: 1px solid #B2B3B4; 
 }
+/* styling for URl link*/
 .URL a {
   text-decoration: none;
-
 }
+
 .URL a:hover{
   cursor: pointer;
   color: #87bee7;
 }
+
 .URL a:visited{
   color:#87bee7;
 }
+
+/* This is the span styling*/
 .space {
   margin-left: 8px;
   color: #87bee7;
 } 
-
-.field {
-  color:#87bee7;
-}
 
 /* Chart styling*/
 
@@ -148,10 +145,7 @@ margin: 0 auto;
 }
 .canvas-chart{
   max-width: 300px;
-  margin: 0 auto;
-  
-  
-   
+  margin: 0 auto;   
 }
 
 /* Footer styling*/
@@ -161,7 +155,6 @@ margin: 0 auto;
   justify-items: center;
   margin-top: 50px;
   text-align: center;
- 
 }
 
 .footer img{
@@ -182,6 +175,9 @@ margin: 0 auto;
 }
 .canvas-chart {
   min-width: 400px;
+}
+.hamburger div{
+  background: black;
 }
 }
 

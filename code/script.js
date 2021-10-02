@@ -5,17 +5,18 @@ const profileContainer = document.getElementById('profile-container')
 const cardsContainer = document.getElementById('cards-container')
 
 const userProfile = () => {
+  // This function fetches User data from the API to update the user name, avator, location of User
   fetch (USER_URL)
   .then (response => response.json())
   .then (data => {
-    console.log ('profile', data)
+     // This injects the fetched data into the profileContainer innerHTML
     profileContainer.innerHTML+= `
     <div class="profile-wrapper" id="profile-wrapper">
       <div class="profile-photo" id=" profile-image">
         <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
       </div>
       <div class="profile-username" id ="profile-username">
-        <div class="User-name">User name:<span class="space">${data.login}</span></div>
+        <div class="user-name">Name:<span class="space">${data.login}</span></div>
         <div class="real-name">AKA:<span class="space">${data.name}</span></div>
         <div class="location">Find me in:<span class="space">${data.location}, CH</span></div>
       </div>
@@ -25,10 +26,11 @@ const userProfile = () => {
   </div>`
   })
 }
+//This invokes the userProfile function
 userProfile()
 
 const getRepos = ()=>{
-    // This function fetches the data from the Githug API
+    // This function fetches the data from the Github API
     fetch(repoURL)
     .then(response => response.json())
     .then(data => {
@@ -36,10 +38,9 @@ const getRepos = ()=>{
       
       //Here, I filter only the projects forked from Technigo, starting from 2021 (since I have earlier projects also forked from Technigo)  
         const forkedProjects = data.filter(repo => repo.fork && repo.name.startsWith('project-') && repo.created_at.startsWith('2021-'))
-      // Here I update the projectsContainer.innerHTML to show a list of all forked repos  
-        //forkedProjects.forEach(repo => projectsContainer.innerHTML += `<p>${repo.name}</p>`)
-        // Here I update the cards.Container to show cards with data extracted from the GitHUb API
-        
+
+      // Here I update the cards.Container to show cards with data extracted from the GitHUb API
+      //ForEach function ensures I perform this function for each card  
         forkedProjects.forEach(repo => cardsContainer.innerHTML += `
         <section class="js-card">
           <div class="card-projectname" id="cardProjectName">   
@@ -60,26 +61,25 @@ const getRepos = ()=>{
           Number of times forked:<span class="space">${repo.forks}</span>  
           </div>
         </section>`
-    
     )
     
-        // Here we store the forkedProjects.length and console.log to make sure it is correct.
+      // Here we store the forkedProjects.length and console.log to make sure it is correct.
         drawChart(forkedProjects.length)
-        //console.log('hello', forkedProjects.length)
-    getPullRequests(forkedProjects)
+        console.log('hello', forkedProjects.length)
+        getPullRequests(forkedProjects)
     })   
 }
-
+//Herev we invoke the getRepos function 
 getRepos()
 
 const getPullRequests = (forkedProjects) => {
-   
+   // This function fetches all pull requests from Technigo for a specific repository
     forkedProjects.forEach((repo) => {
         
         fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
         .then((response) => response.json())
         .then((data) => {
-            //console.log(data)
+          // This ensures to FIND only pull requests submitted by user are found
             const myPullRequests = data.find(pull => pull.user.login === repo.owner.login)
            
           if (myPullRequests) {
@@ -90,17 +90,16 @@ const getPullRequests = (forkedProjects) => {
           }
              
         })
- 
     })
 }
 
 const getCommits = (myCommitsUrl, myRepoName,) => {
-
-  fetch(myCommitsUrl)
-  .then((response) => response.json())
-  .then ((data) => {
-    console.log (data)
-    document.getElementById(`commit-${myRepoName}`).innerHTML+=`<span class="space">${data.length}<span>`
-  })
-}
+// This function allows us to fetch only commits made by the user and then inject into cardsContainer using a dynamid id
+    fetch(myCommitsUrl)
+    .then((response) => response.json())
+    .then ((data) => {
+      console.log (data)
+      document.getElementById(`commit-${myRepoName}`).innerHTML+=`<span class="space">${data.length}<span>`
+    })
+  }
 
