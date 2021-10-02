@@ -10,7 +10,6 @@ const getUserInfo = () => {
   fetch(USER_INFO_URL)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data); //REMOVE
       userContainer.innerHTML = `
       <div class="user-card">
       <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
@@ -27,7 +26,6 @@ const getRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
-      console.log("DATA_GETREPOS", data);
       let forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
@@ -51,7 +49,6 @@ const getRepos = () => {
           }</p><p id="commit-${repo.name}">No of commits: </p>
           </div>`),
 
-        console.log("FORKED REPOS", forkedRepos),
         //pass along filtered repos as an argument when invoke getPullRequest
         getPullRequests(forkedRepos)
       );
