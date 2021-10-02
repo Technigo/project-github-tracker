@@ -25,12 +25,13 @@ const getRepos = () => {
     fetch(USER_REPOS)
     .then(res => res.json())
     .then(repos => {
-        // console.log('repositories:', repos)
+        console.log('repositories:', repos)
 
         const forkedRepos = repos.filter (repo => repo.fork && repo.name.startsWith('project-')) 
+
         // can use .includes instead of startsWith
         // repo.fork är samma som repo.fork === true
-        forkedRepos.forEach(repo => console.log(repo.name))
+        // forkedRepos.forEach(repo => console.log(repo.name))
         forkedRepos.forEach(repo => {repoContainer.innerHTML += /* html */ `
         <div class="repo-div">
         <a href="${repo.html_url}" class="repo-a">${repo.name}</a>
@@ -58,8 +59,9 @@ const fetchPullRequest = (allRepositories) => {
             if (myPullRequest) {
                 fetchCommits(myPullRequest.commits_url, repo.name)
             } else {
-                document.getElementById(`commit-${repo.name}`).innerHTML =
-                    'No commits yet :('
+                document.getElementById(`commit-${repo.name}`).innerHTML = /* html */ `
+                No pulls from this user yet 🚫
+                `
             }
         })
     })

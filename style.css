@@ -9,8 +9,15 @@ body {
 
 header {
   background: #161b22;
-  margin: auto;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-top: -0.5rem;
   padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: 100%;
+  min-width: 100%;
 }
 
 header a {
@@ -41,7 +48,7 @@ header a:hover {
 .profile-div {
   display: inline;
   align-items: center;
-  grid-column: span 4;
+  grid-column: span 5;
   padding: 2rem;
 }
 
@@ -56,6 +63,10 @@ header a:hover {
   margin: auto;
 }
 
+.username:hover {
+  color: #30363d;
+}
+
 .login {
   display: flex;
   color: #8B949E;
@@ -63,17 +74,37 @@ header a:hover {
   margin: auto;
 }
 
+.login:hover {
+  color: #30363d;
+}
+
+.repo-chart {
+  display: flex;
+  width: 20rem;
+  margin: 1rem;
+}
+
 .project-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  margin: 0.5rem;
+}
+
+.project-container h2 {
+  grid-column: span 4;
+  display: flex;
+  color: #8B949E;
+  font-size: large;
+  margin-bottom: 0.5rem;
+  justify-content: center;
 }
 
 .repo-div {
   display: grid;
-  grid-column: span 5;
+  grid-column: span 4;
   color: #8B949E;
-  margin: 0.5rem;
   padding: 0.5rem;
+  margin: 0.5rem;
   border-radius: 5px;
   border-width: 0.1rem;
   border-color: #30363d;
@@ -90,21 +121,36 @@ header a:hover {
   margin: 0px;
 }
 
-.repo-chart {
-  display: inline-flex;
-  align-items: center;
-  width: 20em;
-}
 
 /* styling for tablet */
-@media (min-width:668px) and (max-width:1024px) {
+@media (min-width:668px) {
   body {
     background: #0d1117;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   header {
     visibility: visible;
+    grid-column: span 4;
   }
+
+  .profile {
+    grid-column: span 3;
+  }
+
+  .repo-chart {
+    grid-column: span 1;
+  }
+
+  .project-container {
+    grid-column: span 4;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .repo-div {
+    grid-column: span 2;
+  }
+  
 
 }
 
@@ -114,5 +160,13 @@ header a:hover {
 
   }
 
+  header {
+
+  }
+
+
+  .project-container {
+    grid-column: span 4;
+  }
 
 }

@@ -5,7 +5,7 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 const repoChart = (amount) => {
     const config = {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: [
                 'Projects done',
@@ -13,11 +13,11 @@ const repoChart = (amount) => {
                 //'Blue'
             ],
             datasets: [{
-                // label: 'My Projects',
+                label: 'Technigo projects',
                 data: [amount, 19-amount],
                 backgroundColor: [
                     'rgb(63, 185, 79)',
-                    '#161b22',
+                    '#8B949E',
                     // 'rgb(88, 166, 255)',
                 ],
                 hoverOffset: 4
