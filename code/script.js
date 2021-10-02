@@ -14,7 +14,7 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.fork);
 			// console.log('filtered repos: ', filteredRepos);
-			filteredRepos.forEach((repo) => {
+			filteredRepos.slice(0, 3).forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
 				fetchFullRepo(repo);
 			});
