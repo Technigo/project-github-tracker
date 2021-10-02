@@ -1,10 +1,16 @@
 const projects = document.getElementById('projects');
 const userData = document.getElementById('userData');
+const filterSizeBtn = document.getElementById('filterSizeBtn');
+const filterUpdateBtn = document.getElementById('filterUpdateBtn');
+const filterCreatedBtn = document.getElementById('filterCreatedBtn');
 
 const USER = 'gustavfrid';
 const PARENT_OWNER = 'Technigo';
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const USER_URL = `https://api.github.com/users/${USER}`;
+
+let reposArr = [];
+let reposData = {};
 
 const pullReqData = {
 	total: 19,
@@ -42,6 +48,8 @@ const fetchFullRepo = (repos) => {
 			console.log(repos);
 			repos.forEach((repo) => {
 				if (repo.parent.owner.login === PARENT_OWNER) {
+					reposArr.push(repo);
+					reposData[repo.name] = { pullRequest: '', author: '', commits: '' };
 					// put data in html
 					// console.log('fullRepo', fullRepo.name);
 					generateProjectCard(repo);
@@ -73,10 +81,15 @@ const fetchCommits = (myCommitsUrl, repo) => {
 			// console.log(data);
 			const commitsSinceFork = data.filter((commit) => commit.commit.author.date > repo.created_at);
 			// console.log(commitsSinceFork);
-			document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commitsSinceFork.length}`;
+			reposData[repo.name].commits = commitsSinceFork.length;
+			populateCommits(repo, commitsSinceFork);
 			getCollaborators(commitsSinceFork, repo);
 		})
 		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
+};
+
+const populateCommits = (repo, commits) => {
+	document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commits.length}`;
 };
 
 const getCollaborators = (commits, repo) => {
@@ -84,9 +97,15 @@ const getCollaborators = (commits, repo) => {
 	commits.forEach((commit) => {
 		if (!Object.keys(authors).includes(commit.author.login)) {
 			authors[commit.author.login] = { avatar_url: commit.author.avatar_url, html_url: commit.author.html_url };
+			reposData[repo.name].author = { [commit.author.login]: { avatar_url: commit.author.avatar_url, html_url: commit.author.html_url } };
 		}
 	});
+	console.log('authirs', authors);
+	populateCollaborators(authors, repo);
+	fetchPullRequestsArray(repo, Object.keys(authors));
+};
 
+const populateCollaborators = (authors, repo) => {
 	for (const author in authors) {
 		if (Object.keys(authors).length > 1) {
 			document.getElementById(
@@ -96,8 +115,6 @@ const getCollaborators = (commits, repo) => {
 			document.getElementById(`collaborators-${repo.name}`).innerHTML = /*html*/ 'Individual project';
 		}
 	}
-
-	fetchPullRequestsArray(repo, Object.keys(authors));
 };
 
 const fetchPullRequestsArray = (repo, authors) => {
@@ -111,14 +128,21 @@ const fetchPullRequestsArray = (repo, authors) => {
 			const myPullReq = data.find((pull) => authors.includes(pull.user.login));
 			// console.log('myPullReq', repo.name, myPullReq);
 			if (myPullReq) {
-				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
 				pullReqData.done++;
+				reposData[repo.name].pullRequest = myPullReq;
 				updatePieChart(pieChart, pullReqData.done);
-			} else {
-				document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ 'No pull request done :(';
 			}
+			populatePullRequest(myPullReq, repo);
 		})
 		.catch((err) => console.log('fetchPullRequestsArray error:', err));
+};
+
+const populatePullRequest = (myPullReq, repo) => {
+	if (myPullReq) {
+		document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ `<a href=${myPullReq.html_url} target="_blank">Pull request</a>`;
+	} else {
+		document.getElementById(`pull-${repo.name}`).innerHTML = /*html*/ 'No pull request done :(';
+	}
 };
 
 const fetchUser = () => {
@@ -130,6 +154,29 @@ const fetchUser = () => {
 		})
 		.catch((err) => console.log('fetchCommits error: ', err));
 };
+
+const sortSize = () => {
+	projects.innerHTML = '';
+	reposArr.sort((a, b) => {
+		if (a.size > b.size) {
+			return -1;
+		} else if (a.size < b.size) {
+			return 1;
+		} else {
+			return 0;
+		}
+	});
+	reposArr.forEach((repo) => {
+		generateProjectCard(repo);
+		populateCommits(repo, reposData[repo.name].commits);
+		populateCollaborators(reposData[repo.name].authors, repo);
+		populatePullRequest(reposData[repo.name].pullRequest, repo);
+	});
+};
+
+filterSizeBtn.addEventListener('click', () => sortSize());
+filterUpdateBtn.addEventListener('click', () => sortSize());
+filterCreatedBtn.addEventListener('click', () => sortSize());
 
 fetchAllReposFromUser();
 fetchUser();
