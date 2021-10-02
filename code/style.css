@@ -4,21 +4,16 @@ body {
   padding: 0;
   min-width: 450px;
   color: #eeeeee;
-  /* background-image: url("stardust.jpg"); */
-  /* font-family: 'Gruppo', cursive; */
+  /* background-image: url(stardust.jpg); */
+  background-size: cover;
   font-family: "Nixie One", cursive;
-  /* font-family: "Droid Sans Mono",Courier,monospace;
-font-family: 'Fira Code', monospace; */
 }
 
 header {
-  font-size: 36px;
+  font-size: 30px;
   margin-left: 30px;
-  padding: 10px;
-  color: #679b9b;
-
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  color: #58a6ff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .repo-chart {
@@ -29,33 +24,34 @@ header {
 
 .user-info-container {
   display: flex;
+  flex-direction: column;
   padding: 20px;
-  color: white;
+  color: #eeeeee;
   margin: auto;
 }
 
+/* one comes from script file  */
 .user-information-container {
   margin: auto 10px;
   text-align: center;
 }
 .user-picture {
   width: 200px;
-  max-width: 30%;
-  max-height: 30%;
+  height: 200px;
   border-radius: 50%;
-  border: solid 1px #679b9b;
-  margin: 20px;
+  border: solid 1px #434343;
+  margin: 20px auto;
 }
 
 .user-info-name {
   font-size: 20px;
   text-decoration: none;
-  color: #ffffff;
+  color: #eeeeee;
   font-weight: bold;
 }
 
 .user-info-name:hover {
-  color: #679b9b;
+  color: #58a6ff;
 }
 .user-info-bio {
   font-size: 18px;
@@ -63,11 +59,9 @@ header {
 }
 
 .projects-title {
-  font-size: 36px;
-  /* border: solid 3px rgb(206, 203, 203); */
-  /* border-radius: 10px; */
+  font-size: 30px;
   margin: auto;
-  padding: 10px;
+  padding: 10px 10px 30px 10px;
   width: 80%;
   max-width: 700px;
   text-align: center;
@@ -79,6 +73,7 @@ header {
   flex-direction: column;
   width: 80%;
 }
+
 .project-card {
   font-size: 16px;
   border: solid 1px rgb(133, 133, 133);
@@ -86,15 +81,16 @@ header {
   margin: 5px 10px;
   padding: 10px;
   max-width: 600px;
+  background-color: #191919;
 }
 
 .project-names-with-pr {
   display: flex;
-  color: #679b9b;
+  color: #58a6ff;
   text-decoration: none;
-  font-size: 24px;
-  font-weight: bold;
-  padding-bottom: 10px;
+  font-size: 22px;
+  padding-bottom: 15px;
+  font-family: "Recursive", sans-serif;
 }
 
 .project-names-with-pr:hover {
@@ -114,14 +110,14 @@ header {
   text-decoration: none;
   margin: 5px 2px;
   border-radius: 50%;
-  color: #679b9b;
+  color: #58a6ff;
 }
 
 footer {
   bottom: 0;
   width: 100%;
-  background-color: #679b9b;
-  color: #171717;
+  background-color: #191919;
+  color: #eeeeee;
   text-align: center;
   padding: 10px 0 10px 0;
   margin-top: 100px;
@@ -154,16 +150,16 @@ footer {
     width: auto;
   }
   .project-card {
-    border: 2px solid white;
+    border: 2px solid #eeeeee;
     border-radius: 10px;
     grid-column: span 1;
-    font-size: 18px;
+    font-size: 16px;
     padding: 30px;
     width: 80%;
     min-width: 220px;
     justify-content: space-between;
     margin: 0 auto;
-    border: 2px solid #393e46;
+    border: 1px solid #393e46;
   }
 
   .repo-chart {
@@ -177,10 +173,11 @@ footer {
   .main {
     display: flex;
     flex-direction: row;
-    margin: 1rem;
+    margin: 0 auto;
+    max-width: 1300px;
   }
   .right-section {
-    padding-left: 0;
+    padding: 20px 0 0 0;
     margin-top: 1.5rem;
     margin: 0 auto;
     min-width: 30%;
@@ -199,17 +196,18 @@ footer {
   }
   .user-picture {
     width: 200px;
+    height: 200px;
     max-width: 80%;
     max-height: 80%;
     border-radius: 50%;
-    border: solid 1px #679b9b;
+    border: solid 1px #434343;
     margin: 20px;
   }
 
   .user-info-name {
     font-size: 24px;
     text-decoration: none;
-    color: #ffffff;
+    color: #eeeeee;
     font-weight: bold;
     text-align: center;
   }

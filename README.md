@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a GitHub tracker site for the projects froked from Technigo, using fetch and API technologies from the GitHub database.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The challange was using GitHub APIs and collect the relevant information. It was a good practise to learn more about APIs and fetch function.  
+I tried to keep the design simple and as similar as the github website.
+I have fulfilled all the blue requirements but if I had more time I would show the last commit message and language percentages of each project..
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-pde.netlify.app/

@@ -95,8 +95,8 @@ const getPullRequests = (allRepos) => {
         }
 
         /* 1. Find only the PR that you made by comparing pull.user.login with repo.owner.login
-                   2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
-                   3. You can also get the comments for each PR by calling another function with the review_comments_url as argument */
+        2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
+        3. You can also get the comments for each PR by calling another function with the review_comments_url as argument */
       })
   })
 }
