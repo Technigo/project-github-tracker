@@ -41,7 +41,7 @@ const getRepos = () => {
             
             <div class="projects-box">
                 <h4>${repo.name}</h4>
-                <a href="${repo.html_url}">${repo.name} with default branch ${repo.default_branch}</a>.
+                <a href="${repo.html_url}">The project with default branch: ${repo.default_branch}</a>.
                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()} </p>
                 <p id="commit-${repo.name}">Number of commits: </p>
             </div> 

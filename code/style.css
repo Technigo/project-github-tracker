@@ -2,6 +2,7 @@ body {
   background: #203c3b;
   font-family: 'Source Sans Pro', sans-serif;
   color:#ffffff;
+  padding: 0 2%;
 }
 
 h1 {
@@ -19,48 +20,50 @@ h2{
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 25px;
   font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 200;
+  font-weight: 300;
   color: #ffffff;
 }
 h4 {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 600;
   font-family: 'Source Sans Pro', sans-serif;
   color: #f6B915;
+  text-transform: capitalize;
 }
 
 a {
   color: #ffffff;
   text-decoration: none;
+  font-weight: 600;
 
 }
 
 a:hover {
-  color: #f6B915;
+  background-color: #6B9493
   
 } 
 
 a:visited {
   color: #ffffff;
-  opacity: 80%;
+  
 
 }
 #profile {
   display: grid;
-  width: 70%;
-  margin: auto;
+  margin-bottom: 10%;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
   justify-items: center;
+
 
 }
 
 
 .profile-box {
-  border: 1px solid lime;
   grid-column: span 1;
+
 
 }
 
@@ -99,19 +102,52 @@ a:visited {
 
 
 
-/* 
-tablet
-margin: 0% 10%;
+/* TABLET */
+@media (min-width: 768px) {
 
-.chart-box
-60%
+h1 {
+  font-size: 70px;
+}
 
-@mediaq screen
-margin: 0% 15%;
-grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+#projects {
+  margin: 0% 10%;
+}
 
-.chart-box
-40% */
+.chart-box{
+  width: 60%;
+}
+
+}
+
+
+/* SMALL SCREEN */
+@media (min-width: 992px) {
+  h1 {
+    font-size: 80px;
+  }
+
+#projects {
+  margin: 0% 15%;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+}
+
+.chart-box {
+  width: 50%;
+}
+
+}
+
+/* BIG SCREEN */
+@media (min-width: 1100px) {
+  
+  .chart-box {
+    width: 40%;
+  }
+  
+  }
+
+
 
 /* COLORS
 #a14329
