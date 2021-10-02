@@ -10,6 +10,7 @@ const getRepos = () => {
         const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
         forkedRepos.forEach(repo => console.log(repo.name))
         forkedRepos.forEach(repo => projectsContainer.innerHTML += `<h3> ${repo.name}</h3>`)
+        drawChart(forkedRepos.length)
     })
 }
 getRepos()
