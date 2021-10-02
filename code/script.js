@@ -35,9 +35,8 @@ const getRepos = () => {
     fetch(API_REPOS)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-            // console.log(forkedRepos)
+            // Fetch
             forkedRepos.forEach(repo =>
                 fetch(`https://api.github.com/repos/elsisco/${repo.name}/commits`)
                     .then(res => res.json())
@@ -49,36 +48,28 @@ const getRepos = () => {
                             formattedProjectName[i] = formattedProjectName[i][0].toUpperCase() + formattedProjectName[i].substr(1);
                         }
                         let newProjectName = formattedProjectName.join(" ")
-                        // Date for most recent update of project
-                        let latestCommit = `${new Date(repo.pushed_at).toLocaleString("zh-TW", { dateStyle: 'short' })}`   
                         
-                        // Tried to use moment.js
-                        // console.log(moment(latestCommit).format('LL'))
-
-                        // Trying to calculate and display the language percentage per project
+                        // Date for most recent update of project
+                        let latestCommit = new Date(repo.pushed_at).toLocaleString("en-ZA", { dateStyle: 'short' })
+                        
+                        // A calculator for language percentage per project
                         const calculateLanguagePercentage = () => {
                             fetch(`https://api.github.com/repos/elsisco/${repo.name}/languages`)
                                 .then(res => res.json())
-                                .then(json => {
-                                    const html = json.HTML || 0;
-                                    const css = json.CSS || 0;
-                                    const js = json.JavaScript || 0;
-                                    const total = html + css + js;
+                                .then(language => {
+                                    const html = language.HTML || 0;
+                                    const css = language.CSS || 0;
+                                    const js = language.JavaScript || 0;
+                                    const sum = html + css + js;
 
-                                    const js_percent = ((js / total) * 100).toFixed(1);
-                                    const css_percent = ((css / total) * 100).toFixed(1);
-                                    const html_percent = ((html / total) * 100).toFixed(1);
-                                    // languages.forEach(language => {
-                                    //     let sum = JavaScript.value + CSS.value + HTML.value
-                                    //     console.log(sum)
-                                    // })
-                                    console.log('JS ' + js_percent)
-                                    console.log('CSS ' + css_percent)
-                                    console.log('HTML ' + html_percent)
+                                    const htmlPercentage = ((html / sum) * 100).toFixed(1);
+                                    const cssPercentage = ((css / sum) * 100).toFixed(1);
+                                    const jsPercentage = ((js / sum) * 100).toFixed(1);
 
+                                    // Adding content to the projects
                                     projectsContainer.innerHTML += /*html*/ `
                                         <div class="project-card" id="${repo.name}">
-                                            <p class="project-headline">${newProjectName}</p>
+                                            <div class="project-headline">${newProjectName}</div>
                                             <p class="links-text"><a href="${repo.html_url}">GitHub repository ➔</a> | <a href="${repo.homepage}">View it live ➔</a></p>
                                             <p class="text">Updated ${latestCommit} | ${commits.length} commits</p>
                                             <p class="text">Default branch: ${repo.default_branch}</p>
@@ -86,9 +77,9 @@ const getRepos = () => {
                                                 <p class="small-headline">Languages</p>
 
                                                 <div class="progress">
-                                                    <div class="progress-html" style="width:${html_percent}%;"></div>
-                                                    <div class="progress-css" style="width:${css_percent}%;"></div>
-                                                    <div class="progress-js" style="width:${js_percent}%;"></div>
+                                                    <div class="progress-html" style="width:${htmlPercentage}%;"></div>
+                                                    <div class="progress-css" style="width:${cssPercentage}%;"></div>
+                                                    <div class="progress-js" style="width:${jsPercentage}%;"></div>
                                                     
                                                 </div>
                                                 
@@ -112,9 +103,6 @@ const getRepos = () => {
                                 })
                         }
                         calculateLanguagePercentage()
-
-                        // Adding content to the projects
-                        
                     })
             )
             drawChart(forkedRepos.length)
@@ -122,4 +110,5 @@ const getRepos = () => {
 }
 
 getUser()
+
 getRepos()

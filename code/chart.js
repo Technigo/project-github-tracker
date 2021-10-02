@@ -5,8 +5,8 @@ const drawChart = (amount) => {
         type: 'doughnut',
         data: {
             labels: [
-              'Finished projects',
-              'Projects to go',
+              `${amount} projects pushed`,
+              `${20-amount} to go`,
             ],
             datasets: [{
               label: 'Technigo progress',
@@ -25,7 +25,7 @@ const drawChart = (amount) => {
         options: {
           plugins: {
             legend: {
-              position: '',
+              position: 'bottom',
             }
           }
         }
