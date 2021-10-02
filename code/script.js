@@ -1,21 +1,21 @@
 const username = "madeleinesvensson";
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
 const USERS_URL = `https://api.github.com/users/${username}`;
-//const PULLREQUEST_URL = `https://api.github.com/repos/technigo/${repo.name}/pulls`;
 const container = document.getElementById("projects");
 const userInformation = document.getElementById("user-information");
 
+//Takes away the - in the project name
 const formattedRepoName = (name) => name.replace(/-/g, " ");
 
+//Gets the forked repos from github.
 const getRepos = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       const forkedRepos = data.filter(
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
-
+      //Fixes the date and time in last pushed.
       forkedRepos.sort(function (a, b) {
         return new Date(b.pushed_at) - new Date(a.pushed_at);
       });
@@ -48,9 +48,6 @@ const getRepos = () => {
 
 getRepos();
 
-//Remember to pass along your filtered repos as an argument when
-//you are calling this function
-
 const getPullRequests = (repos) => {
   //Get all the PRs for each project.
   repos.forEach((repo) => {
@@ -67,18 +64,10 @@ const getPullRequests = (repos) => {
         } else {
           document.getElementById(`commit-${repo.name}`).innerHTML = "No data";
         }
-        //const myCommits = filteredPullrequests.commits_url;
-        //console.log(filteredPullrequests);
-        //commits(filteredPullrequests.commits_url, repo.name);
-        //TODO
-        //2. Now you're able to get the commits for each repo by using
-        // the commits_url as an argument to call another function
-        //3. You can also get the comments for each PR by calling
-        // another function with the review_comments_url as argument
       });
   });
 };
-
+//gets the commits in the project container.
 const commits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
@@ -87,10 +76,10 @@ const commits = (url, myRepoName) => {
     });
 };
 
+//Gets the user data.
 fetch(USERS_URL)
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
     userInformation.innerHTML = `
     <img src="${data.avatar_url}"/>
     <div class="user-information">
