@@ -4,8 +4,6 @@ body {
   padding: 0;
   min-width: 450px;
   color: #eeeeee;
-  /* background-image: url(stardust.jpg); */
-  background-size: cover;
   font-family: "Nixie One", cursive;
 }
 
@@ -22,6 +20,7 @@ header {
   padding: 20px;
 }
 
+/* ----- USER INFORMATION SECTION -----*/
 .user-info-container {
   display: flex;
   flex-direction: column;
@@ -35,6 +34,7 @@ header {
   margin: auto 10px;
   text-align: center;
 }
+
 .user-picture {
   width: 200px;
   height: 200px;
@@ -58,6 +58,7 @@ header {
   text-decoration: none;
 }
 
+/* ----- PROJECT CARDS SECTION -----*/
 .projects-title {
   font-size: 30px;
   margin: auto;
@@ -116,6 +117,7 @@ header {
   border: 1px solid;
 }
 
+/* ----- FOOTER SECTION ----- */
 .fa {
   text-decoration: none;
   margin: 5px 2px;
@@ -155,7 +157,6 @@ footer {
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
     justify-self: center;
-    /* align-self: center; */
     margin: 10px;
     width: auto;
   }
