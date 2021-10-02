@@ -18,10 +18,20 @@ const fetchAllReposFromUser = () => {
 		.then((allRepos) => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
-			filteredRepos.sort((a, b) => b.pushed_at - a.pushed_at);
+			filteredRepos.sort((a, b) => {
+				if (a.pushed_at > b.pushed_at) {
+					console.log('sort a.pushed_at > b.pushed_at', a.pushed_at, b.pushed_at);
+					return -1;
+				} else if (a.pushed_at < b.pushed_at) {
+					return 1;
+				} else {
+					return 0;
+				}
+			});
 			console.log('filtered repos: ', filteredRepos);
-			filteredRepos.slice(0, 2).forEach((repo) => {
+			filteredRepos.slice(0, 4).forEach((repo) => {
 				// fetch all data for each repo use .slice(0, 2) to limit
+				// createProjectCard(repo);
 				fetchFullRepo(repo);
 			});
 		})
@@ -30,14 +40,14 @@ const fetchAllReposFromUser = () => {
 
 const fetchFullRepo = (repo) => {
 	// fetch all data from each repo
-	fetch(`https://api.github.com/repos/${USER}/${repo.name}`)
+	fetch(`${repo.url}`)
 		.then((res) => res.json())
 		.then((fullRepo) => {
 			// only continue with repos that have PARENT_OWNER as parent
 			if (fullRepo.parent.owner.login === PARENT_OWNER) {
 				// put data in html
 				// console.log('fullRepo', fullRepo.name);
-				generateProjectCard(fullRepo);
+				populateProjectCard(fullRepo);
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
 			}
@@ -45,7 +55,14 @@ const fetchFullRepo = (repo) => {
 		.catch((err) => console.log('fetchFullRepo error:', err));
 };
 
-const generateProjectCard = (repo) => {
+const createProjectCard = (repo) => {
+	projects.innerHTML += /*html*/ `
+	<div class="repo-info">
+	</div>
+	`;
+};
+
+const populateProjectCard = (repo) => {
 	projects.innerHTML += /*html*/ `
 	<div class="repo-info">
 		<p class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></p>
