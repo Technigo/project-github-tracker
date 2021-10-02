@@ -2,7 +2,8 @@ const USER = 'hemmahosjessi'
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 const projectsContainer = document.getElementById('projects')
 const profileContainer = document.getElementById('profile')
-        
+
+
 
 // ---- PROFILE -----//
 

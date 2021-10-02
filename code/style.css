@@ -219,7 +219,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 2rem;
   margin-top: 100px;
   border-top: 0.5px solid #31363C;
 }
@@ -251,7 +251,6 @@ a:hover {
   flex-direction: row;
   align-items: center;
 }
-
 
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -419,7 +418,7 @@ a:hover {
 
   .footer {
     padding: 1rem;
-    margin-top: 2rem;s
+    margin-top: 2rem;
   }
 
   .footer a {
@@ -434,5 +433,6 @@ a:hover {
   .linkedIn-logo {
     width: 24px;
   }
+
   
  }
