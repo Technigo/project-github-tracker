@@ -3,6 +3,7 @@ const userData = document.getElementById('userData');
 const filterSizeBtn = document.getElementById('filterSizeBtn');
 const filterUpdateBtn = document.getElementById('filterUpdateBtn');
 const filterCreatedBtn = document.getElementById('filterCreatedBtn');
+const filterCommitsBtn = document.getElementById('filterCommitsBtn');
 
 const USER = 'gustavfrid';
 const PARENT_OWNER = 'Technigo';
@@ -159,6 +160,19 @@ const sort = (array, param, init) => {
 	if (!init) regenerateProjectCards();
 };
 
+const sortByCommit = (array, param) => {
+	array.sort((a, b) => {
+		if (reposData[a[param]].commits > reposData[b[param]].commits) {
+			return -1;
+		} else if (reposData[a[param]].commits < reposData[b[param]].commits) {
+			return 1;
+		} else {
+			return 0;
+		}
+	});
+	regenerateProjectCards();
+};
+
 const regenerateProjectCards = () => {
 	projects.innerHTML = '';
 	reposArr.forEach((repo) => {
@@ -172,6 +186,7 @@ const regenerateProjectCards = () => {
 filterSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
 filterUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
 filterCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
+filterCommitsBtn.addEventListener('click', () => sort(reposArr, 'name'));
 
 fetchAllReposFromUser();
 fetchUser();
