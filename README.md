@@ -16,4 +16,4 @@ Also was very interesting using the open-source `Chart.js` to create the chart a
 
 ## View it live
 
-Here is the Netlify link: 
+Here is the Netlify link: https://project-github-tracker.netlify.app/
