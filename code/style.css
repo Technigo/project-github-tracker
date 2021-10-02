@@ -1,5 +1,5 @@
 body {
-  background: #171717;
+  background: #10141a;
   margin: 0;
   padding: 0;
   min-width: 450px;
@@ -76,12 +76,12 @@ header {
 
 .project-card {
   font-size: 16px;
-  border: solid 1px rgb(133, 133, 133);
+  border: solid 1px rgb(78, 78, 80);
   border-radius: 10px;
   margin: 5px 10px;
   padding: 10px;
   max-width: 600px;
-  background-color: #191919;
+  background-color: #151a22;
 }
 
 .project-names-with-pr {
@@ -89,12 +89,22 @@ header {
   color: #58a6ff;
   text-decoration: none;
   font-size: 22px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   font-family: "Recursive", sans-serif;
 }
 
 .project-names-with-pr:hover {
   text-decoration: underline;
+}
+
+.view-live {
+  font-family: "Recursive", sans-serif;
+  text-decoration: none;
+  font-size: 16px;
+  color: #44c39abf;
+}
+.view-live:hover {
+  color: #eeeeee;
 }
 
 .repo-language {
@@ -116,7 +126,7 @@ header {
 footer {
   bottom: 0;
   width: 100%;
-  background-color: #191919;
+  background-color: #151a22;
   color: #eeeeee;
   text-align: center;
   padding: 10px 0 10px 0;

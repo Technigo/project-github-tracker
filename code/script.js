@@ -46,6 +46,9 @@ const getRepos = () => {
                         <a class= "project-names-with-pr" href="${
                           repo.html_url
                         }" target="_blank">${repo.name}</a>
+                        <p> <a href="${
+                          repo.homepage
+                        }" target="_blank" class="view-live" >View it Live ▶ </a> </p>
                         <span class="repo-language"></span>
                         <span class="language-name"> ${repo.language}</span>
                         <p>Default branch: ${repo.default_branch} </p> 
