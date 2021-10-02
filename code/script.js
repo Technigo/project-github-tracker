@@ -92,7 +92,7 @@ const fetchUser = () => {
 		.then((res) => res.json())
 		.then((data) => {
 			// console.log(data);
-			userData.innerHTML += `<a href="${data.html_url}" target="_blank"><img class="avatar" src="${data.avatar_url}"></a><p>${data.login}</p>`;
+			userData.innerHTML += /*html*/ `<a href="${data.html_url}" target="_blank"><img class="avatar-user" src="${data.avatar_url}"></a><p>${data.login}</p>`;
 		})
 		.catch((err) => console.log('fetchCommits error: ', err));
 };
