@@ -3,29 +3,49 @@
   margin: 0;
   padding: 0;
 }
-body {
-  background-color: #000;
-}
 
-/*Header*/
-.header {
-  height: 90vh;
-  background-image: url(./img/clouds.png);
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+
+/* Header */
+.header {  
+  background-color: #fff;
+  /* height: 150px; */
 }
 
 .heading-one {
   text-align: center;
-  padding-top:30px;
-  background-color: #000;
   padding-bottom: 50px;
-  color:#fff;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 50px;
 }
 
+.tracker {
+  color:#F0A500;
+}
+
+.fab {
+  color:#000;
+  margin-top:15px;
+  margin-left: 15px;
+  font-size:26px;
+}
+.burger {
+  height: 50px;
+  position: absolute;
+  top:15px;
+  right: 15px;
+}
+.burger div {
+  width: 30px;
+  height: 6px;
+  background-color: #000;
+  border:1px solid #fff;
+}
+
+/* Profile section */
 .profile-section {
-  padding-top:70px;
+  height: 80vh;
+  background-color: black;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .myPicture {
@@ -33,34 +53,124 @@ body {
 }
 
 img.profile-pic {
-  width: 250px;
+  width: 200px;
   border-radius: 50%;
   padding-bottom: 25px;
+  margin-top: 200px;
 }
 
 .myProfile {
-  /* border: 2px dashed pink; */
-  color: whitesmoke;
+  color:#E8F6EF;
   padding-top: 20px;
   text-align: center;
-  line-height: 30px;
+  line-height: 38px;
 }
-.bio {
-  color:orange;
-  font-size: 22px;
-  padding-bottom: 20px;
+
+.account, .email {
+  display: block;
+  text-decoration: none;
+  color:#F0A500
+}
+
+.account:hover, .email:hover {
+  color:#fff;
+}
+/* Main */
+.main {
+  background-color:#E8F6EF;
+  height: 150vh;
 }
 
 .search-form {
   border:2px solid red;
+  height: 200px;
+}
+
+.heading-two {
+  text-align: center;
+  text-transform: uppercase;
+  color:#FFB319;
+}
+
+.projects-container {
+  width: 90%;
+  margin: 10px auto;
+ 
+}
+
+.card {
+  width: 90%;
+  height: 190px;
+  max-width: 400px;
+  background-color: #FFB319;
+  margin:15px auto;
+  box-shadow: 2px 2px 1px;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 10px;
+  line-height: 30px;
+  color:grey;
+  box-shadow:10px 5px 5px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.1,1.1);
+}
+
+ .repo {
+  color:grey;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 0.5px 0.5px 1px grey;
+ }
+
+.repo:hover {
+  color:#E8F6EF;
+}
+
+span {
+  color:#E8F6EF;
 }
 
 
-
-
-
-
+/* Chart */
 .chart {
+  margin: 10px auto;
   width: 300px;
   height: 200px;
+}
+/* Footer */
+.footer {
+  background-color: #000;
+  height: 100px;
+}
+.icon-footer {
+  text-align: center;
+}
+.ab {
+  color:#FFB319;
+  font-size:26px;
+  margin:30px auto;
+
+}
+/* Media Queries */
+@media(min-width: 768px) {
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 40%;
+  }
+  .chart {
+    width: 400px;
+  }
+  .main {
+    height: 115vh;
+  }
 }

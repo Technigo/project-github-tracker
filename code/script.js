@@ -20,10 +20,9 @@ const getMyProfile = () => {
        <img class="profile-pic" alt="profile picture" src = ${data.avatar_url}/>
      </div>
      <div class=myProfile>
-       <p class="bio">${data.bio}</p>
        <p>${data.name}</p>
-       <p>User name: ${data.login}</>
-       <p>${data.email}</p>
+       <a href = "http://gitHub.com/Fatima-GR" class="account" target="_blank">${data.login}</a>
+       <a href = "mailto:fatigr2692@gmail.com" class="email">fatigr2692@gmail.com</a>
        <p>${data.location}<p/>
      </div>
      
@@ -42,11 +41,11 @@ const getRepos = () => {
       myRepos = forkedRepos;
       myRepos.forEach((repo) => {
       projectsContainer.innerHTML += `
-      <div>
-        <a href= ${repo.html_url} target=_"blank">${repo.name}</a>
-        <p>Default branch: ${repo.default_branch}</p>
-        <p>Last update: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p id= "commit-${repo.name}"> Number of commits: </p>
+      <div class="card">
+        <a href= ${repo.html_url} class="repo" target="_blank">${repo.name}</a>
+        <p>Default branch:<span> ${repo.default_branch}</span></p>
+        <p>Last update: <span>${new Date(repo.pushed_at).toDateString()}<span></p>
+        <p id= "commit-${repo.name}"> Number of commits:</p>
       </div>
       `;
     }); 
@@ -86,7 +85,7 @@ const getCommits = (myCommitsUrl,myRepoName) => {
   fetch(myCommitsUrl)
   .then(res => res.json())
   .then(data => {
-    document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
+    document.getElementById(`commit-${myRepoName}`).innerHTML += `<span> ${data.length}</span>`;
   })
 }
 //Eventlistener on form-submit

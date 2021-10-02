@@ -1,36 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!--ICON-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Font header-1-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Yanone+Kaffeesatz:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!--Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <i class="fab fa-github"></i>
+      <h1 class="heading-one">
+        GitHub <br /><span class="tracker">Tracker</span>
+      </h1>
+      <div class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </header>
 
-</head>
-<body>
-  <header class="header">
-    <h1 class="heading-one">GitHub Tracker</h1>
     <section id="profile" class="profile-section"></section>
-    
-  </header>
 
-<main> 
-  <form id="search-form" class="search-form">
-    <input type="text"  id= "search-field" class="input-field" placeholder="Search here ..." autocomplete="off"/>
-    <input type="submit" id="search-btn" value="Search" />
-  </form>
-  <section id="projects">
-    <h2>My Projects:</h2>
-  </section>
+    <main class="main">
+      <form id="search-form" class="search-form">
+        <input
+          type="text"
+          id="search-field"
+          class="input-field"
+          placeholder="Search here ..."
+          autocomplete="off"
+        />
+        <input type="submit" id="search-btn" value="Search" />
+      </form>
+      <h2 class="heading-two">My Projects</h2>
 
-  <section class="chart">
-    <canvas id="chart" class="myChart"></canvas>
-  </section>
+      <section id="projects" class="projects-container"></section>
 
-</main>
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+      <section class="chart">
+        <canvas id="chart" class="myChart"></canvas>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="icon-footer">
+      <i class="fab fa-github ab"></i>
+    </div>
+    </footer>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>

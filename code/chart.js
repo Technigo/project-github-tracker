@@ -14,7 +14,7 @@ const drawChart = (amount) => {
         {
           label: "My First Dataset",
           data: [amount, 20 - amount], //1st number:the lenght of my repo array, 20(total projects I must do) minus the repo array
-          backgroundColor: ["green", "pink"],
+          backgroundColor: ["#FFB319", "grey"],
           hoverOffset: 4,
         },
       ],
