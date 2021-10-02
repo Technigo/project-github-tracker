@@ -18,8 +18,9 @@ const getUser = () => {
                     <div class="avatar-wrapper">
                         <img class="avatar" src="${data.avatar_url}"/>
                     </div>
-                    <div class="links-text">${data.name}</div>
-                    <div class="text">${data.login}</div>
+                    <div class="project-headline">${data.name}</div>
+                    <div class="thin-headline">${data.login}</div>
+                    <p class="links-text"><a href="${data.html_url}">GitHub profile ➔</a></p>
                     <div class="location">
                         <img src="./assets/location_icon.svg">
                         <div class="text">${data.location}</div>

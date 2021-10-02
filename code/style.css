@@ -27,14 +27,18 @@ a:hover {
 .project-headline {
   font-family: 'Playfair Display', 'serif';
   font-size: 22px;
-  margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 .links-text {
   font-size: 15px;
   font-weight: 600;
   margin: 8px 0;
+}
+
+.thin-headline {
+  font-size: 18px;
+  font-weight: 300;
 }
 
 .small-headline {
@@ -118,6 +122,10 @@ a:hover {
   width: 100%;
 }
 
+chart {
+  padding: 5px;
+}
+
 .headline-wrapper {
   display: flex;
   align-items: center;
@@ -154,17 +162,17 @@ a:hover {
 }
 
 .progress-js {
-  height: 12px;
+  height: 10px;
   border-radius: 0 10px 10px 0;
   background-color: #F59B99;
 }
 .progress-css {
-  height: 12px;
+  height: 10px;
   background-color: #EBBC4E;
 }
 
 .progress-html {
-  height: 12px;
+  height: 10px;
   border-radius: 10px 0 0 10px;
   background-color: #56B093;
 }
