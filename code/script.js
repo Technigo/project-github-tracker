@@ -1,10 +1,6 @@
 // THE DOM SELECTORS
 const projectContainer = document.getElementById('projects');
-const avatarImage = document.getElementById('avatar');
-const fullName = document.getElementById('full-name');
-const username = document.getElementById('username');
-const bio = document.getElementById('bio');
-const list = document.getElementById('list')
+const profileSection = document.getElementById('profileSection');
 
 // URLS STORED IN VARIABLES
 const USER = 'MT-dotse'; //my github name stored in the variable USER
@@ -16,15 +12,19 @@ const MY_PROFILE = `https://api.github.com/users/MT-dotse`; //my github profile
 fetch(MY_PROFILE)
   .then((response) => response.json())
   .then((data) => {
-    fullName.innerHTML = `Hi world, I'm ${data.name}`
-    bio.innerHTML = `I'm a ${data.bio}`
-    username.innerHTML = `Username: <a href="${data.html_url}"> ${data.login}</a>`
-    avatarImage.src = data.avatar_url;
-    
+    profileSection.innerHTML = `
+    <div class= "profile-section">
+    <img class= "picture" src = "${data.avatar_url}"/>
+    <p class="info"> Hi world, I'm ${data.name}</p>
+    <p class="info"> ${data.bio}</p>
+
+    <p class="info"> @<a href="${data.html_url}"> ${data.login}</p>
+    </div>
+    `;
   });
 
 // FETCHING THE REPOS
-const fetchRepositories = () => {
+const getRepositories = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
@@ -34,51 +34,50 @@ const fetchRepositories = () => {
 
       technigoRepositories.forEach((repo) => {
         projectContainer.innerHTML += `
-       <div>
-        <p><a href="${repo.html_url}"> ${repo.name} with default branch ${repo.default_branch}</a></p>
-        <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-        <p id="commit-${repo.name}"> Commits amount: </p>
+       <div id ${repo.name} class="repo-card">
+        <h3>${repo.name}</h3>
+        <p>Branch: ${repo.default_branch}</p>  
+        <p> Language: ${repo.language}</p> 
+        <p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
+        <p id="commit-${repo.name}"> Number of commits: </p>    
+        <p> <a href="${repo.html_url}"> To repo...</a></p>
+       
       </div>
         `;
       });
-      fetchPullRequestsArray(technigoRepositories);
+      getPullRequestsArray(technigoRepositories);
       drawChart(technigoRepositories.length);
     });
 };
 
 //FETCHING THE PULL REQUESTS
-const fetchPullRequestsArray = (allRepositories) => {
-	allRepositories.forEach((repo) => {
-		const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
-		fetch(PULL_URL)
-			.then((res) => res.json())
-			.then((data) => {
-				const myPullRequest = data.find(
-					(pull) => pull.user.login === repo.owner.login
-				);
+const getPullRequestsArray = (allRepositories) => {
+  allRepositories.forEach((repo) => {
+    const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
+    fetch(PULL_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        const myPullRequest = data.find(
+          (pull) => pull.user.login === repo.owner.login
+        );
 
-				if (myPullRequest) {
-					fetchCommits(myPullRequest.commits_url, repo.name);
-				} else {
-					document.getElementById(`commit-${repo.name}`).innerHTML =
-						'No pull request yet';
-				}
-			});
-	});
+        if (myPullRequest) {
+          fetchCommits(myPullRequest.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML =
+            'No pull request yet';
+        }
+      });
+  });
 };
 
 //FETCHING THE COMMITS
 const fetchCommits = (myCommitsUrl, myRepoName) => {
-	fetch(myCommitsUrl)
-		.then((res) => res.json())
-		.then((data) => {
-			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
-		});
+  fetch(myCommitsUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
+    });
 };
 
-
-
-
-
-
-fetchRepositories();
+getRepositories();

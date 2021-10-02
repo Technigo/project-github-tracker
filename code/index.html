@@ -10,27 +10,22 @@
    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab&display=swap" rel="stylesheet">
   </head>
   <body>
+  
+
+    <header class="hero-header">
+      <img class ="picture" id="avatar"></img>
+      <section class ="profile-section" id="profileSection">
+      </section>
+  </header>
+    
     <h1>GitHub Tracker</h1>
-    <img class ="picture" id="avatar"></img>
-
-    <section class ="profile-section">
-      <p id="full-name"></p>
-      <p id="bio"></p>
-      <p id="username"></p>
-    </section>
-
-    <h2>Projects:</h2>
     <section class= projects-section>
       <main id="projects"></main>
+       <!-- This will be used to draw the chart 👇 -->
+       <div class="chart"><canvas id="chart"></canvas>
+      </div>      
     </section>
 
-
-    <section class="progress-chart">
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-      
-    </section>
-   
 <!-- <script src="./token.js"></script> -->
    
     <!-- Links to the js file -->
@@ -40,3 +35,4 @@
  
   </body>
 </html>
+
