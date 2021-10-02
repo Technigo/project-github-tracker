@@ -8,7 +8,7 @@ const USER_URL = `https://api.github.com/users/${USER}`;
 
 const options = {
 	method: 'GET',
-	headers: { Authorization: `token ${GITHUB_TOKEN}` },
+	headers: { Authorization: `token ${process.env.GITHUB_TOKEN}` },
 };
 const pullReqData = {
 	total: 19,
