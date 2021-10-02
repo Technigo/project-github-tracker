@@ -1,6 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Poiret One', cursive;
   background: rgb(236, 235, 210);
+  cursor: default;
 }
 
 body {
@@ -18,7 +23,6 @@ body {
   position: relative;
   border: transparent;
   border-radius: 10px;
-  z-index: -1;
 }
 
 .hero-text {
@@ -37,6 +41,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   color: #545454;
+  z-index: 1;
 }
 
 img.avatar {
@@ -133,6 +138,10 @@ ul.checkbox-tags li input[type="checkbox"] {
 
 ul.checkbox-tags li input[type="checkbox"]:focus+label {
   border: 2px solid #BF8B85;
+}
+
+label.html {
+  margin-left: 1vh;
 }
 
 hr {

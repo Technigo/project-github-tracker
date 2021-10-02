@@ -27,31 +27,28 @@ const branchIcon = createImg("./assets/branch-icon.png", "branch")
 const pushIcon = createImg("./assets/push-icon.png", "push")
 const repoIcon = createImg("./assets/repo-icon.png", "repo")
 
-let heroImgArray = ['img1.webp', "img2.webp", "img3.webp"],
-    base = "./assets/",
-    seconds = 30
-heroImgArray.forEach(function (img) {
-    new Image().src = base + img
-    // Caches images, avoiding white flash between background replacements.
-})
+let heroImgArray = ["./assets/img1.webp", "./assets/img2.webp", "./assets/img3.webp"],
+    seconds = 25
 
-//Function to loop through hero images.
+//Loop through hero images.
 function heroImgSequence() {
     window.clearTimeout();
-    let k = 0;
-    for (i = 0; i < heroImgArray.length; i++) {
+    for (let i = 0; i < heroImgArray.length; i++) {
         setTimeout(function () {
-            document.getElementById("heroImg").style.background = "linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)),url(" + base + heroImgArray[k] + ")"
-            document.getElementById("heroImg").style.backgroundPosition = "center"
-            document.getElementById("heroImg").style.backgroundRepeat = "no-repeat"
-            document.getElementById("heroImg").style.backgroundPosition = "relative"
-            document.getElementById("heroImg").style.backgroundSize = "cover"
-            if ((k + 1) === heroImgArray.length) {
+            const heroImg = document.getElementById("heroImg")
+            heroImg.style.background = "linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)),url(" + heroImgArray[i] + ")"
+            heroImg.style.backgroundPosition = "center"
+            heroImg.style.backgroundRepeat = "no-repeat"
+            heroImg.style.backgroundPosition = "relative"
+            heroImg.style.backgroundSize = "cover"
+            if ((i + 1) === heroImgArray.length) {
                 setTimeout(function () { heroImgSequence() }, (seconds * 1000))
-            } else { k++; }
+            } else { i++; }
         }, (seconds * 1000) * i)
     }
 }
+heroImgSequence()
+
 
 //Function to fetch and display profile information.
 const userProfile = () => {
@@ -166,7 +163,6 @@ checkCSS.addEventListener('change', filterLanguages)
 
 checkJavaScript.addEventListener('change', filterLanguages)
 
-heroImgSequence()
 userProfile()
 fetchRepos()
 
