@@ -31,19 +31,26 @@ const fetchFullRepo = (repo) => {
 			if (fullRepo.parent.owner.login === PARENT_OWNER) {
 				// put data in html
 				console.log('fullRepo', fullRepo.name);
-				projects.innerHTML += /*html*/ `
-				<p><a href=${fullRepo.html_url} target="_blank">${fullRepo.name}</a> from ${fullRepo.parent.owner.login} default branch: ${fullRepo.default_branch}</p>
-				<p>updated: ${fullRepo.pushed_at}</p>
-				<p id="commit-${fullRepo.name}">Commits</p>
-				<p id="pull-${fullRepo.name}">Pull request</p>
-				`;
-				// fetchPullRequestsArray(fullRepo);
-				// fetchCollaborators(fullRepo);
+				generateProjectCard(fullRepo);
+
 				const COMMITS_URL = `https://api.github.com/repos/${USER}/${fullRepo.name}/commits?per_page=100`;
 				fetchCommits(COMMITS_URL, fullRepo);
 			}
 		})
 		.catch((err) => console.log('fetchFullRepo error:', err));
+};
+
+const generateProjectCard = (repo) => {
+	projects.innerHTML += /*html*/ `
+	<h3 class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></h3>
+	<div class="repo-info">
+		<p class="info">From ${repo.parent.owner.login}, default branch: ${repo.default_branch}</p>
+		<p class="pull" id="pull-${repo.name}">Pull request</p>
+		<p class="commit" id="commit-${repo.name}">Commits: </p>
+		<p class="update">Updated: ${new Date(repo.pushed_at).toDateString()}</p>
+	</div>
+	<p class="collaboration" id="collaborators-${repo.name}">Collaborators:</p>
+	`;
 };
 
 const fetchCommits = (myCommitsUrl, repo) => {
