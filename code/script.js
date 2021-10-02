@@ -12,8 +12,8 @@ const getProfile = () => {
     .then(data => {
     profileContainer.innerHTML += `
     <div class="profile-area">
-        <div class="user-img">
-            <img src=${data.avatar_url}></img>
+        <div>
+            <img class="user-img" src=${data.avatar_url}></img>
         </div>
         <div class="user">
             <h2>Jessi Nygren Walhed</h2>

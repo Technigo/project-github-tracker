@@ -8,19 +8,21 @@ const config = {
   type: 'bar',
   data: {
     labels: [
-      'Finished projects',
       'Projects left',
+      'Finished projects',
+      'Projects total',
     ],
     datasets: [{
       label: 'Bootcamp projects',
-      data: [amount, 19-amount],
-      barPercentage: 5,
-      barThickness: 100,
-      maxBarThickness: 150,
+      data: [amount, 19-amount, 19],
+      barPercentage: 100,
+      barThickness: 60,
+      maxBarThickness: 100,
       borderRadius: 4,
       // minBarLength: 10,
       backgroundColor: [
         'rgba(255, 99, 132)',
+        'rgba(60, 179, 113)',
         'rgba(255, 159, 64)',
       ],
       
