@@ -1,13 +1,15 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+The assignment was to create a place to keep track of the GitHub repos that I use at Technigo. The focus was JavaScript and API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Also it was very interesting using the open-source `Chart.js` to create the chart about how many projects we finished and how many projects left at the Technigo course. (See `https://www.chartjs.org/docs/latest/`)
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In the beginning of the project it felt like there were a lot of API fetches that needed to be done. It was also hard to understand were to place, and where to call the different functions. 
+The solution were to scale down the project and do small chunks at a time. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sharp-bell-9c5d9b.netlify.app
+

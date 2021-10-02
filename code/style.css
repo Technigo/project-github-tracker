@@ -91,7 +91,8 @@
 .heading-two {
   text-align: center;
   text-transform: uppercase;
-  color:#FFB319;
+  color:grey;
+  text-decoration:underline;
 }
 
 .projects-container {
@@ -174,7 +175,7 @@ span {
   }
 
   .main {
-    height:1250px;
+    height:1300px;
   }
 }
 
@@ -186,14 +187,14 @@ span {
   }
 
   body {
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
   }
 }
 
 @media(min-width:1685px) {
   .chart {
-    width: 400px;
+    width: 350px;
   }
 }
 
