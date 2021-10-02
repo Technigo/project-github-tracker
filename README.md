@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assigment was to create a Github tracker that shows all the github repos that is created in the Bootcamp.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First step was to get all the correct information from the Github API on the page. Using fetch and different APIs I was able to get all the info that I later styled using CSS. With dynamic ID I was able go get certain information from one fetch into another innerHTML in another fetch.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sad-jennings-8c6d22.netlify.app
