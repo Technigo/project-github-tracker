@@ -8,6 +8,7 @@
 /* Header */
 .header {  
   background-color: #fff;
+  position: relative;
   /* height: 150px; */
 }
 
@@ -24,15 +25,15 @@
 
 .fab {
   color:#000;
-  margin-top:15px;
+  margin-top:18px;
   margin-left: 15px;
-  font-size:26px;
+  font-size:28px;
 }
 .burger {
   height: 50px;
   position: absolute;
-  top:15px;
-  right: 15px;
+  top:18px;
+  right: 20px;
 }
 .burger div {
   width: 30px;
@@ -77,7 +78,7 @@ img.profile-pic {
 }
 /* Main */
 .main {
-  background-color:#E8F6EF;
+  background-color:#B8DFD8;
   height: 150vh;
 }
 
@@ -172,5 +173,23 @@ span {
   }
   .main {
     height: 115vh;
+  }
+}
+@media(min-width: 991px) {
+  
+  .chart {
+    width: 450px;
+  }
+}
+@media(min-width:1334px) {
+  .main {
+    /* height: 100vh; */
+  }
+  html {
+    background-color:#E6E6E6;
+  }
+  body{
+    width: 80%;
+    margin: 0 auto;
   }
 }
