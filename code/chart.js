@@ -5,7 +5,7 @@ const ctx = document.getElementById('myChart').getContext('2d')
 
 const drawChart = (amount) => {
     const config = {
-        type: 'doughnut',
+        type: 'pie',
         data: {
             labels: [
                 'Finished Projects',
@@ -27,7 +27,7 @@ const drawChart = (amount) => {
                     labels: {
                         font: {
                             size: 12,
-                            family: "'Spartan', sans-serif",
+                            family: "'Poiret One', cursive;",
                             color: "rgba(26, 26, 24, 0.849)",
                             weight: "bold",
                         }

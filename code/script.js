@@ -13,20 +13,23 @@ let selectedLanguages = ['HTML', 'CSS', 'JavaScript']
 let chartDrawn = false
 
 //Create link images to social media
-const createSocialMediaImg = (url, alt) => {
+const createImg = (url, alt) => {
     let image = document.createElement("img")
     image.src = url
     image.alt = alt
     return image
 }
 
-const linkedinIcon = createSocialMediaImg("./assets/linkedin-icon.png", "linkedin")
-const githubIcon = createSocialMediaImg("./assets/github-icon.png", "github")
-const facebookIcon = createSocialMediaImg("./assets/facebook-icon.png", "facebook")
+const linkedinIcon = createImg("./assets/linkedin-icon.png", "linkedin")
+const githubIcon = createImg("./assets/github-icon.png", "github")
+const facebookIcon = createImg("./assets/facebook-icon.png", "facebook")
+const branchIcon = createImg("./assets/branch-icon.png", "branch")
+const pushIcon = createImg("./assets/push-icon.png", "push")
+const repoIcon = createImg("./assets/repo-icon.png", "repo")
 
 let heroImgArray = ['img1.webp', "img2.webp", "img3.webp"],
     base = "./assets/",
-    seconds = 20
+    seconds = 30
 heroImgArray.forEach(function (img) {
     new Image().src = base + img
     // Caches images, avoiding white flash between background replacements.
@@ -86,10 +89,10 @@ const fetchRepos = () => {
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
                       <div class="repo" id=${repo.name}>
-                        <p>Name: ${repo.name} </p> 
+                        <p class="forked-repos"> <img src="${repoIcon.src}" alt="${repoIcon.alt}" class="repo-icon"/> ${repo.name} </p> 
                         <a href="${repo.html_url}" target="blank">Go to repo!</a> 
-                        <p>Branch: ${repo.default_branch}</p>
-                        <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+                        <p class="forked-repos"> <img src="${branchIcon.src}" alt="${branchIcon.alt}" class="branch-icon"/> ${repo.default_branch}</p>
+                        <p class="forked-repos"> <img src="${pushIcon.src}" alt="${pushIcon.alt}" class="push-icon"/> ${new Date(repo.pushed_at).toDateString()}</p>
                         <p id="commit-${repo.name}">Amount of commits: </p> 
                       </div>
                         `
