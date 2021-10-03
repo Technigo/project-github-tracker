@@ -2,6 +2,8 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
 //"Draw" the chart here 👇
+Chart.defaults.font.size = 16;
+Chart.defaults.color = "#5f939a";
 
 const drawChart = amount => {
   const config = {
