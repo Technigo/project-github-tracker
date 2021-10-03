@@ -90,6 +90,7 @@ header a {
   background-color: #F3F4F6;
   border: 0.75px solid lightgray;
   border-radius: 4px;
+  font-size: 16px;
 }
 
 
@@ -117,7 +118,7 @@ header a {
 }
 
 .projects p, ul {
-  font-size: 12px;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -173,6 +174,14 @@ header a {
 
   .userImage {
     width: 168px;
+  }
+
+  .myName {
+    font-size: 29px;
+  }
+  
+  .userName {
+    font-size: 26px;
   }
 
   .projects {

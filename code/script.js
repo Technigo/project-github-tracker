@@ -126,17 +126,16 @@ const getCommits = (filteredArray, myRepoName) => {
 			.then((res) => res.json())
 			.then((data) => {
 				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
-        if (authorCommits.length > 0) {
-          commitslength.push(authorCommits)
-          document.getElementById(`commit-${myRepoName}`).innerHTML = `
-					Commits: ${authorCommits.length}
-          <i class="fas fa-bars"></i>
-          `
-          authorCommits.forEach(element => {
-            document.getElementById(`commitMessages-${myRepoName}`).innerHTML += `
-              <li>${element.commit.message}</li>
-            `
-          })
+				if (authorCommits.length > 0) {
+					commitslength.push(authorCommits)
+					document.getElementById(`commit-${myRepoName}`).innerHTML = `
+						Commits: ${authorCommits.length}<i class="fas fa-bars"></i>
+					`
+					authorCommits.forEach(element => {
+						document.getElementById(`commitMessages-${myRepoName}`).innerHTML += `
+						<li>${element.commit.message}</li>
+						`
+					})
 				} 
 			})		
 	});
