@@ -186,7 +186,7 @@ const regenerateProjectCards = () => {
 filterSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
 filterUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
 filterCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
-filterCommitsBtn.addEventListener('click', () => sort(reposArr, 'name'));
+filterCommitsBtn.addEventListener('click', () => sortByCommit(reposArr, 'name'));
 
 fetchAllReposFromUser();
 fetchUser();
