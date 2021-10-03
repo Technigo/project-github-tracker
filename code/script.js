@@ -87,7 +87,7 @@ const fetchCommits = (myCommitsUrl, repo) => {
 			populateCommits(repo, commitsSinceFork);
 			getCollaborators(commitsSinceFork, repo);
 		})
-		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
+		.catch((err) => alert('fetchCommits error: ', repo.name, err));
 };
 
 const populateCommits = (repo, commits) => {
