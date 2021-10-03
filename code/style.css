@@ -4,7 +4,6 @@ body {
   flex-direction: column;
   color: black;
   font-family: "Montserrat", sans-serif;
-  /* background-size: cover; */
 }
 
 #user-info {
