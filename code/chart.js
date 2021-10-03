@@ -8,8 +8,8 @@ const drawChart = (amount) => {
         type: 'doughnut',
         data: {
         labels: [
-          'Projects done',
-          'Projects left to do',
+          'Completed projects',
+          'Projects left to build',
         ],
         datasets: [{
           label: 'My Technigo projects',

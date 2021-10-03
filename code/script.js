@@ -5,6 +5,7 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const profileContainer = document.getElementById('profile-container')
 const projectsContainer = document.getElementById('projects');
 
+// fetchProfile function
 const fetchProfile = () => {
     fetch(PROFILE_URL)
         .then(res => res.json()) 
@@ -17,6 +18,7 @@ const fetchProfile = () => {
         });
   }
 
+  // fetchRepositories function
 const fetchRepositories = () => {
     fetch(REPOS_URL)
         .then((res) => res.json())
@@ -38,7 +40,6 @@ const fetchRepositories = () => {
                 `;
             });
 
-            // Approach number 2
             fetchPullRequestsArray(technigoRepositories);
 
             // Draw chart with technigoRepos data
@@ -46,7 +47,6 @@ const fetchRepositories = () => {
         });
 };
 
-//Approach number 2
 const fetchPullRequestsArray = (allRepositories) => {
     allRepositories.forEach((repo) => {
         const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
@@ -54,7 +54,6 @@ const fetchPullRequestsArray = (allRepositories) => {
         fetch(PULL_URL)
             .then((res) => res.json())
             .then((data) => {
-                // console.log(`Mother repo for project ${repo.name}`, data)
                 const myPullRequest = data.find(
                     (pull) => pull.user.login === repo.owner.login
                 );
@@ -62,7 +61,6 @@ const fetchPullRequestsArray = (allRepositories) => {
                 // Detect if we have pull request or not.
 				// If yes - call fetchCommits function
 				// If no - inform user that no pull request was yet done
-                // console.log(myPullRequest);
 
             if (myPullRequest) {
                 fetchCommits(myPullRequest.commits_url, repo.name);
@@ -75,11 +73,10 @@ const fetchPullRequestsArray = (allRepositories) => {
     });
 };
 
-
+// fetchCommits function
 const fetchCommits = (myCommitsUrl, myRepoName) => {
     fetch(myCommitsUrl)
         .then((res) => res.json())
-        // .then((data) => console log.(data));
         .then((data) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
 
