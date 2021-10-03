@@ -40,17 +40,17 @@ const getRepos = () => {
       // this creates a forEach function to get all of the projects
       forkedRepos.forEach(
         repo =>
-          (projectsContainer.innerHTML += `<div class="cards">
-          <a class="links" href=${repo.name}>${repo.name}</a>
-          <div class="push-date">
+          (projectsContainer.innerHTML += `
+          <div class="repo-items">
+            <a class="links" href=${repo.html_url}>${repo.name}</a>
         <p><span class="push-title">Most recent push</span>
     ${new Date(repo.pushed_at).toDateString()} at ${repo.pushed_at.slice(
             11,
             16
           )}</p>
-        </div>
         <p class="branch">${repo.default_branch}</p>
-        <p id="commit-${repo.name}">Number of commits: </p></div>`)
+        <p id="commit-${repo.name}">Number of commits: </p>
+        </div>`)
       );
 
       fetchPullRequestsArray(forkedRepos);
