@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;600&display=swap" rel="stylesheet">
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6158607bfeb2560019eec8c7&product=inline-reaction-buttons" async="async"></script>
+  </head>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <body>
+    <header class="header">
+      <h1>GitHub Tracker</h1>
+      <img class="github-logo" src="./GitHub-Icon-White-Logo.wine.svg" alt="github-logo">
+    </header>
+
+    <main class="main">
+      <section class="left-area">
+        <div class="profile" id="profile"></div>
+        <div class="chart">
+          <canvas id="chart"></canvas>
+        </div>
+      </section>  
+
+      <section class="right-area">
+        <h2>Project repositories / Technigo Frontend Bootcamp 2021/22</h2>
+        <div class="project-grid" id="projects"> </div>
+      </section>  
+    </main>
+
+    <footer class="footer">
+      <div class="technigo">
+        <img class="technigo-logo" src="./logo.svg" alt="technigo-logo">
+        <a href="https://www.technigo.io/">Check them out</a>
+      </div>
+      <div class="more-about-me">
+        <p>More about me</p>
+        <a href="https://www.linkedin.com/in/jessi-nygren-walhed-7bb81010/">
+          <img class="social-logo" src="./linkedIn.png" alt="LinkedIn logo">
+        </a>
+        <a href="https://www.instagram.com/hemmahosjessi/">
+          <img class="social-logo" src="./instagram.png" alt="Instagram logo">
+        </a>
+        <a href="https://www.facebook.com/jessi.walhed">
+          <img class="social-logo" src="./f_logo_RGB-White_250.png" alt="Facebook logo">
+        </a>
+      </div>
+    </footer>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
-</body>
-</html>
+  </body>
+</html> 
