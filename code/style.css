@@ -12,20 +12,10 @@ body {
 }
 
 
-
-/* .head-container {
-  display: grid;
-  justify-content: center;
-
-
-} */
-
 .navigation-bar {
-  width: 100%;  /* i'm assuming full width */
-  height: 80px; /* change it to desired width */
+  width: 100%;  
+  height: 80px;
   margin-bottom: 50px;
-
-  /* background-color: red; */
   
 
 }
@@ -34,22 +24,22 @@ body {
   vertical-align: top;
   width: 50px;
   height: 50px;
-  /* margin-right: 20px; */
-  margin-top: 15px;    /* if you want it vertically middle of the navbar. */
+  margin-top: 15px; 
 }
+
 .navigation-bar > a {
   display: inline-block;
   vertical-align: text-top;
   margin-right: 20px;
-  height: 80px;        /* if you want it to take the full height of the bar */
-  line-height: 80px;    /* if you want it vertically middle of the navbar */
+  height: 80px;       
+  line-height: 80px;    
 
 }
 
 h1, h2, h3, h4, h5, h6, a {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
-  /* margin-top: 0px; */
+
 }
 
 a, u {
@@ -72,9 +62,7 @@ a, u {
 display: flex;
 grid-column: span 3;
 flex-direction: row;
-/* flex-wrap: wrap; */
 margin: 0 auto;
-/* justify-content: center; */
 align-items: center;
 
 }
@@ -83,26 +71,19 @@ align-items: center;
 .my-info {
   padding: 20px;
   margin: 20px;
-  /* width: 30%; */
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
   border-radius: 5px;
   backdrop-filter: blur(5px);
   border-radius: 25px;
 
-
 }  
 
 .projects {
-  /* width: 100%; */
   display: flex;
   grid-column: span 3;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  /* flex-wrap: wrap;
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center; */
   
 }
 
@@ -110,17 +91,15 @@ align-items: center;
   padding: 20px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
   border-radius: 5px;
-  /* background-color: rgba(255, 255, 255, .15); */
   backdrop-filter: blur(5px);
   border-radius: 25px;
   text-align: center;
-  margin: 10px;
- 
+  margin: 10px; 
 
 }
 
 .myChart {
-  max-width: 250px;
+  max-width: 500px;
   max-height: 500px;
   padding: 10px;
   margin: 20px;
@@ -128,12 +107,7 @@ align-items: center;
   backdrop-filter: blur(5px);
   border-radius: 25px;
 }
-  
-.grid {
-  margin-top: 2em;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
+
 
 /* mobile */
   @media (min-width: 0px) and (max-width: 668px){

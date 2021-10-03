@@ -4,7 +4,7 @@
   const USER_URL = `https://api.github.com/users/${USER}`;
 
 
-  //My//
+  //My variables//
   const projectsContainer = document.getElementById('projects');
   const userData = document.getElementById('user-data')
 
