@@ -1,13 +1,18 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This assignment was structued to create fetch functions to showcase data coming from Githubs API.
+Part of the assigment was to design a page that would show fetched data.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+First of I started by creating all the main functions that I would need to fullfill the blue requirements.
+I used HTML, CSS and Javascript languages to write my code in VS code and deployed my site through netlify.
+
+Secondly I decided on a simple HTML CSS styling that would focus on the fetched data. I made the site responsive through all viewports and added very few animations to make the site look and feel proffesional and to the point.
+
+If I had more time I would make my site Universal to any github account instead of Personal.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Here is a link to my project.
+https://githubtrace.netlify.app/

@@ -4,6 +4,7 @@ const USER = 'jakobxlindstrom'
 const USER_URL = `https://api.github.com/users/${USER}`
 const tracerBtn = document.getElementById('tracerBtn')
 
+// This function simply fetches and presents my user data through innerhtml.
 const getUserData = () => {
   fetch(USER_URL)
     .then((res) => res.json())
@@ -19,6 +20,8 @@ const getUserData = () => {
     })
 }
 
+// Inside this function I fetch all the repositories connceted to my github account, presents fetched data and also invokes
+// the chart and the next function getPR.
 const getRepos = () => {
   fetch(`https://api.github.com/users/${USER}/repos`)
     .then((res) => res.json())
@@ -60,6 +63,8 @@ const getRepos = () => {
       getPR(filtered)
     })
 }
+// The pull reguest function fetches all the pull requests where I have been repository owner on github,
+//otherwise a else message will appear tell otherwise.
 const getPR = (repos) => {
   repos.forEach((repo) => {
     fetch(
@@ -67,7 +72,6 @@ const getPR = (repos) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.review_comments_url)
         const myPR = data.find((pull) => pull.user.login === repo.owner.login)
         if (myPR) {
           getCommits(myPR.commits_url, repo.name)
@@ -79,6 +83,7 @@ const getPR = (repos) => {
   })
 }
 
+// This function gets the commits of each pull request and presents it together with earlier fetched data in the "repo cards"
 const getCommits = (url, myRepoName) => {
   fetch(url)
     .then((res) => res.json())
@@ -92,12 +97,13 @@ const getCommits = (url, myRepoName) => {
     })
 }
 
+// When launching the site this function is invoked directly, simultaing a "landing" feeling before pushing the tracker button
 getUserData()
 
 {
 }
 
-// add eventlistener here
+// This addEventListener makes it possible to view the fetched data by a button click under the userdata
 tracerBtn.addEventListener('click', (event) => {
   event.preventDefault()
   getRepos()

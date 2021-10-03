@@ -148,6 +148,7 @@ a.button1:hover {
   display: grid;
   margin-top: 1em;
 }
+
 .spinner {
   position: static;
   border-style: solid;
@@ -231,7 +232,7 @@ a.button1:hover {
     margin-bottom: 2em;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 90%;
   }
   #chart.chart {
     padding-bottom: 2em;
@@ -261,7 +262,7 @@ a.button1:hover {
 
   .grid {
     display: flex;
-    flex-direction: cloumn;
+    flex-direction: column;
   }
 
   .projects {
@@ -274,15 +275,14 @@ a.button1:hover {
   .repo-cards {
     justify-content: space-between;
     background-color: #8d86c9;
-    max-height: 200px;
     margin: 15px;
-    width: 90%;
+    max-width: 90%;
   }
 
   .card-info {
     margin: 2px;
   }
   #chart.chart {
-    max-width: 100;
+    max-width: 90%;
   }
 }
