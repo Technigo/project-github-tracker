@@ -11,7 +11,6 @@ const getProfile = () => {
     fetch(USER_URL)
     .then((res) => res.json())
     .then((data) => {
-        console.log('ME DATA', data)
         profileContainer.innerHTML = `
     <div class="profile-box">
         <img src ="${data.avatar_url}" alt ="avatar picture" />
@@ -30,7 +29,7 @@ const getRepos = () => {
     .then((res) => res.json())
     .then((data) => {
 
-    data.forEach (repo => console.log(repo.name))
+    // data.forEach (repo => console.log(repo.name))
 
         const forkedRepos = data.filter(
             (repo) => repo.name.includes('project-') && repo.fork
@@ -62,12 +61,9 @@ const fetchPullRequestsArray = (allRepos) => {
 
         fetch(PULL_URL)
         .then ((res) => res.json())
-        .then((data) => {
-            console.log(`mama repo of ${repo.name}`, data); 
-            
+        .then((data) => {            
             const userPullRequest = data.find(
                 (pull) => pull.user.login === repo.owner.login);
-            console.log('MIN MACKA', userPullRequest)
 
             if (userPullRequest) {
                 fetchCommits(userPullRequest.commits_url, repo.name);
@@ -78,6 +74,7 @@ const fetchPullRequestsArray = (allRepos) => {
         });
     });
 };
+
 const fetchCommits = (myCommitsUrl, MyRepoName) => {
     fetch(myCommitsUrl)
     .then((res) => res.json())

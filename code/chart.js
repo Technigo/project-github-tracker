@@ -23,6 +23,21 @@ const config = {
       hoverOffset: 4
     }]
   },
+
+  // Changeing the fontsize
+  options: {
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          font: {
+            size: 20,
+          },
+        },
+      },
+    },
+  },
+
 };
 
 
