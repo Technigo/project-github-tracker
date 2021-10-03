@@ -7,7 +7,6 @@ body {
   margin: 0;
   font-family: 'Nunito Sans';
   letter-spacing: 0.8px;
-  overflow-x: hidden;
 }
 
 header {
@@ -30,6 +29,7 @@ header {
   height: 30px;
   font-size: 18px;
   color: #000;
+  margin-bottom: 3em;
 }
 
 .user-profile {
@@ -39,6 +39,10 @@ header {
   align-items: center;
   flex-direction: column;
   color: #000;
+}
+
+.projects-container {
+  margin-top: 10em;
 }
 
 .swap-on-hover a {
