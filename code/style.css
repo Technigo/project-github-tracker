@@ -4,6 +4,10 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  background-image: url('./assets/background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 a {
@@ -76,10 +80,6 @@ a:hover {
 }
 
 .main-wrapper {
-  background-image: url('./assets/background.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   max-width: 1024px;
   margin: 0 auto;
   padding-bottom: 20px;
@@ -99,7 +99,7 @@ a:hover {
 
 .profile {
   width: 55%;
-  border-right: 2px lightgray solid;
+  border-right: 1px lightgray solid;
   text-align: left;
   padding: 3%;
 }
@@ -138,6 +138,8 @@ chart {
 
 .avatar-wrapper {
   width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,11 +223,11 @@ chart {
 
 
 .footer {
+  width: 100%;
   background-color: #56B093;
   color: white;
-  max-width: 1024px;
   margin: 0 auto;
-  padding: 8px;
+  padding: 10px;
   text-align: center;
   font-size: 11px;
   line-height: 1.5;

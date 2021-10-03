@@ -1,13 +1,13 @@
-let repoName = 'project-weather-app'
+const USER = 'elsisco'
+let repoName = 'project-weather-app' // Default value
 
-const API_REPOS = `https://api.github.com/users/elsisco/repos`
-const API_USER = `https://api.github.com/users/elsisco`
-const API_PR = `https://api.github.com/repos/technigo/${repoName}/pulls`
-
+const API_REPOS = `https://api.github.com/users/${USER}/repos`
+const API_USER = `https://api.github.com/users/${USER}`
 
 const projectsContainer = document.getElementById('projects')
 const profileContainer = document.getElementById('profile')
 
+// Fetch content for profile section
 const getUser = () => {
     fetch(API_USER)
         .then(res => res.json())
@@ -31,26 +31,26 @@ const getUser = () => {
         })
 }
 
+// Fetch content for projects section
 const getRepos = () => {
     fetch(API_REPOS)
         .then(res => res.json())
         .then(data => {
             // Filtering the Technigo project repos
             const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-
-            // Sort array in alphabetical order
-            const sortedRepos = forkedRepos.sort()
             
-            sortedRepos.forEach(repo =>
-                fetch(`https://api.github.com/repos/elsisco/${repo.name}/commits`)
+            forkedRepos.forEach(repo =>
+                fetch(`https://api.github.com/repos/${USER}/${repo.name}/commits`)
                     .then(res => res.json())
                     .then(data => {
                         // Formatting the title of projects to start all words with capital letter
                         let projectName = `${repo.name}`
+
                         const formattedProjectName = projectName.split("-")
                         for (let i = 0; i < formattedProjectName.length; i++) {
                             formattedProjectName[i] = formattedProjectName[i][0].toUpperCase() + formattedProjectName[i].substr(1);
                         }
+
                         let newProjectName = formattedProjectName.join(" ")
                         
                         // Date for most recent update of project
@@ -66,9 +66,7 @@ const getRepos = () => {
                             <p id="commits-${repo.name}" class="text">(commits yet to be displayed)</p>
                             <div class="languages">
                                 <p class="small-headline">Languages</p>
-
-                                <div id="progress-${repo.name}" class="progress"></div>
-                                
+                                <div id="progress-${repo.name}" class="progress"></div> 
                                 <section class="the-languages">
                                     <div class="html-wrapper">
                                         <div class="language-dot" style="background-color:#56B093;"></div>
@@ -94,9 +92,9 @@ const getRepos = () => {
         })
 }
 
-// A calculator for language percentage per project
+// A calculator for percentage of language per project
 const calculateLanguagePercentage = (repo) => {
-    fetch(`https://api.github.com/repos/elsisco/${repo.name}/languages`)
+    fetch(`https://api.github.com/repos/${USER}/${repo.name}/languages`)
         .then(res => res.json())
         .then(language => {
             const html = language.HTML || 0;
@@ -116,23 +114,20 @@ const calculateLanguagePercentage = (repo) => {
         })
 }
 
+// Fetch all pull requests per project
 const fetchPullRequestsArray = (allRepositories) => {
     allRepositories.forEach(repo => {
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
             .then(res => res.json())
             .then((data) => {
-                const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
+                // Hard coded the || below to get the commits for Project Chatbot for which I was not a collaborator
+                const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login || pull.user.login === 'Svempolin' && pull.number === 67)
                 fetchCommits(myPullRequests.commits_url, repo.name)
-                // if (myPullRequests) {
-                //     fetchCommits(myPullRequests.commits_url, repo.name)
-                // } else {
-                //     document.getElementById(`commit-${repo.name}`).innerHTML +=
-				// 		'No commits yet';
-                // }
             })
     })
 }
 
+// Fetching all the commits connected to the username
 const fetchCommits = (myCommitsUrl, myRepoName) => {
     fetch(myCommitsUrl)
         .then(res => res.json())
@@ -142,5 +137,4 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 }
 
 getUser()
-
 getRepos()

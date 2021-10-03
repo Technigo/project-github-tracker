@@ -10,7 +10,7 @@ const drawChart = (amount) => {
             ],
             datasets: [{
               label: 'Technigo progress',
-              data: [amount, 20-amount],
+              data: [amount, 19-amount],
               backgroundColor: [
                 '#F59B99',
                 '#FAECD2'
