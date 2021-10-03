@@ -1,7 +1,7 @@
 /// All API:S ///
 const USER = 'hejmaria'
-const REPOS_URL = `http://api.github.com/users/${USER}/repos`;
-const USER_URL = `http://api.github.com/users/${USER}`;
+const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
+const USER_URL = `https://api.github.com/users/${USER}`;
 
 /// All DOM selectors ///
 const projectContainer = document.getElementById('projects');
