@@ -1,1 +1,1 @@
-const token = `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`
+const token = `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`
