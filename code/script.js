@@ -19,14 +19,17 @@ const userProfile = () => {
         <h2>Username: ${data.login}</h2>
         <p>Full name: ${data.name}</p>
         <p>Location: ${data.location}</p>
-      </div>
-    
-      <div class=swap-on-hover>
-      <a href="${githubProfile}" target="blank">
+        <div class=swap-on-hover>
+        <a href="${githubProfile}" target="blank">
         <img class="front-image" src="${data.avatar_url}"/>
         <img class="back-image" src="${githubImg}">
+        </div>
       </a>
       </div>
+    
+      
+      
+      
       `
     })
 }
