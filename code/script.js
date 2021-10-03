@@ -3,24 +3,23 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 const nameAndPicture = document.getElementById("nameandpicture");
 const projectsContainer = document.getElementById("projects");
 
-const getUsernameAndPicture = () => {
-  const usernamePictureAndBioApi = `https://api.github.com/users/${USER}`;
-  fetch(usernamePictureAndBioApi)
+const NameandPicture = () => {
+  const personal_ID = `https://api.github.com/users/${USER}`;
+  fetch(personal_ID)
     .then((res) => res.json())
     .then((data) => {
       global__UserData = data;
     })
-    .then(() => renderUsernameAndPicture());
+    .then(() => NameAndPicture());
 };
 
-const renderUsernameAndPicture = () => {
+const NameAndPicture = () => {
   const picture = global__UserData.avatar_url;
 
   nameAndPicture.innerHTML += `
-      <img class="user-information__picture" src="${picture}" alt="Picture of gitHub-user"/>
-      <div class="user-information__username-bio-container">
-        <div class="user-information__username-bio-container__username">${USER}</div>
-      </div>`;
+        <img class="profile-pic" src="${picture}" alt="Picture of gitHub-user"/>
+        <div class="profile-name">${USER}</div>
+      `;
 };
 
 const fetchRepositories = () => {
@@ -35,28 +34,32 @@ const fetchRepositories = () => {
 
       technigoRepositories.forEach((repo) => {
         projectsContainer.innerHTML += `
-          <div>
-          <a> href="${repo.name} with default branch ${repo.default_branch}"</a>
-          <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-          <p id="commit-${repo.name}">Commits amount: </p>
+          <div class="project-info">
+          <a class="project-links" href="${repo.html_url}"> href="${
+          repo.name
+        } with default branch ${repo.default_branch}"
+          <p class="push">Recent push: ${new Date(
+            repo.pushed_at
+          ).toDateString()}</p>
+          <p class="commits" id="commit-${repo.name}">Commits amount: </p>
+
           </div>
           `;
       });
 
       fetchPullRequestArray(technigoRepositories);
+      drawProgressChart(technigoRepositories);
     });
 };
 
-const fetchPullRequestArray = (allRepositories) => {
-  allRepositories.forEach((repo) => {
+const fetchPullRequestArray = (allrepositories) => {
+  allrepositories.forEach((repo) => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
       .then((res) => res.json())
       .then((data) => {
         const myPullRequest = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
-        console.log();
-
         fetchCommits(myPullRequest.commits_url, repo.name);
       });
   });
@@ -68,5 +71,6 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
     });
 };
-getUsernameAndPicture();
+
+NameandPicture();
 fetchRepositories();

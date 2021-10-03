@@ -1,3 +1,99 @@
 body {
-  background: #FFECE9;
+  background: #d6c5c2;
+}
+
+#nameandpicture {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+}
+
+/* #projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  gap: 1rem;
+} */
+
+.profile-pic {
+  border-radius: 30px;
+  max-width: 100%;
+  height: auto;
+}
+
+.profile-name {
+  font-size: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: rgb(56, 172, 88);
+  color: white;
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-info {
+  /* max-width: 100%;
+  height: auto; */
+  border: 2px solid black;
+  /* padding: 10px; */
+  background-color: rgb(130, 110, 109);
+}
+
+.project-links {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
+  /* border: 2px solid black; */
+}
+
+.push {
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid black;
+}
+
+.commits {
+  padding: 20px;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid black;
+}
+
+@media (min-width: 768px) {
+  .profile-name {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    background-color: rgb(56, 172, 88);
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 20px;
+  }
+
+  #projects {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
+}
+@media (min-width: 992px) {
+  .profile-name {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    background-color: rgb(56, 172, 88);
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 20px;
+  }
+
+  #projects {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    padding: 10px;
+  }
 }
