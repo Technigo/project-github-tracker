@@ -1,3 +1,129 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1 {
+  font-family: 'Bebas Neue', cursive;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  max-width: 100%;
+  font-size: 30px;
+}
+
+h2 {
+  font-family: 'Bebas Neue';
+  font-size: 18px;
+}
+
+p {
+  font-family: 'Bebas Neue', cursive;
+  color: black;
+}
+
+/* Hero-Header */
+
+.header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
+    url(./assets/plant.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+  height: 60vh;
+  position: relative;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.picture {
+  width: 120px;
+  justify-content: center;
+  border-radius: 50%;
+  -webkit-filter: grayscale(10%);
+  margin-bottom: 15px;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.profile-section p {
+  color: antiquewhite;
+  letter-spacing: 2px;
+  font-weight: 400;
+  text-shadow: 1px 1px black;
+  font-size: 20px;
+  line-height: none;
+}
+
+.profile-section p a {
+  color: antiquewhite;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.profile-section p a:hover {
+  color: #aaaaaa;
+}
+
+/* Main section */
+
 body {
-  background: #FFECE9;
+  background-image: url(./assets/texture.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  line-height: 1.5;
+}
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-right: 27px;
+  flex-wrap: wrap;
+}
+
+.repo-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  padding: 15px 0;
+  border-radius: 20px;
+  line-height: 0;
+  background-color: antiquewhite;
+}
+
+.repo-card a {
+  color: black;
+  text-decoration: none;
+}
+
+.repo-card a:hover {
+  color: #aaaaaa;
+}
+
+.chart {
+  width: 300px;
+  height: 300px;
+  margin-left: 20px;
+}
+/*********Media Queries*********/
+
+/* Desk-topview */
+@media (min-width: 931px) {
+  .profile-section {
+    position: relative;
+    right: 120px;
+    top: 51px;
+  }
 }
