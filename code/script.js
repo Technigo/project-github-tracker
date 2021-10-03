@@ -21,8 +21,8 @@
         `<div class="my-info">
         <img class="avatar" src="${json.avatar_url}"/>
         <h1>${json.name}</h1>
-        <p>Username: ${json.login}</p>
-        <p>Location: ${json.location}</p>
+        <p><i class="fas fa-user"></i> ${json.login}</p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: ${json.location}</p>
         <img class="languages" src="./images/language.png"/>`
       });
     }
@@ -40,9 +40,9 @@
 				projectsContainer.innerHTML += 
         `<div class="project-box">
         <h3>${repo.name}</h3>
-        <p>Main branch: ${repo.default_branch}</p>
-        <p><a href="${repo.html_url}"target="_blank">Link to GitHub repo</a></p>
-        <p>Recent push: ${new Date(repo.pushed_at).toLocaleString()}</p>
+        <p><i class="fab fa-github"></i><a href="${repo.html_url}"target="_blank"> GitHub repo</a></p>
+        <p><i class="fas fa-code-branch"></i> ${repo.default_branch}</p>
+        <p><i class="far fa-clock"></i> Recent push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
         <p id="commit-${repo.name}">Commits: </p>
         </div>`;
 			});

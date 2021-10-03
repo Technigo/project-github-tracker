@@ -3,6 +3,7 @@
 
 }
 
+
 body {
   background: linear-gradient(0deg, #ffb55e 0%, #f687d7 100%);
   padding: 50px;
@@ -17,8 +18,9 @@ body {
   height: 80px;
   margin-bottom: 50px;
   
-
 }
+
+
 .logo {
   display: inline-block;
   vertical-align: top;
@@ -36,7 +38,7 @@ body {
 
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, a {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
 
@@ -60,7 +62,6 @@ a, u {
 
 .top-section{
 display: flex;
-grid-column: span 3;
 flex-direction: row;
 margin: 0 auto;
 align-items: center;
