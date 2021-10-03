@@ -1,16 +1,8 @@
 # GitHub Tracker
+The project was to create a place to keep track of the GitHub repos that I'm using at Technigo Boot Camp. For this project I continued practicing my JavaScript and API skills.
 
-Replace this readme with your own information about your project.
+# The problem
+I started the project after going through all the study material. And I decided to make the site look similar to my real GitHub site. The first part of fetching my repositories and my user info was pretty straight-forward. However, there were some tricky parts and some new solutions to learn as well. The code coachers lectures for this project were very helpful and helped me solved the parts where I got stuck, for example how to get the pull requests/commit messages. From the lectures I also learned about dynamic ID's and the difference between 'find' and 'filter' when fetching data. If I had more time I would have liked to dive deeper into the API and fetch more data, for example languages.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-
-
-Icon made by Freepik from www.flaticon.com
-
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+# View it live
+https://kaliine-github-tracker.netlify.app/
