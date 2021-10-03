@@ -101,6 +101,7 @@ a:hover {
   }
   .profile-container {
     width: 85%;
+    align-items: center;
   }
   .profile-image {
     width: 100%;

@@ -1,6 +1,4 @@
 const REPOS_URL = "https://api.github.com/users/themisk84/repos";
-const NEWS_SITE_COMMITS =
-  "https://api.github.com/repos/Technigo/project-news-site/pulls/214/commits";
 const projects = document.getElementById("projects");
 const profileImage = document.getElementById("profileImage");
 const userName = document.getElementById("userName");
@@ -36,7 +34,8 @@ const getRepos = () => {
                <h5 class="repo-item4">${language}</h5>
              </div>
           `;
-          });
+          })
+          .catch((err) => console.log(err));
       });
 
       drawChart(forkedRepos.length);
@@ -48,7 +47,6 @@ const getRepos = () => {
       );
 
       getPullRequest(forkedRepos);
-      // getLanguages(languageURL);
     });
 };
 
@@ -70,7 +68,8 @@ const getPullRequest = (forkedRepos) => {
           document.getElementById(
             `${repo.name}`
           ).innerHTML += `<h4 class="repo-item5">Group assignment or not yet pulled</h4>`;
-      });
+      })
+      .catch((err) => console.log(err));
   });
 };
 
@@ -82,8 +81,7 @@ const getCommits = (commitsURL, repo) => {
       document.getElementById(
         `${repo.name}`
       ).innerHTML += `<h4 class="repo-item5"> Number of commits: ${data.length}</h4>`;
-    });
+    })
+    .catch((err) => console.log(err));
 };
 getRepos();
-
-/* <h5 class="repo-item4">${data.language}</h5> */
