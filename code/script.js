@@ -1,3 +1,12 @@
+// //GLOBAL VARIABLES
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		Authorization: `token ****`,
+// 	},
+// };
+
+
 const USER = 'jenquach'
 const USER_URL = `https://api.github.com/users/${USER}`
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
@@ -24,11 +33,12 @@ const userProfile = () => {
       `
     })
 }
-
+// function to fetch the technigo repositories
 const getRepositories = () => {
   fetch(REPOS_URL)
     .then(res => res.json())
     .then(data => {
+      // filtering the technigo repositories
       const technigoRepositories = data.filter(
         repo => repo.fork && repo.name.includes('project-')
       )
@@ -37,7 +47,8 @@ const getRepositories = () => {
           <div class="project">
             <div class="repo-info">
               <a href="${repo.html_url}">${repo.name}</a>
-              <p class="push">Recent push ${new Date(repo.pushed_at).toDateString()}</p>
+              <p class="push">Recent push ${new Date(repo.pushed_at).toLocaleString("sv-SE", {dateStyle: 'short'})}</p>
+                <div id="language-${repo.name}" class="progress"></div>
             </div>
             <div class="repo-details">
               <p id="branch">${repo.default_branch}</p>
@@ -45,14 +56,15 @@ const getRepositories = () => {
             </div>
           </div>
         `
+        getLanguages(repo)
       })  
-      //               
       // Draw chart with technigoRepositories data
       drawChart(technigoRepositories.length)
       getPullRequests(technigoRepositories)  
     })
 }  
 
+// function to fetch all pull requests
 const getPullRequests = (allRepositories) => {
   allRepositories.forEach(repo => {
     const myRepoName = repo.name
@@ -76,13 +88,38 @@ const getPullRequests = (allRepositories) => {
   })
 }
 
+// function to fetch number of commits
 const getCommits = (myCommitsUrl, myRepoName) => {
-  fetch(myCommitsUrl)
+  fetch(myCommitsUrl, )
   .then(res => res.json())
   .then(data => {
     document.getElementById(`commit-${myRepoName}`).innerHTML +=  data.length
   }) 
 }
+
+// function to fetch all the languages used in the repository
+const getLanguages = (repo) => {
+  const languages_URL = `https://api.github.com/repos/${USER}/${repo.name}/languages`
+  fetch(languages_URL, )
+  .then(res => res.json())
+  .then(data => {
+    const html = data.HTML || 0;
+    const css = data.CSS || 0;
+    const js = data.JavaScript || 0;
+    const sum = html + css + js;
+    // calculates the percentage used of each language
+    const htmlPercentage = ((html / sum) * 100).toFixed(1);
+    const cssPercentage = ((css / sum) * 100).toFixed(1);
+    const jsPercentage = ((js / sum) * 100).toFixed(1);
+
+    document.getElementById(`language-${repo.name}`).innerHTML = `
+        <div class="language-html" title="html" style="width:${htmlPercentage}%;"></div>
+        <div class="language-css" title="css" style="width:${cssPercentage}%;"></div>
+        <div class="language-js" title="javascript" style="width:${jsPercentage}%;"></div>
+    `
+  })
+}
+
 
 userProfile()
 getRepositories()

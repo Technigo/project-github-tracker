@@ -3,10 +3,6 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
 
-console.log('chart is here')
-
-
-
 const drawChart = () => {
   const config = {
     type: 'doughnut',
@@ -19,7 +15,7 @@ const drawChart = () => {
         label: 'My First Dataset',
           data: [5, 20-5],
           backgroundColor: [
-            'rgb(42, 78, 98)',
+            '#3dabcc',
             'rgb(160,168,175)'
           ],
           hoverOffset: 4
