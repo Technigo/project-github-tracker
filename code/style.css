@@ -45,6 +45,7 @@ p {
   align-items: center;
   justify-content: center;
   margin: auto;
+  cursor: pointer;
 }
 
 h4 {
@@ -58,9 +59,12 @@ a {
   color: #218380;
 }
 
+a:hover {
+  color:#74a09f;
+}
+
 @media (min-width: 668px){
   main {
-    
     text-align: center;
     flex-direction: row;
   }
