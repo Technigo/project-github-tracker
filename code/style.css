@@ -52,18 +52,13 @@ img {
 }
 
 #username a:hover {
-  text-decoration: none;
-  background-color:#f1fabd;
-  color: #E05297;
+  color: #daff05;
+  text-decoration: underline;
   padding: 3px;
 }
 
 /* THE LIST SECTION */
 
-.projects-section {
-  display: flex;
-  flex-direction: column;
-}
 
 #list {
   display: block;
@@ -154,11 +149,6 @@ img {
     margin: 10px auto 50px;
   }
 
-  .projects-section {
-    display: flex;
-    flex-direction: column;
-  }
-  
  
   /* THE LIST SECTION */
   
@@ -253,7 +243,7 @@ img {
   }
 
   #chart-wrapper {
-    width: 40%;
+    width: 30%;
     margin: 20px auto 100px;
   }
 }

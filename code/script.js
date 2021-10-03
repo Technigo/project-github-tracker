@@ -1,3 +1,13 @@
+// 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
+
+const myToken = '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';
+const config = {
+    headers: {
+        'Authorization': `token ${myToken}`
+    }
+};
+
+
 // DOM SELECTORS
 const list = document.getElementById('list')
 const avatar = document.getElementById('avatar')
@@ -10,7 +20,7 @@ const API_MY_REPOS = `https://api.github.com/users/${USER}/repos`// user-variabl
 const API_MY_PROFILE = 'https://api.github.com/users/annathunberg'
 
 // FETCHES THE PROFILE PIC, NAME AND USERNAME
-fetch(API_MY_PROFILE)
+fetch(API_MY_PROFILE, config)
 .then((response) => response.json())
 .then((data) => {
     fullName.innerHTML = `Hi! I'm ${data.name}`
@@ -19,7 +29,7 @@ fetch(API_MY_PROFILE)
 })
 
   // FETCHES MY REPOS
-  fetch(API_MY_REPOS)
+  fetch(API_MY_REPOS, config)
   .then((response) => response.json())
   .then((data) => {
         const forkedRepos = data.filter(isFork)
@@ -44,7 +54,7 @@ function addCommits(repos) {
  function addPullRequests(repos) {
     repos.forEach((repo) => {
         const pullRequestsUrl = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
-        fetch(pullRequestsUrl)
+        fetch(pullRequestsUrl, config)
             .then((response) => response.json())
             .then((data) => {
                 const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === USER);

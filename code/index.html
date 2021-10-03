@@ -15,6 +15,8 @@
 <body>
   <h1>GitHub Tracker</h1>
 
+  
+
 <section class="profile-section">
 
   <img id="avatar"> </img>
@@ -30,18 +32,25 @@
   <h2>My Projects</h2>
 
   <main>
-
+    <div class="grid-container">
+    <div class="grid-item">
+      
     <div id="list"></div>
+
+  </div> <!--closing tag grid item-->
+  </div> <!--closing tag grid container-->
     
   </main>
 
 </section>
 
- <section class="progress-section">
+
 
   <h2>Project count</h2>
 
   <div id="chart-wrapper">
+
+ 
     
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
@@ -50,7 +59,6 @@
 
 </section>  
 
-  <script src="./token.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
