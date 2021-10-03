@@ -1,12 +1,10 @@
 # GitHub Tracker
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This is about tracking my Github proejcts from Technigo using Github's API to fetch data.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The main problem was understanding the project and the guidelines. 
+My CSS could have been nicer and I need to deepen my knowledge about CSS.
 
 ## View it live
 
