@@ -30,8 +30,7 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			sortRepos(filteredRepos, 'pushed_at', true);
-			console.log(filteredRepos);
-			fetchFullRepo(filteredRepos.slice(0, 2)); //
+			fetchFullRepo(filteredRepos);
 		})
 		.catch((err) => alert('fetchAllReposFromUser error: ', err));
 };
