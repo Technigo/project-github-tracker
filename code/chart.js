@@ -1,6 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById("chart").getContext("2d");
 Chart.defaults.font.size = 16;
+Chart.defaults.color = "#ffffff";
 
 //"Draw" the chart here 👇
 const drawChart = amount => {
