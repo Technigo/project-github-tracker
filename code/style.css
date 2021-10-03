@@ -4,16 +4,29 @@ text-align: center;
 
 
 body {
-  background: #648381;
+  background:black;
   font-family: 'Roboto', sans-serif;
 }
 
-h1, h2{
-  color: white;
+h1 {
+  color:rgb(226, 176, 9)
+}
+
+h2 {
+  color: white
 }
 
 h3 {
   color:rgb(226, 176, 9)
+}
+
+h5{
+  color:  #1e7699;
+  font-size: 18px;
+  font-style: italic;
+}
+p {
+  color: black;
 }
 
 img {
@@ -23,7 +36,7 @@ img {
 }
 
 .card {
-  background-color: white;
+  background-color: #1e7699;
   width: 300px;
   padding-top: 25px;
   padding-bottom: 20px;
@@ -34,10 +47,7 @@ img {
 
 /* styling for link */
 
-a:hover {
-  color: black;
-  text-decoration: underline;
-}
+
 
 a:link {
   text-decoration: none;
@@ -47,15 +57,16 @@ a:visited {
   text-decoration: none;
 }
 
+a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
 
-
-/* .card:hover {
-  background: rgb(173, 173, 173);
-} */
 .chart {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: auto;
+  padding-top: 50px;
 }
 
 .project-grid {
@@ -64,3 +75,8 @@ a:visited {
   grid-gap: 1.5rem;
 }
 
+footer {
+  background: black;
+  padding: 10px;
+  margin-top: 20px;
+}

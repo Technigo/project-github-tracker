@@ -5,7 +5,7 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 console.log ('chart is heart')
 
-
+Chart.defaults.font.size = 18;
 
   const drawChart = (amount) => {
     const config = {
@@ -19,8 +19,8 @@ console.log ('chart is heart')
             label: 'My First Dataset',
             data: [amount, 20-amount], 
             backgroundColor: [
-              'rgb(255, 99, 132)',
-              'rgb(54, 162, 235)'
+              'rgb(226, 176, 9)',
+              'white'
             ],
             hoverOffset: 4
           }]

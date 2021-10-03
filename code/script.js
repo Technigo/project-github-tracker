@@ -11,8 +11,7 @@ const getProfile = () => {
         // console.log('Profiluris', data)
         profileInfo.innerHTML += `
         <img src=${data.avatar_url}></img>
-        <p>${USER}</p>
-
+        <h5>${USER}</h5>
         `
     }) 
 }
@@ -35,8 +34,7 @@ const getRepos = () => {
                 <a href="${repo.html_url}"><h3>${repo.name}</h3></a>  
                 <p> Default branch: ${repo.default_branch}</p>
                 <p> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>  
-                <p id='commit-${repo.name}'> Number of commits:</p> 
-                   
+                <p id='commit-${repo.name}'> Number of commits:</p>   
             </div>
             
 
