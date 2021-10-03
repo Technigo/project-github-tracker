@@ -6,33 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Slab&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-  
+    <header class="header">
+      <!-- <img class ="picture" id="avatar"></img> -->
+      <section class="profile-section" id="profileSection"></section>
+    </header>
 
-    <header class="hero-header">
-      <img class ="picture" id="avatar"></img>
-      <section class ="profile-section" id="profileSection">
-      </section>
-  </header>
-    
-    <h1>GitHub Tracker</h1>
-    <section class= projects-section>
-      <main id="projects"></main>
-       <!-- This will be used to draw the chart 👇 -->
-       <div class="chart"><canvas id="chart"></canvas>
-      </div>      
+    <section class="projects-section">
+      <h1>GitHub Tracker</h1>
+      <main id="projects" class="projects"></main>
+      <!-- This will be used to draw the chart 👇 -->
+      <div class="chart"><canvas id="chart"></canvas></div>
     </section>
 
-<!-- <script src="./token.js"></script> -->
-   
+    <!-- <script src="./token.js"></script> -->
+
     <!-- Links to the js file -->
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
-  
- 
   </body>
 </html>
-

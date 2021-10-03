@@ -14,11 +14,11 @@ fetch(MY_PROFILE)
   .then((data) => {
     profileSection.innerHTML = `
     <div class= "profile-section">
-    <img class= "picture" src = "${data.avatar_url}"/>
-    <p class="info"> Hi world, I'm ${data.name}</p>
-    <p class="info"> ${data.bio}</p>
-
-    <p class="info"> @<a href="${data.html_url}"> ${data.login}</p>
+    <img class="picture" src ="${data.avatar_url}" alt="profile picture"/>
+    <p> Hi world, I'm ${data.name}</p>
+    <p> ${data.bio}</p>
+    <p><i class="fas fa-map-marker-alt"></i> ${data.location}</p>
+    <p><i class="fab fa-github"></i><a href="${data.html_url}"> ${data.login}</p>
     </div>
     `;
   });
@@ -35,9 +35,9 @@ const getRepositories = () => {
       technigoRepositories.forEach((repo) => {
         projectContainer.innerHTML += `
        <div id ${repo.name} class="repo-card">
-        <h3>${repo.name}</h3>
+        <h2>${repo.name}</h2>
         <p>Branch: ${repo.default_branch}</p>  
-        <p> Language: ${repo.language}</p> 
+        <p> Main Language: ${repo.language}</p> 
         <p>Last push: ${new Date(repo.pushed_at).toDateString()}</p>
         <p id="commit-${repo.name}"> Number of commits: </p>    
         <p> <a href="${repo.html_url}"> To repo...</a></p>
