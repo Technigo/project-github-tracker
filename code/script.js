@@ -32,8 +32,8 @@ const getRepos = () => {
                 projectsContainer.innerHTML += `
                 <div class="single-project">
                     <a href="${repo.html_url}" class="repo-name" target="_blank" style="text-transform: capitalize;">${repo.name}</a>
-                    <p class="last-push">Last push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
                     <p style="text-transform: capitalize;">Branch: ${repo.default_branch}</p>
+                    <p class="last-push">Last push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
                     <p class="commit-text" id="commit-${repo.name}">Commits: </p>
                     <p class="comment-title"">Last comments: </p>
                     <p class="comment-text" id="comment1-${repo.name}"> </p>
