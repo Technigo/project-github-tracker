@@ -1,13 +1,11 @@
 # GitHub Tracker
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment is to create a tracker for technigo repositories fetched from GitHub API.
 
 ## The problem
+This week I have googled so much and stack overflow has really helped me alot with my problems. Lectures helped as well where I learnt about the github token and how to set commits to 0. 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+If I had more time I would change the tooltip to instead have the name of the languages written out at the top of the projects to the right and I would add a search bar for projects.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Netlify: https://week7-githubtracker-jenquach.netlify.app (
