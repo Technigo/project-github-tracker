@@ -17,12 +17,11 @@ const getUser = () => {
         profileInfo.innerHTML = 
             `<img src="https://github.com/NinaAlejandra.png" alt="Profile picture">
             <h4> ${data.name}</h4>
-            <h4> <a href="${data.html_url}">${data.login}</a></h4>`
-            
-      })
+            <h4> <a href="${data.html_url}">${data.login}</a></h4>`  
+    })
 }
 
-  //Fetch
+  //Fetches
 const getRepos = () => {
     fetch(REPOS_URL)
     .then(response => response.json())
@@ -31,13 +30,13 @@ const getRepos = () => {
         const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
         const forkedSortedRepos = forkedRepos.sort(sortingFunctionFromStackOverflow)
         forkedSortedRepos.forEach(repo => list.innerHTML += `
-                    <div class="projects">
-                    <h3><a href="${repo.html_url}">${repo.name} 
-                    with default branch ${repo.default_branch}</h3></a>
-                    <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-                    <p id="pull-request-${repo.name}"></p>
-                    <p id="commits-${repo.name}"></p>
-                    </div>` )
+                <div class="projects">
+                 <h3><a href="${repo.html_url}">${repo.name} 
+                 with default branch ${repo.default_branch}</h3></a>
+                 <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+                 <p id="pull-request-${repo.name}"></p>
+                 <p id="commits-${repo.name}"></p>
+                </div>`)
         drawChart(forkedSortedRepos.length)
         fetchPullRequest(forkedSortedRepos)
         addCommits(forkedSortedRepos)
@@ -56,8 +55,6 @@ const fetchPullRequest = (allRepos) => {
     })
 }
 
-
-
 const addCommits = (allRepos) => {
     allRepos.forEach(repo => {
         fetch(`https://api.github.com/repos/${USER}/${repo.name}/commits`)
@@ -70,8 +67,9 @@ const addCommits = (allRepos) => {
 }
 
 function sortingFunctionFromStackOverflow(a, b) {
-    // https://stackoverflow.com/questions/10123953/how-to-sort-an-object-array-by-date-property
     return new Date(a.created_at) - new Date(b.created_at)
 }
+
+//invoking functions
 getUser()
 getRepos()

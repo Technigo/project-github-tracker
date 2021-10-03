@@ -2,10 +2,10 @@ body {
   background: #F7D4BC;
   font-family: 'Gemunu Libre', sans-serif;
 }
-header {
-text-align: center;
 
-font-size: 30px;
+header {
+  text-align: center;
+  font-size: 30px;
 }
 
 .profile {
@@ -16,9 +16,7 @@ font-size: 30px;
   color: #218380;
   margin:auto;
   width: 100%;
-  flex-direction: column;
-
-  
+  flex-direction: column;  
 }
 
 img {
@@ -59,3 +57,24 @@ a {
   font-size: 18px;
   color: #218380;
 }
+
+@media (min-width: 668px){
+  main {
+    
+    text-align: center;
+    flex-direction: row;
+  }
+  
+  .projects {
+    display: inline-block;
+    text-align: center; 
+    padding: 5px;
+    width: 33%;
+    height: 50%;
+  }
+  
+  .chart-class {
+    width: 40%;
+    margin-top: 20px;
+  }
+}  
