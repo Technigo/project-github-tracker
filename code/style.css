@@ -1,26 +1,100 @@
 body {
   background: #e0fbfc;
+  font-family: "Sora", sans-serif;
+  color: #293241;
+  margin: 0;
+}
+
+.githublogo {
+  width: 30px;
+  height: 30px;
 }
 
 h1 {
-  color: #293241;
+  text-align: center;
+}
+
+.userinfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .userimg img {
   border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }
 
 h2 {
-  color: #88b7d3;
+  text-align: center;
 }
 
-.chart {
-  margin: auto;
-  width: 80%;
+.projectscontainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projectinfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #88b7d3;
+  width: 350px;
+  height: 200px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+  border-radius: 10px;
+  opacity: 0.85;
+  transition: 0.5s;
+}
+
+.projectinfo:nth-child(6) {
   margin-bottom: 40px;
 }
 
+.repolink {
+  text-decoration: none;
+  color: #293241;
+  font-weight: bold;
+}
+
+.repolink:visited {
+  text-decoration: none;
+  color: #293241;
+}
+
+.repolink:hover {
+  text-decoration: underline;
+  color: #ee6c4d;
+}
+
+.chart {
+  width: 80%;
+  margin-bottom: 40px;
+  margin: auto;
+}
+
 @media (min-width: 768px) {
+  .projectscontainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .projectinfo:nth-last-child(-n + 2) {
+    margin-bottom: 60px;
+  }
+
+  .projectinfo {
+    width: 40%;
+  }
+
   .chart {
     width: 50%;
   }
@@ -29,5 +103,50 @@ h2 {
 @media (min-width: 999px) {
   .chart {
     width: 30%;
+  }
+
+  .projectinfo:hover {
+    transform: scale(1.04);
+  }
+
+  .heroimage {
+    background: linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)),
+      url("https://images.unsplash.com/photo-1607970669494-309137683be5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80");
+    height: 60vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: transparent;
+    position: relative;
+  }
+
+  h1 {
+    color: #ee6c4d;
+    text-align: start;
+    display: inline;
+    letter-spacing: 2px;
+    position: absolute;
+    margin-left: 20px;
+    text-shadow: 1px 1px 1px #293241;
+  }
+
+  .userinfo {
+    color: #ee6c4d;
+  }
+
+  .userlink {
+    color: #ee6c4d;
+  }
+
+  .userlink:visited {
+    color: #ee6c4d;
+  }
+
+  .userlink:hover {
+    color: #88b7d3;
+  }
+
+  .userinfo {
+    padding-top: 20px;
   }
 }

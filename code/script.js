@@ -4,7 +4,7 @@ const projectsContainer = document.getElementById("projects");
 const USER_URL = `https://api.github.com/users/${user}`;
 const userContainer = document.getElementById("userProfile");
 
-//Picture, name and location
+//User information: profile image, name and location
 const userProfile = () => {
   fetch(USER_URL)
     .then((res) => res.json())
@@ -13,8 +13,8 @@ const userProfile = () => {
       <div class="userinfo">
       <div class="userimg"><img src="${data.avatar_url}"/></div>
       <h2>${data.name}</h2>
-      <a href="https://github.com/Rephili">@${data.login}</a>
-      <p>${data.location}</p>
+      <a class="userlink" href="https://github.com/Rephili">@${data.login}</a>
+      <p>📍 ${data.location}</p>
       </div>
       </div>`;
     });
@@ -22,7 +22,7 @@ const userProfile = () => {
 
 userProfile();
 
-// Function to fetch all my repositories and then filter out the forked projects from Technigo
+//Function to fetch all my repositories and then filter out the forked projects from Technigo
 const fetchRepos = () => {
   fetch(REPOS_URL)
     .then((response) => response.json())
@@ -34,8 +34,8 @@ const fetchRepos = () => {
       // InnerHTML to make all the projects show on the page
       technigoProjects.forEach((repo) => {
         projectsContainer.innerHTML += `
-                <div>
-                    <a href="${repo.html_url}">${repo.name}</a>
+                <div class="projectinfo">
+                    <a class="repolink" href="${repo.html_url}">${repo.name}</a>
                     <p>Default branch for this project is ${
                       repo.default_branch
                     }</p>
@@ -51,6 +51,7 @@ const fetchRepos = () => {
     });
 };
 
+//Function to get the pull requests for each project
 const fetchPullRequests = (allRepositories) => {
   allRepositories.forEach((repo) => {
     const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
@@ -72,6 +73,7 @@ const fetchPullRequests = (allRepositories) => {
   });
 };
 
+//Function to get the amount of commits
 const fetchCommits = (myCommitsUrl, myRepoName) => {
   fetch(myCommitsUrl)
     .then((response) => response.json())
