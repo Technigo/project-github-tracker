@@ -22,8 +22,7 @@ const getRepos = () => {
     fetch(REPOS_URL)
     .then(response => response.json())
     .then(data => {
-        console.log("Här är vi!", data) //so we can see all the info 
-
+        // console.log("Here we are!", data) 
         
         const forkedRepos = data.filter(
             (repo) => repo.name.includes('project-') && repo.fork
@@ -36,22 +35,16 @@ const getRepos = () => {
                 <p> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>  
                 <p id='commit-${repo.name}'> Number of commits:</p>   
             </div>
-            
 
-        `) //create div for card
-
+        `) 
         
-        // const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-')) 
-        // forkedRepos.forEach(repo => projectContainer.innerHTML += `<h3>${repo.name}</h3>`) //create div for card
-
         fetchPullRequestsArray(forkedRepos);
 
-        drawChart(forkedRepos.length) // needs to see const forkedRepos
+        drawChart(forkedRepos.length)
  
     })
 
 }
-
 
 const fetchPullRequestsArray = (allRepositories) => {
     allRepositories.forEach((repo) => {
@@ -70,8 +63,7 @@ const fetchPullRequestsArray = (allRepositories) => {
             fetchCommits(myPullRequest.commits_url, repo.name);
         } else {
             document.getElementById(`commit-${repo.name}`).innerHTML =
-                'No pull request yet done :(';
-
+                'No pull request done yet';
         }
         })
     })
