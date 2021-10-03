@@ -87,7 +87,7 @@ a:visited {
 }
 
 
-/* TABLET */
+/* Responsiveness TABLET */
 @media (min-width: 768px) {
 
 h1 {
@@ -104,7 +104,7 @@ h1 {
 
 }
 
-/* SMALL SCREEN */
+/* Responsiveness SMALL SCREEN */
 @media (min-width: 992px) {
   h1 {
     font-size: 80px;
@@ -122,7 +122,7 @@ h1 {
 }
 
 
-/* BIG SCREEN */
+/* Responsiveness BIG SCREEN */
 @media (min-width: 1100px) {
   
   .chart-box {
