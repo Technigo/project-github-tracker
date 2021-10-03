@@ -17,6 +17,7 @@ body {
   width: 100%;  
   height: 80px;
   margin-bottom: 50px;
+
   
 }
 
@@ -30,7 +31,8 @@ body {
 }
 
 .navigation-bar > a {
-  display: inline-block;
+  display: grid;
+  grid-area: nav;
   vertical-align: text-top;
   margin-right: 20px;
   height: 80px;       
@@ -61,8 +63,7 @@ a, u {
 }
 
 .top-section{
-display: flex;
-flex-direction: row;
+display: grid;
 margin: 0 auto;
 align-items: center;
 
@@ -70,6 +71,7 @@ align-items: center;
 
 
 .my-info {
+  grid-area: grid;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
@@ -80,11 +82,10 @@ align-items: center;
 }  
 
 .projects {
-  display: flex;
-  grid-column: span 3;
-  flex-direction: row;
+  display: grid;
   flex-wrap: wrap;
-  justify-content: center;
+  grid-auto-flow: row;
+  
   
 }
 
@@ -96,6 +97,8 @@ align-items: center;
   border-radius: 25px;
   text-align: center;
   margin: 10px; 
+  grid-auto-flow: column;
+  flex-wrap: wrap;
 
 }
 
@@ -107,6 +110,9 @@ align-items: center;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
   backdrop-filter: blur(5px);
   border-radius: 25px;
+  display: grid;
+  margin: 0 auto;
+  align-items: center;
 }
 
 
@@ -115,13 +121,35 @@ align-items: center;
     .avatar {
       width: 150px;
       }
-     
+
+    .my-info {
+      flex-direction: column;
+
+      }
+     .projects {
+       flex-direction: column;
+     }
+     .myChart {
+       flex-direction: column;
+     }
   }
   
   /* tablet */
-  @media (min-width: 768px) and (max-width: 1024px){
+  @media (min-width: 669px) and (max-width: 1024px){
     .avatar {
       width: 200px;
+      }
+
+      .my-info {
+        flex-direction: column;
+  
+        }
+       .projects {
+         flex-direction: column;
+       }
+
+       .myChart {
+        flex-direction: column;
       }
   }
   
