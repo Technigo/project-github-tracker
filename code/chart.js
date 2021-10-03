@@ -8,18 +8,18 @@ const drawChart = (amount) => {
         type: 'doughnut',
         data: {
         labels: [
-          'Finished projects',
-          'Projects left',
+          'Projects done',
+          'Projects left to do',
         ],
         datasets: [{
           label: 'My Technigo projects',
           data: [amount, 19-amount],
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
+            'rgb(219,57,141)',
+            'rgb(0,255,255)',
           ],
           hoverOffset: 4
-        }]
+        }],
       },
     };
 

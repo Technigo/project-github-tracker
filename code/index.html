@@ -4,19 +4,113 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Technigo Boot Camp GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Open+Sans&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <main id="profile-container"></main>
-  <h2>Projects:</h2>
-  <section id="projects"></section>
+  <!-- temporary body for styling -->
+  <!-- <header>
+    <h1>Technigo Boot Camp GitHub Tracker</h1>
+  </header>
+  <main class="page-container">
+    <section id="profile-container" class="profile-container">
+      <img src="https://avatars.githubusercontent.com/u/43146046?v=4" class="profile-img">    
+      <h2>Maria Sjögren</h2>
+      <p>molbimien</p>
+    </section>
+    <section class="canvas-container">
+      <canvas id="chart" width="366" height="366" style="display: block; box-sizing: border-box; height: 183px; width: 183px;"></canvas>
+    </section>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <section id="projects" class="projects-container">
+        <div class="card">
+            <a href="https://github.com/molbimien/project-business-site">
+            <h2>project-business-site</h2>
+            <p>Default branch: master</p>
+            <p>Most recent push: 2021-09-05</p>
+            <p id="commit-project-business-site">Number of commits: 30</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/molbimien/project-chatbot">
+            <h2>project-chatbot</h2>
+            <p>Default branch: main</p>
+            <p>Most recent push: 2021-09-12</p>
+            <p id="commit-project-chatbot">Number of commits: 12</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/molbimien/project-github-tracker">
+            <h2>project-github-tracker</h2>
+            <p>Default branch: main</p>
+            <p>Most recent push: 2021-10-01</p>
+            <p id="commit-project-github-tracker">This was a group project. No pull requests were done by molbimien.</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/molbimien/project-guess-who">
+            <h2>project-guess-who</h2>
+            <p>Default branch: main</p>
+            <p>Most recent push: 2021-09-20</p>
+            <p id="commit-project-guess-who">Number of commits: 16</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/molbimien/project-news-site">
+            <h2>project-news-site</h2>
+            <p>Default branch: master</p>
+            <p>Most recent push: 2021-08-30</p>
+            <p id="commit-project-news-site">Number of commits: 13</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/molbimien/project-weather-app">
+            <h2>project-weather-app</h2>
+            <p>Default branch: master</p>
+            <p>Most recent push: 2021-09-08</p>
+            <p id="commit-project-weather-app">This was a group project. No pull requests were done by molbimien.</p>
+            </a>
+        </div>
+      </section>
+  </main> -->
+
+  <!-- <script src="./script.js"></script>
+  <script src="./chart.js"></script> -->
+
+  <!-- <footer>
+    <p>Made by <a class="hover" href="https://www.linkedin.com/in/molbimien/en">Maria Sjögren</a> 🐘 <a class="hover" href="https://www.technigo.io/program">Technigo Boot Camp</a> 2021</p>
+  </footer>
+
+</body> -->
+
+<body>
+  <header>
+    <h1>Technigo Boot Camp GitHub Tracker</h1>
+  </header>
+  <main class="page-container">
+  
+  <section id="profile-container" class="profile-container"></section>
+
+  <section class="canvas-container">
+    <canvas id="chart"></canvas>
+  </section>
+
+  <section id="projects" class="projects-container">
+  </section>
+  </main>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
+  <footer>
+    <p>Made by <a class="hover" href="https://www.linkedin.com/in/molbimien/en">Maria Sjögren</a> during <a class="hover" href="https://www.technigo.io/program">Technigo Boot Camp</a> 2021</p>
+  </footer>
 </body>
 </html>

@@ -11,7 +11,8 @@ const fetchProfile = () => {
         .then(profileData => {
         profileContainer.innerHTML += `
             <img src=${profileData.avatar_url} class="profile-img">    
-            <h1>${profileData.login}</h1>
+            <h2>${profileData.name}</h2>
+            <p>${profileData.login}</p>
         `
         });
   }
@@ -26,10 +27,13 @@ const fetchRepositories = () => {
 
             technigoRepositories.forEach((repo) => {
                 projectsContainer.innerHTML += `
-                <div>
-                    <a href="${repo.html_url}">${repo.name} with default branch ${repo.default_branch}</a>
-                    <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-                    <p id="commit-${repo.name}">Commits amounts: </p>
+                <div class="card">
+                    <a href="${repo.html_url}">
+                    <h2>${repo.name}</h2>
+                    <p>Default branch: ${repo.default_branch}</p>
+                    <p>Most recent push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
+                    <p id="commit-${repo.name}">Number of commits: </p>
+                    </a>
                 </div>
                 `;
             });
@@ -64,7 +68,7 @@ const fetchPullRequestsArray = (allRepositories) => {
                 fetchCommits(myPullRequest.commits_url, repo.name);
             } else {
                 document.getElementById(`commit-${repo.name}`).innerHTML =
-                'No pull reguest yet done :(';
+                'This was a group project. No pull requests made by molbimien.';
             }
                 
             });

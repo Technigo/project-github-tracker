@@ -1,3 +1,152 @@
 body {
-  background: #FFECE9;
+  background: #f7f7f7;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 h2 h3 {
+  font-family: 'Merriweather', serif;
+}
+
+header {
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.page-container {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  width: 95%;
+}
+
+.profile-container {
+  font-size: 1.1rem;
+  display: grid;
+  grid-column: span 6;
+  justify-items: center;
+  text-align: center;
+}
+
+.profile-img {
+  border-radius: 50%;
+  max-width: 250px;
+  align-content: center;
+}
+
+.profile-container h2 {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.canvas-container {
+  display: grid;
+  grid-column: span 6;
+  justify-items: center;
+  margin: 5% auto;
+  width: 300px;
+}
+
+.projects-container {
+  display: grid;
+  grid-column: span 6;
+  grid-gap: 20px;
+  margin: 50px auto;
+}
+
+.card {
+  background: #fff;
+  text-align:left;
+  padding: 2rem;
+  box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
+  transform: translateY(0);
+  position: relative;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card h3 {
+  font-size: 1.8rem;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  filter: none;
+  top: -0.25rem;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+  color: #DB398D;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  text-align: center; 
+  height: 64px;
+  padding-top: 16px;
+  border-top: 1px dotted #DB398D;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+a, a > span {
+  position: relative;
+  color: inherit;
+  text-decoration: none;
+}
+a:before, a:after, a > span:before, a > span:after {
+  content: '';
+  position: absolute;
+  transition: transform .5s ease;
+}
+
+.hover:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #DB398D;
+  transform: scaleX(0);
+}
+
+.hover:hover:before {
+  transform: scaleX(1);
+}
+
+footer a:link {
+  color: #DB398D;
+}
+
+footer a:visited {
+  color: grey;
+}
+
+footer a:active {
+  background-color: cyan;
+}
+
+/* styling for tablet and desktop */
+
+@media only screen and (min-width: 768px) {
+  .profile-container {
+    grid-column: span 3;
+  }
+
+  .canvas-container {
+    grid-column: span 3;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .projects-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
