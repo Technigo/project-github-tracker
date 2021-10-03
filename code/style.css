@@ -1,3 +1,8 @@
+:root {
+  --primary: #F0A500;
+  --secondary:#fff;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +11,7 @@
 
 /* Header */
 .header {  
-  background-color: #fff;
+  background-color: var(--secondary);
   position: relative;
   height: 160px;
 }
@@ -18,7 +23,7 @@
 }
 
 .tracker {
-  color:#F0A500;
+  color:var(--primary);
 }
 
 .fab {
@@ -39,7 +44,7 @@
   width: 30px;
   height: 6px;
   background-color: #000;
-  border:1px solid #fff;
+  border:1px solid var(--secondary);
 }
 
 /* Profile section */
@@ -61,7 +66,7 @@
 }
 
 .myProfile {
-  color:#E8F6EF;
+  color:var(--secondary);
   padding-top: 20px;
   text-align: center;
   line-height: 38px;
@@ -70,35 +75,32 @@
 .account, .email {
   display: block;
   text-decoration: none;
-  color:#F0A500
+  color:var(--primary);
 }
 
 .account:hover, .email:hover {
-  color:#fff;
+  color:var(--secondary);
 }
 
 .fas {
-  color:#fff;
+  color:var(--secondary);
   font-weight: 800;
   margin-right: 5px;
 }
 
 /* Main */
 .main {
-  background-color:#B8DFD8;
+  background-color:var(--secondary);
   height: 1800px;
-}
-
-.search-form {
-  border:2px solid red;
-  height: 200px;
 }
 
 .heading-two {
   text-align: center;
   text-transform: uppercase;
   color:grey;
-  text-decoration:underline;
+  padding-top:10px;
+  font-family: 'Roboto Condensed', sans-serif;
+
 }
 
 .projects-container {
@@ -110,7 +112,7 @@
   width: 90%;
   height: 190px;
   max-width: 400px;
-  background-color: #FFB319;
+  background-color: var(--primary);
   margin:15px auto;
   box-shadow: 2px 2px 1px;
   font-family: 'Roboto Condensed', sans-serif;
@@ -163,7 +165,7 @@ span {
 }
 
 .orange-icon {
-  color:#FFB319;
+  color:var(--primary);
   font-size:26px;
   margin:30px auto;
 }
