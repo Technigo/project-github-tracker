@@ -88,7 +88,7 @@ const fetchPullRequests = (allRepositories) => {
                 fetchCommits(myPullRequests.commits_url, repo.name);
             } else {
                 document.getElementById(`commit-${repo.name}`).innerHTML =
-                    '-';
+                    '-'
             }
             
         })

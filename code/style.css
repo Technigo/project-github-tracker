@@ -224,7 +224,14 @@ a:hover {
   border-top: 0.5px solid #31363C;
 }
 
+.footer p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-top: 0;
+}
+
 .footer a {
+  font-weight: 300;
   color: #dedede;
 }
 
@@ -240,13 +247,13 @@ a:hover {
   align-items: center;
 }
 
-.linkedIn-logo {
+.social-logo {
   width: 32px;
   height: auto;
   margin-left: 1rem;
 }
 
-.linkedIn {
+.more-about-me {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -430,8 +437,12 @@ a:hover {
     width: 40px;
   }
 
-  .linkedIn-logo {
+  .social-logo {
     width: 24px;
+  }
+
+  .footer p {
+    display: none;
   }
 
   
