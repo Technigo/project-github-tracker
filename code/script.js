@@ -26,22 +26,16 @@ const fetchRepositories = () => {
   fetch(REPOS_URL)
     .then((res) => res.json())
     .then((data) => {
-      const technigoRepositories = data.filter(
-        (repo) => repo.name.includes("project-") && repo.fork
-      );
+      const technigoRepositories = data.filter((repo) => repo.name.includes("project-") && repo.fork);
 
       console.log(technigoRepositories);
 
       technigoRepositories.forEach((repo) => {
         projectsContainer.innerHTML += `
           <div class="project-info">
-          <a class="project-links" href="${repo.html_url}"> href="${
-          repo.name
-        } with default branch ${repo.default_branch}"
-          <p class="push">Recent push: ${new Date(
-            repo.pushed_at
-          ).toDateString()}</p>
-          <p class="commits" id="commit-${repo.name}">Commits amount: </p>
+          <a class="project-links" href="${repo.html_url}">${repo.name} with default branch ${repo.default_branch}</a>
+          <p class="push">Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+          <a href="${repo.html_url}"><p class="commits" id="commit-${repo.name}">Commits amount: </p></a>
 
           </div>
           `;
@@ -57,9 +51,7 @@ const fetchPullRequestArray = (allrepositories) => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
       .then((res) => res.json())
       .then((data) => {
-        const myPullRequest = data.find(
-          (pull) => pull.user.login === repo.owner.login
-        );
+        const myPullRequest = data.find((pull) => pull.user.login === repo.owner.login);
         fetchCommits(myPullRequest.commits_url, repo.name);
       });
   });

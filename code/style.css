@@ -31,23 +31,24 @@ body {
 }
 
 .project-info {
-  /* max-width: 100%;
-  height: auto; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  max-width: 100%;
+  height: auto;
   border: 2px solid black;
-  /* padding: 10px; */
+  padding: 10px;
   background-color: rgb(130, 110, 109);
 }
 
 .project-links {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
-  padding: 20px;
+  font-size: 12px;
   max-width: 100%;
   height: auto;
-  /* border: 2px solid black; */
 }
 
 .push {
+  background-color: teal;
   padding: 20px;
   max-width: 100%;
   height: auto;
@@ -55,6 +56,7 @@ body {
 }
 
 .commits {
+  background-color: turquoise;
   padding: 20px;
   max-width: 100%;
   height: auto;
