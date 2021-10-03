@@ -51,7 +51,7 @@ body {
 .single-project {
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 10px 0 10px 20px;
+  padding: 10px 10px 10px 20px;
   margin: 10px 10px;
 }
 a:hover {
@@ -59,6 +59,11 @@ a:hover {
 }
 .last-push {
   font-size: 0.8rem;
+  color: grey;
+}
+.comment-text {
+  font-size: 0.8rem;
+  color: grey;
 }
 .chart {
   width: 300px;

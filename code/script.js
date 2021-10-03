@@ -36,16 +36,19 @@ const getRepos = () => {
                 projectsContainer.innerHTML += `
                 <div class="single-project">
                     <a href="${repo.html_url}" class="repo-name" target="_blank" style="text-transform: capitalize;">${repo.name}</a>
-                    <p class="last-push">Recent push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
+                    <p class="last-push">Last push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
                     <p style="text-transform: capitalize;">Branch: ${repo.default_branch}</p>
                     <p class="commit-text" id="commit-${repo.name}">Commits: </p>
-                    <p class="comment-text" id="comment-${repo.name}">Last comment: </p>
+                    <p class="comment-title"">Last comments: </p>
+                    <p class="comment-text" id="comment1-${repo.name}"> </p>
+                    <p class="comment-text" id="comment2-${repo.name}"> </p>
+                    <p class="comment-text" id="comment3-${repo.name}"> </p>
                 </div>
                 `
         })
         drawChart(forkedRepos.length)
         fetchPulls(forkedRepos)
-        commitComments(forkedRepos) //<<<<<<< pass the repos t
+        commitComments(forkedRepos)
         })
 }
 
@@ -86,15 +89,27 @@ const commitComments = (forkedRepos) => {
         .then((data) => {
 
             if (data[0].author.login === 'dandeloid'){
-            const lastMsg = data[0].commit.message
-            document.getElementById(`comment-${repo.name}`).innerHTML += `"${lastMsg}"`
+            const commitDate1 = new Date (data[0].commit.committer.date).toDateString()
+            document.getElementById(`comment1-${repo.name}`).innerHTML += `${commitDate1}: "${data[0].commit.message}"`
+            }
+            if (data[1].author.login === 'dandeloid'){
+            const commitDate2 = new Date (data[1].commit.committer.date).toDateString()
+            document.getElementById(`comment2-${repo.name}`).innerHTML += `${commitDate2}: "${data[1].commit.message}"`
+            }
+            if (data[2].author.login === 'dandeloid'){
+            const commitDate3 = new Date (data[2].commit.committer.date).toDateString()
+            document.getElementById(`comment3-${repo.name}`).innerHTML += `${commitDate3}: "${data[2].commit.message}"`
+            }
+            else{
+            document.getElementById(`comment1-${repo.name}`).innerHTML += `No comments atm`
             }
                 
         })
     })
 }
 
-
+//${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}
+// new Date(repo.pushed_at).toDateString()
 
     //https://api.github.com/repos/dandeloid/project-news-site/languages
     //https://api.github.com/repos/dandeloid/project-business-site/commits
