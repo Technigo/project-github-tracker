@@ -87,11 +87,11 @@ const fetchCommits = (myCommitsUrl, repo) => {
 			populateCommits(repo, commitsSinceFork);
 			getCollaborators(commitsSinceFork, repo);
 		})
-		.catch((err) => alert('fetchCommits error: ', repo.name, err));
+		.catch((err) => console.log('fetchCommits error: ', repo.name, err));
 };
 
 const populateCommits = (repo, commits) => {
-	document.getElementById(`commit-${repo.name}, `).innerHTML += ` ${commits.length}`;
+	document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commits.length}, `;
 };
 
 const getCollaborators = (commits, repo) => {
