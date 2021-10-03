@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap"
+      rel="stylesheet"
+    />
 </head>
+
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+
+  <header class="hero">
+    <h1>GitHub Tracker</h1>
+  </header>
+
+  <section class="personal-info" id="personalInfo"></section>
+
+ 
+  <h2>for the Technigo Projects</h2>
+
+   <div id="projects" class="projects"></div>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <section class="chart-container">
+    <p class="chart-text">Overview of projects</p>
+    <canvas class="chart" id="chart"></canvas>
+  </section>
 
-  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
 </body>
+
 </html>
