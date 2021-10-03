@@ -36,14 +36,16 @@ const getRepos = () => {
                 projectsContainer.innerHTML += `
                 <div class="single-project">
                     <a href="${repo.html_url}" class="repo-name" target="_blank" style="text-transform: capitalize;">${repo.name}</a>
-                    <p>Recent push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
+                    <p class="last-push">Recent push: ${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}</p>
                     <p style="text-transform: capitalize;">Branch: ${repo.default_branch}</p>
-                    <p id="commit-${repo.name}">Commits: </p>
+                    <p class="commit-text" id="commit-${repo.name}">Commits: </p>
+                    <p class="comment-text" id="comment-${repo.name}">Last comment: </p>
                 </div>
                 `
         })
         drawChart(forkedRepos.length)
         fetchPulls(forkedRepos)
+        commitComments(forkedRepos) //<<<<<<< pass the repos t
         })
 }
 
@@ -75,7 +77,27 @@ const fetchCommits = (myCommitsUrl, RepoName) => {
     })
     }
 
+//Fetch last commit message
+const commitComments = (forkedRepos) => {
+    forkedRepos.forEach((repo) => {
+        const COM_URL = `https://api.github.com/repos/dandeloid/${repo.name}/commits`
+        fetch(COM_URL)
+        .then((response) => response.json())
+        .then((data) => {
+
+            if (data[0].author.login === 'dandeloid'){
+            const lastMsg = data[0].commit.message
+            document.getElementById(`comment-${repo.name}`).innerHTML += `"${lastMsg}"`
+            }
+                
+        })
+    })
+}
+
+
+
     //https://api.github.com/repos/dandeloid/project-news-site/languages
+    //https://api.github.com/repos/dandeloid/project-business-site/commits
 
 
 getRepos()
