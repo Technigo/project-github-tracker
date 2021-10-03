@@ -9,20 +9,29 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <!-- The hero image and user info -->
+
     <div class="heroimage">
-      <img
-        class="githublogo"
-        src="https://cdn-icons-png.flaticon.com/512/733/733609.png"
-        alt="githublogo"
-      />
       <h1>GitHub Tracker</h1>
       <div id="userProfile"></div>
     </div>
+    <hr />
 
-    <h2>Projects:</h2>
+    <!-- The projects/repositories -->
+
+    <div class="logowrapper">
+      <img
+        class="githublogo"
+        src="https://cdn-icons-png.flaticon.com/512/2111/2111612.png"
+        alt="githublogo"
+      />
+      <h2>Projects:</h2>
+    </div>
+
     <main id="projects" class="projectscontainer"></main>
 
-    <!-- This will be used to draw the chart 👇 -->
+    <!-- The chart -->
+
     <div class="chart">
       <canvas id="chart"></canvas>
     </div>
