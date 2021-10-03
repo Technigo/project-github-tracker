@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This assignment was to create a GitHub tracker using API's from GitHub to display information about forked projects done during Technigo Boot Camp. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started working with the blue requirements and after I had completed the tasks on blue level I continued working on the styling in CSS to make the page look like GitHub. However, if I had more time I would work more with getting the page more similar to GitHub and also adding some of the red and black requirements.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://linneawilhelmsson-week7-github-tracker.netlify.app/

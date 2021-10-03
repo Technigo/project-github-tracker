@@ -1,8 +1,7 @@
-//DOM-selector for the canvas 👇
+//DOM-selector for the canvas
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
-
+// Chart showing completed projects and how many there is left
 const repoChart = (amount) => {
     const config = {
         type: 'bar',
@@ -10,7 +9,6 @@ const repoChart = (amount) => {
             labels: [
                 'Projects done',
                 'Projects left',
-                //'Blue'
             ],
             datasets: [{
                 label: 'Technigo projects',
@@ -18,7 +16,6 @@ const repoChart = (amount) => {
                 backgroundColor: [
                     'rgb(63, 185, 79)',
                     '#8B949E',
-                    // 'rgb(88, 166, 255)',
                 ],
                 hoverOffset: 4
             }]
@@ -26,43 +23,3 @@ const repoChart = (amount) => {
     };        
     const repositoryChart = new Chart(ctx, config);
 }
-        
-
-// const repoChart = new Chart(ctx, config);
-
-// const delayed
-// new Chart(ctx,) = {
-//   type: 'bar',
-//   data:  {
-//     labels,
-//     datasets: [
-//         {
-//             data,
-//             backgroundColor: ['#d5a7b6', '#5c7fe9'],
-//         },
-//     ],
-// },
-//   options: {
-//     animation: {
-//       onComplete: () => {
-//         delayed = true;
-//       },
-//       delay: (context) => {
-//         let delay = 0;
-//         if (context.type === 'data' && context.mode === 'default' && !delayed) {
-//           delay = context.dataIndex * 300 + context.datasetIndex * 100;
-//         }
-//         return delay;
-//       },
-//     },
-//     scales: {
-//       x: {
-//         stacked: true,
-//       },
-//       y: {
-//         stacked: true
-//       }
-//     }
-//   }
-// }
-// } //denna tillhör
