@@ -4,16 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project GitHub Tracker</title>
+    <title>Intehon GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/59fae56e7e.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h1>GitHub Tracker</h1>
-    <h2>Projects:</h2>
+    <header>
+      <h3>GitHub Tracker</h3>
+      <img class="github-img" src="./images/github.svg.png" alt="GitHub logo" />
+    </header>
+    <section class="info-container" id="info-container"></section>
+
     <main id="projects"></main>
 
     <!-- This will be used to draw the chart 👇 -->
-    <canvas id="chart"></canvas>
+    <div class="chart-container"><canvas id="chart"></canvas></div>
+
+    <footer>
+      <img
+        class="footer-logo"
+        src="images/logo_transparent.png"
+        alt="Inte Hon Logo"
+      />
+      <nav>
+        <a
+          class="footer-link"
+          href="https://www.linkedin.com/in/emelie-s%C3%B6derhielm-14105121a/"
+          ><i class="fab fa-linkedin fa-l"></i
+        ></a>
+        <a class="footer-link" href="mailto:intehon@gmail.com"
+          ><i class="fas fa-envelope fa-l"></i
+        ></a>
+      </nav>
+    </footer>
 
     <script src="./token.js"></script>
     <script src="./script.js"></script>

@@ -5,22 +5,39 @@ const options = {
     }
 }
 
-
 const USER = 'intehon'
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
+const USER_INFO_URL = `https://api.github.com/users/${USER}`
 
 const projectsContainer = document.getElementById('projects')
+const infoContainer = document.getElementById('info-container')
+
+const getUserInfo = () => {
+    fetch(USER_INFO_URL, options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('user data: ', data)
+        infoContainer.innerHTML += `
+        <img class="user-img" src="./images/profil.jpg" alt="Profile Picture" />
+        <div class="user-info"><h1>${data.name}</h1><a href="https://github.com/intehon"><h3>${data.login}</h3></a><h3>${data.location}</h3><h3>${data.bio}</h3></div>`
+      })
+    }
+
+
 
 const fetchRepos = () => {
-    fetch(REPOS_URL)
+    fetch(REPOS_URL, options)
     .then((response) => response.json())
     .then((data) => {
-        const technigoRepos = data.filter((repo) => repo.name.includes('project-') && repo.fork)
-   
-        technigoRepos.forEach((repo) => {
+        console.log('my repos: ', data)
+        const technigoRepos = data.filter(
+            (repo) => repo.name.includes('project-') && repo.fork)
+        technigoRepos.forEach(
+            (repo) => {
             projectsContainer.innerHTML += `
-            <div>
-            <a href="${repo.html_url}">${repo.name} with default branch ${repo.default_branch}</a>
+            <div class="project-container">
+            <a href="${repo.html_url}">${repo.name}</a>
+            <p>Default branch ${repo.default_branch}</p>
             <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
             <p id="commit-${repo.name}">Commits amount: </p>
             </div>
@@ -33,11 +50,9 @@ const fetchRepos = () => {
         fetchPullRequestsArray(technigoRepos)
 
         // Draw chart with technigoRepos data
-        drawBarChart(technigoRepos)
+        drawChart(technigoRepos.length)
     })
 }   
-
-
     // Approach number 1
 // const fetchPullRequestsSingle = (singleRepository) => {
 //     fetch(singleRepository)
@@ -48,7 +63,7 @@ const fetchPullRequestsArray = (allRepositories) => {
   allRepositories.forEach((repo) => {
       const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
 
-        fetch(PULL_URL)
+        fetch(PULL_URL, options)
         .then((response) => response.json())
         .then((data) => {
             const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login
@@ -58,11 +73,11 @@ const fetchPullRequestsArray = (allRepositories) => {
             // Detect if we have pull request or not.
 			// If yes - call fetchCommits function
 			// If no - inform user that no pull request was yet done
-			if (myPullRequest) {
-				fetchCommits(myPullRequest.commits_url, repo.name);
+			if (myPullRequests) {
+				fetchCommits(myPullRequests.commits_url, repo.name)
 			} else {
 				document.getElementById(`commit-${repo.name}`).innerHTML =
-					'No pull request yet done :(';
+					'No pull request or commits done'
 			}
 
         })
@@ -71,12 +86,14 @@ const fetchPullRequestsArray = (allRepositories) => {
 }
 
 const fetchCommits = (myCommitsUrl, myRepoName) => {
-	fetch(myCommitsUrl)
+	fetch(myCommitsUrl, options)
 		.then((res) => res.json())
 		.then((data) => {
-			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
-		});
-};
+			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+            console.log('my commits: ', data)
+		})
+}
 
  
     fetchRepos()
+    getUserInfo()
