@@ -2,20 +2,65 @@
 text-align: center;
 }
 
+
 body {
-  background: #e9f3ff;
+  background: #648381;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2{
+  color: white;
+}
+
+h3 {
+  color:rgb(226, 176, 9)
 }
 
 img {
   border-radius: 50%;
+  height: 200px;
+  width: 200px;
 }
 
 .card {
-  border: 2px solid red;
+  background-color: white;
+  width: 300px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  margin: auto;
+  border-radius: 7px;
+
 }
 
+/* styling for link */
+
+a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+
+
+/* .card:hover {
+  background: rgb(173, 173, 173);
+} */
 .chart {
   width: 200px;
   height: 200px;
   margin: auto;
 }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+}
+

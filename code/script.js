@@ -32,12 +32,13 @@ const getRepos = () => {
 
         forkedRepos.forEach(repo => projectContainer.innerHTML += `
             <div class='card'>
-                <a href="${repo.html_url}">${repo.name} with default branch ${repo.default_branch} </a>
-                <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>  
-                <p id='commit-${repo.name}'></p>      
+                <a href="${repo.html_url}"><h3>${repo.name}</h3></a>  
+                <p> Default branch: ${repo.default_branch}</p>
+                <p> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>  
+                <p id='commit-${repo.name}'> Number of commits:</p> 
+                   
             </div>
             
-
 
         `) //create div for card
 
