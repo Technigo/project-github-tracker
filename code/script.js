@@ -5,6 +5,7 @@ const sortUpdateBtn = document.getElementById('sortUpdateBtn');
 const sortCreatedBtn = document.getElementById('sortCreatedBtn');
 const sortCommitsBtn = document.getElementById('sortCommitsBtn');
 const sortNameBtn = document.getElementById('sortNameBtn');
+const filterAllBtn = document.getElementById('filterAllBtn');
 const filterLangJsBtn = document.getElementById('filterLangJsBtn');
 const filterLangHtmlBtn = document.getElementById('filterLangHtmlBtn');
 
@@ -28,8 +29,9 @@ const fetchAllReposFromUser = () => {
 		.then((allRepos) => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
-			sort(filteredRepos, 'pushed_at', true);
-			fetchFullRepo(filteredRepos.slice(0, 2));
+			sortRepos(filteredRepos, 'pushed_at', true);
+			console.log(filteredRepos);
+			fetchFullRepo(filteredRepos.slice(0, 2)); //
 		})
 		.catch((err) => alert('fetchAllReposFromUser error: ', err));
 };
@@ -58,7 +60,10 @@ const generateProjectCard = (repo) => {
 	// generating project cards
 	projects.innerHTML += /*html*/ `
 	<div class="repo-info">
-		<p class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></p>
+		<div class="repo-heading">
+			<p class="repo"><a href=${repo.html_url} target="_blank">${repo.name}</a></p>
+			<p class="lang ${repo.language}">${repo.language}</p>
+		</div>
 		<p class="info">From ${repo.parent.owner.login}, default branch: ${repo.default_branch}</p>
 		<p class="pull" id="pull-${repo.name}">Pull request</p>
 		<div class="numbers">
@@ -87,7 +92,7 @@ const fetchCommits = (myCommitsUrl, repo) => {
 };
 
 const populateCommits = (repo, commits) => {
-	document.getElementById(`commit-${repo.name}`).innerHTML += ` ${commits.length}`;
+	document.getElementById(`commit-${repo.name}, `).innerHTML += ` ${commits.length}`;
 };
 
 const getCollaborators = (commits, repo) => {
@@ -150,7 +155,7 @@ const fetchUser = () => {
 		.catch((err) => alert('fetchCommits error: ', err));
 };
 
-const sort = (array, param, init) => {
+const sortRepos = (array, param, init) => {
 	array.sort((a, b) => {
 		if (a[param] > b[param]) {
 			return -1;
@@ -161,10 +166,10 @@ const sort = (array, param, init) => {
 		}
 	});
 	if (param === 'name') array.reverse();
-	if (!init) regenerateProjectCards();
+	if (!init) regenerateProjectCards(reposArr);
 };
 
-const sortByCommit = (array, param) => {
+const sortReposByCommit = (array, param) => {
 	array.sort((a, b) => {
 		if (reposData[a[param]].commits > reposData[b[param]].commits) {
 			return -1;
@@ -174,12 +179,21 @@ const sortByCommit = (array, param) => {
 			return 0;
 		}
 	});
-	regenerateProjectCards();
+	regenerateProjectCards(reposArr);
 };
 
-const regenerateProjectCards = () => {
+const filterRepos = (array, lang) => {
+	if (lang !== 'All') {
+		const filteredReposArr = array.filter((repo) => repo.language === lang);
+		regenerateProjectCards(filteredReposArr);
+	} else {
+		regenerateProjectCards(array);
+	}
+};
+
+const regenerateProjectCards = (repos) => {
 	projects.innerHTML = '';
-	reposArr.forEach((repo) => {
+	repos.forEach((repo) => {
 		generateProjectCard(repo);
 		populateCommits(repo, reposData[repo.name].commits);
 		populateCollaborators(reposData[repo.name].authors, repo);
@@ -187,11 +201,14 @@ const regenerateProjectCards = () => {
 	});
 };
 
-sortSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
-sortUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
-sortCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
-sortCommitsBtn.addEventListener('click', () => sortByCommit(reposArr, 'name'));
-sortNameBtn.addEventListener('click', () => sort(reposArr, 'name', false));
+sortSizeBtn.addEventListener('click', () => sortRepos(reposArr, 'size', false));
+sortUpdateBtn.addEventListener('click', () => sortRepos(reposArr, 'updated_at', false));
+sortCreatedBtn.addEventListener('click', () => sortRepos(reposArr, 'created_at', false));
+sortCommitsBtn.addEventListener('click', () => sortReposByCommit(reposArr, 'name'));
+sortNameBtn.addEventListener('click', () => sortRepos(reposArr, 'name', false));
+filterLangJsBtn.addEventListener('click', () => filterRepos(reposArr, 'JavaScript'));
+filterLangHtmlBtn.addEventListener('click', () => filterRepos(reposArr, 'HTML'));
+filterAllBtn.addEventListener('click', () => filterRepos(reposArr, 'All'));
 
 fetchAllReposFromUser();
 fetchUser();
