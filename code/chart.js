@@ -4,19 +4,20 @@ const ctx = document.getElementById('chart').getContext('2d');
 //"Draw" the chart here 👇
 
 const pieData = {
-	// labels: ['Soon', 'Done'],
+	labels: ['Projects to go', 'Projects done'],
 	datasets: [
 		{
 			label: 'Technigo project progress',
 			data: [19, 0],
-			backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 205, 86)'],
+			backgroundColor: ['RGB(22, 27, 33)', 'RGB(37, 166, 65)'],
+			borderColor: '#21262c',
 			hoverOffset: 4,
 		},
 	],
 };
 
 const pieConfig = {
-	type: 'pie',
+	type: 'doughnut',
 	data: pieData,
 };
 

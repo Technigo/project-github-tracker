@@ -1,9 +1,12 @@
 const projects = document.getElementById('projects');
 const userData = document.getElementById('userData');
-const filterSizeBtn = document.getElementById('filterSizeBtn');
-const filterUpdateBtn = document.getElementById('filterUpdateBtn');
-const filterCreatedBtn = document.getElementById('filterCreatedBtn');
-const filterCommitsBtn = document.getElementById('filterCommitsBtn');
+const sortSizeBtn = document.getElementById('sortSizeBtn');
+const sortUpdateBtn = document.getElementById('sortUpdateBtn');
+const sortCreatedBtn = document.getElementById('sortCreatedBtn');
+const sortCommitsBtn = document.getElementById('sortCommitsBtn');
+const sortNameBtn = document.getElementById('sortNameBtn');
+const filterLangJsBtn = document.getElementById('filterLangJsBtn');
+const filterLangHtmlBtn = document.getElementById('filterLangHtmlBtn');
 
 const USER = 'gustavfrid';
 const PARENT_OWNER = 'Technigo';
@@ -26,7 +29,7 @@ const fetchAllReposFromUser = () => {
 			// filter forked repos
 			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
 			sort(filteredRepos, 'pushed_at', true);
-			fetchFullRepo(filteredRepos);
+			fetchFullRepo(filteredRepos.slice(0, 2));
 		})
 		.catch((err) => alert('fetchAllReposFromUser error: ', err));
 };
@@ -157,6 +160,7 @@ const sort = (array, param, init) => {
 			return 0;
 		}
 	});
+	if (param === 'name') array.reverse();
 	if (!init) regenerateProjectCards();
 };
 
@@ -183,10 +187,11 @@ const regenerateProjectCards = () => {
 	});
 };
 
-filterSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
-filterUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
-filterCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
-filterCommitsBtn.addEventListener('click', () => sortByCommit(reposArr, 'name'));
+sortSizeBtn.addEventListener('click', () => sort(reposArr, 'size', false));
+sortUpdateBtn.addEventListener('click', () => sort(reposArr, 'updated_at', false));
+sortCreatedBtn.addEventListener('click', () => sort(reposArr, 'created_at', false));
+sortCommitsBtn.addEventListener('click', () => sortByCommit(reposArr, 'name'));
+sortNameBtn.addEventListener('click', () => sort(reposArr, 'name', false));
 
 fetchAllReposFromUser();
 fetchUser();

@@ -1,6 +1,6 @@
 .body {
 	font-family: 'Montserrat', sans-serif;
-	background-color: rgb(27, 27, 27);
+	background-color: #0d1017;
 	color: white;
 	max-width: 400px;
 	margin: auto;
@@ -23,6 +23,10 @@
 .avatar-user {
 	width: 100%;
 	border-radius: 50%;
+	box-sizing: border-box;
+}
+.avatar-user:hover {
+	border: 3px solid #21262c;
 }
 
 .project-header {
@@ -30,23 +34,30 @@
 }
 
 .avatar-collaborator {
-	height: 20px;
+	box-sizing: border-box;
+	height: 30px;
 	border-radius: 50%;
 	padding: 0 2px;
 }
 
+.avatar-collaborator:hover {
+	border: 1px solid #21262c;
+}
+
+.sorting,
 .filters {
 	display: flex;
 	gap: 5px;
 	align-items: center;
 }
 
+.sorting button,
 .filters button {
 	height: 30px;
-	border: 1px solid grey;
+	border: 1px solid #21262c;
 	border-radius: 10px;
 	margin: 5px 0;
-	background-color: grey;
+	background-color: #21262c;
 	color: white;
 }
 
@@ -57,15 +68,15 @@
 }
 
 .chart {
-	width: 50px;
+	margin: 40px;
 }
 
 .repo-info {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
-	border: 1px solid rgb(133, 133, 133);
-	border-radius: 3px;
+	border: 2px solid #30353b;
+	border-radius: 5px;
 	padding: 10px;
 	margin: 0;
 }
@@ -86,24 +97,29 @@
 .pull,
 .collaboration {
 	margin: 2px 0;
+	display: flex;
+	align-items: center;
 }
 
 /* unvisited link */
 a:link {
-	color: red;
+	color: #579def;
+	text-decoration: none;
 }
 
 /* visited link */
 a:visited {
-	color: green;
+	color: #579def;
+	text-decoration: none;
 }
 
 /* mouse over link */
 a:hover {
-	color: hotpink;
+	color: #579def;
+	text-decoration: underline;
 }
 
 /* selected link */
-a:active {
+/* a:active {
 	color: blue;
-}
+} */

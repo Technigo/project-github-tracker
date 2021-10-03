@@ -14,12 +14,18 @@
 		<h1 class="header">GitHub Tracker</h1>
 		<section class="user-data" id="userData"></section>
 		<h2 class="project-header">Projects:</h2>
+		<section class="sorting">
+			<p>Sort by:</p>
+			<button class="sort-btn" id="sortSizeBtn">size</button>
+			<button class="sort-btn" id="sortUpdateBtn">last update</button>
+			<button class="sort-btn" id="sortCreatedBtn">created</button>
+			<button class="sort-btn" id="sortCommitsBtn">commits</button>
+			<button class="sort-btn" id="sortNameBtn">name</button>
+		</section>
 		<section class="filters">
 			<p>Filter by:</p>
-			<button class="filter-btn" id="filterSizeBtn">size</button>
-			<button class="filter-btn" id="filterUpdateBtn">last update</button>
-			<button class="filter-btn" id="filterCreatedBtn">created</button>
-			<button class="filter-btn" id="filterCommitsBtn">commits</button>
+			<button class="sort-btn" id="filterLangJsBtn">javascript</button>
+			<button class="sort-btn" id="filterLangHtmlBtn">html</button>
 		</section>
 		<main class="projects" id="projects"></main>
 
