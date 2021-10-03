@@ -6,39 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
 
-<header>
-  <h1>GitHub Tracker</h1>
-</header>
+<header class="head-container"></header>
 
-  <main>
 
-    <section class="My-info" id="user-data"></section>
+<nav class="navigation-bar">
+  <a href="https://github.com/github"><h1>GitHub<img class="logo" src="./images/Octocat.png">Tracker</h1></a>
+  <!-- <a href="#">Home</a>
+  <a href="#">Projects</a>
+  <a href="#">About</a>
+  <a href="#">Get in Touch</a> -->
+</nav>
+
+ 
+<wrapper class="wrapper">
+  
+  <section class="top-section"> 
+    <div id="user-data"></div>
+      <!-- <h2>My Projects:</h2> -->
+    <main>
+      <section class="grid">
+      <div id="projects" class="projects"></div>
+      </section>
+    </main>
+  </section>
+</wrapper>
+      
+      <div>
+        <h2>Progress:</h2>
+        <canvas class="myChart" id="myChart"></canvas>
+    </div>
 
     
-      <h2>My Projects:</h2>
+
+  
+  
+
+
+     
     
-
-    <section class="project-box" id="projects"></section>
-  
     
-  </main>
-
-  
-  <!-- This will be used to draw the chart 👇 -->
-
-  
-  <div>
-    <h2>Progress:</h2>
-    <canvas class="myChart" id="myChart"></canvas>
-  </div>
-
-
-
+<!-- This will be used to draw the chart 👇 -->
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

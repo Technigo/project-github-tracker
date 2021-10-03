@@ -3,6 +3,7 @@
   const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
   const USER_URL = `https://api.github.com/users/${USER}`;
 
+
   //My//
   const projectsContainer = document.getElementById('projects');
   const userData = document.getElementById('user-data')
@@ -16,13 +17,13 @@
       })
       .then((json) => {
         console.log(json);
-        userData.innerHTML = `
-        <img src="${json.avatar_url}"/>
+        userData.innerHTML = 
+        `<div class="my-info">
+        <img class="avatar" src="${json.avatar_url}"/>
         <h1>${json.name}</h1>
         <p>Username: ${json.login}</p>
         <p>Location: ${json.location}</p>
-        <p>This account has a total of ${json.public_repos} public repositories</p>
-        `;
+        <img class="languages" src="./images/language.png"/>`
       });
     }
 
@@ -39,10 +40,10 @@
 				projectsContainer.innerHTML += 
         `<div class="project-box">
         <h3>${repo.name}</h3>
-        <p>Main branch for this project is: ${repo.default_branch}</p>
-        <p><a href="${repo.html_url}" target="_blank">Link to GitHub repo</a></p>
+        <p>Main branch: ${repo.default_branch}</p>
+        <p><a href="${repo.html_url}"target="_blank">Link to GitHub repo</a></p>
         <p>Recent push: ${new Date(repo.pushed_at).toLocaleString()}</p>
-        <p id="commit-${repo.name}">Commits amount:</p>
+        <p id="commit-${repo.name}">Commits: </p>
         </div>`;
 			});
 
@@ -68,7 +69,7 @@
 					fetchCommits(myPullRequest.commits_url, repo.name);
 				} else {
 					document.getElementById(`commit-${repo.name}`).innerHTML =
-						'No pull request yet or group project.';
+					'Group project.';
 				}
       console.log(myPullRequest)
 			});

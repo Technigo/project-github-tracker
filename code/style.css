@@ -1,59 +1,151 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+* {
+  box-sizing: border-box;
 
+}
 
 body {
-  background: #ffb55e;
   background: linear-gradient(0deg, #ffb55e 0%, #f687d7 100%);
   padding: 50px;
+  font-family: 'Cardo', serif;
+  text-align: center;
+  justify-content: center;
+}
+
+
+
+/* .head-container {
+  display: grid;
+  justify-content: center;
+
+
+} */
+
+.navigation-bar {
+  width: 100%;  /* i'm assuming full width */
+  height: 80px; /* change it to desired width */
+  margin-bottom: 50px;
+
+  /* background-color: red; */
   
 
 }
-
-h1, h2 {
-color: #414040 ;
-font-family: 'Permanent Marker', cursive;
-text-align: center;
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 50px;
+  height: 50px;
+  /* margin-right: 20px; */
+  margin-top: 15px;    /* if you want it vertically middle of the navbar. */
+}
+.navigation-bar > a {
+  display: inline-block;
+  vertical-align: text-top;
+  margin-right: 20px;
+  height: 80px;        /* if you want it to take the full height of the bar */
+  line-height: 80px;    /* if you want it vertically middle of the navbar */
 
 }
 
-img {
-    border-radius: 50%;
-    width: 150px;
-    margin-top: 5px;
-    margin-left: 20px;
-    
-    }
+h1, h2, h3, h4, h5, h6, a {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  /* margin-top: 0px; */
+}
 
-.project-box {
-      padding: 10px;
-      background-color: rgba(207, 207, 207, 0.404);
-      display: grid;
-      grid-column: span 12;
-      border-radius: 25px;
-      margin-top: 10px;
-      text-align: center;
-    }
+a, u {
+  text-decoration: none;
+  color: black;
+}
+
+.avatar {
+    border-radius: 50%;
+
+} 
+
+.languages {
+  width: 150px;
+  justify-content: center;
+
+}
+
+.top-section{
+display: flex;
+grid-column: span 3;
+flex-direction: row;
+/* flex-wrap: wrap; */
+margin: 0 auto;
+/* justify-content: center; */
+align-items: center;
+
+}
+
+
+.my-info {
+  padding: 20px;
+  margin: 20px;
+  /* width: 30%; */
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+
+
+}  
 
 .projects {
-  /* width: fit-content; */
+  /* width: 100%; */
+  display: flex;
+  grid-column: span 3;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* flex-wrap: wrap;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center; */
+  
+}
+
+.project-box {
+  padding: 20px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  /* background-color: rgba(255, 255, 255, .15); */
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
   text-align: center;
-}
-
-.My-info {
-text-align: center;
+  margin: 10px;
+ 
 
 }
 
-  /* mobile */
+.myChart {
+  max-width: 250px;
+  max-height: 500px;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+}
+  
+.grid {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* mobile */
   @media (min-width: 0px) and (max-width: 668px){
-    img {
+    .avatar {
       width: 150px;
       }
+     
   }
   
   /* tablet */
   @media (min-width: 768px) and (max-width: 1024px){
-    img {
+    .avatar {
       width: 200px;
       }
   }
@@ -61,8 +153,8 @@ text-align: center;
   
   /* desktop */
   @media (min-width: 1025px){
-  img {
+    .avatar {
     width: 300px;
-    margin-top: 30px;
+    
     }
-  }
+}
