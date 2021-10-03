@@ -1,3 +1,61 @@
 body {
-  background: #FFECE9;
+  background: #F7D4BC;
+  font-family: 'Gemunu Libre', sans-serif;
+}
+header {
+text-align: center;
+
+font-size: 30px;
+}
+
+.profile {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align:center;
+  color: #218380;
+  margin:auto;
+  width: 100%;
+  flex-direction: column;
+
+  
+}
+
+img {
+  border-radius: 50%;
+  width: 200px;
+  margin: 15px;
+  box-shadow: -30px 30px 30px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  color: #AD5D4E;
+}
+
+.projects {
+  flex-direction: column;
+  display: block;
+  border-style: solid;
+  color: #AD5D4E;
+  margin: 5px;
+  text-align: center;
+}
+
+.chart-class {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+h4 {
+  font-size: 25px;
+  margin: 5px;
+  font-weight: bolder;
+}
+
+a {
+  font-size: 18px;
+  color: #218380;
 }
