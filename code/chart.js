@@ -8,9 +8,9 @@ const config = {
   type: 'bar',
   data: {
     labels: [
-      'Projects left',
-      'Finished projects',
-      'Projects total',
+      'Finished',
+      'Left',
+      'Total',
     ],
     datasets: [{
       label: 'Bootcamp projects',
@@ -21,8 +21,8 @@ const config = {
       borderRadius: 4,
       // minBarLength: 10,
       backgroundColor: [
-        'rgba(255, 99, 132)',
         'rgba(60, 179, 113)',
+        'rgba(255, 99, 132)',
         'rgba(255, 159, 64)',
       ],
       
