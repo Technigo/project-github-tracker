@@ -28,9 +28,24 @@ h1 {
   object-fit: cover;
 }
 
+.userlink {
+  text-decoration: none;
+  color: #293241;
+}
+
+.userlink:visited {
+  text-decoration: none;
+  color: #293241;
+}
+
+.userlink:hover {
+  text-decoration: underline;
+  color: #ee6c4d;
+}
+
 hr {
   width: 200px;
-  height: 2px;
+  height: 1px;
   background-color: #3d5a80;
   border-radius: 5px;
   line-height: 2px;
@@ -118,13 +133,9 @@ h2 {
   }
 }
 
-@media (min-width: 999px) {
-  .chart {
-    width: 30%;
-  }
-
-  .projectinfo:hover {
-    transform: scale(1.04);
+@media (min-width: 992px) {
+  hr {
+    display: none;
   }
 
   .heroimage {
@@ -166,5 +177,13 @@ h2 {
 
   .userinfo {
     padding-top: 30px;
+  }
+
+  .projectinfo:hover {
+    transform: scale(1.04);
+  }
+
+  .chart {
+    width: 30%;
   }
 }

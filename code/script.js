@@ -31,7 +31,7 @@ const fetchRepos = () => {
         (repo) => repo.name.startsWith("project-") && repo.fork
       );
 
-      // InnerHTML to make all the projects show on the page
+      // InnerHTML to make all the projects and the info show on the page
       technigoProjects.forEach((repo) => {
         projectsContainer.innerHTML += `
                 <div class="projectinfo">
