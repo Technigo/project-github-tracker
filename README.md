@@ -1,19 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 7 of bootcamp, this is a github tracker tracking projects from the Technigo bootcamp using github api. The site is built mainly using JavaScript, its a heading with the github user avatars and a project list with all repos linked to the Technigo bootcamp. The project card shows some info regarding the status of the project. At the bottom there is a pie chart showing the progress in the bootcamp. The project/repo list os possible to sort and filter.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The challenge this week was to get the asynchronous nature of fetch to work with multiple fetches within a fetch, for this I used Promise.All. It was also a challenge to get the filters and sort working.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-## TODO
-
-- Format updated time so it says how many sec/min/hour/day/month/years, ago it was updated
-- add chart
-- style
+https://gustav-week7-github-tracker.netlify.app/
