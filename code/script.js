@@ -4,12 +4,11 @@ const profileContainer = document.getElementById('profile')
 const projectsContainer = document.getElementById('projects')
 const pullContainer = document.getElementById('pullRequests')
 
-//fetch for profile name and profile picture
+//Fetch for profile name and profile picture
 const getProfile = () => {
 fetch (`https://api.github.com/users/${USER}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         profileContainer.innerHTML = `
         <img class="profile-picture" src=${data.avatar_url}>
         <div class = "profile-name">
@@ -23,15 +22,12 @@ fetch (`https://api.github.com/users/${USER}`)
 }
 getProfile()
 
-//fetch for Technigo forked repos
+//Fetch for Technigo forked repos
 const getRepos = () => {
     fetch (REPOS_URL)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-            //forkedRepos.forEach(repo => console.log(repo.name))  //logs all filtered repo
-
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML += `
                 <div class="single-project">
@@ -52,16 +48,14 @@ const getRepos = () => {
         })
 }
 
-//fetch pull request
+//Fetch pull request
 const fetchPulls = (allRepositories) => {
     allRepositories.forEach((repo) => {
         const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
         fetch(PULL_URL)
         .then((response) => response.json())
         .then((data) => {
-            //console.log(`Mother repo for project ${repo.name}`, data)
             const myPullRequest = data.find(pull => pull.user.login === repo.owner.login)
-            //console.log(myPullRequest)
             if (myPullRequest){
                 fetchCommits(myPullRequest.commits_url, repo.name)
             } else {
@@ -71,7 +65,7 @@ const fetchPulls = (allRepositories) => {
     })
 }
 
-//fetch nr of commits
+//Fetch nr of commits
 const fetchCommits = (myCommitsUrl, RepoName) => {
     fetch(myCommitsUrl)
     .then((response) => response.json())
@@ -80,7 +74,7 @@ const fetchCommits = (myCommitsUrl, RepoName) => {
     })
     }
 
-//Fetch last commit message
+//Fetch last commit messages
 const commitComments = (forkedRepos) => {
     forkedRepos.forEach((repo) => {
         const COM_URL = `https://api.github.com/repos/dandeloid/${repo.name}/commits`
@@ -108,13 +102,7 @@ const commitComments = (forkedRepos) => {
     })
 }
 
-//${repo.pushed_at.slice(0, 10)} - ${repo.pushed_at.slice(11, 16)}
-// new Date(repo.pushed_at).toDateString()
-
-    //https://api.github.com/repos/dandeloid/project-news-site/languages
-    //https://api.github.com/repos/dandeloid/project-business-site/commits
-
-
+//Start fetching repository data
 getRepos()
 
 
