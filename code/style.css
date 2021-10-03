@@ -73,10 +73,35 @@ a {
   color: #58a6ff;
   font-weight: 600;
   text-decoration: none;
+  position: relative;
 }
 
 a:hover {
-  text-decoration-line: underline;
+  color: #dedede;
+}
+
+
+a::before {  
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+a:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+a::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  /* background: hsl(200 100% 80%); */
+  color: #dedede;
+  background: #4694ee;
+  z-index: -1;
+  transition: transform .3s ease;
 }
 
 .main {
@@ -219,7 +244,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 1rem 2rem 2rem;
   margin-top: 100px;
   border-top: 0.5px solid #31363C;
 }
@@ -228,6 +253,7 @@ a:hover {
   font-size: 1rem;
   font-weight: 300;
   margin-top: 0;
+  margin-right: 1rem;
 }
 
 .footer a {
@@ -250,7 +276,7 @@ a:hover {
 .social-logo {
   width: 32px;
   height: auto;
-  margin-left: 1rem;
+  padding: 0.5rem;
 }
 
 .more-about-me {
@@ -354,9 +380,6 @@ a:hover {
     font-size: 1rem;
   }
 
-  /* .break {
-    font-size: 14px;
-  } */
 
   .main {
     flex-direction: column;
