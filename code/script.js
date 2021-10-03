@@ -15,7 +15,7 @@ const insertRepoInfo = (repository) => {
   let latestPush = new Date(repository.latest_push).toDateString()
   repoContainer.innerHTML += /*html*/ `
     <div class="repo-card" id=${repository.name}>
-      <a href=${repository.project_url} target="_blank"><h3>${repository.name}</h3></a>
+      <a href=${repository.project_url} class="link" target="_blank">${repository.name}</a>
       <p>Date of latest push: ${latestPush}</p>
       <p>Default branch: ${repository.default_branch}</p>
       <p>Latest commit-message: ${repository.commit_message}</p>
@@ -31,7 +31,10 @@ const getProfile = () => {
     chart.insertAdjacentHTML("beforeBegin", /*html*/`
       <div class="profile-area">
         <img src=${profileData.avatar_url} class="profile-img">    
-        <h1>${profileData.name}</h1>
+        <div>
+          <h2>GitHub Tracker</h2>
+          <h1>${profileData.name}</h1>
+        </div>
       </div>
     `)
     });
@@ -72,7 +75,7 @@ getRepos()
 getProfile()
 
 commitsSort.addEventListener("click", () => {
-  repoContainer.innerHTML = '<h2>Projects:</h2>'
+  repoContainer.innerHTML = ''
   let sortRepo = repositorys.sort((a, b) => 
     (a.number_commits > b.number_commits ? 1 : -1))
   sortRepo.forEach((repo) => {
@@ -81,7 +84,7 @@ commitsSort.addEventListener("click", () => {
 })
 
 nameSort.addEventListener("click", () => {
-  repoContainer.innerHTML = '<h2>Projects:</h2>'
+  repoContainer.innerHTML = ''
   let sortRepo = repositorys.sort((a, b) => 
     (a.name > b.name ? 1 : -1))
   sortRepo.forEach((repo) => {
@@ -90,7 +93,7 @@ nameSort.addEventListener("click", () => {
 })
 
 dateSort.addEventListener("click", () => {
-  repoContainer.innerHTML = '<h2>Projects:</h2>'
+  repoContainer.innerHTML = ''
   let sortRepo = repositorys.sort((a, b) => 
     (a.latest_push > b.latest_push ? -1 : 1))
   sortRepo.forEach((repo) => {

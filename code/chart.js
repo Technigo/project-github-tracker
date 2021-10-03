@@ -9,6 +9,7 @@ const drawChart = (numberRepos) => {
   const config = {
     type: 'bar',
     data: {
+      
       labels: [
         'Finished projects',
         'Projects left',
@@ -17,8 +18,8 @@ const drawChart = (numberRepos) => {
         label: 'Technigo Projects fall 21',
         data: [numberRepos, 19-numberRepos],
         backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)'
+          'rgb(122, 183, 147, 0.6)',
+          'rgb(15, 92, 46, 0.6)'
         ],
         hoverOffset: 4
       }]
