@@ -7,37 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mamites GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
-  <nav class="topnav">
-    <div class="githublogo-container">
-      <h4>Github Tracker</h4>
-    </div>
-  </nav>
-  <header class="header"></header>
-  <section class="profile-container" id="profile-container">
-    <img class="profile-image" src="" id="image" />
-    <div>
-      <h1></h1>
-    </div>
-  </section>
-  <div class="tracker">
-    <h1>Welcome! This is my github tracker</h1>
-    <h2>Recent projects:</h2>
-  </div>
-  <main id="projects" class="projects"></main>
+  <header>
+    <h1>My GitHub Tracker</h1>
+  </header>
 
+
+  <div class="profile-container" id="profileContainer">
+    <img id="profileImage" class="profile-image" alt="profile-image" />
+    <p id="userName" class="user-name"></p>
+  </div>
+  <div class="tracker">
+    <h2>GitHub Tracker</h2>
+    <h4>Projects:
+    </h4>
+  </div>
+  </div>
+  <div class="projects-containter">
+    <main id="projects" class="projects"></main>
+  </div>
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart" class="chart"></canvas>
+  <div class="canvas-container">
+    <canvas id="chart" class="chart"></canvas>
+  </div>
 
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
+
+
+  <footer>
+    <p>This GitHub Tracker is Made by <a class="hover" href="https://www.linkedin.com/in/mamite-andersson/">me Mamite!
+        <br></a> Student at <a class="hover" href="https://www.technigo.io/program">Technigo Boot Camp</a> 2021</p>
+  </footer>
 </body>
 
 </html>
