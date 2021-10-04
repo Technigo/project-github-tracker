@@ -28,7 +28,7 @@ const fetchAllReposFromUser = () => {
 		.then((res) => res.json())
 		.then((allRepos) => {
 			// filter forked repos
-			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork);
+			let filteredRepos = allRepos.filter((repo) => repo.name.includes('project-') && repo.fork repo.name.includes('portfolio') && repo.fork);
 			sortRepos(filteredRepos, 'pushed_at', true);
 			fetchFullRepo(filteredRepos);
 		})
