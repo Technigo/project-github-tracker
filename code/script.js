@@ -50,8 +50,7 @@ const getRepos = () =>{
                 let date = formateDate(repo.pushed_at)
                 let languageIcon = textToIcon(repo.language)
                 userProjects.innerHTML += `
-                <div class= "card" id="${repo.name}"  >
-                    <div class="front">
+                        <div class="card front">
                         <div class= "card-body">
                             <div class="content labels" >
                                 <p class="content labels">View me live here:</p>
@@ -81,7 +80,7 @@ const getRepos = () =>{
                             <p class="repo-comment" id="commit-${repo.name}" ></p>
                         </div>
                     </div>
-                </div>
+                
                 `
             })
             drawChart(technigoProjects.length)
@@ -143,10 +142,10 @@ return formattedDate
 
 const textToIcon = (lang) => {
     
-    if (lang === 'html') {
+    if (lang === 'HTML') {
         
         return './assets/html-50.png'
-    } else if (lang === 'javascript') {
+    } else if (lang === 'JavaScript') {
         
         return './assets/javascript.svg'
     } else {
@@ -186,7 +185,7 @@ const search = () => {
     console.log('i am here')
     let src = searchRepo.value.toLowerCase()
     console.log(src)
-    const allRepo = document.getElementsByClassName('front')
+    const allRepo = document.getElementsByClassName('card front')
     for (i = 0; i < allRepo.length; i++) {
         if (allRepo[i].innerHTML.toLowerCase().includes(src)) {
       allRepo[i].style.display = "flex";
