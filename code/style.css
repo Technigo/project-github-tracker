@@ -26,7 +26,6 @@
 .avatar-user {
 	width: 100%;
 	border-radius: 50%;
-	box-sizing: border-box;
 }
 .avatar-user:hover {
 	border: 3px solid #21262c;
