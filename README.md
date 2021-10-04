@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+GitHub tracker to follow our forked projects from Technigo
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+REally challanged week for me because of sickness in family. Have spend half the time I use to. Javascript felt good as I often think, good practice fetch functions and API. Have better control of passing around arguments. Styling and CSS is the challange for me. Would really like to have more time to play around with info from API
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://ajliins-githubtracker.netlify.app/
