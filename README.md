@@ -10,6 +10,8 @@ Describe how you approached to problem, and what tools and techniques you used t
 
 My team and I was working closely in our team room so that we could support eachother and ask for help. I planned to do the majority of the javascript at the beginning of the week so I had everything before going in to styling. This was a great progress for me so that I don't jump to much back and forth between my code files.
 
+I have not solved my modal but I have a conversation ongoing in stackoverflow.
+
 ## View it live
 
 https://carling-githubtracker-w7.netlify.app/
