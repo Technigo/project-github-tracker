@@ -6,14 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
+<body>
+  <header>
+    <h1>GitHub Tracker for user Elsa-Johanna</h1>
+  </header>
+
+  
+  <div class="profile" id="profile">
+    
+  </div>
+
+  <main class="Projects">
+    <h2 id="projects"></h2>
+    <list id="list"></list>
+  </main>
+
+  <div class="chart-div">
   <canvas id="chart"></canvas>
+  </div>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
