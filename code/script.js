@@ -8,26 +8,21 @@ const getUserPicture = ()=> {
     fetch(userPicture)
     .then((res)=>res.json())
     .then((data)=> {
-        //console.log(data);
+        
         const picture = data.avatar_url;
         const location = data.location;
         const userBio = data.bio;
         const url = data.followers_url;
         
 
-        
-    
-
         userInfo.innerHTML += `
          
          <img class="user-info_picture" src="${picture}" alt="Picture of gitHub user"/>
-         <div class="user-whole_name"> Aleksandra Safranko</div>
          <div class="user-info_username">${username}</div>
-         <div class="user-info_location">Location: ${location}</div>
+         <div class="user-whole_name"> Aleksandra Safranko</div>
+         <div class="user-info_location">Location: ${location} 🇸🇪 </div>
          <div class="user-info_bio">${userBio} 🐒</div>
         `
-
-    
         
     })
 }
@@ -42,15 +37,20 @@ const fetchRepo = ()=> {
         const technigoRepo = data.filter(repo => 
             repo.name.includes('project-') && repo.fork
         );
-        //console.log(technigoRepo);
         
         technigoRepo.forEach((repo)=> {
             projectsContainer.innerHTML += `
             
              <div class="repo-card">
-              <a href="${repo.html_url}">${repo.name}</a>
-              <div>default branch:${repo.default_branch}</div>
-              <div>most recent push:"${repo.pushed_at}"
+              <div class="link">
+                <a href="${repo.html_url}">${repo.name}</a>
+              </div>  
+              <div class="branch">
+                <p>default branch:${repo.default_branch}</p>
+              </div> 
+              <div class="push"> 
+                <h4>most recent push:"${new Date(repo.pushed_at).toDateString()}"</h4>
+              </div>  
               <p id="commit-${repo.name}">Commites amount:</p>
             `
         });
@@ -69,7 +69,6 @@ const fetchPull = (allRepo)=> {
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
         .then((res)=> res.json())
         .then((data)=>{
-            console.log("aleksa", data);
             const myPullRequests = data.find (
                 (pull)=>pull.user.login === repo.owner.login)
                 console.log('My Pull requests', myPullRequests);
