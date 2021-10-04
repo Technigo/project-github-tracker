@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a tracker website for my github and fetch the projects and relevant information.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had a problem with knowing how to start writing the JavaScript. I took a look at last week's project (project-weather-app) and used that as a guide for the API fetch.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to deployed website: https://githubtrackerefstasia.netlify.app/

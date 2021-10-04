@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <button class="toggleBtn" onclick="myFunction()">Toggle dark mode</button>
+      <h1>GitHub Tracker</h1>
+    </header>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <section class="grid-container">
+      <div>
+        <div id="profile"></div>
+        <div class="chart"><canvas id="chart"></canvas></div>
+      </div>
+
+      <fieldset>
+        <legend>Projects</legend>
+        <main class="project-cards" id="projects"></main>
+      </fieldset>
+    </section>
+
+    <footer>
+      <p>Made by Sofia Wallerberg. Team foxes.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
