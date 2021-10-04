@@ -9,31 +9,37 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
- 
+ <!-- header 👇 -->
   <header class="header">
     <h1>GitHub Tracker</h1>
   </header>
-  <section class= "profile">
-    <div class= "user-info" id ="profile">  </div>
-  </section>
-  <section class= "repos">
-      <div class= "projects" >
-        <input type="text" id="search-repo" placeholder="Search For..."/>
-        <h2>Projects:</h2>
-        <main class="projects-detail" id="projects" > </main>
+  <section class= "tracker">
+    
+    <!-- user 👇 -->
+    <div class= "profile">
+      <div class= "user-info" id ="profile">  </div>
+    </div>
+  <!--  chart 👇 -->
+    <div class="progress">
+      <h2 class= "title-chart">Progress:</h2>
+      <div class="card chart">
+        <canvas class="pichart" id="chart"></canvas>
       </div>
-      <!-- This will be used to draw the chart 👇 -->
-      <div class="progress">
-        <h1>Progress</h1>
-        <div class="card chart">
-          <canvas class="pichart" id="chart"></canvas>
+    </div>
+    <!-- repos 👇 -->
+    <section class= "repos">
+    <input class="search" type="text" id="search-repo" placeholder="Search For..."/>
+
+        <div class= "projects" >
+          <h2 class= "title">Projects:</h2>
+          <main class="projects-detail" id="projects" > </main>
         </div>
-      </div>
-  </section>
-   
-  
+        
+    </section>
+</section>  
+  <!-- Footer 👇 -->
   <footer class="footer">
-     <h1>GitHub Tracker</h1>
+     <h3>GitHub tracker made by Naushin Malik</h3>
   </footer>
   
 

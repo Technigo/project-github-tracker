@@ -11,12 +11,12 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4ede4;
+  background-color: #d3d7da;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
-  line-height: 1.4;
-  
+  min-height: 100vh;
+  min-width: 350px; 
+    
 }
 
 a{
@@ -30,13 +30,15 @@ cursor: pointer;
  background-color: var(--primary-color);
  color: white;
  position: relative; 
- text-align: center;
+ 
  z-index: 1;
- padding: 20px;
+ padding-top:  10px; 
+ 
 }
 .profile{
  display: flex;
  flex-direction: column;
+ order:1;
   
 }
 .user-info{
@@ -44,7 +46,10 @@ cursor: pointer;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  color: var(--secondary-color);
 }
+
+
 .user{
   display: flex;
   padding: 20px;
@@ -52,14 +57,23 @@ cursor: pointer;
 .photo {
  border: solid 1px var(--secondary-color);
  border-radius: 50%;
- width: 50px;
- height: 50px;
+ width: 100px;
+ height: 100px;
  margin-right: 20px;
 }
+.name{
+
+  margin-top: 20px;
+
+
+}
+
+
+
 .link-github{
   display: block;
   cursor: pointer;
-  width: 260px;
+  width: 160px;
   height:30px;
   background: #333;
   color: #fff;
@@ -71,10 +85,24 @@ cursor: pointer;
   padding-top:  10px;
   margin: 10px; 
 }
+.search{
+    font-size: 14px;
+    line-height: 24px;
+    vertical-align: middle;
+    border: 1px solid var(--secondary-color );
+    border-radius: 6px;
+    outline: none;
+        
+}
+.tracker {
+display:flex;
+flex-direction: column;
+}
 .repos{
   display: flex;
   flex-direction: column;
   padding: 0 20px 0 20px;
+  order:2;
 }
 .projects-detail{
   
@@ -109,21 +137,14 @@ transform-style: preserve-3d;
  }
     
  
-  .show img{
-    cursor: pointer;
-    margin-left: 40px;
-    width:14px;
-    height:14px;
-    bottom: 0;
-  }
+  
 
    
  .card-header {
   display: flex;
   align-items: center;
-  padding: 20px;
   position: relative;
-  gap: 2em;
+  gap: 1em;
   padding: 2em;
   border-radius: calc(40 * 1px) 0 0 0;    
   background-color: #fff;
@@ -150,29 +171,34 @@ transform-style: preserve-3d;
   .card:hover .card-header {
     transform: translateY(0);
   }
-img {
+.language {
 border-radius: 50%;
 object-position: center;
+align-self:flex-start ;
 object-fit: cover;
-/* margin-right: 5px; */
 right: 0;
  left: 0;
  bottom: 0;
+ order:1;
   }
-
+.repo-info{
+order: 2;
+}
   .repo-name {
    color: #dba93d;
    font-size: 1.2rem;
+   text-transform: capitalize;
   }
   .repo-branch {
    color: #333;
    font-size: 0.8rem;
    font-style: italic;
+   text-transform:uppercase;
   }
  
 
   .repo-comment {
-    padding: 0 2em 2em;
+    padding: 0 1.2em 1.2em;
     margin: 0;
     color: #dba93d;
     font-family: "MockFlowFont";   
@@ -196,6 +222,7 @@ right: 0;
   }
   .value{
       margin-right: 20px;
+      text-decoration: none;
   }
   .card-body{
     display: flex;
@@ -203,7 +230,16 @@ right: 0;
   .commit{
     margin-left: 20px;
   }
-
+  .title{
+    
+    padding: 10px;
+    color: var(--secondary-color);
+  }
+  
+  .progress{
+    order:3;
+    padding: 20px 20px 0 20px;
+  }
 .chart{
  padding: 20px;
 }
@@ -215,20 +251,64 @@ right: 0;
  position: relative; 
  text-align: center;
  z-index: 1;
- margin-top: 20px;
+ margin-top: 50px;
+ padding-top:10px ;
 }
 
 @media (min-width: 1200px) {
-
-
+.tracker{
+  
+  display: block;
+}
+.profile{
+height: 400px;
+float: left;
+width: 75%;
+left: -250px;
+margin-left: 0;
+padding: 0;
+position: absolute;
+top: 100px;
+}
+.photo {
+ 
+ width: 350px;
+ height: 350px;
+ 
+}
   .repos{
-    flex-direction: row;
-
+    float:none;
+    margin-top: 500px;
+    margin-left: 20px;
+    margin-right:  20px;
+    padding: 20px;
+    border-top: dashed 8px var(--primary-color);
+    
   }
   .projects-detail{
     
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
+  }
+
+.progress {
+  float: right;
+  width:25%;
+  height: 400px;
+  top: 20px;
+  right: 0;
+  position: absolute;
+  margin-right:20px;
+  
+
+  }
+  .title-chart{
+    display:none;
+  }
+.chart{
+
+ margin: 50px 10px;
+
   }
 }

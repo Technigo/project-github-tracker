@@ -48,33 +48,30 @@ const getRepos = () =>{
                 console.log(repo.name);
                 getPullRequests(repo)
                 let date = formateDate(repo.pushed_at)
-                let languageIcon = textToIcon(repo.language)
+                getLanguageIcon(repo.languages_url, repo.name )
+                
                 userProjects.innerHTML += `
                         <div class="card front">
                         <div class= "card-body">
                             <div class="content labels" >
-                                <p class="content labels">View me live here:</p>
-                                <p class=" content labels">Updated on:</p>
+                                <p class="content labels">Github repository: </p>
+                                <p class=" content labels">Updated on: </p>
                                 <p class="content labels">Commits: </p>
                             </div>
                             <div class="content value" id="commitNum-${repo.name}" >
                                 <p class="content value" >
                                 <a href = "${repo.html_url}">
-                                <span> Visit me at github</span></a>
+                                <span> Click me! </span></a>
                                 </p>
                                 <p class="content value" >${date}</p>
                             </div>
                         </div>
-                        <div class="card-overlay" >
-                            <div class="card-header">
-                                <img class="language"
-                                src="${languageIcon}"
-                                alt="people"
-                            />
-                            <div class="repo-info">
-                                <h2 class="repo-name"> ${repo.name}</h2>
-                                <p class="repo-branch"><b>${repo.default_branch}</b></p>
-                            </div>
+                        <div class="card-overlay"  >
+                            <div class="card-header" id="lang-${repo.name}">
+                                <div class="repo-info">
+                                    <h2 class="repo-name">${repo.name}</h2>
+                                    <p class="repo-branch"><b>${repo.default_branch}</b></p>
+                                </div>
                             </div>
                             <p class="repo-comment" id="review-${repo.name}" ></p>
                             <p class="repo-comment" id="commit-${repo.name}" ></p>
@@ -140,18 +137,47 @@ return formattedDate
 
 }
 
-const textToIcon = (lang) => {
-    
-    if (lang === 'HTML') {
-        
-        return './assets/html-50.png'
-    } else if (lang === 'JavaScript') {
-        
-        return './assets/javascript.svg'
-    } else {
-        return './assets/javascript.svg'
-    }
+const getLanguageIcon = (langURL, repoName) => {
 
+    fetch(langURL)
+        .then(res => res.json())
+        .then(data => { 
+            console.log('lang', data)
+            const keys = Object.keys(data)
+            const largest = Math.max.apply(null, keys.map(x => data[x]));
+            const result = keys.reduce((result, key) => { if (data[key] === largest) { result.push(key); } return result; }, []);
+
+            
+            if (result[0] === "HTML") {
+                console.log('lang text', result[0])
+                document.getElementById(`lang-${repoName}`).innerHTML += `
+                
+                    <img class="language"
+                    src="./assets/html-50.png"
+                    alt="${result[0]}"
+                />
+                `
+               
+            } else if (result[0] === "JavaScript") {
+                document.getElementById(`lang-${repoName}`).innerHTML += `
+               
+                    <img class="language"
+                    src="./assets/javascript.svg"
+                    alt="${result[0]}"
+                />
+                `
+        
+               
+            } else {
+                document.getElementById(`lang-${repoName}`).innerHTML += `
+                
+                    <img class="language"
+                    src=""
+                    alt="${result[0]}"
+                />
+                `
+            }
+        })
 
 }
 
@@ -160,7 +186,7 @@ const textToIcon = (lang) => {
 
 const displayCommitMessages= ((commitData, repoName ) => {
     console.log ('commitData', commitData)
-    document.getElementById(`commit-${repoName}`).innerHTML += `Latest commit:"${commitData[commitData.length-1]}`
+    document.getElementById(`commit-${repoName}`).innerHTML += `Latest commit: "${commitData[commitData.length-1]}"`
     
 })
 
@@ -172,7 +198,7 @@ const getComments = (commentsUrl,repoName) => {
         .then(data => {
             if (data.length!== 0){
             console.log('review', data);
-            document.getElementById(`review-${repoName}`).innerHTML += `From reviewer:"${data[0].body}`
+            document.getElementById(`review-${repoName}`).innerHTML += `From reviewer: "${data[0].body}"`
         } else {
             document.getElementById(`review-${repoName}`).innerHTML = `No review yet`
         }
