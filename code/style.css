@@ -1,31 +1,46 @@
 :root{
-  --primary-color :#f9f9f9;
-  --secondary-color:#2a9d8f;
+  --primary-color :#333;
+  --secondary-color:#dba93d;
     
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
 
 body {
-  margin:0 auto;
-  padding:0;
-  height: 100%;
-  max-width: 320px;
-  font-size: 1em;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: var(--primary-color);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4ede4;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  line-height: 1.4;
+  
 }
 
+a{
+text-decoration: none;
+cursor: pointer;
 
-.tracker{
- display: flex;
- flex-direction: column;
- 
- 
+}
+.header{
+ width: 100%;
+ height: 50px;
+ background-color: var(--primary-color);
+ color: white;
+ position: relative; 
+ text-align: center;
+ z-index: 1;
+ padding: 20px;
 }
 .profile{
+ display: flex;
+ flex-direction: column;
+  
+}
+.user-info{
   height:30vh;
-  
-  
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -56,8 +71,7 @@ body {
   padding-top:  10px;
   margin: 10px; 
 }
-.content{
-  height:75%;
+.repos{
   display: flex;
   flex-direction: column;
   padding: 0 20px 0 20px;
@@ -65,24 +79,156 @@ body {
 .projects-detail{
   
   display: flex;
-  flex-wrap: wrap;
-  
-
-}
-.repo-card{
-  display:flex;
   flex-direction: column;
-  align-items:flex-start;
-  justify-content:space-evenly;
-  overflow: hidden;
-  border: 3px solid var(--secondary-color);
-  border-radius: 4px;
-  margin: 3px;
-  width: 320px;
-  height: 200px;
+  gap: 20px;
+}
+.card{
+background: url("./assets/cardbg.jpeg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ width: 350px;
+ height: 400px;
+ position: relative;
+ box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
+ border-radius: calc(40 * 1px);
+ overflow: hidden;
+ transition: transform 1s;
+transform-style: preserve-3d;
+
 }
 
-.chart-container{
 
-  background-color: darkgray;
+.container__info {
+    
+  bottom: 20%;
+  display: flex;
+  align-items: flex-end;
+  padding: 15px 30px;
+  color:  #333;
+ }
+    
+ 
+  .show img{
+    cursor: pointer;
+    margin-left: 40px;
+    width:14px;
+    height:14px;
+    bottom: 0;
+  }
+
+   
+ .card-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(40 * 1px) 0 0 0;    
+  background-color: #fff;
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+    
+ }
+
+ .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(40 * 1px);    
+    background-color:  #fff;      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card-overlay {
+    transform: translateY(0);
+  }
+  .card:hover .card-header {
+    transform: translateY(0);
+  }
+img {
+border-radius: 50%;
+object-position: center;
+object-fit: cover;
+/* margin-right: 5px; */
+right: 0;
+ left: 0;
+ bottom: 0;
+  }
+
+  .repo-name {
+   color: #dba93d;
+   font-size: 1.2rem;
+  }
+  .repo-branch {
+   color: #333;
+   font-size: 0.8rem;
+   font-style: italic;
+  }
+ 
+
+  .repo-comment {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #dba93d;
+    font-family: "MockFlowFont";   
+    overflow: hidden;
+    font-size: 0.9rem;
+  }
+  .content {
+    position: relative;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #333;
+    margin-top: 30px;
+    
+  }
+
+  .labels {
+     margin-left: 20px;
+  }
+  .value{
+      margin-right: 20px;
+  }
+  .card-body{
+    display: flex;
+  }
+  .commit{
+    margin-left: 20px;
+  }
+
+.chart{
+ padding: 20px;
+}
+.footer{
+ width: 100%;
+ height: 50px;
+ background-color: var(--primary-color);
+ color: white;
+ position: relative; 
+ text-align: center;
+ z-index: 1;
+ margin-top: 20px;
+}
+
+@media (min-width: 1200px) {
+
+
+  .repos{
+    flex-direction: row;
+
+  }
+  .projects-detail{
+    
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 }

@@ -14,8 +14,8 @@ const drawChart = (repoCount) =>{
             label: 'My First Dataset',
             data: [(19 - repoCount), repoCount],
             backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)'
+            '#333',
+            '#fff'
             ],
             hoverOffset: 4
         }]
@@ -27,5 +27,5 @@ const drawChart = (repoCount) =>{
     
     };
 
-    const myProgress = new Chart(ctx, config)
+     new Chart(ctx, config)
 }
