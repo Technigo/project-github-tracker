@@ -12,8 +12,6 @@ const getUser = () => {
     fetch(API_MY_PROFILE)
       .then((response) => response.json())
         .then((data) => {
-              
-            
         profileInfo.innerHTML = 
             `<img src="https://github.com/NinaAlejandra.png" alt="Profile picture">
             <h4> ${data.name}</h4>
@@ -26,7 +24,6 @@ const getRepos = () => {
     fetch(REPOS_URL)
     .then(response => response.json())
     .then(data => {
-    
         const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
         const forkedSortedRepos = forkedRepos.sort(sortingFunctionFromStackOverflow)
         forkedSortedRepos.forEach(repo => list.innerHTML += `
@@ -50,7 +47,6 @@ const fetchPullRequest = (allRepos) => {
         .then((data) => { 
             const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === USER)
             document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Requests: ${myPullRequests.length}`
-        
         })
     })
 }
@@ -60,8 +56,7 @@ const addCommits = (allRepos) => {
         fetch(`https://api.github.com/repos/${USER}/${repo.name}/commits`)
         .then((res) => res.json())
         .then((data) => { 
-            document.getElementById(`commits-${repo.name}`).innerHTML = `commits: ${data.length}`
-        
+            document.getElementById(`commits-${repo.name}`).innerHTML = `Commits: ${data.length}`
         })
     })
 }
