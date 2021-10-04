@@ -31,12 +31,14 @@ body {
 }
 
 .navigation-bar > a {
-  display: grid;
-  grid-area: nav;
   vertical-align: text-top;
   margin-right: 20px;
   height: 80px;       
-  line-height: 80px;    
+  line-height: 80px;  
+  display: grid;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;  
 
 }
 
@@ -111,13 +113,27 @@ align-items: center;
   backdrop-filter: blur(5px);
   border-radius: 25px;
   display: grid;
-  margin: 0 auto;
+  margin: 0, auto;
   align-items: center;
 }
 
+.chart-section {
+  display: grid;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
 
 /* mobile */
   @media (min-width: 0px) and (max-width: 668px){
+    .navigation-bar > a {
+      display: grid;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: center;  
+    
+    }
+
     .avatar {
       width: 150px;
       }
@@ -159,5 +175,10 @@ align-items: center;
     .avatar {
     width: 300px;
     
+    }
+
+    .myChart {
+    
+      flex-direction: column;
     }
 }

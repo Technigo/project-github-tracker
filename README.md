@@ -9,7 +9,8 @@ This week we learned
 
 # The problem
 
-I had a hard time with JavaScript this week (and with styling). I also struggled with time management but have a project to hand in altough it´s not completly finnished. I used google and youtube this week and of course my team helped me a lot.
+I had a hard time with JavaScript this week (and with styling). I also struggled with time management but have a project to hand in altough it´s not completly finnished, still have a grid layout for desktop & tablet to organize. 
+I used google, Stack Owerflow and YouTube this week as help and of course my team helped me a lot.
 
 
 ## View it live
