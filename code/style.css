@@ -5,53 +5,51 @@
 }
 body {
   background: #ffffff;
-}
-
-.projects {
   padding: 10px, 10px;
   min-width: 350px;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-items: center; */
   align-items: center;
-  row-gap: 10px;
+  gap: 10px;
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.heading-main {
-  margin: 10px 0;
-  font-weight: 700;
-  font-size: 2-px;
-}
-.user-info {
+/* This part deals with the header section */
+
+.user-section {
   width: 100%;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 14px;
-  font-weight: 400;
+  gap: 10px;
+}
+.heading-main {
+  font-weight: 700;
+  font-size: 26px;
 }
 
+.user-image {
+  width: 50%;
+  border-radius: 50%;
+  max-width: 250px;
+}
 .user-name {
+  text-align: center;
   color: #6a7179;
 }
+
+/* This part deals with the project cards */
 .projects-info {
   width: 100%;
   padding: 10px 60px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   row-gap: 10px;
   column-gap: 10px;
 }
 
-.user-info {
-  width: 50%;
-}
-
-.user-image {
-  width: 60%;
-  border-radius: 50%;
-}
 .repo-card {
   width: 100%;
   padding: 10px 10px;
@@ -70,5 +68,37 @@ body {
 }
 
 .chart-canvas {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.chart-pie {
   width: 50%;
+  max-width: 500px;
+}
+
+@media (min-width: 768px) {
+  .projects-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1281px) {
+  body {
+    padding-top: 30px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .user-section {
+    width: 20%;
+  }
+  .projects-info {
+    width: 60%;
+  }
+
+  .chart-canvas {
+    width: 20%;
+  }
+  .chart-pie {
+    width: 100%;
+  }
 }

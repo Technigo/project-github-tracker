@@ -15,15 +15,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
-    <main id="projects" class="projects">
-      <h1 class="heading-main">GitHub Tracker</h1>
-      <div id="userInfo" class="user-info"></div>
-      <div id="projectsInfo" class="projects-info"></div>
-      <!-- This will be used to draw the chart 👇 -->
-      <div class="chart-canvas">
-        <canvas id="chart"></canvas>
+    <header class="user-section" id="userHeader"></header>
+    <div id="projectsInfo" class="projects-info"></div>
+    <!-- This will be used to draw the chart 👇 -->
+    <div class="chart-canvas">
+      <div class="chart-pie">
+        <canvas id="chart" class="chart-pie"></canvas>
       </div>
-    </main>
+    </div>
     <script src="./script.js"></script>
     <script src="./chart.js"></script>
   </body>
