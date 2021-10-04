@@ -84,9 +84,6 @@ p{
 
 .project{
   background-color: var(--card-background);
-  /* flex-direction: column;
-  justify-content: left;
-  align-items: flex-start; */
   padding: 2vh;
   border-radius: 12px;
   margin: 2vh auto;

@@ -1,7 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
+//'Draw' the chart here 👇
 console.log('Pie chart is here')
 
 const drawChart = (x) => {
