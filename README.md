@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The task was to create a GitHub tracker, that displays information related to the Technigo projects using GitHUb API
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I wanted to try writing async functions, maybe the result is more complicated than using the .fetch method, but I learned a lot about the async of JS. Used flex and grid to display the data.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://meeteyes.netlify.app/
