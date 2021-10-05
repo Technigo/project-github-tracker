@@ -6,14 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+ <!-- header 👇 -->
+  <header class="header">
+    <h1>GitHub Tracker</h1>
+  </header>
+  <section class= "tracker">
+    
+    <!-- user 👇 -->
+    <div class= "profile">
+      <div class= "user-info" id ="profile">  </div>
+    </div>
+  <!--  chart 👇 -->
+    <div class="progress">
+      <h2 class= "title-chart">Progress:</h2>
+      <div class="card chart">
+        <canvas class="pichart" id="chart"></canvas>
+      </div>
+    </div>
+    <!-- repos 👇 -->
+    <section class= "repos">
+    <input class="search" type="text" id="search-repo" placeholder="Search For..."/>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+        <div class= "projects" >
+          <h2 class= "title">Projects:</h2>
+          <main class="projects-detail" id="projects" > </main>
+        </div>
+        
+    </section>
+</section>  
+  <!-- Footer 👇 -->
+  <footer class="footer">
+     <h3>GitHub tracker made by Naushin Malik</h3>
+  </footer>
+  
+
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

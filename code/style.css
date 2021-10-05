@@ -1,3 +1,314 @@
+:root{
+  --primary-color :#333;
+  --secondary-color:#dba93d;
+    
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ }
+
 body {
-  background: #FFECE9;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #d3d7da;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 350px; 
+    
+}
+
+a{
+text-decoration: none;
+cursor: pointer;
+
+}
+.header{
+ width: 100%;
+ height: 50px;
+ background-color: var(--primary-color);
+ color: white;
+ position: relative; 
+ 
+ z-index: 1;
+ padding-top:  10px; 
+ 
+}
+.profile{
+ display: flex;
+ flex-direction: column;
+ order:1;
+  
+}
+.user-info{
+  height:30vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  color: var(--secondary-color);
+}
+
+
+.user{
+  display: flex;
+  padding: 20px;
+}
+.photo {
+ border: solid 1px var(--secondary-color);
+ border-radius: 50%;
+ width: 100px;
+ height: 100px;
+ margin-right: 20px;
+}
+.name{
+
+  margin-top: 20px;
+
+
+}
+
+
+
+.link-github{
+  display: block;
+  cursor: pointer;
+  width: 160px;
+  height:30px;
+  background: #333;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  line-height: 19px;
+  padding-top:  10px;
+  margin: 10px; 
+}
+.search{
+    font-size: 14px;
+    line-height: 24px;
+    vertical-align: middle;
+    border: 1px solid var(--secondary-color );
+    border-radius: 6px;
+    outline: none;
+        
+}
+.tracker {
+display:flex;
+flex-direction: column;
+}
+.repos{
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 0 20px;
+  order:2;
+}
+.projects-detail{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card{
+background: url("./assets/cardbg.jpeg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+ width: 350px;
+ height: 400px;
+ position: relative;
+ box-shadow: 0 0 50px rgba(0, 0, 0, 0.315);
+ border-radius: calc(40 * 1px);
+ overflow: hidden;
+ transition: transform 1s;
+transform-style: preserve-3d;
+
+}
+
+
+.container__info {
+    
+  bottom: 20%;
+  display: flex;
+  align-items: flex-end;
+  padding: 15px 30px;
+  color:  #333;
+ }
+    
+ 
+  
+
+   
+ .card-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 1em;
+  padding: 2em;
+  border-radius: calc(40 * 1px) 0 0 0;    
+  background-color: #fff;
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+    
+ }
+
+ .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(40 * 1px);    
+    background-color:  #fff;      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card-overlay {
+    transform: translateY(0);
+  }
+  .card:hover .card-header {
+    transform: translateY(0);
+  }
+.language {
+border-radius: 50%;
+object-position: center;
+align-self:flex-start ;
+object-fit: cover;
+right: 0;
+ left: 0;
+ bottom: 0;
+ order:1;
+  }
+.repo-info{
+order: 2;
+}
+  .repo-name {
+   color: #dba93d;
+   font-size: 1.2rem;
+   text-transform: capitalize;
+  }
+  .repo-branch {
+   color: #333;
+   font-size: 0.8rem;
+   font-style: italic;
+   text-transform:uppercase;
+  }
+ 
+
+  .repo-comment {
+    padding: 0 1.2em 1.2em;
+    margin: 0;
+    color: #dba93d;
+    font-family: "MockFlowFont";   
+    overflow: hidden;
+    font-size: 0.9rem;
+  }
+  .content {
+    position: relative;
+    width: 100%;
+    display: block;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    color: #333;
+    margin-top: 30px;
+    
+  }
+
+  .labels {
+     margin-left: 20px;
+  }
+  .value{
+      margin-right: 20px;
+      text-decoration: none;
+  }
+  .card-body{
+    display: flex;
+  }
+  .commit{
+    margin-left: 20px;
+  }
+  .title{
+    
+    padding: 10px;
+    color: var(--secondary-color);
+  }
+  
+  .progress{
+    order:3;
+    padding: 20px 20px 0 20px;
+  }
+.chart{
+ padding: 20px;
+}
+.footer{
+ width: 100%;
+ height: 50px;
+ background-color: var(--primary-color);
+ color: white;
+ position: relative; 
+ text-align: center;
+ z-index: 1;
+ margin-top: 50px;
+ padding-top:10px ;
+}
+
+@media (min-width: 1200px) {
+.tracker{
+  
+  display: block;
+}
+.profile{
+height: 400px;
+float: left;
+width: 75%;
+left: -250px;
+margin-left: 0;
+padding: 0;
+position: absolute;
+top: 100px;
+}
+.photo {
+ 
+ width: 350px;
+ height: 350px;
+ 
+}
+  .repos{
+    float:none;
+    margin-top: 500px;
+    margin-left: 20px;
+    margin-right:  20px;
+    padding: 20px;
+    border-top: dashed 8px var(--primary-color);
+    
+  }
+  .projects-detail{
+    
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+.progress {
+  float: right;
+  width:25%;
+  height: 400px;
+  top: 20px;
+  right: 0;
+  position: absolute;
+  margin-right:20px;
+  
+
+  }
+  .title-chart{
+    display:none;
+  }
+.chart{
+
+ margin: 50px 10px;
+
+  }
 }
