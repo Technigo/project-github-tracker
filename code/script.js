@@ -13,8 +13,9 @@ const fetchProfile = () => {
     fetch(PROFILE_URL)
         .then(res => res.json()) 
         .then(profileData => {
+          console.log(profileData)
         profileContainer.innerHTML +=`
-            <img src=${profileData.avatar_url} class='profile-img'>    
+            <img src="${profileData.avatar_url}" class='profile-img'>    
             <h2>${profileData.name}</h2>
             <p>${profileData.login}</p>`
         });
@@ -44,7 +45,7 @@ const fetchRepositories = () => {
 		fetchPullRequestsArray(technigoRepositories);
 
 			//draw chart with technigoRepos data. I can't get the char? 
-			drawBarChart(technigoRepos.length);
+			drawChart(technigoRepositories.length);
 		});
 };
 
