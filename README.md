@@ -1,13 +1,18 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A site that keeps track of my Github repositories. 
+The project name (with url), latest push, number of commits and pull request is fetched from the Github API, along with my profile info.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I fetched all my repos and used the filter method to only keep the ones forked from Technigo that start with "project". 
+I fetched the other data using a similar method, either directly from the API if possible, and filtered it when necessary. 
+For sorting the repos in order by date, I used a function that I found on stack overflow to avoid a lot of issues with dates in js. 
+
+My plan was to use grid for my layout, however, that part is NOT complete yet (as of deadline) and I will keep working on it. 
+The page works on different devices, but I plan to make the project-divs look more unified in height.
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://annathunberg-githubtracker.netlify.app/

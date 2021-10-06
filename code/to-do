@@ -1,0 +1,32 @@
+
+### DONE
+
+
+- A list of all repos 
+
+- Filter to only show repos forked from Technigo
+
+- Filter to only show the repos that start with "project"
+
+- Your username and profile picture
+
+- Add profile-url to username
+
+- URL to the actual GitHub repo
+
+- All pull requests
+
+- Most recent update (push) for each repo 
+
+- Name of your default branch for each repo (main or master)
+
+- Number of commits for each repo
+
+- A chart of how many projects you've done so far, compared to how many you will do
+
+- Add a wrapper-div to the chart
+
+
+### TO DO
+
+- Make the project responsive with grid

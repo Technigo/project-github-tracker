@@ -1,3 +1,249 @@
 body {
-  background: #FFECE9;
+  background: #E05297;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+h1 {
+  width: fit-content;
+  max-width: 90%;
+  margin: 10% auto;
+  color: #daff05;
+  font-size: 34px;
+}
+
+h2 {
+  width: fit-content;
+  margin: auto;
+  color: #daff05;
+  font-size: 28px;
+}
+
+p {
+  color: #f1fabd;
+}
+
+img {
+  width: 150px;
+  display: block;
+  margin: 50px auto 10px;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+#full-name {
+  color: #daff05;
+  font-size: 20px;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 5px;
+}
+
+#username {
+  color: #daff05;
+  font-size: 20px;
+  display: block;
+  width: fit-content;
+  margin: 5px auto 50px;
+}
+
+#username a {
+  color: #daff05;
+  text-decoration: none;
+}
+
+#username a:hover {
+  color: #daff05;
+  text-decoration: underline;
+  padding: 3px;
+}
+
+/* THE LIST SECTION */
+
+
+#list {
+  display: block;
+  max-width: 90%;
+  padding: 2%;
+  margin: 10px auto 30px;
+  text-align: center;
+}
+
+#list div {
+  display: inline-block;
+  width: 90%;
+  padding: 3%;
+  margin: 10px;
+  color: #daff05;
+  font-size: 20px;
+  border-style: solid;
+  border-color: #f1fabd;
+  border-width: 2px;
+  border-radius: 5px;
+  
+}
+
+#list div a {
+  text-decoration: none;
+  margin: 10px auto;
+  color: #daff05;
+  font-size: 1.2em;
+}
+
+#list div a:hover {
+  text-decoration: none;
+  background-color:#f1fabd;
+  color: #E05297;
+  padding: 5px;
+}
+
+
+/* THE CHART SECTION */
+
+#chart-wrapper {
+  width: 90%;
+  margin: 20px auto 40px;
+}
+
+#chart {
+  padding: 5%;
+}
+
+/* -------- MEDIA QUERIES HERE --------- */
+
+
+/* TABLET SIZE SCREEN */
+@media (min-width: 667px) {
+
+  h1 {
+    margin: 10% auto;
+    font-size: 70px;
+  }
+  
+  h2 {
+    margin: 20px auto 30px;
+    font-size: 50px;
+  }
+
+  .profile-section {
+    width: 80%;
+    display: block;
+    margin: 20px auto;
+  }
+
+  #full-name {
+    font-size: 36px;
+    margin: 10px auto;
+  }
+
+  img {
+    display: block;
+    width: 250px;
+    margin: 10px auto 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #daff05;
+  }
+
+  #username {
+    font-size: 30px;
+    margin: 10px auto 50px;
+  }
+
+ 
+  /* THE LIST SECTION */
+  
+  #list {
+    max-width: 90%;
+    margin: 0px auto 50px;
+  }
+
+  #list div {
+    display: inline-block;
+    width: 40%;
+    padding: 3%;
+    margin: 10px;
+    color: #daff05;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #f1fabd;
+    border-width: 2px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 2px 1px #f1fabd;
+  }
+
+  /* text list */
+  #list div a {
+    text-decoration: none;
+    margin: auto;
+    font-size: 40px;
+  }
+  
+  
+  /* THE CHART SECTION */
+
+  #chart-wrapper {
+    width: 60%;
+    margin: 20px auto 80px;
+  }
+
+}
+
+/* SMALL DESKTOP SIZE SCREEN */
+@media (min-width: 1100px) {
+
+  h1 {
+    margin: 2% auto;
+  }
+  
+  h2 {
+    margin: 20px auto 5px;
+    font-size: 40px;
+  }
+
+  #full-name {
+    font-size: 24px;
+    margin: 20px auto 10px;
+  }
+
+  #username {
+    font-size: 22px;
+    margin: 10px auto 60px;
+  }
+  
+  img {
+    width: 200px;
+    margin: 50px auto 30px;
+  }
+  
+ 
+  /* THE LIST SECTION */
+  
+  #list {
+    max-width: 90%;
+    margin: 0px auto 50px;
+  }
+
+  #list div {
+    display: inline-block;
+    width: 20%;
+    padding: 3%;
+    margin: 10px;
+    color: #daff05;
+    font-size: 20px;
+    border-style: solid;
+    border-color: #f1fabd;
+    border-width: 1px;
+  }
+
+  /* text list */
+  #list div a {
+    text-decoration: none;
+    margin: auto;
+    font-size: 24px;
+  }
+
+  #chart-wrapper {
+    width: 30%;
+    margin: 20px auto 100px;
+  }
 }

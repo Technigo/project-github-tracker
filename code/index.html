@@ -5,15 +5,59 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
   <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
+  
+
+<section class="profile-section">
+
+  <img id="avatar"> </img>
+
+  <p id="full-name"></p>
+
+  <p id="username"></p>
+
+</section>
+
+<section class="projects-section">
+
+  <h2>My Projects</h2>
+
+  <main>
+    <div class="grid-container">
+    <div class="grid-item">
+      
+    <div id="list"></div>
+
+  </div> <!--closing tag grid item-->
+  </div> <!--closing tag grid container-->
+    
+  </main>
+
+</section>
+
+
+
+  <h2>Project count</h2>
+
+  <div id="chart-wrapper">
+
+ 
+    
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
+
+  </div>
+
+</section>  
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
