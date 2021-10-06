@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Main container that contains the projects and user data-->
+    <main class="main-container">
+      <!-- This contains the windows 95 icons-->
+      <div class="icon-container">
+        <img src="images/bin.png" alt="bin"/>
+        <p>Recycle Bin</p>
+        <img src="images/network.png" alt="network"/>
+        <p>C://My-harddrive</p>
+        <img src="images/network2.png" alt="network2"/>
+        <p>Network</p>
+      </div>
+      <!-- This is my chart container -->
+      <div class="my-chart-container">
+        <div class="chart-header">My project chart<span id="deleteRepo">X</span></div>
+        <canvas class="my-chart" id="myChart"></canvas>
+      </div>
+      <!-- Contains user data -->
+      <section class="user-data" id="user-data"><div></div></section>
+      <!-- Contains project data -->
+      <section class="projects" id="projects"></section>
+    </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <!-- A footer at the bottom of the page looking like a windows 95 menu-->
+    <footer class="my-footer">
+      <span class="menu-start-button"
+        ><img src="images/logo.png" alt="logo" />Start</span>
+      <span class="menu-program">Project GitHub tracker</span>
+      <span class="menu-time">14:34</span>
+    </footer>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
