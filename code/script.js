@@ -1,9 +1,9 @@
-const options = {
-    method: 'GET',
-    headers: {
-        Authorization: `token ${token}`
-    }
-}
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         Authorization: `token ${token}`
+//     }
+// }
 
 const USER = 'intehon'
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
@@ -13,7 +13,7 @@ const projectsContainer = document.getElementById('projects')
 const infoContainer = document.getElementById('info-container')
 
 const getUserInfo = () => {
-    fetch(USER_INFO_URL, options)
+    fetch(USER_INFO_URL)
       .then((response) => response.json())
       .then((data) => {
         console.log('user data: ', data)
@@ -26,7 +26,7 @@ const getUserInfo = () => {
 
 
 const fetchRepos = () => {
-    fetch(REPOS_URL, options)
+    fetch(REPOS_URL)
     .then((response) => response.json())
     .then((data) => {
         console.log('my repos: ', data)
@@ -63,7 +63,7 @@ const fetchPullRequestsArray = (allRepositories) => {
   allRepositories.forEach((repo) => {
       const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
 
-        fetch(PULL_URL, options)
+        fetch(PULL_URL)
         .then((response) => response.json())
         .then((data) => {
             const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login
@@ -86,7 +86,7 @@ const fetchPullRequestsArray = (allRepositories) => {
 }
 
 const fetchCommits = (myCommitsUrl, myRepoName) => {
-	fetch(myCommitsUrl, options)
+	fetch(myCommitsUrl)
 		.then((res) => res.json())
 		.then((data) => {
 			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
