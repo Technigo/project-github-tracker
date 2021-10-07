@@ -8,4 +8,4 @@ Initially I didnt split up the fetch and the actual rendering of the content on 
 
 ## View it live
 
-https://app.netlify.com/sites/zancotti-githubtracker/overview
+https://zancotti-githubtracker.netlify.app/
