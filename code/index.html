@@ -5,16 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <h1>GitHub Tracker</h1>
   <h2>Projects:</h2>
-  <main id="projects"></main>
+  <main>
+    
+    <section class="user-data" id="user-data">
+      <div id="profile-container"></div>
+    </section>
+    <section class="projects" id="projects"></section>
+  </main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
   
   <script src="./script.js"></script> <!--main section for js -->
   <script src="./chart.js"></script> <!--to be able to show more -->

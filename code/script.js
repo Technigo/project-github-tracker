@@ -44,7 +44,8 @@ const fetchRepositories = () => {
                  </div>
                 `;
             }));
-        fetchPullRequests(myTechnigo);    
+        fetchPullRequests(myTechnigo); 
+        drawChart(myTechnigo.length);   
     });
 };
 
@@ -72,8 +73,8 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 };
 
 fetchRepositories(); 
-drawChart(allRepositories.length);
 
-//Above is according to M video
+
+
 
 
