@@ -11,12 +11,12 @@ const getUserInfo = () => {
     .then((response) => response.json())
     .then((data) => {
       userContainer.innerHTML = `
-      <div class="user-card">
-      <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
-       alt="Profile picture"><h2>User name: <a href="https://github.com/IdaAspen">${data.name}</a></h2>
-       <p>${data.bio}</p>
-       </div>
-      `;
+        <div class="user-card">
+        <img src="https://avatars.githubusercontent.com/u/80949028?v=4"
+        alt="Profile picture"><h2>User name: <a href="https://github.com/IdaAspen">${data.name}</a></h2>
+        <p>${data.bio}</p>
+        </div>
+        `;
     });
 };
 
@@ -38,16 +38,15 @@ const getRepos = () => {
       forkedRepos.forEach(
         (repo) =>
           (projectsContainer.innerHTML += `
-          <div class="project-card">
-          <h3><a href=${repo.html_url} target="_blank">${repo.name.replace(
+            <div class="project-card">
+              <h3><a href=${repo.html_url} target="_blank">${repo.name.replace(
             "-",
             " "
           )}</a></h3>
-          <p>Most recent push: ${repo.pushed_at.substring(0, 10)}
-          </p><p>Name of default branch: ${
-            repo.default_branch
-          }</p><p id="commit-${repo.name}">No of commits: </p>
-          </div>`),
+              <p>Most recent push: ${repo.pushed_at.substring(0, 10)}</p>
+              <p>Name of default branch: ${repo.default_branch}</p>
+              <p id="commit-${repo.name}">No of commits: </p>
+            </div>`),
 
         //pass along filtered repos as an argument when invoke getPullRequest
         getPullRequests(forkedRepos)

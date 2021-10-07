@@ -123,7 +123,7 @@ header {
   }
 
   #projects-container {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
     padding: 3em;
   }
   .project-card {
@@ -150,7 +150,7 @@ header {
   }
 
   #projects-container {
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 3fr));
     padding: 4em;
   }
 
