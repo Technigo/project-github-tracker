@@ -54,10 +54,11 @@ body {
 
 a {
   color: #4078c0 bold;
+  font-weight: 800;
 }
 
 .link {
-  padding-top: 10px;
+  padding-top: 8px;
   font-size: large;
   padding-left: 10px;
   font-weight: 600;
@@ -68,7 +69,7 @@ h1 {
   color: #bebbbb bold;
   padding-left: 10px;
   font-size: 1 rem;
-  padding-top: 15px;
+  padding-top: 12px;
   padding-bottom: 5px;
 }
 
@@ -95,6 +96,7 @@ p {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   opacity: 0.75;
+  line-height: 15px;
 }
 
 .chart {
