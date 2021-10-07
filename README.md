@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a GitHub tracker with all my Technigo-repos.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started by fetching all the data that I wanted from the GitHub API. I began with fetching all the repos and filtering out only the forked ones from Technigo and continued with fetching the pull requests, commits and reviews. In order to inject data from one function to another I used dynamic IDs and DOM-selector.
+
+If I had more time I would like to add a dropdown menu were the user can choose to sort or display the repos after language. I would also like to style the GitHub tracker a bit more.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-ebbadelsol.netlify.app/
