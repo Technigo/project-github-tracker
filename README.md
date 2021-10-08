@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Github tracker project - This projects purpose is to show my accomplishments during the bootcamp. Every finished project will be documented in a graph(with the design of a doughnut). 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Every week has been a struggle for me, due to personal obsticles. I spent a lot of time at hospital, have moved two times, and personal matters. My focus is doing one thing at the time, and catch up with every criteria for each project to finish everything.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://adoring-liskov-03c237.netlify.app/
