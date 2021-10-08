@@ -1,7 +1,23 @@
 const USER = 'pcruzem';
+const PROFILE_URL = `https://api.github.com/users/${USER}`;
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 
+const profileContainer = document.getElementById('profile-container');
 const projectsContainer = document.getElementById('projects');
+
+
+// fetch Profile function
+const fetchProfile = () => {
+    fetch(PROFILE_URL)
+        .then((res) => res.json()) 
+        .then((profileData) => {
+        profileContainer.innerHTML += `
+            <img src=${profileData.avatar_url} class="profile-img">    
+            <h2>${profileData.name}</h2>
+            <p>${profileData.login}</p>
+        `
+        });
+  }
 
 const fetchRepositories = () => {
     fetch (REPOS_URL)
@@ -24,7 +40,7 @@ const fetchRepositories = () => {
 
         });
 
-        //Aproach number 2 
+       
         fetchPullRequestsArray(technigoRepositories);
 
         //Draw chart with technigoRepos data
@@ -53,7 +69,7 @@ const fetchPullRequestsArray = (allRepositories) => {
 				fetchCommits(myPullRequest.commits_url, repo.name);
 			} else {
 				document.getElementById(`commit-${repo.name}`).innerHTML =
-                'This was a group project. No pull requests made by pcruzem.';
+                'No pull requests made by pcruzem.';
 			}
         });
     });
