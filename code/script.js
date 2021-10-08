@@ -15,7 +15,7 @@ const fetchProfile = () => {
             <img src=${profileData.avatar_url} class="profile-img">    
             <h2>${profileData.name}</h2>
             <p>${profileData.login}</p>
-        `
+        `;
         });
   }
 
@@ -69,7 +69,7 @@ const fetchPullRequestsArray = (allRepositories) => {
 				fetchCommits(myPullRequest.commits_url, repo.name);
 			} else {
 				document.getElementById(`commit-${repo.name}`).innerHTML =
-                'No pull requests made by pcruzem.';
+                'No pull requests made by pcruzem';
 			}
         });
     });
@@ -83,5 +83,5 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 		});
 };
 
-
-fetchRepositories ();
+fetchProfile();
+fetchRepositories();
