@@ -144,7 +144,7 @@ a.button1:hover {
   margin-bottom: 4em;
 }
 
-#chart.chart {
+.chart {
   display: grid;
   margin-top: 1em;
 }
@@ -152,7 +152,6 @@ a.button1:hover {
 .spinner {
   position: static;
   border-style: solid;
-  /* margin: auto; */
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -234,7 +233,7 @@ a.button1:hover {
     align-items: center;
     width: 90%;
   }
-  #chart.chart {
+  .chart {
     padding-bottom: 2em;
   }
 }
@@ -282,7 +281,8 @@ a.button1:hover {
   .card-info {
     margin: 2px;
   }
-  #chart.chart {
+  .chart {
+    margin-left: 2em;
     max-width: 90%;
   }
 }
