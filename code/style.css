@@ -286,7 +286,7 @@ chart {
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1024px) {
   .profile-wrapper {
     width: 25%;
   }

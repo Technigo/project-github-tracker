@@ -20,6 +20,7 @@ const getUser = () => {
                     </div>
                     <div class="project-headline">${data.name}</div>
                     <div class="thin-headline">${data.login}</div>
+                    <p class="links-text"><a href="https://elsa-carlstrom-portfolio.netlify.app/">Portfolio (in progress) ➔</a></p>
                     <p class="links-text"><a href="${data.html_url}">GitHub profile ➔</a></p>
                     <div class="location">
                         <img src="./assets/location_icon.svg">
@@ -36,8 +37,14 @@ const getRepos = () => {
     fetch(API_REPOS)
         .then(res => res.json())
         .then(data => {
+
+            console.log(data)
             // Filtering the Technigo project repos
             const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+
+            forkedRepos.sort(function (oldestRepo, newestRepo) {
+                return new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at);
+              });
             
             forkedRepos.forEach(repo =>
                 fetch(`https://api.github.com/repos/${USER}/${repo.name}/commits`)
@@ -61,7 +68,7 @@ const getRepos = () => {
                         <div class="project-card" id="${repo.name}">
                             <div class="project-headline">${newProjectName}</div>
                             <p class="links-text"><a href="${repo.html_url}">GitHub repository ➔</a> | <a href="${repo.homepage}">View it live ➔</a></p>
-                            <p class="text">Most recent edit: ${latestCommit}</p>
+                            <p class="text">Most recent push: ${latestCommit}</p>
                             <p class="text">Default branch: ${repo.default_branch}</p>
                             <p id="commits-${repo.name}" class="text">(commits yet to be displayed)</p>
                             <div class="languages">
