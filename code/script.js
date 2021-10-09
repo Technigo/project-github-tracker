@@ -6,16 +6,16 @@ const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 
 const PROFILE_URL = `https://api.github.com/users/${USER}`
 
-const profileContainer = document.getElementById('profile-container')
+const profileContainer = document.getElementById('profileContainer')
 const projectsContainer = document.getElementById('projects');
-
+const profileImage = document.getElementById('profileImage')
 const fetchProfile = () => {
     fetch(PROFILE_URL)
         .then(res => res.json()) 
         .then(profileData => {
           console.log(profileData)
         profileContainer.innerHTML +=`
-            <img src="${profileData.avatar_url}" class='profile-img'>    
+            <img src="${profileData.avatar_url}" class='profile-image'>    
             <h2>${profileData.name}</h2>
             <p>${profileData.login}</p>`
         });
@@ -49,6 +49,7 @@ const fetchRepositories = () => {
 		});
 };
 
+
 const fetchPullRequestsArray = (allRepositories) => {
 	allRepositories.forEach((repo) => {
 		const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
@@ -79,3 +80,4 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 };
 
 fetchRepositories();
+fetchProfile();

@@ -13,8 +13,8 @@ const drawChart = (amount) => {
           label: 'My Technigo projects',
           data: [amount, 19-amount],
           backgroundColor: [
-            'rgb(219,57,141)',
-            'rgb(0,255,255)',
+            'rgb(235, 14, 14)',
+            'rgb(64, 19, 19)',
           ],
           hoverOffset: 4
         }],
