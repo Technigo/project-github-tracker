@@ -1,21 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katie Wu - GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="./assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <img
+        src="./assets/bg-image.jpg"
+        alt="cover image of plants"
+        class="background-image"
+      />
+      <h1 class="header-title">
+        <img class="octacat" src="./assets/Octocat.png" alt="octocat" /> GitHub
+        Tracker
+      </h1>
+      <div class="profile" id="profile"></div>
+    </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <hr />
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <main class="projects">
+      <h3>Repositories</h3>
+      <section class="project-container" id="projectContainer"></section>
+      <section class="modal-project" id="modalProject">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <div class="modal-content" id="modalContent"></div>
+      </section>
+    </main>
+
+    <h3>Technigo boot camp projects</h3>
+    <div class="progress-chart">
+      <canvas id="progressChart"></canvas>
+    </div>
+
+    <footer>
+      <p>&#169;2021 by Katie Wu</p>
+      <p>
+        Team Foxes 🦊 |
+        <a href="https://www.technigo.io/" target="blank">Technigo</a>
+      </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./chart.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
