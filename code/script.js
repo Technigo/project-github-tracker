@@ -29,12 +29,12 @@ const fetchRepositories = () => {
 
         technigoRepositories.forEach((repo) => {
             projectsContainer.innerHTML += `
-        <div>
+        <div class="card">
             <a href="${repo.html_url}">${repo.name} with default branch ${
                     repo.default_branch
                 }</a>
             <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commit-${repo.name}">Commits amount: </p>
+            <p id="commit-${repo.name}">Amount of commits: </p>
         </div>
     `;
 
