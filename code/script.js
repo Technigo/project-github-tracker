@@ -50,7 +50,7 @@ const fetchRepositories = () => {
             });
 
             fetchPullRequests(technigoRepositories);
-            drawChart(allRepositories.length);
+            drawChart(technigoRepositories.length);
         });
 };
 
