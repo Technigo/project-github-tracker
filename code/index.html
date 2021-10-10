@@ -1,21 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Technigo GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <!--Title font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!--Bread font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <!--Signature-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="header-title">Technigo GitHub Tracker</h1>
+      <div id="userProfile" class="user-profile"></div>
+    </header>
+
+    <section id="projects">
+      <div id="projectsContainer" class="projects-container">
+        <div id="myModal" class="modal"></div>
+      </div>
+    </section>
+
+    <!-- This will be used to draw the chart 👇 -->
+    <div class="chart-container">
+      <h2 class="chart-title">
+        Follow my project progress at Technigo Frontend Boot camp
+      </h2>
+      <p>
+        During the boot camp we will have 19 weekly projects and you can follow
+        the progress in the chart displayed here:
+      </p>
+      <canvas class="chart-canvas" id="chart"></canvas>
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+
+    <footer class="signature">
+      <h5>Designed and Developed by</h5>
+      <h3>Lovisa Carling</h3>
+      <p>Technigo Frontend Boot Camp 2021</p>
+    </footer>
+  </body>
 </html>
