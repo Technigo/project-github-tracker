@@ -117,7 +117,6 @@ const showCommits = (url, myRepoName) => {
     .then((res) => res.json())
     .then((data) => {
       let commitMessage = data[data.length - 1].commit.message
-      console.log(data)
 
       document.getElementById(`commit-${myRepoName}`).innerHTML += ` 
       <p>Number of commits: ${data.length}</p>
@@ -134,7 +133,6 @@ const showCommits = (url, myRepoName) => {
 
       //Opens the commit msg in a modal by clicking at the button
       btn.onclick = function () {
-        console.log(modal)
         document.getElementById('myModal').style.display = 'block'
       }
 
