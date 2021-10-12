@@ -33,25 +33,25 @@ const getRepos = () => {
 			const profilePic = data[0].owner.avatar_url
 
 			userSection.innerHTML += /* html */`
-        <div class="userImage_Text">
-          <div class="userImageDiv">
-            <img class="userImage" id="userImage" src="${profilePic}" alt="Github Avatar">
-          </div>
-          <div class="userTextDiv">
-            <p class="myName">Birgit</p>
-            <p class="userName">${userName}</p>
-          </div>
-        </div>  
-			
-        <label for="sort"></label>
-          <select class="sort" name="sort" id="sort">
-            <option value="updated">Last updated</option>
-            <option value="name">Name</option>
-          </select> 	
+				<div class="userImage_Text">
+				<div class="userImageDiv">
+					<img class="userImage" id="userImage" src="${profilePic}" alt="Github Avatar">
+				</div>
+				<div class="userTextDiv">
+					<p class="myName">Birgit</p>
+					<p class="userName">${userName}</p>
+				</div>
+				</div>  
+					
+				<label for="sort"></label>
+				<select class="sort" name="sort" id="sort">
+					<option value="updated">Last updated</option>
+					<option value="name">Name</option>
+				</select> 	
 			`
  
 			const sortBtn = document.getElementById('sort')
-      sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos))
+      		sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos))
 
 			drawProjects(forkedRepos);	
 			drawChart(forkedRepos.length)
