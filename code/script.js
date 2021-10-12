@@ -1,5 +1,4 @@
-/* my user*/
-/*can't get my USER*/ 
+
 const USER = 'mamite100';
 
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
@@ -30,17 +29,28 @@ const fetchRepositories = () => {
 			);
 
 		technigoRepositories.forEach((repo) => {
-				projectsContainer.innerHTML += `
-          <div>
-            <a href="${repo.html_url}">${repo.name} with default branch ${
-					repo.default_branch
-				}</a>
-            <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-            <p id="commit-${repo.name}">Commits amount: </p>
-          </div>
-        `;
+		fetch(`${repo.languages_url}`)
+          .then((language) => language.json())
+          .then((data) => {
+            const language = Object.keys(data)[0];
 
-			});
+				projectsContainer.innerHTML += `
+         <div class="repo" id="${repo.name}"> 
+               <a class="repo-item1" href="${repo.html_url}" target="_blank">${
+              repo.name
+            }</a>
+               <div class="repo-item2"><span class="branch">${
+                 repo.default_branch
+               }</span></div>
+               <h4 class="repo-item3">Last updated: ${new Date(
+                 repo.updated_at
+               ).toLocaleDateString()}</h4>
+               <h5 class="repo-item4">${language}</h5>
+             </div>
+          `;
+          })
+          .catch((err) => console.log(err));
+      });
 
 		fetchPullRequestsArray(technigoRepositories);
 
@@ -73,10 +83,14 @@ const fetchPullRequestsArray = (allRepositories) => {
 
 const fetchCommits = (myCommitsUrl, myRepoName) => {
 	fetch(myCommitsUrl)
-		.then((res) => res.json())
-		.then((data) => {
-			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
-		});
+	.then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      document.getElementById(
+        `${repo.name}`
+      ).innerHTML += `<h4 class="repo-item5"> Number of commits: ${data.length}</h4>`;
+    })
+    .catch((err) => console.log(err));
 };
 
 fetchRepositories();
