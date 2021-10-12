@@ -4,16 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Project GitHub Tracker- Kara Howes</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header>
+    <section class="header">
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+      <img src="./assets/GitHub_Logo_White.png" alt="GitHub logo">
+
+    </section>
+
+  </header>
+
+  <!-- This will be for the profile container innerHTML-->
+  <section class="profile-container" id="profile-container">
+  
+  </section>
+
+  <!-- This section is where the cards go -->
+  <section class="cards-container" id="cards-container">
+    
+  </section>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  
+  <canvas id="chart" class="canvas-chart"></canvas>
+  
+  <footer>
+    <div class="footer">
+      <img src="./assets/GitHub-Mark-120px-plus.png" alt="">
+      <p> A GitHub tracker project by Kara Howes </p>
+    </div>
+  </footer>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
