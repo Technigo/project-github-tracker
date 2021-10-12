@@ -2,20 +2,15 @@ body {
   background: rgb(163, 211, 198);
 }
 
-.main-container {
-  grid-template-columns: repeat(6, 1fr);
-}
-
 .title {
   font-family: 'Archivo Black', sans-serif;
-  font-size: 1.6em;
+  font-size: 1.6rem;
   text-align: center;
 }
 
 h2, p, button {
   font-family: 'Roboto', sans-serif;
 }
-
 
 .profile-img {
   border-radius: 50%;
@@ -36,8 +31,14 @@ button:hover {
   color: white;
 }
 
+.main-container .title {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+}
+
 .profile-container {
-  font-size: 1.1rem;
   display: grid;
   grid-column: span 6;
   justify-items: center;
@@ -55,7 +56,7 @@ button:hover {
   display: grid;
   grid-column: span 6;
   justify-items: center;
-  padding: 3rem;
+  margin: 5% auto;
   width: 300px;
 }
 
@@ -65,7 +66,9 @@ button:hover {
   text-align:center;
   padding: 1.5rem;
   box-shadow: 0 0.2rem 1.2rem rgba(22, 23, 23, 0.2);
+  transform: translateY(0);
   position: relative;
+  
 }
 
 .card a {
@@ -88,7 +91,7 @@ button:hover {
     grid-column: span 3;
   }
 
-  .canvas-container {
+  .chart-container {
     grid-column: span 3;
   }
 
@@ -101,7 +104,5 @@ button:hover {
   .projects-container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .canvas-container {
-    width: 40rem;
-  } 
+  
 }

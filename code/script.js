@@ -14,9 +14,8 @@ const fetchProfile = () => {
         profileContainer.innerHTML += `
             <img src=${profileData.avatar_url} class="profile-img">    
             <h2>${profileData.name}</h2>
-            <a href='https://github.com/pcruzem>
-                <button>${profileData.login}</button>
-            </a>
+            <button class="GFG" 
+            onclick="window.location.href = 'https://github.com/pcruzem';">${profileData.login}</button>
         `;
         });
   };

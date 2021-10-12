@@ -12,7 +12,7 @@ const drawChart = (amount) => {
         ],
         datasets: [{
           label: 'My Technigo projects',
-          data: [amount, 20-amount],
+          data: [amount, 19-amount],
           backgroundColor: [
             'rgba(192, 253, 196, 0.48)',
             'rgba(255, 159, 209, 0.8)',
