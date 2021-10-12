@@ -1,13 +1,14 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was creating a git hub tracker with a list of all my Technigo Repositories as well as amount of commits for each repo. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used javascript, CSS and some html. I encountered most problem in the beginning when trying to fetch my data from github. I followed Jennies and Maks videos and constantly ran out of fetches. Eventually I managed. For styling I looked at my teammate Maria Sjögrens Code and implemented it step by step, by doing that I learned a lot of things that I didn't know before. 
+
+What technologies did you use? If you had more time, what would be next?
+If I had more time I would work more on the links, because I want them to open in a new window but I didnt manage to do it. I would also try to put the chart in the profile-section and add som red level stuff. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://infallible-bassi-7672f0.netlify.app/
