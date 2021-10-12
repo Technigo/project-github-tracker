@@ -14,10 +14,12 @@ const fetchProfile = () => {
         profileContainer.innerHTML += `
             <img src=${profileData.avatar_url} class="profile-img">    
             <h2>${profileData.name}</h2>
-            <p>${profileData.login}</p>
+            <a href='https://github.com/pcruzem>
+                <button>${profileData.login}</button>
+            </a>
         `;
         });
-  }
+  };
 
 const fetchRepositories = () => {
     fetch (REPOS_URL)
@@ -30,11 +32,12 @@ const fetchRepositories = () => {
         technigoRepositories.forEach((repo) => {
             projectsContainer.innerHTML += `
         <div class="card">
-            <a href="${repo.html_url}">${repo.name} with default branch ${
-                    repo.default_branch
-                }</a>
-            <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+            <a href="${repo.html_url}">
+            <h2>${repo.name}</h2>
+            <p>Default branch: ${repo.default_branch}</p> 
+            <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
             <p id="commit-${repo.name}">Amount of commits: </p>
+            </a>
         </div>
     `;
 
