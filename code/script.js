@@ -2,22 +2,21 @@
 const userSection = document.getElementById("user-section")
 
 //GLOBAL VARIABLES
-/* const options = {
+const options = {
 	method: 'GET',
 	headers: {
-		Authorization: `token xxx`
+		Authorization: `token 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`
 	},
-}; */
+};
 
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
-let commitslength = []
 
 //FUNCTIONS
 
 
 const getRepos = () => {
-	fetch(REPO_API, /* options */)
+	fetch(REPO_API, options)
 		.then((res) => res.json())
 		.then((data) => {
 
@@ -50,41 +49,41 @@ const getRepos = () => {
             <option value="name">Name</option>
           </select> 	
 			`
-      //<option value="commits">No. of commits</option>
-      //couldn't make it work...
-
-      const sortBtn = document.getElementById('sort')
-      sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos, commitslength))
+ 
+			const sortBtn = document.getElementById('sort')
+      sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos))
 
 			drawProjects(forkedRepos);	
 			drawChart(forkedRepos.length)
 		})
 }
 
-//sorting the projects by name, last updated or no. of commits
-const sort = (value, repos, mycommits) => {
+//sorting the projects by name, last updated
+const sort = (value, repos) => {
+	console.log('Value: ', value)
   if (value === "name") {
     repos.sort((a, b) => {
       return (a.name) > (b.name);
     });
+		repos.forEach((repo) => {
+			console.log('Repos after sorting name: ', repo.name)
+		})
     drawProjects(repos)
   } else if (value === "updated") {
+		console.log('Wert: ', value)
     repos.sort((a, b) => {
       return new Date(b.pushed_at) - new Date(a.pushed_at);
     });
-      drawProjects(repos)
-  } /* else if (value === "commits") {
-    console.log('Commits: ', mycommits)
-    console.log('Commitslänge: ', mycommits.length)
-    mycommits.sort((a, b) => {
-      return (a.mycommits.length) > (b.mycommits.length);
-    });
-    drawProjects(repos) 
-  }*/
+		repos.forEach((repo) => {
+			console.log('Repos after sorting updated: ', repo.pushed_at)
+		})
+    drawProjects(repos)
+  } 
 }
 
 const drawProjects = (forkedRepositories) => {
 	document.getElementById('projects-section').innerHTML = `
+
 	`
   console.log('From drawProjects()', forkedRepositories)
 	forkedRepositories.forEach((repo) => {
@@ -122,12 +121,12 @@ const getCommits = (filteredArray, myRepoName) => {
 		commitAPI = commitAPI.slice(0, -6)
 
 		//now the URLs can be passed on to get data about number and content of commits 
-		fetch(commitAPI, /* options */)
+		fetch(commitAPI, options)
 			.then((res) => res.json())
 			.then((data) => {
 				const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
+				console.log(authorCommits)
 				if (authorCommits.length > 0) {
-					commitslength.push(authorCommits)
 					document.getElementById(`commit-${myRepoName}`).innerHTML = `
 						Commits: ${authorCommits.length}<i class="fas fa-bars"></i>
 					`
