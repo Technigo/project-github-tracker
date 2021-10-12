@@ -2,12 +2,12 @@
 const userSection = document.getElementById("user-section")
 
 //GLOBAL VARIABLES
-const options = {
+/* const options = {
 	method: 'GET',
 	headers: {
-		Authorization: `token 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`
+		Authorization: `token xxx`
 	},
-};
+}; */
 
 const REPO_API = "https://api.github.com/users/nehrwein/repos";
 const totalProjects = 19;
