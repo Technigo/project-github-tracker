@@ -33,7 +33,7 @@ const fetchRepos = () => {
       );
 
       // sort function (shows latest to oldest repo)
-      forkedRepos.sort(function (oldestRepo, newestRepo) {
+      forkedRepos.sort((oldestRepo, newestRepo) => {
         return new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at);
       });
 
