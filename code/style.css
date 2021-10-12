@@ -1,3 +1,108 @@
 body {
-  background: #FFECE9;
+  background: rgb(163, 211, 198);
+}
+
+.title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+h2, p, button {
+  font-family: 'Roboto', sans-serif;
+}
+
+.profile-img {
+  border-radius: 50%;
+  max-width: 200px;
+}
+
+button {
+  font-size: 1.3rem;
+  border: 1px solid #95dcbe;
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 0.2rem 1.2rem rgba(22, 23, 23, 0.2);
+  transition-duration: 0.4s;
+}
+
+button:hover {
+  background-color: #f5cbe6;
+  color: white;
+}
+
+.main-container .title {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+}
+
+.profile-container {
+  display: grid;
+  grid-column: span 6;
+  justify-items: center;
+  padding-bottom: 2rem;
+}
+
+.projects-container {
+  display: grid;
+  grid-column: span 6;
+  grid-gap: 2rem;
+  margin: 50px auto;
+}
+
+.chart-container {
+  display: grid;
+  grid-column: span 6;
+  justify-items: center;
+  margin: 5% auto;
+  width: 300px;
+}
+
+
+.card {
+  background: #fff;
+  text-align:center;
+  padding: 1.5rem;
+  box-shadow: 0 0.2rem 1.2rem rgba(22, 23, 23, 0.2);
+  transform: translateY(0);
+  position: relative;
+  
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  filter: none;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
+  color: #95dcbe;
+}
+
+
+
+@media (min-width: 768px) {
+  .profile-container {
+    grid-column: span 3;
+  }
+
+  .chart-container {
+    grid-column: span 3;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
 }
