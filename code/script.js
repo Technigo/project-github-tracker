@@ -36,16 +36,16 @@ const fetchRepositories = () => {
 
 				projectsContainer.innerHTML += `
          <div class="repo" id="${repo.name}"> 
-               <a class="repo-item1" href="${repo.html_url}" target="_blank">${
+               <a class="repo-title" href="${repo.html_url}" target="_blank">${
               repo.name
             }</a>
                <div class="repo-item2"><span class="branch">${
                  repo.default_branch
                }</span></div>
-               <h4 class="repo-item3">Last updated: ${new Date(
+               <h4 class="updated">Last updated: ${new Date(
                  repo.updated_at
-               ).toLocaleDateString()}</h4>
-               <h5 class="repo-item4">${language}</h5>
+               ).toDateString()}</h4>
+               <h5 class="language">${language} </h5>
              </div>
           `;
           })
