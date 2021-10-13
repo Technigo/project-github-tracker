@@ -33,7 +33,7 @@
 		.then((res) => res.json())
 		.then((data) => {
 			const technigoRepositories = data.filter(
-				(repo) => repo.name.includes('project-') && repo.fork
+			(repo) => repo.name.includes('project-') && repo.fork
 			);
 
 			technigoRepositories.forEach((repo) => {
