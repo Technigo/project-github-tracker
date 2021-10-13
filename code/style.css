@@ -1,3 +1,68 @@
 body {
   background: #FFECE9;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile-container{
+  width:90%;
+  margin: 0 auto; 
+}
+
+.profile-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 500px;
+  margin: 20px auto 40px auto;
+}
+.profile-photo {
+  width:30%;
+}
+.profile-photo img{
+  width: 100%;
+  border-radius: 50%;
+  border: 3px solid black;
+  filter: grayscale(100%);  
+}
+
+.profile-username{
+  width: 60%;
+  margin-left: 25px;
+  box-shadow: 2px 2px 4px;
+}
+.user-name {
+  margin: 6px 0 0 0;
+  padding: 6px 0 0 0;
+  border-bottom: 3px solid rgb(255, 192, 203); 
+}
+
+.real-name, .location {
+  margin: 6px 0 0 0;
+  padding: 6px 0 0 0;
+  border-bottom: 1px solid #B2B3B4; 
+}
+
+.profile-text {
+ 
+  text-align: justify;
+  margin-bottom: 40px;
+}
+
+/* Cards styling*/
+
+.projectsContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.repo-card {
+  color: white;
+  width: 90%;
+  background-color: rgb(90, 78, 78);
+  border: 1px solid;
+  margin: 20px auto;
+  max-width: 500px;
+  padding-left: 15px;
 }
