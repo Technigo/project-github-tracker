@@ -29,15 +29,15 @@
 
   //My Repositories//
   const fetchRepositories = () => {
-	  fetch(REPOS_URL)
-		.then((res) => res.json())
-		.then((data) => {
-			const technigoRepositories = data.filter(
-			(repo) => repo.name.includes('project-') && repo.fork
-			);
+    fetch(REPOS_URL)
+    .then((res) => res.json())
+    .then((data) => {
+      const technigoRepositories = data.filter(
+      (repo) => repo.name.includes('project-') && repo.fork
+      );
 
-			technigoRepositories.forEach((repo) => {
-				projectsContainer.innerHTML += 
+      technigoRepositories.forEach((repo) => {
+        projectsContainer.innerHTML += 
         `<div class="project-box">
         <h3>${repo.name}</h3>
         <p><i class="fab fa-github"></i><a href="${repo.html_url}"target="_blank"> GitHub repo</a></p>
@@ -45,44 +45,44 @@
         <p><i class="far fa-clock"></i> Recent push: ${new Date(repo.pushed_at).toLocaleDateString()}</p>
         <p id="commit-${repo.name}">Commits: </p>
         </div>`;
-			});
+      });
 
-			fetchPullRequestsArray(technigoRepositories);
+      fetchPullRequestsArray(technigoRepositories);
 
-	// Draw chart with technigoRepos data
-			drawChart(technigoRepositories.length);
-		});
+  // Draw chart with technigoRepos data
+      drawChart(technigoRepositories.length);
+    });
   };
 
   //My Pull Requests//
       const fetchPullRequestsArray = (allRepositories) => {
-	    allRepositories.forEach((repo) => {
-		  const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
+      allRepositories.forEach((repo) => {
+      const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
 
-		  fetch(PULL_URL)
-			.then((res) => res.json())
-			.then((data) => {
-		  const myPullRequest = data.find(
-				(pull) => pull.user.login === repo.owner.login);
+      fetch(PULL_URL)
+      .then((res) => res.json())
+      .then((data) => {
+      const myPullRequest = data.find(
+        (pull) => pull.user.login === repo.owner.login);
 
-				if (myPullRequest) {
-					fetchCommits(myPullRequest.commits_url, repo.name);
-				} else {
-					document.getElementById(`commit-${repo.name}`).innerHTML =
-					'Group project.';
-				}
+        if (myPullRequest) {
+          fetchCommits(myPullRequest.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML =
+          'Group project.';
+        }
       console.log(myPullRequest)
-			});
-	  });
+      });
+    });
   };
 
 //My Commits//
       const fetchCommits = (myCommitsUrl, myRepoName) => {
-	    fetch(myCommitsUrl)
-		  .then((res) => res.json())
-		  .then((data) => {
-			document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
-		});
+      fetch(myCommitsUrl)
+      .then((res) => res.json())
+      .then((data) => {
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
+    });
   };
   
 
