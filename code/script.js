@@ -34,7 +34,9 @@ const getRepos = () => {
 
         container.innerHTML += `
         <div class="repo-cards">
-          <a href=${repo.html_url}><h3>${formattedRepoName(repo.name)}</h3></a>
+          <a href=${repo.html_url} target="_blank"><h3>${formattedRepoName(
+          repo.name
+        )}</h3></a>
           <p>${repo.default_branch}</p>
           <p>Latest update: ${pushedDate}</p>
           <p id="commit-${repo.name}"> Commits: </p>
