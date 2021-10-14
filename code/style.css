@@ -71,9 +71,10 @@ align-items: center;
 
 }
 
-
 .my-info {
   grid-area: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
   padding: 20px;
   margin: 20px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
@@ -85,8 +86,8 @@ align-items: center;
 
 .projects {
   display: grid;
-  grid-column: span 6;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
+  gap: 20px;
   
 }
 
@@ -118,6 +119,7 @@ align-items: center;
 
 .chart-section {
   display: grid;
+  gap: 20px;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
@@ -125,59 +127,78 @@ align-items: center;
 
 /* mobile */
   @media (min-width: 0px) and (max-width: 668px){
-    .navigation-bar > a {
-      display: grid;
-      margin: 0 auto;
-      align-items: center;
-      justify-content: center;  
+  .navigation-bar > a {
+    display: grid;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;  
     
-    }
-
-    .avatar {
-      width: 150px;
-      }
-
-    .my-info {
-      flex-direction: column;
-
-      }
-     .projects {
-       flex-direction: column;
-     }
-     .myChart {
-       flex-direction: column;
-     }
   }
+
+  .avatar {
+    width: 150px;
+  }
+
+  .my-info {
+    flex-direction: column;
+
+  }
+
+  .projects {
+    flex-direction: column;
+  }
+
+  .myChart {
+    flex-direction: column;
+  }
+
+}
   
   /* tablet */
   @media (min-width: 669px) and (max-width: 1024px){
     .avatar {
       width: 200px;
-      }
+    }
 
-      .my-info {
-        flex-direction: column;
-  
-        }
-       .projects {
-         flex-direction: column;
-       }
+    .my-info {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
 
-       .myChart {
-        flex-direction: column;
-      }
+    .myChart {
+      flex-direction: column;
+
+    }
+
   }
   
   
   /* desktop */
   @media (min-width: 1025px){
-    .avatar {
+    
+  .avatar {
     width: 300px;
     
-    }
+  }
 
-    .myChart {
-    
-      flex-direction: column;
-    }
+  .my-info {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .myChart {
+    flex-direction: column;
+
+  }
+
 }
