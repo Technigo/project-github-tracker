@@ -1,3 +1,107 @@
+:root {
+  --gblue: rgb(87, 166, 255);
+}
 body {
-  background: #FFECE9;
+  background: black;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.content {
+  max-width: 300px;
+  margin: auto;
+}
+.title {
+  text-align: center;
+}
+.profile-picture {
+  width: 100%;
+  border-radius: 100%;
+  padding: 20px 0;
+}
+.profile-name {
+  display: flex;
+  justify-content: center;
+}
+.profile-title {
+  text-decoration: none;
+  color: white;
+  font-size: 1.8rem;
+  margin: 20px 0;
+}
+.github-icon {
+  border-radius: 100%;
+  width: 30px;
+  margin-right: 10px;
+}
+.bio,
+.location {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.projects-title {
+  border-top: 1px solid grey;
+  padding: 40px 0 10px 0;
+  text-align: center;
+}
+.repo-name {
+  font-size: 1.3rem;
+  color: var(--gblue);
+  text-decoration: none;
+}
+.single-project {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px 10px 10px 20px;
+  margin: 10px 10px;
+}
+a:hover {
+  text-decoration: underline;
+}
+.last-push {
+  font-size: 0.8rem;
+  color: grey;
+}
+.comment-text {
+  font-size: 0.8rem;
+  color: grey;
+}
+.chart {
+  width: 300px;
+  margin: 20px 0;
+}
+footer {
+  border: 1px solid grey;
+  border-radius: 5px;
+  width: 300px;
+  margin: auto;
+  padding: 10px;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Tablet > */
+@media (min-width: 768px) {
+  .content {
+    max-width: none;
+  }
+  .profile-picture {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .chart {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+  footer {
+    width: auto;
+  }
 }
