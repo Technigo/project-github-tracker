@@ -69,11 +69,11 @@ hr {
   color: var(--secondary);
 }
 
-#user-info {
+.user-info {
   text-align: center;
 }
 
-#user-info p {
+.user-info p {
   font-size: 20px;
 }
 
@@ -187,11 +187,11 @@ main {
   margin: auto;
   max-width: 400px;
 }
-#chart {
+.chart {
   transition: 0.5s;
 }
 
-#chart:hover {
+.chart:hover {
   transform: scale(1.05);
 }
 
