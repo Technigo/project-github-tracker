@@ -17,9 +17,21 @@
     <div class="wrapper">
       <header class="navbar__container">
         <h1>GitHub Tracker</h1>
-        <i class="fa-brands fa-js-square icon" onclick="filter(`js`)"></i>
-        <i class="fal fa-file-code icon" onclick="filter(`html`)"></i>
-        <i class="fal fa-undo-alt icon" onclick="filter(`undo`)"></i>
+        <i
+          title="Filter on JS"
+          class="fa-brands fa-js-square icon"
+          onclick="filter(`js`)"
+        ></i>
+        <i
+          title="Filter on HTML"
+          class="fal fa-file-code icon"
+          onclick="filter(`html`)"
+        ></i>
+        <i
+          title="Remove filter"
+          class="fal fa-undo-alt icon"
+          onclick="filter(`undo`)"
+        ></i>
       </header>
       <div id="userInformation" class="user-information"></div>
       <div id="projects" class="projects">
@@ -29,7 +41,7 @@
         <canvas id="chart"></canvas>
       </div>
     </div>
-    <script src="./script.js"></script>
-    <script src="./chart.js"></script>
+    <script type="text/javascript" src="./chart.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
   </body>
 </html>

@@ -96,6 +96,8 @@ const renderRepos = () => {
     }
   });
 
+  renderChart(filteredRepos.length - 1);
+
   // I sort the filtered repoList after creation dates and then reverse it.
   filteredRepos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   filteredRepos = filteredRepos.reverse();
@@ -121,7 +123,7 @@ const renderRepos = () => {
           <div class="projects__repo-container__header__flex-box__html-url"><a href="${htmlUrl}" target="_blank">Go to ${repoName}</a></div>
           <div class="projects__repo-container__header__flex-box__language">Programming language: ${repoLanguage}</div> 
           </div>
-        <div class="projects__repo-container__header__amount-commitmessages" id="${repoName}-amountCommitmessages"></div>
+        <div class="projects__repo-container__header__amount-commitmessages" id="${repoName}-amountCommitmessages" title="Amount of commits"></div>
       </div>
       <div class="projects__commit-pulls-container" id="${repoName}-commit-pulls-container"></div>
       <div class="projects__commit-comments-container" id="${repoName}-commit-comments-container"></div>
@@ -185,6 +187,8 @@ const getPullRequests = () => {
   filteredRepos.forEach((repo) => {
     const repoDefaultBranch = repo.default_branch;
     const repoName = repo.name;
+
+    finishedProjects = filteredRepos.length - 1;
 
     // add reponame username and repodefault branch to the api to get into the right api adress depending on repo.
     const pullRequestsApi = `https://api.github.com/repos/technigo/${repoName}/pulls?head=${username}:${repoDefaultBranch}`;
