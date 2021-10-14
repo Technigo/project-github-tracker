@@ -11,7 +11,6 @@ const getRepos = () => {
     fetch(ALL_MY_REPOS)
         .then(res => res.json())
         .then((json) => { // This json shows all of my repos on GitHub
-            // console.log(json)
             // filter repos so I can only get tehcnigos repos 
             const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-')) // or you can use includes method 
             drawChart(forkedRepos.length)
@@ -38,24 +37,12 @@ const getRepos = () => {
                 `
                 // getLanguages(repo.languages_url)
             })
-
             getPullRequests(forkedRepos) // passing all my forked repos to this function 
-
         })
 }
 
 // calling getRepos function
 getRepos()
-
-// const getLanguages = (languageUrl) => {
-//     fetch(languageUrl)
-//         .then(res => res.json())
-//         .then(data => {
-//             showLanguages(data.HTML, data.CSS, data.JavaScript)
-//             console.log(data.CSS)
-//         })
-// }
-
 
 // GETTING ALL MY PULL REQUESTS 
 const getPullRequests = (forkedRepos) => { // repos är samma som forkedRepos
@@ -81,9 +68,6 @@ const getCommits = (url, myRepoName) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += numberOfCommits
         })
 }
-
-
-
 
 
 
