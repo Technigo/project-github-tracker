@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to create a place to keep track of the GitHub repos that we're using at Technigo.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+To solve the problem we practiced JavaScript and learned more about API with the help of GitHubs own documentation.
+I started with looking deeper into the documentation and by using the fetch and forEach functions with the filter method I could get hold of the information that I wanted to display. I created a donut chart displaying all the finished projects and the ones I have left to do during this Boot Camp. After that I moved on to the styling of the website using mobile first method. I spend a lot of time getting the desktop view accordingly to my sketch and used both flex box and grid to get the result that I wanted. It was a really good practice for me to develope my styling skills and I am proud of the result especially for the repository cards.
+If I had more time I would have continued by adding an other chart and displaying more information on the site.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-camillaekman.netlify.app/
