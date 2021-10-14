@@ -12,7 +12,6 @@ const fetchUserRepos = (userUrl) => {
     .then((res) => res.json())
     .then(filterForTechnigoRepos)
     .then((repos) => {
-      console.log(repos);
       userInfo.innerHTML = createHTMLForUser(repos[0]);
       repos.forEach((repo) => {
         main.innerHTML += createHTMLForRepo(repo);
@@ -68,7 +67,6 @@ const fetchCommits = (url, name) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       document.getElementById(
         `commit-${name}`
       ).innerHTML += `<p>Number of commits: ${
