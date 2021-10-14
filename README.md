@@ -15,7 +15,7 @@ Dashbord provides vital stats on each project along with motivational progress b
 
 ## View it live
 
-Netlify: https://github-tracker-marysnopok.netlify.app/
+Netlify:https://marysnopok-github-tracker.netlify.app
 
 ## Resources
 
