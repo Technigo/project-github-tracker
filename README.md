@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+A GitHub-like page where you can track all of the projects which I will build at Technigos boot camp. For this project, I continued my journey with JavaScript and digging deeper into API.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# What I learned
 
-## The problem
+- how to fetch data from API 
+- how to pass data to functions 
+- how to use filter/find functions 
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
+# View it live
 
 Demo: https://github-tracker-by-darya.netlify.app/
