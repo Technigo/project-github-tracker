@@ -30,6 +30,7 @@ const fetchRepos = () => {
       const technigoProjects = data.filter(
         (repo) => repo.name.startsWith("project-") && repo.fork
       );
+      drawChart(technigoProjects.length);
 
       // InnerHTML to make all the projects and the info show on the page
       technigoProjects.forEach((repo) => {
