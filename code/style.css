@@ -1,9 +1,8 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 /* PALETTE 
 
@@ -21,10 +20,9 @@ Magenta: #D6434A
 /* ----------------------------------------------- */
 
 body {
-
-  background: #D5CABD;
+  background: #d5cabd;
   font-family: 'Martel Sans', Helvetica, Arial, sans-serif;
-  color: #37888A;
+  color: #37888a;
   margin: 1rem;
   font-size: 16px;
 }
@@ -48,14 +46,14 @@ a {
   text-align: center;
 }
 
-.bio{
+.bio {
   margin-top: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-.bio, 
-.public, 
+.bio,
+.public,
 .twitter {
   color: #474554;
 }
@@ -64,8 +62,8 @@ a {
   padding: 0.5rem;
   margin-bottom: 5px;
   width: 100%;
-  background: #DDEBEB;
-  display: block; 
+  background: #ddebeb;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -74,12 +72,12 @@ a {
   border-radius: 6px;
 }
 
-.user-image{
+.user-image {
   width: 50%;
-  height: fit-content; 
+  height: fit-content;
   border-radius: 50%;
   box-shadow: 0 0 0 0.1px;
-  display: block; 
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
@@ -90,7 +88,7 @@ a {
 
 #project-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);  
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .repo-card {
@@ -104,7 +102,7 @@ a {
 }
 
 .repo-link {
-  color: #D6434A;
+  color: #d6434a;
   font-size: 20px;
 }
 
@@ -116,36 +114,33 @@ a {
   margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
-  width:80vw;
-  height:60vh;
+  width: 80vw;
+  height: 60vh;
 }
-
-
 
 /* ----------------------------------------------- */
 /*                MEDIA QUERIES                    */
 /* ----------------------------------------------- */
 
 @media screen and (min-width: 600px) {
-  #project-grid { 
+  #project-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 30px;
-  };  
-  .user-image{
+  }
+  .user-image {
     width: 30%;
     height: auto;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .user-image{
+  .user-image {
     width: 40%;
     height: auto;
   }
 }
 
 @media screen and (min-width: 1024px) {
-
   .profile-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -161,8 +156,8 @@ a {
     justify-content: flex-start;
     margin-top: 0;
   }
-  
-  .user-image{
+
+  .user-image {
     width: 75%;
   }
 
@@ -172,12 +167,12 @@ a {
 
   h1 {
     font-size: 3em;
-  } 
+  }
   h2 {
     font-size: 2em;
   }
   h3 {
-    font-size: 1em; 
+    font-size: 1em;
   }
   .bio {
     font-size: 1em;
@@ -192,6 +187,6 @@ a {
     max-width: 2000px;
   }
   .chart-container {
-    max-width:1500px;
+    max-width: 1500px;
   }
 }
