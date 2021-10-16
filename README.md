@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Github tracker uses various parts of the Github REST api to reproduce some data from different github projects. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week I began by reading and reviewing the learning materials before starting the project. I found it quite hard to plan this week as I didn't know exacly what information would be found in each endpoint and so what I would want to display. So I found that both the HTML and CSS were hard to write or plan beforehand. If I were to do this project again I would look through the api first so that I could plan how my HTML and CSS would look, then go back to the javascript after this.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://sarah-mottram-github-tracker.netlify.app/
