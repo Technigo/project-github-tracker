@@ -16,7 +16,7 @@ const totalProjects = 19;
 
 
 const getRepos = () => {
-  fetch(REPO_API, options)
+  fetch(REPO_API, /* options */)
     .then((res) => res.json())
     .then((data) => {
 
@@ -51,7 +51,7 @@ const getRepos = () => {
       `
  
       const sortBtn = document.getElementById('sort')
-          sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos))
+        sortBtn.addEventListener('change', () => sort(sortBtn.value, forkedRepos))
 
       drawProjects(forkedRepos);	
       drawChart(forkedRepos.length)
@@ -93,7 +93,7 @@ const drawProjects = (forkedRepositories) => {
         <p>default branch: ${repo.default_branch}</p>
         <p>Last push: ${new Date(repo.pushed_at).toLocaleDateString('en-GB')}</p>
         <p class="noOfCommits" id="commit-${repo.name}">Commits: 0</p>
-            <ul id="commitMessages-${repo.name}"></ul>
+        <ul id="commitMessages-${repo.name}"></ul>
       </div>	
     `;
 
@@ -121,7 +121,7 @@ const getCommits = (filteredArray, myRepoName) => {
     commitAPI = commitAPI.slice(0, -6)
 
     //now the URLs can be passed on to get data about number and content of commits 
-    fetch(commitAPI, options)
+    fetch(commitAPI, /* options */)
       .then((res) => res.json())
       .then((data) => {
         const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
