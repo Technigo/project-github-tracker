@@ -26,7 +26,6 @@ const userProfile = () => {
     fetch(USER_URL)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             userContainer.innerHTML = `
         <img src="${data.avatar_url}" class="avatar"/>
         <p class="full-name">${data.name}</p>
@@ -101,11 +100,8 @@ const fetchCommits = (myCommitsUrl, myRepoName) => {
 }
 
 const filterLanguages = (event) => {
-    console.log(event)
     const language = event.target.id
     const checked = event.target.checked
-
-    console.log(language, checked)
 
     //Adds language string in array if checked language is missing
     if (checked && !selectedLanguages.includes(language)) {
@@ -113,8 +109,6 @@ const filterLanguages = (event) => {
         //Removes language string in array if unchecked language is in array     
     } else if (!checked && selectedLanguages.includes(language)) {
         for (let i = 0; i < selectedLanguages.length; i++) {
-            console.log("i=", i)
-            console.log("selectedLanguages[i]=", selectedLanguages[i])
             if (selectedLanguages[i] === language) {
                 selectedLanguages.splice(i, 1)
                 break
