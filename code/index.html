@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+      src="https://kit.fontawesome.com/6d22e315f0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+  <body>
+    <div class="wrapper">
+      <header class="navbar__container">
+        <h1>GitHub Tracker</h1>
+        <i
+          title="Filter on JS"
+          class="fa-brands fa-js-square icon"
+          onclick="filter(`js`)"
+        ></i>
+        <i
+          title="Filter on HTML"
+          class="fal fa-file-code icon"
+          onclick="filter(`html`)"
+        ></i>
+        <i
+          title="Remove filter"
+          class="fal fa-undo-alt icon"
+          onclick="filter(`undo`)"
+        ></i>
+      </header>
+      <div id="userInformation" class="user-information"></div>
+      <div id="projects" class="projects">
+        <div class="projects__title">Projects at Technigo:</div>
+      </div>
+      <div class="chart">
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+    <script type="text/javascript" src="./chart.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+  </body>
 </html>
