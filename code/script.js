@@ -85,7 +85,7 @@ const fetchRepos = () => {
             })
             forkedRepos.forEach(repo => {
                 projectsContainer.innerHTML += `
-                      <div class="repo" id=${repo.name}>
+                      <div class=${repo.name} id=${repo.name}>
                         <p class="forked-repos"> <img src="${repoIcon.src}" alt="${repoIcon.alt}" class="repo-icon"/> ${repo.name} </p> 
                         <a href="${repo.html_url}" target="blank">Go to repo!</a> 
                         <p class="forked-repos"> <img src="${branchIcon.src}" alt="${branchIcon.alt}" class="branch-icon"/> ${repo.default_branch}</p>
