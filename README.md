@@ -8,4 +8,4 @@ Every week has been a struggle for me, due to personal obsticles. I spent a lot 
 
 ## View it live
 
-https://adoring-liskov-03c237.netlify.app/
+https://jessicas-github-tracker.netlify.app/
