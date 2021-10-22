@@ -1,0 +1,7 @@
+To do:
+
+1) Fetch the repos and console.log them
+2) get them in the browser
+3) filter out the Technigo repos, so only Technigo is shown
+4) test chart-library
+5) learn tgo make a token.js

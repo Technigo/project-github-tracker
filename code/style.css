@@ -1,3 +1,76 @@
 body {
-  background: #FFECE9;
+  background: #caffed;
 }
+
+.projectsContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 500px;
+  margin: 20px auto 40px auto;
+}
+
+.profile-photo {
+  width:30%;
+}
+
+.profile-photo img{
+  width: 100%;
+  border-radius: 50%;
+  border: 2px solid black; 
+}
+
+.profile-username{
+  width: 50%;
+  margin-left: 25px;
+  box-shadow: 2px 2px 4px;
+}
+
+.user-name {
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 3px solid rgb(93, 208, 243); 
+}
+
+.real-name {
+  margin: 10px;
+  padding: 10px;
+}
+
+.doughnut {
+  width: 50%;
+  height: 50%;
+  padding: 75px;
+}
+
+p {
+display: block;
+margin-block-start: 1em;
+margin-block-end: 1em;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+}
+
+.repos {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1rem;
+border: 1px solid;
+padding: 5px 5px 5px 5px;
+}
+
+
+
+
+
+
+
+
+
