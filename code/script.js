@@ -45,6 +45,7 @@ const getRepos = () => {
           
         <label for="sort"></label>
         <select class="sort" name="sort" id="sort">
+          <option disabled="" value="">Sorted by: </option> 
           <option value="updated">Last updated</option>
           <option value="name">Name</option>
         </select> 	
@@ -60,32 +61,21 @@ const getRepos = () => {
 
 //sorting the projects by name, last updated
 const sort = (value, repos) => {
-  console.log('Value: ', value)
   if (value === "name") {
     repos.sort((a, b) => {
-      return (a.name) > (b.name);
+      return (a.name) > (b.name) ? 1 : -1;
     });
-    repos.forEach((repo) => {
-      console.log('Repos after sorting name: ', repo.name)
-    })
     drawProjects(repos)
   } else if (value === "updated") {
-    console.log('Wert: ', value)
     repos.sort((a, b) => {
       return new Date(b.pushed_at) - new Date(a.pushed_at);
     });
-    repos.forEach((repo) => {
-      console.log('Repos after sorting updated: ', repo.pushed_at)
-    })
     drawProjects(repos)
   } 
 }
 
 const drawProjects = (forkedRepositories) => {
-  document.getElementById('projects-section').innerHTML = `
-
-  `
-  console.log('From drawProjects()', forkedRepositories)
+  document.getElementById('projects-section').innerHTML = ` `
   forkedRepositories.forEach((repo) => {
     document.getElementById('projects-section').innerHTML += `
       <div class="projects-div" id="projects">
@@ -112,7 +102,7 @@ const drawProjects = (forkedRepositories) => {
 };
 
 const getCommits = (filteredArray, myRepoName) => {
-  console.log('Reponame: ', myRepoName)
+
   //First make a new array with all the needed APIs (found under commit_urls in forkedRepos)
   const allCommitUrls = filteredArray.map(repo => repo.commits_url)
   
@@ -125,7 +115,6 @@ const getCommits = (filteredArray, myRepoName) => {
       .then((res) => res.json())
       .then((data) => {
         const authorCommits = data.filter(commits => commits.author.login === 'nehrwein' && commits.url.includes(myRepoName))
-        console.log(authorCommits)
         if (authorCommits.length > 0) {
           document.getElementById(`commit-${myRepoName}`).innerHTML = `
             Commits: ${authorCommits.length}<i class="fas fa-bars"></i>
