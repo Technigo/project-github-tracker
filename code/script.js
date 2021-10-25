@@ -20,7 +20,7 @@ const getUser = () => {
                     </div>
                     <div class="project-headline">${data.name}</div>
                     <div class="thin-headline">${data.login}</div>
-                    <p class="links-text"><a href="https://elsa-carlstrom-portfolio.netlify.app/">Portfolio (in progress) ➔</a></p>
+                    <p class="links-text"><a href="https://elsa-carlstrom-portfolio.netlify.app/">Portfolio ➔</a></p>
                     <p class="links-text"><a href="${data.html_url}">GitHub profile ➔</a></p>
                     <div class="location">
                         <img src="./assets/location_icon.svg">
