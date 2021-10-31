@@ -1,3 +1,109 @@
 body {
-  background: #FFECE9;
+  background:rgb(243, 214, 223);
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  color: #dd1c1c;
+}
+
+.intro-text{
+ align-items: center;
+}
+a{
+  text-transform: uppercase;
+  color: #401313;
+  font-size: 0,5em;
+}
+  
+header {
+  text-align: center;
+  font-size: 1.6em;
+}
+
+.profile-container {
+  font-size: 1.0rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.intro-text{
+  color: #401313;
+  text-align: center;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 320px;
+  align-content: center;
+  border: 1px solid #401313; 
+ }
+.projects {
+  margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.repo-title{
+font-size: 1.3em;
+}
+.repo-item2,branch {
+  display: flex;
+  flex-direction: column;
+  flex-direction:inherit;
+  padding: 2px;
+  margin-top: 15px;
+  font-size: 1.2em;
+}
+
+.updated{
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  font-size: 1.1em;
+}
+
+.language {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+hr {
+  border: 0,3px solid #401313
+}
+.footer{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: medium;
+  text-align: center;
+
+}
+
+/*** MEDIA QUERIES ***/
+
+@media (min-width: 327px) {
+  .repo{
+  display:flex;
+  flex-direction:column;
+  margin: 30px;
+  border: 1px solid #401313;
+  border-radius: 6px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .repo{
+  display:flex;
+  flex-direction:column;
+  margin: 30px;
+  border: 1px solid #401313;
+  border-radius: 6px;
+  }
 }

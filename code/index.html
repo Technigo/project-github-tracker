@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Mamites GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header>
+    <h1>My GitHub Tracker</h1>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div class="profile-container" id="profileContainer">
+    <div class="profile-image "></div>
+    <p id="userName" class="user-name"></p>
+  </div>
+  <div>
+    <p class="intro-text">This GitHub tracker displays my progress during the Technigo Boot Camp aug 2021- feb 2022</p>
+  </div>
 
+  <div class="canvas-container">
+    <canvas id="chart" class="chart"></canvas>
+  </div>
+
+  <div>
+    <main id="projects" class="projects">
+      <div class="repo"></div>
+    </main>
+  </div>
+  <hr>
+
+  <footer>
+    <p class="footer">This GitHub Tracker is Made by <a class="hover"
+        href="https://www.linkedin.com/in/mamite-andersson/">me Mamite!
+        <br></a> Student at <a class="hover" href="https://www.technigo.io/program">Technigo Boot Camp</a> 2021-2022</p>
+  </footer>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
+
 </html>
