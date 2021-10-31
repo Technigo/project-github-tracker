@@ -8,11 +8,12 @@ const PROFILE_URL = `https://api.github.com/users/${USER}`
 const profileContainer = document.getElementById('profileContainer')
 const projectsContainer = document.getElementById('projects');
 const profileImage = document.getElementById('profileImage')
+
 const fetchProfile = () => {
     fetch(PROFILE_URL)
         .then(res => res.json()) 
         .then(profileData => {
-          console.log(profileData)
+         
         profileContainer.innerHTML +=`
             <img src="${profileData.avatar_url}" class='profile-image'>    
             <h2>${profileData.name}</h2>
@@ -32,10 +33,11 @@ const fetchRepositories = () => {
 		fetch(`${repo.languages_url}`)
           .then((language) => language.json())
           .then((data) => {
+            
             const language = Object.keys(data)[0];
 
 				projectsContainer.innerHTML += `
-         <div class="repo" id="${repo.name}"> 
+             <div class="repo" id="${repo.name}"> 
                <a class="repo-title" href="${repo.html_url}" target="_blank">${
               repo.name
             }</a>
@@ -54,8 +56,8 @@ const fetchRepositories = () => {
 
 		fetchPullRequestsArray(technigoRepositories);
 
-			//draw chart with technigoRepos data. I can't get the char? 
-			drawChart(technigoRepositories.length);
+	
+		drawChart(technigoRepositories.length);
 		});
 };
 
@@ -83,7 +85,7 @@ const fetchPullRequestsArray = (allRepositories) => {
 
 const fetchCommits = (myCommitsUrl, myRepoName) => {
 	fetch(myCommitsUrl)
-	.then((response) => response.json())
+	  .then((response) => response.json())
     .then((data) => {
       console.log(data);
       document.getElementById(
