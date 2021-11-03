@@ -13,4 +13,4 @@ THe styling did not get much focus since a lot of the time was spent on js. I am
 In the end I managed to create every object and add a sorting-functions which used the array of objects. Even if it took me some time, I feel proud of the final product and I have learned a lot. 
 
 ## View it live
-https://sofiawillebrand-week7-project-github-tracker.netlify.app/
+https://github-tracker-sofia-willebrand.netlify.app/
