@@ -187,7 +187,7 @@ p.forked-repos {
   align-items: center;
 }
 
-.project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts {
+.project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
   border: transparent;
   border-radius: 10px;
   background-color: #af896059;
@@ -264,6 +264,13 @@ p.forked-repos {
   background-size: cover;
 }
 
+.project-movies {
+  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/project-movies.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 p {
   margin-top: 1vh;
   margin-bottom: 0vh;
@@ -332,13 +339,13 @@ footer {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts {
+  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
     font-size: 18px;
     width: 40%;
     transition: 0.5s;
     line-height: 3vh;
   }
-  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover {
+  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover, .project-movies:hover {
     transform: scale(1.04);
   }
   .chart-container {
@@ -394,13 +401,13 @@ footer {
   p {
     line-height: 3vh;
   }
-  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts {
+  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
     transition: 0.5s;
     width: 30%;
     font-size: 20px;
     line-height: 4vh;
   }
-  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover {
+  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover, .project-movies:hover {
     transform: scale(1.04);
   }
   #myChart.chart {
