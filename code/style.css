@@ -123,7 +123,7 @@ a:hover {
   }
 
   .chart-container {
-    margin-top: 350px;
+    margin-top: 90vh;
   }
 
   .chart {
@@ -135,6 +135,10 @@ a:hover {
 @media (min-width: 992px) {
   .projects {
     margin-left: 300px;
+  }
+
+  .chart-container {
+    margin-top: 80vh;
   }
 }
 
