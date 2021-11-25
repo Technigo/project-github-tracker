@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: 'Poiret One', cursive;
+  font-family: "Poiret One", cursive;
   background: rgb(236, 235, 210);
   cursor: default;
 }
@@ -15,7 +15,8 @@ body {
 }
 
 .hero-image {
-  background: linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)), url("./assets/img1.webp");
+  background: linear-gradient(rgba(44, 40, 27, 0.39), rgba(41, 37, 25, 0.76)),
+    url("./assets/img1.webp");
   height: 50vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,7 +33,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(204, 202, 194);
-  font-family: 'Cabin Sketch', cursive;
+  font-family: "Cabin Sketch", cursive;
   font-size: 20px;
 }
 
@@ -51,7 +52,9 @@ img.avatar {
   border: solid rgb(236, 235, 210) 5px;
 }
 
-img.github-icon, img.linkedin-icon, img.facebook-icon {
+img.github-icon,
+img.linkedin-icon,
+img.facebook-icon {
   opacity: 0.65;
   width: 40px;
   margin-top: 1vh;
@@ -81,7 +84,7 @@ ul.checkbox-tags {
 ul.checkbox-tags li label {
   display: inline-block;
   background-color: rgba(250, 247, 231, 0.9);
-  border: 2px solid rgba(139, 139, 139, .3);
+  border: 2px solid rgba(139, 139, 139, 0.3);
   color: #adadad;
   border-radius: 25px;
   white-space: nowrap;
@@ -91,7 +94,7 @@ ul.checkbox-tags li label {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 ul.checkbox-tags li label {
@@ -111,20 +114,20 @@ ul.checkbox-tags li label::before {
   font-size: 12px;
   padding: 2px 6px 2px 2px;
   content: "\f067";
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
-ul.checkbox-tags li input[type="checkbox"]:checked+label::before {
+ul.checkbox-tags li input[type="checkbox"]:checked + label::before {
   content: "\f00c";
   transform: rotate(-360deg);
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
-ul.checkbox-tags li input[type="checkbox"]:checked+label {
-  border: 2px solid #BF8B85;
-  background-color: #BF8B85;
+ul.checkbox-tags li input[type="checkbox"]:checked + label {
+  border: 2px solid #bf8b85;
+  background-color: #bf8b85;
   color: rgb(255, 255, 255);
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 ul.checkbox-tags li input[type="checkbox"] {
@@ -136,8 +139,8 @@ ul.checkbox-tags li input[type="checkbox"] {
   opacity: 0;
 }
 
-ul.checkbox-tags li input[type="checkbox"]:focus+label {
-  border: 2px solid #BF8B85;
+ul.checkbox-tags li input[type="checkbox"]:focus + label {
+  border: 2px solid #bf8b85;
 }
 
 label.html {
@@ -178,7 +181,9 @@ h4 {
   margin-bottom: 2vh;
 }
 
-.repo-icon, .branch-icon, .push-icon {
+.repo-icon,
+.branch-icon,
+.push-icon {
   width: 25px;
 }
 
@@ -187,7 +192,19 @@ p.forked-repos {
   align-items: center;
 }
 
-.project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
+.project-business-site,
+.project-chatbot,
+.project-github-tracker,
+.project-guess-who,
+.project-news-site,
+.project-weather-app,
+.project-music-releases,
+.project-survey,
+.project-happy-thoughts,
+.project-movies,
+.project-redux-quiz,
+.project-todos,
+.project-labyrinth {
   border: transparent;
   border-radius: 10px;
   background-color: #af896059;
@@ -202,70 +219,101 @@ p.forked-repos {
 }
 
 .project-business-site {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/business-site.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/business-site.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-chatbot {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/chatbot.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/chatbot.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-github-tracker {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/github-tracker.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/github-tracker.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-guess-who {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/guess-who.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/guess-who.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-news-site {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/news-site.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/news-site.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-weather-app {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/weather-app.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/weather-app.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-music-releases {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/project-music-releases.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/project-music-releases.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-survey {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/project-survey.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/project-survey.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-happy-thoughts {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/happy-thoughts.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/happy-thoughts.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .project-movies {
-  background: linear-gradient(to right, #251d0e, #91715085), url("./assets/project-movies.png");
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/project-movies.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.project-redux-quiz {
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/redux-quiz.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.project-todos {
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/project-todos.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.project-labyrinth {
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/project-labyrinth.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -318,10 +366,14 @@ footer {
     margin-top: -13vh;
     max-width: 190px;
   }
-  img.github-icon, img.linkedin-icon, img.facebook-icon {
+  img.github-icon,
+  img.linkedin-icon,
+  img.facebook-icon {
     transition: 0.5s;
   }
-  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+  img.github-icon:hover,
+  img.linkedin-icon:hover,
+  img.facebook-icon:hover {
     transform: scale(1.2);
   }
   h2 {
@@ -339,13 +391,37 @@ footer {
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
-  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
+  .project-business-site,
+  .project-chatbot,
+  .project-github-tracker,
+  .project-guess-who,
+  .project-news-site,
+  .project-weather-app,
+  .project-music-releases,
+  .project-survey,
+  .project-happy-thoughts,
+  .project-movies,
+  .project-redux-quiz,
+  .project-todos,
+  .project-labyrinth {
     font-size: 18px;
     width: 40%;
     transition: 0.5s;
     line-height: 3vh;
   }
-  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover, .project-movies:hover {
+  .project-business-site:hover,
+  .project-chatbot:hover,
+  .project-github-tracker:hover,
+  .project-guess-who:hover,
+  .project-news-site:hover,
+  .project-weather-app:hover,
+  .project-music-releases:hover,
+  .project-survey:hover,
+  .project-happy-thoughts:hover,
+  .project-movies:hover,
+  .project-redux-quiz:hover,
+  .project-todos:hover,
+  .project-labyrinth:hover {
     transform: scale(1.04);
   }
   .chart-container {
@@ -366,7 +442,9 @@ footer {
     max-width: 225px;
     margin-left: -0.5vh;
   }
-  p.full-name, p.username, p.location {
+  p.full-name,
+  p.username,
+  p.location {
     margin-right: 2vh;
     align-self: center;
     margin-top: 3vh;
@@ -374,12 +452,16 @@ footer {
   p.location {
     margin-right: 80vh !important;
   }
-  img.github-icon, img.linkedin-icon, img.facebook-icon {
+  img.github-icon,
+  img.linkedin-icon,
+  img.facebook-icon {
     margin-right: 1vh;
     margin-top: 3.5vh;
     transition: 0.5s;
   }
-  img.github-icon:hover, img.linkedin-icon:hover, img.facebook-icon:hover {
+  img.github-icon:hover,
+  img.linkedin-icon:hover,
+  img.facebook-icon:hover {
     transform: scale(1.2);
   }
   hr {
@@ -401,13 +483,37 @@ footer {
   p {
     line-height: 3vh;
   }
-  .project-business-site, .project-chatbot, .project-github-tracker, .project-guess-who, .project-news-site, .project-weather-app, .project-music-releases, .project-survey, .project-happy-thoughts, .project-movies {
+  .project-business-site,
+  .project-chatbot,
+  .project-github-tracker,
+  .project-guess-who,
+  .project-news-site,
+  .project-weather-app,
+  .project-music-releases,
+  .project-survey,
+  .project-happy-thoughts,
+  .project-movies,
+  .project-redux-quiz,
+  .project-todos,
+  .project-labyrinth {
     transition: 0.5s;
     width: 30%;
     font-size: 20px;
     line-height: 4vh;
   }
-  .project-business-site:hover, .project-chatbot:hover, .project-github-tracker:hover, .project-guess-who:hover, .project-news-site:hover, .project-weather-app:hover, .project-music-releases:hover, .project-survey:hover, .project-happy-thoughts:hover, .project-movies:hover {
+  .project-business-site:hover,
+  .project-chatbot:hover,
+  .project-github-tracker:hover,
+  .project-guess-who:hover,
+  .project-news-site:hover,
+  .project-weather-app:hover,
+  .project-music-releases:hover,
+  .project-survey:hover,
+  .project-happy-thoughts:hover,
+  .project-movies:hover,
+  .project-redux-quiz:hover,
+  .project-todos:hover,
+  .project-labyrinth:hover {
     transform: scale(1.04);
   }
   #myChart.chart {
