@@ -1,61 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ru's GitHub Tracker</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-  <title>GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+    <!-- Roboto fontfamily -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-<div class="hero-image">
-  <div class="hero-text">
-    <h1>Ru's GitHub Tracker</h1>
-  </div>
-</div>
+    <!-- Open Sans fontfamily -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
 
-  <div id="userProfile" class="user-container"></div>
-  <hr>
-  <h2>My projects</h2>
+    <!-- Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-  <section class="checkbox-container">
-    <h4>Filter by language:</h4>
-    <form id="language" class="language-checkbox">
-      <div>
-        <input type="checkbox" id="HTML" value="HTML" checked>
-        <label for="HTML">HTML</label>
-      </div>
-      <div>
-        <input type="checkbox" id="CSS" value="CSS" checked>
-        <label for="CSS">CSS</label>
-      </div>
-      <div>
-        <input type="checkbox" id="JavaScript" value="JavaScript" checked>
-        <label for="JavaScript">JavaScript</label>
-      </div>
-    </form>
-  </section>
+  <body>
+    <header class="hero-image"></header>
+    <main>
+      <section class="user-container" id="user-container"></section>
+      <section class="projects-container" id="projects-container"></section>
+      <section class="chart-section">
+        <h3 class="chart-heading">Overview of Projects</h3>
+        <div class="chart-container">
+          <canvas class="chart" id="chart"></canvas>
+        </div>
+      </section>
+    </main>
 
-  <main id="projects" class="projects-container"></main>
-
-  <section class="chart-container">
-    <p>Overview of finished projects</p>
-    <canvas id="myChart" class="chart"></canvas>
-  </section>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
-
-<footer>
-  <img src="./img/Haru Ahn.png" alt="creator-logo" class="logo">
-</footer>
-
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>

@@ -1,130 +1,85 @@
-const MY_REPOS = 'https://api.github.com/users/ruruahn/repos'
-const projectsContainer = document.getElementById("projects")
-const commitsContainer = document.getElementById("commits")
-const user = 'ruruahn'
-const USER_URL = `https://api.github.com/users/${user}`
-const userContainer = document.getElementById("userProfile")
+const USER = "ruruahn";
+const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
+const projectsContainer = document.getElementById("projects-container");
+const userContainer = document.getElementById("user-container");
 
-const checkHTML = document.getElementById("HTML")
-const checkCSS = document.getElementById("CSS")
-const checkJavaScript = document.getElementById("JavaScript")
-let selectedLanguages = ['HTML', 'CSS', 'JavaScript']
-let chartDrawn = false
+const getUser = () => {
+	fetch(`https://api.github.com/users/${USER}`)
+		.then((response) => response.json())
+		.then((data) => {
+			userContainer.innerHTML += /*html*/ `
+        <img class="user-image" src="${data.avatar_url}"/>
+        <h2 class="user-name">${data.login}</h2>
+      `;
+		});
+};
 
-//Create link images to social media
-const createSocialMediaImg = (url, alt) => {
-    let image = document.createElement("img")
-    image.src = url
-    image.alt = alt
-    return image
-}
+getUser();
 
-const githubIcon = createSocialMediaImg("./img/github.png", "github")
+const getRepos = () => {
+	fetch(REPOS_URL)
+		.then((response) => response.json())
+		.then((data) => {
+			const technigoProjects = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
 
-//Function to fetch and display profile information
-const userProfile = () => {
-    fetch(USER_URL)
-        .then(res => res.json())
-        .then(data => {
-            userContainer.innerHTML = `
-        <img src="${data.avatar_url}" class="avatar"/>
-        <p class="full-name">${data.name}</p>
-        <p class="username">Username: ${data.login}</p>
-        <p class="location">${data.location}</p>
-        <a href="${data.html_url}" target="blank"><img src="${githubIcon.src}" alt="${githubIcon.alt}"  class="github-icon"/></a>
-        `
-        })
-}
+			technigoProjects.sort((oldestRepo, newestRepo) => new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at));
 
-//Function to fetch and display my repos
-const fetchRepos = () => {
-    fetch(MY_REPOS)
-        .then((res) => res.json())
-        .then((data) => {
-            projectsContainer.innerHTML = `` //Clear innerHTML to prevent duplicated repos
-            const forkedRepos =
-                data.filter(repo => {
-                    return repo.fork && repo.name.startsWith("project-") && selectedLanguages.includes(repo.language)
-                })
-            //Function to sort repos by latest date
-            forkedRepos.sort(function (a, b) {
-                return new Date(b.pushed_at) - new Date(a.pushed_at)
-            })
-            forkedRepos.forEach(repo => {
-                projectsContainer.innerHTML += `
-                      <div class="repo" id=${repo.name}>
-                        <p>Name: ${repo.name} </p> 
-                        <a href="${repo.html_url}" target="blank">Go to repo!</a> 
-                        <p>Branch: ${repo.default_branch}</p>
-                        <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-                        <p id="commit-${repo.name}">Amount of commits: </p> 
-                      </div>
-                        `
-            })
+			technigoProjects.forEach((repo) => {
+				projectsContainer.innerHTML += /*html*/ `
+          <a class="project-link" href="${repo.html_url}" target="_blank">
+            <div class="project" id="${repo.name}-container">
+              <h3 class="project-name">${repo.name}</h3>
+              <p class="project-info">Default branch ${repo.default_branch}</p>
+              <p class="project-info">Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+              <p class="project-info" id="commits-${repo.name}">Amount of commits: </p>
+            </div>
+          </a>
+          <hr>
+        `;
+			});
 
-            fetchPullRequests(forkedRepos)
+			getPullRequests(technigoProjects);
+			drawChart(technigoProjects.length);
+		});
+};
 
-            //Only draw the chart once
-            if (!chartDrawn) {
-                drawChart(forkedRepos.length)
-                chartDrawn = true
-            }
-        })
-}
+getRepos();
 
-const fetchPullRequests = (repos) => {
-    repos.forEach(repo => {
-        const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
+const getPullRequests = (repos) => {
+	repos.forEach((repo) => {
+		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+			.then((response) => response.json())
+			.then((data) => {
+				const filteredPull = data.find((pull) => pull.user.login === repo.owner.login);
 
-        fetch(PULL_URL)
-            .then(res => res.json())
-            .then((data) => {
-                const myPullRequest =
-                    data.find(pull => pull.user.login === repo.owner.login)
-                if (myPullRequest) {
-                    fetchCommits(myPullRequest.commits_url, repo.name);
-                } else {
-                    document.getElementById(`commit-${repo.name}`).innerHTML =
-                        "No pull request yet!";
-                }
-            })
-    })
-}
+				if (filteredPull) {
+					getCommits(filteredPull.commits_url, repo.name);
+					getReview(filteredPull.review_comments_url, repo.name);
+				} else {
+					document.getElementById(`commits-${repo.name}`).innerHTML = "No pull request";
+				}
+			});
+	});
+};
 
-const fetchCommits = (myCommitsUrl, myRepoName) => {
-    fetch(myCommitsUrl)
-        .then(res => res.json())
-        .then(data => {
-            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-        })
-}
+const getCommits = (url, repoName) => {
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			document.getElementById(`commits-${repoName}`).innerHTML += data.length;
+		});
+};
 
-const filterLanguages = (event) => {
-    const language = event.target.id
-    const checked = event.target.checked
-
-    //Adds language string in array if checked language is missing
-    if (checked && !selectedLanguages.includes(language)) {
-        selectedLanguages.push(language)
-        //Removes language string in array if unchecked language is in array     
-    } else if (!checked && selectedLanguages.includes(language)) {
-        for (let i = 0; i < selectedLanguages.length; i++) {
-            if (selectedLanguages[i] === language) {
-                selectedLanguages.splice(i, 1)
-                break
-            }
-        }
-    }
-
-    fetchRepos()
-}
-
-
-checkHTML.addEventListener('change', filterLanguages)
-
-checkCSS.addEventListener('change', filterLanguages)
-
-checkJavaScript.addEventListener('change', filterLanguages)
-
-userProfile()
-fetchRepos()
+const getReview = (url, repoName) => {
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.length === 0) {
+				document.getElementById(`${repoName}-container`).innerHTML += "";
+			} else {
+				document.getElementById(`${repoName}-container`).innerHTML += /*html*/ `
+        <p class="project-info">Reviewed by ${data[0].user.login}</p>
+        `;
+			}
+		});
+};

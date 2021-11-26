@@ -1,40 +1,21 @@
-//DOM-selector for the canvas 👇
-const ctx = document.getElementById('myChart').getContext('2d')
+const ctx = document.getElementById("chart").getContext("2d");
 
-//"Draw" the chart here 👇
+// Chart
+const drawChart = (numberOfProjects) => {
+  const config = {
+    type: "doughnut",
+    data: {
+      labels: ["Finished projects", "Projects left"],
+      datasets: [
+        {
+          label: "Technigo Projects",
+          data: [numberOfProjects, 19 - numberOfProjects],
+          backgroundColor: ["rgb(255, 99, 132)", "rgb(255, 205, 86)"],
+          hoverOffset: 5,
+        },
+      ],
+    },
+  };
 
-const drawChart = (amount) => {
-    const config = {
-        type: 'doughnut',
-        data: {
-            labels: [
-                'Finished Projects',
-                'Projects Left',
-            ],
-            datasets: [{
-                label: ['Finished Projects', 'Projects Left'],
-                data: [amount, 19 - amount],
-                backgroundColor: [
-                    '#FFB26B',
-                    '#939B62',
-                ],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            size: 12,
-                            family: "'Spartan', sans-serif",
-                            color: "rgba(26, 26, 24, 0.849)",
-                            weight: "bold",
-                        }
-                    }
-                }
-            },
-        },
-    }
-    const myChart = new Chart(ctx, config)
-}
+  const reposChart = new Chart(ctx, config);
+};

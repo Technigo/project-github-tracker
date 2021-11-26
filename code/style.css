@@ -1,225 +1,119 @@
-html {
-  font-family: 'Libre Baskerville', serif;
-  background: #FFD56B;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #222222;
 }
 
 .hero-image {
-  background-image: url("./img/hero\ image.jpg");
-  height: 100vh;
+  width: 100vw;
+  /* height: 280px; */
+  height: 40vh;
+  background-image: url(./assets/background.jpg);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  border: transparent;
-  border-radius: 10px;
-  z-index: -1;
-}
-
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #FFD56B;
-  font-size: 30px;
+  background-repeat: no-repeat;
 }
 
 .user-container {
+  position: relative;
   text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
+  bottom: 72px;
 }
 
-img.avatar {
+.user-image {
   border-radius: 50%;
-  max-width: 115px;
-  margin-top: -13vh;
-  border: solid #939B62 5px;
+  width: 126px;
+  border: solid 6px #ffffff;
 }
 
-img.github-icon {
-  opacity: 0.75;
-  width: 40px;
-  margin-top: 1vh;
+.user-name {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.projects-container {
+  line-height: 1.8;
+  margin-top: -40px;
+}
+
+.project-info {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666666;
+  pointer-events: none;
+}
+
+.project-name,
+.chart-heading {
+  font-family: "Open Sans", sans-serif;
+  color: #222222;
+  font-size: 18px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.project-link {
+  text-decoration: none;
+}
+
+.project-link :hover {
+  background: linear-gradient(
+    90deg,
+    white,
+    #e6e6e6 50%,
+    #e6e6e6 50%,
+    #e6e6e6 50%,
+    white
+  );
 }
 
 hr {
-  width: 95%;
-  height: 5px;
-  background-color: #939B62;
-  border: transparent;
-  border-radius: 5px;
+  margin: auto;
+  width: 75vw;
+  background: linear-gradient(90deg, white, #e6e6e6, #e6e6e6, #e6e6e6, white);
+  height: 1px;
+  border: none;
 }
 
-a:link {
-  text-decoration: none;
-  color: rgb(204, 202, 194);
-  font-weight: bold;
-}
-
-a:visited {
-  text-decoration: none;
-  color: #FFB26B;
-}
-
-a:hover {
-  text-decoration: underline;
-  color:beige;
-  font-weight: bold;
-}
-
-h2 {
-  text-align: center;
-  font-size: 18px;
-  margin: 10px;
-  color: black;
-}
-
-.checkbox-container {
+.chart-section {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-}
-
-#project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
-  border: transparent;
-  border-radius: 10px;
-  background-color: #939B62;
-  text-align: center;
-  font-size: 14px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 12px;
-  padding: 10px;
-  color: rgb(204, 202, 194);
-}
-
-p {
-  margin-top: 1vh;
-  margin-bottom: 0vh;
-  line-height: 4vh;
+  margin: 40px 0 80px;
 }
 
 .chart-container {
-  align-self: center;
-  text-align: center;
-  font-size: 18px;
-  padding: 20px;
-  color: black;
-  font-weight: bold;
+  width: 70vw;
 }
 
-#myChart.chart {
-  display: initial;
-  width: 300px;
+.chart {
+  margin-top: 20px;
 }
 
-footer {
-  flex-direction: column;
-  align-self: center;
-  text-align: center;
+@media (min-width: 768px) {
+  .chart-container {
+    width: 40vw;
+  }
 }
 
-.logo {
-  width: 150px;
-}
-
-@media screen and (min-width: 425px) {
-  .user-container {
-    font-size: 20px;
-  }
-  img.avatar {
-    margin-top: -13vh;
-    max-width: 190px;
-  }
-  img.github-icon{
-    transition: 0.5s;
-  }
-  img.github-icon:hover {
-    transform: scale(1.2);
-  }
-  h2 {
-    font-size: 20px;
-  }
-  p {
-    line-height: 3vh;
-  }
-  .projects-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-  #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
-    font-size: 16px;
-    width: 40%;
-    transition: 0.5s;
-  }
-  #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
-    transform: scale(1.04);
+@media (min-width: 1025px) {
+  .hero-image {
+    height: 70vh;
   }
   .chart-container {
-    font-size: 20px;
-  }
-}
-
-@media screen and (min-width: 1441px) {
-  .user-container {
-    display: flex;
-  }
-  img.avatar {
-    margin-top: -15vh;
-    max-width: 216px;
-    margin-left: -0.5vh;
-    transition: 0.5s;
-  }
-  p.full-name, p.username, p.location {
-    margin-right: 2vh;
-    align-self: center;
-    margin-top: 3vh;
-  }
-  p.location {
-    margin-right: 80vh;
-  }
-  img.github-icon{
-    margin-right: 1vh;
-    margin-top: 3.5vh;
-    transition: 0.5s;
-  }
-  img.github-icon:hover {
-    transform: scale(1.2);
-  }
-  hr {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-  }
-  h2 {
-    margin-bottom: 2vh;
-  }
-  p {
-    line-height: 3vh;
-  }
-  #project-business-site.repo, #project-chatbot.repo, #project-github-tracker.repo, #project-guess-who.repo, #project-news-site.repo, #project-weather-app.repo {
-    transition: 0.5s;
-    width: 30%;
-  }
-  #project-business-site.repo:hover, #project-chatbot.repo:hover, #project-github-tracker.repo:hover, #project-guess-who.repo:hover, #project-news-site.repo:hover, #project-weather-app.repo:hover {
-    transform: scale(1.04);
-  }
-  img.avatar {
-    margin-top: -15vh;
-    max-width: 216px;
-    margin-left: -1vh;
-  }
-  #myChart.chart {
-    width: 370px;
+    width: 30vw;
   }
 }
