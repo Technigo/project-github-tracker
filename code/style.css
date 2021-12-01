@@ -334,7 +334,7 @@ p {
   font-weight: bold;
 }
 
-#myChart.chart {
+.chart {
   display: initial !important;
   width: 300px;
 }
@@ -516,7 +516,7 @@ footer {
   .project-labyrinth:hover {
     transform: scale(1.04);
   }
-  #myChart.chart {
+  .chart {
     width: 370px !important;
   }
 }
