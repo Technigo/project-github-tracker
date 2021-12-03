@@ -209,6 +209,13 @@ header,
 .active {
   animation: active 1s;
 }
+
+#projects {
+  font-family: "Lato", sans-serif;
+  color: var(--attenion);
+  font-size: 14px;
+}
+
 @keyframes active {
   0% {
     display: none;
