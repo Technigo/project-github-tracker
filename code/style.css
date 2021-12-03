@@ -119,7 +119,7 @@ header,
 
 .input {
   max-width: 300px;
-  padding: 2px;
+  padding-left: 6px;
   height: 1.5rem;
   width: 200px;
   display: block;
@@ -280,7 +280,7 @@ header,
     font-size: 16px;
     padding: 0;
     flex: 0 0 100px;
-    margin-left: -11px;
+    margin-left: -28px;
     height: 36px;
   }
   .input {
