@@ -53,7 +53,7 @@ const getUserNameAndPic = (data) => {
 };
 
 const getReposDetails = (data) => {
-  // filtering out user forked repaos
+  // filtering out user forked repos
   const userForkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
   // sorting repos by creation date
   const sortedRepos = userForkedRepos.sort((a, b) => {
