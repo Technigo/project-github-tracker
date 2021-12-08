@@ -32,7 +32,7 @@ let heroImgArray = [
     "./assets/img2.webp",
     "./assets/img3.webp",
   ],
-  seconds = 25;
+  seconds = 10;
 
 //Loop through hero images.
 function heroImgSequence() {
