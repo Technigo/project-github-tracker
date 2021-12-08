@@ -204,7 +204,9 @@ p.forked-repos {
 .project-movies,
 .project-redux-quiz,
 .project-todos,
-.project-labyrinth {
+.project-labyrinth,
+.project-react-native-app,
+.project-express-api {
   border: transparent;
   border-radius: 10px;
   background-color: #af896059;
@@ -319,6 +321,22 @@ p.forked-repos {
   background-size: cover;
 }
 
+.project-react-native-app {
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/react-native-app.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.project-express-api {
+  background: linear-gradient(to right, #251d0e, #91715085),
+    url("./assets/express-api.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 p {
   margin-top: 1vh;
   margin-bottom: 0vh;
@@ -403,7 +421,9 @@ footer {
   .project-movies,
   .project-redux-quiz,
   .project-todos,
-  .project-labyrinth {
+  .project-labyrinth,
+  .project-react-native-app,
+  .project-express-api {
     font-size: 18px;
     width: 40%;
     transition: 0.5s;
@@ -421,7 +441,9 @@ footer {
   .project-movies:hover,
   .project-redux-quiz:hover,
   .project-todos:hover,
-  .project-labyrinth:hover {
+  .project-labyrinth:hover,
+  .project-react-native-app:hover,
+  .project-express-api:hover {
     transform: scale(1.04);
   }
   .chart-container {
@@ -495,7 +517,9 @@ footer {
   .project-movies,
   .project-redux-quiz,
   .project-todos,
-  .project-labyrinth {
+  .project-labyrinth,
+  .project-react-native-app,
+  .project-express-api {
     transition: 0.5s;
     width: 30%;
     font-size: 20px;
@@ -513,7 +537,9 @@ footer {
   .project-movies:hover,
   .project-redux-quiz:hover,
   .project-todos:hover,
-  .project-labyrinth:hover {
+  .project-labyrinth:hover,
+  .project-react-native-app:hover,
+  .project-express-api:hover {
     transform: scale(1.04);
   }
   .chart {
