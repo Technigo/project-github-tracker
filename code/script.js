@@ -1,7 +1,8 @@
 const USER = 'elsisco'
 let repoName = 'project-weather-app' // Default value
 
-const API_REPOS = `https://api.github.com/users/${USER}/repos?sort=pushed`
+const API_REPOS = `https://api.github.com/users/${USER}/repos`
+// const API_REPOS_PUSHED = `https://api.github.com/users/${USER}/repos?sort=pushed`
 const API_USER = `https://api.github.com/users/${USER}`
 
 const projectsContainer = document.getElementById('projects')
@@ -43,11 +44,12 @@ const getRepos = () => {
         (repo) => repo.fork && repo.name.startsWith('project-')
       )
 
+      const sortedRepos = forkedRepos.sort((a, b) => (a.name > b.name ? 1 : -1))
       // forkedRepos.sort(function (oldestRepo, newestRepo) {
       //   return new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at)
       // })
 
-      forkedRepos.forEach((repo) =>
+      sortedRepos.forEach((repo) =>
         fetch(`https://api.github.com/repos/${USER}/${repo.name}/commits`)
           .then((res) => res.json())
           .then((data) => {
