@@ -1,3 +1,298 @@
 body {
-  background: #FFECE9;
+  font-family: "Roboto", "sans-serif";
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-image: url("./assets/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 800;
+  color: black;
+}
+
+a:hover {
+  color: #56b093;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  margin-bottom: 5px;
+  font-weight: 300;
+}
+
+.project-headline {
+  font-family: "Playfair Display", "serif";
+  font-size: 22px;
+  margin: 7px 0 4px 0;
+}
+
+.links-text {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.thin-headline {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.small-headline {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.header {
+  width: 225px;
+  height: 58px;
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: #56b093;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 3px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.header img {
+  width: 80%;
+}
+
+.main-wrapper {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  height: 100%;
+}
+
+.profile-wrapper {
+  background-color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin: 15px auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-direction: row;
+  padding: 15px 0;
+}
+
+.profile {
+  width: 55%;
+  border-right: 1px lightgray solid;
+  text-align: left;
+  padding: 3%;
+}
+
+.location {
+  display: flex;
+}
+
+.location img {
+  height: 12px;
+  margin-right: 5px;
+  margin-top: 1.5px;
+}
+
+.chart-section {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+}
+
+.chart-wrapper {
+  width: 100%;
+}
+
+chart {
+  padding: 5px;
+}
+
+.headline-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-wrapper {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.avatar {
+  width: 80%;
+  border-radius: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  border: 5px lightgrey solid;
+  padding: 3px;
+}
+
+.projects {
+  width: 100%;
+}
+
+.project-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 15px;
+  padding: 20px 25px;
+}
+
+.progress {
+  display: flex;
+  width: 85%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-js {
+  height: 10px;
+  background-color: #f59b99;
+}
+.progress-css {
+  height: 10px;
+  background-color: #ebbc4e;
+}
+
+.progress-html {
+  height: 10px;
+  background-color: #56b093;
+}
+
+.the-languages {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 0;
+}
+
+.js-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.html-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.css-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.language-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: white;
+  margin-right: 5px;
+}
+
+.language-text {
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.footer {
+  width: 100%;
+  background-color: #56b093;
+  color: white;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+@media (min-width: 668px) {
+  .main-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
+  .header {
+    position: fixed;
+  }
+
+  .profile-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 300px;
+    height: 70%;
+    margin: 15px 0 0 15px;
+    padding: 15px;
+    margin-top: 85px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .profile {
+    width: 95%;
+    border-right: none;
+    margin-bottom: 10px;
+  }
+
+  .avatar {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  .chart-section {
+    width: 70%;
+    justify-content: center;
+    margin: 15px auto;
+  }
+
+  .projects-wrapper {
+    width: 60%;
+    padding-top: 70px;
+  }
+
+  .project-card {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 15px auto;
+    width: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-wrapper {
+    width: 25%;
+    margin-right: 10px;
+  }
+
+  .projects-wrapper {
+    width: 70%;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+  }
+
+  .project-card {
+    width: 40%;
+    margin: 15px 10px 5px 10px;
+  }
 }

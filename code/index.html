@@ -6,14 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@100;300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div class="main-wrapper">
+    <header class="header">
+      <img src="./assets/github-tracker.svg" />
+    </header>
+    <div class="profile-wrapper">
+      <div id="profile" class="profile">
+      </div>
+      <div class="chart-section">
+        <div class="headline-wrapper">
+          <p class="small-headline">Technigo Projects</p>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="chart" class="chart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="projects-wrapper">
+      <main id="projects" class="projects"></main>
+    </div>
+  </div>
+
+  <footer class="footer">Made by Frontend developer student Elsa Carlström @Technigo 2021</footer>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
