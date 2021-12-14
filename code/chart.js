@@ -2,7 +2,7 @@ const ctx = document.getElementById("chart").getContext("2d");
 let chart;
 const drawChart = (repos) => {
   const completedProjects = repos.length;
-  const upcommingProjects = 19 - repos.length;
+  const upcommingProjects = 18 - repos.length;
   if (chart) {
     chart.destroy();
   }

@@ -66,7 +66,7 @@ const getReposDetails = (data) => {
       .then((commits) => {
         reposDataContainer.innerHTML += `
     <h3 class="repo-heading">${repo.name}</h3>
-    <a href="${repo.html_url}">view on Github   <img class="icon-bigger" src=${icons.github}></a>
+    <a target="blank" href="${repo.html_url}">view on Github   <img class="icon-bigger" src=${icons.github}></a>
     <div class="repos-stats" id="${repo.name}">
     <div class="stats"><img class="icon" src=${icons.branch}>   ${repo.default_branch}</div>
     <div class="stats link"><img class="icon-bigger" src=${icons.commit}>   ${commits.length}</div>
