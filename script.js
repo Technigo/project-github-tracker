@@ -29,26 +29,26 @@ const getPull = (repos) => {
         const pulls = data.find((pull) => pull.user.login === repo.owner.login);
 
         document.getElementById("projects").innerHTML += `
-							
-							<div class="repon">
-							<div id=repoiconname> 
-							<i class="far fa-bookmark"></i>
-							<a id="textrepo" href=${repo.html_url} target="_blank"> ${repo.name}</a>
+              
+              <div class="repon">
+              <div id=repoiconname> 
+              <i class="far fa-bookmark"></i>
+              <a id="textrepo" href=${repo.html_url} target="_blank"> ${repo.name}</a>
               </div>
-							<div id="push">
-							<i class="far fa-clock"></i> 
+              <div id="push">
+              <i class="far fa-clock"></i> 
               <p>
               pushed:${new Date(repo.pushed_at).toDateString()}
               </p>
-							</div>
-							<div class="content" id=${repo.name}>
+              </div>
+              <div class="content" id=${repo.name}>
 
-							<div id="repobranch"> <i class="fas fa-code-branch"></i><p> ${
+              <div id="repobranch"> <i class="fas fa-code-branch"></i><p> ${
                 repo.default_branch
               } </p></div>
-							
-							</div>
-							`;
+              
+              </div>
+              `;
 
         getComment(repo.name, pulls.review_comments_url);
         getCommit(repo.name, pulls.commits_url);
@@ -64,13 +64,13 @@ const getComment = (name, url) => {
     .then((res) => res.json())
     .then((data) => {
       document.getElementById(name).innerHTML += `
-			
-			<div id="commentss">
-			<i class="far fa-comment-alt"></i>
-			<p>comments:${data.length}</p>
-			</div>
-			
-	`;
+      
+      <div id="commentss">
+      <i class="far fa-comment-alt"></i>
+      <p>comments:${data.length}</p>
+      </div>
+      
+  `;
     });
 };
 
@@ -82,26 +82,25 @@ const getCommit = (name, url) => {
     .then((data) => {
       if (data.length >= 30) {
         document.getElementById(name).innerHTML += `
-			
-			
-	<div id="commitss">
-	<i class="fas fa-file-upload"></i>
-	<p>commits: 30+</p>
-	</div>
-	
-	
+      
+      
+  <div id="commitss">
+  <i class="fas fa-file-upload"></i>
+  <p>commits: 30+</p>
+  </div>
+  
+  
 `;
-      } else {
-        document.getElementById(name).innerHTML += `
-			
-			
-			<div id="commitss">
-			<i class="fas fa-file-upload"></i>
-			<p>commits: ${data.length}</p>
-			</div>
-			
-			
-	`;
+  } else {document.getElementById(name).innerHTML += `
+      
+      
+      <div id="commitss">
+      <i class="fas fa-file-upload"></i>
+      <p>commits: ${data.length}</p>
+      </div>
+      
+      
+  `;
       }
     });
 };
