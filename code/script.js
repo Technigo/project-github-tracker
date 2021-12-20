@@ -36,22 +36,24 @@ const fetchRepo = () => {
 
       technigoRepo.forEach((repo) => {
         projectsContainer.innerHTML += `
+            
              <div class="repo-card">
               <div class="link">
-                <a href="${repo.html_url}">${repo.name}</a>
+                <a href="${repo.html_url}" class="repo-name">${repo.name}</a>
               </div>  
               <div class="branch">
-                <p>default branch:${repo.default_branch}</p>
+                <p class="default-branch">Default branch:${
+                  repo.default_branch
+                }</p>
               </div> 
               <div class="push"> 
-                <h4>most recent push:"${new Date(
-                  repo.pushed_at
-                ).toDateString()}"</h4>
+                <h4>Recent push:${new Date(repo.pushed_at).toDateString()}</h4>
               </div>  
-              <p id="commit-${repo.name}">Commites amount:</p>
+              <p class="commits" id="commit-${repo.name}">Number of commits:</p>
             `;
       });
       fetchPull(technigoRepo);
+      drawChart(technigoRepo.length);
     });
 };
 
