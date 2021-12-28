@@ -10,7 +10,6 @@ const fetchProfile = () => {
     fetch(USER_URL)
         .then((response) => response.json())
         .then((data) => {
-            console.log('fetchProfile', data)
             profileContainer.innerHTML += `
                 <div id="profile">
                     <figure class="profile-image">
@@ -30,7 +29,6 @@ const fetchRepos = () => {
     fetch(USER_REPOS_URL)
         .then((response) => response.json())
         .then((data) => {
-            console.log('fetchRepos', data)
             const technigoRepos = data.filter(
                 (repo) => repo.name.includes('project-') && repo.fork
             )

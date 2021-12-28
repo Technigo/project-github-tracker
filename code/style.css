@@ -67,6 +67,12 @@ h3 {
   padding: 1rem;
 }
 
+#chart-wrapper {
+  width: 90vw;
+  max-width: 512px;
+  margin: 0 auto;
+}
+
 header {
   position: sticky;
   top: 0;
@@ -79,7 +85,7 @@ footer {
 header, footer {
   background-color: #f2f2f2;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0rem;
   width: 100%;
 }
 

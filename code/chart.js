@@ -1,19 +1,19 @@
 const ctx = document.getElementById('chart').getContext('2d')
-const technigoProjects = 20
+const technigoProjects = 21
 
 const drawBarChart = (repos) => {
     new Chart(ctx, {
         type: 'doughnut',
         data: {
             labels: [
-                'Technigo projects',
+                'Projects to do',
                 'Finished projects'
             ],
             datasets: [
                 {
                     data: [
-                        technigoProjects,
-                        repos.length
+                        repos,
+                        technigoProjects - repos
                     ],
                     backgroundColor: [
                         '#d5a7b6',
