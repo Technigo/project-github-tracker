@@ -12,8 +12,8 @@ const drawBarChart = (repos) => {
             datasets: [
                 {
                     data: [
-                        repos,
-                        technigoProjects - repos
+                        technigoProjects - repos.length,
+                        repos.length,
                     ],
                     backgroundColor: [
                         '#d5a7b6',
