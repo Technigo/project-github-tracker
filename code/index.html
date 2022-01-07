@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Poiret+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <title>My GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+<div class="hero-image" id="heroImg">
+  <div class="hero-text">
+    <h1>GitHub Tracker</h1>
+  </div>
+</div>
+
+<body>
+
+  <div id="userProfile" class="user-container"></div>
+  <hr>
+  <h2>My projects</h2>
+
+  <section class="checkbox-container">
+    <h4>Filter by language: </h4>
+    <div id="language" class="language-checkbox">
+      <ul class="checkbox-tags">
+        <li>
+          <input type="checkbox" id="HTML" value="HTML" checked>
+          <label for="HTML" class="html">HTML</label>
+        </li>
+        <li>
+          <input type="checkbox" id="CSS" value="CSS" checked>
+          <label for="CSS">CSS</label>
+        </li>
+        <li>
+          <input type="checkbox" id="JavaScript" value="JavaScript" checked>
+          <label for="JavaScript">JavaScript</label>
+        </li>
+      </ul>
+    </div>
+    </form>
+  </section>
+
+  <main id="projects" class="projects-container"></main>
+
+  <section class="chart-container">
+    <p>Overview of finished projects</p>
+    <canvas id="myChart" class="chart"></canvas>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
+<footer>
+  <h5 class="creator">Created and developed by</h5>
+  <img src="./assets/annad.png" alt="creator-logo" class="logo">
+</footer>
+
 </html>

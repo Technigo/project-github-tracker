@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+It's a website where you can track my project development. There is a function where you can filter through my repos based on most used language, eg JavaScript. The repos are sorted by newest date. There are also links to the GitHub repos and to social media websites like LinkedIn.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Used google, stackoverflow and technigo's on-call-support.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://anndimi-github-tracker.netlify.app/
