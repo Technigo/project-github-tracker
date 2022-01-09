@@ -1,10 +1,8 @@
 # GitHub Tracker
 
-Creating a place to keep track of the GitHub repos that I am using at Technigo. Using JavaScript, html, css and fetching data from API's from the JSON response.
+Creating a place to keep track of the GitHub repos made during my Boot Camp at Technigo. Using JavaScript, html, css and fetching data from API's from the JSON response.
 
 ## The problem
-
-Focused on the blue requirements and mostly on JavaScript this week. I found it challenging but asked for help and worked a lot with my team. I feel like I learned a lot this week and I am happy with the final result.
 
 My page includes:
 
