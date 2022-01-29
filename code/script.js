@@ -18,23 +18,21 @@ const getRepos = () => {
       // header container 
       headerContainer.innerHTML = `
         <div class="info-about-user">
-            <img class="profile-img"src="${repo.owner.avatar_url}" />
-            <h2>Darya Lapata</h2>
-            <h3>${repo.owner.login}</h3>
-            <p>Location: Stockholm</p>
+          <img class="profile-img"src="${repo.owner.avatar_url}" />
+          <h2>Darya Lapata</h2>
+          <h3>${repo.owner.login}</h3>
+          <p>Location: Stockholm</p>
         </div>
       ` 
       // project container 
       projectsContainer.innerHTML += `
         <div class="repo"> 
-            <a href="${repo.clone_url }"  target="_blank"><h3>${repo.name}</h3> </a>
-            <p id="commit-${repo.name}">Commits amount: </p>
-            <p>Latest push update: ${ new Date(repo.pushed_at).toDateString()}</p>
-            <p>Default branch: ${repo.default_branch}</p>
-
+          <a href="${repo.clone_url }"  target="_blank"><h3>${repo.name}</h3> </a>
+          <p id="commit-${repo.name}">Commits amount: </p>
+          <p>Latest push update: ${ new Date(repo.pushed_at).toDateString()}</p>
+          <p>Default branch: ${repo.default_branch}</p>
         </div>
       `
-      // getLanguages(repo.languages_url)
     })
     getPullRequests(forkedRepos) // passing all my forked repos to this function 
   })
