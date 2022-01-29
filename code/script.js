@@ -9,7 +9,8 @@ const button = document.getElementById('button')
 const getRepos = () => {
   fetch(ALL_MY_REPOS)
   .then(res => res.json())
-  .then((json) => { // This json shows all of my repos on GitHub
+  .then((json) => {
+    console.log(json) // This json shows all of my repos on GitHub
     // filter repos so I can only get tehcnigos repos 
     const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-')) // or you can use includes method 
     drawChart(forkedRepos.length)
