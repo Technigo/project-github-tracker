@@ -136,17 +136,13 @@ form.example::after {
   align-items: center;
 }
 
-
-
-
-
 /*** MEDIA QUERIES ***/
 
 /*tablet*/ 
 @media (min-width:667px) and (max-width: 1024px) {
-    .profile-img {
-      width: 200px;
-    }
+  .profile-img {
+    width: 200px;
+  }
 
   .project-container {
     flex-direction: row;
@@ -175,7 +171,6 @@ form.example::after {
 }
 
 /*desktop*/ 
-
 @media(min-width: 1025px) {
   .container {
     display: flex;
