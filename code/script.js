@@ -1,5 +1,3 @@
-console.log('script works?');
-
 const userContainer = document.getElementById('userInfo');
 const reposContainer = document.getElementById('projects');
 const reposSubContainer = document.getElementById('project-box');
@@ -27,7 +25,6 @@ const getUserData = (user) => {
   fetch(`https://api.github.com/users/${user}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       userContainer.innerHTML = ``;
 
       if (data.login !== undefined) {
