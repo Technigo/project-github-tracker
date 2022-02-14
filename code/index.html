@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Rosanna GitHub Tracker</title>
+  <link rel="icon" href="./assets/github_tracker_icon.png" type="png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
+<body class="main-grid">
+  <header class="header">
+    <h1 class="header-text">GitHub Tracker</h1>
+    <div class="search-container">
+      <form id="search-form">
+        <input class="input-field" id="search-field" type="text" placeholder="Search Rosannas repos here..." autocomplete="off"/>
+        <input type="submit" id="searchbtn" class="button-search" value="Search">
+    </form>
+  </div>
+  </header>
+
+  <div id="myProfile" class="my-profile"></div>
+  <div id="loading" class="lds-ripple"><div></div><div></div></div>
+
+
+  <main id="projects" class="grid-container"></main>
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div class="chart">
+    <canvas id="chart"></canvas>
+  </div>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
 </html>
