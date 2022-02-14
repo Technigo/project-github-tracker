@@ -10,49 +10,65 @@
   </head>
 
   <body>
-    <!-- mobile nav -->
-    <nav class="nav-mobile">
-      <img id="nav-sub" class="nav-menu" src="images/menu (1).png" alt="menu" />
-      <div class="nav-links">
+    <nav>
+      <!-- mobile nav -->
+      <div class="nav-mobile">
+        <img
+          id="nav-sub"
+          class="nav-menu"
+          src="images/menu (1).png"
+          alt="menu"
+        />
+        <div class="nav-links">
+          <input
+            id="navInputMobile"
+            class="nav-input"
+            type="text"
+            placeholder="Search"
+          />
+          <a href="#">Pulls</a>
+          <a href="#">Issues</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Explore</a>
+        </div>
+        <a class="nav-icon" href="https://github.com/" target="_blank"
+          ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
+        /></a>
+
+        <button id="btn-light-nav btn-light">
+          <img class="nav-notif" src="images/notification.png" alt="bell" />
+        </button>
+      </div>
+
+      <!-- desktop nav -->
+      <div class="nav-desktop">
+        <a class="nav-icon" href="https://github.com/" target="_blank"
+          ><img
+            id="nav-github-img"
+            src="images/GitHub-Mark-Light-32px.png"
+            alt="github"
+        /></a>
         <input
-          id="navInputMobile"
+          id="navInput"
           class="nav-input"
           type="text"
           placeholder="Search"
         />
-        <a href="#">Pulls</a>
-        <a href="#">Issues</a>
-        <a href="#">Marketplace</a>
-        <a href="#">Explore</a>
+        <div class="nav-a">
+          <a href="#">Pulls</a>
+          <a href="#">Issues</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Explore</a>
+        </div>
+        <button id="btn-light">
+          <img class="nav-notif" src="images/notification.png" alt="bell" />
+        </button>
       </div>
-      <a class="nav-icon" href="https://github.com/" target="_blank"
-        ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
-      /></a>
-
-      <button id="btn-light-nav">
-        <img class="nav-notif" src="images/notification.png" alt="bell" />
-      </button>
     </nav>
 
-    <!-- desktop nav -->
-    <nav class="nav-desktop">
-      <a class="nav-icon" href="https://github.com/" target="_blank"
-        ><img
-          id="nav-github-img"
-          src="images/GitHub-Mark-Light-32px.png"
-          alt="github"
-      /></a>
-      <input id="navInput" class="nav-input" type="text" placeholder="Search" />
-      <div class="nav-a">
-        <a href="#">Pulls</a>
-        <a href="#">Issues</a>
-        <a href="#">Marketplace</a>
-        <a href="#">Explore</a>
-      </div>
-      <button id="btn-light">
-        <img class="nav-notif" src="images/notification.png" alt="bell" />
-      </button>
-    </nav>
+    <!-- <nav class="nav-desktop">
+      
+    </nav> -->
 
     <!-- main content -->
     <main>

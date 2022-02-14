@@ -1,21 +1,21 @@
-console.log("script works?");
+console.log('script works?');
 
-const userContainer = document.getElementById("userInfo");
-const reposContainer = document.getElementById("projects");
-const reposSubContainer = document.getElementById("project-box");
-const navSub = document.getElementById("nav-sub");
-const input = document.getElementById("navInput");
-const inputMobile = document.getElementById("navInputMobile");
-const githubImg = document.getElementById("nav-github-img");
-const turnLightMode = document.getElementById("btn-light");
-const turnLightModeMobile = document.getElementById("btn-light-nav");
+const userContainer = document.getElementById('userInfo');
+const reposContainer = document.getElementById('projects');
+const reposSubContainer = document.getElementById('project-box');
+const navSub = document.getElementById('nav-sub');
+const input = document.getElementById('navInput');
+const inputMobile = document.getElementById('navInputMobile');
+const githubImg = document.getElementById('nav-github-img');
+const turnLightMode = document.getElementById('btn-light');
+const turnLightModeMobile = document.getElementById('btn-light-nav');
 
 // for removing previous chart
 let chartDrawn = false;
 
 //  shows my profile as default profile upon loading the website
 showMyProfileOnLoad = () => {
-  let userName = "loulunds";
+  let userName = 'loulunds';
   getUserData(userName);
   fetchRepos(userName);
 };
@@ -30,7 +30,8 @@ const getUserData = (user) => {
       console.log(data);
       userContainer.innerHTML = ``;
 
-      userContainer.innerHTML = `
+      if (data.login !== undefined) {
+        userContainer.innerHTML = `
       <div class="user-profile-box">
         <div class="user-info-box">
           
@@ -56,6 +57,11 @@ const getUserData = (user) => {
         </a>
       </div>
       `;
+      } else {
+        userContainer.innerHTML = `
+        <p class="error-message"> API rate limit exceeded. Failed to Load. Come back later.</p>
+		`;
+      }
     })
     .catch(() => {
       userContainer.innerHTML = `<h3>Sorry, we could not find the information</h3>`;
@@ -71,7 +77,7 @@ const fetchRepos = (user) => {
 
       // filters the repos that are only from Technigo
       const forkedRepos = data.filter(
-        (repo) => repo.fork && repo.name.startsWith("project-")
+        (repo) => repo.fork && repo.name.startsWith('project-')
       );
 
       // sorts the repos from oldest to newest
@@ -134,7 +140,7 @@ const getPullRequests = (repos) => {
           showCommits(filteredPull.commits_url, repo.name);
         } else {
           document.getElementById(`commit-${repo.name}`).innerHTML =
-            " No pull request from me";
+            ' No pull request from me';
         }
       });
   });
@@ -150,9 +156,9 @@ const showCommits = (url, myRepoName) => {
 };
 
 // event listener
-input.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" && input.value) {
-    let userName = "";
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && input.value) {
+    let userName = '';
     userName = input.value;
     getUserData(userName);
     fetchRepos(userName);
@@ -160,9 +166,9 @@ input.addEventListener("keypress", (event) => {
 });
 
 // for mobile input
-inputMobile.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" && inputMobile.value) {
-    let userName = "";
+inputMobile.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && inputMobile.value) {
+    let userName = '';
     userName = inputMobile.value;
     getUserData(userName);
     fetchRepos(userName);
@@ -172,25 +178,25 @@ inputMobile.addEventListener("keypress", (event) => {
 
 // turns the light mode on
 const toLightMode = () => {
-  document.body.classList.toggle("light");
-  document.getElementById("userSpan").classList.toggle("user-span-light");
-  document.getElementById("userSpanSub").classList.toggle("user-span-light");
+  document.body.classList.toggle('light');
+  document.getElementById('userSpan').classList.toggle('user-span-light');
+  document.getElementById('userSpanSub').classList.toggle('user-span-light');
 };
 
-turnLightMode.addEventListener("click", (e) => {
+turnLightMode.addEventListener('click', (e) => {
   toLightMode();
 });
 
-turnLightModeMobile.addEventListener("click", (e) => {
+turnLightModeMobile.addEventListener('click', (e) => {
   toLightMode();
 });
 
 // toggles the mobile-nav menu
 
 const toggleNav = () => {
-  navSub.classList.toggle("active");
+  navSub.classList.toggle('active');
 };
 
-navSub.addEventListener("click", (e) => {
+navSub.addEventListener('click', (e) => {
   toggleNav();
 });
