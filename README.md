@@ -8,4 +8,4 @@ I struggled with time as usual but the biggest challenge was all the new informa
 
 ## View it live
 
-Look! https://cranky-me.netlify.app/
+Look! https://kriss-github-tracker.netlify.app/
