@@ -1,4 +1,4 @@
-# GitHub Tracker
+# Week 7: GitHub tracker
 
 Replace this readme with your own information about your project.
 
