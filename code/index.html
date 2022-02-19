@@ -1,21 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <body>
+    <nav>
+      <!-- mobile nav -->
+      <div class="nav-mobile">
+        <img
+          id="nav-sub"
+          class="nav-menu"
+          src="images/menu (1).png"
+          alt="menu"
+        />
+        <div class="nav-links">
+          <input
+            id="navInputMobile"
+            class="nav-input"
+            type="text"
+            placeholder="Search"
+          />
+          <a href="#">Pulls</a>
+          <a href="#">Issues</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Explore</a>
+        </div>
+        <a class="nav-icon" href="https://github.com/" target="_blank"
+          ><img src="images/GitHub-Mark-Light-32px.png" alt="github"
+        /></a>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+        <button id="btn-light-nav">
+          <img class="nav-notif" src="images/notification.png" alt="bell" />
+        </button>
+      </div>
+
+      <!-- desktop nav -->
+      <div class="nav-desktop">
+        <a class="nav-icon" href="https://github.com/" target="_blank"
+          ><img
+            id="nav-github-img"
+            src="images/GitHub-Mark-Light-32px.png"
+            alt="github"
+        /></a>
+        <input
+          id="navInput"
+          class="nav-input"
+          type="text"
+          placeholder="Search"
+        />
+        <div class="nav-a">
+          <a href="#">Pulls</a>
+          <a href="#">Issues</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Explore</a>
+        </div>
+        <button id="btn-light">
+          <img class="nav-notif" src="images/notification.png" alt="bell" />
+        </button>
+      </div>
+    </nav>
+
+    <!-- main content -->
+    <main>
+      <!-- where the user info is -->
+      <section id="userInfo"></section>
+
+      <!-- where the repos are -->
+      <section id="projects">
+        <h2 class="project-title">My Project Repositories with Technigo</h2>
+        <div id="project-box"></div>
+      </section>
+    </main>
+
+    <!-- This will be used to draw the chart 👇 -->
+    <section class="canvas-box"><canvas id="chart"></canvas></section>
+
+    <footer><img src="images/mylogo.png" alt="logo" /></footer>
+
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
