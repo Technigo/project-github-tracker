@@ -1,3 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #FFECE9;
+  background-image: linear-gradient(135deg, lightgreen, violet);
+}
+
 body {
-  background: #FFECE9;
+  background-color: white;
+  width: 80%;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
 }
