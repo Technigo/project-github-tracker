@@ -1,3 +1,137 @@
+
+.hero {
+  width: 100vw;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(46, 12, 124);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('pngkey.com-github-icon-png-1787508.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero h1 {
+  font-size: 5em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+
+h2 {
+  color: rgb(49, 3, 30);
+  padding: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 1px #ccc;
+  
+}
+
+h3 {
+  margin-bottom: 15px;
+  margin-left: 20px;
+}
+
+h6 {
+  margin: 10px 4px;
+  font-size: 25px;
+  margin-top: 1em;
+  font-weight: bolder;
+  color: rgb(49, 3, 30);
+}
+
+
+.img {
+  max-width: 20em;
+  border-radius: 50%;
+  margin:1em;
+  align-items: center;
+  border-color: #cac4ce;
+  border-style: double;
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+}
+
+
+.info {
+  margin: 12px;
+  letter-spacing: 5px;
+}
+
+
 body {
-  background: #FFECE9;
+  background:#F3F0D7;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0em;
+  padding: 0;
+  box-sizing: border-box;
+  min-width: 320px;
+}
+
+.projects {
+  background: #555351;
+  margin: 1em;
+  box-shadow: 0 4px 8px 0 rgba(15, 12, 12, 0.2), 0 6px 20px 0 rgba(5, 5, 5, 0.19);
+  border-radius: 5px;
+}
+
+.commits-row {
+  background: rgb(47, 17, 117);
+  margin: 10px 4px;
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 5px;
+  row-gap: 12px;
+}
+
+.commits-row p {
+  background:#F3F0D7;
+  padding:1em;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(15, 12, 12, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px 4px;
+ 
+}
+
+.commits-row a {
+  background:#CEE5D0;
+  padding:1em;
+  margin: 1em;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px 0 rgba(15, 12, 12, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+}
+
+.chart-container {
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  font-weight: bold;
+  color: rgb(46, 12, 124);
+  
+}
+
+.chart-text {
+  padding: 20px;
+  color: rgb(46, 12, 124);
+}
+
+.chart {
+  max-width: 400px;
+  max-height: 400px;
+  
 }
