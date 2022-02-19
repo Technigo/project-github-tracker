@@ -6,16 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+<header class="header"> 
+    <h1>GitHub Tracker</h1>
+  </header>
+
+  <section class="grid-container">
+  <div class="profile" id="profile"></div>
+
+    <section class="repos-area">
+      <h2>Technigo projects:</h2>
+      <div class="project-grid" id="projects"></div>
+    </section>  
+  
+    <div class='chart'>
+      <canvas id="chart"></canvas>
+    </div>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
+  <footer>
+     <h5>silvertejp89 🦊</h5>
+  </footer>
+  
 </body>
 </html>
+

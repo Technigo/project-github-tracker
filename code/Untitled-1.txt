@@ -1,0 +1,6 @@
+TODO:
+
+1) fetch the repos and console log them
+2) get them in the browser
+3) FILTHER OUT THE Technogo repos 
+4) test chart library 
