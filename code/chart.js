@@ -1,26 +1,22 @@
 //DOM-selector for the canvas 👇
-const ctx = document.getElementById('chart').getContext('2d')
-
+const projectsChart = document.getElementById('projectsChart').getContext('2d')
 //"Draw" the chart here 👇
 
 
 // what's not working below is commented out
 // global options
-// Chart.defaults.global.defaultFontFamily = 'Lato';
-// Chart.defaults.global.defaultFontSize = 18;
-// Chart.defaults.global.defaultFontColor = 'grey';
+Chart.defaults.font.family = 'Lato';
+Chart.defaults.font.size = 18;
+Chart.defaults.color = 'blue';
+
 
 const drawProjectsChart = (amount) => {
-    new Chart(ctx, {
+    new Chart(projectsChart, {
         type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
             labels: ['Completed', 'To do'],
             datasets: [{
-                barPercentage: 1,
-        barThickness: 100,
-        maxBarThickness: 200,
-        minBarLength: 2,
-                label: 'Projects',
+                // label: 'Projects',
                 data: [
                     amount,
                     19 - amount
@@ -34,32 +30,96 @@ const drawProjectsChart = (amount) => {
                 hoverBorderWidth: 5,
                 hoverBorderColor: 'brown'
             }
-        ]
+            ]
+        },
+        options: {
+            indexAxis: 'y', // for horizontal bar graph instead of vertical
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Projects',
+                    fontSize: 24
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                        fontColor: 'red'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
         }
-        // options: {
-            // title: {
-            //     display: true,
-            //     text: 'Largest Cities in Massachussets',
-            //     fontSize:24
-            // },
-            // legend:{
-            //     display:false,
-            //     position:'right',
-            //     labels:{
-            //         fontColor:'black'
-            //     }
-            // layout: {
-            //     padding: {
-            //         left: 0,
-            //         right: 0,
-            //         bottom: 0,
-            //         top: 0
-            //     }
-                // },
-                // tooltips:{
-                //     enabled:false
-            // }
-        // }
     })
 }
+
+
+const drawLanguagesChart = (htmlPercentage, cssPercentage, jsPercentage, idChart) => {
+
+    const languagesChart = document.getElementById(idChart).getContext('2d')
+
+
+    new Chart(languagesChart, {
+        type: 'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['HTML', 'CSS', 'JavaScript'],
+            datasets: [{
+                label: 'Languages', // où cela apparaît-il??
+                data: [
+                    htmlPercentage,
+                    cssPercentage,
+                    jsPercentage
+                ],
+                backgroundColor: [
+                    'red',
+                    'green',
+                    'yellow'
+                ],
+                borderWidth: 2,
+                borderColor: 'black',
+                hoverBorderWidth: 5,
+                hoverBorderColor: 'brown'
+            }
+            ]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: false,
+                    text: 'Languages',
+                    fontSize: 24
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                        fontColor: 'red'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltip: {
+                    enabled: true
+                }
+            }
+        }
+    })
+}
+
 
