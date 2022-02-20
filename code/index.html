@@ -4,16 +4,50 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Github Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header id="profile-container" class="profile-container">
+    <div class="chart-area" id="chart-area">
+      <canvas id="chart"></canvas>
+    </div>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <main class="main-area">
+
+    
+    <section id="sort-container" class ="sort">
+      <h3>Sort GitHub projects by: </h3>
+      <input type="button" value="Date" id="date-btn">
+      <input type="button" value="Repo-name" id="repo-btn">
+      <input type="button" value="Nr of commits" id="commit-btn">
+
+      <!-- <h3>Filter</h3>
+      <div>
+        <input type="button" value="Javascript">
+      </div> -->
+    </section>
+      <h2>Projects:</h2> 
+    <section id="repo-container" class="repo-container">
+       
+    </section>
+
+    <!-- This will be used to draw the chart 👇 -->
+
+  </main>
+  <footer>
+    <p>Made by Sofia Willebrand🐘</p>
+    <ul class="nav-socials">
+        <li><a class="link" href="https://www.linkedin.com/in/sofia-willebrand/" target="_blank"><i class="fa fa-linkedin-square" style="font-size:24px"></i></a></li>
+        <li><a class="link" href="https://github.com/sofiawillebrand" target="_blank"><i class="fa fa-github" style="font-size:24px"></i></a></li>
+        <li><a class="link" href="https://stackoverflow.com/users/7478955/sofia-willebrand" target="_blank"><i class="fa fa-stack-overflow" style="font-size:24px"></i></a></li>
+    </ul>
+  </footer>
+
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

@@ -1,3 +1,146 @@
+:root {
+  --primary: rgb(122, 183, 147);
+  --secondary: rgb(15, 92, 46);
+  --text: rgb(0, 61, 25);
+}
+
 body {
-  background: #FFECE9;
+  background-color: var(--secondary);
+  font-family: 'Montserrat', sans-serif;
+  max-width: 1200px;
+  margin: auto;
+}
+
+input[type=button] {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profile-area h1 {
+  font-size: 2em;
+  margin: auto 5px;
+}
+
+.profile-area h2 {
+  margin-bottom: 0;
+}
+
+.sort h3 {
+  margin: 0 10px 0 0;
+}
+
+.main-area h2 {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.link, h1, h2, h3, p {
+  color: var(--text);
+}
+
+.link {
+  font-size: 18px;
+  font-weight: 1000;
+}
+
+.link:visited {
+  color: var(--secondary);
+}
+
+.link:hover {
+  color: rgb(90, 136, 109);
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-area, .sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile-area, .chart-area {
+  border-radius: 2px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--secondary);
+  object-fit: cover;
+  margin: auto 2px;
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-area, .profile-container, footer {
+  background-color:  var(--primary);
+  width: 90%;
+  margin: 25px auto;
+  border-radius: 2px;
+}
+
+.repo-container, .sort {
+  border-radius: 2px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.repo-container {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.repo-card {
+  flex: 1 0 25%;
+  min-width: 250px;
+}
+
+.repo-card, #chart {
+  background: rgb(255, 255, 255);
+  border-radius: 2px;
+  padding: 5px 5px;
+  margin: 10px 5px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+footer p {
+  width: 300px;
+  margin: 0px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+footer li {
+  display: inline;
+  list-style: none;
+}
+
+.nav-socials {
+  width: 100px;
+  padding: 0;
+}
+
+@media (min-width: 370px) {
+  footer p{
+    font-size: 16px;
+  }
+
 }
