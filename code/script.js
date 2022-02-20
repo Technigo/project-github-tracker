@@ -3,6 +3,8 @@ const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
 const profile = document.getElementById('profile')
 const projects = document.getElementById('projects')
+const sortMenu = document.getElementById('sortMenu')
+
 
 
 
@@ -25,6 +27,7 @@ const openTab = (event, tabName) => {
 
 
 
+
 const createProfile = () => {
     fetch(API_USER, options)
         .then(res => res.json())
@@ -36,18 +39,36 @@ const createProfile = () => {
         })
 }
 
-const createRepoCard = () => {
+const createRepoCard = (reposToUse = null) => {
     fetch(API_REPOS, options) // options object is passed as 2nd argument to fetch() function. // TO REMOVE BEFORE GIT PUSH
         .then(res => res.json())
         .then(data => {
-            const filteredRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'))
-console.log(filteredRepos)
-            // sortByDate(filteredRepos)
-            // sortByReverseDate(filteredRepos)
-            // sortByReverseName(filteredRepos)
-            // sortByCommits()
+            const selectSorting = () => {
+                console.log(sortMenu.value)
+                if (sortMenu.value === 'Z to A') {
+                    sortByNameZA(filteredRepos)
+                } else if (sortMenu.value === 'Recent to old') {
+                    sortByDateRecentOld(filteredRepos)
+                } else if (sortMenu.value === 'Old to recent') {
+                    sortByDateOldRecent(filteredRepos)
+                } else {
+                    sortByNameAZ(filteredRepos)
+                }
+                console.log(filteredRepos)
+                projects.innerHTML = ''
+                createRepoCard(filteredRepos)
+            }
 
-            drawProjectsChart(filteredRepos.length)
+            let filteredRepos
+            if (reposToUse === null)
+            {
+                filteredRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'))
+                sortMenu.addEventListener('change', selectSorting)
+            } else {
+                filteredRepos = reposToUse
+            }    
+
+            //drawProjectsChart(filteredRepos.length)
             filteredRepos.forEach(repo => {
                 const options = { day: 'numeric', month: 'long', year: 'numeric' }
                 projects.innerHTML += `
@@ -109,8 +130,9 @@ const addCommits = (repo) => {
                 <p>Number of commits from the user: ${userCommits.length} on a total of ${data.length}</p>
             `
 
-            const userFiveLastCommits = userCommits.slice(1, 5)
-            userFiveLastCommits.forEach(item => {
+            // const userFiveLastCommits = userCommits.slice(1, 5)
+            // userFiveLastCommits.forEach(item => {
+            userCommits.forEach(item => {
                 document.getElementById(`${repo.name}-repoCommitMessages`).innerHTML += `
                     <li>${item.commit.message}</li>
                 `
@@ -174,23 +196,25 @@ const addCodeReviewInfos = (repo, pull, reviewID) => {
 }
 
 
-
-const sortByDate = (filteredRepos) => {
-    filteredRepos.sort(function (a, b) {
-        return new Date(a.created_at) - new Date(b.created_at)
+const sortByNameAZ = (filteredRepos) => {
+    filteredRepos.sort(function(a, b) {
+        const nameA = a.name.toLowerCase() // ignore upper and lowercase
+        const nameB = b.name.toLowerCase() // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1
+        }
+        if (nameA > nameB) {
+            return 1
+        }
+        // names must be equal
+        return 0
     })
 }
 
-const sortByReverseDate = (filteredRepos) => {
-    filteredRepos.sort(function (a, b) {
-        return new Date(b.created_at) - new Date(a.created_at)
-    })
-}
-
-const sortByReverseName = (filteredRepos) => {
-    filteredRepos.sort(function (a, b) {
-        var nameA = a.name.toUpperCase() // ignore upper and lowercase
-        var nameB = b.name.toUpperCase() // ignore upper and lowercase
+const sortByNameZA = (filteredRepos) => {
+    filteredRepos.sort(function(a, b) {
+        const nameA = a.name.toLowerCase() // ignore upper and lowercase
+        const nameB = b.name.toLowerCase() // ignore upper and lowercase
         if (nameA > nameB) {
             return -1
         }
@@ -202,6 +226,39 @@ const sortByReverseName = (filteredRepos) => {
     })
 }
 
+const sortByDateRecentOld = (filteredRepos) => {
+    filteredRepos.sort(function(a, b) {
+        return new Date(b.created_at) - new Date(a.created_at)
+    })
+}
+
+const sortByDateOldRecent = (filteredRepos) => {
+    filteredRepos.sort(function(a, b) {
+        return new Date(a.created_at) - new Date(b.created_at)
+    })
+}
+
+
+// const selectSorting = (filteredRepos) => {
+//     console.log(sortMenu.value)
+//     if (sortMenu.value === 'Z to A') {
+//         sortByNameZA(filteredRepos)
+//     } else if (sortMenu.value === 'Recent to old') {
+//         sortByDateRecentOld(filteredRepos)
+//     } else if (sortMenu.value === 'Old to recent') {
+//         sortByDateOldRecent(filteredRepos)
+//     } else {
+//         sortByNameAZ(filteredRepos)
+//     }
+// }
+
+
+createProfile()
+createRepoCard()
+
+
+
+// sortByCommits()
 // const sortByCommits = () => {
 //     fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
 //         .then(res => res.json())
@@ -215,6 +272,3 @@ const sortByReverseName = (filteredRepos) => {
 //             })
 //         })
 // }
-
-createProfile()
-createRepoCard()
