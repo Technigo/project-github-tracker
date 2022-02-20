@@ -42,6 +42,7 @@ body {font-family: "Lato", sans-serif;}
   background-color: #f1f1f1;
   width: 30%;
   height: 300px;
+  margin-bottom: 20px;
 }
 
 /* Style the buttons inside the tab */
@@ -70,7 +71,7 @@ body {font-family: "Lato", sans-serif;}
 }
 
 /* Style the tab content */
-.tabcontent {
+.tab-content {
   float: left;
   background-color: #f1f1f1;
   padding: 0px 12px;
@@ -78,4 +79,5 @@ body {font-family: "Lato", sans-serif;}
   width: 70%;
   border-left: none;
   height: 300px;
+  overflow: auto;
 }
