@@ -1,3 +1,252 @@
+html {
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  /* background: #111313; */
+  background-color: rgb(16, 20, 25);
+  font-family: 'Roboto';
+  height: 100vh;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10vmin;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  /*transform: translate(-50%, -50%);*/
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  width: 100vw;
+  color: white;
+  border-bottom: #bebbbb solid 1px;
+  font-family: 'Roboto';
+}
+
+.project-container {
+  padding: 30px;
+  padding-left: 20px;
+
+  width: 80%;
+  display: grid;
+  gap: 1rem;
+  margin: 15px 15px 5px 15px;
+  border: 30px;
+  align-items: center;
+}
+.user-whole_name {
+  font-size: 21px;
+}
+
+.user-info_username {
+  font-size: 27px;
+  color: rgb(87, 165, 253);
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+a {
+  color: rgb(87, 165, 253);
+  font-weight: 800;
+}
+
+.link {
+  padding-top: 8px;
+  font-size: large;
+  padding-left: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+h1 {
+  color: rgb(87, 165, 253);
+  padding-left: 20px;
+  font-size: 2rem;
+  padding-top: 12px;
+  padding-bottom: 5px;
+  font-family: 'Roboto';
+}
+
+h4 {
+  font-size: 1rem;
+  padding-left: 10px;
+  color: #bebbbb;
+}
+
+p {
+  font-size: 14px;
+  padding-left: 10px;
+  font-weight: 100;
+}
+
+.repo-card {
+  border-radius: 12px;
+  height: 150px;
+  width: 90%;
+  padding-top: 0;
+  align-items: center;
+  background: linear-gradient(-45deg, #681f23, #884a62, #040e11, #884a62);
+  background-size: 400%;
+  animation: gradient 15s ease infinite;
+  opacity: 0.75;
+  line-height: 15px;
+}
+
+.default-branch {
+  color: #bebbbb;
+}
+
+.chart {
+  padding-top: 20px;
+  width: 80%;
+  height: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border-radius: 10%;
+}
+
+.user-info_picture {
+  border-radius: 50%;
+  width: 50%;
+  height: 40%;
+  margin-top: 20px;
+}
+
+.user-info {
+  font-size: 15px;
+  color: rgb(212, 206, 218);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  font-size: 18 px;
+  margin-top: 10px;
+  line-height: 37px;
+}
+
+.commits {
+  color: #bebbbb;
+}
+
+.octocat {
+  height: 60px;
+  padding-left: 10px;
+  padding-top: 12px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (min-width: 768px) and(max-width: 991px) {
+  .project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1 fr 1 fr));
+
+    column-gap: 20px;
+  }
+  .repo-card {
+    max-width: 200px;
+  }
+}
+@media (min-width: 991px) {
+  .default-branch {
+    padding-top: 20px;
+  }
+  .repo-name {
+    padding-top: 20px 0 20px 0;
+    font-size: 23px;
+    color: rgb(87, 165, 253);
+  }
+  .media {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .link {
+    padding-top: 23px;
+    font-size: large;
+    padding-left: 10px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    max-width: 650px;
+    margin-top: 30px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    max-height: 500px;
+    line-height: 43px;
+  }
+  .user-info_picture {
+    width: 70%;
+
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .chart {
+    display: flex;
+    align-items: center;
+    width: 230px;
+    margin-top: 40px;
+  }
+
+  .repo-card {
+    border-radius: 12px;
+    height: 200px;
+    width: 300px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-family: 'Roboto';
+    color: rgb(87, 165, 253);
+    padding-left: 50px;
+    font-size: 3rem;
+    padding-bottom: 20px;
+  }
+  .octocat {
+    height: 70px;
+    padding-left: 40px;
+    padding-top: 30px;
+    /* animation: pulse 3s linear infinite; */
+  }
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    width: 100vw;
+    color: white;
+    border-bottom: #bebbbb solid 1px;
+    font-family: 'Roboto';
+  }
 }
