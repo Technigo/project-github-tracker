@@ -5,17 +5,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/4270599b20.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+<body>
+
+<nav class="navigation-bar">
+  <a href="https://github.com/github"><h1>GitHub<img class="logo" src="./images/Octocat.png">Tracker</h1></a>
+</nav>
+
+ 
+
+  
+  <section class="top-section"> 
+
+
+  <div id="user-data"></div>
+  
+  <main> 
+      <section class="grid">
+      <div id="projects" class="projects"></div>
+      </section>
+  </main>
+
+  </section>
+
+      
+  <section class="chart-section">
+        <h2>Progress:</h2>
+        <canvas class="myChart" id="myChart"></canvas>
+  </section>   
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+  
+
 </body>
 </html>

@@ -1,13 +1,18 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+This week we learned
+- How to debug Javascript
+- More about how to use API's to fetch data
+- More about how to get specific data from the JSON response
+- Unit tests: What they are and how to run them
+- Understand the role of Node & NPM for running javascript scripts
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+# The problem
 
-## The problem
+I had a hard time with JavaScript this week (and with styling). I also struggled with time management but have a project to hand in altough it´s not completly finnished, still have a grid layout for desktop & tablet to organize. 
+I used google, Stack Owerflow and YouTube this week as help and of course my team helped me a lot.
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://githubtracker-mariathomasson.netlify.app/
