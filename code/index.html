@@ -4,18 +4,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>LPB GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet"> 
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="topbar">
+    <h1 class="title">GitHub Tracker</h1>
+    <img class="github-logo" src="kisspng-github-pages-logo-repository-fork-github-logo-1-magentys-5b69de71b51265.8586076615336648817417.png" alt="github logo"/>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <div class="info-chart-box">
+      <div id="user-box"></div>
+    
+      <div class="chart-box">
+        <canvas class id="chart"></canvas>
+      </div>
+  </div>
+  
+  <div class="project-container">
+    <h2 class="project-title">Projects:</h2>
+      <main class="github-project" id="projects"></main>
+  </div>
+  
+  <footer>
+      <div class="footer">
+        <a class="linkedin-link" href="https://www.linkedin.com/in/lisa-pousette-blome/" target="_blank">More on me</a>
+      </div>
+  </footer>
+  
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
 </html>
