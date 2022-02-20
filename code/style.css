@@ -1,3 +1,43 @@
-body {
-  background: #FFECE9;
+/* Remove Pre-set Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  text-decoration: none;
 }
+
+body {
+  background: #DCD8DC;
+}
+
+/* Header */
+
+header {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-family: 'Roboto Mono', monospace;
+}
+
+.header-1 {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.header-2 {
+  display: flex;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 40px;
+}
+
+/* Projects Section */
