@@ -1,3 +1,8 @@
 body {
   background: #FFECE9;
 }
+
+.avatar {
+  width: 3rem;
+  border-radius: 50%;
+}
