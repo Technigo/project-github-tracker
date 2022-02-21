@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gluten:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&display=swap"
+    rel="stylesheet">
   <title>Project GitHub Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <header>
+    <h1 class="title">GitHub Tracker</h1>
+    <div class="user-details" id="user-details"></div>
+  </header>
+  <main class="main-grid">
+    <section class="search-container">
+      <label for="request">
+        <input class="input" id="request" type="text" name="request" placeholder="repository name" value=""
+          pattern="[-a-zA-Z ]{1,32}" oninvalid="setCustomValidity('Please enter alphabets only.')" required>
+      </label>
+      <button class="search" id="search">Search</button>
+    </section>
+    <article class="repo-list">
+      <section id="projects"></section>
+    </article>
+    <canvas class="chart" id="chart"></canvas>
+    <button onclick="topFunction()" class="to-top-btn" id="to-top-btn">Go to Top</button>
+  </main>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
+
 </html>
