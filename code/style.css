@@ -1,3 +1,129 @@
+html {
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgb(103, 128, 252) 0%,
+    rgb(245, 95, 125) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  color: black;
+  font-family: "Source Code Pro", monospace;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.github-img {
+  width: 40px;
+  height: 40px;
+}
+
+a {
+  font-size: 18px;
+  color: rgb(117, 35, 252);
+}
+
+a:hover {
+  color: pink;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  padding-top: 20px;
+  /* background-color: rgb(253, 249, 246);
+  opacity: 0.8; */
+}
+
+.user-img {
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  border: whitesmoke solid 1px;
+  align-self: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 1rem;
+  row-gap: 1rem;
+  margin: 30px 0px 30px 0px;
+}
+
+.project-container {
+  background: rgb(253, 249, 246);
+  opacity: 0.75;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 0px 10px 20px;
+}
+
+.project-container:hover {
+  background: rgb(253, 249, 246);
+  opacity: 0.95;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 10px 0px 10px 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.footer-link {
+  color: white;
+}
+
+.footer-logo {
+  width: 75px;
+}
+
+/* ---------- media queries desktop ---------- */
+
+@media (min-width: 1025px) {
+  .info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .user-img {
+    width: 20%;
+  }
+
+  #projects {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
+    max-width: 80%;
+    align-self: center;
+    margin-top: 60px;
+  }
+
+  .chart-container {
+    align-self: center;
+    width: 35%;
+  }
 }
