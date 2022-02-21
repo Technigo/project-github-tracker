@@ -30,8 +30,9 @@ body {
 
 .profile-box {
   display: flex;
-  flex-direction: row;
-  margin-bottom: 24px;
+  flex-direction: column;
+  margin-bottom: 16px;
+  margin-top: 20px;
   align-items: center;
 }
 
@@ -40,18 +41,21 @@ body {
   font-size: 26px;
   line-height: 1.25;
   color: #1c1b1b;
+  margin-block-end: 0;
+  margin-block-start: 10px;
 }
 
 .username {
   font-weight: 200;
   font-size: 20px;
   color: #1c1b1b;
+  margin-block-start: 7px;
 }
 
 .profile-picture {
   border-radius: 50%;
-  height: 57px;
-  width: 57px;
+  height: 82px;
+  width: 82px;
   border: solid 2px rgba(27, 31, 36, 0.15);
   margin-right: 12px;
 }
@@ -71,6 +75,31 @@ body {
 
 .presentation-text {
   color: #24292f;
+  margin-top: 22px;
+}
+
+.edit-btn {
+  text-align: center;
+  border-radius: 6px;
+  line-height: 20px;
+  display: block;
+  width: 100%;
+  background: #f6f8fa;
+  border: 1px solid;
+  padding: 5px 16px;
+  transition: 0.2s;
+  box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
+  border: rgba(27, 31, 36, 0.15);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.project-1 {
+  border: 1px solid #d0d7de;
+}
+
+.project-2 {
+  border: 1px solid #d0d7de;
 }
 
 /* TABLET */
