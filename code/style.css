@@ -1,3 +1,21 @@
-body {
-  background: #FFECE9;
+:root {
+  background: #ffffff;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* body {
+
+} */
+
+.navbar {
+  background: #24292f;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.profile-box {
+  display: flex;
+  flex-direction: row;
 }
