@@ -11,28 +11,24 @@
 }
 
 body {
-  background: #DCD8DC;
+  background: white;
+  font-family: 'Roboto Mono', monospace;
+  padding: 9vmin;
+}
+
+a {
+  color: black;
+  text-decoration: underline;
 }
 
 /* Header */
 
 header {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  font-family: 'Roboto Mono', monospace;
-}
-
-.header-1 {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
-}
-
-.header-2 {
-  display: flex;
-  /* justify-content: center;
-  align-items: center; */
+  gap: 2vmin;
+  justify-content: center;
+  margin-bottom: 5vmin;
 }
 
 .avatar {
@@ -41,3 +37,67 @@ header {
 }
 
 /* Projects Section */
+
+/* Projects Accordion Section */
+.projects {
+  /* border-radius: 5px; */
+  overflow: hidden;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-header {
+  background-color: #2D2E2F;
+  padding: 15px 0 20px;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.project-wrapper {
+  margin: 5vmin 0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.project-header {
+  color: #2d2e2f;
+  background-color: #DCD8DC;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  text-align: left;
+  padding: 10px 25px;
+  width: 100%;
+  border: none;
+  outline: none;
+  /* border-radius: 5px; */
+}
+
+.project-info {
+  display: none;
+  color: #2d2e2f;
+  background-color: #bfb8b9;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 10px 25px;
+}
+
+/* Adding background color to button when clicked on and when moused over */
+.project-header:hover {
+    background-color: #726a6a;
+    color: #DCD8DC;
+    cursor: pointer;
+  }
+
+/* Add .active in JS */
+.project-header--active {
+  background-color: #726a6a;
+  color: #DCD8DC;
+  cursor: pointer;
+  border-radius: 0;
+}
