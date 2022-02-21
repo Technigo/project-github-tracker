@@ -3,6 +3,7 @@ const projects = document.getElementById('projects')
 const username = 'SteppbySteph'
 const USER_PROFILE = `https://api.github.com/users/${username}`
 const USER_REPO = `https://api.github.com/users/${username}/repos`
+//let repoName
 
 //const USER_URL =('https://api.github.com/users/SteppbySteph/repos')
 // const REPOS_URL = 
@@ -33,17 +34,22 @@ getProfile()
 
 
 //----FETCHING ALL REPOS----//
-const fetchUserRepos = () => {
+const getRepos = () => {
     fetch(USER_REPO)
         .then(res => res.json())
         .then(data => {
-            console.log('repos', data)
+           //console.log('repos', data)
+        
+            data.forEach((item) => {
+            console.log('repo', item.name)
 
-            const allRepos = data.length
-            projects.innerHTML += `${allRepos}`  
+            const repoName = item.name
+            projects.innerHTML += `${repoName}` 
+         })
+         
         })
 
     
 }
 
-fetchUserRepos()
+getRepos()
