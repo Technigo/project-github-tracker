@@ -5,17 +5,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <!--CHART LIBRARY-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="./style.css" />
+
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <nav class="topnav">
+    <div class="logo-container">
+      <i class="fab fa-github fa-3x"></i>
+      <h4>GitHub Tracker</h4>
+    </div>
+    <!--<section class="search-container">
+      <form class="example">
+        <input type="text" placeholder="Search.." name="search" id="inputValue">
+        <button type="submit" id="button"><i class="fa fa-search"></i></button>
+      </form>
+    </section>-->
+  </nav>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <section class="container">
+    <div class="statistics-container">
+      <header id="header" class="user-information"></header>
+      <main id="projects" class="project-container"></main>
+    </div>
+
+    <div class="chart-container">
+      <h2>Project Statistics</h2>
+      <div class="doughnut">
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+  </section>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
 </html>
