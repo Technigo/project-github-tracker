@@ -5,16 +5,15 @@ const projectsChart = document.getElementById('projectsChart').getContext('2d')
 
 // what's not working below is commented out
 // global options
-Chart.defaults.font.family = 'Lato';
-Chart.defaults.font.size = 18;
-Chart.defaults.color = 'blue';
-
+Chart.defaults.font.family = 'Lato'
+Chart.defaults.font.size = 18
+Chart.defaults.color = 'white'
 
 const drawProjectsChart = (amount) => {
     new Chart(projectsChart, {
         type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
-            labels: ['Completed', 'To do'],
+            labels: ['Done', 'To do'],
             datasets: [{
                 // label: 'Projects',
                 data: [
@@ -22,18 +21,27 @@ const drawProjectsChart = (amount) => {
                     19 - amount
                 ],
                 backgroundColor: [
-                    'red',
-                    'green'
-                ],
-                borderWidth: 2,
-                borderColor: 'black',
-                hoverBorderWidth: 5,
-                hoverBorderColor: 'brown'
+                    '#DBE2EF',
+                    '#3F72AF'
+                ]
             }
             ]
         },
         options: {
             indexAxis: 'y', // for horizontal bar graph instead of vertical
+            scales: {
+                // grid lines are not shown for y axis
+                y: {
+                    grid: {
+                        display: false,
+                        borderColor: 'white',
+                    }
+                },
+                // x axis is not shown
+                x: {
+                    display: false,
+                }
+            },
             plugins: {
                 title: {
                     display: true,
@@ -44,7 +52,7 @@ const drawProjectsChart = (amount) => {
                     display: false,
                     position: 'top',
                     labels: {
-                        fontColor: 'red'
+                        fontColor: '#112D4E'
                     }
                 },
                 layout: {
@@ -56,7 +64,19 @@ const drawProjectsChart = (amount) => {
                     }
                 },
                 tooltip: {
-                    enabled: true
+                    backgroundColor: '#F9F7F7',
+                    bodyColor: '#112D4E',
+                    titleColor: '#112D4E',
+                    titleAlign: 'center',
+                    bodyAlign: 'center',
+                    titleFont: {
+                        weight: '700'
+                    },
+                    bodyFont: {
+                        weight: '700'
+                    },
+                    cornerRadius: 4,
+                    displayColors: false
                 }
             }
         }
@@ -64,47 +84,59 @@ const drawProjectsChart = (amount) => {
 }
 
 
-const drawLanguagesChart = (htmlPercentage, cssPercentage, jsPercentage, idChart) => {
+// const titleTooltip = (tooltipItems) => {
+//     return 'Test'
+// }
+// const labelTooltip = ()
+
+const drawLanguagesChart = (html, css, js, idChart) => {
 
     const languagesChart = document.getElementById(idChart).getContext('2d')
 
 
     new Chart(languagesChart, {
-        type: 'pie', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        type: 'polarArea', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
-            labels: ['HTML', 'CSS', 'JavaScript'],
+            labels: ['HTML', 'CSS', 'JS'],
             datasets: [{
-                label: 'Languages', // où cela apparaît-il??
                 data: [
-                    htmlPercentage,
-                    cssPercentage,
-                    jsPercentage
+                    html,
+                    css,
+                    js
                 ],
                 backgroundColor: [
-                    'red',
-                    'green',
-                    'yellow'
-                ],
-                borderWidth: 2,
-                borderColor: 'black',
-                hoverBorderWidth: 5,
-                hoverBorderColor: 'brown'
+                    '#DBE2EF',
+                    '#3F72AF',
+                    '#112D4E'
+                ]
             }
             ]
         },
         options: {
+            scales: {
+                r: {
+                  ticks: {
+                    display: false // removes vertical numbers
+                  },
+                  grid: {
+                    display: false // removes circular lines
+                  }
+                }
+              },
             plugins: {
                 title: {
-                    display: false,
-                    text: 'Languages',
-                    fontSize: 24
+                    display: false
                 },
                 legend: {
-                    display: false,
-                    position: 'top',
+                    display: true,
+                    position: 'left',
                     labels: {
-                        fontColor: 'red'
-                    }
+                        color: '#112D4E',
+                        usePointStyle: true,
+                        pointStyle: 'rect',
+                    },
+                    // removes on click event: not able to strike through a label by clicking on it
+                    onClick: null,
                 },
                 layout: {
                     padding: {
@@ -115,7 +147,30 @@ const drawLanguagesChart = (htmlPercentage, cssPercentage, jsPercentage, idChart
                     }
                 },
                 tooltip: {
-                    enabled: true
+                    enabled: false,
+                    backgroundColor: '#F9F7F7',
+                    bodyColor: '#112D4E',
+                    titleColor: '#112D4E',
+                    bodyFont: {
+                        weight: '700'
+                    },
+                    cornerRadius: 4
+                    // callbacks: {
+                    //     body: titleTooltip
+
+                    //     // label: function(context) {
+                    //     //     let label = context.dataset.label || '';
+
+                    //     //     if (label) {
+                    //     //         label += ': ';
+                    //     //     }
+                    //     //     if (context.parsed.y !== null) {
+                    //     //         label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                    //     //     }
+                    //     //     return label;
+                    //     // }                    
+                    // }
+
                 }
             }
         }

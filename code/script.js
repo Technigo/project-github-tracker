@@ -1,7 +1,7 @@
 const username = 'nadialefebvre'
 const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
-const profile = document.getElementById('profile')
+const userProfile = document.getElementById('userProfile')
 const projects = document.getElementById('projects')
 const sortMenu = document.getElementById('sortMenu')
 
@@ -28,13 +28,15 @@ const openTab = (event, tabName) => {
 
 
 
-const createProfile = () => {
+
+
+const createHeader = () => {
     fetch(API_USER, options)
         .then(res => res.json())
         .then(data => {
-            profile.innerHTML = `
-                <h2>${data.name}</h2>
-                <img src="${data.avatar_url}" class="profile-picture">
+            userProfile.innerHTML = `
+                    <img src="${data.avatar_url}" class="profile-picture">
+                    <h2>${data.name}</h2>
             `
         })
 }
@@ -44,7 +46,6 @@ const createRepoCard = (reposToUse = null) => {
         .then(res => res.json())
         .then(data => {
             const selectSorting = () => {
-                console.log(sortMenu.value)
                 if (sortMenu.value === 'Z to A') {
                     sortByNameZA(filteredRepos)
                 } else if (sortMenu.value === 'Recent to old') {
@@ -54,60 +55,28 @@ const createRepoCard = (reposToUse = null) => {
                 } else {
                     sortByNameAZ(filteredRepos)
                 }
-                console.log(filteredRepos)
                 projects.innerHTML = ''
                 createRepoCard(filteredRepos)
             }
 
             let filteredRepos
-            if (reposToUse === null)
-            {
+            if (reposToUse === null) {
                 filteredRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'))
+                drawProjectsChart(filteredRepos.length)
                 sortMenu.addEventListener('change', selectSorting)
             } else {
                 filteredRepos = reposToUse
-            }    
+            }
 
-            //drawProjectsChart(filteredRepos.length)
             filteredRepos.forEach(repo => {
+                setRepoCardStructure(repo)
+
                 const options = { day: 'numeric', month: 'long', year: 'numeric' }
-                projects.innerHTML += `
-                    <div class="tab-card">
-                        <div class="tab" id="${repo.name}-tab">
-                            <button class="tab-button" onclick="openTab(event, '${repo.name}-infos')" id="${repo.name}-defaultOpen">${repo.name}</button>
-                            <button class="tab-button" onclick="openTab(event, '${repo.name}-languages')">Languages</button>
-                            <button class="tab-button" onclick="openTab(event, '${repo.name}-commitMessages')">Commits</button>
-                            <button class="tab-button" onclick="openTab(event, '${repo.name}-pullComments')">Pull request</button>
-                        </div>
-
-                        <div id="${repo.name}-infos" class="tab-content">
-                            <h3>Name: ${repo.name}</h3>
-                            <div id=${repo.name}-repoInfos></div>
-                        </div>
-
-                        <div id="${repo.name}-languages" class="tab-content" style="display: none">
-                            <h3>Languages</h3>
-                            <div id=${repo.name}-repoLanguages></div>
-                        </div>
-
-                        <div id="${repo.name}-commitMessages" class="tab-content" style="display: none">
-                            <h3>Last messages</h3>
-                            <div id=${repo.name}-repoCommitMessages></div>
-                        </div>
-
-                        <div id="${repo.name}-pullComments" class="tab-content" style="display: none">
-                            <h3>Code review comment:</h3>
-                            <div id=${repo.name}-repoPullComments>(none)</div>
-                        </div>
-                    </div>
-                `
-
                 document.getElementById(`${repo.name}-repoInfos`).innerHTML += `
                     <p>URL: <a href="${repo.html_url}">${repo.name}</a></p>
                     <p>Default branch : ${repo.default_branch}</p>
                     <p>Last push: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
                 `
-
                 // Get the element with id="defaultOpen" and click on it
                 document.getElementById(`${repo.name}-defaultOpen`).click()
 
@@ -118,6 +87,38 @@ const createRepoCard = (reposToUse = null) => {
         })
 }
 
+const setRepoCardStructure = (repo) => {
+    projects.innerHTML += `
+        <div class="tab-card">
+            <div class="tab" id="${repo.name}-tab">
+                <button class="tab-button" onclick="openTab(event, '${repo.name}-infos')" id="${repo.name}-defaultOpen">${repo.name}</button>
+                <button class="tab-button" onclick="openTab(event, '${repo.name}-languages')">Languages</button>
+                <button class="tab-button" onclick="openTab(event, '${repo.name}-commitMessages')">Commits</button>
+                <button class="tab-button" onclick="openTab(event, '${repo.name}-pullComments')">Pull request</button>
+            </div>
+
+            <div id="${repo.name}-infos" class="tab-content">
+                <h3>Name: ${repo.name}</h3>
+                <div id=${repo.name}-repoInfos></div>
+            </div>
+
+            <div id="${repo.name}-languages" class="tab-content" style="display: none">
+                <h3>Languages</h3>
+                <div id=${repo.name}-repoLanguages></div>
+            </div>
+
+            <div id="${repo.name}-commitMessages" class="tab-content" style="display: none">
+                <h3>Commit messages</h3>
+                <div id=${repo.name}-repoCommitMessages></div>
+            </div>
+
+            <div id="${repo.name}-pullComments" class="tab-content" style="display: none">
+                <h3>Code review comment:</h3>
+                <div id=${repo.name}-repoPullComments>(none)</div>
+            </div>
+        </div>
+    `
+}
 
 const addCommits = (repo) => {
     fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
@@ -127,7 +128,7 @@ const addCommits = (repo) => {
             const userCommits = data.filter((item) => item.commit.author.name === 'Nadia Lefebvre')
 
             document.getElementById(`${repo.name}-repoInfos`).innerHTML += `
-                <p>Number of commits from the user: ${userCommits.length} on a total of ${data.length}</p>
+                <p>Number of commits for this fork: ${userCommits.length} on a total of ${data.length}</p>
             `
 
             // const userFiveLastCommits = userCommits.slice(1, 5)
@@ -145,23 +146,20 @@ const addLanguageChart = (repo) => {
     fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, options)
         .then(res => res.json())
         .then(languages => {
-            // many variables for percentage calculation : needs to find a way to add % now...
+            // variables so data will be 0 and not undefined if = 0
             const html = languages.HTML === undefined ? 0 : languages.HTML
             const css = languages.CSS === undefined ? 0 : languages.CSS
             const js = languages.JavaScript === undefined ? 0 : languages.JavaScript
-            const htmlPercentage = Math.round(html / (html + css + js) * 1000) / 10
-            const cssPercentage = Math.round(css / (html + css + js) * 1000) / 10
-            const jsPercentage = Math.round(js / (html + css + js) * 1000) / 10
 
             const idChart = `${repo.name}Chart`
 
             document.getElementById(`${repo.name}-repoLanguages`).innerHTML += `
-            <div class="chart-container">
+            <div class="languages-chart">
             <canvas id=${idChart}></canvas>
             </div>
 `
 
-            drawLanguagesChart(htmlPercentage, cssPercentage, jsPercentage, idChart)
+            drawLanguagesChart(html, css, js, idChart)
         })
 }
 
@@ -190,14 +188,14 @@ const addCodeReviewInfos = (repo, pull, reviewID) => {
         .then(data => {
             document.getElementById(`${repo.name}-repoPullComments`).innerHTML = `
                 <p>${data.body}</p>
-                <p><a href="${pull.html_url}">Full code review</a></p>
+                <p><a href="${pull.html_url}">Pull request with code review</a></p>
             `
         })
 }
 
 
 const sortByNameAZ = (filteredRepos) => {
-    filteredRepos.sort(function(a, b) {
+    filteredRepos.sort(function (a, b) {
         const nameA = a.name.toLowerCase() // ignore upper and lowercase
         const nameB = b.name.toLowerCase() // ignore upper and lowercase
         if (nameA < nameB) {
@@ -212,7 +210,7 @@ const sortByNameAZ = (filteredRepos) => {
 }
 
 const sortByNameZA = (filteredRepos) => {
-    filteredRepos.sort(function(a, b) {
+    filteredRepos.sort(function (a, b) {
         const nameA = a.name.toLowerCase() // ignore upper and lowercase
         const nameB = b.name.toLowerCase() // ignore upper and lowercase
         if (nameA > nameB) {
@@ -227,33 +225,19 @@ const sortByNameZA = (filteredRepos) => {
 }
 
 const sortByDateRecentOld = (filteredRepos) => {
-    filteredRepos.sort(function(a, b) {
+    filteredRepos.sort(function (a, b) {
         return new Date(b.created_at) - new Date(a.created_at)
     })
 }
 
 const sortByDateOldRecent = (filteredRepos) => {
-    filteredRepos.sort(function(a, b) {
+    filteredRepos.sort(function (a, b) {
         return new Date(a.created_at) - new Date(b.created_at)
     })
 }
 
 
-// const selectSorting = (filteredRepos) => {
-//     console.log(sortMenu.value)
-//     if (sortMenu.value === 'Z to A') {
-//         sortByNameZA(filteredRepos)
-//     } else if (sortMenu.value === 'Recent to old') {
-//         sortByDateRecentOld(filteredRepos)
-//     } else if (sortMenu.value === 'Old to recent') {
-//         sortByDateOldRecent(filteredRepos)
-//     } else {
-//         sortByNameAZ(filteredRepos)
-//     }
-// }
-
-
-createProfile()
+createHeader()
 createRepoCard()
 
 

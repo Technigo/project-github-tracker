@@ -1,55 +1,107 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  font-family: "Lato", sans-serif;
+  background-color: #112d4e;
+  color: white;
+  padding: 20px;
 }
 
-img {
-  max-width: 50px;
+a {
+  color: #3f72af;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.repo {
-  border: solid 1px red;
-  padding: 10px;
-  margin-bottom: 10px;
+.main-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.chart-container {
-  width: 50%;
-  min-width: 100px;
+.header-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-box .title {
+  background-color: #DBE2EF;
+  padding: 20px;
+  color: #3f72af;
+  border-radius: 4px;
+}
+
+.user-profile {
+  text-align: center;
+}
+
+.user-profile img {
   max-width: 200px;
+  border-radius: 50%;
 }
 
-.chart-container.main {
-  width: 100%;
-  min-width: 100px;
-  max-width: 400px;
+.sorting-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 
+select {
+  display: flex;
+  align-self: center;
+  border: transparent;
+  border-radius: 2px;
+  outline: none;
+  font-size: inherit;
+  color: #112d4e;
+  width: fit-content;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.languages-chart {
+  width: 75%;
+  /* min-width: 250px;
+  max-width: 300px; */
+}
+
+.projects-chart {
+  width: 275px;
+  /* width: auto; */
+  margin-bottom: 20px;
 }
 
 .projects {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: #112d4e;
 }
 
-
-
-* {box-sizing: border-box}
-body {font-family: "Lato", sans-serif;}
+.tab-card {
+  margin: 20px;
+  width: 500px;
+}
 
 /* Style the tab */
 .tab {
   float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  /* border: 1px solid #3f72af; */
+  background-color: #f9f7f7;
   width: 30%;
   height: 300px;
-  margin-bottom: 20px;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
   display: block;
   background-color: inherit;
-  color: black;
+  color: #112d4e;
   padding: 22px 16px;
   width: 100%;
   border: none;
@@ -62,22 +114,46 @@ body {font-family: "Lato", sans-serif;}
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #dbe2ef;
 }
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #3f72af;
+  color: white;
 }
 
 /* Style the tab content */
 .tab-content {
   float: left;
-  background-color: #f1f1f1;
+  background-color: #f9f7f7;
   padding: 0px 12px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #3f72af; */
   width: 70%;
   border-left: none;
   height: 300px;
   overflow: auto;
+}
+
+@media only screen and (min-width: 800px) {
+  .header-box {
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+  }
+
+  .header-box .title {
+    width: 175px;
+text-align: center;
+  }
+
+  .user-profile {
+    width: 275px;
+  }
+
+  .projects-chart {
+    width: 275px;
+  }
+  
+  
 }
