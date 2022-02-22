@@ -8,7 +8,6 @@ const sortingDropdown = document.getElementById('sortingDropdown')
 
 
 
-
 const openTab = (event, tabName) => {
     let i
     let repoContent = event.currentTarget.parentNode.parentNode.getElementsByClassName("repo-content")
@@ -23,16 +22,6 @@ const openTab = (event, tabName) => {
     event.currentTarget.className += " active"
 }
 
-
-
-
-
-
-
-
-
-
-
 const createHeader = () => {
     fetch(API_USER)
         .then(res => res.json())
@@ -45,16 +34,16 @@ const createHeader = () => {
 }
 
 const createRepoCard = (reposToUse = null) => {
-    fetch(API_REPOS) // options object is passed as 2nd argument to fetch() function. // TO REMOVE BEFORE GIT PUSH
+    fetch(API_REPOS) // {} : TO REMOVE BEFORE GIT PUSH
         .then(res => res.json())
         .then(data => {
             const selectSorting = () => {
                 if (sortingDropdown.value === 'Z to A') {
                     sortByNameZA(filteredRepos)
-                } else if (sortingDropdown.value === 'Recent to old') {
-                    sortByDateRecentOld(filteredRepos)
-                } else if (sortingDropdown.value === 'Old to recent') {
-                    sortByDateOldRecent(filteredRepos)
+                } else if (sortingDropdown.value === 'Latest') {
+                    sortDateLatest(filteredRepos)
+                } else if (sortingDropdown.value === 'Oldest') {
+                    sortDateOldest(filteredRepos)
                 } else {
                     sortByNameAZ(filteredRepos)
                 }
@@ -192,8 +181,8 @@ const addCodeReviewInfos = (repo, pull, reviewID) => {
         .then(data => {
             document.getElementById(`${repo.name}-repoPullComments`).innerHTML = `
                 <p><a href="${pull.html_url}">Pull request with code review</a></p>
-                <h5>Code review comment</h5>    
-                <p>"${data.body}"</p>
+                <h5>Code review comment (if any)</h5>    
+                <p>${data.body}</p>
             `
         })
 }
@@ -229,13 +218,13 @@ const sortByNameZA = (filteredRepos) => {
     })
 }
 
-const sortByDateRecentOld = (filteredRepos) => {
+const sortDateLatest = (filteredRepos) => {
     filteredRepos.sort(function (a, b) {
         return new Date(b.created_at) - new Date(a.created_at)
     })
 }
 
-const sortByDateOldRecent = (filteredRepos) => {
+const sortDateOldest = (filteredRepos) => {
     filteredRepos.sort(function (a, b) {
         return new Date(a.created_at) - new Date(b.created_at)
     })

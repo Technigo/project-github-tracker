@@ -16,46 +16,56 @@
 </head>
 
 <body>
-  <header class="header-box" id="headerBox">
-    <div class="user-box" id="userBox"></div>
-      <h1 class="title">GitHub Tracker</h1>
-
+  
+  <header 
+    class="header-box" 
+    id="headerBox">
+    <div 
+      class="user-box" 
+      id="userBox">
+    </div>
+    <h1 class="project-title">GitHub Tracker</h1>
     <div class="repos-chart">
       <canvas id="reposChart"></canvas>
     </div>
   </header>
 
   <main class="main-box">
-    <select class="sorting-dropdown" id="sortingDropdown">
+    <select 
+      class="sorting-dropdown" 
+      id="sortingDropdown">
       <option value="A to Z">A to Z</option>
       <option value="Z to A">Z to A</option>
-      <option value="Recent to old">Recent to old</option>
-      <option value="Old to recent">Old to recent</option>
+      <option value="Latest">Latest</option>
+      <option value="Oldest">Oldest</option>
     </select>
 
-    <section class="repos-box" id="reposBox"></section>
+    <section 
+      class="repos-box" 
+      id="reposBox">
+    </section>
   </main>
+
   <footer class="footer-box">
     <span>Created by Nadia Lefebvre</span>
-      <a 
-        href="https://www.linkedin.com/in/nadiainsweden/" 
-        target="_blank" 
-        title="Linkedin Nadia Lefebvre" 
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a 
-        href="https://github.com/nadialefebvre" 
-        target="_blank" 
-        title="GitHub Nadia Lefebvre" 
-        <i class="fab fa-github"></i>
-      </a>
-      <a 
-        href="https://stackoverflow.com/users/17550223/nadia-lefebvre" 
-        target="_blank"
-        title="Stack Overflow Nadia Lefebvre" 
-        <i class="fab fa-stack-overflow"></i>
-      </a>
-
+    <a 
+      href="https://www.linkedin.com/in/nadiainsweden/" 
+      target="_blank" 
+      title="Linkedin Nadia Lefebvre"> 
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a 
+      href="https://github.com/nadialefebvre" 
+      target="_blank" 
+      title="GitHub Nadia Lefebvre">
+      <i class="fab fa-github"></i>
+    </a>
+    <a 
+      href="https://stackoverflow.com/users/17550223/nadia-lefebvre" 
+      target="_blank"
+      title="Stack Overflow Nadia Lefebvre">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
   </footer>
 
   <script src="./chart.js"></script>

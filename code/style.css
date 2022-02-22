@@ -6,7 +6,6 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #112d4e;
   color: white;
-  /* padding-top: 30px; */
   margin: 0;
 }
 
@@ -14,10 +13,6 @@ a {
   color: #3f72af;
   font-weight: bold;
   text-decoration: none;
-}
-
-h5 {
-  margin: 0;
 }
 
 .main-box {
@@ -33,25 +28,32 @@ h5 {
   align-items: center;
 }
 
-.header-box .title {
-  background-color: #dbe2ef;
-  padding: 20px;
-  color: #3f72af;
-  border-radius: 4px;
-}
-
 .user-box {
   text-align: center;
   margin-top: 2rem;
 }
 
 .user-picture {
-  max-width: 200px;
+  width: 12.5rem;
   border-radius: 50%;
 }
 
 .user-box h2 {
   margin: 0;
+}
+
+.project-title {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1.25rem;
+  background-color: #dbe2ef;
+  color: #3f72af;
+  border-radius: 2px;
+}
+
+.repos-chart {
+  width: 18rem;
 }
 
 .sorting-dropdown {
@@ -61,17 +63,14 @@ h5 {
   border-radius: 2px;
   outline: none;
   font-size: inherit;
+  background-color: #dbe2ef;
   color: #112d4e;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   text-align: center;
-  margin: 20px 0;
-  padding: 4px;
-}
-
-.repos-chart {
-  width: 275px;
-  /* width: auto; */
-  /* margin-bottom: 20px; */
+  margin: 1.25rem 0;
+  padding: 0.25rem 0.75rem;
 }
 
 .repos-box {
@@ -80,28 +79,26 @@ h5 {
   flex-wrap: wrap;
   justify-content: space-evenly;
   color: #112d4e;
+  padding: 1.25rem;
 }
 
 .repo-card {
-  margin: 20px;
-  width: 400px;
+  margin: 1.25rem;
+  width: 25rem;
 }
 
-/* Style the tabs */
 .repo-tabs {
   float: left;
-  /* border: 1px solid #3f72af; */
   background-color: #dbe2ef;
   width: 30%;
-  height: 300px;
+  height: 20rem;
 }
 
-/* Style the buttons inside repo-tabs */
 .repo-tabs button {
   display: block;
   background-color: inherit;
   color: #112d4e;
-  padding-left: 6px;
+  padding-left: 0.4rem;
   width: 100%;
   height: 25%;
   border: none;
@@ -109,29 +106,25 @@ h5 {
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
-/* Change background color of buttons on hover */
 .repo-tabs button:hover {
   background-color: #f9f7f7;
 }
 
-/* Create an active/current "repo-tabs button" class */
 .repo-tabs button.active {
   background-color: #3f72af;
   color: white;
 }
 
-/* Style the tab content */
 .repo-content {
   float: left;
   background-color: #f9f7f7;
-  padding: 0px 12px;
-  /* border: 1px solid #3f72af; */
+  padding: 0 0.75rem;
   width: 70%;
   border-left: none;
-  height: 300px;
+  height: 20rem;
   overflow: auto;
 }
 
@@ -144,7 +137,7 @@ h5 {
   justify-content: center;
   align-items: center;
   -moz-column-gap: 0.3rem;
-  column-gap: 0.3rem;
+       column-gap: 0.3rem;
   padding: 1rem 0;
   font-size: 1rem;
 }
@@ -154,18 +147,13 @@ h5 {
 }
 
 @media only screen and (min-width: 768px) {
-  /* .repos-box {
-    align-self: center;
-    width: 1280px;
-  } */
-  
   .repo-card {
-    width: 300px;
+    width: 20rem;
   }
 
   .repo-tabs,
   .repo-content {
-    height: 300px;
+    height: 16rem;
   }
 }
 
@@ -173,23 +161,13 @@ h5 {
   .header-box {
     flex-direction: row;
     justify-content: space-between;
-    /* align-items: center; */
-  }
-
-  .header-box .title {
-    width: 175px;
-    text-align: center;
   }
 
   .user-box {
-    width: 275px;
+    width: 18rem;
   }
 
   .repos-chart {
-    width: 275px;
+    width: 18rem;
   }
-/* 
-  .repo-card {
-    width: 300px;
-  } */
 }
