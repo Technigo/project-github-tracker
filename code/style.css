@@ -1,3 +1,211 @@
+/* GLOBAL STYLES */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
-  background: #FFECE9;
+  background: white;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+header a {
+  text-decoration: none;
+}
+
+.fab {
+  color: white;
+  font-size: 22px;
+  margin-right: 4px;
+}
+
+
+
+
+/* USER-SECTION */
+.user {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.userImage_Text {
+  display: flex;
+  align-items: flex-end;
+}
+
+.userImageDiv {
+  display: inline-flex;
+}
+
+.userImage {
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  width: 57px;
+  margin-right: 10px;
+}
+
+.userTextDiv {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.userTextDiv p {
+  margin: 0;
+}
+
+.myName {
+  font-size: 26px;
+}
+
+.userName {
+  font-size: 20px;
+  font-style: lighter;
+  font-weight: 100;
+}
+
+.sort {
+  margin-left: 25px;
+  height: 25px;
+  background-color: #F3F4F6;
+  border: 0.75px solid lightgray;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+
+/* PROJECTS-SECTION */
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.projects-div {
+  border: 0.75px solid lightgray;
+  border-radius: 4px;
+  padding: 5px 16px;
+  margin: 0 16px;
+}
+
+.projects-div a {
+  display: block;
+  margin-bottom: 8px;
+  color: #0969DA;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.projects p, ul {
+  font-size: 16px;
+  margin: 0;
+}
+
+.fas {
+  color:#0969DA;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+/* Toggle between show/hide the Commit-messages */
+.projects ul {
+  display: none;
+  padding-left: 16px;
+  margin-top: 2px;
+}
+
+.projects ul.active {
+  display: block;
+}
+
+/* CHART */
+.chart {
+  margin-top: -60px;
+  margin-left: 16px;
+  width: 330px;
+  height: 165px;
+}
+
+/* ***********MEDIA QUERIES*************** */
+
+/* TABLET */
+@media (min-width: 667px) {
+
+  header {
+    justify-content: flex-start;
+    padding-left: 16px;
+  }
+
+
+
+  main {
+    display:flex;    
+  }
+
+  .user {
+    align-items: flex-start;
+  }
+
+  .userImage_Text {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .userImage {
+    width: 168px;
+  }
+
+  .myName {
+    font-size: 29px;
+  }
+  
+  .userName {
+    font-size: 26px;
+  }
+
+  .projects {
+    flex-grow: 2;
+    padding-top: 16px;
+    padding-right: 16px;
+  }
+
+  .projects-div {
+    margin: 0;
+  }
+
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+
+  .userImage {
+    width: 216px;
+  }
+
+  .chart {
+    width: 380px;
+    height: 190px;
+  }
+
 }
