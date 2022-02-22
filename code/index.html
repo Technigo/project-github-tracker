@@ -7,7 +7,7 @@
   <title>Emma´s Project GitHub Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -18,18 +18,38 @@
   </header>
 
   <main id="projects">
+ 
     <section class="section-overwiew flex" id="section-overwiew">
       <div id="profile-picture">Profile picture</div>
-      <div>Chart</div>
+      <div class="chart">        
+        <!-- This will be used to draw the chart 👇 -->
+        <canvas id="chart"></canvas>
+      </div>
     </section>
 
-    <section class="section-projects" id="section-projects"></section>
+    <section class="section-projects" id="section-projects">
+
+    </section>
+  
   </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <footer>
+    <div class="footer-items">
+      <a href="https://github.com/emmahogberg88">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/emmahogberg/">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://twitter.com/Emm4_dev">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+  </footer> 
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/c7081c8e9b.js" crossorigin="anonymous"></script>
 </body>
 </html>

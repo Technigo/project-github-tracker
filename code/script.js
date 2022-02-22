@@ -11,39 +11,39 @@ const options = {
 }
 
 
-//fetch data from GitHub repo//
+//--fetch data from GitHub repo to use in functions for displaying data--//
 const gitHubData = () => {
 
 fetch(URL_REPO, options)
   .then(res => res.json())
   .then(data => {
 
-  getUserData(data)
-  getRepoData(data)
+  userData(data)
+  repoData(data)
 
   })
+  .catch(err => console.error(err))
 }
 
-
-const getUserData = (data) => {
+//--get and display user information--//
+const userData = (data) => {
 
 //Get image from user profile and display on website
   document.getElementById('profile-picture').innerHTML = `
-  <img src='${data[0].owner.avatar_url}' alt='image of emmahogberg88 at GitHub' >
+  <img class="box-shadow" src='${data[0].owner.avatar_url}' alt='image of emmahogberg88 at GitHub'>
   `
   //Get url to user profile and show on website
   document.getElementById('username').innerHTML = `
-  <a class="header" href='${data[0].html_url}'>${username}</a>
+  <h4><a class="header" href='${data[0].html_url}'>${username}</a></h4>
   `
 }
 
-
-const getRepoData = (data) => {
+//--display repo information--//
+const repoData = (data) => {
 
   //Filter all technigoProjects to get specific info about each repo.
 //Get technigo projects by filtering data by repos that starts with "project-"
   const technigoProjects = data.filter(repo => repo.name.startsWith('project-'))
-  console.log('array with technigo projects:', technigoProjects)
 
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
@@ -62,10 +62,10 @@ const getRepoData = (data) => {
   
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
   document.getElementById('section-projects').innerHTML += `
-  <div class="section-projects__card flex">
-    <a class="reponame-link" href='${projectUrl}'>${reponame}</a>
-    <p class="repo-info">Default branch: ${defaultBranch}</p>
-    <p class="repo-info">Latest update: ${latestUpdateRepo}</p>
+  <div class="section-projects__card box-shadow">
+    <h3 class="repo-title bold-text"><a href='${projectUrl}'>${reponame}</a></h3>
+    <p class="repo-info"><span class="bold-text">Default branch:</span> ${defaultBranch}</p>
+    <p class="repo-info"><span class="bold-text">Latest update:</span> ${latestUpdateRepo}</p>
     <p class="repo-info" id=commits-${repo.name}>Commits</p>
     <p class="repo-info" id=comments-${repo.name}>Comments</p>
   
@@ -76,9 +76,9 @@ const getRepoData = (data) => {
   fetch(`https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`, options)
     .then(res => res.json())
     .then(data => {
+      
       data.forEach( repo => {
         if(repo.user.login === username) {
-          console.log('data from Technigo', data)
           let reponame = repo.base.repo.name 
           //get url for commits to use in new fetch
           const commitsUrl = repo.commits_url
@@ -88,7 +88,8 @@ const getRepoData = (data) => {
           getComments(commentsUrl, reponame) 
 
         } else if (repo.user.login === 'tiiliu' && reponame === 'project-chatbot') {
-          getCommits(repo.commits_url, 'project-chatbot')        
+          getCommits(repo.commits_url, 'project-chatbot')   
+          getComments(repo.review_comments_url, reponame)      
             
         } else {
           document.getElementById(`commits-${reponame}`).innerHTML = 'No commits for this repo'
@@ -96,25 +97,27 @@ const getRepoData = (data) => {
         }
       })
     })
+    .catch(err => console.error(err))
   })
 }
+
 
 const getCommits = (commitsUrl, reponame) => {
   fetch(commitsUrl, options)
   .then(res => res.json())
   .then(data => {
-    console.log('commits', data, reponame)
-    document.getElementById(`commits-${reponame}`).innerHTML = `Amount of commits: ${data.length}`
+    document.getElementById(`commits-${reponame}`).innerHTML = `<span class="bold-text">Amount of commits:</span> ${data.length}`
   })
+  .catch(err => console.error(err))
 }
 
 const getComments = (commentsUrl, reponame) => {
   fetch(commentsUrl, options)
   .then(res => res.json())
   .then(data => {
-    console.log('comments', data, reponame)
-    document.getElementById(`comments-${reponame}`).innerHTML = `Comments from: ${data[0].user.login}`
+    document.getElementById(`comments-${reponame}`).innerHTML = `<span class="bold-text">Reviewed by:</span> <a href="${data[0].user.html_url}"> ${data[0].user.login}`
   })
+  .catch(err => console.error(err))
 }
 
 gitHubData()
