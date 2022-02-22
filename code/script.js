@@ -13,39 +13,19 @@ const userInfo = document.getElementById('userInfo')
 
 // Github API
 const username = 'emmajosefina'
-const GITHUB_API = `https://api.github.com/users/${user}`
-const GITHUB_API_REPOS = `https://api.github.com/users/${username}/repos`
+// const GITHUB_API = `https://api.github.com/users/${user}`
+const API_URL = `https://api.github.com/users/${username}/repos`
+
 
 //fetching all repos from user
-const fetchRepos = (user) => {
-    fetch(GITHUB_API)
-        .then((response => response.json())
-        .then((data) => {
-        userInfo.innerHTML = `
-        <p>Loading info....</p>
-        ` 
-        if (data.login !== undefined) {
-        userInfo.innerHTML = `
-        <div class="user-profile-box">
-        <div class="user-info-box">
-        ` 
-        } else {
-        userInfo.innerHTML = `
-        <p class="error-message">Fail to load. Come back later.</p>` 
-        }
-
-    }))
-
+const findingAllRepos = (user) => {
+    fetch(API_URL)
+       .then((res) => res.json())
+       .then((data) => {
+        console.log(data)
+        data.forEach((repo) => 
+        userInfo.innerHTML += `<p>${repo.name}</p>`)
+       
+       })
 }
-fetchRepos()
-
-
-
-// window.onload = showProfileOnLoad
-
-// // display profile info as default upon loading website
-// showProfileOnLoad = () => {
-//     let username = 'emmajosefina'
-//     getUserData(username)
-//     fetchRepos(username)
-// }
+findingAllRepos()
