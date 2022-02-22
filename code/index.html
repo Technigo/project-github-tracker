@@ -4,18 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel ="icon" href="https://avatars.githubusercontent.com/u/80845418?v=4" type="image"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="header">
+    <img class="github-icon" src="./github-logo.png" alt="github icon"/>
+    <h1 class="main-title">GitHub Tracker</h1>
+  </header>
 
+  <div class="line"> </div>
+
+  <section class="main-section">
+
+  <div class="userinfo">
+    <p id="profilepic"></p>
+    <div class="name-box">
+    <p class="userid" id="username"></p>
+    <p class="real-name">Karoline Mann</p>
+  </div>
+  </div>
+
+
+  <div id="projectscontainer"></div>
+
+</section>
+  
   <!-- This will be used to draw the chart 👇 -->
+  <div class="chart-section">
   <canvas id="chart"></canvas>
+  </div>
+
+
+  <footer class="footer">
+    <p class="footer-text">Made by Karoline Mann during Technigo Boot Camp, 2021</p>
+  </footer>
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
