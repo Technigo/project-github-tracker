@@ -1,3 +1,86 @@
 body {
-  background: #FFECE9;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem 1rem;
+}
+
+/* --- HEADER --- */
+.user {
+  display: flex;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #888;
+  margin: 0;
+}
+
+.heading {
+  align-self: flex-start;
+}
+
+.username {
+  align-self: center;
+  margin: 0 0.5rem 0 0;
+  font-size: 2.2rem;
+}
+
+.picture {
+  border-radius: 50%;
+  height: 13vw;
+}
+
+/* --- MAIN --- */
+main {
+  padding: 2rem 0;  
+}
+
+.projects {
+  overflow: auto;
+  white-space: nowrap; 
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  font-weight: 700;
+  color: #888;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  padding: 0.3rem 1rem;
+  border: 1px solid rgb(202, 202, 202);
+}
+
+/* --- Desktop --- */
+@media screen and (min-width:768px) {
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .heading {
+    align-self: flex-start;
+  }
+
+  .username {
+    align-self: center;
+    margin: 0 1rem 0 1.3rem;
+    font-size: 2.5rem;
+  }
+
 }
