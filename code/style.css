@@ -40,6 +40,11 @@ img {
   border-bottom: 30px solid #BA8889;
 }
 
+a,
+a:active {
+  color: #1d191c;
+}
+
 /**** Layout ****/
 .flex {
   display: flex;
