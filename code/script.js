@@ -1,7 +1,7 @@
 //Global variables
 const username = 'emmahogberg88'
 const URL_REPO = `https://api.github.com/users/${username}/repos`
-const TOKEN = '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'
+const TOKEN = ''
 //option for authorization
 const options = {
   method: 'GET',
