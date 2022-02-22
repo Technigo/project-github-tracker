@@ -5,6 +5,14 @@ const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
 
+const options = {
+  method: 'GET',
+  headers: {
+    Authorization: config.GITHUB_TOKEN
+  }
+}
+
+
 const displayProfileData = (data) => {
   const image = data.avatar_url;
   const name = data.name;
@@ -46,10 +54,10 @@ const displayRepositories = (repositories) => {
   })
 }
 
-fetch(USER_URL)
+fetch(USER_URL, options)
   .then(res => res.json())
   .then(displayProfileData)
 
-fetch(REPOS_URL)
+fetch(REPOS_URL, options)
   .then(res => res.json())
   .then(displayRepositories)
