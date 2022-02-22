@@ -1,7 +1,15 @@
+//DOM Selectors
+const toggleSwitch = document.getElementById('switch')
+
+//eventlistener
+toggleSwitch.addEventListener('click', () => {
+  console.log('hej')
+})
+
 //Global variables
 const username = 'emmahogberg88'
 const URL_REPO = `https://api.github.com/users/${username}/repos`
-const TOKEN = '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'
+const TOKEN = 
 //option for authorization
 const options = {
   method: 'GET',
@@ -41,13 +49,24 @@ const userData = (data) => {
 //--display repo information--//
 const repoData = (data) => {
 
-  //Filter all technigoProjects to get specific info about each repo.
-//Get technigo projects by filtering data by repos that starts with "project-"
+//Get technigo projects by filtering data by repos that starts with "project- and is forked"
   const technigoProjects = data.filter(repo => repo.name.startsWith('project-'))
 
-  //pass amount of finished technigo projects to progressChart in chart.js file
+  //Pass amount of finished technigo projects to progressChart in chart.js file
   progressChart(technigoProjects.length)  
   
+  //ADD EVENTLISTENER AND TOGGLEBAR!!
+  //Create toggle bar, 
+  //create sort-function that is listening to an event. 
+  console.log(technigoProjects)
+    //Sort repos by latest push date
+  const sortByLatestUpdate = technigoProjects.sort((oldest, newest) => new Date(newest.updated_at) - new Date(oldest.updated_at))
+  console.log(sortByLatestUpdate)
+
+  //Sort repos by latest push date
+  const sortByNewestRepo = technigoProjects.sort((oldest, newest) => new Date(newest.pushed_at) - new Date(oldest.pushed_at))
+  console.log(sortByNewestRepo)
+
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
     

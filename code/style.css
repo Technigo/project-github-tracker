@@ -17,6 +17,7 @@ body {
   padding-bottom: 0;
 }
 
+
 /***************************************************/
 /***************** Fonts and text *****************/
 /*************************************************/
@@ -55,12 +56,13 @@ p {
   font-weight: bold;
 }
 
+
 /***************************************************/
 /********************* Image **********************/
 /*************************************************/
 
 img {
-  width: 200px;
+  width: 250px;
   border: 15px solid var(--secondary);
   border-bottom: 40px solid var(--secondary);
 }
@@ -95,6 +97,7 @@ a:hover::before {
   transform: scaleX(1);
 }
 
+
 /***************************************************/
 /************ reusable styling elements ***********/
 /*************************************************/
@@ -109,6 +112,7 @@ a:hover::before {
   7px 7px 20px 0px #0002,
   4px 4px 5px 0px #0001;
 }
+
 
 /***************************************************/
 /******************** Header **********************/
@@ -131,7 +135,7 @@ header {
   background: var(--primary);
   flex-direction: column;
   justify-content: space-around;
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 .chart {
@@ -141,12 +145,57 @@ header {
 
 
 /***************************************************/
+/***************** Toggle switsh ******************/
+/*************************************************/
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+label {
+  display: block;
+  width: 300px;
+  height: 75px;
+  background-color: var(--primary);
+  border-radius: 100px;
+  margin-top: 2em;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 0 20px #477a8550;
+}
+
+label::after {
+  content: "";
+  width: 65px;
+  height: 65px;
+  background-color: var(--accent);
+  position: absolute;
+  border-radius: 70px;
+  top: 5px;
+  left: 5px;
+  transition: 0.5s ease;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+  background-color: var(--secondary);
+}
+
+input:checked + label {
+  background-color: var(--accent);
+}  
+
+
+/***************************************************/
 /**************** Section projects ****************/
 /*************************************************/
 
 .section-projects {
   background: var(--secondary);
-  padding: 3em 0;
+  padding: 2em 0;
   min-height: 100%; 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(385px, 1fr));
