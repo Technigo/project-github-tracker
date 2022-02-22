@@ -11,3 +11,4 @@ WHAT TO INCLUDE
 1. fetch all repos and console.log them -DONE
 2. Filter out the project forks. base filter on name 'project-' -DONE
 3. Fetch the pull requests
+4. Get username and img -present on page
