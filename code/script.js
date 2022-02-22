@@ -11,6 +11,7 @@
 // DOM selectors
 const userInfo = document.getElementById('userInfo')
 
+
 // Github API
 const username = 'emmajosefina'
 // const GITHUB_API = `https://api.github.com/users/${user}`
@@ -18,14 +19,14 @@ const API_URL = `https://api.github.com/users/${username}/repos`
 
 
 //fetching all repos from user
-const findingAllRepos = (user) => {
-    fetch(API_URL)
-       .then((res) => res.json())
-       .then((data) => {
-        console.log(data)
-        data.forEach((repo) => 
-        userInfo.innerHTML += `<p>${repo.name}</p>`)
+const findingAllRepos = (user) => { // creating function about github repos
+    fetch(API_URL) // fetching right API
+       .then((res) => res.json()) // response to response.json
+       .then((data) => { // data
+        console.log(data) // console log
+        data.forEach((repo) => // using forEach of repo
+        userInfo.innerHTML += `<p>${repo.name}</p>`) // fetching data to userInfo in HTML
        
        })
 }
-findingAllRepos()
+findingAllRepos() // invoking funcion
