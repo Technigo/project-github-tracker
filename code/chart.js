@@ -155,22 +155,6 @@ const drawLanguagesChart = (html, css, js, idChart) => {
                         weight: '700'
                     },
                     cornerRadius: 4
-                    // callbacks: {
-                    //     body: titleTooltip
-
-                    //     // label: function(context) {
-                    //     //     let label = context.dataset.label || '';
-
-                    //     //     if (label) {
-                    //     //         label += ': ';
-                    //     //     }
-                    //     //     if (context.parsed.y !== null) {
-                    //     //         label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
-                    //     //     }
-                    //     //     return label;
-                    //     // }                    
-                    // }
-
                 }
             }
         }

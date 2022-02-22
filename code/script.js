@@ -28,10 +28,17 @@ const openTab = (event, tabName) => {
 
 
 
+// TO REMOVE BEFORE GIT PUSH
+// TO REMOVE BEFORE GIT PUSH
+
+
+
+
+
 
 
 const createHeader = () => {
-    fetch(API_USER, options)
+    fetch(API_USER)
         .then(res => res.json())
         .then(data => {
             userProfile.innerHTML = `
@@ -42,7 +49,7 @@ const createHeader = () => {
 }
 
 const createRepoCard = (reposToUse = null) => {
-    fetch(API_REPOS, options) // options object is passed as 2nd argument to fetch() function. // TO REMOVE BEFORE GIT PUSH
+    fetch(API_REPOS) // options object is passed as 2nd argument to fetch() function. // TO REMOVE BEFORE GIT PUSH
         .then(res => res.json())
         .then(data => {
             const selectSorting = () => {
@@ -121,7 +128,7 @@ const setRepoCardStructure = (repo) => {
 }
 
 const addCommits = (repo) => {
-    fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
+    fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`)
         .then(res => res.json())
         .then(data => {
             // why item.author.login === username doesn't work here??
@@ -143,7 +150,7 @@ const addCommits = (repo) => {
 
 const addLanguageChart = (repo) => {
 
-    fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, options)
+    fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`)
         .then(res => res.json())
         .then(languages => {
             // variables so data will be 0 and not undefined if = 0
@@ -166,7 +173,7 @@ const addLanguageChart = (repo) => {
 
 const fetchPullRequest = (repo) => {
     // fix it because only 1 page of 30 PR is fetched, link: https://docs.github.com/en/rest/reference/pulls#list-pull-requests (added ?per_page=100&page=1 to URL, but it doesn't fix the problem for when the PR will go to page 2-3-4...)
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100&page=1`, options)
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100&page=1`)
         .then(res => res.json())
         .then(data => {
             const userPulls = data.filter((item) => item.user.login === username)
