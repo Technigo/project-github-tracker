@@ -76,15 +76,19 @@ const getPullRequests = (repos) => {
       .then(res => res.json())
       .then(data => {
         const commits = document.getElementById(`commit-${repo.name}`)
-         console.log('hey')
               //TODO
           //1. Find only the PR that you made by comparing pull.user.login
               // with repo.owner.login
               const pulls = data.find((pull) => pull.user.login === repo.owner.login);
-              console.log(pulls)
-              commits.innerHTML += `
-                ${pulls.number}
-              `
+            //   console.log(pulls)
+            //   commits.innerHTML += `
+            //     ${pulls.number}
+            //   `
+              fetchCommits(pulls.commits_url, repo.name)
+              console.log(pulls.commits_url)
+              
+              
+              
               //2. Now you're able to get the commits for each repo by using
               // the commits_url as an argument to call another function
 
@@ -94,3 +98,13 @@ const getPullRequests = (repos) => {
     })
   }
   
+  const fetchCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl, options)
+        .then((res) => {
+            return res.json()
+        })
+        .then((data) => {
+            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+            
+        })
+  }
