@@ -1,3 +1,8 @@
 body {
   background: #FFECE9;
 }
+
+.technigo-repos {
+  background: rgba(255, 182, 47, 0.377);
+  border: 1px solid black;
+}
