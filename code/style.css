@@ -3,10 +3,11 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #112d4e;
   color: white;
-  padding: 20px;
+  /* padding-top: 30px; */
+  margin: 0;
 }
 
 a {
@@ -15,7 +16,11 @@ a {
   text-decoration: none;
 }
 
-.main-page {
+h5 {
+  margin: 0;
+}
+
+.main-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,28 +34,27 @@ a {
 }
 
 .header-box .title {
-  background-color: #DBE2EF;
+  background-color: #dbe2ef;
   padding: 20px;
   color: #3f72af;
   border-radius: 4px;
 }
 
-.user-profile {
+.user-box {
   text-align: center;
+  margin-top: 2rem;
 }
 
-.user-profile img {
+.user-picture {
   max-width: 200px;
   border-radius: 50%;
 }
 
-.sorting-dropdown {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+.user-box h2 {
+  margin: 0;
 }
 
-select {
+.sorting-dropdown {
   display: flex;
   align-self: center;
   border: transparent;
@@ -60,22 +64,17 @@ select {
   color: #112d4e;
   width: fit-content;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
+  padding: 4px;
 }
 
-.languages-chart {
-  width: 75%;
-  /* min-width: 250px;
-  max-width: 300px; */
-}
-
-.projects-chart {
+.repos-chart {
   width: 275px;
   /* width: auto; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
-.projects {
+.repos-box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -83,48 +82,49 @@ select {
   color: #112d4e;
 }
 
-.tab-card {
+.repo-card {
   margin: 20px;
-  width: 500px;
+  width: 400px;
 }
 
-/* Style the tab */
-.tab {
+/* Style the tabs */
+.repo-tabs {
   float: left;
   /* border: 1px solid #3f72af; */
-  background-color: #f9f7f7;
+  background-color: #dbe2ef;
   width: 30%;
   height: 300px;
 }
 
-/* Style the buttons inside the tab */
-.tab button {
+/* Style the buttons inside repo-tabs */
+.repo-tabs button {
   display: block;
   background-color: inherit;
   color: #112d4e;
-  padding: 22px 16px;
+  padding-left: 6px;
   width: 100%;
+  height: 25%;
   border: none;
   outline: none;
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 12px;
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
-  background-color: #dbe2ef;
+.repo-tabs button:hover {
+  background-color: #f9f7f7;
 }
 
-/* Create an active/current "tab button" class */
-.tab button.active {
+/* Create an active/current "repo-tabs button" class */
+.repo-tabs button.active {
   background-color: #3f72af;
   color: white;
 }
 
 /* Style the tab content */
-.tab-content {
+.repo-content {
   float: left;
   background-color: #f9f7f7;
   padding: 0px 12px;
@@ -135,7 +135,41 @@ select {
   overflow: auto;
 }
 
-@media only screen and (min-width: 800px) {
+.languages-chart {
+  width: 100%;
+}
+
+.footer-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 0.3rem;
+  column-gap: 0.3rem;
+  padding: 1rem 0;
+  font-size: 1rem;
+}
+
+.footer-box .fab {
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  /* .repos-box {
+    align-self: center;
+    width: 1280px;
+  } */
+  
+  .repo-card {
+    width: 300px;
+  }
+
+  .repo-tabs,
+  .repo-content {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
   .header-box {
     flex-direction: row;
     justify-content: space-between;
@@ -144,16 +178,18 @@ select {
 
   .header-box .title {
     width: 175px;
-text-align: center;
+    text-align: center;
   }
 
-  .user-profile {
+  .user-box {
     width: 275px;
   }
 
-  .projects-chart {
+  .repos-chart {
     width: 275px;
   }
-  
-  
+/* 
+  .repo-card {
+    width: 300px;
+  } */
 }

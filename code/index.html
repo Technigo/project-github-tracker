@@ -7,32 +7,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-  <title>Project GitHub Tracker</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <title>Nadia Lefebvre - GitHub Tracker</title>
 </head>
 
 <body>
   <header class="header-box" id="headerBox">
-    <div class="user-profile" id="userProfile"></div>
+    <div class="user-box" id="userBox"></div>
       <h1 class="title">GitHub Tracker</h1>
 
-    <div class="projects-chart">
-      <canvas id="projectsChart"></canvas>
+    <div class="repos-chart">
+      <canvas id="reposChart"></canvas>
     </div>
   </header>
 
-  <main class="main-page" id="mainPage">
-    <select id="sortMenu">
+  <main class="main-box">
+    <select class="sorting-dropdown" id="sortingDropdown">
       <option value="A to Z">A to Z</option>
       <option value="Z to A">Z to A</option>
       <option value="Recent to old">Recent to old</option>
       <option value="Old to recent">Old to recent</option>
     </select>
 
-    <section class="projects" id="projects"></section>
+    <section class="repos-box" id="reposBox"></section>
   </main>
+  <footer class="footer-box">
+    <span>Created by Nadia Lefebvre</span>
+      <a 
+        href="https://www.linkedin.com/in/nadiainsweden/" 
+        target="_blank" 
+        title="Linkedin Nadia Lefebvre" 
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a 
+        href="https://github.com/nadialefebvre" 
+        target="_blank" 
+        title="GitHub Nadia Lefebvre" 
+        <i class="fab fa-github"></i>
+      </a>
+      <a 
+        href="https://stackoverflow.com/users/17550223/nadia-lefebvre" 
+        target="_blank"
+        title="Stack Overflow Nadia Lefebvre" 
+        <i class="fab fa-stack-overflow"></i>
+      </a>
+
+  </footer>
 
   <script src="./chart.js"></script>
   <script src="./script.js"></script>

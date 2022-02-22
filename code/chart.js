@@ -1,16 +1,16 @@
 //DOM-selector for the canvas 👇
-const projectsChart = document.getElementById('projectsChart').getContext('2d')
+const reposChart = document.getElementById('reposChart').getContext('2d')
 //"Draw" the chart here 👇
 
 
 // what's not working below is commented out
 // global options
-Chart.defaults.font.family = 'Lato'
+Chart.defaults.font.family = 'Roboto'
 Chart.defaults.font.size = 18
 Chart.defaults.color = 'white'
 
-const drawProjectsChart = (amount) => {
-    new Chart(projectsChart, {
+const drawReposChart = (amount) => {
+    new Chart(reposChart, {
         type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
         data: {
             labels: ['Done', 'To do'],
@@ -129,11 +129,14 @@ const drawLanguagesChart = (html, css, js, idChart) => {
                 },
                 legend: {
                     display: true,
-                    position: 'left',
+                    position: 'top',
                     labels: {
                         color: '#112D4E',
                         usePointStyle: true,
                         pointStyle: 'rect',
+                        font: {
+                            size: 12
+                        }
                     },
                     // removes on click event: not able to strike through a label by clicking on it
                     onClick: null,
