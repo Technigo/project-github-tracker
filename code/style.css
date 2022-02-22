@@ -1,3 +1,17 @@
 body {
   background: #FFECE9;
 }
+
+h1 {
+  font-family: 'Shizuru', cursive;
+  font-size: 96px;
+  color:palevioletred;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Shizuru', cursive;
+  font-size: 36px;
+  color:mediumpurple;
+  text-align: center;
+}
