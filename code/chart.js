@@ -12,7 +12,7 @@ fetch(API_URL)
 .then((repos) => {
     console.log(repos)
 
-    repos.forEach((repo) => projects.innerHTML += `<div><h4>${repo.name}<h4></div>`)
+    repos.forEach((repo) => projects.innerHTML += `<div class="repos"><h4>${repo.name}<h4></div>`)
 
 })
 }

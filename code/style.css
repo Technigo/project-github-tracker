@@ -1,3 +1,49 @@
 body {
-  background: #FFECE9;
+  background: #83c5be;
+  /*006d77*/
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #006d77;
+  margin: 0 0 5vh 0;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  display: inline;
+  margin-top: 0;
+  padding-top: 2vh;
+}
+
+.profile {
+  background: white;
+  display: inline;
+  padding: 2vh 5vw;
+  margin: 5vh 5vw;
+  box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -webkit-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.repos {
+  background: white;
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+  border: solid #006d77;
+  border-radius: 5%;
+  box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -webkit-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  
 }
