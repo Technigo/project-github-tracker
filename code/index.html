@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,600;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <h1>GitHub Tracker</h1>
+      <hr />
+    </div>
+    <section class="user-container" id="user-information"></section>
+    <h2>Projects</h2>
+    <main id="projects" class="project-container"></main>
+    <h2>Project progress at Technigo Bootcamp</h2>
+    <section class="chart-container">
+      <canvas id="chart"></canvas>
+    </section>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
