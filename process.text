@@ -1,0 +1,13 @@
+WHAT TO INCLUDE
+- A list of all repos that are forked ones from Technigo
+- Your username and profile picture
+- Most recent update (push) for each repo
+- Name of your default branch for each repo
+- URL to the actual GitHub repo
+- Number of commit messages for each repo
+- All pull requests
+- A chart of how many projects you've done so far, compared to how many you will do.
+
+1. fetch all repos and console.log them -DONE
+2. Filter out the project forks. base filter on name 'project-' -DONE
+3. Fetch the pull requests
