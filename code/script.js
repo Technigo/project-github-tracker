@@ -1,7 +1,7 @@
 //Global variables
 const username = 'emmahogberg88'
 const URL_REPO = `https://api.github.com/users/${username}/repos`
-const TOKEN = 
+const TOKEN = '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'
 //option for authorization
 const options = {
   method: 'GET',
@@ -45,20 +45,23 @@ const repoData = (data) => {
 //Get technigo projects by filtering data by repos that starts with "project-"
   const technigoProjects = data.filter(repo => repo.name.startsWith('project-'))
 
+  //pass amount of finished technigo projects to progressChart in chart.js file
+  progressChart(technigoProjects.length)  
+  
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
     
-    //Get name of repo
-  let reponame = repo.name
+  //Get name of repo
+  const reponame = repo.name
 
   //Get url to each repo 
-  let projectUrl = repo.html_url
+  const projectUrl = repo.html_url
   
   //Get default branch
-  let defaultBranch = repo.default_branch
+  const defaultBranch = repo.default_branch
   
   //Get the date of latest update of the repo
-  let latestUpdateRepo = new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})
+  const latestUpdateRepo = new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})
   
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
   document.getElementById('section-projects').innerHTML += `

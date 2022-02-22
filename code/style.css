@@ -1,8 +1,8 @@
 /* Global css variables used for colors */
 :root {
-  --primary: #161315;
-  --secondary: #60BFC1;
-  --accent: #BADFD7;
+  --primary: rgb(22, 19, 21);
+  --secondary: rgb(97, 192, 194);
+  --accent: rgb(186, 223, 215);
 }
 
 * {
@@ -62,7 +62,7 @@ p {
 img {
   width: 200px;
   border: 15px solid var(--secondary);
-  border-bottom: 35px solid var(--secondary);
+  border-bottom: 40px solid var(--secondary);
 }
 
 
@@ -96,7 +96,7 @@ a:hover::before {
 }
 
 /***************************************************/
-/*************** Layout and styling ***************/
+/************ reusable styling elements ***********/
 /*************************************************/
 .flex {
   display: flex;
@@ -109,7 +109,6 @@ a:hover::before {
   7px 7px 20px 0px #0002,
   4px 4px 5px 0px #0001;
 }
-
 
 /***************************************************/
 /******************** Header **********************/
@@ -135,6 +134,11 @@ header {
   padding: 2em 0;
 }
 
+.chart {
+ padding: 1em;
+ margin: 1em; 
+}
+
 
 /***************************************************/
 /**************** Section projects ****************/
@@ -142,7 +146,8 @@ header {
 
 .section-projects {
   background: var(--secondary);
-  padding: 2em 0; 
+  padding: 3em 0;
+  min-height: 100%; 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(385px, 1fr));
 }
@@ -161,7 +166,7 @@ header {
 footer {
   background: var(--secondary);
   font-size: 2rem;
-  padding: 0.5em;
+  padding: 0.25em;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -194,6 +199,6 @@ footer {
   }
 
   footer {
-    padding: 0.9em;
+    padding: 0.3em;
   }
 }
