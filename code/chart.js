@@ -11,9 +11,8 @@ fetch(API_URL)
 .then((res) => res.json())
 .then((repos) => {
     console.log(repos)
-    projects.innerHTML = `${repos[1].name}`
 
-    repos.forEach((repo) => projects.innerHTML += `<div>${repo.name}</div>`)
+    repos.forEach((repo) => projects.innerHTML += `<div><h4>${repo.name}<h4></div>`)
 
 })
 }
