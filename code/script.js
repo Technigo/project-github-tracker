@@ -1,5 +1,6 @@
 //DOM selectors
 const profileInfo = document.getElementById('profile')
+const allProjects = document.getElementById('projects')
 
 const username = 'EmmaaBerg'
 const API_USER = `https://api.github.com/users/${username}`
@@ -11,6 +12,7 @@ const userInfo = () => {
         .then((res) => res.json())
         .then(profile => {
             profileInfo.innerHTML = `
+        <h2>GitHub Tracker</h2>
         <img src = "${profile.avatar_url}">
         <h3> ${profile.name}</h3>
         `
@@ -23,19 +25,22 @@ userInfo()
 fetch(API_URL_REPOS)
     .then((resp) => resp.json())
     .then((allRepos) => {
-        console.log(allRepos)
-
         //A function for filtering out the forked projects from technigo.
         //Repo is the "name for each object" in the array. Fork and name are two properties within
         // the object 
         const forkedRepos = allRepos.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-        console.log(forkedRepos);
+        forkedRepos.forEach((repo) => {
+            allProjects.innerHTML += `
+            <div>
+            <h6> Project Name: ${repo.name} </h6>
+            <p> Latest push: ${repo.pushed_at}</p>
+            <p> Main branch: ${repo.default_branch}</p>
+            <a href = ${repo.html_url}> ${repo.name}</a>
+            </div>
+            `
+        })
         pullRequests(forkedRepos);
     })
-
-
-
-
 
 const pullRequests = (forkedRepos) => {
     forkedRepos.forEach((repo) => {
@@ -45,10 +50,17 @@ const pullRequests = (forkedRepos) => {
                 //console.log(pullReqs);// loop foeach data är en array
                 pullReqs.forEach((pull) => {
                     if (pull.user.login === username) {
-                        console.log(pull)
                         comments(pull);
                         commits(pull);
                     }
+                    
+                    
+        allProjects.innerHTML += `
+        <div>
+        <p> Commit messages: ${pullReq.commits_url.length}</p>
+
+        </div>
+        `
                 })
             })
 
@@ -69,6 +81,7 @@ const commits = (pullReq) => {
     fetch(pullReq.commits_url)
         .then((res) => res.json())
         .then((commitNumber) => {
-            console.log(commitNumber)
+            console.log(commitNumber[commitNumber.length])
         })
 }
+
