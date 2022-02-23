@@ -10,6 +10,7 @@ progressChart = (projectsLeft) => {
             datasets: [{
                 label: 'Technigo Project Progress Chart',
                 backgroundColor: ['rgb(97, 192, 194)', 'rgb(186, 223, 215)'],
+                color: '#FFF',
                 borderColor: 'rgb(22, 19, 21)',
                 hoverOffset: 6,
                 data: [projectsLeft, 19 - projectsLeft]
