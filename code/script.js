@@ -2,7 +2,7 @@ const username = "Mimmisen";
 let reponame = "";
 const API_URL = `https://api.github.com/users/${username}/repos`;
 
-const API_TOKEN = TOKEN || process.env.API_KEY; // variable called TOKEN is local OR API_KEY is on the deployed site
+//const API_TOKEN = TOKEN || process.env.API_KEY; // variable called TOKEN is local OR API_KEY is on the deployed site
 console.log(TOKEN);
 
 const options = {
