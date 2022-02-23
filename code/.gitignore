@@ -6,4 +6,4 @@ node_modules
 
 
 # Other
-token.js
+secret.js
