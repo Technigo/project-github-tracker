@@ -1,4 +1,4 @@
-// Fetching API from Github to add
+// Fetching API from Github to add - yes
 // A list of all repos that are forked ones from Technigo
 // Your username and profile picture
 // Most recent update (push) for each repo
@@ -30,7 +30,23 @@ const findingAllRepos = (user) => {
        .then((data) => { 
         console.log(data) 
         data.forEach((repo) => 
-        userInfo.innerHTML += `<p>${repo.name}</p>`)
+        userInfo.innerHTML += 
+        
+        `
+        <div class="projectContainer">
+            <p>
+                <span class="repoName">
+                Name of repository: </span>
+                ${repo.name}
+            </p>
+            <p>
+                <span class="latestPush">
+                Latest push: </span>
+                ${repo.pushed_at}
+            </p>
+        </div>
+
+        `)
        
        })
 }

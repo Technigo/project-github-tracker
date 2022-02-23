@@ -11,7 +11,8 @@ body {
 
 /* MOBILE */
 
-.main-content {
+.main-content,
+.projectContainer {
   margin: 0 16px 0 16px;
 }
 
@@ -79,6 +80,10 @@ body {
   margin-top: 22px;
 }
 
+#chart {
+  height: 100px;
+}
+
 .edit-btn {
   text-align: center;
   border-radius: 6px;
@@ -95,12 +100,21 @@ body {
   font-weight: 600;
 }
 
-.project-1 {
-  border: 1px solid #d0d7de;
+.projectContainer {
+  border: 1px solid #c0716a61;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #c0716a33;
 }
 
-.project-2 {
-  border: 1px solid #d0d7de;
+.projectContainer:hover {
+  color: #c0716a;
+  transition: all 1s;
+}
+
+.repoName {
+  font-weight: 600;
 }
 
 /* TABLET */
