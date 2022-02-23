@@ -1,11 +1,22 @@
 //DOM selectors
+const userContainer = document.getElementById ('userContainer')
 const projectContainer = document.getElementById ('projectContainer')
 
 //Global selectors
 const user = 'josse79'
-let reponame = ''
+const API_USER = `https://api.github.com/users/${user}`
 const API_REPOS_LIST = `https://api.github.com/users/${user}/repos`
 
+const getUser = () => {
+  fetch(API_USER)
+  .then(res => res.json())
+  .then(data => {
+    userContainer.innerHTML = `
+    <img class='user-image' src='${data.avatar_url}'/>
+    <h2 class='user-name'> ${data.login}</h2>`
+  })
+  getRepos ()
+}
 
 const getRepos = () => {
      fetch(API_REPOS_LIST)
@@ -63,5 +74,6 @@ const getRepos = () => {
                 }
               })
             }
+
   }
-    getRepos ()
+    getUser ()

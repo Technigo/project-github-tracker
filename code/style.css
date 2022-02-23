@@ -1,3 +1,27 @@
-body {
+/* body {
   background: #FFECE9;
+} */
+.hero-image {
+  background-image: url("/images/hero-grafitti2.jpg");
+  width: 100vw;
+  height: 30vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+body {
+  color: black;
+}
+.user-container {
+  position: relative;
+  text-align: center;
+  bottom: 12vh
+}
+.user-image {
+  border-radius: 50%;
+  width: 25vh;
+  filter: grayscale(100%)
+}
+.project-container {
+  margin-top: -12vh
 }
