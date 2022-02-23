@@ -59,6 +59,21 @@ const getPullRequests = (repos) => {
                 let reviewCommentsURL = myPullRequests[0].review_comments_url
                 console.log('review comments URL:', reviewCommentsURL)
                 commits(myPullRequests.commits_url)
+
+                //just testing
+                let pushedDate = repo.pushed_at
+                console.log('pushed date:', pushedDate)
+                
+
+                //showing results on the page with innerHTML
+                document.getElementById('projects').innerHTML += `
+                <div class="project-card">
+                    <h3>${repo.name}</h3>
+                    <p>Most recent update: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
+                    <p>Default branch name: ${repo.default_branch}</p>
+                    <p>URL: ${repo.html_url}</p>
+                </div>
+                `
             
         })
     })
@@ -73,5 +88,9 @@ const getPullRequests = (repos) => {
       //showing the profile pic
       document.getElementById('profile-pic').innerHTML = `
       <img class="profile-pic" src='${data[0].owner.avatar_url}' alt='image of kolkri at GitHub'>
+      `
+      //showing the username
+      document.getElementById('username').innerHTML = `
+      GitHub username: ${data[0].owner.login}
       `
   }
