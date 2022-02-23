@@ -71,16 +71,10 @@ h2 {
   .profile-bio{
     padding: 0rem 20rem;
   }
-  .chart-wrapper {
-    height: 30px;
-  }
 }
 @media (min-width: 667px) {
 
   .profile-bio{
     padding: 0rem 10rem;
-  }
-  .chart-wrapper {
-    height: 30px;
   }
 }
