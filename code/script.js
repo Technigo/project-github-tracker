@@ -9,7 +9,11 @@ toggleSwitch.addEventListener('click', () => {
 //Global variables
 const username = 'emmahogberg88'
 const URL_REPO = `https://api.github.com/users/${username}/repos`
+<<<<<<< HEAD
 const TOKEN = 
+=======
+const TOKEN = ''
+>>>>>>> c31e7129568aec06470cedd760d3dab6b4ba80cc
 //option for authorization
 const options = {
   method: 'GET',
