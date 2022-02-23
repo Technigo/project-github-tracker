@@ -7,7 +7,7 @@ const username = 'michaelchangdk'
 const GITHUB_API = `https://api.github.com/users/${username}/repos`
 
 // GITHUB Authentication - TOKEN REVOKED AFTER COMMIT?
-const API_KEY = API_KEY || process.env.API_KEY;
+// const API_KEY = API_KEY || process.env.API_KEY;
 const options = {
     method: 'GET',
     headers: {
