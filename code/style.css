@@ -1,3 +1,168 @@
-body {
-  background: #FFECE9;
+* {
+  margin: 0;
+  max-width: 100%;
+}
+a {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  color: #b3ffd9;
+}
+.headline {
+  padding-top: 20px;
+  background-color: #b3ffd9;
+  font-size: 30px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-weight: 300;
+}
+.profile-img {
+  position: absolute;
+  border-radius: 50%;
+  width: 130px;
+}
+.heading-wrapper {
+  font-family: "Orbitron", sans-serif;
+  background-color: #b3ffd9;
+  font-size: 20px;
+  border-bottom: solid black 0.5px;
+  display: flex;
+  flex-direction: row;
+}
+.heading-text {
+  margin: 1rem 9rem;
+  font-size: 20px;
+}
+.chart-wrapper {
+  display: flex;
+  flex-direction: row;
+  border-bottom: solid black 1px;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Mono", monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  padding: 70px 0 0 20px;
+  width: 300px;
+}
+.contact-logo {
+  font-size: 30px;
+}
+.chart {
+  padding: 5px;
+  width: 75%;
+  max-height: 300px;
+}
+.projects {
+  padding: 10px;
+}
+.projects-cards {
+  background-color: lightseagreen;
+  border: solid black 1px;
+  font-size: 20px;
+  margin: 5px;
+  padding: 7px;
+  width: auto;
+  height: auto;
+}
+.projects-cards p {
+  font-family: "Space Mono", monospace;
+}
+.comment {
+  display: none;
+}
+.comment-button {
+  padding: 3px;
+  border-radius: 15px;
+  font-family: "Space Mono", monospace;
+  font-size: 17px;
+  background-color: lightseagreen;
+  border-color: white;
+  cursor: pointer;
+}
+.comment-button:hover {
+  background-color: #b3ffd9;
+  border-color: teal;
+}
+.active + .comment {
+  display: block;
+}
+.footer {
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  background-color: #b3ffd9;
+  padding: 10px;
+}
+.technigo-logo {
+  width: 70px;
+}
+.github-logo {
+  width: 40px;
+}
+@media (min-width: 800px) {
+  .headline {
+    font-size: 40px;
+    padding: 40px;
+    padding-left: 380px;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+  .profile-img {
+    position: absolute;
+    margin-top: -100px;
+    margin-left: 20px;
+    width: 300px;
+  }
+  .heading-wrapper {
+    border: none;
+    background-color: white;
+    width: 280px;
+  }
+  .heading-text {
+    margin-top: 220px;
+    margin-left: 80px;
+    font-size: 30px;
+  }
+  .header-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .chart-wrapper {
+    flex-direction: column;
+    border: none;
+    justify-items: center;
+    text-align: center;
+    height: 100%;
+  }
+  .chart {
+    padding: 5px;
+    width: 100%;
+  }
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .projects-cards {
+    line-height: 1.5;
+    width: 40%;
+    margin: 10px;
+    min-width: 200px;
+  }
+  .technigo-img {
+    width: 90px;
+  }
+  .github-img {
+    width: 80px;
+    padding-left: 15px;
+  }
 }
