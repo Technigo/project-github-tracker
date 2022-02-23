@@ -148,32 +148,35 @@ footer {
 }
 
 /* TABLET */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .projectContainer {
+    display: grid;
+    width: 45%;
+  }
 
-.projectContainer {
-  display: grid;
-  width: 45%;
-}
+  .smallerContainer {
+    display: grid;
+    width: 45%;
+  }
 
-.smallerContainer {
-  display: grid;
-  width: 45%;
-}
+  .profile-picture {
+    height: 200px;
+    width: 200px;
+  }
 
-.profile-picture {
-  height: 200px;
-  width: 200px;
-}
+  .full-name {
+    font-size: 38px;
+  }
 
-.full-name {
-  font-size: 38px;
-}
+  .username {
+    font-size: 26px;
+  }
 
-.username {
-  font-size: 26px;
-}
-
-.presentation-text {
-  font-size: 22px;
+  .presentation-text {
+    font-size: 22px;
+  }
 }
 
 /* DESKTOP */
+@media (min-width: 1025px) {
+}
