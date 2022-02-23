@@ -1,3 +1,5 @@
+/* MOBILE */
+
 :root {
   box-sizing: border-box;
 }
@@ -8,8 +10,6 @@ body {
   width: 100% fixed;
   font-family: "Heebo", sans-serif;
 }
-
-/* MOBILE */
 
 .main-content,
 .projectContainer {
@@ -56,8 +56,8 @@ body {
 
 .profile-picture {
   border-radius: 50%;
-  height: 82px;
-  width: 82px;
+  height: 100px;
+  width: 100px;
   margin-top: 15px;
   border: solid 2px rgba(27, 31, 36, 0.15);
 }
@@ -73,6 +73,7 @@ body {
   display: block;
   font-size: 12px;
   color: #57606a;
+  padding: 3px;
 }
 
 .presentation-text {
@@ -84,7 +85,35 @@ body {
   height: 100px;
 }
 
-.edit-btn {
+/* Footer styling */
+footer {
+  width: 100%;
+  background: #c0716a;
+  padding: 0.65rem;
+  color: #24292f;
+  text-align: center;
+}
+
+.footer-text {
+  color: #f2e3e1;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.fa {
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  color: #f2e3e1;
+  padding: 0.3em;
+}
+
+.fa:hover {
+  color: #ffffff;
+}
+
+/* .edit-btn {
   text-align: center;
   border-radius: 6px;
   line-height: 20px;
@@ -98,7 +127,7 @@ body {
   border: rgba(27, 31, 36, 0.15);
   cursor: pointer;
   font-weight: 600;
-}
+} */
 
 .projectContainer {
   border: 1px solid #d0d7de;
@@ -119,5 +148,32 @@ body {
 }
 
 /* TABLET */
+
+.projectContainer {
+  display: grid;
+  width: 45%;
+}
+
+.smallerContainer {
+  display: grid;
+  width: 45%;
+}
+
+.profile-picture {
+  height: 200px;
+  width: 200px;
+}
+
+.full-name {
+  font-size: 38px;
+}
+
+.username {
+  font-size: 26px;
+}
+
+.presentation-text {
+  font-size: 22px;
+}
 
 /* DESKTOP */

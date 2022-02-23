@@ -1,9 +1,9 @@
-// Fetching API from Github to add       X
+// Fetching API from Github to add                              X
 // A list of all repos that are forked ones from Technigo
-// Your username and profile picture
-// Most recent update (push) for each repo      X
-// Name of your default branch for each repo X
-// URL to actual GitHub repo
+// Your username and profile picture                            X
+// Most recent update (push) for each repo                      X
+// Name of your default branch for each repo                    X
+// URL to actual GitHub repo                                    X
 // Number of commit messages for each repo
 // All pull requests
 // A chart of how many project you've done so far, compared with how many you will do using chart.js.
@@ -53,22 +53,22 @@ const findingAllRepos = (repos) => {
         
         `
         <div class="projectContainer">
-            <p>
+            <p class="smallerContainer">
                 <span class="styledHeadingsProject">
                 Name of repository: </span>
                 ${repo.name}
             </p>
-            <p>
+            <p class="smallerContainer">
                 <span class="styledHeadingsProject">
                 Latest push: </span>
                 ${repo.pushed_at}
             </p>
-            <p>
+            <p class="smallerContainer">
                 <span class="styledHeadingsProject">
                 Default branch: </span>
                 ${repo.default_branch}
             </p>
-            <p>
+            <p class="smallerContainer">
             <span class="styledHeadingsProject">
             URL: </span>
             ${repo.html_url}
@@ -83,24 +83,5 @@ const findingAllRepos = (repos) => {
     
        })
     }
-
-        // // fetching all info from user
-        // const aboutUser = (user) => { 
-        //     fetch(API_URL, options) 
-        //     .then((res) => res.json()) 
-        //     .then((data) => { 
-        //     console.log(data) 
-            
-        //     data.forEach((repo) => 
-        //     userInfo.innerHTML += 
-        //     aboutUser = (user) => {
-        //     const userPicture = data.owner.avatar_url
-        //     userInfo.innerHTML += `
-        //     console.log("Hello")
-        //     <img src=${userPicture}/>
-        //     `
-        //     )}
-
-        // }
 
 findingAllRepos()
