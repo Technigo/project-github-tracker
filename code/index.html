@@ -6,16 +6,83 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <!-- Link to font family Montserrat -->
+  <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
+  <header>
+    <!-- <h1>GitHub Tracker</h1> -->
+    <section id='usr' class='usr-name-img-container'>amandatange bild</section>
+  </header>
+<!--   
   <h2>Projects:</h2>
-  <main id="projects"></main>
-
+   -->
+  <main id="projects" class='project-container'>
+    <!-- <section class='project'>
+      <h3 id=""Project_name1>Project_name1</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section>
+    <section class='project'>
+      <h3 id=""Project_name2>Project_name2</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section>
+    <section class='project'>
+      <h3 id=""Project_name3>Project_name3</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section>
+    <section class='project'>
+      <h3 id=""Project_name4>Project_name4</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section>
+    <section class='project'>
+      <h3 id=""Project_name5>Project_name5</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section>
+    <section class='project'>
+      <h3 id=""Project_name6>Project_name6</h3>
+      <p>Most recent update (push) for each repo</p>
+      <p>Name of your default branch for each repo</p>
+      <p>URL to the actual GitHub repo</p>
+      <p>Number of commit messages for each repo</p>
+      <p>pull request url?</p>
+    </section> -->
+    
+  </main>
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <section class="chart-container">
+    <canvas id="chart" class='chart'></canvas>
+  </section>
 
-  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="./chart.js"></script>
+  <script src='./token.js'></script>
+  <script src="./script.js"></script>
+
+  
+  
 </body>
 </html>
