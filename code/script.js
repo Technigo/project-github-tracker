@@ -1,6 +1,20 @@
 //Username
 const username = 'rijad90'
 
+
+const API_TOKEN = TOKEN || process.env.API_KEY;
+
+
+
+//authenticated request
+const options = {
+    method: 'GET', // POST, PATCH, DELETE
+    headers: {
+        Authorization: `token ${API_TOKEN}` //token
+    }
+}
+
+
 //API URL
 const GITHUB_USER_API = `https://api.github.com/users/${username}`
 const GITHUB_REPOS_API = `https://api.github.com/users/${username}/repos`
