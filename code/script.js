@@ -18,21 +18,22 @@ const fetcher = (url, token, callback) => {
   .then((response) => {
     return response.json();
   })
-  .then((repositories) => {
-    callback(repositories);
+  .then((data) => {
+    callback(data);
   })
   .catch((error) => {
     console.log(error);
   })
 }
 
-// WORKING, BUT WILL REDO SETUP
 fetcher (userUrl, PAT, ((userProfile) => {
-  console.log(userProfile);
   // Profile picture and username
+  console.log(userProfile)
   document.getElementById('profile').innerHTML += `
     <img class="profile-pic" src="${userProfile.avatar_url}" alt="profile-pic">
-    <h2 class="username">Username: ${userProfile.login}</h2>
+    <h2 class="profile-name">${userProfile.name}</h2>
+    <h2 class="profile-username">${userProfile.login}</h2>
+    <p class="profile-bio">${userProfile.bio}</p>
     `;
 }))
 
@@ -41,20 +42,21 @@ fetcher(repoUrl, PAT, (repositories) => {
     return repo.fork === true && repo.name.startsWith("project-")
   });
 
+  renderChart(forkedReps.length);
+
   forkedReps.forEach((rep) => {
     // Name, last update, default branch, URL
     document.getElementById('projects').innerHTML += `
-      <div class="repo" id=${rep.name}>
-        <h2>${rep.name}</h2>
-        <p>Updated: ${rep.pushed_at}</p>
+      <div class="project" id=${rep.name}>
+      <h2 class="project-name">${rep.name}</h2>
+        <p>URL: <span><a class="project-url" href="${rep.svn_url}">${rep.name}</span></a>
+        <p>Updated: ${new Date(rep.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
         <p>Default branch: ${rep.default_branch}</p>
-        <a href="${rep.svn_url}">Link to repository</a>
       </div>
     `;
     // Commits
     fetcher(commitUrl(rep.name), PAT, ((commits) => {
-      console.log(commits);
-      document.getElementById(rep.name).innerHTML += `<p>${commits.length} commits</p>`
+      document.getElementById(rep.name).innerHTML += `<p>Number of commits: ${commits.length}</p>`
     }));
 
     // Pull requests
