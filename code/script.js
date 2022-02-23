@@ -7,7 +7,7 @@ const username = 'kolkri'
 const API_URL = `https://api.github.com/users/${username}/repos`
 
 //defining token
-const API_TOKEN = TOKEN || process.env.API_KEY
+console.log(API_TOKEN)
 
 //defining options
 const options = {
