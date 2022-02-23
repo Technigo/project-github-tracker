@@ -42,7 +42,7 @@ const drawReposChart = (amount) => {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Projects',
+                    text: 'Technigo projects',
                     // fontSize: 24
                 },
                 legend: {

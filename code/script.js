@@ -6,14 +6,12 @@ const reposBox = document.getElementById('reposBox')
 const sortingDropdown = document.getElementById('sortingDropdown')
 
 const API_TOKEN = TOKEN
-
 const options = {
     method: 'GET',
     headers: {
         Authorization: `token ${API_TOKEN}`
     }
 }
-
 
 const openTab = (event, tabName) => {
     let i
@@ -41,7 +39,7 @@ const createHeader = () => {
 }
 
 const createRepoCard = (reposToUse = null) => {
-    fetch(API_REPOS, options) // {, options} : TO REMOVE BEFORE GIT PUSH
+    fetch(API_REPOS, options)
         .then(res => res.json())
         .then(data => {
             const selectSorting = () => {

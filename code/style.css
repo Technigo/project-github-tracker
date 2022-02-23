@@ -50,6 +50,7 @@ a {
   background-color: #dbe2ef;
   color: #3f72af;
   border-radius: 2px;
+  letter-spacing: 0.1rem;
 }
 
 .repos-chart {
