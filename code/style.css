@@ -1,20 +1,77 @@
 body {
   background: #FFECE9;
+  font-family: 'Merriweather Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  text-decoration:none;
 }
 
 .profile-pic {
-  width:150px;
+  width:200px;
   border-radius: 50%;
-  
+  align-self: center;
+}
+
+#user-name{
+  text-decoration: none;
 }
 
 .projects{
   display: flex; 
+  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .repos{
   background-color: white;
   margin: 15px;
+  border-radius: 10px;
+  padding:20px;
+  text-decoration: none;
+
+}
+
+/*Tablet*/
+
+@media (min-width: 668px) and (max-width:1024px){
+
+.projects{
+  flex-direction: row;
+}
+
+.repos{
+  
+  width:40vw;
+}
+  
+}
+
+/*Desktop*/
+
+@media (min-width: 1025px) {
+
+.projects{
+  flex-direction: row;
+
+}
+
+.repos{
+  width: 25vw;
+  
+}
+
+.profile-pic{
+ 
+  width:250px;
+}
+
 }
