@@ -1,3 +1,42 @@
 body {
-  background: #FFECE9;
+  background: white;
+}
+
+header {
+  text-align: center;
+  background-color: rgb(34, 33, 33);
+  margin-bottom: 20px;
+}
+
+.profile-image > a > img {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+}
+
+.username {
+  margin-left: 30px;
+  margin-top: 50px;
+}
+
+.profile {
+  display:flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.projects {
+  display: flex;
+  flex-flow: row wrap;
+  
+}
+
+.projects-card {
+  width: 100%;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 0.4rem;
+  padding: 1rem;
+  margin-bottom: 15px;
 }

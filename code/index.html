@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/8368a990b4.js" crossorigin="anonymous"></script>
+  <title>Project GitHub Tracker</title>
+  <meta name="desciption" content="Technigo Week 7: GitHub Tracker. Fourth individual project: Dig deeper into API's and start with unit testing.">
 </head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+<body>
+
+  <header>
+    <i class="fab fa-github" style="font-size: 50px; color: white; padding: 20px;"></i>
+  </header>
+
+  <main>
+
+    <section id="profile-container"></section>
+
+    <section id="projects" class="projects"></section>
+
+    <section id="chart-wrapper">
+      <canvas id="chart"></canvas>
+    </section>
+
+  </main>
+
 
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
 </html>
