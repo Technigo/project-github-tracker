@@ -1,5 +1,5 @@
-#other
-secret.js
+#API KEY
+code/token.js
 
 # Ignore node_modules folder
 node_modules
