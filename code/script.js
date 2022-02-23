@@ -2,7 +2,7 @@
 const PAT = {
   method: 'GET',
   headers: {
-    Authorization: TOKEN || process.env.API_KEY // variable name when deploying
+    Authorization: TOKEN //|| process.env.API_KEY // variable name when deploying
   }
 }
 
@@ -11,7 +11,7 @@ const USER = 'ariallahyar';
 const userUrl = 'https://api.github.com/users/ariallahyar';
 const repoUrl = 'https://api.github.com/users/ariallahyar/repos';
 const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`}; //look into pagination
-const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits`}; //look into pagination
+const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits?per_page=100`}; //look into pagination
 
 const fetcher = (url, token, callback) => {
   fetch(url, token)
@@ -53,6 +53,7 @@ fetcher(repoUrl, PAT, (repositories) => {
     `;
     // Commits
     fetcher(commitUrl(rep.name), PAT, ((commits) => {
+      console.log(commits);
       document.getElementById(rep.name).innerHTML += `<p>${commits.length} commits</p>`
     }));
 
