@@ -29,6 +29,11 @@ h1 {
 
 }
 
+.profile img {
+  border-radius: 50%;
+  height: 20vh;
+}
+
 .projects {
   display: flex;
   flex-direction: row;
@@ -47,3 +52,7 @@ h1 {
   -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
   
 }
+
+/*@media (min-width: 668px) and (max-width: 1024px)
+
+@media (min-width: 1025px) */
