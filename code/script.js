@@ -6,6 +6,15 @@ const projects = document.getElementById('projects')
 const username = 'michaelchangdk'
 const GITHUB_API = `https://api.github.com/users/${username}/repos`
 
+// GITHUB Authentication - TOKEN REVOKED AFTER COMMIT?
+const GITHUB_TOKEN = TOKEN || process.env.API_KEY;
+const options = {
+    method: 'GET',
+    headers: {
+          Authorization: `token ${GITHUB_TOKEN}`
+      }
+}
+
 // Function to Sort Projects By Created Date
 compareCreateDate = (a, b) => {
     if (a.created_at < b.created_at) {
@@ -17,7 +26,7 @@ compareCreateDate = (a, b) => {
 };
 
 const getProjects = async () => {
-    const projectsWait = await fetch(GITHUB_API);
+    const projectsWait = await fetch(GITHUB_API, options);
     const data = await projectsWait.json();
 
     // Filter Technigo Projects Only & Sort by Date Created
@@ -32,7 +41,7 @@ const getProjects = async () => {
 
     // Create Main Project Elements & Fetch Number of Commits
     for (let i = 0; i < technigoProjects.length; i++) {
-        fetch(technigoProjects[i].commits_url.replace("{/sha}", ""))
+        fetch(technigoProjects[i].commits_url.replace("{/sha}", ""), options)
             .then(res => res.json())
             .then(data => {
                 // console.log('commit data', data)
@@ -81,7 +90,7 @@ const getProjects = async () => {
                 `
 
                 // Fetching the pull requests
-                fetch('https://api.github.com/repos/technigo/' + technigoProjects[i].name + '/pulls?per_page=100')
+                fetch('https://api.github.com/repos/technigo/' + technigoProjects[i].name + '/pulls?per_page=100', options)
                     .then(res => res.json())
                     .then(data => {
                         // console.log(data);
@@ -92,15 +101,36 @@ const getProjects = async () => {
                         <p>Pull request with comments <a href="${filteredPR[0].html_url}" target="_blank">here</a>.
                         `
                         // console.log(filteredPR[0].review_comments_url)
+                    
+                    // Fetch Comments
+                    // fetch(filteredPR[0].review_comments_url, options)
+                    //     .then(res => res.json())
+                    //     .then(data => {
+                    //         // console.log(data);
+                    //         document.getElementById(`${projectName}2`).innerHTML += `
+                    //         <br>
+                    //         <p>Review comments:</p>
+                    //         `
+                    //         for (let i = 0; i < data.length; i++) {
+                    //             if (data[i].user.login !== username) {
+                    //             // console.log(data[i].body);
+                    //             document.getElementById(`${projectName}2`).innerHTML += `
+                    //             <ul>
+                    //             <li>${data[i].body}</li>
+                    //             </ul>
+                    //             `
+                    //         }
+                    //         }
+                    // })
+
                 })
         })
     }
 }
 
 // Function for opening and closing the projects list
-const openSesame = (param) => {
+const openSesame = (projectID) => {
     // console.log('you got clicked! bitch')
-    let projectID = param;
     let projectHeader = document.getElementById(`${projectID}`);
     let projectBody = projectHeader.nextElementSibling;
     if (projectBody.style.display === "none") {
@@ -111,24 +141,5 @@ const openSesame = (param) => {
         projectHeader.classList.remove("project-header--active")
     }
 }
-
-//Remember to pass along your filtered repos as an argument when you are calling this function
-
-// const getPullRequests = (repos) => {
-//     //Get all the PRs for each project.
-//     repos.forEach(repo => {
-//       fetch('https://api.github.com/repos/technigo/' + repo.name + '/pulls')
-//       .then(res => res.json())
-//       .then(data => {
-//               //TODO
-//           //1. Find only the PR that you made by comparing pull.user.login
-//               // with repo.owner.login
-//               //2. Now you're able to get the commits for each repo by using
-//               // the commits_url as an argument to call another function
-//               //3. You can also get the comments for each PR by calling
-//               // another function with the review_comments_url as argument
-//           })
-//     })
-//   }
 
 getProjects();
