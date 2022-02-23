@@ -8,10 +8,10 @@ const labels = [
 const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'My Technigo projects',
       backgroundColor: ['rgb(245, 217, 237)', 'rgb(217, 245, 239)'],
       borderColor: 'rgb(66, 66, 66)',
-      data: [7, 12],
+      data: [countRepos, 19-countRepos],
     }]
   };
 
@@ -22,8 +22,4 @@ const config = {
     options: {}
   };
 
-  const myChart = new Chart(
-    ctx,
-    config
-  );
-  
+  const myChart = new Chart(ctx, config);
