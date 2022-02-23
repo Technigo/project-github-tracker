@@ -23,7 +23,6 @@ const options = {
     profilePic.src = data.avatar_url
     fullName.innerHTML = `${data.name}`
     userName.innerHTML = `${data.login}`
-
 })
  
   
@@ -32,5 +31,24 @@ const options = {
   .then((data) => { console.log(data)
     const technigoRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
     console.log(technigoRepos)
-      
-  })
+ 
+technigoRepos.forEach((repo) => { 
+  projects.innerHTML+=`
+  <div class="repos">
+  ${repo.name}
+  ${new Date(repo.pushed_at).toLocaleString("sv-SE", {dateStyle: 'short'})}
+  ${repo.default_branch}
+  <p id="commit-${repo.name}">Commits:</p>
+  </div>
+  `
+  API_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls`
+  fetch(API_URL, options)
+  .then ((res) => res.json())
+  .then ((data) => {console.log(data)
+
+  })    
+})
+  }
+  )
+ 
+  

@@ -4,8 +4,17 @@ body {
 
 .profile-pic {
   width:150px;
-  border-radius: 50px;
+  border-radius: 50%;
   
+}
 
+.projects{
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.repos{
+  background-color: white;
+  margin: 15px;
 }
