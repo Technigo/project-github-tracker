@@ -1,3 +1,12 @@
 body {
   background: #FFECE9;
 }
+
+header{
+  background: pink;
+}
+
+.user-data-wrapper{
+  border: solid;
+  height: 200px;
+}
