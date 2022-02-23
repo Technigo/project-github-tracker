@@ -14,7 +14,6 @@ const userInfo = document.getElementById('userInfo')
 
 // Github API
 const username = 'emmajosefina'
-// const GITHUB_API = `https://api.github.com/users/${user}`
 const API_URL = `https://api.github.com/users/${username}/repos`
 
 
