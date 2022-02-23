@@ -1,8 +1,135 @@
 body {
-  background: linear-gradient(330deg, #EBC8C4, #B6766D)
+  width: 100vh;
+  height: 100%;
+  background: linear-gradient(330deg, #B6766D, #EBC8C4);
+  font-family: poppins;
+  font-weight: 300;
+}
+
+.myDiv {
+  position: absolute;
+  top: 500px;
+  left: 100px;
+   padding: 600px 800px; /*Utöka första vid fler reops */
+   background: linear-gradient(100deg, #f7e9e7, #B6766D);
+   z-index: -1;
+}
+
+.projects {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 100px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 10px;
+  font-size: x-large;
+  color: #3d1611;
+}
+
+.header-text span {
+  color: white;
+  text-shadow:  4px 5px 8px rgba(0, 0, 0, 0.308);
+}
+
+.projects img {
+  border-radius: 50%;
+  width: 300px;
+  border: solid .5em #BE847C;
+	padding: .5em;
+
+}
+
+.projects img:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation-name: colorChange;
+  animation-duration: 4s; 
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  grid-gap: 5px;
+  padding: 20px;
+  margin: 150px;
+  width: 93rem;
+  /* border: 1px solid black; */
+
 }
 
 .technigo-repos {
-  background: rgba(255, 182, 47, 0.377);
-  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  align-items: center;
+  background-color: #E0B8B3;
+  min-width: 200px;
+  max-width: 400px;
+  width: 80%;
+  color: black;
+  gap: 1px;
+}
+
+  .info {
+    line-height: 20px;
+    margin: 20px;
+  }
+
+  .info span {
+    font-weight: 400;
+  }
+
+  #description, #repoName {
+    color: #3d1611;
+  }
+
+  .netlify-link {
+    padding: 0 10px;
+    background-color: rgba(255, 255, 255, 0.37);
+    border-radius: 30px;
+  }
+
+  .netlify-link:hover {
+    box-shadow: 6px 6px 20px rgba(122,122,122,0.212);
+  animation-name: colorChange;
+  animation-duration: 5s; 
+  }
+
+  .repo-link {
+    padding: 20px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.37);
+
+  }
+
+ .repo-link:hover {
+  
+  box-shadow: 6px 6px 20px rgba(122,122,122,0.212);
+  animation-name: colorChange;
+  animation-duration: 5s; 
+}
+
+a:visited, a:link {
+  color: #3d1611;
+  text-decoration: none;
+}
+
+@keyframes colorChange {
+  0%   {background-color: #f7f1f0;}
+  25%  {background-color: #e1c8c4;}
+  50%  {background-color: #cb9f98;}
+  100% {background-color: #BE847C;} 
 }

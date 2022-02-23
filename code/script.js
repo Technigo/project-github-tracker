@@ -10,6 +10,8 @@ const defaultBranch = document.getElementById('defaultBranch')
 const repoURL = document.getElementById('repoURL')
 const repoCommits = document.getElementById('repoCommits')
 const allPullReq = document.getElementById('allPullReq')
+const container = document.getElementById('container')
+const projects = document.getElementById('projects')
 
 const API_TOKEN = TOKEN || process.env.API_KEY;
 
@@ -32,10 +34,16 @@ fetch(API_USER, options)
     })
     .then ((data) => {
         console.log(data)
-        userName.innerHTML = `<h1>${data.login}</h1>`
-        myName.innerHTML = `<p>${data.name}</p>`
-        userPic.innerHTML = `<img src="${data.avatar_url}" width="100px" alt="User image">`
-        userBio.innerHTML = `<p>${data.bio}</p>`
+        projects.innerHTML = `
+        <a class="img-link "href"#"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
+            <div class="header-text">
+            <p>${data.name}</p>
+                <h1><span>${data.login}</span></h1>
+                <h1>GitHub Tracker</h1>
+                <p>${data.bio}</p>
+            </div>
+            
+            `
     })
 
     fetch(API_REPOS, options)
@@ -49,15 +57,17 @@ fetch(API_USER, options)
 
                 console.log(technigoRepositories)
             technigoRepositories.forEach((repo) => {
-                technigoRepos.innerHTML += `
+                container.innerHTML += `
                 <div class="technigo-repos" id="technigoRepos">
-                <h2>${repo.name}</h2>
-                <h3>${repo.description}</h3>
-                <p>Last push: ${repo.pushed_at}</p>
-                <p>Branch: ${repo.default_branch}</p>
-                <p>Main language: ${repo.language}</p>
-                <p id="commit-${repo.name}">Number of commits: </p>
-                <p> <a href="${repo.html_url}">Link to Repo</a></p>
+                    <a class="netlify-link" href="#"><h2 id="repoName">${repo.name}</h2></a>
+                    <h3 id="description">${repo.description}</h3>
+                    <div class="info">
+                        <p><span>• Last push:</span>  ${new Date(repo.pushed_at).toDateString()}</p>
+                        <p><span>• Branch:</span> ${repo.default_branch}</p>
+                        <p><span>• Main language:</span> ${repo.language}</p>
+                        <p id="commit-${repo.name}"><span>• Number of commits:</span> </p>
+                    </div>
+                    <p> <a class="repo-link" href="${repo.html_url}">Link to Repo</a></p>
                 
                 </div>
                 `
