@@ -6,12 +6,7 @@ const reposBox = document.getElementById('reposBox')
 const sortingDropdown = document.getElementById('sortingDropdown')
 
 
-
-// TO REMOVE BEFORE GIT PUSH
-
 const API_TOKEN = TOKEN || process.env.API_KEY
-
-
 
 const options = {
     method: 'GET',
@@ -19,8 +14,6 @@ const options = {
         Authorization: `token ${API_TOKEN}`
     }
 }
-// TO REMOVE BEFORE GIT PUSH
-
 
 
 const openTab = (event, tabName) => {
