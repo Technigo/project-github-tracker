@@ -5,7 +5,7 @@ const repo_URL = "https://api.github.com/users/Sherin-Susan-Thomas/repos";
 const options = {
   method: "GET",
   headers: {
-    Authorization: `token ${API_TOKEN}`,
+    Authorization: ` ${API_TOKEN}`,
   },
 };
 
