@@ -8,24 +8,30 @@
 // All pull requests
 // A chart of how many project you've done so far, compared with how many you will do using chart.js.
 
+
 // DOM selectors
 const userInfo = document.getElementById('userInfo')
 
-
-// Github API
+// Github API and token
 const username = 'emmajosefina'
 const API_URL = `https://api.github.com/users/${username}/repos`
 
+const options = {
+    method: 'GET',
+    headers: {
+        Authorization: `token ${API_TOKEN}`
+    }
+}
 
 //fetching all repos from user
-const findingAllRepos = (user) => { // creating function about github repos
-    fetch(API_URL) // fetching right API
-       .then((res) => res.json()) // response to response.json
-       .then((data) => { // data
-        console.log(data) // console log
-        data.forEach((repo) => // using forEach of repo
-        userInfo.innerHTML += `<p>${repo.name}</p>`) // fetching data to userInfo in HTML
+const findingAllRepos = (user) => { 
+    fetch(API_URL, options) 
+       .then((res) => res.json()) 
+       .then((data) => { 
+        console.log(data) 
+        data.forEach((repo) => 
+        userInfo.innerHTML += `<p>${repo.name}</p>`)
        
        })
 }
-findingAllRepos() // invoking funcion
+findingAllRepos()
