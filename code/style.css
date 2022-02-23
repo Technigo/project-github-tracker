@@ -101,7 +101,7 @@ body {
 }
 
 .projectContainer {
-  border: 1px solid #c0716a61;
+  border: 1px solid #d0d7de;
   border-radius: 5px;
   margin-bottom: 20px;
   padding: 10px;
@@ -113,8 +113,9 @@ body {
   transition: all 1s;
 }
 
-.repoName {
+.styledHeadingsProject {
   font-weight: 600;
+  color: #512d1eac;
 }
 
 /* TABLET */
