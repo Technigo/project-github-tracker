@@ -5,8 +5,8 @@ const userBox = document.getElementById('userBox')
 const reposBox = document.getElementById('reposBox')
 const sortingDropdown = document.getElementById('sortingDropdown')
 
-
-const API_TOKEN = TOKEN || process.env.API_KEY
+const API_TOKEN = TOKEN
+// const API_TOKEN = TOKEN || process.env.API_KEY
 
 const options = {
     method: 'GET',
