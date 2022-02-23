@@ -39,16 +39,42 @@ technigoRepos.forEach((repo) => {
   ${new Date(repo.pushed_at).toLocaleString("sv-SE", {dateStyle: 'short'})}
   ${repo.default_branch}
   <p id="commit-${repo.name}">Commits:</p>
+  <p id="pullrequests-${repo.name}">Pull requests:</p>
   </div>
   `
-  API_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls`
+
+  
+  API_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
   fetch(API_URL, options)
   .then ((res) => res.json())
   .then ((data) => {console.log(data)
+    const myPulls = data.find(
+      (pull) => pull.user.login === repo.owner.login
+    )
+    console.log(myPulls)
 
+    
+
+    if (myPulls) {
+      getMyCommits(myPulls.commits_url, repo.name)
+    }else{
+      document.getElementById(`pullrequests-${repo.name}`).innerHTML += "No pull requests were done."
+    }
   })    
 })
   }
   )
- 
+  
+
+  const getMyCommits = (myCommitsUrl,repo) => {
+    fetch(myCommitsUrl, options)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("commits:", data)
+      document.getElementById(`commit-${repo.name}`).innerHTML +=  data.length
+      
+
+    })
+  }
+  
   
