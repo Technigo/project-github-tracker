@@ -48,7 +48,7 @@ const fetchRepos = () => {
               </div>
             `
         })
-        getPullRequests(filteredRepos);
+    getPullRequests(filteredRepos); // varför är denna här??
     })
 }
 
@@ -57,26 +57,31 @@ const getPullRequests = (allPullRequests) => {
       fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
       .then(res => res.json())
       .then(data => {
-        const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === user)
-        console.log(myPullRequests)
-   
+        const myPullRequest = data.find((pull) => pull.user.login === repo.owner.login);    
+        // here make a conditional if not your pull request   
+        const myCommitsURL = myPullRequest.commits_url
+        const myCommentsURL = myPullRequest.comments_url
+        const repoName = myPullRequest.name
+        console.log(myPullRequest)
+        console.log(myCommitsURL, myCommentsURL)
+        fetchCommits(myCommitsURL, repoName); // varför är denna här??
+
               //TODO
               //2. Now you're able to get the commits for each repo by using
               // the commits_url as an argument to call another function
               //3. You can also get the comments for each PR by calling
               // another function with the review_comments_url as argument
-      })
-     // fetchCommits(myPullRequest.commits_url, repo.name);
+        })
     })
   }
 
-// const fetchCommits = (myCommitsUrl, myRepoName) => {
-//     fetch(myCommitsUrl)
-//     .then((response) => response.json())
-//     .then (data => {
-//         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-//   });
-// }
+const fetchCommits = (myCommitsURL, repoName) => {
+    fetch(myCommitsURL, repoName)
+    .then((res) => res.json())
+    .then (data => {
+        document.getElementById(`commit-${repo.name}`).innerHTML += data.length
+  });
+}
 
-profileInfo()
+profileInfo() // få in denna någon annanstans?
 fetchRepos()
