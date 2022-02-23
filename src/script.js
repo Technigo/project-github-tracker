@@ -4,14 +4,14 @@ const projects = document.getElementById("projects");
 const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
+const TOKEN = config.GITHUB_TOKEN || "Token"
 
 const options = {
   method: 'GET',
   headers: {
-    Authorization: config.GITHUB_TOKEN
+    Authorization: `token ${TOKEN}`
   }
 }
-
 
 const displayProfileData = (data) => {
   const image = data.avatar_url;
@@ -23,12 +23,18 @@ const displayProfileData = (data) => {
   const location = data.location;
 
   profileDetails.innerHTML = `
-    <img src="${image}" class="profile-image" alt="image of ${name}"></img>
-    <h2 class="profile-header">${name}</h2>
-    <p>${username}</p>
-    <p>${bio}</p>
-    <p>👥 ${followers} followers · ${following} following</p>
-    <p><img class="location-icon" src="./images/location.png"></img> ${location}</p>
+    <section class="header">
+    <img src="${image}" class="header__image" alt="image of ${name}"></img>
+    <div class="header__text">
+    <h2 class="header__title">${name}</h2>
+    <p class="header__sub-title">${username}</p>
+    </div>
+    </section>
+    <section class="header-content">
+    <p class="header-content__paragraph header-content__paragraph--top">${bio}</p>
+    <p class="header-content__paragraph header-content__paragraph--grey"><img class="icons group-icon" src="./images/group.png"><span class="header-content__paragraph--bold">${followers}</span>  followers · <span class="header-content__paragraph--bold">${following}</span> following</p>
+    <p class="header-content__paragraph"><img class="icons" src="./images/location.png"></img> ${location}</p>
+    </section>
   `;
 }
 
@@ -36,6 +42,7 @@ const displayRepositories = (repositories) => {
   console.log(repositories);
   repositories.filter(repo => {
     let language = repo.language;
+    const projectUrl = repo.html_url;
     const visibility = repo.visibility;
     const oneDay = 24 * 60 * 60 * 1000;
     const currentDate = new Date();
@@ -46,9 +53,10 @@ const displayRepositories = (repositories) => {
 
     if (repo.fork === true && repo.name !== "unit-tests") {
       projects.innerHTML += `
-      <p>${repo.name} ${visibility}</p>
-      <p>Forked from Technigo/project-${repo.name}</p>
-      <p>${language} Updated ${numberOfDays} days ago</p>
+      <a class="projects__links" href="${projectUrl}">${repo.name}</a><span class="projects__links--right">${visibility}</span>
+      <p class="projects__paragraphs">Forked from Technigo/project-${repo.name}</p>
+      <p class="projects__paragraphs">${language} <span class="projects__paragraphs--right">Updated ${numberOfDays} days ago</span></p>
+      <hr>
       `;
     }
   })
@@ -61,3 +69,4 @@ fetch(USER_URL, options)
 fetch(REPOS_URL, options)
   .then(res => res.json())
   .then(displayRepositories)
+
