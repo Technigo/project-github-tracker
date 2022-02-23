@@ -1,3 +1,16 @@
 body {
-  background: #FFECE9;
+  background: lightgray;
+}
+
+img {
+  border-radius: 50%;
+  max-width: 30vw;
+  filter: grayscale(100%);
+}
+.projectContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.repos {
+  border: 2px black;
 }
