@@ -1,4 +1,4 @@
-// .gitignore file
+
 
 #ignore token js file
-.code/token.js
+code/token.js
