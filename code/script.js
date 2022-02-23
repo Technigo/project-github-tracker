@@ -11,6 +11,8 @@ const repoURL = document.getElementById('repoURL')
 const repoCommits = document.getElementById('repoCommits')
 const allPullReq = document.getElementById('allPullReq')
 
+const API_TOKEN = TOKEN || process.env.API_KEY;
+
 // API
 const API_USER = `https://api.github.com/users/${USER}`
 const API_REPOS = `https://api.github.com/users/${USER}/repos`
@@ -19,7 +21,7 @@ const API_REPOS = `https://api.github.com/users/${USER}/repos`
 const options = {
     method: 'GET',
     headers: {
-          Authorization: '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'
+          Authorization: `token ${API_TOKEN}`
       }
   }
 
