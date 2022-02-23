@@ -23,6 +23,8 @@ fetch(API_URL, options)
     .then(res => res.json())
     .then(data => {
         console.log(data)
+        //using the fetch data for userdata function
+        userData(data)
         //filter out and only show the forked ones
         let forkedOnes = data.filter(element => element.fork === true)
         console.log('Forked ones:', forkedOnes)
@@ -64,4 +66,12 @@ const getPullRequests = (repos) => {
 
   const commits = (url) => {
 
+  }
+
+  //Userdata function (profile pic etc)
+  const userData = (data) => {
+      //showing the profile pic
+      document.getElementById('profile-pic').innerHTML = `
+      <img class="profile-pic" src='${data[0].owner.avatar_url}' alt='image of kolkri at GitHub'>
+      `
   }
