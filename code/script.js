@@ -11,7 +11,7 @@ const GITHUB_TOKEN = API_TOKEN || process.env.API_KEY;
 const options = {
     method: 'GET',
     headers: {
-          Authorization: `token ${GITHUB_TOKEN}`
+          Authorization: `token ${API_TOKEN}`
       }
 }
 
