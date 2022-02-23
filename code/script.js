@@ -42,9 +42,11 @@ const findingAllRepos = (repos) => {
       </section>
       <div class="status-box">
       <span class="inside-status-box">👩‍💻 Edit status</span>
+      </div>
 
-      <p class="presentation-text">Frontend Developer from Technigo Bootcamp. Always curious to learn more about technology and design.</p>
-    </div>
+    <p class="presentation-text">
+      Frontend Developer from Technigo Bootcamp. Always curious to learn more about technology and design.
+      </p>
 
       `
         console.log(data) 
