@@ -1,3 +1,71 @@
 body {
-  background: #FFECE9;
+  background: white;
+  color: rgb(13, 18, 46);
+  margin: 0;
 }
+
+/* Mobile-first design approach*/
+.nav {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  font-size: 30px;
+  color: grey;
+}
+
+.chart {
+  height: 500px;
+  width: 100vw;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.projectSection  {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin: 30px;
+  justify-content: center;
+}
+
+.projectSection article {
+  background-color: white;
+  border: 3px solid grey;
+  margin: 10px;
+  padding: 10px;
+}
+
+.pull-commit-section {
+  border: 5px solid orange;
+  margin: 10px;
+  padding: 10px;
+}
+
+/* ----- Profile information */
+header section {
+  display: flex;
+  justify-content: center;
+}
+
+ header section img {
+   margin-right: 30px;
+   border-radius: 50%;
+ }
+
+@media only screen and (min-width: 778px) {
+  .projectSection  {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .chart {
+    width: 20vw;
+  }
+
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
