@@ -1,3 +1,11 @@
+// Use token locally or from build environment
+const PAT = {
+  method: 'GET',
+  headers: {
+    Authorization: TOKEN || process.env.API_KEY // variable name when deploying
+  }
+}
+
 // API URLs and URL builders
 const USER = 'ariallahyar'; 
 const userUrl = 'https://api.github.com/users/ariallahyar';
