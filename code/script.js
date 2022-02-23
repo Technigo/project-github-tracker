@@ -20,8 +20,9 @@ const options = {
   }
 }
 
-
-//--fetch data from GitHub repo to use in functions for displaying data--//
+///////////////////////////////////////////////////////////////////////////
+//////////////////////           REPO DATA         ////////////////////////
+///////////////////////////////////////////////////////////////////////////
 const gitHubData = () => {
 
 fetch(URL_REPO, options)
@@ -52,7 +53,7 @@ const userData = (data) => {
 const repoData = (data) => {
 
 //Get technigo projects by filtering data by repos that starts with "project- and is forked"
-  const technigoProjects = data.filter(repo => repo.name.startsWith('project-'))
+  const technigoProjects = data.filter(repo => repo.name.startsWith('project-') && repo.fork)
 
   //Pass amount of finished technigo projects to progressChart in chart.js file
   progressChart(technigoProjects.length)  
@@ -60,7 +61,8 @@ const repoData = (data) => {
   //ADD EVENTLISTENER AND TOGGLEBAR!!
   //Create toggle bar, 
   //create sort-function that is listening to an event. 
-  console.log(technigoProjects)
+
+
     //Sort repos by latest push date
   const sortByLatestUpdate = technigoProjects.sort((oldest, newest) => new Date(newest.updated_at) - new Date(oldest.updated_at))
   console.log(sortByLatestUpdate)
@@ -96,7 +98,9 @@ const repoData = (data) => {
   </div>  
   `
 
-  //Fetch pull request data
+  /////////////////////////////////////////////////////////////////////////////
+  ////////////////////////      PULL REQUEST DATA      ///////////////////////
+  ///////////////////////////////////////////////////////////////////////////
   fetch(`https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`, options)
     .then(res => res.json())
     .then(data => {
@@ -126,6 +130,9 @@ const repoData = (data) => {
 }
 
 
+////////////////////////////////////////////////////////////////////////////
+///////////////////////////      COMMITS DATA     /////////////////////////
+//////////////////////////////////////////////////////////////////////////
 const getCommits = (commitsUrl, reponame) => {
   fetch(commitsUrl, options)
   .then(res => res.json())
@@ -135,6 +142,9 @@ const getCommits = (commitsUrl, reponame) => {
   .catch(err => console.error(err))
 }
 
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////      COMMENTS DATA     /////////////////////////
+//////////////////////////////////////////////////////////////////////////
 const getComments = (commentsUrl, reponame) => {
   fetch(commentsUrl, options)
   .then(res => res.json())
