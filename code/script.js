@@ -1,8 +1,9 @@
 // API URLs and URL builders
 const USER = 'ariallahyar'; 
+const userUrl = 'https://api.github.com/users/ariallahyar';
 const repoUrl = 'https://api.github.com/users/ariallahyar/repos';
-const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?page=2`};
-const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits`};
+const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`}; //look into pagination
+const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits`}; //look into pagination
 
 const fetcher = (url, token, callback) => {
   fetch(url, token)
@@ -17,12 +18,20 @@ const fetcher = (url, token, callback) => {
   })
 }
 
+// WORKING, BUT WILL REDO SETUP
+fetcher (userUrl, PAT, ((userProfile) => {
+  console.log(userProfile);
+  // Profile picture and username
+  document.getElementById('profile').innerHTML += `
+    <img class="profile-pic" src="${userProfile.avatar_url}" alt="profile-pic">
+    <h2 class="username">Username: ${userProfile.login}</h2>
+    `;
+}))
+
 fetcher(repoUrl, PAT, (repositories) => {
   let forkedReps = repositories.filter((repo) => {
     return repo.fork === true && repo.name.startsWith("project-")
   });
-
-  console.log(forkedReps)
 
   forkedReps.forEach((rep) => {
     // Name, last update, default branch, URL
@@ -41,7 +50,6 @@ fetcher(repoUrl, PAT, (repositories) => {
 
     // Pull requests
     fetcher(pullUrl(rep.name), PAT, ((pullRequests) => {
-      console.log(pullRequests)
       const myPulls = pullRequests.filter((pull) => {
         return pull.user.login === USER;
       })
