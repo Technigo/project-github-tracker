@@ -23,7 +23,8 @@ const API_REPOS = `https://api.github.com/users/${USER}/repos`
 const options = {
     method: 'GET',
     headers: {
-          Authorization: `token ${API_TOKEN}`
+        //   Authorization: `token ${API_TOKEN}`
+        Authorization: `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`
       }
   }
 
