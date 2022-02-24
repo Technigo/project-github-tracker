@@ -12,7 +12,6 @@ body {
   padding: 1rem 0rem;
 }
 
-
 .profile-wrapper {
   text-align: center;
 }
@@ -43,14 +42,12 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   justify-content: center;
-  /* gap: 1rem; */
   width: 100%;
   padding: 1rem 0rem;
 }
 
 .project {
-  background-color: rgb(63, 203, 226, 0.2);
-  /* box-shadow: 5px 5px rgb(63, 103, 126); */
+  background-color: rgb(63, 203, 226, 0.15);
   padding: 1rem 1rem;
   margin: 1rem;
   line-height: 22px;
@@ -77,10 +74,8 @@ body {
 }
 
 
-@media (min-width: 1024px) {
-  /* do something */
-}
-
 @media (min-width: 667px) {
-  /* do something */
+  .profile-bio {
+    max-width: 40rem;
+  }
 }

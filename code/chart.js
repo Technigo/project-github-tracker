@@ -1,21 +1,15 @@
-//"Draw" the chart here 👇
-
 const renderChart = ((completedProjects) => {
-
-// //DELETE LATER
-// const renderChart = (() => {
 
   const data = {
     labels: [''],
     datasets: [{
       data: [completedProjects],
-      // data: [6],
-      label: 'Completed',
+      label: 'completed',
       backgroundColor: 'rgb(63, 103, 126)',
     }, {
       data: [19-completedProjects],
-      label: 'Remaining',
-      backgroundColor: 'rgb(63, 203, 226, 0.2)',
+      label: 'remaining',
+      backgroundColor: 'rgb(63, 203, 226, 0.1)',
     }]
   };
 
@@ -28,31 +22,28 @@ const renderChart = ((completedProjects) => {
         x: {
           stacked: true,
           grid: {
-            display: false,
-          }
+            display: true,
+          },
         },
         y: {
           stacked: true,
           grid: {
-            display: false,
+            display: true,
           }
         }
       },
       plugins: {
         title: {
           display: true,
-          text: "Technigo Projects",
+          text: `Technigo projects completed: ${completedProjects} of 19`,
+          position: 'top',
         },
         legend: {
-            display: true,
+          display: false,
+          position: 'top',
         }
       }
-
     }
   };
-
   new Chart(document.getElementById('chart'), config);
 });
-
-//DELETE LATER
-// renderChart();
