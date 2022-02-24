@@ -8,7 +8,6 @@ const USER_REPO = `https://api.github.com/users/SteppbySteph/repos`
 
 
 
-const GITHUB_TOKEN = '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'
 const options = {
     method: 'GET',
     headers: {
