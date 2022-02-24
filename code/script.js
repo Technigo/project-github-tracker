@@ -1,54 +1,107 @@
 const username = "lisabergstrom";
 const API_REPOS = `https://api.github.com/users/${username}/repos`;
 const API_PROFILE = `https://api.github.com/users/${username}`;
+
+// D O M - S E L E C T O R S
 const userProfile = document.getElementById("userProfile");
 const projects = document.getElementById("projects");
 
 //  T O K E N
+
+/*
+const options = {
+    method: 'GET',
+    headers: {
+          Authorization:'API_TOKEN'
+  }
+*/
+
 const options = {
   method: "GET",
   headers: {
-    Authorization: "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",
+    Authorization: "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",
   },
 };
 
 // P R O F I L E
-fetch(API_PROFILE, options)
-  .then((res) => res.json())
-  .then((data) => {
-    userProfile.innerHTML += `
+const fetchProfile = () => {
+  fetch(API_PROFILE, options)
+    .then((res) => res.json())
+    .then((data) => {
+      userProfile.innerHTML += `
                 <img src="${data.avatar_url}" class ="pic"></img>
                     <h2>${data.login} </h2>
                     <h2>${data.name} </>
 `;
-  });
+    });
+};
 
 // R E P O S
-fetch(API_REPOS, options)
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    const forkedRepos = data.filter(
-      (repo) => repo.fork && repo.name.startsWith("project-")
-    );
-    console.log(forkedRepos);
+const fetchRepositories = () => {
+  fetch(API_REPOS, options)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      const forkedRepos = data.filter(
+        (repo) => repo.fork && repo.name.startsWith("project-")
+      );
 
-    //Gets the PR from the forked repos.
-    forkedRepos.forEach((repo) => {
-      projects.innerHTML += `
+      forkedRepos.forEach((repo) => {
+        projects.innerHTML += `
   <div class="repos">
-  ${repo.name}
-  ${new Date(repo.pushed_at).toLocaleString("sv-SE", { dateStyle: "short" })}
-  ${repo.default_branch}
+  <a href="${repo.html_url}">
+  <h3> Project name: ${repo.name} <br> </h3>
+  <p> Latest push: ${new Date(repo.pushed_at).toLocaleString("sv-SE", {
+    dateStyle: "short",
+  })} </p>
+  <p> Deafult branch: ${repo.default_branch} <p/>
+  <a href = ${repo.html_url}> ${repo.name}</a>
   <p id="commit-${repo.name}">Commits:</p>
+  </a>
   </div>
   `;
+      });
 
-      const API_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls`;
-      fetch(API_URL, options)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        });
+      fetchPullRequestsArray(forkedRepos);
+
+      //Draw chart with forkedRepos data
+      drawChart(forkedRepos.length);
     });
+};
+
+const fetchPullRequestsArray = (allRepositories) => {
+  allRepositories.forEach((repo) => {
+    const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?
+        per_page=100`;
+
+    fetch(PULL_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        const myPullRequest = data.find(
+          (pull) => pull.user.login === repo.owner.login
+        );
+        console.log(myPullRequest);
+
+        // Detect if we have pull request or not.
+        // If yes - call fetchCommits function
+        // If no - inform user that no pull request was yet done
+        if (myPullRequest) {
+          fetchCommits(myPullRequest.commits_url, repo.name);
+        } else {
+          document.getElementById(`commit-${repo.name}`).innerHTML =
+            "No pull requests made";
+        }
+      });
   });
+};
+
+const fetchCommits = (myCommitsUrl, myRepoName) => {
+  fetch(myCommitsUrl)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
+    });
+};
+
+fetchProfile();
+fetchRepositories();
