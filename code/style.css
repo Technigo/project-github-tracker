@@ -22,7 +22,7 @@ h1 {
   background: white;
   display: inline;
   padding: 2vh 5vw;
-  margin: 5vh 5vw;
+  margin: 5vh 5vw; 
   box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
   -webkit-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
   -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
