@@ -1,8 +1,9 @@
 // Use token locally or from build environment
+const API_TOKEN = TOKEN;
 const PAT = {
   method: 'GET',
   headers: {
-    Authorization: TOKEN
+    Authorization: `token ${API_TOKEN}`
   }
 }
 
