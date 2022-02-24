@@ -1,16 +1,21 @@
 //"Draw" the chart here 👇
+
 const renderChart = ((completedProjects) => {
 
+// //DELETE LATER
+// const renderChart = (() => {
+
   const data = {
-    labels: ['Projects'],
+    labels: [''],
     datasets: [{
       data: [completedProjects],
-      label: 'Completed',
+      // data: [6],
+      label: 'Completed projects',
       backgroundColor: 'rgb(63, 103, 126)',
     }, {
       data: [19],
-      label: 'Coming',
-      backgroundColor: 'rgb(63,203,226)',
+      label: 'All Technigo projects',
+      backgroundColor: 'rgb(63, 203, 226, 0.2)',
     }]
   };
 
@@ -26,9 +31,18 @@ const renderChart = ((completedProjects) => {
         y: {
           stacked: true
         }
+      },
+      plugins: {
+          legend: {
+              display: true,
+          }
       }
+
     }
   };
 
   new Chart(document.getElementById('chart'), config);
 });
+
+//DELETE LATER
+// renderChart();
