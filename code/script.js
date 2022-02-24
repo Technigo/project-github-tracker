@@ -5,35 +5,45 @@ const API_URL_REPOS = `https://api.github.com/users/${owner}/repos`;
 const projects = document.getElementById('projects');
 const username = document.getElementById('username');
 const picture = document.getElementById('picture');
+const numberOfProjects = document.getElementById('numberOfProjects');
+const sort = document.getElementById('sort');
+
 let ownerLogin = '';
 //Count amount of repos for the chart
-let countRepos = 0;
+//let countRepos = 0;
 
-const getRepos = () => {
+//Function that renders the table
+//const renderTable = () => {}
+
+const getRepos = (sort) => {
     fetch(API_URL_REPOS)
         .then((response) => {
             return response.json()
         })
         .then((json) => {
-            console.log(json);
-
             ownerLogin = json[0].owner.login;
             username.innerHTML = ownerLogin;
             picture.src = json[0].owner.avatar_url;
             let arrayWithRepos = [];
 
             json.forEach((repo) => {
+                console.log(repo);
 
                 if (repo.fork === true && repo.name.startsWith('project')) {
-                    countRepos++;
                     arrayWithRepos.push(repo.name);
-                    projects.innerHTML += `<tr><td id="${repo.name}">${repo.name}</td><td>${new Date(repo.updated_at).toLocaleDateString('sv-SE')}</td><td>${repo.default_branch}</td><td id="commits-${repo.name}"></td><td>${repo.url}</td></tr>`
+                    projects.innerHTML += `<tr><td id="${repo.name}">${repo.name}</td><td>${new Date(repo.updated_at).toLocaleDateString('sv-SE')}</td><td>${repo.default_branch}</td><td id="commits-${repo.name}"></td><td><a class="repo-url" href="${repo.html_url}">${repo.html_url}</a></td></tr>`
                 }
             });
-            const numberOfProjects = document.getElementById('numberOfProjects');
+            countRepos = arrayWithRepos.length;
             numberOfProjects.innerHTML = `I have finished ${countRepos} projects and have ${19-countRepos} left.`;
-            console.log(arrayWithRepos);
+            console.log(arrayWithRepos.length);
+            showChart(countRepos);
             getPullRequests(arrayWithRepos);
+
+            /*if (sort === 'alphabetically') {
+                console.log('ABCD');
+            }*/
+
         })
 }
 
@@ -62,15 +72,21 @@ const getPullRequests = (repos) => {
 }
 
 const fetchCommits = (commitsURL, repoName) => {
-    console.log(repoName);
-
     fetch(commitsURL)
     .then(res => res.json())
     .then(json => {
-      console.log(json.length);
-      console.log(repoName);
       document.getElementById(`commits-${repoName}`).innerHTML += json.length;
     });
 }
 
 getRepos();
+
+/*
+sort.addEventListener('change', () => {
+    console.log('sort');
+    
+    if (sort.value === 'alphabetically') {
+        getRepos('alphabetically');
+
+    }
+})*/

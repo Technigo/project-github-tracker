@@ -21,6 +21,15 @@
     </header>
 
   <main>
+    <div class="sort">
+      <label for="sort">Sort on:</label>
+      <select name="sort" id="sort">
+        <option value option disabled selected></option>
+        <option value="Date newest first">Date newest first</option>
+        <option value="Date oldest first">Date oldest first</option>
+        <option value="alphabetically">Name</option>
+      </select>
+    </div>
     <table class="projects">
       <thead>
         <tr>
@@ -35,15 +44,14 @@
       </tbody>
     </table>
   </main>
-
   <canvas id="chart" class="chart">
   </canvas>
+  <p id="numberOfProjects" class="number-of-projects"></p>
 
-  <p id="numberOfProjects"></p>
 
+  <script src="./chart.js"></script>
   <script src="./script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="./chart.js"></script>
 
 </body>
 </html>
