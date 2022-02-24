@@ -18,54 +18,109 @@ const userInfo = document.getElementById('user-info')
 
 const username = 'Dorothea-B'
 const API_URL_USER = `https://api.github.com/users/${username}`
-const API_URL = `https://api.github.com/users/${username}/repos`
+const API_URL_REPO = `https://api.github.com/users/${username}/repos`
 //const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
 //PR is for Pull Requests - not Projects! 
 
 let reponame
 
+//User info
+
 fetch(API_URL_USER)
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        //User info
         userInfo.innerHTML += 
         `<img class="userPicture" src=${data.avatar_url}
         <div class="userName">${data.name}</div>`
     })
 
-fetch(API_URL)
+//HERE STARTS THE PROJECTS
+
+fetch(API_URL_REPO)
     .then(res => res.json())
     .then(data => {
         console.log(data)
 
-        //HERE STARTS THE PROJECTS
         for (let i = 0; i < data.length; i++)
 
         myProjects.innerHTML += 
         `<div class="project">
-        <div class="repoName">${data[i].name}</div>
-        <div class="repoUrl">${data[i].git_url}</div>
-
+        <div class="repoName"> Name: ${data[i].name} </div>
+        <a href="http://${data[i].git_url}"> Repo url </a>
+        <div class="defBranch"> Default branch: ${data[i].default_branch} </div>
         </div>`
+
         
         
-        reponame = data[4].name
-        //Later have to make a loop for this
+        
+       
 
-       // console.log(data[5].name)
-       // console.log(reponame)
+        const fetchCommits = () => {
 
-       const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
+            data.forEach((repo) => {
+            reponame = repo.name 
+            })
+        }
+        fetchCommits(data)
 
-        fetch(API_URL_PR)
-        .then(res => res.json())
+
+       const API_REPO_COMMITS = `https://api.github.com/repos/${username}/${data.name}/commits`
+        
             
-        .then(data => {
-             console.log(data)
-        })   
+            fetch(API_REPO_COMMITS)
+            .then(res => res.json())
+                
+            .then(data => {
+                console.log(data)
+
+
+                //for (let y = 0; y < data.length; y++)
+
+                //console.log("Num of commits:", data[y].commit)
+
+                myProjects.innerHTML += 
+
+            `   <div class="latest">'Latest commit: ', data[0].commit.message, " ", 'Total commits:', data.length </div>
+
+                <div class="numOfCommits"> Commits: ${data.length} </div>
+            `
+            })
+
+
+
+       
+        console.log('Name of repo:', reponame)
+
+
+    //    const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=200`
+
+    //     fetch(API_URL_PR)
+    //     .then(res => res.json())
+            
+    //     .then(data => {
+    //          console.log(data)
+
+    //        // filter pull requests 
+
+
+    //         })   
 
     })
 
 
- 
+    // for (let y = 0; y < data.length; y++)
+
+    // reponame = data[y].name
+
+    // console.log('Reponame:', reponame)
+    // //Later have to make a loop for this
+
+
+     
+    // data.forEach((repo) => {
+    //     reponame = repo.name
+    // })
+
+    // console.log(reponame)
+    //Later have to make a loop for this
