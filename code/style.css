@@ -1,6 +1,29 @@
-/* body {
-  background: #FFECE9;
-} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+ font-family: "Roboto", sans-serif
+}
+
+h1 {
+  max-height: 5vh;
+  min-height: 2vh;
+  font-weight: 500;
+  padding-bottom: 1vh
+}
+
+p {
+  padding: 0.5vh
+}
+
+a {
+  color: orangered
+}
+
 .hero-image {
   background-image: url("/images/hero-grafitti2.jpg");
   width: 100vw;
@@ -9,19 +32,70 @@
   background-size: cover;
   background-repeat: no-repeat
 }
+
 body {
   color: black;
 }
+
 .user-container {
   position: relative;
   text-align: center;
   bottom: 12vh
 }
+
 .user-image {
   border-radius: 50%;
   width: 25vh;
   filter: grayscale(100%)
 }
+
 .project-container {
-  margin-top: -12vh
+  display: grid;
+  margin-top: -5vh;
+  justify-content: center;
+  text-align: center;
+}
+.repos {
+  padding-bottom: 5vh;
+  font-weight: 300;
+  margin-bottom: 5vh;
+  padding: 1vh;
+  cursor: pointer;
+}
+
+.project-container :hover {
+  background: linear-gradient(90deg, #D1D1D1, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, #D1D1D1);
+}
+
+/*media queries*/
+@media screen and (min-width: 668px) and (max-width: 1024px) {
+ .hero-image {
+   height: 35vh
+ }
+ .user-container {
+  bottom: 15vh
+}
+ .user-image {
+   width: 30vh
+ }
+ .project-container {
+   grid-template-columns: 1fr 1fr
+ }
+}
+
+@media screen and (min-width: 1025px) {
+  .hero-image {
+    height: 55vh
+  }
+  .user-container {
+    bottom: 18vh
+  }
+  .user-image {
+    width: 35vh
+  }
+  .project-container {
+    grid-template-columns: 1fr 1fr;
+    margin-left: 12vw;
+    margin-right: 12vw
+  }
 }
