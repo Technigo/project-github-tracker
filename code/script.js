@@ -35,7 +35,7 @@ fetch(API_USER, options)
     .then ((data) => {
         console.log(data)
         header.innerHTML = `
-        <a class="img-link "href"#"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
+        <a class="img-link" href="https://github.com/Neaa99"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
             <div class="header-text">
             <p>${data.name}</p>
                 <h1><span>${data.login}</span></h1>
