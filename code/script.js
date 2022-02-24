@@ -1,47 +1,66 @@
-// Endpoint to get all your repos
-// https://api.github.com/users/${username}/repos
+const projectCard = document.getElementById('projectCard')
+const profile = document.getElementById('profile')
+const profileImage = document.getElementById('profileImage')
 
-// Endpoint to get all PRs from a Technigo repo https://api.github.com/repos/Technigo/${reponame}/pulls
+const githubProfile = () => 
+  fetch('https://api.github.com/users/rawisou')
+   .then((res) => res.json()) 
+   .then((data) => {
+    profile.innerHTML = `
+    <h1>GitHub Tracker</h1>
+     <h2>${data.name}</h2> 
+     <p> Github: ${data.html_url} </p>
+    `
+    profileImage.src = data.avatar_url
+  })
+  .catch((err) => console.log(err))
+  githubProfile()
 
-// To get the comments from a PR, you need to get the URL from the review_comments_url property in the PR json object. It might look something like this: https://api.github.com/repos/Technigo/project-news-site/pulls/247/comments 
-// and then do a fetch with that url.
-
-// To get the commits from a PR, you need to get the URL from the commits_url property in the PR json object. It might look something like this:
-// https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits
-// and then do a fetch with that url.
-
-//<-------- START HERE ------->
-// const projects = document.getElementById('projects')
-const projectName = document.getElementById('projectName')
-
-const GET_REPOS = ('https://api.github.com/users/rawisou/repos')
-
-    fetch(GET_REPOS) 
-      .then((res) => res.json()) 
-      .then((data) => {
-        technigoProjects = data.filter(
-        (project) => project.fork && project.full_name.includes("project-")
+const projects = () =>
+  fetch('https://api.github.com/users/rawisou/repos') 
+   .then((res) => res.json()) 
+   .then((data) => {
+     const technigoRepos = data.filter(
+        (repos) => repos.fork && repos.full_name.includes('project-')
       )
-        technigoProjects.forEach((item) => {
-          projectName.innerHTML += `<h2>${item.full_name.replace('rawisou/', '')}</h2> 
-          `
-          console.log(item.full_name)
-        })
-    }
-  )
+      getPullRequests(technigoRepos)
+    })
+   .catch((err) => console.log(err))
+  projects()
 
-
-
-
-  // Another way of doing it
-  // for (let n = 0; n < technigoProjects.length; n++) {
-  //   numProjects.innerHTML = `<h2>${technigoProjects[n].full_name}</h2>`
-  // }
   
+const getPullRequests = (repos) => {
+   repos.forEach(repo => {
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
+    .then((res) => res.json())
+    .then((pull) => {
+      console.log(pull)
+       const myPullRequests = pull.find( 
+         (pull) => pull.user.login === repo.owner.login 
+        )
+       if(myPullRequests != undefined) {projectCard.innerHTML += `
+     <div class="card">
+      <h3 class="repo-name">${repo.full_name.replace('rawisou/', '')}</h3>
+      <a href="${repo.html_url}">${repo.html_url}</a>
+      <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
+      <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
+      <p><span class ="bolded"> Number of commits:</span></p>
+      <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">${myPullRequests.html_url}</a></p>
+     </div>   
+       ` } else {
+        projectCard.innerHTML += `
+        <div class="card">
+          <h3 class="repo-name">${repo.full_name.replace('rawisou/', '')}</h3>
+          <a href="${repo.html_url}">${repo.html_url}</a>
+          <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
+          <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
+          <p><span class ="bolded"> Number of commits:</span> <span id="numCommits"></span></p>
+          <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">https://github.com/Technigo/project-weather-app/pull/215</a></p>
+        </div>   
+        `
+       }
+       })
+    })
+  }
 
-  // console.log(technigoProjects)
-  // technigoProjects.forEach((item) => {
-  //   numProjects.innerHTML = `<h2>${item.full_name.replace('rawisou/', '')}</h2> 
-  //   `
-  //   console.log(item.full_name)
-  // })
+  // For next projects that I'm not the one doing the pull request, else if(s) need to be added or find a better way.

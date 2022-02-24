@@ -10,12 +10,49 @@ body {
 
 header {
   display: flex;
+  flex-direction: column;
   background-color: white;
-  height: 150px;
   justify-content: center;
   align-items: center;
 }
-
+h1 {
+  padding: 20px;
+}
 h2 {
   margin: 10px;
+}
+
+.bolded {
+  font-weight: 600;
+}
+.profile {
+  text-align: center;
+}
+
+.profile-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  padding: 30px;
+}
+
+.card {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 668px) {
+ .project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ }
+
+}
+
+
+@media (min-width: 1000px) {
+  .project-card {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
