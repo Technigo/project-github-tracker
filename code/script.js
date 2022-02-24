@@ -11,7 +11,7 @@ const repoURL = document.getElementById('repoURL')
 const repoCommits = document.getElementById('repoCommits')
 const allPullReq = document.getElementById('allPullReq')
 const container = document.getElementById('container')
-const projects = document.getElementById('projects')
+const header = document.getElementById('header')
 
 const API_TOKEN = TOKEN || process.env.API_KEY;
 
@@ -35,7 +35,7 @@ fetch(API_USER, options)
     })
     .then ((data) => {
         console.log(data)
-        projects.innerHTML = `
+        header.innerHTML = `
         <a class="img-link "href"#"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
             <div class="header-text">
             <p>${data.name}</p>
