@@ -63,7 +63,7 @@ p {
 
 img {
   width: 250px;
-  border-radius: 50%;
+  border-radius: 1%;
   border: 5px solid var(--secondary);
 }
 
@@ -164,6 +164,11 @@ header {
   flex-direction: column;
   justify-content: space-around;
   padding: 1em 0;
+}
+
+.chart {
+  min-height: 200px;
+  padding: 1em;
 }
 
 /***************************************************/
@@ -303,7 +308,7 @@ footer {
   }
 
   img {
-    width: 280px;
+    width: 300px;
   }
 
   .section-overwiew {
@@ -323,5 +328,17 @@ footer {
   
   html {
     font-size: 140%;
+  }
+
+  img {
+    width: 350px;
+  }
+
+  .chart {
+    min-height: 400px;
+  }
+
+  .section-overwiew {
+    padding-inline: 4em;
   }
 }

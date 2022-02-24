@@ -18,14 +18,6 @@ const options = {
 }
 
 
-//commentsfunction
-const getComment = (comment) => {
-  // document.getElementById('modal').innerHTML += `<p>${comment}</p>` 
-  console.log(comment)
-}
-
-
-
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////           REPO DATA         ////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -34,17 +26,8 @@ const gitHubData = () => {
 fetch(URL_REPO, options)
   .then(res => res.json())
   .then(data => {
-  userData(data)
-  repoData(data)
 
-  })
-  .catch(err => console.error(err))
-}
-
-//--get and display user information--//
-const userData = (data) => {
-
-//Get image from user profile and display on website
+  //Get image from user profile and display on website
   document.getElementById('profile-picture').innerHTML = `
   <img class="box-shadow" src='${data[0].owner.avatar_url}' alt='image of emmahogberg88 at GitHub'>
   `
@@ -52,7 +35,13 @@ const userData = (data) => {
   document.getElementById('username').innerHTML = `
   <h4><a class="header nav-link" href='${data[0].html_url}'><i class="fab fa-github"></i> ${username}</a></h4>
   `
+  repoData(data)
+  })
+  .catch(err => console.error(err))
 }
+
+
+
 
 //--display repo information--//
 const repoData = (data) => {
@@ -64,34 +53,12 @@ const repoData = (data) => {
   progressChart(technigoProjects.length)  
   
   console.log('till sorting',technigoProjects)
-  //ADD EVENTLISTENER AND TOGGLEBAR!!
-  //Create toggle bar, 
-  //create sort-function that is listening to an event. 
 
-    //Sort repos by latest push date
+  toggleSwitch.addEventListener('click', () => {
+    technigoProjects.sort((a, b) => new Date(a.pushed_at) < new Date(b.pushed_at) ? 1 : -1)
+    console.log('new array?', technigoProjects)
+  })
 
-  sortByLatestUpdate = technigoProjects.sort(data.updated_at, data.updated_at)
-  // console.log(sortByLatestUpdate)
-
-  // //sortingfunction
-  // const sortingRepos = technigoProjects.sort((a, b) => {
-  //   const dateA = a.pushed_at
-  //   const dateB = b.pushed_at
-  //   if (dateA < dateB) {
-  //     return -1
-  //   } else if (dataA > dateB) {
-  //     return 1
-  //   } else {
-  //     console.log('sort what?')
-  //     return 0
-  //   }
-  // })
-
-  // console.log(sortingRepos())
-
-  // //Sort repos by latest push date
-  // const sortByNewestRepo = technigoProjects.sort((oldest, newest) => new Date(newest.pushed_at) - new Date(oldest.pushed_at))
-  // console.log(sortByNewestRepo)
 
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
@@ -99,12 +66,6 @@ const repoData = (data) => {
   //Get name of repo
   const reponame = repo.name
 
-  //Get url to each repo 
-  const projectUrl = repo.html_url
-  
-  //Get default branch
-  const defaultBranch = repo.default_branch
-  
   //Get the date of latest update of the repo
   const latestUpdateRepo = new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})
   
@@ -112,8 +73,8 @@ const repoData = (data) => {
   document.getElementById('section-projects').innerHTML += `
   <div class="section-projects__card box-shadow">
     <div>
-      <h3 class="repo-title bold-text"><a class="nav-link" href='${projectUrl}'>${reponame}</a></h3>
-      <p><span class="bold-text">Default branch:</span> ${defaultBranch}</p>
+      <h3 class="repo-title bold-text"><a class="nav-link" href='${repo.html_url}'>${reponame}</a></h3>
+      <p><span class="bold-text">Default branch:</span> ${repo.default_branch}</p>
       <p><span class="bold-text">Latest update:</span> ${latestUpdateRepo}</p>
       <p id="commits-${reponame}"></p>
       <p id="comments-${reponame}"></p>
@@ -136,7 +97,6 @@ const repoData = (data) => {
         if(repo.user.login === username) {
 
           let reponame = repo.base.repo.name
-          console.log(reponame)
          
           //get url for commits to use in new fetch
           const commitsUrl = repo.commits_url
@@ -201,7 +161,8 @@ const displayComments = (commentsUrl, reponame) => {
           `         
           document.getElementById(`comments-btn-${reponame}`).innerHTML = `
             <button class="outlined-button" id="click-${reponame}">comments 💬</button> 
-          `  
+          `
+
           commentsArray.push(comment.body)
           document.getElementById(`click-${reponame}`).addEventListener('click', () => {
             commentsArray.forEach(item => {
@@ -244,10 +205,7 @@ gitHubData()
 
 modalBtn.addEventListener('click', () => {
   modalWrapper.style.display = 'none'
+  document.getElementById('modal').innerHTML = ''
 })
 
-//eventlistener
-toggleSwitch.addEventListener('click', (technigoProjects) => {
-  console.log('toggles')
-  sortingRepos(technigoProjects)
-})
+

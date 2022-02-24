@@ -5,10 +5,10 @@ const ctx = document.getElementById('chart').getContext('2d')
 progressChart = (projectsLeft) => {
     
     const config = {
-        type: 'pie',
+        type: 'bar',
         data: {
             datasets: [{
-                label: 'Technigo Project Progress Chart',
+                label: '',
                 backgroundColor: ['rgb(97, 192, 194)', 'rgb(186, 223, 215)'],
                 borderColor: 'rgb(22, 19, 21)',
                 hoverOffset: 8,
@@ -22,38 +22,23 @@ progressChart = (projectsLeft) => {
             ]
         },
 
-        //overrides[type].plugins.legend,
-        // overrides: {
-        //    pie: {
-        //         plugins: {
-        //             legend: {
-        //                 display: true,
-        //                 position:'bottom',
-        //                 labels: {
-        //                     color: 'white',
-        //                     fontFamily: 'Roboto',
-        //                 }
-        //             }
-        //         }
-        //    },
-        // },
         options: {
             plugins: {
                 responsive: true,
                 legend: {
                     display: true,
-                    position:'bottom',
+                    position:'chartArea',
                     labels: {
                         color: 'white',
                         fontFamily: 'Roboto',
-                        boxWidth: 25,
-                        boxHeight: 25,
-                        usePointStyle: true,
+                        boxWidth: 0,
+                        boxHeight: 0,
                     }
                 },
                 title: {
                     display: true,
-                    text: 'Boot camp progress',
+                    text: 'BOOT CAMP PROGRESS',
+                    position: 'top',
                     color: 'white',
                     fontFamily: 'Roboto',
                     weight: 'bold',
