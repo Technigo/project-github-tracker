@@ -26,7 +26,8 @@ const profileInfo = () => {
       <img src="${profileImg}" alt="Image of Sofia Ringstedt">
       </div>
       <div class="user-name">
-      <h2><a href="${user_URL}" target="_blank">Github account: ${user}</a></h2>
+      <h2>Github account: <a href="${user_URL}" target="_blank">${user}</a></h2>
+      </div>
      `
   })
 }
@@ -40,8 +41,8 @@ const fetchRepos = () => {
 
         filteredRepos.forEach(repo => {
             projects.innerHTML += `
-              <div class="card">  
-                <h2><a href="${repo.html_url}" target="_blank">${repo.name}</a></h2>
+              <div id="card" class="card">  
+                <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
                 <p>Branch: ${repo.default_branch}</p>
                 <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
                 <p>Number of commits: ${repo.name.length}</p> 

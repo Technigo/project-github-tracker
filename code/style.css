@@ -1,0 +1,136 @@
+/* RESET CSS TO BORDER-BOX */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #7A918D;
+  height: 100vh;
+  font-family: 'Noto Serif Display';
+  margin: 0;
+  color: #1E1E24;
+}
+
+header, .user-name, .user-img, .user-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 5vw;
+  width: 100vw;
+  margin: 5vw;
+}
+
+header img {
+  width: 20vw;
+  border-radius: 50%;
+}
+
+.user-info {
+  flex-direction: column;
+}
+
+.user-name a, h2 {
+  font-size: 2.5vw;
+}
+
+.chart-wrapper {
+  width: 20vw;
+}
+
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-wrapper h2 {
+  font-size: 4.5vw;
+  text-align: center;
+  margin: 2vw;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.projects h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 4vw;
+  margin: 1vw;
+}
+
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45vw;
+  font-size: 2.5vw;
+  background: #F8F7F9;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.card p {
+  display: inline-flex;
+  justify-content: center;
+  margin: 1vw;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EDD9A3;
+  height: 12vw;
+  width: 100vw;
+  margin-top: 10vw;
+}
+
+footer p {
+  font-size: 3vw;
+}
+
+@media (min-width: 667px) {
+  .projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 992px) {
+ header h1 {
+   font-size: 4vw;
+ }
+
+ .user-name a, h2 {
+  font-size: 1.5vw;
+}
+
+.projects-wrapper h2 {
+  font-size: 3vw;
+}
+
+.projects h3 {
+  font-size: 2vw;
+}
+
+.card {
+  font-size: 1.5vw;
+  width: 30vw;
+}
+
+footer p {
+  font-size: 1.5vw;
+}
+}

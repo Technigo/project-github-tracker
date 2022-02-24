@@ -8,22 +8,29 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Cormorant:ital,wght@0,300;1,500&family=Spectral:wght@200&display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@300&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
-  <h1>Github Tracker</h1>
-  <div id="user-info"></div>
+    <h1>Sofia Ringstedt - Portfolio</h1>
+    <div class="user-info" id="user-info"></div>
+    <!-- This will be used to draw the chart 👇 -->
+  <div class="chart-wrapper">
+    <canvas class="chart" id="chart"></canvas>
+  </div>
   </header>
 
+  <div class="projects-wrapper">
   <h2>Projects:</h2>
-  <main id="projects"></main>
-
-  <!-- This will be used to draw the chart 👇 -->
-  <div>
-    <canvas id="chart"></canvas>
+  <div class="projects" id="projects"></div>
   </div>
+
+  <footer>
+    <p>Created by Sofia Ringstedt</p>
+  </footer>
 
   <script src="./chart.js"></script>
   <script src="./secret.js"></script>
