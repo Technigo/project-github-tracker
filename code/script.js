@@ -10,6 +10,7 @@ const options = {
     Authorization: `token ${API_TOKEN}`, // you need to paste your token over here.
   },
 };
+//console.log(API_TOKEN);
 
 fetch(API_URL, options)
   .then((res) => res.json())
