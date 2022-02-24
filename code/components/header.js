@@ -1,11 +1,9 @@
-import dummy from "../assets/dummy.png";
 import notificationIconSrc from "../assets/icons/bell-regular.svg";
 import githugLogoSrc from "../assets/icons/github-brands.svg";
+import { createElement } from "../utility/createElem";
 
-export default function HeaderComp() {
-  const header = document.createElement("header");
-  header.classList.add("header");
-
+export default function HeaderComp(userProfileImage) {
+  const header = createElement("header", "header");
   //[todo] unable to change color in svg when it is in img tag. update it later
   const barIcon = `
     <svg
@@ -22,15 +20,12 @@ export default function HeaderComp() {
      </svg>
     `;
 
-  const headerContainer = document.createElement("div");
-  headerContainer.classList.add("header-container");
+  const headerContainer = createElement("div", "header-container");
 
-  const githubLogo = document.createElement("img");
+  const githubLogo = createElement("img", "logo");
   githubLogo.src = githugLogoSrc;
-  githubLogo.classList.add("logo");
 
-  const searchForm = document.createElement("form");
-  searchForm.classList.add("search-container");
+  const searchForm = createElement("form", "search-container");
   searchForm.innerHTML = `
     <input
     type="text"
@@ -44,31 +39,26 @@ export default function HeaderComp() {
     console.log("hello");
   };
 
-  const nav = document.createElement("nav");
-  nav.classList.add("nav");
-  const ul = document.createElement("ul");
-  ul.classList.add("nav-list");
+  const nav = createElement("nav", "nav");
+  const ul = createElement("ul", "nav-list");
   ul.innerHTML = `
   <li class="nav-item">Pull Requests</li>
   <li class="nav-item">Explore</li>
   `;
   nav.appendChild(ul);
 
-  const githubLogoMobile = document.createElement("img");
+  const githubLogoMobile = createElement("img", "logo-mobile");
   githubLogoMobile.src = githugLogoSrc;
-  githubLogoMobile.classList.add("logo-mobile");
 
   headerContainer.appendChild(githubLogo);
   headerContainer.appendChild(searchForm);
   headerContainer.appendChild(nav);
 
-  const userProfileCorner = document.createElement("img");
-  userProfileCorner.src = dummy;
-  userProfileCorner.classList.add("profile-thumbnail-corner");
+  const userProfileCorner = createElement("img", "profile-thumbnail-corner");
+  userProfileCorner.src = userProfileImage;
 
-  const notificationIcon = document.createElement("img");
+  const notificationIcon = createElement("img", "notification");
   notificationIcon.src = notificationIconSrc;
-  notificationIcon.classList.add("notification");
 
   //attach by order
   header.innerHTML = barIcon;
