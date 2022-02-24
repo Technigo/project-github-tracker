@@ -175,7 +175,7 @@ footer {
 
   .profile-container {
     grid-column: span 1;
-    height: 707px;
+    height: 1500px;
     display: table-column;
     text-align: center;
     padding: 20px;
@@ -206,7 +206,7 @@ footer {
 
   .repo-container {
     grid-column: 2/ 5;
-    height: 750px;
+    height: 1550px;
     padding: 10px;
   }
 
