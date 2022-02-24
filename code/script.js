@@ -1,9 +1,17 @@
 const username = 'Nosslexa'
 const imgWrapper = document.getElementById('imgWrapper')
-//const img = document.getElementById('img')
 const userDataWrapper = document.getElementById('userDataWrapper')
+const projects = document.getElementById('projects')
 const API_URL = `https://api.github.com/users/${username}/repos`
 
+
+/*
+const options = {
+    method: 'GET',
+    headers: {
+          Authorization:'API_TOKEN'
+  }
+*/
 
 
 
@@ -19,69 +27,66 @@ const getRepos = () => {
         console.log(forkedRepos)
         
          getPullRequests(forkedRepos)
-
-        imgWrapper.innerHTML = 
+         // injects profile img and user data to the HTML. 
+         imgWrapper.innerHTML = 
         ` <div>
         <img class="img" src="${data[0].owner.avatar_url}" alt="userimage">
         </div>` 
-        
-        
+                
         userDataWrapper.innerHTML += 
         `<h2>${data[0].owner.login}</h2>
         <p>${data[0].owner.url} </p>`
 
-        
+        //display repo info
+        forkedRepos.forEach((data) => {
+
+            projects.innerHTML +=
+            ` <div class="repo-card"> 
+            <a href="${data.html_url}">
+                <h3>${data.name}</h3>
+                </a>
+            
+                    <p>Branch: ${data.default_branch}</p>
+                    <p>Last push: ${new Date(data.pushed_at).toDateString()}</p>
+                    <p ="commits"> nr of commits: ${data.length}</p>
+             </div>`
+            })
+            
+            drawChart(forkedRepos.length)
     })
 }
 
 //function to find() my pullrequests and comments
 const getPullRequests = (forkedRepos) => {
     forkedRepos.forEach(repo => {
-        fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+        fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`,)
         .then(res => res.json())
         .then(data => {
             console.log(data)
 
           const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
             console.log(myPullRequests)
-
-            //const myCommits = 
+         const myCommitsURL = myPullRequests.commits_url
+         console.log(myCommitsURL)
+         
         })
     })
 }
+
+const getCommits = (myCommitsURL) => {
+fetch (myCommitsURL)
+.then((res) => res.json())
+.then(data => {
+    document.getElementById('commits ${repo.name}').innerHTML += data[data.length]
+})
+}
+
 
 getRepos()
 
 
 
 
-/*
-const fetchRepos = () => {
-    fetch(API_URL, options) 
-    .then(res => res.json())
-    .then(data => {
-        const filteredRepos = data.filter(repo => repo.name.startsWith("project") && repo.fork === true)
-        
-//console.log
-(filteredRepos)
-
-        filteredRepos.forEach((repo) => {
-            projectsWrapper.innerHTML += `
-              <div class="projects">  
-                <table>
-                  <tr>
-                    <th><a href="${repo.html_url}">${
-repo.name
-}</a></th>
-                    <th>Latest push: ${new Date(repo.pushed_at).toDateString()}</th>
-                  </tr>
-              </div>
-            `
-        })
-        getPullRequests(filteredRepos)
-    })
-} 
-*/
 
 
 
