@@ -5,12 +5,77 @@ const username = 'jessand77';
 const API_USER_INFO = `https://api.github.com/users/${username}`;
 const API_REPOS = `${API_USER_INFO}/repos`;
 
+//Global variable to be used by the chart
+let technigoRepos;
+
 // const hardCodeApi = "https://api.github.com/users/jessand77/repos";
 
-
-
-
 // Läs lite här: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
+
+//Should not be included in git push??
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     Authorization: 'token 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'
+//   }
+// }
+
+const fetchUserInfo = () => {
+  fetch(API_USER_INFO)
+  .then(res => res.json())
+  .then(user => {
+    // console.log(user)
+    userSection.innerHTML = `
+      <p>${user.name}</p>
+      <p>Username: ${user.login}</p>
+      <a href="${user.html_url}" target="_blank"><img class="avatar" src="${user.avatar_url}" alt="profile picture" /></a>
+    ` 
+  })
+}
+
+const getPRCommits = (pullRequestCommitsUrl, reponame) => {
+  fetch(pullRequestCommitsUrl)
+  .then(res => res.json())
+  .then(commits => {
+
+    let commitParagraph = document.getElementById(reponame);
+    let commitMessageList = document.createElement('ol');
+
+    commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
+    commitParagraph.appendChild(commitMessageList);
+    
+    commits.forEach(commit => {
+      // console.log(commit.commit.message);
+      let listElement = document.createElement('li');
+      listElement.innerHTML = commit.commit.message;
+      commitMessageList.appendChild(listElement)
+    })
+
+  })
+}
+
+// Hur kan jag ta fram bara huvudkommentaren i stället?
+
+const getPRComments = (pullRequestCommentsUrl, reponame) => {
+  fetch(pullRequestCommentsUrl)
+  .then(res => res.json())
+  .then(comments => {
+    // console.log(comments)
+    // console.log(`The comments for ${reponame} are: `)
+
+    let commentList = document.createElement('ul');
+    let commitParagraph = document.getElementById(reponame);
+    commitParagraph.appendChild(commentList)
+
+    comments.forEach(comment => {
+      // console.log(comment.body)
+      let listElement = document.createElement('li');
+      listElement.innerHTML = comment.body;
+      commentList.appendChild(listElement);
+    });
+
+  })
+}
 
 const getPullRequests = (repos) => {
   repos.forEach(repo => {
@@ -22,8 +87,20 @@ const getPullRequests = (repos) => {
       const myPullRequests = pullRequests
       .filter(pullRequest => pullRequest.user.login === username);
 
+      // console.log(myPullRequests.length)
+      //If the length is 1 I have done a pull request
+      //If the length is 0 it is an ongoing project or a group project where I haven't done the pull request
+
+      if (myPullRequests.length === 0) {
+        document.getElementById(repo.name).innerHTML = `No pull request done by my username`;
+        document.getElementById(repo.name).className = 'no-pullrequest';
+      }
+      // console.log(myPullRequests)
+
       myPullRequests.forEach(myPullRequest => {
-        // console.log(myPullRequest.commits_url); 
+
+        // console.log(myPullRequest.review_comments_url); 
+
         getPRCommits(myPullRequest.commits_url, repo.name);
         getPRComments(myPullRequest.review_comments_url, repo.name);
       })
@@ -31,148 +108,49 @@ const getPullRequests = (repos) => {
   })
 }
 
-const getPRCommits = (pullRequestCommitsUrl, repoName) => {
-  fetch(pullRequestCommitsUrl)
-  .then(res => res.json())
-  .then(commits => {
-
-    // console.log(commits)
-    // Print number of commits
-    // console.log(`Number of commits: ${commits.length}`)
-
-    let commitSpan = document.createElement('span');
-
-    commitSpan.innerHTML = `${commits.length}`;
-    
-    document.getElementById(repoName).appendChild(commitSpan);
-
-    // // Print commit messages
-    // commits.forEach(commit => console.log(commit.commit.message))
-    // // 
-
-  })
+const getTechnigoRepos = (repos) => {
+  return repos
+  .filter(repo => repo.fork === true)
+  .filter(repo => repo.name.startsWith("project"));
 }
 
-const getPRComments = (pullRequestCommentsUrl, repoName) => {
-  fetch(pullRequestCommentsUrl)
-  .then(res => res.json())
-  .then(comments => {
-    console.log(`The comments for ${repoName} are: `)
-    comments.forEach(comment => console.log(comment.body));
-    //Printa kommentarerna på något sätt på sidan
-  })
-}
-
-const formatDate = (dateToFormat) => {
-  const year = dateToFormat.getFullYear();
-  const month = dateToFormat.getMonth() + 1;
-  const day = dateToFormat.getDate();
-  const formattedDate = `${year}-${month}-${day}`;
-  return formattedDate;
-}
-
-const fetchUserInfo = () => {
-  fetch(API_USER_INFO, options)
-  .then(res => res.json())
-  .then(user => {
-    console.log(user)
-    userSection.innerHTML = `
-      <h2>User info</h2
-      <p>User name: ${user.login}</p>
-      <p>Full name: ${user.name}</p>
-      <img class="avatar" src="${user.avatar_url}" alt="profile picture" />
-    ` 
-  })
-  //Fungerar det här överhuvudtaget?
-  .catch(err => console.error(err));
-}
 
 const fetchRepos = () => {
-  fetch(API_REPOS, options)
-  // we ask for the res from the API
+  fetch(API_REPOS)
   .then(res => res.json())
-  // we say what we want to be done with the res
   .then(repos => {
 
     //console.log(repos);
     
-    // projectSection.innerHTML = '<h2>Projects</h2>'
-    // let htmlAllRepos = '<h3>All my projects</h3><ul>'
-    // repos.forEach((repo) => {
-    //   htmlAllRepos += `<li>${repo.name}</li>`
-    // });
-    // htmlAllRepos += '</ul>'
-    // projectSection.innerHTML += htmlAllRepos
-
-
-    // // Returns an array of the forked repos
-    // const forkedRepos = repos
-    //   .filter((repo) => repo.fork === true)
-    //   .map((repo) => repo.name);
-
-    // console.log(forkedRepos);
-
-    // let htmlForkedRepos = '<h3>All forked repos</h3><ul>';
-    // forkedRepos.forEach((repo) => {
-    //   htmlForkedRepos += `<li>${repo}</li>`
-    // });
-    // htmlForkedRepos += '</ul>';
-
-    // console.log('Forked repos: ' + htmlForkedRepos)
-
-    // projectSection.innerHTML += htmlForkedRepos
-  
-    
-    // Returns an array of the forked repos from Technigo
-    // const reposStartingWithFilter = repos
-    //   .filter((repo) => repo.name.startsWith("project"))
-    //   .map((repo) => repo.name);
-
-    // console.log(reposStartingWithFilter);
-
-    // let htmlTechnigoRepos = '<h3>Repos forked from Technigo</h3>';
-    // reposStartingWithFilter.forEach((repo) => {
-    //   htmlTechnigoRepos += `
-    //   <div>
-    //     <h4>${repo}<h4>
-    //     <p>${repo}</p>
-    //   </div>
-    //   `
-    // });
-
-    projectSection.innerHTML = `
-      <h2>Repos forked from Technigo</h2>
-      <div class="repo-grid" id="repoGrid"></div>
-      `;
-    
-    //The Technigo repos are forked and their names start with project
-    const technigoRepos = repos
-    .filter(repo => repo.fork === true)
-    .filter(repo => repo.name.startsWith("project"));
+    technigoRepos = getTechnigoRepos(repos)
     
     getPullRequests(technigoRepos);
 
+    projectSection.innerHTML = `
+      <h2>Technigo projects</h2>
+      <div class="repo-container" id="repoContainer"></div>
+      `;
+
     technigoRepos.forEach((repo) => {
       
-      const mostRecentPush = new Date(repo.pushed_at);
-  
-    // Not necessary because repoGrid is created in projectSection.innerHTML injection above?
-    // const repoGrid = document.getElementById('repoGrid');
+      const mostRecentPush = new Date(repo.pushed_at).toLocaleDateString('en-GB');
 
-      repoGrid.innerHTML += `
+      repoContainer.innerHTML += `
       <div class="repo-div">
-        <h4>${repo.name}</h4>
-        <p>Most recent update: ${formatDate(mostRecentPush)}</p>
+        <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
+        <p>Most recent push: ${mostRecentPush}</p>
         <p>Default branch: ${repo.default_branch}</p>
-        <p>URL: <a href="${repo.html_url}">${repo.html_url}</a></p>
-        <p id=${repo.name}>Number of commits: </p>
+        <p id=${repo.name}></p>
       <div>
       `
+      
       
     })
 
   });
 }
+
+
 
 
 fetchUserInfo();
