@@ -45,7 +45,7 @@ const getRepos = () => {
       
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
 
-      //console.log(forkedRepos.length)
+      //console.log(forkedRepos)
 
 
       getPullRequests(forkedRepos)
@@ -63,37 +63,43 @@ const getPullRequests = (repos) => {
   projectsContainer.innerHTML = '';
   repos.forEach(repo => {
     //console.log(repo.name)
+
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, Auth) 
       .then(res => res.json())
       .then(data => {
 
-       //console.log(data)
+       console.log(data)
+       console.log(data[0].base.user.followers_url)
 
         const myPullRequest = data.filter((pull) => {
 
           //console.log('pull-'+ pull.user.login.startsWith('eyahya'))
-          //console.log('repo-'+ repo.owner.login)
+          //console.log('repo-'+ repo.owner.login.startsWith('eyahya'))
           return pull.user.login === repo.owner.login
         })
-       //console.log('hello:' + myPullRequest[0].commits_url)
-
+       //console.log('hello:' + myPullRequest.length)
+/*
         if (myPullRequest.length === 0) {
           return 
-        }
+        }*/
 
-        getCommits(myPullRequest[0].commits_url, (data) => {
-          
+        const commitUrl = myPullRequest[0].commits_url
+        //display commits info
+        const displayInfo = (data) => {
+          //console.log(data)
           //added function so the DOM do not self close tags
           let boxHtml = `<div class="box-repo ${repo.name}">`; 
           boxHtml += `<h3>${repo.name}</h3>`
           boxHtml += `<p id="commit-${repo.name}">Number of commits: ${data.length}</p>`
+          boxHtml += `<p>Created at: ${new Date(repo.created_at).toDateString()}</p>`
           boxHtml += `<p>Last update: ${new Date(repo.pushed_at).toDateString()}</p>`
           boxHtml += `<p>Default branch: ${repo.default_branch}</p>`
           boxHtml += `<p><a href="${repo.html_url}" target="_blank">Go to repo</a></p>`
           boxHtml += '</div>'
           projectsContainer.innerHTML += boxHtml; //closing the div tag
           ldsripple.style.display = 'none' //loading icon
-        })
+        }
+        getCommits(commitUrl, displayInfo)
       })
   })
 }
@@ -103,6 +109,7 @@ const getCommits = (url, callbackFunction) => {
   fetch(url, Auth)
     .then(res => res.json())
     .then(data => {
+      //console.log(data)
       callbackFunction(data)
     })
 }
@@ -113,6 +120,8 @@ searchForm.addEventListener('submit', (e) => {
 
   // this function filters your repos where name contains searchField.value. Where IndexOf returns the position of substring and -1 = doesn't exist in string
   const found = repos.filter(repo => repo.name.indexOf(searchField.value) > -1);
+ 
+
 
   getPullRequests(found);
 })
