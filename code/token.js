@@ -1,1 +1,0 @@
-const TOKEN = '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'
