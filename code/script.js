@@ -1,6 +1,7 @@
 //DOM-selectors
 const projects = document.getElementById('projects')
 const userInfo = document.getElementById('user-info')
+const footer = document.getElementById('footer')
 
 //GITHUB
 const user = 'sofiaringstedt';
@@ -20,7 +21,8 @@ const profileInfo = () => {
   .then(res => res.json())
   .then(data => {
     const profileImg = data.avatar_url
-    //console.log(profileImg)
+    const profileBio = data.bio
+    //console.log(data)
     userInfo.innerHTML += `
       <div class="user-img">
       <img src="${profileImg}" alt="Image of Sofia Ringstedt">
@@ -28,6 +30,9 @@ const profileInfo = () => {
       <div class="user-name">
       <h2>Github account: <a href="${user_URL}" target="_blank">${user}</a></h2>
       </div>
+     `
+     footer.innerHTML += `
+      <p class="profile-bio">${profileBio}</p>
      `
   })
 }
@@ -44,8 +49,8 @@ const fetchRepos = () => {
               <div id="card" class="card">  
                 <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
                 <p>Branch: ${repo.default_branch}</p>
-                <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-                <p>Number of commits: ${repo.name.length}</p> 
+                <p>Latest push: ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+                <p id=${repo.name}>Number of commits: </p> 
               </div>
             `
         })
@@ -75,9 +80,10 @@ const fetchCommits = (myCommitsURL) => {
     .then((res) => res.json())
     .then (data => {
      // console.log(data)
-     //document.getElementById('commit-${repo.name}').innerHTML += data.length
+    //document.getElementById("${repo.name}").innerHTML += `${commits.length}`
   });
 }
+
 
 profileInfo() 
 fetchRepos()

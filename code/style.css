@@ -7,7 +7,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #7A918D;
+  background: #EFE6DD;
   height: 100vh;
   font-family: 'Noto Serif Display';
   margin: 0;
@@ -20,11 +20,28 @@ header, .user-name, .user-img, .user-info {
   justify-content: center;
 }
 
+header {
+  width: 100vw;
+}
+
 header h1 {
   text-align: center;
   font-size: 5vw;
   width: 100vw;
   margin: 5vw;
+  animation: slideLeft 2s forwards;
+  left: -400px;
+  position: relative;
+}
+
+@keyframes slideLeft {
+  from
+  {
+      left: -300px;
+    }
+  to {
+    left: 0px;
+  }
 }
 
 header img {
@@ -48,12 +65,13 @@ header img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 4vw;
 }
 
-.projects-wrapper h2 {
-  font-size: 4.5vw;
+.projects-wrapper h2, a {
+  font-size: 4vw;
   text-align: center;
-  margin: 2vw;
+  color: #1E1E24;
 }
 
 .projects {
@@ -67,6 +85,12 @@ header img {
   justify-content: center;
   font-size: 4vw;
   margin: 1vw;
+}
+
+h3:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .card {
@@ -91,14 +115,15 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #EDD9A3;
+  background-color: #DAB49D;
   height: 12vw;
   width: 100vw;
   margin-top: 10vw;
 }
 
-footer p {
-  font-size: 3vw;
+.profile-bio {
+  font-size: 2.5vw;
+  text-align: center;
 }
 
 @media (min-width: 667px) {
@@ -109,28 +134,34 @@ footer p {
 }
 
 @media (min-width: 992px) {
- header h1 {
+
+  header {
+    margin-bottom: 4vw;
+  }
+
+  header h1 {
    font-size: 4vw;
- }
+   margin: 4vw;
+  }
 
- .user-name a, h2 {
-  font-size: 1.5vw;
-}
+  .user-name a, h2 {
+    font-size: 1.5vw;
+  }
 
-.projects-wrapper h2 {
-  font-size: 3vw;
-}
+  .projects-wrapper h2 {
+    font-size: 3vw;
+  }
 
-.projects h3 {
-  font-size: 2vw;
-}
+  .projects h3 {
+    font-size: 2vw;
+  }
 
-.card {
-  font-size: 1.5vw;
-  width: 30vw;
-}
+  .card {
+    font-size: 1.5vw;
+    width: 30vw;
+  }
 
-footer p {
-  font-size: 1.5vw;
-}
+  footer p {
+    font-size: 1.5vw;
+  }
 }

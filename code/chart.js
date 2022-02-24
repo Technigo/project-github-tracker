@@ -14,7 +14,7 @@ const labels = [
     datasets: [{
       label: 'Technigo projects',
       data: [amount, 19-amount],
-      backgroundColor: ['#DCEED1', '#A18276' ],
+      backgroundColor: ['#90A955', '#C4B2BC' ],
       borderColor: '#FFF8F0',
     }]
   };
@@ -24,7 +24,7 @@ const labels = [
     data: data,
     options: {
         responsive: true,
-        // maintainAspectRatio: false,
+       // maintainAspectRatio: false,
     }
   };
 
