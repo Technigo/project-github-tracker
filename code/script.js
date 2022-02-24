@@ -1,4 +1,4 @@
-const options = {
+const OPTIONS = {
   method: 'GET',
   headers: {
     Authorization: TOKEN
@@ -6,10 +6,13 @@ const options = {
 }
 
 const USER = 'ariallahyar'; 
-const userUrl = 'https://api.github.com/users/ariallahyar';
-const repoUrl = 'https://api.github.com/users/ariallahyar/repos';
-const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`};
-const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits?per_page=100`};
+
+const url = {
+  user: 'https://api.github.com/users/ariallahyar',
+  repo: 'https://api.github.com/users/ariallahyar/repos',
+  pulls: (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`},
+  commits: (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits?per_page=100`}
+}
 
 const fetcher = (url, token, callback) => {
   fetch(url, token)
@@ -24,7 +27,7 @@ const fetcher = (url, token, callback) => {
   })
 };
 
-fetcher (userUrl, options, ((userProfile) => {
+fetcher (url.user, OPTIONS, ((userProfile) => {
   document.getElementById('profile').innerHTML += `
     <img class="profile-pic" src="${userProfile.avatar_url}" alt="profile-pic">
     <h2 class="profile-name">${userProfile.name}</h2>
@@ -33,7 +36,7 @@ fetcher (userUrl, options, ((userProfile) => {
     `;
 }));
 
-fetcher(repoUrl, options, (repositories) => {
+fetcher(url.repo, OPTIONS, ((repositories) => {
   let forkedReps = repositories.filter((repo) => {
     return repo.fork === true && repo.name.startsWith("project-")
   });
@@ -52,15 +55,15 @@ fetcher(repoUrl, options, (repositories) => {
       </div>
     `;
 
-    fetcher(commitUrl(rep.name), options, ((commits) => {
+    fetcher(url.commits(rep.name), OPTIONS, ((commits) => {
       document.getElementById(rep.name).innerHTML += `<p>Number of commits: ${commits.length}</p>`
     }));
 
-    fetcher(pullUrl(rep.name), options, ((pullRequests) => {
+    fetcher(url.pulls(rep.name), OPTIONS, ((pullRequests) => {
       const myPulls = pullRequests.filter((pull) => {
         return pull.user.login === USER;
       })
       document.getElementById(rep.name).innerHTML += `<p>Pull requests: ${myPulls.length}</p>`
     }));
   });
-});
+}));
