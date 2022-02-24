@@ -11,25 +11,21 @@
 </head>
 <body>
   <header class="hero">
-   <p>header</p>
+  
+    <div id="userDataWrapper" class="user-data-wrapper"></div>
+
+    <section class="img-wrapper" id="imgWrapper">  </section>
   </header>
 
-  <section id="imgWrapper"> 
-    <!-- user img here -->
-   
-  </section>
 
-  <div id="userDataWrapper" class="user-data-wrapper">
-  <!-- user data displays here -->
-  </div>
 
   <h1>GitHub Tracker</h1>
   <h2>Projects:</h2>
  
-  <main id="projects"></main>
+  <main class="project-wrapper" id="projects"></main>
    
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <canvas class="chart" id="chart"></canvas>
 
   <script src="./chart.js"></script>
 <script src="./secret.js"></script>

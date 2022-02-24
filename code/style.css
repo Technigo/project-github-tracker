@@ -1,5 +1,7 @@
 body {
   background: #FFECE9;
+  margin: 0;
+  padding: 0;
 }
 
 header{
@@ -7,10 +9,73 @@ header{
 }
 
 .user-data-wrapper{
-  border: solid;
   height: 200px;
+  text-align: center;
+  color: #467e74;
+  font-size: 30px;
+  
 }
 
-.repo-card{
-  border: solid;
+.user-data-wrapper p{
+  font-size: smaller;
+  margin: 0;
+  padding: 0;
 }
+
+.user-data-wrapper h1{
+  margin-bottom: 0;
+}
+.repo-card{
+  /* border: 1px solid black; */
+  height: 200px;
+  width: 80vw;
+  background-color: white;
+}
+
+.repo-card h3{
+  text-align: center;
+}
+
+.repo-card p{
+  padding: 0 10%;
+}
+
+
+.project-wrapper{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+
+.hero{
+  background-image: url(./img/s-o-c-i-a-l-c-u-t-gREi-9tI5Mg-unsplash.jpg) ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-wrapper{
+display: flex;
+justify-content: center;
+align-self: flex-end;
+position: absolute;
+top: 200px;
+
+
+}
+
+img{
+  border-radius: 50%;
+  height: 150px;
+  filter: saturate(70%);
+  align-self: flex-end;
+}
+

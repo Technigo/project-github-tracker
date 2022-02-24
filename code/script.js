@@ -34,8 +34,8 @@ const getRepos = () => {
         </div>` 
                 
         userDataWrapper.innerHTML += 
-        `<h2>${data[0].owner.login}</h2>
-        <p>${data[0].owner.url} </p>`
+        `<h1>${data[0].owner.login}</h1>
+        <p>Frida Axelsson</>`
 
         //display repo info
         forkedRepos.forEach((data) => {
