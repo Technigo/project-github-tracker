@@ -3,6 +3,7 @@
 
 //global variables
 const username = 'kolkri'
+
 //Endpoint to get all your repos:
 const API_URL = `https://api.github.com/users/${username}/repos`
 
@@ -36,10 +37,14 @@ fetch(API_URL, options)
 
 const getPullRequests = (repos) => {
     //Get all the PRs for each project.
+    //invoking the function drawChart using the amount of projects as an argument
+    drawChart(repos.length)
     repos.forEach(repo => {
       fetch('https://api.github.com/repos/technigo/' + repo.name + '/pulls?per_page=100', options)
       .then(res => res.json())
       .then(data => {
+        
+
                  //1. Find only the PR that you made by comparing pull.user.login to your own username
                 let myPullRequests = data.filter(element => element.user.login === username)
                
@@ -69,6 +74,7 @@ const getPullRequests = (repos) => {
                 `
         })
     })
+    
   }
 
   const commits = (url) => {
@@ -115,6 +121,7 @@ const getPullRequests = (repos) => {
     .then(data => {
         document.getElementById(repoName).innerHTML += `
                 <h3>My commits:</h3>
+                <p>Number of commits: ${data.length}</p>
                 `
         data.forEach(element => {
             document.getElementById(repoName).innerHTML += `

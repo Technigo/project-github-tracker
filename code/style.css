@@ -36,8 +36,10 @@ body {
  display:flex;
  flex-direction: column;
  margin: 1rem;
- padding: 1rem;
 }
 
 
-/*Style for the commits list section*/
+/*Styling the chart*/
+.chart{
+  width: 200px;
+}
