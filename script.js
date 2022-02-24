@@ -10,7 +10,7 @@ const ldsripple          = document.getElementById('loading')
 const Auth = {
   method: 'GET',
   headers: {
-		Authorization: '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' // you need to paste your token over here.
+    Authorization: `${API_TOKEN}`
 	}
 }
 
@@ -62,8 +62,8 @@ const getPullRequests = (repos) => {
 
   projectsContainer.innerHTML = '';
   repos.forEach(repo => {
-    console.log(repo.name)
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`, Auth) 
+    //console.log(repo.name)
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, Auth) 
       .then(res => res.json())
       .then(data => {
 
@@ -75,11 +75,12 @@ const getPullRequests = (repos) => {
           //console.log('repo-'+ repo.owner.login)
           return pull.user.login === repo.owner.login
         })
-       console.log('hello:' + myPullRequest[0].commits_url)
+       //console.log('hello:' + myPullRequest[0].commits_url)
 
         if (myPullRequest.length === 0) {
           return 
         }
+
         getCommits(myPullRequest[0].commits_url, (data) => {
           
           //added function so the DOM do not self close tags
@@ -112,5 +113,6 @@ searchForm.addEventListener('submit', (e) => {
 
   // this function filters your repos where name contains searchField.value. Where IndexOf returns the position of substring and -1 = doesn't exist in string
   const found = repos.filter(repo => repo.name.indexOf(searchField.value) > -1);
+
   getPullRequests(found);
 })
