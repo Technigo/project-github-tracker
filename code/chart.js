@@ -1,5 +1,5 @@
 //DOM-selector for the canvas 👇
-const ctx = document.getElementById("chart").getContext("2d");
+const ctx = document.getElementById("myChart").getContext("2d");
 
 //"Draw" the chart here 👇
 const labels = ["January", "February", "March", "April", "May", "June"];
@@ -22,4 +22,4 @@ const config = {
   options: {},
 };
 
-const myChart = new Chart(document.getElementById("Chart"), config);
+const myChart = new Chart(document.getElementById("myChart"), config);
