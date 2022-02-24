@@ -6,23 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
  <h1>GitHub Tracker</h1>
-  <!-- <h2>Projects:</h2> -->
+
   <section id="profile"></section>
-  <main id="projects">
-    <!-- <ul id="repoUL" class="repos_class"></ul>
-      <li id="repos"></li> -->
-
-
-  </main>
-  
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
+  <section class="project-container">
+    <main class="projects-main" id="projects">
+    </main> 
+    <div class="chartCSS">
+      <h1>Technigo projects</h1>
+      <canvas class="doughnut" id="chart"></canvas>
+    </div>
+  </section>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
+  
 </body>
 </html>
