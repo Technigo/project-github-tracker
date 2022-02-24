@@ -53,13 +53,13 @@ const getPullRequests = (repos) => {
                 //2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
                 let commitsURL = myPullRequests[0].commits_url
                 console.log('commits URL:',commitsURL)
-                commits(myPullRequests.commits_url)
-              
+                myCommits(commitsURL)
+
                 //3. You can also get the comments for each PR by calling another function with the review_comments_url as argument
                 let reviewCommentsURL = myPullRequests[0].review_comments_url
                 console.log('review comments URL:', reviewCommentsURL)
-                commits(myPullRequests.commits_url)
-
+                reviewComments(reviewCommentsURL)
+            
                 //just testing
                 let pushedDate = repo.pushed_at
                 console.log('pushed date:', pushedDate)
@@ -72,8 +72,11 @@ const getPullRequests = (repos) => {
                     <p>Most recent update: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
                     <p>Default branch name: ${repo.default_branch}</p>
                     <p>URL: ${repo.html_url}</p>
+                    <button class="reviewCommentsBTN">Review comments (if any)</button>
+                    <p></p>
                 </div>
                 `
+
             
         })
     })
@@ -91,6 +94,35 @@ const getPullRequests = (repos) => {
       `
       //showing the username
       document.getElementById('username').innerHTML = `
-      GitHub username: ${data[0].owner.login}
+      Username: ${data[0].owner.login}
       `
   }
+
+
+  //to get the comments from a PR
+  const reviewComments = (url) => {
+      fetch(url, options)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(element => {
+                console.log('review comments:', element.body)
+            })
+            
+        })
+        
+  }
+
+
+ // to get the commits for each repo
+ const myCommits = (url) => {
+    fetch(url, options)
+    .then(res => res.json())
+    .then(data => {
+        data.forEach(element => {
+            console.log('my commits:',element.commit.message)
+            return element.body
+        })
+        
+    })
+
+ }
