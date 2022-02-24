@@ -1,7 +1,9 @@
+const Dotenv = require("dotenv-webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const LinkTypePlugin =
   require("html-webpack-link-type-plugin").HtmlWebpackLinkTypePlugin;
+
 module.exports = {
   entry: "./script.js",
   output: { path: path.join(__dirname, "build"), filename: "index.bundle.js" },
@@ -35,5 +37,6 @@ module.exports = {
     new LinkTypePlugin({
       "*.css": "text/css",
     }),
+    new Dotenv(),
   ],
 };

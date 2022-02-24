@@ -66,7 +66,6 @@ export default function HeaderComp(userProfileImage) {
   header.appendChild(githubLogoMobile);
   header.appendChild(userProfileCorner);
   header.appendChild(notificationIcon);
-  console.log(header);
 
   return header;
 }
