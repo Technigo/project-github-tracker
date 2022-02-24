@@ -1,3 +1,9 @@
 body {
-  background: #FFECE9;
+  background: #ffe573;
+  font-family: 'arial', 'sans-serif';
+}
+
+img {
+  width: 30%;
+  min-width: 200px;
 }
