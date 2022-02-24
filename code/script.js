@@ -27,7 +27,6 @@ const fetcher = (url, token, callback) => {
 }
 
 fetcher (userUrl, PAT, ((userProfile) => {
-  // Profile picture and username
   console.log(userProfile)
   document.getElementById('profile').innerHTML += `
     <img class="profile-pic" src="${userProfile.avatar_url}" alt="profile-pic">
@@ -45,26 +44,21 @@ fetcher(repoUrl, PAT, (repositories) => {
   renderChart(forkedReps.length);
 
   forkedReps.forEach((rep) => {
-    // Name, last update, default branch, URL
-    let projectName = rep.name.replace('project-', '').replace('-', ' ');
-    // projectName = projectName.charAt(0).toUpperCase() + projectName.slice(1); 
-    let update = new Date(rep.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})
 
     document.getElementById('projects').innerHTML += `
       <div class="project" id=${rep.name}>
-      <h2 class="project-name">${projectName}</h2>
+      <h2 class="project-name">${rep.name.replace('project-', '').replace('-', ' ')}</h2>
         <img class="github" src="./images/github_icon.png">
           <span><a class="project-url" href="${rep.svn_url}">${rep.name}</span></a>
-        <p>Updated: ${update}</p>
+        <p>Updated: ${new Date(rep.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
         <p>Default branch: ${rep.default_branch}</p>
       </div>
     `;
-    // Commits
+
     fetcher(commitUrl(rep.name), PAT, ((commits) => {
       document.getElementById(rep.name).innerHTML += `<p>Number of commits: ${commits.length}</p>`
     }));
 
-    // Pull requests
     fetcher(pullUrl(rep.name), PAT, ((pullRequests) => {
       const myPulls = pullRequests.filter((pull) => {
         return pull.user.login === USER;

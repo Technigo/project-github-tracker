@@ -10,11 +10,11 @@ const renderChart = ((completedProjects) => {
     datasets: [{
       data: [completedProjects],
       // data: [6],
-      label: 'Completed projects',
+      label: 'Completed',
       backgroundColor: 'rgb(63, 103, 126)',
     }, {
-      data: [19],
-      label: 'All Technigo projects',
+      data: [19-completedProjects],
+      label: 'Remaining',
       backgroundColor: 'rgb(63, 203, 226, 0.2)',
     }]
   };
@@ -26,16 +26,26 @@ const renderChart = ((completedProjects) => {
       indexAxis: 'y',
       scales: {
         x: {
-          stacked: true
+          stacked: true,
+          grid: {
+            display: false,
+          }
         },
         y: {
-          stacked: true
+          stacked: true,
+          grid: {
+            display: false,
+          }
         }
       },
       plugins: {
-          legend: {
-              display: true,
-          }
+        title: {
+          display: true,
+          text: "Technigo Projects",
+        },
+        legend: {
+            display: true,
+        }
       }
 
     }
