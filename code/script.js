@@ -1,4 +1,3 @@
-// Use token locally or from build environment
 const options = {
   method: 'GET',
   headers: {
@@ -6,13 +5,11 @@ const options = {
   }
 }
 
-
-// API URLs and URL builders
 const USER = 'ariallahyar'; 
 const userUrl = 'https://api.github.com/users/ariallahyar';
 const repoUrl = 'https://api.github.com/users/ariallahyar/repos';
-const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`}; //look into pagination
-const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits?per_page=100`}; //look into pagination
+const pullUrl = (repoName) => {return `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`};
+const commitUrl = (repoName) => {return `https://api.github.com/repos/ariallahyar/${repoName}/commits?per_page=100`};
 
 const fetcher = (url, token, callback) => {
   fetch(url, token)
@@ -25,7 +22,7 @@ const fetcher = (url, token, callback) => {
   .catch((error) => {
     console.log(error);
   })
-}
+};
 
 fetcher (userUrl, options, ((userProfile) => {
   document.getElementById('profile').innerHTML += `
@@ -34,7 +31,7 @@ fetcher (userUrl, options, ((userProfile) => {
     <h2 class="profile-username">${userProfile.login}</h2>
     <p class="profile-bio">${userProfile.bio}</p>
     `;
-}))
+}));
 
 fetcher(repoUrl, options, (repositories) => {
   let forkedReps = repositories.filter((repo) => {
@@ -65,5 +62,5 @@ fetcher(repoUrl, options, (repositories) => {
       })
       document.getElementById(rep.name).innerHTML += `<p>Pull requests: ${myPulls.length}</p>`
     }));
-  })
-})
+  });
+});
