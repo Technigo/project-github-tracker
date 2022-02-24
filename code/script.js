@@ -7,8 +7,6 @@ const username = 'kolkri'
 const API_URL = `https://api.github.com/users/${username}/repos`
 
 
-//defining token
-console.log(API_TOKEN)
 
 //defining options
 const options = {
@@ -22,23 +20,19 @@ const options = {
 fetch(API_URL, options)
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        //using the fetch data for userdata function
+        //using the fetched data for userdata function
         userData(data)
         //filter out and only show the forked ones
         let forkedOnes = data.filter(element => element.fork === true)
-        console.log('Forked ones:', forkedOnes)
         //filter out only the forks from Technigo.
         let technigoForks = forkedOnes.filter(element => element.name.startsWith('project'))
-        console.log('Technigo projects:', technigoForks)
 
         //here invoking the getPullRequests function technigoForks as an argument
         getPullRequests(technigoForks)
     })
 
 
-//Remember to pass along your filtered repos as an argument when
-//you are calling this function
+//Remember to pass along your filtered repos as an argument when you are calling getPullRequests function
 
 const getPullRequests = (repos) => {
     //Get all the PRs for each project.
@@ -48,22 +42,18 @@ const getPullRequests = (repos) => {
       .then(data => {
                  //1. Find only the PR that you made by comparing pull.user.login to your own username
                 let myPullRequests = data.filter(element => element.user.login === username)
-                console.log('my pull requests:', myPullRequests)
+               
             
                 //2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
                 let commitsURL = myPullRequests[0].commits_url
-                console.log('commits URL:',commitsURL)
-                myCommits(commitsURL)
+                myCommits(commitsURL, repo.name)
 
                 //3. You can also get the comments for each PR by calling another function with the review_comments_url as argument
-                let reviewCommentsURL = myPullRequests[0].review_comments_url
-                console.log('review comments URL:', reviewCommentsURL)
-                reviewComments(reviewCommentsURL)
+                 let reviewCommentsURL = myPullRequests[0].review_comments_url
+                 reviewComments(reviewCommentsURL, repo.name)
             
                 //just testing
                 let pushedDate = repo.pushed_at
-                console.log('pushed date:', pushedDate)
-                
 
                 //showing results on the page with innerHTML
                 document.getElementById('projects').innerHTML += `
@@ -72,12 +62,11 @@ const getPullRequests = (repos) => {
                     <p>Most recent update: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
                     <p>Default branch name: ${repo.default_branch}</p>
                     <p>URL: ${repo.html_url}</p>
-                    <button class="reviewCommentsBTN">Review comments (if any)</button>
-                    <p></p>
+                    <button id=commitsButton class="commitsButton">Show commits and comments</button>
+                    <div id=${repo.name}>
+                    </div>
                 </div>
                 `
-
-            
         })
     })
   }
@@ -100,29 +89,41 @@ const getPullRequests = (repos) => {
 
 
   //to get the comments from a PR
-  const reviewComments = (url) => {
-      fetch(url, options)
-        .then(res => res.json())
-        .then(data => {
-            data.forEach(element => {
-                console.log('review comments:', element.body)
-            })
-            
-        })
+   const reviewComments = (url, repoName) => {
+       fetch(url, options)
+         .then(res => res.json())
+         .then(data => {
+            if(data.length > 0){
+            document.getElementById(repoName).innerHTML += `
+            <h3>Review comments:</h3>
+            `
+             data.forEach(element => {
+                 document.getElementById(repoName).innerHTML += `
+                 <li>${element.body}</li>
+                 `
+             })
+            }
+         })
         
-  }
+   }
 
 
  // to get the commits for each repo
- const myCommits = (url) => {
+ const myCommits = (url, repoName) => {
     fetch(url, options)
     .then(res => res.json())
     .then(data => {
+        document.getElementById(repoName).innerHTML += `
+                <h3>My commits:</h3>
+                `
         data.forEach(element => {
-            console.log('my commits:',element.commit.message)
-            return element.body
-        })
-        
+            document.getElementById(repoName).innerHTML += `
+                <li> ${element.commit.message}</li>
+                `
     })
 
- }
+ })
+
+}
+ 
+
