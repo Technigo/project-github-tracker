@@ -1,10 +1,7 @@
 //DOM Selectors
 const toggleSwitch = document.getElementById('switch')
-
-//eventlistener
-toggleSwitch.addEventListener('click', () => {
-  console.log('hej')
-})
+const modalWrapper = document.getElementById('modal-wrapper')
+const modalBtn = document.getElementById("modal-btn")
 
 //Global variables
 const username = 'emmahogberg88'
@@ -19,6 +16,15 @@ const options = {
     Authorization: `token ${API_TOKEN}`  // you need to paste your token over here.
   }
 }
+
+
+//commentsfunction
+const getComment = (comment) => {
+  // document.getElementById('modal').innerHTML += `<p>${comment}</p>` 
+  console.log(comment)
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////
 //////////////////////           REPO DATA         ////////////////////////
@@ -44,7 +50,7 @@ const userData = (data) => {
   `
   //Get url to user profile and show on website
   document.getElementById('username').innerHTML = `
-  <h4><a class="header" href='${data[0].html_url}'><i class="fab fa-github"></i> ${username}</a></h4>
+  <h4><a class="header nav-link" href='${data[0].html_url}'><i class="fab fa-github"></i> ${username}</a></h4>
   `
 }
 
@@ -57,22 +63,39 @@ const repoData = (data) => {
   //Pass amount of finished technigo projects to progressChart in chart.js file
   progressChart(technigoProjects.length)  
   
+  console.log('till sorting',technigoProjects)
   //ADD EVENTLISTENER AND TOGGLEBAR!!
   //Create toggle bar, 
   //create sort-function that is listening to an event. 
 
-
     //Sort repos by latest push date
-  const sortByLatestUpdate = technigoProjects.sort((oldest, newest) => new Date(newest.updated_at) - new Date(oldest.updated_at))
-  console.log(sortByLatestUpdate)
 
-  //Sort repos by latest push date
-  const sortByNewestRepo = technigoProjects.sort((oldest, newest) => new Date(newest.pushed_at) - new Date(oldest.pushed_at))
-  console.log(sortByNewestRepo)
+  sortByLatestUpdate = technigoProjects.sort(data.updated_at, data.updated_at)
+  // console.log(sortByLatestUpdate)
+
+  // //sortingfunction
+  // const sortingRepos = technigoProjects.sort((a, b) => {
+  //   const dateA = a.pushed_at
+  //   const dateB = b.pushed_at
+  //   if (dateA < dateB) {
+  //     return -1
+  //   } else if (dataA > dateB) {
+  //     return 1
+  //   } else {
+  //     console.log('sort what?')
+  //     return 0
+  //   }
+  // })
+
+  // console.log(sortingRepos())
+
+  // //Sort repos by latest push date
+  // const sortByNewestRepo = technigoProjects.sort((oldest, newest) => new Date(newest.pushed_at) - new Date(oldest.pushed_at))
+  // console.log(sortByNewestRepo)
 
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
-    
+   
   //Get name of repo
   const reponame = repo.name
 
@@ -88,11 +111,13 @@ const repoData = (data) => {
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
   document.getElementById('section-projects').innerHTML += `
   <div class="section-projects__card box-shadow">
-    <h3 class="repo-title bold-text"><a href='${projectUrl}'>${reponame}</a></h3>
-    <p><span class="bold-text">Default branch:</span> ${defaultBranch}</p>
-    <p><span class="bold-text">Latest update:</span> ${latestUpdateRepo}</p>
-    <p id="commits-${reponame}"></p>
-    <p id="comments-${reponame}"></p>
+    <div>
+      <h3 class="repo-title bold-text"><a class="nav-link" href='${projectUrl}'>${reponame}</a></h3>
+      <p><span class="bold-text">Default branch:</span> ${defaultBranch}</p>
+      <p><span class="bold-text">Latest update:</span> ${latestUpdateRepo}</p>
+      <p id="commits-${reponame}"></p>
+      <p id="comments-${reponame}"></p>
+    </div>  
     <div class="card-btn flex">
       <p id="website-${reponame}"></p>
       <p id="comments-btn-${reponame}"></p>
@@ -111,6 +136,7 @@ const repoData = (data) => {
         if(repo.user.login === username) {
 
           let reponame = repo.base.repo.name
+          console.log(reponame)
          
           //get url for commits to use in new fetch
           const commitsUrl = repo.commits_url
@@ -162,23 +188,35 @@ const displayComments = (commentsUrl, reponame) => {
   .then(res => res.json())
   .then(data => {
     if (data.length > 0) {
+
+      let commentsArray = []
+      
       data.forEach(comment => {
         if (comment.user.login !== username) {
           document.getElementById(`comments-${reponame}`).innerHTML = `
           <p>
             <span class="bold-text">Reviewed by:</span> 
-            <a href="${data[0].user.html_url}"> ${data[0].user.login}</a>
-            </p>
-          `
-          const comments = comment.body
-          console.log(comment.body)
-
+            <a class="nav-link" href="${data[0].user.html_url}"> ${data[0].user.login}</a>
+          </p>
+          `         
           document.getElementById(`comments-btn-${reponame}`).innerHTML = `
-            <button class="outlined-button">comments 💬</button> 
-          `
-          //take this and print in an accordion!
-          //gör ev. som i guess who med onclick..
+            <button class="outlined-button" id="click-${reponame}">comments 💬</button> 
+          `  
+          commentsArray.push(comment.body)
+          document.getElementById(`click-${reponame}`).addEventListener('click', () => {
+            commentsArray.forEach(item => {
+              modalWrapper.style.display = 'block'
+        
+              document.getElementById('modal').innerHTML += `
+              <p class="modal-text">${item}
+              </p>
+              <br>
+              `
+            })
+           
+          })
         }
+        
       })
     }
   })
@@ -191,7 +229,7 @@ const displayComments = (commentsUrl, reponame) => {
 const displayLink = (netlifyUrl, reponame) => {
   
     document.getElementById(`website-${reponame}`).innerHTML = `
-    <a href="${netlifyUrl}">
+    <a href="${netlifyUrl}" target="_blank">
     <button class="filled-button">visit website</button>
     </a>
     `
@@ -200,7 +238,16 @@ const displayLink = (netlifyUrl, reponame) => {
 gitHubData()
 
 
-const getComment = (comment) => {
-  // document.getElementById('modal').innerHTML += `<p>${comment}</p>` 
-  console.log(comment)
-}
+////////////////////////////////////////////////////////////////////////////
+////////////////////////       EVENTLISTENERS        //////////////////////
+//////////////////////////////////////////////////////////////////////////
+
+modalBtn.addEventListener('click', () => {
+  modalWrapper.style.display = 'none'
+})
+
+//eventlistener
+toggleSwitch.addEventListener('click', (technigoProjects) => {
+  console.log('toggles')
+  sortingRepos(technigoProjects)
+})
