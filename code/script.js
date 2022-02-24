@@ -8,6 +8,7 @@ const reposbox = document.getElementById('reposbox')
 const API_PROFIL = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
 
+
 //PICTURE
 const fetchProfilePicture = () => {
     fetch(API_PROFIL)
@@ -28,69 +29,49 @@ const fetchProfilePicture = () => {
 //REPO'S
 const fetchRepos = () => {
     fetch(API_REPOS)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            //const reponame = data[1].name
-            
-            //hämtad kodbit
-            const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"))
-            forkedRepos.sort((oldestRepo, newestRepo) => new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at));
-            forkedRepos.forEach((repo) => {
-				reposbox.innerHTML += /*html*/ `
-          <a class="project-link" href="${repo.html_url}" target="_blank">
-            <div class="project" id="${repo.name}-container">
-              <h3 class="project-name">${repo.name}</h3>
-              <p class="project-info">Default branch ${repo.default_branch}</p>
-              <p class="project-info">Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-              <p class="project-info" id="commits-${repo.name}">Amount of commits: </p>
-            </div>
-          </a>
-          <hr>
-        `;
-			});
-        getPullRequests(forkedRepos);
-
-
-        });
+    .then(response => response.json())
+    .then(data => {
+    
+        const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
         
-};
+        const forkedSortedRepos = forkedRepos.sort((oldestRepo, newestRepo) => new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at));
+        forkedSortedRepos.forEach(repo => reposbox.innerHTML += `
+                <div class="projects">
+                 <h3><a href="${repo.html_url}">${repo.name} 
+                 with default branch ${repo.default_branch}</h3></a>
+                 <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+                 <p id="pull-request-${repo.name}"></p>
+                 <p id="commits-${repo.name}"></p>
+                </div>`)
 
-const getPullRequests = (forkedRepos) => {
-    forkedRepos.forEach(repo => {
-        fetch(`https://api.github.com/repos/Technigo/${reponame}/pulls`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
+        fetchPullRequest(forkedSortedRepos)
+        addCommits(forkedSortedRepos)
     })
 }
-            
-//     let user = `<div class="repos">
-//                     <p>GitHub repo: ${reponame}</p>
-//                 </div>`
+
+const fetchPullRequest = (allRepos) => {
+    allRepos.forEach(repo => {
+        fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
+        .then((res) => res.json())
+        .then((data) => { 
+            const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
+            document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Requests: ${myPullRequests.length}`
         
-//     const API_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
-//         fetch(API_PR)
-//             .then(res => res.json())
-//             .then(data => {
-//                 console.log(data)
-//             })
-    
-//     return (reposbox.innerHTML = user)
-
-//     })
-// }
-
-
-
-
+        })
+    })
+}
+const addCommits = (allRepos) => {
+    allRepos.forEach(repo => {
+        fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`)
+        .then((res) => res.json())
+        .then((data) => { 
+            document.getElementById(`commits-${repo.name}`).innerHTML = `Commits: ${data.length}`
+        
+        })
+    })
+}
 
 
-
-fetchProfilePicture()
+//invoking functions
 fetchRepos()
-getPullRequests()
-
-
-    
+fetchProfilePicture()

@@ -36,5 +36,9 @@ fetch(API_REPOS)
 
 
 
+//FÖrsökt skriva som E
 
+const commits = pullRequest[0].commits_url
+
+getCommits(commits)
     
