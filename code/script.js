@@ -1,11 +1,11 @@
 // Use token locally or from build environment
-const API_TOKEN = TOKEN;
-const PAT = {
+const options = {
   method: 'GET',
   headers: {
-    Authorization: `token ${API_TOKEN}`
+    Authorization: TOKEN
   }
 }
+
 
 // API URLs and URL builders
 const USER = 'ariallahyar'; 
@@ -27,8 +27,7 @@ const fetcher = (url, token, callback) => {
   })
 }
 
-fetcher (userUrl, PAT, ((userProfile) => {
-  console.log(userProfile)
+fetcher (userUrl, options, ((userProfile) => {
   document.getElementById('profile').innerHTML += `
     <img class="profile-pic" src="${userProfile.avatar_url}" alt="profile-pic">
     <h2 class="profile-name">${userProfile.name}</h2>
@@ -37,7 +36,7 @@ fetcher (userUrl, PAT, ((userProfile) => {
     `;
 }))
 
-fetcher(repoUrl, PAT, (repositories) => {
+fetcher(repoUrl, options, (repositories) => {
   let forkedReps = repositories.filter((repo) => {
     return repo.fork === true && repo.name.startsWith("project-")
   });
@@ -56,11 +55,11 @@ fetcher(repoUrl, PAT, (repositories) => {
       </div>
     `;
 
-    fetcher(commitUrl(rep.name), PAT, ((commits) => {
+    fetcher(commitUrl(rep.name), options, ((commits) => {
       document.getElementById(rep.name).innerHTML += `<p>Number of commits: ${commits.length}</p>`
     }));
 
-    fetcher(pullUrl(rep.name), PAT, ((pullRequests) => {
+    fetcher(pullUrl(rep.name), options, ((pullRequests) => {
       const myPulls = pullRequests.filter((pull) => {
         return pull.user.login === USER;
       })
