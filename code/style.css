@@ -1,3 +1,36 @@
 body {
   background: #FFECE9;
 }
+.userName {
+  font-size: 3rem;
+}
+
+.userPicture {
+  width: 200px;
+  border-radius: 60px;
+}
+
+#projects {
+  display: flex;
+  flex-direction: column;
+  background-color: cornsilk;
+}
+
+.project {
+  flex: 1;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: cadetblue;
+
+}
+.repoName {
+font-size: 1.5rem;
+text-align: center;
+}
+
+.repoUrl {
+
+color: rgb(255, 94, 0);
+
+}
+
