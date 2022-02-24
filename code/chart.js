@@ -2,6 +2,9 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
+const drawChart = (repos) => {
+
+
 const labels = [
     'Compleated Projects',
     'Remaining Projects',
@@ -13,7 +16,7 @@ const labels = [
       label: 'My First dataset',
       backgroundColor: ['#B6766D', '#F8E8DE'],
       borderColor: '#f7e9e7',
-      data: [5, 1],
+      data: [repos, 19-repos],
     }]
   };
 
@@ -27,3 +30,5 @@ const labels = [
     document.getElementById('chart'),
     config
   );
+
+}

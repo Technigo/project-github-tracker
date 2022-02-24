@@ -74,7 +74,8 @@ fetch(API_USER, options)
 
                
             })
-            getPullRequests(technigoRepositories)
+            drawChart(technigoRepositories.length) // Calling the chart
+            getPullRequests(technigoRepositories) // Calling the pull req and commits function
         })
         
 
@@ -88,24 +89,12 @@ const getPullRequests = (repos) => {
       .then(res => res.json())
       .then(data => {
         const commits = document.getElementById(`commit-${repo.name}`)
-              //TODO
-          //1. Find only the PR that you made by comparing pull.user.login
-              // with repo.owner.login
+
               const pulls = data.find((pull) => pull.user.login === repo.owner.login);
-            //   console.log(pulls)
-            //   commits.innerHTML += `
-            //     ${pulls.number}
-            //   `
+
               fetchCommits(pulls.commits_url, repo.name)
               console.log(pulls.commits_url)
               
-              
-              
-              //2. Now you're able to get the commits for each repo by using
-              // the commits_url as an argument to call another function
-
-              //3. You can also get the comments for each PR by calling
-              // another function with the review_comments_url as argument
           })
     })
   }
@@ -120,3 +109,10 @@ const getPullRequests = (repos) => {
             
         })
   }
+
+  // Center canvas/chart
+  window.onload = window.onresize = function() {
+    const canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+}

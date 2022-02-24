@@ -12,7 +12,7 @@ body {
   left: 100px;
    /* padding: 600px 800px; Utöka första vid fler reops */
    width: 90vw;
-   height: 120rem;
+   height: 230rem;
    background: linear-gradient(100deg, #f7e9e7, #B6766D);
    z-index: -1;
 }
@@ -129,13 +129,14 @@ a:visited, a:link {
   text-decoration: none;
 }
 
-/* .chart-container {
- width: 600px;
- height: auto;
- padding: 100px;
- border: 1px solid black;
-} */
-
+.chart-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin:auto;
+  width: 600px;
+  
+}
 
 @keyframes colorChange {
   0%   {background-color: #f7f1f0;}
@@ -157,8 +158,6 @@ a:visited, a:link {
   .myDiv {
     left: 0;
     width: 100vw;
-
-    
   }
 
   .container {
@@ -167,8 +166,6 @@ a:visited, a:link {
     align-items: center;
     justify-content: center;
     margin: 110px 0;
-
-
   }
 
   .header {
@@ -195,6 +192,10 @@ a:visited, a:link {
   .header p {
     margin: 10px;
   }
+
+  .chart-container {
+    width: 400px;
+  }
 }
 
 /* TABLET LANDSCAPE */
@@ -209,8 +210,6 @@ a:visited, a:link {
   .myDiv {
     left: 0;
     width: 100vw;;
-
-    
   }
 
   .container {
@@ -248,5 +247,9 @@ a:visited, a:link {
 
   .header p {
     margin: 10px;
+  }
+
+  .chart-container {
+    width: 600px;
   }
 }
