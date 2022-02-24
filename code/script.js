@@ -8,7 +8,7 @@ const USER_REPO = `https://api.github.com/users/SteppbySteph/repos`
 
 
 
-const GITHUB_TOKEN = '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'
+const GITHUB_TOKEN = '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'
 const options = {
     method: 'GET',
     headers: {
@@ -19,10 +19,11 @@ const options = {
 
 //----USER NAME & PROFILE----//
 
-const getProfile = () =>{
+const getProfile = () => {
     fetch(USER_PROFILE, options)
         .then(res => res.json())
         .then(data => {
+            console.log('repos', data)
             const user = data.name
             const avatar = data.avatar_url
             profile.innerHTML += `
@@ -32,7 +33,7 @@ const getProfile = () =>{
             </div>
              `
          }) 
- }
+}
 
 getProfile()
 
@@ -103,6 +104,6 @@ const getCommitNr = (myPull, myRepoName) => {
             <p> Number of commits: ${commit.length}</p>
             `
         })
-    }
+}
 // Invoking function.
 getRepos()
