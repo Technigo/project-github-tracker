@@ -2,7 +2,7 @@
 const PAT = {
   method: 'GET',
   headers: {
-    Authorization: TOKEN //|| process.env.API_KEY // variable name when deploying
+    Authorization: TOKEN
   }
 }
 
@@ -46,11 +46,16 @@ fetcher(repoUrl, PAT, (repositories) => {
 
   forkedReps.forEach((rep) => {
     // Name, last update, default branch, URL
+    let projectName = rep.name.replace('project-', '').replace('-', ' ');
+    // projectName = projectName.charAt(0).toUpperCase() + projectName.slice(1); 
+    let update = new Date(rep.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})
+
     document.getElementById('projects').innerHTML += `
       <div class="project" id=${rep.name}>
-      <h2 class="project-name">${rep.name}</h2>
-        <p>URL: <span><a class="project-url" href="${rep.svn_url}">${rep.name}</span></a>
-        <p>Updated: ${new Date(rep.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
+      <h2 class="project-name">${projectName}</h2>
+        <img class="github" src="./images/github_icon.png">
+          <span><a class="project-url" href="${rep.svn_url}">${rep.name}</span></a>
+        <p>Updated: ${update}</p>
         <p>Default branch: ${rep.default_branch}</p>
       </div>
     `;
