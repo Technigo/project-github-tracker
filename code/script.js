@@ -1,4 +1,4 @@
-const repos = document.getElementById("repos");
+const repoGrid = document.getElementById("repoGrid");
 const profile = document.getElementById("profile");
 
 // Global variables:
