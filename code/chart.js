@@ -8,9 +8,9 @@ const config = {
     labels: ["Finished projects", "Projects left"],
     datasets: [
       {
-        label: "My First Dataset",
-        data: [6, 20 - 6],
-        backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+        label: "My Projects",
+        data: [6, 19 - 6],
+        backgroundColor: ["rgb(55, 99, 132)", "rgb(80, 92, 125)"],
         hoverOffset: 4,
       },
     ],
