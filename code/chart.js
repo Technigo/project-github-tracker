@@ -25,3 +25,4 @@ const labels = [
     document.getElementById('chart'),
     config
   );
+

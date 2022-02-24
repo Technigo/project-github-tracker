@@ -1,9 +1,3 @@
-const userName = document.getElementById('user-name');
-const commitNumber = document.getElementById('commit-number');
-const pullRequests = document.getElementById('pull-requests');
-const progressChart = document.getElementById('progress-chart');
-const userImage = document.getElementById('user-image');
-
 const projectSection = document.getElementById('projects');
 const headerSection = document.getElementById('header');
 
@@ -91,10 +85,8 @@ let fetchCommits = (url, result) => {
     fetch(url)
     .then(res => res.json())
     .then(
-        data =>{
-        console.log(data.length),
-        console.log(result),
-        commitsPullrequest.innerHTML += `<p>${result}: ${data.length}</p>`}
+        data =>
+        commitsPullrequest.innerHTML += `<p>${result}: ${data.length}</p>`
         )
 }
 

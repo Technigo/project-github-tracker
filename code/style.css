@@ -2,6 +2,7 @@ body {
   background: white;
   color: rgb(13, 18, 46);
   margin: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Mobile-first design approach*/
@@ -10,7 +11,7 @@ body {
   justify-content: center;
   text-transform: uppercase;
   margin-bottom: 50px;
-  font-size: 30px;
+  font-size: 20px;
   color: grey;
 }
 
@@ -18,54 +19,66 @@ body {
   height: 500px;
   width: 100vw;
 }
-
-main {
+ main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-}
-
-.projectSection  {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  margin: 30px;
-  justify-content: center;
-}
+} 
 
 .projectSection article {
-  background-color: white;
-  border: 3px solid grey;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgb(76, 81, 105);
+  border-radius: 3%;
   margin: 10px;
   padding: 10px;
+  word-wrap: break-word;
 }
 
 .pull-commit-section {
-  border: 5px solid orange;
+  background-color: rgb(76, 81, 105);
+  color: white;
+  border-radius: 3%;
   margin: 10px;
   padding: 10px;
+  word-wrap: break-word;
 }
 
 /* ----- Profile information */
 header section {
   display: flex;
   justify-content: center;
+  margin-bottom: 80px;
 }
 
  header section img {
    margin-right: 30px;
    border-radius: 50%;
- }
+ } 
 
-@media only screen and (min-width: 778px) {
-  .projectSection  {
-    grid-template-columns: repeat(3, 1fr);
+@media only screen and (min-width: 768px) {
+  .projectSection{
+    display: grid;
+  }
+
+  .projectSection article {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projectSection section {
+    grid-column: span 2;
+  }
+
+  .projectSection article {
+    border-radius: 5%;
   }
 
   .chart {
-    width: 20vw;
+    width: 30vw;
+    margin-left: 150px;
   }
 
   main {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
