@@ -33,6 +33,7 @@ const options = {
   .then((data) => { console.log(data)
     const technigoRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
     console.log(technigoRepos)
+    makeChart(technigoRepos.length)
  
 technigoRepos.forEach((repo) => { 
   projects.innerHTML+=`
@@ -69,10 +70,12 @@ technigoRepos.forEach((repo) => {
     fetch(myCommitsUrl, options)
     .then((res) => res.json())
     .then((data2) => {
-      console.log("commits:", data2)
-      document.getElementById(`${repo}-commit`).innerHTML += data2.length
-      
-     
 
+      if (data2.length>=1) {
+      document.getElementById(`${repo}-commit`).innerHTML += data2.length
+    } else {
+      document.getElementById(`${repo}-commit`).innerHTML += "No commits were made."
+     
+    }
     })
   }

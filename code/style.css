@@ -1,10 +1,14 @@
 body {
-  background: #FFECE9;
+  background: white;
   font-family: 'Merriweather Sans', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
+a{
+  text-decoration:none;
+ }
 
 .user-info{
   display: flex;
@@ -20,10 +24,6 @@ body {
   align-self: center;
 }
 
-#user-name{
-  text-decoration: none;
-}
-
 .projects{
   display: flex; 
   flex-wrap: wrap;
@@ -32,12 +32,18 @@ body {
 }
 
 .repos{
-  background-color: white;
+  background-color: #FFECE9;
   margin: 15px;
   border-radius: 10px;
   padding:20px;
   text-decoration: none;
+  border-color: black;
+  border:solid;
+}
 
+.chart-div{
+  display: flex;
+  width:100%;
 }
 
 /*Tablet*/
@@ -52,6 +58,13 @@ body {
   
   width:40vw;
 }
+
+.chart-div {
+  justify-content: center;
+  align-items: center;
+  width:60%;
+  margin-left: 20%;
+}
   
 }
 
@@ -61,17 +74,19 @@ body {
 
 .projects{
   flex-direction: row;
-
 }
 
 .repos{
   width: 25vw;
-  
 }
 
 .profile-pic{
- 
   width:250px;
+}
+
+.chart-div{
+  width:25%;
+  margin-left:37%;
 }
 
 }

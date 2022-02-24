@@ -2,3 +2,30 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
+const makeChart = (finishedProjects) => {
+  const labels = [
+    'Finished projects',
+    'Projects to do',
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: ['#ffc6fa','#ff97f6'],
+      borderColor: 'white',
+      data: [finishedProjects, 20-finishedProjects],
+    }]
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('chart'),
+    config
+  );
+  }
