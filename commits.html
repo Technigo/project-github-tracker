@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body onload="fetchCommits()">
+  <main class="body-wrapper">
+    <div class="aside-wrapper">
+      <aside class="aside" id="aside"></aside>
+    </div>
+
+    <section>
+      <a class="projects__header" href="index.html">Repositories</a>
+      <a class="projects__header" href="commits.html">Contributions</a>
+      <hr>
+    </section>
+
+    <div class="chart-wrapper">
+      <canvas class="chart" id="chart">
+        <p>Your browser does not support the canvas element.</p>
+      </canvas>
+    </div>
+
+    <section id="commits">
+      <hr>
+      <h2>Contribution activity</h2>
+    </section>
+
+    <script src="./src/javascript/chart.js"></script>
+    <script src="./src/javascript/config.js"></script>
+    <script src="./src/javascript/index.js"></script>
+    <script src="./src/javascript/commits.js"></script>
+</body>
+
+</html>
