@@ -3,12 +3,11 @@ import MainComp from "./components/main";
 import HeaderComp from "./components/header";
 import makeChart from "./technigoChart";
 import LoadingStatusComp from "./components/spinner";
-import { allRepo } from "./dummyData/allRepo";
-import { repoData } from "./dummyData/repoData";
 
 const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
 const USERNAME = "jiiinCho";
+const spinner = LoadingStatusComp();
 
 async function fetchGithubData(path) {
   const myHeaders = new Headers();
@@ -30,21 +29,16 @@ async function fetchGithubData(path) {
   return await response.json();
 }
 
-// const getUserInfo = fetchGithubData("users/jiiinCho");
-// const getRepos = fetchGithubData("users/jiiinCho/repos");
-const spinner = LoadingStatusComp();
-
 async function init() {
   //start by displaying loading state
   root.appendChild(spinner);
   try {
-    // const allRepository = await fetchGithubData(`users/${USERNAME}/repos`);
-    const allRepository = allRepo;
+    const allRepository = await fetchGithubData(`users/${USERNAME}/repos`);
     //user info
     const { avatar_url, html_url } = allRepository[0].owner;
 
     //step 1. filter technigo projects
-    let projectNames = []; //project-chatbot, project-buisness..
+    let projectNames = [];
     let technigoRepos = [];
     allRepository.forEach((repo) => {
       if (repo.name.startsWith("project-")) {
@@ -55,8 +49,8 @@ async function init() {
     const completedProjects = technigoRepos.length;
 
     // step 2. fetch all required data
-    //const baseData = await fetchAll(projectNames);
-    const baseData = repoData;
+    const baseData = await fetchAll(projectNames);
+
     // step 4. sort by last commit date
     baseData.sort(function (a, b) {
       return b.latestCommitDate - a.latestCommitDate;
@@ -64,7 +58,6 @@ async function init() {
     // step 5. create and inject html elements
     const header = HeaderComp(avatar_url);
     const main = MainComp(avatar_url, "jiiin✨", USERNAME, html_url, baseData);
-
     return { header, main, completedProjects };
   } catch (e) {
     //error handling
