@@ -50,7 +50,7 @@ const fetchRepos = () => {
                 <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
                 <p>Branch: ${repo.default_branch}</p>
                 <p>Latest push: ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</p>
-                <p id=${repo.name}>Number of commits: </p> 
+                <p id ="${repo.name}">Commits made by team member</p> 
               </div>
             `
         })
@@ -60,27 +60,27 @@ const fetchRepos = () => {
     })
 }
 
-const getPullRequests = (allPullRequests) => { // filteredRepos?
-  allPullRequests.forEach(repo => {
+const getPullRequests = (filteredRepos) => { // filteredRepos?
+  filteredRepos.forEach(repo => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
     .then(res => res.json())
     .then(data => {
       const myPullRequest = data.find((pull) => pull.user.login === repo.owner.login);// här göra en conditional ifall ej mina PR?
       const myCommitsURL = myPullRequest.commits_url
-      const myCommentsURL = myPullRequest.comments_url
-      //const repoName = filteredRepos.name
-      console.log(myCommentsURL, myCommitsURL, myPullRequest)
-      fetchCommits(myCommitsURL); // varför är denna här??
+      //const myCommentsURL = myPullRequest.comments_url
+      const repoName = repo.name
+      //console.log(myCommitsURL, myPullRequest, filteredRepos, repoName)
+      fetchCommits(myCommitsURL, repoName); // varför är denna här??
         })
     })
   }
 
-const fetchCommits = (myCommitsURL) => {
+const fetchCommits = (myCommitsURL, repoName) => {
     fetch(myCommitsURL)
     .then((res) => res.json())
     .then (data => {
-     // console.log(data)
-    //document.getElementById("${repo.name}").innerHTML += `${commits.length}`
+      //console.log(data.length, repoName)
+      document.getElementById(repoName).innerHTML = `Number of commits: ${data.length}`
   });
 }
 

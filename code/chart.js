@@ -35,4 +35,3 @@ const labels = [
  // myChart()   // varför är denna ej aktiverad? vad gör den?
   }
 
-  console.log('test')
