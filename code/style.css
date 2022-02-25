@@ -13,7 +13,8 @@ h1 {
   max-height: 5vh;
   min-height: 2vh;
   font-weight: 500;
-  padding-bottom: 1vh
+  padding-bottom: 1vh;
+  margin-bottom: 1vh
 }
 
 p {
@@ -78,7 +79,7 @@ body {
 }
 
 /*media queries*/
-@media screen and (min-width: 668px) and (max-width: 1024px) {
+@media screen and (min-width: 668px) and (max-width: 1024px) and (orientation: landscape) {
  .hero-image {
    height: 35vh
  }
@@ -93,7 +94,7 @@ body {
  }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) and (orientation: landscape) {
   .hero-image {
     height: 55vh
   }
