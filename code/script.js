@@ -1,15 +1,6 @@
 // DOM SELECTORS
 const USER = 'Neaa99'
-const userName = document.getElementById('userName')
-const myName = document.getElementById('myName')
-const userPic = document.getElementById('userPic')
-const userBio = document.getElementById('userBio')
 const technigoRepos = document.getElementById('technigoRepos')
-const repoPush = document.getElementById('repoPush')
-const defaultBranch = document.getElementById('defaultBranch')
-const repoURL = document.getElementById('repoURL')
-const repoCommits = document.getElementById('repoCommits')
-const allPullReq = document.getElementById('allPullReq')
 const container = document.getElementById('container')
 const header = document.getElementById('header')
 
@@ -41,9 +32,7 @@ fetch(API_USER, options)
                 <h1><span>${data.login}</span></h1>
                 <h1>GitHub Tracker</h1>
                 <p>${data.bio}</p>
-            </div>
-            
-            `
+            </div>`
     })
 
     fetch(API_REPOS, options)
@@ -55,9 +44,8 @@ fetch(API_USER, options)
             const technigoRepositories = data.filter(repo => 
                 repo.name.includes('project-') && repo.fork === true)
 
-                console.log(technigoRepositories)
             technigoRepositories.forEach((repo) => {
-                container.innerHTML += `
+             container.innerHTML += `
                 <div class="technigo-repos" id="technigoRepos">
                     <a class="netlify-link" target="_blank" href="https://fascinated-jury-3fb.notion.site/Netlify-5e83f8322f8d4b92a96b4f0e8c2ccf96"><h2 id="repoName">${repo.name}</h2></a>
                     <h3 id="description">${repo.description}</h3>
@@ -68,19 +56,13 @@ fetch(API_USER, options)
                         <p id="commit-${repo.name}"><span>• Number of commits:</span> </p>
                     </div>
                     <p> <a class="repo-link" target="_blank" href="${repo.html_url}">Link to Repo</a></p>
-                
                 </div>
                 `
-
-               
             })
             drawChart(technigoRepositories.length) // Calling the chart
             getPullRequests(technigoRepositories) // Calling the pull req and commits function
         })
         
-
-    //Remember to pass along your filtered repos as an argument when
-//you are calling this function
 
 const getPullRequests = (repos) => {
     //Get all the PRs for each project.

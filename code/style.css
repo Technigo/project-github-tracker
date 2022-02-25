@@ -65,8 +65,6 @@ body {
   padding: 20px;
   margin: 150px;
   width: 80vw;
-  /* border: 1px solid black; */
-
 }
 
 .technigo-repos {
@@ -137,6 +135,8 @@ a:visited, a:link {
   width: 600px;
   
 }
+
+/* ANIMATIONS */
 
 @keyframes colorChange {
   0%   {background-color: #f7f1f0;}
