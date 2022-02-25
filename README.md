@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+A GitHub clone website to practice REST API with vanilla Javascript.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The biggest challenge was rate limit boundary even though the request header contains authentication token. In case of exceeding rate limit boundary, the website will display an error message and ask users to visit after an hour. The issue is caused by sending too many requests when page is loading and this was not avoidable because the website requires data from different paths. So for the display purpose, the deployed website is based on a dummy data.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-clone-2022.netlify.app
