@@ -22,8 +22,8 @@ const options = {
   .then(res => res.json())
   .then(data => { 
     profilePic.src = data.avatar_url
-    fullName.innerHTML = `${data.name}`
-    userName.innerHTML = `<a href=${data.html_url}>${data.login}</a>`
+    fullName.innerHTML = `<h2>${data.name}</h2>`
+    userName.innerHTML = `<h3><a href=${data.html_url}>${data.login}</a></h3>`
     
 })
  
@@ -41,7 +41,7 @@ technigoRepos.forEach((repo) => {
   <a style="font-weight:bold"  href=${repo.html_url}>${repo.name}</a>
   <p>Last push: ${new Date(repo.pushed_at).toLocaleString("sv-SE", {dateStyle: 'short'})}</p>
   <p>Default branch: ${repo.default_branch}</p>
-  <p id="${repo.name}-commit">Commits: </p> 
+  <p id="${repo.name}-commit">Commits: - </p> 
   <p id="pullrequests-${repo.name}">Pull requests: </p>
   </div>
   `
@@ -59,7 +59,7 @@ technigoRepos.forEach((repo) => {
       getMyCommits(myPulls.commits_url, repo.name)
       document.getElementById(`pullrequests-${repo.name}`).innerHTML +=  Object.length
     }else{
-      document.getElementById(`pullrequests-${repo.name}`).innerHTML += "No pull requests were made."
+      document.getElementById(`pullrequests-${repo.name}`).innerHTML = `No pull requests were made by ${username}.`
     }
   })    
 })
@@ -70,12 +70,7 @@ technigoRepos.forEach((repo) => {
     fetch(myCommitsUrl, options)
     .then((res) => res.json())
     .then((data2) => {
-
-      if (data2.length>=1) {
-      document.getElementById(`${repo}-commit`).innerHTML += data2.length
-    } else {
-      document.getElementById(`${repo}-commit`).innerHTML += "No commits were made."
-     
-    }
+      document.getElementById(`${repo}-commit`).innerHTML = `Commits: ${data2.length}`      
+    
     })
   }

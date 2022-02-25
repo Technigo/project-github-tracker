@@ -4,6 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin:0px;
 }
 
 a{
@@ -15,13 +16,38 @@ a{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  text-decoration:none;
+ 
+}
+
+.head-tracker{
+  display: flex;
+  justify-content: space-evenly;
+  margin:20px;
+}
+
+.catpic{
+  object-fit: cover;
+  width:100px;
+}
+
+h2{
+  
+  margin-bottom:-30px;
+}
+
+.profileimg{
+  display: flex;
+  justify-content: center;
+  margin-bottom:-20px;
 }
 
 .profile-pic {
   width:200px;
   border-radius: 50%;
   align-self: center;
+  border: solid .5em #FFECE9;
+  padding: .3em;
+
 }
 
 .projects{
@@ -36,14 +62,16 @@ a{
   margin: 15px;
   border-radius: 10px;
   padding:20px;
-  text-decoration: none;
-  border-color: black;
-  border:solid;
+  border:1px solid black;
+  box-shadow: 5px 10px 10px darkgrey;
 }
 
 .chart-div{
   display: flex;
-  width:100%;
+  width:fit-content;
+  justify-content: center;
+  align-self: center;
+  
 }
 
 /*Tablet*/
@@ -54,6 +82,10 @@ a{
   flex-direction: row;
 }
 
+.head-tracker{
+  justify-content: center;
+}
+
 .repos{
   
   width:40vw;
@@ -62,8 +94,15 @@ a{
 .chart-div {
   justify-content: center;
   align-items: center;
-  width:60%;
-  margin-left: 20%;
+  height:40%;
+  
+ 
+}
+
+.chart{
+  display: flex;
+  justify-content: center;
+  padding-top:30px;
 }
   
 }
@@ -74,6 +113,27 @@ a{
 
 .projects{
   flex-direction: row;
+}
+.head-tracker{
+  justify-content: center;
+}
+
+.profileimg{
+flex-direction: row;
+justify-content: center;
+margin:20px;
+}
+
+.user-facts{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin:20px;
+
+}
+
+a:hover {
+  color: #ff97f6;
 }
 
 .repos{
@@ -86,7 +146,6 @@ a{
 
 .chart-div{
   width:25%;
-  margin-left:37%;
 }
 
 }

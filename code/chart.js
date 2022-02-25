@@ -12,9 +12,10 @@ const makeChart = (finishedProjects) => {
     labels: labels,
     datasets: [{
       label: 'My First dataset',
-      backgroundColor: ['#ffc6fa','#ff97f6'],
-      borderColor: 'white',
-      data: [finishedProjects, 20-finishedProjects],
+      backgroundColor: ['#ffa597','#ffdfda'],
+      borderColor: 'black',
+      borderWidth: '1',
+      data: [finishedProjects, 19-finishedProjects],
     }]
   };
 
@@ -27,5 +28,6 @@ const makeChart = (finishedProjects) => {
   const myChart = new Chart(
     document.getElementById('chart'),
     config
+      
   );
   }
