@@ -15,7 +15,7 @@ const options = {
           Authorization: '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' 
       }
   }
-  
+
   //Fetch picture, name and username
   
   fetch(API_PROFILE, options)
@@ -34,6 +34,12 @@ const options = {
     const technigoRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
     console.log(technigoRepos)
     makeChart(technigoRepos.length)
+
+
+    technigoRepos.sort(function (oldestRepo, newestRepo) {
+      return new Date(oldestRepo.pushed_at) - new Date(newestRepo.pushed_at);
+    });
+ 
  
 technigoRepos.forEach((repo) => { 
   projects.innerHTML+=`
@@ -45,6 +51,7 @@ technigoRepos.forEach((repo) => {
   <p id="pullrequests-${repo.name}">Pull requests: </p>
   </div>
   `
+ 
   
   API_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
   fetch(API_URL, options)
@@ -54,6 +61,7 @@ technigoRepos.forEach((repo) => {
       (pull) => pull.user.login === repo.owner.login
     )
     console.log(myPulls)
+    
 
     if (myPulls) {
       getMyCommits(myPulls.commits_url, repo.name)
@@ -65,7 +73,7 @@ technigoRepos.forEach((repo) => {
 })
   }
   )
-
+  
   const getMyCommits = (myCommitsUrl,repo) => {
     fetch(myCommitsUrl, options)
     .then((res) => res.json())
@@ -74,3 +82,4 @@ technigoRepos.forEach((repo) => {
     
     })
   }
+ 
