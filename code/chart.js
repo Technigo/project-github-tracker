@@ -2,28 +2,33 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
-const labels = [
-    'Done',
-    'Left',
-  ];
+const drawChart = (amount) => {
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: ['rgb(255, 99, 132)', 'rgb(130, 99, 132)'],
-      borderColor: 'rgb(255, 99, 132)',
-      data: [6, 19],
-    }]
-  };
+    const labels = [
+        'Done or ongoing projects',
+        'Projects left to do',
+    ];
 
-  const config = {
-    type: 'doughnut',
-    data: data,
-    options: {}
-  };
+    const data = {
+        labels: labels,
+        datasets: [{
+        label: 'My First dataset',
+        backgroundColor: ['rgb(144, 238, 144)', 'rgb(238, 130, 238)'],
+        borderColor: ['rgb(144, 238, 144)', 'rgb(238, 130, 238)'],
+        data: [amount, 19-amount],
+        }]
+    };
 
-  const myChart = new Chart(
-    document.getElementById('chart'),
-    config
-  );
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {}
+    };
+
+    new Chart(
+        ctx,
+        config
+    );
+}
+
+

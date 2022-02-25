@@ -5,9 +5,6 @@ const username = 'jessand77';
 const API_USER_INFO = `https://api.github.com/users/${username}`;
 const API_REPOS = `${API_USER_INFO}/repos`;
 
-//Global variable to be used by the chart
-let technigoRepos;
-
 const options = {
   method: 'GET',
   headers: {
@@ -34,14 +31,18 @@ const getPRCommits = (pullRequestCommitsUrl, reponame) => {
   .then(commits => {
 
     let repoDiv = document.getElementById(reponame);
-    let commitParagraph = document.createElement('p')
+    let commitParagraph = document.createElement('p');
+    let showCommitsButton = document.createElement('button');
     let commitMessageList = document.createElement('ol');
     commitMessageList.className = 'message-list';
 
     commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
-    repoDiv.appendChild(commitParagraph)
-    repoDiv.appendChild(commitMessageList);
+    showCommitsButton.innerHTML = 'Show commit messages';
     
+    repoDiv.appendChild(commitParagraph);
+    repoDiv.appendChild(showCommitsButton);
+    repoDiv.appendChild(commitMessageList);
+
     commits.forEach(commit => {
       // console.log(commit.commit.message);
       let listElement = document.createElement('li');
@@ -49,6 +50,10 @@ const getPRCommits = (pullRequestCommitsUrl, reponame) => {
       commitMessageList.appendChild(listElement)
     })
 
+    // const showCommits = () => commitMessageList.style.display = 'block';
+    const showCommits = () => repoDiv.innerHTML = 'Show messages here'
+
+    showCommitsButton.addEventListener('click', showCommits)
   })
 }
 
@@ -146,7 +151,7 @@ const fetchRepos = () => {
 
     //console.log(repos);
     
-    technigoRepos = getTechnigoRepos(repos)
+    const technigoRepos = getTechnigoRepos(repos)
     
     getPullRequests(technigoRepos);
 
@@ -155,6 +160,10 @@ const fetchRepos = () => {
       <div class="repo-container" id="repoContainer"></div>
       `;
 
+    // Get the number of forked Technigo projects and draw the chart
+    const numberOfTechnigoRepos = technigoRepos.length;
+    drawChart(numberOfTechnigoRepos);
+    
     technigoRepos.forEach((repo) => {
       
       const mostRecentPush = new Date(repo.pushed_at).toLocaleDateString('en-GB');
@@ -172,6 +181,7 @@ const fetchRepos = () => {
 
   });
 }
+
 
 fetchUserInfo();
 fetchRepos();

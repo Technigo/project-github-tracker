@@ -132,8 +132,9 @@ a {
   display: none;
 }
 
-canvas {
+.canvas-section {
   width: 50%;
+  margin: 0 auto;
 }
 
 .footer {
