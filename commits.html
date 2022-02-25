@@ -7,36 +7,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GitHub Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="./src/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="./src/stylesheets/commits.css" />
+  <link rel="stylesheet" href="./src/stylesheets/style.css" />
 </head>
 
-<body onload="fetchCommits()">
+<body>
+  <header class="header">
+    <div class="hamburger-wrapper">
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </div>
+    <h1>GitHub Tracker</h1>
+    <img src="./images/me.png" class="header__image" alt="image of savannah hayes">
+  </header>
   <main class="body-wrapper">
-    <div class="aside-wrapper">
+    <div class="aside-chart">
       <aside class="aside" id="aside"></aside>
+      <hr>
+      <div class="chart-wrapper">
+        <canvas class="chart" id="chart">
+          <p>Your browser does not support the canvas element.</p>
+        </canvas>
+      </div>
     </div>
 
-    <section>
-      <a class="projects__header" href="index.html">Repositories</a>
-      <a class="projects__header" href="commits.html">Contributions</a>
+    <section class="commits" id="commits">
+      <div class="html-links">
+        <a class="links" href="index.html"><img src="./images/book.png" class="icons" alt="book icon"> Repositories</a>
+        <a class="links bold-link" href="commits.html"><img src="./images/box.png" class="icons" alt="box icon">
+          Contributions</a>
+        <a href="#" class="links links--hide"><img src="./images/pr.png" class="icons" alt="pull request icon"> Pull
+          Requests</a>
+      </div>
       <hr>
+     
     </section>
+  </main>
 
-    <div class="chart-wrapper">
-      <canvas class="chart" id="chart">
-        <p>Your browser does not support the canvas element.</p>
-      </canvas>
-    </div>
+  <hr>
+  <footer class="footer footer-flex">
+    <p class="footer__text footer-flex"><img src="./images/github.png" class="footer__icon" alt="github icon">GitHub
+      Tracker</p>
+    <ul class="footer__links footer-flex">
+      <li class="footer__link footer-flex">Terms</li>
+      <li class="footer__link footer-flex">Privacy</li>
+      <li class="footer__link footer-flex">Security</li>
+      <li class="footer__link footer-flex footer__link--hide">About</li>
+    </ul>
+  </footer>
 
-    <section id="commits">
-      <hr>
-      <h2>Contribution activity</h2>
-    </section>
-
-    <script src="./src/javascript/chart.js"></script>
-    <script src="./src/javascript/config.js"></script>
-    <script src="./src/javascript/index.js"></script>
-    <script src="./src/javascript/commits.js"></script>
+  <script src="./src/javascript/chart.js"></script>
+  <script src="./src/javascript/config.js"></script>
+  <script src="./src/javascript/index.js"></script>
+  <script src="./src/javascript/commits.js"></script>
 </body>
 
 </html>

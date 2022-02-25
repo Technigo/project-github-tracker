@@ -10,7 +10,7 @@ const displayRepositories = (repositories) => {
     const oneDay = 24 * 60 * 60 * 1000;
     const currentDate = new Date();
     const projectDate = new Date(repo.pushed_at);
-    let numberOfDays = Math.round(Math.abs((currentDate - projectDate) / oneDay));
+    const numberOfDays = Math.round(Math.abs((currentDate - projectDate) / oneDay));
 
     language === "HTML" ? language = `🔴 ${language}` : language = `🟡 ${language}`;
 

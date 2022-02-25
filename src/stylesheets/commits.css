@@ -1,0 +1,66 @@
+.chart-wrapper {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.commits__text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.chatbot,
+.weather-app,
+.business-site,
+.github-tracker,
+.news-site,
+.guess-who {
+  display: none;
+}
+
+.active + .chatbot,
+.active + .weather-app,
+.active + .business-site,
+.active + .github-tracker,
+.active + .news-site,
+.active + .guess-who {
+  display: block;
+  line-height: 20px;
+}
+
+.btn {
+  border: 1px solid black;
+  border-radius: 50px;
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .body-wrapper {
+    display: flex;
+  }
+
+  .commits {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+  .commits__text {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .aside-chart {
+    width: 60%;
+    border-right: 1px solid var(--clr-light);
+  }
+
+  .aside {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .commits {
+    margin-left: 50px;
+  }
+}
