@@ -25,7 +25,7 @@ a {
 }
 
 .hero-image {
-  background-image: url("/images/hero-grafitti2.jpg");
+  background-image: url("hero-grafitti2.jpg");
   width: 100vw;
   height: 30vh;
   background-position: center;
