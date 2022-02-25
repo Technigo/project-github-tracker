@@ -5,17 +5,12 @@ const PROFILE_URL = `https://api.github.com/users/${USER}`;
 const projectContainer = document.getElementById("projects");
 const profileInfo = document.getElementById("profile");
 
-// const API_TOKEN = TOKEN || process.env.API_KEY;
-
 const options = {
   method: "GET",
   headers: {
-    Authorization: `token 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`,
+    Authorization: `token ${API_TOKEN}`,
   },
 };
-
-// Authorization: `token ${API_TOKEN}`,
-// `token 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`
 
 const getProfile = () => {
   fetch(PROFILE_URL, options)

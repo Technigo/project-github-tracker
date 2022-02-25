@@ -65,16 +65,10 @@ img {
 }
 
 a:link {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-a:visited {
   text-decoration: none;
 }
 
 a:hover {
-  background-color: transparent;
   text-decoration: underline;
 }
 
@@ -87,11 +81,41 @@ a:hover {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
   grid-gap: 1.5rem;
 }
 
 footer {
   padding: 10px;
   margin-top: 20px;
+}
+
+/* --- MEDIA QUERY --- */
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chart {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Big screen */
+
+@media (min-width: 769px) {
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .chart {
+    width: 350px;
+    height: 350px;
+  }
 }
