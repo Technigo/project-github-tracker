@@ -1,9 +1,8 @@
 // DOM SELECTORS
-
+const projectsContainer = document.getElementById('projects')
 
 // GLOBAL VARIABLES
 const username = 'joannalodell19'
-const testUser = 'molbimien'
 let filteredRepo = [] // Probably not needed
 
 // let reponame = ''
@@ -44,54 +43,55 @@ const getRepos = () => {
         const forkedRepos = data.filter(repo => repo.fork = true)
         console.log('data filtered by forks', forkedRepos)
 
-        console.log(data[1].name)
-
-        filteredRepo = forkedRepos.filter(repo => repo.name.startsWith('project-') === true)
+        const filteredRepo = forkedRepos.filter(repo => repo.name.startsWith('project-') === true)
         console.log('data filtered on projects', filteredRepo)
 
         filteredRepo.forEach(repo => {
             console.log(repo.commits_url)
-            document.getElementById('projects').innerHTML += `
+            projectsContainer.innerHTML += `
             <div class="repo" id=${repo.name}>
-                <h2>${repo.name}</h2>
-                <h2><a href="${repo.html_url}">GitHub link</a></h2>
-                <h2>Default branch: ${repo.default_branch}</h2>
-                <h2>Latest push: ${repo.pushed_at}</h2>
+            <a href="${repo.html_url}"><h3>${repo.name}</h3></a>
+            <p> Default branch: ${repo.default_branch}</p>
+            <p> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+            <p id='commit-${repo.name}'> Number of commits: </p>
             </div>
-            `
-            
-            // fetch(repo.commits_url, options)
-            // .then(res => res.json())
-            // .then(data => {
-            //     console.log('Hello')
-            //     then.request(`/repos/${username}/${repo}/commits`, {})
-            // })
+            `  
         })
-        
-
-        
-
-
-        // const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
-
-        // fetch(API_URL_PR, options)
-        // .then(res => res.json())
-        // .then(data2 => {
-        //     console.log(data2)
-
-
-        //     const allPRs = data2.filter(item => item.head.user.login === testUser)
-        //     console.log()
-
-        //     const COMMENTS_URL = allPRs[0].commits_url
-        //     fetch(COMMENTS_URL)
-        //     .then(res => res.json())
-        //     .then(data3 => console.log(data3))
-        // })
-
+        getPullRequests(forkedRepos);
+        // drawChart(forkedRepos.length);
     })
 }
 
 
-
 getRepos()
+
+// Pull requests for each project
+const getPullRequests = (repos) => {
+    repos.forEach((repo) => {
+      const PULLREQUEST_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
+      fetch(PULLREQUEST_URL, options)
+        .then((res) => res.json())
+        .then((pull) => {
+          const myPullRequest = pull.find(
+            (pull) => pull.user.login === repo.owner.login
+          );
+  
+          // If pull request done by user, getCommits function is invoked
+          if (myPullRequest) {
+            getCommits(myPullRequest.commits_url, repo.name);
+          } else {
+            document.getElementById(`commit-${repo.name}`).innerHTML =
+              "No pull request done by user";
+          }
+        });
+    });
+  };
+  
+  const getCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl)
+      .then((res) => res.json())
+      .then((commit) => {
+        document.getElementById(`commit-${myRepoName}`).innerHTML +=
+          commit.length;
+      });
+  };
