@@ -27,46 +27,43 @@ fetch(URL_REPO, options)
   .then(res => res.json())
   .then(data => {
 
-  //Get image from user profile and display on website
+  //Get technigo projects by filtering data by repos that starts with "project- and is forked"
+  const technigoProjects = data.filter(repo => repo.name.startsWith('project-') && repo.fork)
+  
+  //Get image and url from user profile and display on website
   document.getElementById('profile-picture').innerHTML = `
   <img class="box-shadow" src='${data[0].owner.avatar_url}' alt='image of emmahogberg88 at GitHub'>
   `
-  //Get url to user profile and show on website
   document.getElementById('username').innerHTML = `
   <h4><a class="header nav-link" href='${data[0].html_url}'><i class="fab fa-github"></i> ${username}</a></h4>
   `
-  repoData(data)
-  })
-  .catch(err => console.error(err))
-}
-
-
-
-
-//--display repo information--//
-const repoData = (data) => {
-
-//Get technigo projects by filtering data by repos that starts with "project- and is forked"
-  const technigoProjects = data.filter(repo => repo.name.startsWith('project-') && repo.fork)
-
-  //Pass amount of finished technigo projects to progressChart in chart.js file
-  progressChart(technigoProjects.length)  
   
   console.log('till sorting',technigoProjects)
-
+  
   toggleSwitch.addEventListener('click', () => {
     technigoProjects.sort((a, b) => new Date(a.pushed_at) < new Date(b.pushed_at) ? 1 : -1)
     console.log('new array?', technigoProjects)
   })
 
+  repoData(technigoProjects)
+
+  //Pass amount of finished technigo projects to progressChart in chart.js file
+  progressChart(technigoProjects.length)  
+
+  })
+  .catch(err => console.error(err))
+}
+
+
+//--display repo information--//
+const repoData = (technigoProjects) => {
+
 
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
    
-  //Get name of repo
+  //Get name of repo and date of latest update of the repo
   const reponame = repo.name
-
-  //Get the date of latest update of the repo
   const latestUpdateRepo = new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})
   
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
@@ -169,6 +166,7 @@ const displayComments = (commentsUrl, reponame) => {
               modalWrapper.style.display = 'block'
         
               document.getElementById('modal').innerHTML += `
+              <p><span class="bold-text modal-header">Comment from ${data[0].user.login}</span></p>
               <p class="modal-text">${item}
               </p>
               <br>

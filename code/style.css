@@ -52,10 +52,6 @@ p {
   padding-bottom: 0.25em;
 }
 
-.bold-text {
-  font-weight: bold;
-}
-
 
 /***************************************************/
 /********************* Image **********************/
@@ -113,6 +109,10 @@ a.nav-link:hover::before {
   4px 4px 5px 0px #0001;
 }
 
+.bold-text {
+  font-weight: bold;
+}
+
 /* Buttons */
 
 .filled-button,
@@ -166,10 +166,10 @@ header {
   padding: 1em 0;
 }
 
-.chart {
+/* .chart {
   min-height: 200px;
   padding: 1em;
-}
+} */
 
 /***************************************************/
 /***************** Toggle switsh ******************/
@@ -241,6 +241,7 @@ input:checked + label {
   margin: 1em;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
 } 
 
@@ -256,7 +257,7 @@ input:checked + label {
 .modal-wrapper {
   display: none;
   align-items: center;
-  min-height: 50vh;
+  /* min-height: 50vh; */
   max-width: 75vh;
   width: 50vw;
   border: 1px solid var(--primary);
@@ -278,6 +279,10 @@ input:checked + label {
   position: relative;
 }
 
+.modal-header {
+  padding: 1.5em;
+}
+
 /***************************************************/
 /********************* Footer *********************/
 /*************************************************/
@@ -290,6 +295,10 @@ footer {
   margin-top: 2em;
   display: flex;
   justify-content: center;
+}
+
+.a-footer {
+  border-top: 1em solid var(--primary);
 }
 
 
@@ -334,9 +343,9 @@ footer {
     width: 350px;
   }
 
-  .chart {
+  /* .chart {
     min-height: 400px;
-  }
+  } */
 
   .section-overwiew {
     padding-inline: 4em;

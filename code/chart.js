@@ -39,7 +39,7 @@ progressChart = (projectsLeft) => {
                     display: true,
                     text: 'BOOT CAMP PROGRESS',
                     position: 'top',
-                    color: 'white',
+                    color: '#FFF',
                     fontFamily: 'Roboto',
                     weight: 'bold',
                 }
