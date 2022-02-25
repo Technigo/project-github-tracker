@@ -12,7 +12,6 @@ body {
   font-family: "Open Sans Condensed", sans-serif;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: center;
   max-height: 100vh;
 }
