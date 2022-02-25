@@ -1,31 +1,88 @@
 body {
   background: #FFECE9;
+  font-family: 'Miriam Libre', sans-serif;
+
 }
-.userName {
-  font-size: 3rem;
+
+header {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(248, 175, 19) 100%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Urbanist', sans-serif;
+
 }
+h1 {
+  flex: 1;
+  color: antiquewhite;
+}
+
+h2 {
+  flex: 1;
+  text-align: center;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 500;
+  color: rgb(157, 82, 172);
+}
+
+/* unvisited link */
+a:link {
+  color: rgb(201, 113, 55);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(82, 96, 121);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(224, 53, 139);
+  cursor: cell;
+}
+
+/* selected link */
+a:active {
+  color: rgb(224, 53, 139);
+}
+
+#user-info {
+  flex: 1;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(138, 37, 121);
+
+
+}
+
 
 .userPicture {
   width: 200px;
-  border-radius: 60px;
+  border-radius: 100px;
 }
 
 #projects {
   display: flex;
   flex-direction: column;
-  background-color: cornsilk;
+  /* background-color: cornsilk; */
+  align-items: center;
 }
 
 .project {
-  flex: 1;
+  min-width: 500px;
+  max-width: 900px;
   margin: 1rem;
   padding: 1rem;
-  background-color: cadetblue;
+  border-radius: 3px;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(220,220,245,1) 35%, rgba(255,223,206,1) 100%);
+  box-shadow: 10px 10px 2px 1px rgba(48, 48, 57, 0.089);
 
 }
 .repoName {
-font-size: 1.5rem;
-text-align: center;
+font-size: 1.3rem;
+padding-bottom: 1rem;
 }
 
 .repoUrl {
@@ -34,3 +91,31 @@ color: rgb(255, 94, 0);
 
 }
 
+.giticon {
+  width: 20px;
+}
+
+@media (min-width:340px) and (max-width:1038px) {
+
+  .project {
+    width: 90%;
+  
+}
+ 
+}
+@media (min-width:1039px) and (max-width:1800px) {
+  
+  #projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+    
+  }
+  
+  .project {
+    min-width: 43%;
+    max-width: 44%;
+}
+
+}
