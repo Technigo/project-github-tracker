@@ -3,24 +3,21 @@ import MainComp from "./components/main";
 import HeaderComp from "./components/header";
 import makeChart from "./technigoChart";
 import LoadingStatusComp from "./components/spinner";
+import { allRepo } from "./dummyData/allRepo";
+import { repoData } from "./dummyData/repoData";
 
 const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
-let myLoginName;
-let completedProjects;
-let header;
-let main;
+const USERNAME = "jiiinCho";
 
 async function fetchGithubData(path) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Basic ${TOKEN}`);
-
   const requestOptions = {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
   };
-
   const response = await fetch(
     `https://api.github.com/${path}`,
     requestOptions
@@ -33,36 +30,44 @@ async function fetchGithubData(path) {
   return await response.json();
 }
 
-const getUserInfo = fetchGithubData("users/jiiinCho");
-const getRepos = fetchGithubData("users/jiiinCho/repos");
+// const getUserInfo = fetchGithubData("users/jiiinCho");
+// const getRepos = fetchGithubData("users/jiiinCho/repos");
 const spinner = LoadingStatusComp();
 
 async function init() {
-  //display loading status
+  //start by displaying loading state
   root.appendChild(spinner);
-
   try {
-    const value = await Promise.all([getUserInfo, getRepos]);
-    const { login, avatar_url, html_url, name } = value[0];
-    myLoginName = login;
-    const allRepository = value[1];
+    // const allRepository = await fetchGithubData(`users/${USERNAME}/repos`);
+    const allRepository = allRepo;
+    //user info
+    const { avatar_url, html_url } = allRepository[0].owner;
 
-    const technigoRepoDataRaw = await filterTechnigo(allRepository);
+    //step 1. filter technigo projects
+    let projectNames = []; //project-chatbot, project-buisness..
+    let technigoRepos = [];
+    allRepository.forEach((repo) => {
+      if (repo.name.startsWith("project-")) {
+        technigoRepos.push(repo);
+        projectNames.push(repo.name);
+      }
+    });
+    const completedProjects = technigoRepos.length;
 
-    //filter projects not forked from technigo
-    const technigoRepoData = technigoRepoDataRaw.filter(
-      (repo) => repo !== undefined
-    );
-    completedProjects = technigoRepoData.length;
-
-    //sort by last commit date
-    technigoRepoData.sort(function (a, b) {
+    // step 2. fetch all required data
+    //const baseData = await fetchAll(projectNames);
+    const baseData = repoData;
+    // step 4. sort by last commit date
+    baseData.sort(function (a, b) {
       return b.latestCommitDate - a.latestCommitDate;
     });
+    // step 5. create and inject html elements
+    const header = HeaderComp(avatar_url);
+    const main = MainComp(avatar_url, "jiiin✨", USERNAME, html_url, baseData);
 
-    header = HeaderComp(avatar_url);
-    main = MainComp(avatar_url, name, login, html_url, technigoRepoData);
+    return { header, main, completedProjects };
   } catch (e) {
+    //error handling
     console.error(e);
     root.innerHTML = `
       <div class="error-container">
@@ -71,84 +76,83 @@ async function init() {
   }
 }
 
-//filter repos only forked from Tehchnigo => expected [undefined, {}, {}, undefined]
-const filterTechnigo = async (repos) => {
-  return await Promise.all(
-    repos.map(async (repo) => {
-      if (!repo.fork) {
-        return;
-      }
-      const name = repo.name; //project-businees-
-      const repoInfo = await fetchGithubData(`repos/jiiinCho/${name}`);
-      const parentName = repoInfo.parent.owner.login;
-      if (parentName === "Technigo") {
-        const commitHist = await fetchGithubData(
-          `repos/jiiinCho/${name}/commits`
-        );
-        const pullRequestsInTechnigo = await fetchGithubData(
-          `repos/Technigo/${name}/pulls?per_page=72`
-        );
-        const myPull = pullRequestsInTechnigo.find(
-          (pull) => pull.user.login === myLoginName
-        );
-        const commitCounts = commitHist.length;
-        const repositoryData = setRepoData(
-          commitHist[0],
-          commitCounts,
-          repoInfo,
-          myPull
-        );
-        return repositoryData;
-      }
-    })
-  );
-};
+function getParentData(parentInfo) {
+  const name = parentInfo.name;
+  const defaultBranch = parentInfo.default_branch;
+  const repoURL = parentInfo.html_url;
+  const language = parentInfo.parent.language;
+  const forkedFrom = parentInfo.parent.full_name;
+  const forksCount = parentInfo.parent.forks_count;
+  const forksURL = parentInfo.parent.html_url;
+  return {
+    name,
+    defaultBranch,
+    repoURL,
+    language,
+    forkedFrom,
+    forksCount,
+    forksURL,
+  };
+}
 
-function setRepoData(latestCommit, allCommitCount, repoInfo, myPull) {
-  const name = repoInfo.name;
-  const defaultBranch = repoInfo.default_branch;
-  const repoURL = repoInfo.html_url;
-  const language = repoInfo.parent.language;
-  const forkedFrom = repoInfo.parent.full_name;
-  const forksCount = repoInfo.parent.forks_count;
-  const forksURL = repoInfo.parent.html_url;
+function getCommitInfo(commitInfo) {
+  const allCommitCount = commitInfo.length;
+  const latestCommit = commitInfo[0];
   const latestCommitAuthor = latestCommit.commit.author.name;
   const latestCommitDate = new Date(latestCommit.commit.author.date);
   const latestCommitMessage = latestCommit.commit.message;
   const latestCommitUrl = latestCommit.html_url;
-  const pullRequestTitle = myPull ? myPull.title : "";
-  const pullRequestMessage = myPull ? myPull.body : "";
-  const pullRequestUpdatedAt = myPull ? new Date(myPull.updated_at) : "";
-  const pullRequestURL = myPull ? myPull.html_url : "";
-
-  const repoData = {
-    name,
-    defaultBranch,
-    forksCount,
-    repoURL,
+  return {
     allCommitCount,
     latestCommitAuthor,
     latestCommitDate,
     latestCommitMessage,
     latestCommitUrl,
-    forkedFrom,
-    forksURL,
-    language,
+  };
+}
+
+function getPullInfo(pullInfo) {
+  const myPull = pullInfo.find((pull) => pull.user.login === USERNAME);
+  const pullRequestTitle = myPull ? myPull.title : "";
+  const pullRequestMessage = myPull ? myPull.body : "";
+  const pullRequestUpdatedAt = myPull ? new Date(myPull.updated_at) : "";
+  const pullRequestURL = myPull ? myPull.html_url : "";
+  return {
     pullRequestTitle,
     pullRequestMessage,
     pullRequestUpdatedAt,
     pullRequestURL,
   };
-
-  return repoData;
 }
 
-init().then(() => {
-  //remove loading spinner when data is ready
+const fetchAll = async (projectNames) => {
+  return await Promise.all(
+    projectNames.map(async (projectName) => {
+      const parentInfo = await fetchGithubData(
+        `repos/${USERNAME}/${projectName}`
+      );
+      const commitInfo = await fetchGithubData(
+        `repos/${USERNAME}/${projectName}/commits`
+      );
+      const pullInfo = await fetchGithubData(
+        `repos/Technigo/${projectName}/pulls?per_page=60`
+      );
+
+      //stpe 3. process data and create data object
+      const parent = getParentData(parentInfo);
+      const commit = getCommitInfo(commitInfo);
+      const pull = getPullInfo(pullInfo);
+
+      return { ...parent, ...commit, ...pull };
+    })
+  );
+};
+
+init().then((result) => {
+  const { header, main, completedProjects } = result;
   root.removeChild(spinner);
   root.appendChild(header);
   root.appendChild(main);
-
   makeChart(completedProjects, "chart");
   console.log("app is running!");
 });
