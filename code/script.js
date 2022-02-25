@@ -2,14 +2,15 @@
 const username = 'CamillaHallberg'
 let reponame = ''
 
+const API_TOKEN = TOKEN || process.env.API_KEY;
+// console.log(TOKEN)
+
 // API's
 const API_USER = `https://api.github.com/users/${username}`
 const API_URL_REPO = `https://api.github.com/users/${username}/repos`
-const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
 
-// my token
-const API_TOKEN = TOKEN;
-// console.log(TOKEN)
+const projectsContainer = document.getElementById('projects')
+
 
 const options = {
     method: 'GET',
@@ -40,8 +41,21 @@ const getRepos = () => {
     .then(data => {
         console.log(data, 'my repos')
 
+        // Filtering to get only my forked repos
         const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log(forkedRepos, 'forked repos')
+
+        forkedRepos.forEach((repo) => {
+            projectsContainer.innerHTML += `
+                <div class="projects-card" id="${repo.id}">
+                    <h3><a href="${repo.html_url}">${repo.name}</a> - ${repo.default_branch}</h3>
+                    <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+                    <p id="commit_${repo.name}">Number of commits:</p>
+                    <p>Main language: ${repo.language}</p>
+                </div>
+            `
+        })
+
         getPullRequests(forkedRepos)
     })
 }
@@ -51,11 +65,22 @@ const getPullRequests = (forkedRepos) => {
         fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=150`, options)
         .then(res => res.json())
         .then(data => {
-            // console.log(data, 'all pull requests on the projects')
-
+            const commits = document.getElementById(`commit-${repo.name}`)
+            
             const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-            console.log(pulls, 'my pull requests')
+            
+            getCommits(pulls.commits_url, repo.name)
+            console.log(pulls.commits_url)
         })
     })
 }
+
+const getCommits = (myCommitsURL, myReposName) => {
+    fetch(myCommitsURL, options)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById(`commit-${myReposName}`).innerHTML += data.length
+    })
+}
+
 getRepos()

@@ -4,9 +4,10 @@ body {
 
 h1 {
   font-family: 'Shizuru', cursive;
-  font-size: 48px;
+  font-size: 72px;
   color:palevioletred;
   text-align: center;
+  cursor: pointer;
 }
 
 h2 {
@@ -16,27 +17,31 @@ h2 {
   text-align: center;
 }
 
-.img {
-  width: 96px;
-  border-radius: 50%;
-  border: 8px solid floralwhite;
-}
-
 h3 {
   font-family: 'Shippori Antique B1', sans-serif;
   font-size: 18px;
   color: #886F6F;
-  text-align: center;
 }
 
 h4 {
   font-family: 'Shippori Antique B1', sans-serif;
   font-size: 14px;
   color: whitesmoke;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
-/* Footer styling */
+.img {
+  width: 96px;
+  border-radius: 50%;
+  border: 8px solid floralwhite;
+}
+
+/* Footer Styling */
 .made-by {
   font-family: 'Shippori Antique B1', sans-serif;
   font-size: 12px;
