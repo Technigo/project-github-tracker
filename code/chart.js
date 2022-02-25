@@ -1,7 +1,4 @@
-//DOM-selector for the canvas 👇
 const reposChart = document.getElementById('reposChart').getContext('2d')
-//"Draw" the chart here 👇
-
 
 // global options for chart.js
 Chart.defaults.font.family = 'Roboto'
@@ -27,14 +24,14 @@ const drawReposChart = (amount) => {
         options: {
             indexAxis: 'y', // for horizontal bar graph instead of vertical
             scales: {
-                // grid lines are not shown for y axis
+                // removes grid lines for y axis
                 y: {
                     grid: {
                         display: false,
                         borderColor: 'white',
                     }
                 },
-                // x axis is not shown
+                // removes x axis
                 x: {
                     display: false,
                 }
@@ -43,7 +40,6 @@ const drawReposChart = (amount) => {
                 title: {
                     display: true,
                     text: 'Technigo projects',
-                    // fontSize: 24
                 },
                 legend: {
                     display: false,
@@ -116,8 +112,7 @@ const drawLanguagesChart = (html, css, js, idChart) => {
                             size: 12
                         }
                     },
-                    // removes on click event: not able to strike through a label by clicking on it
-                    onClick: null,
+                    onClick: null, // removes on click event: not possible to strike through a label by clicking on it
                 },
                 tooltip: {
                     enabled: false,

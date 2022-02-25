@@ -13,21 +13,24 @@ const options = {
     }
 }
 
+// Function for the tab buttons in repo card
 const openTab = (event, tabName) => {
     let i
-    let repoContent = event.currentTarget.parentNode.parentNode.getElementsByClassName("repo-content")
+    let repoContent = event.currentTarget.parentNode.parentNode.getElementsByClassName("repo-content") // targets the content on each individual repo card
     for (i = 0; i < repoContent.length; i++) {
-        repoContent[i].style.display = "none"
+        repoContent[i].style.display = "none" // not displayed at first
     }
     let tabButton = event.currentTarget.parentNode.getElementsByClassName("tab-button")
+    // when another button is clicked, "active" class is removed from the other buttons of the same card
     for (i = 0; i < tabButton.length; i++) {
-        tabButton[i].className = tabButton[i].className.replace(" active", "")
+        tabButton[i].className = tabButton[i].className.replace(" active", "") 
     }
     document.getElementById(tabName).style.display = "block"
-    event.currentTarget.className += " active"
+    event.currentTarget.className += " active" // changes the classname on click to "active"
 }
 
-const createHeader = () => {
+// Function to create the profile part of the header with user name and picture 
+const createProfile = () => {
     fetch(API_USER, options)
         .then(res => res.json())
         .then(data => {
@@ -38,6 +41,7 @@ const createHeader = () => {
         })
 }
 
+// Function to create all repo cards
 const createRepoCard = (reposToUse = null) => {
     fetch(API_REPOS, options)
         .then(res => res.json())
@@ -56,6 +60,7 @@ const createRepoCard = (reposToUse = null) => {
                 createRepoCard(filteredRepos)
             }
 
+            // conditionals so the repos chart is drawn only once
             let filteredRepos
             if (reposToUse === null) {
                 filteredRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'))
@@ -65,7 +70,9 @@ const createRepoCard = (reposToUse = null) => {
                 filteredRepos = reposToUse
             }
 
+// filtering of the repos
             filteredRepos.forEach(repo => {
+                // function called to set the HTML structure of each repo card
                 setRepoCardStructure(repo)
 
                 const options = { day: 'numeric', month: 'numeric', year: 'numeric' }
@@ -77,6 +84,7 @@ const createRepoCard = (reposToUse = null) => {
                 // Get the element with id="defaultOpen" and click on it
                 document.getElementById(`${repo.name}-defaultOpen`).click()
 
+                // functions called after the right repos are fetched
                 addCommits(repo)
                 fetchPullRequest(repo)
                 addLanguageChart(repo)
@@ -84,6 +92,7 @@ const createRepoCard = (reposToUse = null) => {
         })
 }
 
+// Function for the structure of each repo card with dynamic IDs
 const setRepoCardStructure = (repo) => {
     reposBox.innerHTML += `
         <div class="repo-card">
@@ -118,6 +127,7 @@ const setRepoCardStructure = (repo) => {
     `
 }
 
+// Function to add the commits info in the right place
 const addCommits = (repo) => {
     fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
         .then(res => res.json())
@@ -139,8 +149,8 @@ const addCommits = (repo) => {
         })
 }
 
+// Function to add the language chart in each repo card
 const addLanguageChart = (repo) => {
-
     fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, options)
         .then(res => res.json())
         .then(languages => {
@@ -156,12 +166,12 @@ const addLanguageChart = (repo) => {
             <canvas id=${idChart}></canvas>
             </div>
 `
-
+// function called from chart.js
             drawLanguagesChart(html, css, js, idChart)
         })
 }
 
-
+// Function to fetch the pull request for each repo card
 const fetchPullRequest = (repo) => {
     // fix it because only 1 page of 30 PR is fetched, link: https://docs.github.com/en/rest/reference/pulls#list-pull-requests (added ?per_page=100&page=1 to URL, but it doesn't fix the problem for when the PR will go to page 2-3-4...)
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100&page=1`, options)
@@ -173,14 +183,15 @@ const fetchPullRequest = (repo) => {
                     .then(res => res.json())
                     .then(data => {
                         const reviewID = data[0].pull_request_review_id
+                        // function called for review info
                         addCodeReviewInfos(repo, pull, reviewID)
                     })
             })
         })
 }
 
+// Function to add the code review info in each repo card
 const addCodeReviewInfos = (repo, pull, reviewID) => {
-
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls/${pull.number}/reviews/${reviewID}`)
         .then(res => res.json())
         .then(data => {
@@ -192,7 +203,7 @@ const addCodeReviewInfos = (repo, pull, reviewID) => {
         })
 }
 
-
+// Sorting functions
 const sortByNameAZ = (filteredRepos) => {
     filteredRepos.sort(function (a, b) {
         const nameA = a.name.toLowerCase() // ignore upper and lowercase
@@ -235,12 +246,12 @@ const sortDateOldest = (filteredRepos) => {
     })
 }
 
-
-createHeader()
+// First functions called when the page load
+createProfile()
 createRepoCard()
 
 
-
+// To try
 // sortByCommits()
 // const sortByCommits = () => {
 //     fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
