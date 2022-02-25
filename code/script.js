@@ -24,8 +24,7 @@ fetch (API_GIT_USER, options)
         userInfo.innerHTML += `
         <div class="user-info">
         <img class="profile-img" src="${user.avatar_url}">  
-        <h1> ${username}</h1
-        <p class="user-info"> ${user.name}</p>
+        <h2> ${username}</h2>
         <p> ${user.bio}</p>
         </div>
         `      
