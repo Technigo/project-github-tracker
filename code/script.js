@@ -4,6 +4,8 @@
 const myProjects = document.getElementById('projects')
 const userInfo = document.getElementById('user-info')
 const body = document.getElementById('body')
+//const piechart = document.getElementById('chart');
+
 
 // ### What to include
 
@@ -13,7 +15,9 @@ const body = document.getElementById('body')
 const username = 'Dorothea-B'
 const API_URL_USER = `https://api.github.com/users/${username}`
 const API_URL_REPO = `https://api.github.com/users/${username}/repos`
-let reponame
+
+//let reponame
+
 
 
 const options = {
@@ -51,7 +55,6 @@ fetch(API_URL_REPO, options)
 
         const myTechnigoRepos = data.filter(repo => repo.name.includes('project-'));
         console.log('Filtered:', myTechnigoRepos)
-
 
 
         //------function that generates projects html
@@ -112,6 +115,9 @@ fetch(API_URL_REPO, options)
                 //for (let y = 0; y < data.length; y++)
 
                 //console.log("Num of commits:", data[y].commit)
+
+            //-------printing the pull requests
+
                 document.getElementById(`num-commits-${repo.name}`).innerHTML = `Total commits: ${data.length}`
                 document.getElementById(`latest-${repo.name}`).innerHTML = `Latest push: <span style="color:blue; font-style: italic; ">${data[0].commit.message}</span>`
 
@@ -141,26 +147,17 @@ fetch(API_URL_REPO, options)
                 pulls.forEach(pull => {
 
                     if(pull.user.login === username ) {
-                        //console.log('filtered pullrequests:', pull)
+
+                        //-------printing the pull requests
 
                         document.getElementById(`pull-req-${repo.name}`).innerHTML = `Pull requests: <a href="${pull._links.html.href}">${pull.html_url}</a>`
 
-        
                     }
-                    // else {
-                    //     console.log('no pulls')
-                    //     document.getElementById(`pull-req-${repo.name}`).innerHTML = `Pull requestz: 0`
-
-                    // }
+                    
 
                 } )
             
-                
-                
-                //pull.name.includes('project-'));
-
-                //if(myTechnigoPulls === '')
-
+            
 
 
             })
@@ -169,17 +166,10 @@ fetch(API_URL_REPO, options)
 
           })
 
-          
-
-
         
     })
 
         
-
-        
-
-
 
 
 

@@ -95,6 +95,13 @@ color: rgb(255, 94, 0);
   width: 20px;
 }
 
+#chart {
+  padding: 2rem;
+  max-width: 600px;
+  max-height: 600px;
+  margin: auto;
+}
+
 @media (min-width:340px) and (max-width:1038px) {
 
   .project {
