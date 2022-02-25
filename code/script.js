@@ -104,11 +104,9 @@ const repoData = (technigoProjects) => {
           let reponame = repo.base.repo.name
          
           //get url for commits to use in new fetch
-          const commitsUrl = repo.commits_url
-          displayCommits(commitsUrl, reponame)        
+          displayCommits(repo.commits_url, reponame)        
           //get url for comments to use in new fetch  
-          const commentsUrl = repo.review_comments_url
-          displayComments(commentsUrl, reponame) 
+          displayComments(repo.review_comments_url, reponame) 
 
           //get url for netlify
           const netlifyUrl = repo.body
