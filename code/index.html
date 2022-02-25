@@ -16,31 +16,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
   <!-- Link to StyleSheet -->
   <link rel="stylesheet" href="./style.css" />
+  <!-- Link to Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
 
-  </header>
-  <main class="projects" id="projects">
+
+  <!-- Header for Avatar & Username -->
+  <header class="layout"></header>
+
+  <!-- Projects List & Info Section -->
+  <section class="layout projects" id="projects">
     <h2 class="title">Technigo Projects:</h2>
-  </main>
+  </section>
 
-  <!-- This will be used to draw the chart 👇 -->'
-  <div class="chart-wrapper">
-  <div class="chart-container bootcamp-chart">
-    <h2 class="title">Bootcamp Progress:</h2>
-    <canvas id="myChart" class="chart">
-    </canvas>
-  </div>
+<!-- Charts Section -->
+  <section class="charts-wrapper layout">
+    <div class="chart-container bootcamp-chart">
+      <h2 class="title">Bootcamp Progress:</h2>
+      <canvas id="myChart" class="chart">
+      </canvas>
+    </div>
 
-  <div class="chart-container sprint-chart">
-    <h2 class="title">Sprint Progress:</h2>
-    <canvas id="sprintChart" class="chart">
-    </canvas>
-  </div>
-  </div>
+    <div class="chart-container sprint-chart">
+      <h2 class="title">Sprint Progress:</h2>
+      <canvas id="sprintChart" class="chart">
+      </canvas>
+    </div>
+  </section>
 
+  <!-- JS Scripts -->
   <script src="./token.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script> 

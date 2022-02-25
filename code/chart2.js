@@ -221,8 +221,11 @@ const sprintProgress = () => {
             scales: {
                 xAxis: {
                     ticks: {
-                        precision: 0,
+                        // precision: 0,
                         // stepSize: 1,
+                        min: 0,
+                        stepSize: 1,
+                        max: 4,
                     }
                 }
             }

@@ -26,24 +26,6 @@ p {
   line-height: 1.5;
 }
 
-/* Header Section with Avatar & Username */
-header {
-  display: flex;
-  align-items: center;
-  gap: 2vmin;
-  justify-content: center;
-  margin-bottom: 5vmin;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.avatar {
-  border-radius: 50%;
-  height: 40px;
-  margin-top: 1vmin;
-}
-
 /* Elements Across Sections */
 .title {
   background-color: #2D2E2F;
@@ -52,25 +34,34 @@ header {
   text-align: center;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.layout {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Projects Section */
-.projects {
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
+/* Header Section with Avatar & Username */
+header {
+  display: flex;
+  align-items: center;
+  gap: 2vmin;
+  justify-content: center;
+  margin-bottom: 5vmin;
 }
 
+.avatar {
+  border-radius: 50%;
+  height: 40px;
+  margin-top: 1vmin;
+}
+
+/* Projects Section */
 .project-wrapper {
   margin: 5vmin 0;
   border-radius: 5px;
   overflow: hidden;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .project-header {
@@ -87,7 +78,6 @@ header {
 }
 
 .project-info {
-  display: none;
   color: #2d2e2f;
   background-color: #bfb8b9;
   font-family: 'Montserrat', sans-serif;
@@ -95,14 +85,15 @@ header {
   font-weight: 500;
   line-height: 1.5;
   padding: 10px 25px;
+  display: none;
 }
 
 /* Adding background color to button when clicked on and when moused over */
 .project-header:hover {
-    background-color: #726a6a;
-    color: #DCD8DC;
-    cursor: pointer;
-  }
+  background-color: #726a6a;
+  color: #DCD8DC;
+  cursor: pointer;
+}
 
 /* Add .active in JS */
 .project-header--active {
@@ -113,156 +104,145 @@ header {
 }
 
 /* Chart Styling */
+.charts-wrapper {
+}
+
 .chart-container {
-  padding-bottom: 5vmin;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
+  margin-bottom: 5vmin;
 }
 
 .chart {
-  padding-top: 5vmin;
+  margin-top: 5vmin;
 }
 
 
 /* Media Queries */
 
 /* Media Query - Tablet */
-/* @media (min-width: 668px) and (max-width: 930px) {
+@media (min-width: 668px) and (max-width: 930px) {
   body {
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 3;
-    gap: 3vw;
+    gap: 2vmin;
     padding: 5vw;
   }
   
   header {
     grid-column: 1 / span 2;
     grid-row: 1 / span 1;
-    margin-bottom: 0;
+    margin-bottom: 1vw;
+    margin-top: -1vw;
   }
-  
-  .chart-container {
-    margin-right: 0;
+
+  .layout {
     max-width: 44vw;
   }
 
-  .bootcamp-chart {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-  }
-
-  .sprint-chart {
-    grid-column: 1 / span 1;
-    grid-row: 3 / span 1;
-  }
-  
-  .chart {
-    padding-top: 2vmin;
-  }
-  
   .project-wrapper {
     margin: 2vmin 0;
   }
   
   .projects {
     grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
+    grid-row: 2 / span 2;
     margin-left: 0;
-    max-width: 44vw;
   }
-} */
+
+  .charts-wrapper {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+    margin-right: 0;
+  }
+
+  .chart {
+    margin-top: 2vmin;
+  }
+}
 
 /* Media Query - Desktop */
-/* @media (min-width: 930px) {
-
+@media (min-width: 930px) {
 body {
   display: grid;
   grid-template-columns: 2;
   grid-template-rows: 2;
   gap: 2vmin;
+  padding: 3vw;
+}
+
+.layout {
+  width: 44vw;
+  max-width: 500px;
 }
 
 header {
   grid-column: 1 / span 2;
   grid-row: 1 / span 1;
-  margin-bottom: 0;
+  margin-bottom: 1vw;
+  margin-top: -1vw;
 }
 
-.chart-container {
-
-  padding: 0;
-  margin-right: 0;
-  width: 400px;
-}
-
-.bootcamp-chart {
-  grid-column: 1 / span 1;
-  grid-row: 2 / span 1;
-}
-
-.sprint-chart {
-  grid-column: 1 / span 1;
-  grid-row: 3 / span 1;
-}
-
-.chart {
-  padding-top: 2vmin;
+.projects {
+  margin-left: 0;
 }
 
 .project-wrapper {
   margin: 2vmin 0;
 }
 
-.projects {
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
-  margin-left: 0;
-  width: 400px;
+.chart {
+  margin-top: 2vh;
 }
 
-} */
+.charts-wrapper {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 2;
+  margin-right: 0;
+  max-width: 400px;
+}
+}
 
 /* Media Query - Mobile Landscape */
-/* @media (min-width: 640px) and (max-height: 420px) and (orientation: landscape) {
+@media (min-width: 640px) and (max-height: 420px) and (orientation: landscape) {
   body {
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 2;
-    gap: 5vw;
+    gap: 3vw;
     padding: 3vw;
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
   }
   
+  .layout {
+    width: 44vw;
+    max-width: 500px;
+  }
+  
   header {
     grid-column: 1 / span 2;
     grid-row: 1 / span 1;
-    margin-bottom: -3vw;
-  }
-  
-  .chart-container {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
-    padding: 0;
-    margin-right: 0;
-    max-width: 44vw;
-  }
-  
-  .chart {
-    padding-top: 2vh;
-  }
-  
-  .project-wrapper {
-    margin: 2vh 0;
+    margin-bottom: 2vmin;
   }
   
   .projects {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
     margin-left: 0;
-    max-width: 44vw;
+    max-width: 450px;
+  }
+  
+  .project-wrapper {
+    margin: 2vmin 0;
+  }
+  
+  .chart {
+    margin-top: 2vh;
+  }
+  
+  .charts-wrapper {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+    margin-right: 0;
+    max-width: 400px;
   }
 
-} */
+}
