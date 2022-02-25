@@ -10,7 +10,7 @@ const options = {
         Authorization: `token ${API_TOKEN}`,
     }
 }
-console.log(TOKEN)
+console.log(API_TOKEN)
 const profile = document.getElementById('profile-container')
 const projects = document.getElementById('projects')
 
