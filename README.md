@@ -1,13 +1,11 @@
-# GitHub Tracker
+# Week 7: GitHub tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The project is to build a GitHub tracker to gather my Technigo repositories in order to practice JavaScript and API skills through GitHub API. It contains some data about the repositories like commit messages, lastest push and so on.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+At first I felt some stress since there was no starter code to begin with and it felt like a big mountain to climb. But in the end, I found it quite easy and interesting to work with many fetches nested inside one another. My biggest struggles were to style the charts with chart.js since the documentation wasn't always clear and to deal with the layout I chose (card with tab buttons). Even if I always want to reach more advanced goals, I didn't feel the need to add a filter or a search field since the number of repositories is quite low, and it didn't seemed a big challenge anyway.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Project deployed here: [Nadia Lefebvre - GitHub Tracker](https://nadialefebvre-github-tracker.netlify.app/)
