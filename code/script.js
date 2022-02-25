@@ -1,94 +1,92 @@
-const userProfile = document.getElementById("profile");
+//DOM selectors
+const profileInfo = document.getElementById("profile");
 const allProjects = document.getElementById("projects");
 
 const username = "TereseClaesson";
-//let reponame = ''
+const API_PROFILE = `https://api.github.com/users/${username}`;
+const API_URL_REPOS = `https://api.github.com/users/${username}/repos`;
 
-//All my repos from github
-const API_USER = `https://api.github.com/users/${username}`;
-const API_URL = `https://api.github.com/users/${username}/repos`;
-//const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
-
-const userInfo = () => {
-  fetch(API_USER)
+//Functions to get the username and profilepicture
+const userProfile = () => {
+  fetch(API_PROFILE)
     .then((res) => res.json())
-    .then((profile) => {
-      console.log(profile);
-      userProfile.innerHTML += `
-        <img src = ${profile.avatar_url}>
-        <h3>${profile.name}</h3>
+    .then(profileData => {
+      profileInfo.innerHTML += `
+        <h2>GitHub Tracker</h2>
+        <img src = "${profileData.avatar_url}">
+        <h3>${profileData.name}</h3>
+        <h4> <a href = ${profileData.html_url}> ${profileData.login}</h4>
         `;
-    });
+    })
 };
 
-fetch(API_URL)
-  .then((Response) => Response.json())
-  .then((repos) => {
-    console.log(repos);
+//Repos
+const repositories = () => { 
+fetch(API_URL_REPOS)
+  .then((res) => res.json())
+  .then((allRepos) => {
 
-    //Use the array method Filter() to filter the array and create a new array,
-    //with the object properties that has been forked from Technigo
-    //repos is the name of the array, repo is the name of every object in the array
-    //fork is the keyname of the property, true is the keyvalue that the new arrays properties has
-    //const repoForked = repos.filter(repoFork => repoFork.fork === true)
-
-    const repoForked = repos.filter(
-      (repo) => repo.fork && repo.name.startsWith("project-")
-    );
-    repoForked.forEach((repo) => {
+    const forkedRepos = allRepos.filter((repo) => repo.fork && repo.name.startsWith("project-"));
+    forkedRepos.forEach((repo) => {
       allProjects.innerHTML += `
         <div>
-        <p>${repo.name}</p>
-        <h3>PUSH ${repo.pushed_at}</h3> //slice -take away the last part of push
-        <p> main branch ${repo.default_branch}</p>
-        <a href = ${repo.html_url}><p>${repo.name}</p></a>
-        <p>${repo.commits_url}</p>
+        <h3> Project name: ${repo.name} </h3>
+        <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('en-GB', { dateStyle:'short',})} </p>
+        <p> Default branch: ${repo.default_branch}</p>
+        <a href = ${repo.html_url}>${repo.name}</a>
+        <p id ="pull-${repo.name}"></p>
+        <p id ="commit-${repo.name}">Commits:</p>
         </div>
-        `;
+        `
+        commits(repo.commits_url, repo.name)
     });
-    console.log(repoForked);
-
-    getPullRequest(repoForked);
+    getPullRequest(forkedRepos);
   });
+}
 
-const getPullRequest = (repoForked) => {
-  repoForked.forEach((repo) => {
-    fetch("https://api.github.com/repos/Technigo/" + repo.name + "/pulls")
+const getPullRequest = (forkedRepos) => {
+  forkedRepos.forEach((repo) => {
+    
+    const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
+    
+    fetch(PULL_URL)
       .then((res) => res.json())
-      .then((pullreqs) => {
-        console.log(pullreqs)
-        pullreqs.forEach((pull) => {
+      .then((pullReqs) => {
+      let groupProject = true
+        pullReqs.forEach((pull) => {
           if (pull.user.login === username) {
-            console.log(pull);
-            
-            comments(pull);
-            commits(pull);
-
-            repoForked.innerHTML += `
-            <div> 
-            <p>Commit messages ${pullreqs.commitNumber}</p>
-            </div>
+            groupProject = false
+            document.getElementById(`pull-${repo.name}`).innerHTML = `
+            <a href = ${pull.html_url}> Go to pull request </a>
             `
           }
         });
+
+        if (groupProject === true) {
+          document.getElementById(`pull-${repo.name}`).innerHTML = `
+          <p> No pull request, group project </p>
+          `
+        }
       });
   });
 };
 
-const comments = (pullReq) => {
+/*const comments = (pullReq) => {
   fetch(pullReq.review_comments_url)
     .then((res) => res.json())
     .then((commentrev) => {
       console.log(commentrev);
     });
-};
+};*/
 
-const commits = (pullReq) => {
-  fetch(pullReq.commits_url)
+const commits = (myCommits, repoName) => {
+  let commitUrl = myCommits.replace('{/sha}','')
+  fetch(commitUrl)
     .then((res) => res.json())
     .then((commitNumber) => {
-      console.log(commitNumber);
-    });
+     document.getElementById(`commit-${repoName}`).innerHTML += commitNumber.length;
+    })
 };
 
-userInfo();
+userProfile();
+repositories();
