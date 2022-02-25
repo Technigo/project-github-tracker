@@ -123,7 +123,6 @@ const commitFetch = (projects, projectsID) => {
         document.getElementById(`${projectsID}2`).innerHTML += `
                 <p>Number of commits: ${numberOfCommits}</p>
                 <p>Last commit date: ${commitDate}</p>
-                <p>Repo can be found <a href="${data.html_url}" target="_blank">here</a>.</p>
             `
 
         // If statement to check if last commit includes netlify link
