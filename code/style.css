@@ -1,3 +1,8 @@
 body {
   background: #FFECE9;
 }
+
+.repo{border:2px solid black; padding:20px; margin:30px}
+.projects{display:flex; flex-wrap: wrap;}
+a{text-decoration:none;}
+.picture{width:20%; border-radius:50% ;}
