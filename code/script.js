@@ -2,7 +2,6 @@ import "./style.css";
 import MainComp from "./components/main";
 import HeaderComp from "./components/header";
 
-import { commitHist } from "./dummyData/repoHist";
 import { allRepo } from "./dummyData/allRepo";
 import { userInfo } from "./dummyData/userInfo";
 import { repoData } from "./dummyData/repoData";
@@ -10,7 +9,7 @@ import { repoData } from "./dummyData/repoData";
 const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
 console.log(TOKEN);
-
+let myLoginName;
 async function fetchGithubData(path) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Basic ${TOKEN}`);
@@ -34,7 +33,10 @@ async function fetchGithubData(path) {
 async function init() {
   try {
     // const value = await Promise.all([getUserInfo, getRepos]);
+    // const { login, avatar_url, html_url, name } = value[0];
     const { login, avatar_url, html_url, name } = userInfo;
+    myLoginName = login;
+    // const allRepository = value[1];
     const allRepository = allRepo;
 
     // const technigoRepoDataRaw = await filterTechnigo(allRepository);
@@ -42,7 +44,12 @@ async function init() {
     const technigoRepoData = technigoRepoDataRaw.filter(
       (repo) => repo !== undefined
     );
-    console.log("repodata", technigoRepoData);
+    console.log(technigoRepoData);
+
+    technigoRepoData.sort(function (a, b) {
+      return b.latestCommitDate - a.latestCommitDate;
+    });
+
     const header = HeaderComp(avatar_url);
     const main = MainComp(avatar_url, name, login, html_url, technigoRepoData);
 
@@ -67,11 +74,18 @@ const filterTechnigo = async (repos) => {
         const commitHist = await fetchGithubData(
           `repos/jiiinCho/${name}/commits`
         );
+        const pullRequestsInTechnigo = await fetchGithubData(
+          `repos/Technigo/${name}/pulls?per_page=72`
+        );
+        const myPull = pullRequestsInTechnigo.find(
+          (pull) => pull.user.login === myLoginName
+        );
         const commitCounts = commitHist.length;
         const repositoryData = setRepoData(
           commitHist[0],
           commitCounts,
-          repoInfo
+          repoInfo,
+          myPull
         );
         return repositoryData;
       }
@@ -79,17 +93,23 @@ const filterTechnigo = async (repos) => {
   );
 };
 
-function setRepoData(latestCommit, allCommitCount, repoInfo) {
+function setRepoData(latestCommit, allCommitCount, repoInfo, myPull) {
   const name = repoInfo.name;
   const defaultBranch = repoInfo.default_branch;
-  const forksCount = repoInfo.forks_count;
   const repoURL = repoInfo.html_url;
   const language = repoInfo.parent.language;
   const forkedFrom = repoInfo.parent.full_name;
+  const forksCount = repoInfo.parent.forks_count;
+  const forksURL = repoInfo.parent.html_url;
   const latestCommitAuthor = latestCommit.commit.author.name;
-  const latestCommitDate = latestCommit.commit.author.date;
+  const latestCommitDate = new Date(latestCommit.commit.author.date);
   const latestCommitMessage = latestCommit.commit.message;
   const latestCommitUrl = latestCommit.html_url;
+  const pullRequestTitle = myPull ? myPull.title : "";
+  const pullRequestMessage = myPull ? myPull.body : "";
+  const pullRequestUpdatedAt = myPull ? new Date(myPull.updated_at) : "";
+  const pullRequestURL = myPull ? myPull.html_url : "";
+
   const repoData = {
     name,
     defaultBranch,
@@ -101,7 +121,12 @@ function setRepoData(latestCommit, allCommitCount, repoInfo) {
     latestCommitMessage,
     latestCommitUrl,
     forkedFrom,
+    forksURL,
     language,
+    pullRequestTitle,
+    pullRequestMessage,
+    pullRequestUpdatedAt,
+    pullRequestURL,
   };
 
   return repoData;
