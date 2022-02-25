@@ -41,6 +41,7 @@ fetch(API_URL_REPOS)
         commits(repo.commits_url, repo.name)
     });
     getPullRequest(forkedRepos);
+    drawChart(forkedRepos.length);
   });
 }
 
