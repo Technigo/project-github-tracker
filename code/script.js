@@ -28,8 +28,8 @@ const options = {
     }
 }
 
-//fetching all repos to projects
 const findingAllRepos = (repos) => { 
+ //---------------------------- FIRST FETCH - ALL REPOS ---------------------------------
     fetch(API_URL, options) 
        .then((res) => res.json()) 
        .then((data) => { 
@@ -79,11 +79,9 @@ const findingAllRepos = (repos) => {
         </div>
         ` 
         )
-
-
-  
-    
        })
     }
 
 findingAllRepos()
+
+ //---------------------------- SECOND FETCH ---------------------------------
