@@ -4,7 +4,7 @@ const USER_URL = `https://api.github.com/users/${USER}`
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 
 const TOKEN = API_TOKEN 
-console.log(TOKEN)
+
 const options = {
     method: "GET", 
     headers: {
