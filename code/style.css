@@ -132,6 +132,10 @@ a {
   display: none;
 }
 
+canvas {
+  width: 50%;
+}
+
 .footer {
   background-color: lightgreen;
   height: 4rem;
