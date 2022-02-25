@@ -104,9 +104,6 @@ header {
 }
 
 /* Chart Styling */
-.charts-wrapper {
-}
-
 .chart-container {
   margin-bottom: 5vmin;
 }
@@ -162,44 +159,44 @@ header {
 
 /* Media Query - Desktop */
 @media (min-width: 930px) {
-body {
-  display: grid;
-  grid-template-columns: 2;
-  grid-template-rows: 2;
-  gap: 2vmin;
-  padding: 3vw;
-}
+  body {
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    gap: 2vmin;
+    padding: 3vw;
+  }
 
-.layout {
-  width: 44vw;
-  max-width: 500px;
-}
+  .layout {
+    width: 44vw;
+    max-width: 500px;
+  }
 
-header {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 1;
-  margin-bottom: 1vw;
-  margin-top: -1vw;
-}
+  header {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+    margin-bottom: 1vw;
+    margin-top: -1vw;
+  }
 
-.projects {
-  margin-left: 0;
-}
+  .projects {
+    margin-left: 0;
+  }
 
-.project-wrapper {
-  margin: 2vmin 0;
-}
+  .project-wrapper {
+    margin: 2vmin 0;
+  }
 
-.chart {
-  margin-top: 2vh;
-}
+  .chart {
+    margin-top: 2vh;
+  }
 
-.charts-wrapper {
-  grid-column: 1 / span 1;
-  grid-row: 2 / span 2;
-  margin-right: 0;
-  max-width: 400px;
-}
+  .charts-wrapper {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 2;
+    margin-right: 0;
+    max-width: 400px;
+  }
 }
 
 /* Media Query - Mobile Landscape */
@@ -246,5 +243,4 @@ header {
     max-width: 400px;
     padding-left: env(safe-area-inset-left);
   }
-
 }

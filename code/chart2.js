@@ -184,7 +184,7 @@ const dataColors = () => {
 //Chart function
 const sprintProgress = () => {
     
-    // Run dataColors for determining sprint progress
+    // Run dataColors for determining sprint progress & bar colors
     dataColors();
 
     const data = {
@@ -203,7 +203,6 @@ const sprintProgress = () => {
             hoverBorderColor: [
                 '#FFFFFF'
             ],
-            // xAxisID = 'xAxis'
         }]
     };
     
