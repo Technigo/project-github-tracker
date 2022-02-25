@@ -103,14 +103,10 @@ const repoData = (technigoProjects) => {
 
           let reponame = repo.base.repo.name
          
-          //get url for commits to use in new fetch
+          //get url for commits, comments and netlify to use in new fetch
           displayCommits(repo.commits_url, reponame)        
-          //get url for comments to use in new fetch  
           displayComments(repo.review_comments_url, reponame) 
-
-          //get url for netlify
-          const netlifyUrl = repo.body
-          displayLink(netlifyUrl, reponame)
+          displayLink(repo.body, reponame)
 
         } else if (repo.user.login === 'tiiliu' && reponame === 'project-chatbot') {
           displayCommits(repo.commits_url, reponame)   
@@ -173,8 +169,7 @@ const displayComments = (commentsUrl, reponame) => {
         
               document.getElementById('modal').innerHTML += `
               <p><span class="bold-text modal-header">Comment from ${data[0].user.login}</span></p>
-              <p class="modal-text">${item}
-              </p>
+              <p class="modal-text">${item}</p>
               <br>
               `
             })
@@ -191,6 +186,7 @@ const displayComments = (commentsUrl, reponame) => {
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////////////      NETLIFY LINK     /////////////////////////
 //////////////////////////////////////////////////////////////////////////
+
 const displayLink = (netlifyUrl, reponame) => {
   
     document.getElementById(`website-${reponame}`).innerHTML = `
@@ -200,11 +196,12 @@ const displayLink = (netlifyUrl, reponame) => {
     `
   }
 
+
 gitHubData()
 
 
 ////////////////////////////////////////////////////////////////////////////
-////////////////////////       EVENTLISTENERS        //////////////////////
+////////////////////////       EVENTLISTENER         //////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 modalBtn.addEventListener('click', () => {
