@@ -44,9 +44,7 @@ span {
 }
 
 .project a {
-  /* text-decoration: none; */
   font-weight: bolder;
-  /* color: var(--secondary); */
 }
 
 .usr-name-img-container {
@@ -70,7 +68,6 @@ span {
 }
 
 .project {
-  /* border: thin solid var(--secondary); */
   background-color: #F4F4F4;
   padding: 1rem;
   margin: 1rem;
