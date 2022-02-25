@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap");
 
 /* CSS below is to reset default values such as margin, padding and box-sizing
     and increase the resolution of the text */
-    
+
 * {
   margin: 0;
   padding: 0;
@@ -14,21 +14,21 @@
 }
 
 body {
-  background: #FEFBF3;
-  border: solid #2FC5EE 8px;
+  background: #fefbf3;
+  border: solid #2fc5ee 8px;
   width: 100%;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 
 p {
-  font-size: 10px;
+  font-size: 8px;
 }
 
 a {
   text-decoration: none;
-  font-family: 'poppins'; 
-  font-size: 10px;
-  color: #FF1E00;
+  font-family: "poppins";
+  font-size: 8px;
+  color: #ff1e00;
 }
 
 .header {
@@ -43,20 +43,20 @@ img {
 
 .user-name {
   writing-mode: vertical-rl;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 13vw;
-  color: #FF1E00;
+  color: #ff1e00;
 }
 
 span {
-  color: #FF1E00;
+  color: #ff1e00;
   font-size: 5vw;
 }
 
 .bio {
   display: block;
   color: black;
-  font-family: 'Playfair Display';
+  font-family: "Playfair Display";
   font-size: 2vw;
   font-style: normal;
   font-weight: normal;
@@ -67,12 +67,12 @@ span {
   padding: 20px 0;
 }
 
-.project-header{
-  font-size: 5vw;
+.project-header {
+  font-size: 4vw;
   font-weight: 500;
   text-align: center;
   text-transform: uppercase;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   margin-top: 50px;
   border-bottom: 3px solid #333;
 }
@@ -84,6 +84,10 @@ span {
 .projects-right {
   text-align: right;
   min-width: 20%;
+  line-height: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 .projects-left {
@@ -102,12 +106,12 @@ span {
 
 .projects:hover {
   background-color: #333;
-  color: #2FC5EE;
+  color: #2fc5ee;
   transition: all 1.5s ease;
   cursor: pointer;
 }
 .project-name {
-  font-size: 14px;
+  font-size: 17px;
   text-align: center;
   font-weight: 600;
 }
@@ -118,14 +122,6 @@ span {
 
 .active + .test {
   display: block;
-}
-
-.branch-name {
-
-}
-
-.pushed-at {
-
 }
 
 .pull-requests {
@@ -150,20 +146,29 @@ span {
 
 @media screen and (min-width: 768px) {
   body {
-    border: 22px solid #2FC5EE;
+    border: 22px solid #2fc5ee;
+  }
+
+  a,
+  p {
+    font-size: 10px;
   }
 
   .bio {
-    margin: 12rem 10rem;
+    margin: 20rem 15rem;
     padding: 50px;
     font-size: 2.5vw;
   }
 
   .project-name {
-    font-size: 30px;
+    font-size: 3rem;
   }
 
-  .project-header{
-    margin: 70px 0;
+  .project-header {
+    padding-bottom: 45px;
+  }
+
+  .project-info {
+    height: 120px;
   }
 }
