@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The goal of this project was to create a simple portfolio looking website, displaying information about yourself and your projects. The challenge was that all the info would be fetched from Github. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In this project I found it challenging to correctly source the information that I wanted to display. I solved this by console loging all my fetched data and taking the time to understand the data returned to me. I also found the styling of the chart tricky. If I would have had more time I would have wanted to style the chart more and display more information about the projects, fetched from Github. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://hopeful-jennings-863724.netlify.app/
