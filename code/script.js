@@ -21,7 +21,7 @@ const addingProfile = () => {
     .then((profileInfo) => {
         profile.innerHTML += `
         <img src="${profileInfo.avatar_url}">
-        <a href="${profileInfo.html_url}">${profileInfo.login}</a>`
+        <a class="userlink"href="${profileInfo.html_url}">${profileInfo.login}</a>`
     }) 
 }
 addingProfile()
@@ -38,7 +38,7 @@ const addingRepos = () => {fetch(API_URL, options)
             ) 
     // For all filtered repos I put the following info on my page      
         forkedRepos.forEach((repo) => {
-            let updated = new Date(repo.updated_at)       
+            let updated = new Date(repo.updated_at).toLocaleDateString()     //Turning date and time into date
         projects.innerHTML += `
         <div class="repos">
         <h4>${repo.name}</h4>
@@ -53,7 +53,7 @@ const addingRepos = () => {fetch(API_URL, options)
         </div>`
       
      })
-     findingPulls(forkedRepos)           // Bringing all filtered repos to the next function
+     findingPulls(forkedRepos)                                // Bringing all filtered repos to the next function
     })
     
      }
