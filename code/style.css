@@ -1,3 +1,53 @@
 body {
-  background: #FFECE9;
+  background: #ffe573;
+  font-family: 'arial', 'sans-serif';
+}
+
+h1 {
+  display: grid;
+  justify-content: center;
+}
+
+img {
+  width: 10%;
+  min-width: 200px;
+  border: 3px solid black;
+}
+
+a {
+  color: black;
+}
+
+.photobox {
+  display: grid;
+  justify-items: center;
+}
+
+.reposbox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.projects {
+  display: grid;
+  justify-items: center;
+  margin: 30px;
+  background-color: beige;
+  
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.chartbox {
+  display: grid;
+  justify-items: center;
+}
+
+canvas {
+  max-width: 500px;
+  
 }
