@@ -1,4 +1,4 @@
-//Global Dom Selectors
+//Global DOM Selectors
 const header = document.querySelector('header')
 const projects = document.getElementById('projects')
 
@@ -6,8 +6,7 @@ const projects = document.getElementById('projects')
 const username = 'michaelchangdk'
 const GITHUB_API = `https://api.github.com/users/${username}/repos`
 
-// GITHUB Authentication - TOKEN REVOKED AFTER COMMIT?
-// const API_KEY = API_KEY || process.env.API_KEY;
+// GITHUB Authentication
 const options = {
     method: 'GET',
     headers: {
@@ -25,115 +24,11 @@ compareCreateDate = (a, b) => {
     return 0;
 };
 
-const getProjects = async () => {
-    const projectsWait = await fetch(GITHUB_API, options);
-    const data = await projectsWait.json();
-
-    // Filter Technigo Projects Only & Sort by Date Created
-    const technigoProjects = data.filter(item => item.archive_url.includes('project') === true).sort(compareCreateDate);
-    console.log(technigoProjects);
-
-    // Create Header Section
-    header.innerHTML = `
-    <img src="${technigoProjects[0].owner.avatar_url}" class="avatar" alt="profile picture" />
-    <h1>${technigoProjects[0].owner.login}</h1>
-    `
-
-    // Create Main Project Elements & Fetch Number of Commits
-    for (let i = 0; i < technigoProjects.length; i++) {
-        fetch(technigoProjects[i].commits_url.replace("{/sha}", ""), options)
-            .then(res => res.json())
-            .then(data => {
-                // console.log('commit data', data)
-
-                // Number of Commits
-                let numberOfCommits = data.length;
-
-                // Last Commit Message - Committed Netlify Link to add to live link.
-                let lastCommitLink = data[0].commit.message
-
-                // Last Commit Date which is NOT the Netlify commit (Index 1 instead of 0)
-                // Formatting dates to look nice for the tracker
-                let lastCommitDateRaw = data[1].commit.committer.date.substring(0,10)
-                // Removing the 0 from dates before the 10th for DAYS
-                let lastCommitDayRaw = lastCommitDateRaw.substring(8,10)
-                let lastCommitDay
-                if (lastCommitDayRaw < 10) {
-                    lastCommitDay = lastCommitDayRaw.replace("0", "")
-                } else {
-                    lastCommitDay = lastCommitDayRaw;
-                }
-                // Formatting MONTHS
-                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-                let lastCommitMonthNumber = lastCommitDateRaw.substring(5,7).replace("0","")
-                let lastCommitMonth = months[lastCommitMonthNumber - 1]
-
-                // Extracting YEAR
-                let lastCommitYear = lastCommitDateRaw.substring(0,4)
-
-                // Creating Project ID
-                let projectName = technigoProjects[i].name.replaceAll("-","");
-
-                // Creating the Project Elements
-                projects.innerHTML += `
-                <div class="project-wrapper">
-                    <button class="project-header ${projectName}" id="${projectName}" onclick="openSesame('${projectName}')">
-                        Week ${i+2}: ${technigoProjects[i].name}
-                    </button>
-                    <div class="project-info" id="${projectName}2">
-                        <p>Number of commits: ${numberOfCommits}</p>
-                        <p>Last commit date: ${lastCommitMonth} ${lastCommitDay}, ${lastCommitYear}</p>
-                        <p>Repo can be found <a href="${technigoProjects[i].html_url}" target="_blank">here</a>.
-                        <p>View it live <a href="${lastCommitLink}" target="_blank">here</a>.
-                    </div>
-                </div>
-                `
-
-                // Fetching the pull requests
-                fetch('https://api.github.com/repos/technigo/' + technigoProjects[i].name + '/pulls?per_page=100', options)
-                    .then(res => res.json())
-                    .then(data => {
-                        // console.log(data);
-                        const filteredPR = data.filter(function (el) {
-                            return el.user.login === "michaelchangdk"
-                        })
-                        document.getElementById(`${projectName}2`).innerHTML += `
-                        <p>Pull request with comments <a href="${filteredPR[0].html_url}" target="_blank">here</a>.
-                        `
-                        // console.log(filteredPR[0].review_comments_url)
-                    
-                    // Fetch Comments
-                    // fetch(filteredPR[0].review_comments_url, options)
-                    //     .then(res => res.json())
-                    //     .then(data => {
-                    //         // console.log(data);
-                    //         document.getElementById(`${projectName}2`).innerHTML += `
-                    //         <br>
-                    //         <p>Review comments:</p>
-                    //         `
-                    //         for (let i = 0; i < data.length; i++) {
-                    //             if (data[i].user.login !== username) {
-                    //             // console.log(data[i].body);
-                    //             document.getElementById(`${projectName}2`).innerHTML += `
-                    //             <ul>
-                    //             <li>${data[i].body}</li>
-                    //             </ul>
-                    //             `
-                    //         }
-                    //         }
-                    // })
-
-                })
-        })
-    }
-}
-
-// Function for opening and closing the projects list
+// Function for opening and closing the projects items
 const openSesame = (projectID) => {
-    // console.log('you got clicked! bitch')
-    let projectHeader = document.getElementById(`${projectID}`);
+    let projectHeader = document.getElementById(projectID);
     let projectBody = projectHeader.nextElementSibling;
-    if (projectBody.style.display === "none") {
+    if (getComputedStyle(projectBody).display === "none") {
         projectBody.style.display = "block";
         projectHeader.classList.add("project-header--active")
     } else {
@@ -141,5 +36,167 @@ const openSesame = (projectID) => {
         projectHeader.classList.remove("project-header--active")
     }
 }
+
+const getProjects = async () => {
+    const projectsWait = await fetch(GITHUB_API, options);
+    const data = await projectsWait.json();
+
+    // Filter Technigo Projects Only & Sort by Date Created
+    const technigoProjects = data.filter(item => item.archive_url.includes('project') === true).sort(compareCreateDate);
+    
+    // Length of completed projects and sending the number to chart.js
+    const completedNumber = data.filter(item => item.archive_url.includes('project') === true).length
+    completedProjects(completedNumber)
+
+    // Create Header Section
+    header.innerHTML = `
+    <img src="${technigoProjects[0].owner.avatar_url}" class="avatar" alt="profile picture" />
+    <h1>${technigoProjects[0].owner.login}</h1>
+    `
+
+    // For Loop to Create Main Project Elements || & Fetch Number of Commits as well as Pull Requests
+    for (let i = 0; i < technigoProjects.length; i++) {
+
+        // Creating Project classname & project ID
+        let projectName = technigoProjects[i].name.replaceAll("-","");
+        let projectID = technigoProjects[i].id
+
+        // Create DIV in the correct sorted order
+        projects.innerHTML += `
+        <div id="${technigoProjects[i].id}" class="project-wrapper">
+        </div>
+        `
+
+        // Creating the Project Elements
+        document.getElementById(projectID).innerHTML += `
+            <button class="project-header ${projectName}" id="${projectName}" onclick="openSesame('${projectName}')">
+                Week ${i+2}: ${technigoProjects[i].name}
+            </button>
+            <div class="project-info" id="${projectID}2">
+                <p>Repo can be found <a href="${technigoProjects[i].html_url}" target="_blank">here</a>.</p>
+            </div>
+            `
+
+        // Fetching Commit Data
+        commitFetch(technigoProjects[i], projectID);
+
+        // Fetching Pull Requests
+        pullFetch(technigoProjects[i].name, projectID)
+    }
+    }
+
+// Function for Fetching Commits and Live Link
+const commitFetch = (projects, projectsID) => {
+    const GIT_COMMIT_API = projects.commits_url.replace("{/sha}", "")
+    fetch(GIT_COMMIT_API, options)
+        .then(res => res.json())
+        .then(data => {
+
+        // Defining number of commits
+        let numberOfCommits = data.length;
+
+        // Last Commit Message - Committed Netlify Link to add to live link.
+        let lastCommitLink = data[0].commit.message
+
+        // Formatting the DATES
+        // Last Commit Date which is NOT the Netlify commit (Index 1 instead of 0)
+        // Formatting DAYS
+        let lastCommitDateRaw = data[1].commit.committer.date.substring(0,10)
+        // Removing the 0 from dates before the 10th for DAYS
+        let lastCommitDayRaw = lastCommitDateRaw.substring(8,10)
+        let lastCommitDay
+        if (lastCommitDayRaw < 10) {
+            lastCommitDay = lastCommitDayRaw.replace("0", "")
+        } else {
+            lastCommitDay = lastCommitDayRaw;
+        }
+        // Formatting MONTHS
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let lastCommitMonthNumber = lastCommitDateRaw.substring(5,7).replace("0","")
+        let lastCommitMonth = months[lastCommitMonthNumber - 1]
+        // Extracting YEAR
+        let lastCommitYear = lastCommitDateRaw.substring(0,4)
+
+        let commitDate = `${lastCommitMonth} ${lastCommitDay}, ${lastCommitYear}`
+
+        // Creating the Project Elements
+        document.getElementById(`${projectsID}2`).innerHTML += `
+                <p>Number of commits: ${numberOfCommits}</p>
+                <p>Last commit date: ${commitDate}</p>
+                <p>Repo can be found <a href="${data.html_url}" target="_blank">here</a>.</p>
+            `
+
+        // If statement to check if last commit includes netlify link
+        if (lastCommitLink.includes('netlify') === true) {
+            document.getElementById(`${projectsID}2`).innerHTML += `
+            <p>View it live <a href="${lastCommitLink}" target="_blank">here</a>.
+            `
+        } else {
+            document.getElementById(`${projectsID}2`).innerHTML += `
+            <p>No live link available.</p>
+            `
+        }
+    })
+}
+
+// Fetching the pull requests
+const pullFetch = (projectName, projectsID) => {
+    const GIT_FETCH_API = `https://api.github.com/repos/technigo/${projectName}/pulls?per_page=100`
+    fetch(GIT_FETCH_API, options)
+        .then(res => res.json())
+        .then(data => {
+
+        // Filter Pull Requests by my username
+        const filteredPR = data.filter(function (pr) {
+            return pr.user.login === username
+        })
+
+        // Check if there is a pull request with my username
+        let exist = false
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].user.login === username) {
+                exist = true
+            }
+        }
+
+        // Conditional for pull request innerHTML
+        if (exist === true) {
+            document.getElementById(`${projectsID}2`).innerHTML += `
+            <p>Pull request with comments <a href="${filteredPR[0].html_url}" target="_blank">here</a>.</p>
+            `
+        } if (exist === false) {
+            document.getElementById(`${projectsID}2`).innerHTML += `
+            <p>Pull request unavailable.</p>
+            `
+        }
+        
+        // Fetch Comments - Commented out because I didn't want them, but left it here to show how to do it
+        // pullComments(filteredPR, projectsID);
+
+    })
+}
+
+// Fetch Comments - Commented out because I didn't want them, but left it here to show how to do it
+// const pullComments = (pullRequests, projectsID) => {
+//     for (let i = 0; i < pullRequests.length; i++) {
+//     fetch(pullRequests[0].review_comments_url, options)
+//     .then(res => res.json())
+//     .then(data => {
+//         document.getElementById(`${projectsID}2`).innerHTML += `
+//         <br>
+//         <p>Review comments:</p>
+//         `
+//         for (let i = 0; i < data.length; i++) {
+//             if (data[i].user.login !== username) {
+//             document.getElementById(`${projectsID}2`).innerHTML += `
+//             <ul>
+//             <li>${data[i].body}</li>
+//             </ul>
+//             `
+//         }
+//         }
+//     })
+//     }
+// }
 
 getProjects();

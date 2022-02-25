@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Technigo Projects GitHub Tracker | michaelchangdk</title>
   <!-- Link to Google Fonts -->
   <!-- Link Google Fonts -->
@@ -19,17 +19,25 @@
 
   </header>
   <main class="projects" id="projects">
-    <h2 class="projects-header">Technigo Projects:</h2>
+    <h2 class="title">Technigo Projects:</h2>
   </main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <div class="chart-container">
-    <canvas id="myChart">
+  <div class="chart-container bootcamp-chart">
+    <h2 class="title">Bootcamp Progress:</h2>
+    <canvas id="myChart" class="chart">
     </canvas>
   </div>
 
-  <script src="./chart.js"></script> 
+  <div class="chart-container sprint-chart">
+    <h2 class="title">Sprint Progress:</h2>
+    <canvas id="sprintChart" class="chart">
+    </canvas>
+  </div>
+
   <script src="./token.js"></script>
   <script src="./script.js"></script>
+  <script src="./chart.js"></script> 
+  <script src="./chart2.js"></script>
 </body>
 </html>

@@ -1,36 +1,50 @@
-const { Chart } = require("chart.js");
-
-//DOM-selector for the canvas 👇
+//DOM-selector
 const ctx = document.getElementById('myChart')
 
-//"Draw" the chart here 👇
-
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-];
-
-const data = {
-labels: labels,
-datasets: [{
-    label: 'My First dataset',
-    backgroundColor: 'rgb(255, 99, 132)',
-    borderColor: 'rgb(255, 99, 132)',
-    data: [0, 10, 5, 2, 20, 30, 45],
-}]
-};
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-};
-
-const myChart = new Chart(
-document.getElementById('myChart'),
-config
-);
+//Drawing the doughnut chart
+const completedProjects = (complete) => {
+    const data = {
+        labels: [
+            `Completed Projects`,
+            `Incomplete Projects`,
+        ],
+        // Pulls complete from script.js
+        datasets: [{
+            data: [complete, (19 - complete)],
+            backgroundColor: [
+            '#2d2e2f',
+            '#DCD8DC'
+            ],
+            hoverOffset: 8,
+            hoverBorderColor: [
+                '#FFFFFF'
+            ]
+        }]
+    };
+    
+    const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    // display: false,
+                    position: 'top',
+                    // align: 'start',
+                    labels: {
+                        font: {
+                            family: 'Roboto Mono, monospace',
+                            size: 16,
+                        },
+                        // padding: 20
+                    }
+                },
+            }
+        }
+    };
+    
+    const myChart = new Chart(
+        ctx,
+        config,
+    );
+}
