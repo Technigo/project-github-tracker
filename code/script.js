@@ -26,8 +26,7 @@ const profileImage = document.getElementById('profileImage')
     })
    .catch((err) => console.log(err))
 
-  
-let myCommits
+
    const getPullRequests = (repos) => {
     repos.forEach(repo => {
      fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
@@ -36,14 +35,15 @@ let myCommits
         const myPullRequests = pull.find( 
           (pull) => pull.user.login === repo.owner.login 
          )
-       myCommits = getCommits(`https://api.github.com/repos/rawisou/${repo.name}/commits?per_page=100`)
-        if(myPullRequests != undefined) {projectCard.innerHTML += `
+      let num = getCommits(`https://api.github.com/repos/rawisou/${repo.name}/commits?per_page=100`)
+    
+      if(myPullRequests != undefined) {projectCard.innerHTML += `
       <div class="card">
        <h3 class="repo-name">${repo.name}</h3>
        <a href="${repo.html_url}">${repo.html_url}</a>
        <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
        <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-       <p><span class ="bolded"> Number of commits:</span>${myCommits}</p>
+       <p><span class ="bolded"> Number of commits:</span>${num}</p>
        <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">${myPullRequests.html_url}</a></p>
       </div>   
         ` } else if (repo.name === 'project-weather-app') {
@@ -53,7 +53,7 @@ let myCommits
            <a href="${repo.html_url}">${repo.html_url}</a>
            <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
            <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-           <p><span class ="bolded"> Number of commits:</span>${myCommits}</p>
+           <p><span class ="bolded"> Number of commits:</span>${num}</p>
            <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">https://github.com/Technigo/project-weather-app/pull/215</a></p>
          </div>   
          `
@@ -64,7 +64,7 @@ let myCommits
             <a href="${repo.html_url}">${repo.html_url}</a>
             <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
             <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-            <p><span class ="bolded"> Number of commits:</span>${myCommits}</p>
+            <p><span class ="bolded"> Number of commits:</span>${num}</p>
             <p><span class ="bolded"> Pull Request:</span> No pull request </p>
           </div>   
           `
@@ -74,11 +74,22 @@ let myCommits
    }
 
 
-   const getCommits = async (endpoint) => {
-    const res = await fetch(endpoint)
-    myCommits = await res.json()
-    
-    myCommits = myCommits.length
-    
-    console.log(myCommits)
-  }
+const getCommits = (endpoint) => {
+  fetch(endpoint)
+  .then((res) => res.json())
+  .then((myCommits) => {
+   myCommits.length
+   console.log(myCommits)
+ })
+}
+
+// ------Async/await which returns [object Promise] -----
+  // const getCommits = async (endpoint) => {
+  //   const res = await fetch(endpoint)
+  //   let myCommits = await res.json()
+  //   myCommits = myCommits.length
+  //   console.log(myCommits)
+  // }
+
+
+  
