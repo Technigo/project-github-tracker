@@ -1,12 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Week 7 project on Technigo Bootcamp. 
+We were supposed to make GitHub tracker that gathers our Technigo Repositories. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+My biggest problem this week was to make all the fetches and to fetch the different values, like pullrequests, commits etc. After some help I finally managed to fetch everything and to get them in the right place. If I would have had more time I would maybe have added a searchfield but on the other hand we wont have that many Technigo repositories so it doesn't feel like a must. 
 
 ## View it live
 
