@@ -42,6 +42,10 @@ ol {
   margin-top: 2rem;
 }
 
+a {
+  color: rgb(63, 60, 60)
+}
+
 .header {
   display: flex;
   justify-content: center;
@@ -95,6 +99,10 @@ ol {
 
 .repo-div {
   flex: 25%;
+  min-height: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid black;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 2.5rem;
@@ -103,12 +111,24 @@ ol {
 }
 
 .repo-div:hover {
-  transform: scale(1.1);  
+  transform: scale(1.05);  
+}
+
+/* Where does this div inside .repo-div come from? */
+.repo-div div {
+  display: none;
 }
 
 .no-pullrequest {
-  color: blue;
   font-style: italic;
+}
+
+.message-list {
+  display: none;
+}
+
+.review-comment {
+  display: none;
 }
 
 .footer {

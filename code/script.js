@@ -36,10 +36,11 @@ const getPRCommits = (pullRequestCommitsUrl, reponame) => {
     let repoDiv = document.getElementById(reponame);
     let commitParagraph = document.createElement('p')
     let commitMessageList = document.createElement('ol');
+    commitMessageList.className = 'message-list';
 
     commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
     repoDiv.appendChild(commitParagraph)
-    commitParagraph.appendChild(commitMessageList);
+    repoDiv.appendChild(commitMessageList);
     
     commits.forEach(commit => {
       // console.log(commit.commit.message);
@@ -51,33 +52,51 @@ const getPRCommits = (pullRequestCommitsUrl, reponame) => {
   })
 }
 
-// Hur kan jag ta fram bara huvudkommentaren i stället?
-
-const getPRComments = (pullRequestCommentsUrl, reponame) => {
-  fetch(pullRequestCommentsUrl, options)
+const getReviewComment = (myPullRequestUrl, reponame) => {
+  fetch(`${myPullRequestUrl}/reviews`)
   .then(res => res.json())
-  .then(comments => {
-    console.log(comments)
-    // console.log(`The comments for ${reponame} are: `)
+  .then(json => {
 
-    let commentList = document.createElement('ul');
-    let commitParagraph = document.getElementById(reponame);
-    commitParagraph.appendChild(commentList)
+    let repoDiv = document.getElementById(reponame);
+    let reviewCommentParagraph = document.createElement('p');
 
-    comments.forEach(comment => {
-      // console.log(comment.body)
-      let listElement = document.createElement('li');
-      // listElement.style.display = 'none';
-      listElement.innerHTML = comment.body;
-      commentList.appendChild(listElement);
-    });
+    reviewCommentParagraph.className = 'review-comment';
 
+    repoDiv.appendChild(reviewCommentParagraph);
+
+    json.forEach(item => {
+      reviewCommentParagraph.innerHTML = item.body;
+    })
   })
 }
 
+// ------ This function shows the detailed comments ---------
+
+// const getPRComments = (pullRequestCommentsUrl, reponame) => {
+//   fetch(pullRequestCommentsUrl, options)
+//   .then(res => res.json())
+//   .then(comments => {
+//     console.log(comments)
+//     // console.log(`The comments for ${reponame} are: `)
+
+//     let commentList = document.createElement('ul');
+//     let commitParagraph = document.getElementById(reponame);
+//     commitParagraph.appendChild(commentList)
+
+//     comments.forEach(comment => {
+//       // console.log(comment.body)
+//       let listElement = document.createElement('li');
+//       // listElement.style.display = 'none';
+//       listElement.innerHTML = comment.body;
+//       commentList.appendChild(listElement);
+//     });
+
+//   })
+// }
+
 const getPullRequests = (repos) => {
   repos.forEach(repo => {
-    // const repoName = repo.name;
+    
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
     .then(res => res.json())
     .then(pullRequests => {
@@ -85,46 +104,38 @@ const getPullRequests = (repos) => {
       const myPullRequests = pullRequests
       .filter(pullRequest => pullRequest.user.login === username);
 
-      // console.log(myPullRequests.length)
       //If the length is 1 I have done a pull request
       //If the length is 0 it is an ongoing project or a group project where I haven't done the pull request
-
       if (myPullRequests.length === 0) {
 
         let repoDiv = document.getElementById(repo.name);
         let commitParagraph = document.createElement('p')
 
-        commitParagraph.innerHTML = `No pull request done by my username`;
+        commitParagraph.innerHTML = `Either ongoing or group/pair project where I didn't make the pull request`;
         commitParagraph.className = 'no-pullrequest';
         
         repoDiv.appendChild(commitParagraph);
       }
-      
-      // console.log(myPullRequests)
-
-      // Hur får jag bara själva huvudkommentaren?
 
       myPullRequests.forEach(myPullRequest => {
 
-        const pullNumber = myPullRequest.number;
-        console.log(pullNumber)
-
-        console.log(myPullRequest.review_comments_url); 
-        // https://api.github.com/repos/Technigo/project-business-site/pulls
-
-        //https://api.github.com/repos/Technigo/project-business-site/pulls/comments/289
+        // const pullNumber = myPullRequest.number;
+        // console.log(pullNumber)
+        // console.log(myPullRequest.url)
+        // console.log(myPullRequest.review_comments_url); 
         
         getPRCommits(myPullRequest.commits_url, repo.name);
-        getPRComments(myPullRequest.review_comments_url, repo.name);
+        getReviewComment(myPullRequest.url, repo.name);
+        // getPRComments(myPullRequest.review_comments_url, repo.name);
       })
     })
   })
 }
 
+// This function filters out repos that are forked and start with "project"
 const getTechnigoRepos = (repos) => {
   return repos
-  .filter(repo => repo.fork === true)
-  .filter(repo => repo.name.startsWith("project"));
+  .filter(repo => repo.fork === true && repo.name.startsWith("project"))
 }
 
 
@@ -140,7 +151,7 @@ const fetchRepos = () => {
     getPullRequests(technigoRepos);
 
     projectSection.innerHTML = `
-      <h2>Technigo projects</h2>
+      <h2>My Technigo projects:</h2>
       <div class="repo-container" id="repoContainer"></div>
       `;
 
