@@ -46,6 +46,9 @@ const fetchRepos = () => {
 
         fetchPullRequest(forkedSortedRepos)
         addCommits(forkedSortedRepos)
+        renderChart(forkedSortedRepos.length);
+        // Chart(forkedSortedRepos.length)
+        // console.log(forkedSortedRepos.length)
     })
 }
 
