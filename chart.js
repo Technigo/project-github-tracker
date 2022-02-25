@@ -14,7 +14,7 @@ const labels = [
       label: 'My First dataset',
       backgroundColor: [
                   '#a07a99',
-                  '#a7c0b8',
+                  '#125e91',
               ],
       borderColor: '#000000',
       data: [amount, 19 - amount],
@@ -38,48 +38,9 @@ const labels = [
 
   const config = {
     type: 'doughnut',
-    data: data,
+    data:data,
     options: options
   };
 
    const myChart = new Chart(ctx, config);
 }
-
- /* 
-const drawChart = (amount) => {
-  const config = {
-      type: 'doughnut',
-      data: {
-          labels: [
-              'Completed projects',
-              'Projects to do',
-          ],
-          datasets: [{
-              label: 'My First Dataset',
-              data: [amount, 19 - amount],
-              backgroundColor: [
-                  '#a07a99',
-                  '#a7c0b8',
-              ],
-
-              hoverOffset: 4
-          }]
-      },
-      options: {
-          layout: {
-              padding: 25 
-          },
-          plugins: {
-              legend: {
-                  labels: {
-                      font: {
-                          size: 15
-                      }
-                  }
-              }
-          }
-      }
-  };
-  const myChart = new Chart(ctx, config);
-}
-*/

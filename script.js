@@ -21,8 +21,6 @@ const userProfile = () => {
   fetch(USER_URL, Auth)
     .then(res => res.json())
     .then(data => {
-      //console.log(data)
-
       userContainer.innerHTML = `
       <div class="profileinfo">
       <h2>${data.name}</h2>
@@ -33,32 +31,21 @@ const userProfile = () => {
       </div>`
     })
 }
-
 userProfile()
 
 const getRepos = () => {
   fetch(REPOS_URL, Auth)
     .then(response => response.json())
     .then(data => {
-
-      //console.log(data)
-      
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
-
-      //console.log(forkedRepos)
-
-
       getPullRequests(forkedRepos)
       drawChart(forkedRepos.length)
     })
-
 }
 getRepos()
 
 //function to get the repos
 const getPullRequests = (repos) => {
-
-  //console.log(repos)
 
   projectsContainer.innerHTML = '';
   repos.forEach(repo => {
@@ -68,21 +55,8 @@ const getPullRequests = (repos) => {
       .then(res => res.json())
       .then(data => {
 
-       console.log(data)
-       console.log(data[0].base.user.followers_url)
-
-        const myPullRequest = data.filter((pull) => {
-
-          //console.log('pull-'+ pull.user.login.startsWith('eyahya'))
-          //console.log('repo-'+ repo.owner.login.startsWith('eyahya'))
-          return pull.user.login === repo.owner.login
-        })
-       //console.log('hello:' + myPullRequest.length)
-/*
-        if (myPullRequest.length === 0) {
-          return 
-        }*/
-
+        const myPullRequest = data.filter((pull) => { return pull.user.login === repo.owner.login })
+ 
         const commitUrl = myPullRequest[0].commits_url
         //display commits info
         const displayInfo = (data) => {
@@ -109,19 +83,20 @@ const getCommits = (url, callbackFunction) => {
   fetch(url, Auth)
     .then(res => res.json())
     .then(data => {
-      //console.log(data)
+      console.log(data.length)
       callbackFunction(data)
     })
 }
 
+
 //eventlistener on form-submit
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  let searchInput = searchField.value
+  let searchArray = []
+  
+  searchInput = searchArray.push(searchInput)
 
-  // this function filters your repos where name contains searchField.value. Where IndexOf returns the position of substring and -1 = doesn't exist in string
-  const found = repos.filter(repo => repo.name.indexOf(searchField.value) > -1);
- 
-
-
-  getPullRequests(found);
+console.log(typeof(searchArray))
+  //getPullRequests(searchArray);
 })
