@@ -46,6 +46,7 @@ const repositories = () => {
             //Add newDate to make 'latest push' look more readable
             //A dynamic id added to be able to use the data in the pullrequest-function
             pullRequests(forkedRepos);
+            drawChart(forkedRepos.length);
     
         })
 }
