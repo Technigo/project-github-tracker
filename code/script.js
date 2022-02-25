@@ -34,6 +34,7 @@ const getRepos = () => {
          </div>`
       })
      getPullRequests(forkedRepos)
+     activateChart(forkedRepos.length)
    })
 
   const getPullRequests = (repos) => {

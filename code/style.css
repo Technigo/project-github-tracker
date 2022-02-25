@@ -21,7 +21,7 @@ p {
 }
 
 a {
-  color: orangered
+  color: rgb(255, 69, 0)
 }
 
 .hero-image {
@@ -65,6 +65,19 @@ body {
 
 .project-container :hover {
   background: linear-gradient(90deg, #D1D1D1, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, #D1D1D1);
+}
+
+.chart-section {
+  display: flex;
+  justify-content: center;
+  margin: 7vh 0 15vh;
+}
+.chart-container {
+  max-width: 60vw;
+  min-width: 50vw
+}
+.chart {
+  
 }
 
 /*media queries*/
