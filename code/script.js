@@ -4,14 +4,14 @@ const USER_URL = `https://api.github.com/users/${USER}`
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`
 
 const TOKEN = API_TOKEN 
-
+console.log(TOKEN)
 const options = {
     method: "GET", 
     headers: {
-        Authorization: `token ${TOKEN}`
+        Authorization: `token ${TOKEN}`,
     }
 }
-
+console.log(options)
 const profile = document.getElementById('profile-container')
 const projects = document.getElementById('projects')
 
