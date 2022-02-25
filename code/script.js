@@ -53,9 +53,9 @@ async function init() {
 
     // step 4. sort by last commit date
     baseData.sort(function (a, b) {
-      const dataCurr = new Date(a.latestCommitDate);
-      const dateNext = new Date(b.latestCommitDate);
-      return dateNext - dataCurr;
+      const currDate = new Date(a.latestCommitDate);
+      const nextDate = new Date(b.latestCommitDate);
+      return nextDate - currDate;
     });
 
     // step 5. create and inject html elements
