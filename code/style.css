@@ -17,7 +17,6 @@ body {
 }
 
 .navbar {
-  /* background: #24292f; */ /* From Github */
   background: #c0716a;
   display: flex;
   justify-content: center;
@@ -113,22 +112,6 @@ footer {
   color: #ffffff;
 }
 
-/* .edit-btn {
-  text-align: center;
-  border-radius: 6px;
-  line-height: 20px;
-  display: block;
-  width: 100%;
-  background: #f6f8fa;
-  border: 1px solid;
-  padding: 5px 16px;
-  transition: 0.2s;
-  box-shadow: 0 1px 0 rgba(27, 31, 36, 0.04);
-  border: rgba(27, 31, 36, 0.15);
-  cursor: pointer;
-  font-weight: 600;
-} */
-
 .projectContainer {
   border: 1px solid #d0d7de;
   border-radius: 5px;
@@ -163,12 +146,8 @@ footer {
 
   .projectContainer {
     display: grid;
-    width: 45%;
-  }
-
-  .smallerContainer {
-    display: grid;
-    width: 45%;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    column-gap: 20px;
   }
 
   .profile-picture {
@@ -190,5 +169,5 @@ footer {
 }
 
 /* DESKTOP */
-@media (min-width: 1025px) {
-}
+/* @media (min-width: 1025px) {
+} */
