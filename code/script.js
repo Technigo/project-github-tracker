@@ -34,9 +34,11 @@ const options = {
     } 
 }
 
-// Fetching all Github projects
+
+// Function to fetch all github projects
 const getGithubProjects = () => {
 
+//-------------------------------FETCH 1------------------------------------------------
     fetch(API_URL, options)
         .then(res => res.json())
         .then(data => {
@@ -45,7 +47,6 @@ const getGithubProjects = () => {
             // Invoking the createUser and getTechnigoRepos functions
             createUser(data)
             getTechnigoRepos(data)
-
         })
 }
 
@@ -65,7 +66,7 @@ const getTechnigoRepos = (data) => {
 
     // variable to store the filtered repos
     const forkedProjects = data.filter(repo => repo.name.includes('project-'))
-        //console.log('forked projects', forkedProjects)
+    console.log('forked projects:', forkedProjects)
 
     // Looping through the filtered repos
     forkedProjects.forEach(repo => {
@@ -87,16 +88,18 @@ const getTechnigoRepos = (data) => {
     let linkToRepo = repo.html_url
     //console.log(linkToRepo)
 
+    //<a class='nav-item' href='${repo.html_url}' target="-blank"></a>
+
     projectBoard.innerHTML += `
     <div class='repo-container'>
         <h3 class='repo-title'>${reponame}</h3>
         <p>Default branch: ${defaultBranch}</p>
-        <p>Number of commits: </p>
+        <p id=''>Number of commits: </p>
         <p>Recent push: ${recentUpdate}</p>
+        <p><a class='nav-item' href='${repo.html_url}' target="-blank">Link to repo</a></p>
     `
     
-
-        // Fetching the Technigo pull requests
+//-------------------------------FETCH 2------------------------------------------------
         fetch(`https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`, options)
             .then(res => res.json())
             .then(data => {
@@ -106,7 +109,7 @@ const getTechnigoRepos = (data) => {
                 const ownPullRequests = data.filter(repo => repo.user.login === username)
                 console.log('own pull requests', ownPullRequests)
 
-                    // looping through my own pull requests
+                    // looping through own pull requests
                     ownPullRequests.forEach(repo => {
 
                         // storing the reponame of each pull request
@@ -114,72 +117,67 @@ const getTechnigoRepos = (data) => {
 
                         // storing the url for commits for each repo
                         const commitsForRepos = repo.commits_url
-                        //console.log('commits', commitsForRepos)
+                        //console.log('commits url:', commitsForRepos)
 
                         // Invoking the fetchCommits function
                         fetchCommits(commitsForRepos, reponame)
 
                         // storing the url for comments for each repo
                         const commentsForRepos = repo.comments_url
-                        //console.log('comments', commentsForRepos)
+                        console.log('comments', commentsForRepos)
 
                         // storing the pull request number for each repo
                         const pullRequestNumber = repo.number
-                        //console.log('getting the number of the pull request', pullRequestNumber)
+                        //console.log('number of the pull request:', pullRequestNumber)
 
                         // Invoking the fetchComments function
-                        fetchComments(commentsForRepos, pullRequestNumber, reponame)
-
-
+                        fetchComments(pullRequestNumber, reponame)
                     })
             })
     })
-
 }
                         
 // Function for fetching the commits for all repos
 const fetchCommits = (commitsForRepos, reponame) => {
+
+//-------------------------------FETCH 3------------------------------------------------
     fetch(commitsForRepos, options)
         .then(res => res.json())
         .then(data => {
-        console.log('data from commits', data)
+        //console.log('data from commits', data)
 
             const ownCommits = data.filter(item => item.author.login === username)
-            //console.log('own comments:', ownCommits)
+            //console.log('own commits:', ownCommits)
 
             // storing the number of commits
             const numberOfCommits = data.length
-            //console.log('how many commits?', numberOfCommits)
+            //console.log('number of commits:', numberOfCommits)
 
                 // looping through each commit
                 ownCommits.forEach(commit => {
                 //console.log('test', commit)
-
-                                
+   
                     // storing the commit message from each 
                     const commitMessages = commit.commit.message
-                    //console.log('the message:', commitMessages)
+                    //console.log('commit message:', commitMessages)
             
                 })
-                                        
-                        // const commitMessages = data.commit.message
-                        // console.log('messages', commitMessages)
-
-        })
-                    
+        })               
 }
 
 // Function for fetching the comments for each pull request
-const fetchComments = (commentsForRepos, pullRequestNumber, reponame) => {
+const fetchComments = (pullRequestNumber, reponame) => {
+
+//-------------------------------FETCH 4------------------------------------------------
     fetch(`https://api.github.com/repos/Technigo/${reponame}/issues/${pullRequestNumber}/comments`, options)
         .then(res => res.json())
         .then(data => {
-        
         //console.log('data from comments url', data)
-        //console.log('pleaseee work', data[0].body)
-        })
-                    
-                
+
+        // storing the review message
+        const reviewMessage = data[0].body
+        //console.log('review message:', reviewMessage)
+        })    
 }
 
 getGithubProjects()

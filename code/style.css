@@ -1,5 +1,11 @@
+:root {
+  --primary: #FFFFFF;
+  --secondary: #FFCCBC;
+  --tertiary: #00887A;
+}
+
 body {
-  background: #FFECE9;
+  background: white);
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -8,6 +14,7 @@ body {
 .background-container {
   display: flex;
   flex-direction: row;
+  height: 100vh;
   overflow-y: hidden;
 }
 
@@ -17,11 +24,13 @@ body {
   justify-items: center;
   align-items: center;
   width: 30%;
+  gap: 2rem;
   padding-top: 1rem;
 }
 
 .main-title, .projects-title, .full-name, .github-user-name, .repo-title, p {
   color: black;
+  text-shadow: 
 }
 
 .main-title {
@@ -54,8 +63,8 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
   padding: 1rem;
 }
 
@@ -65,8 +74,9 @@ body {
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 175px;
+  height: 200px;
   border: solid 1px black;
+  /*border-bottom: solid 1px ;*/
 }
 
 .repo-title, p {
@@ -76,6 +86,7 @@ body {
 
 
 .chart {
-  width: 250px;
+  width: 300px;
   padding-top: 3rem;
+  padding-left: 4rem;
 }
