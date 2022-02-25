@@ -231,7 +231,6 @@ input:checked + label {
   display: grid;
   gap: 1em;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  justify-items: center;
 }
 
 .section-projects__card {
@@ -241,7 +240,6 @@ input:checked + label {
   margin: 1em;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
 } 
 
@@ -322,6 +320,10 @@ footer {
 
   .section-overwiew {
     flex-direction: row;
+  }
+
+  .section-projects__container {
+    justify-items: center;
   }
 
   .section-projects__card {
