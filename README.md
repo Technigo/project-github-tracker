@@ -1,13 +1,12 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create a tracker for my progress as a student at Technigo bootcamp. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with getting the fetches, trying to remember everything from last weeks project. Had some trouble with (a lot) but "small things" like remembering to pass along the filtered repos and calling functions. This project was intense but I pulled through (pun intended). 
+With more time I would try harder to get the token to work. And as always more time on styling. 
 
 ## View it live
+https://id4h4lling.netlify.app/
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
