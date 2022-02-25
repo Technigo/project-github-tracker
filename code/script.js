@@ -26,56 +26,56 @@ const addingProfile = () => {
 }
 addingProfile()
 
-const findingRepos = () => {
+const addingRepos = () => {fetch(API_URL, options)
+    .then((res) => res.json())
+    .then((repos) => {
+        console.log(repos)
+        console.log(API_TOKEN)
+    
+        const forkedRepos = repos.filter(
+            repo => repo.fork && repo.name.startsWith('project-')
+            ) 
+            
+        forkedRepos.forEach((repo) => {
+            console.log(forkedRepos)
+            let updated = new Date(repo.updated_at)
+        projects.innerHTML += `
+        <div class="repos">
+        <h4>${repo.name}</h4>
+        <form label="projects">
+         <ul>
+            <li>Most recent update: ${updated}</li>
+            <li>Default branch: ${repo.default_branch}</li>
+            <li><a href=${repo.html_url} target="_blank">Link to repo</a></li>
+            <li id=commit-${repo.name}>Number of commits:</li>
+         </ul>
+        </form>
+        </div>`
+      
+     })
+     findingPulls(forkedRepos)
+    })
+    
+     }
 
-fetch(API_URL, options)
-.then((res) => res.json())
-.then((repos) => {
-    console.log(repos)
-    console.log(API_TOKEN)
-
-    const forkedRepos = repos.filter(
-        repo => repo.fork && repo.name.startsWith('project-')
-        ) 
-        
-    forkedRepos.forEach((repo) => {
-        console.log(forkedRepos)
-        let updated = new Date(repo.updated_at)
-    projects.innerHTML += `
-    <div class="repos" id="repoDiv">
-    <h4>${repo.name}</h4>
-    <form id="repoForm" label="projects">
-     <ul id="list">
-        <li>Most recent update: ${updated}</li>
-        <li>Default branch: ${repo.default_branch}</li>
-        <li><a href=${repo.html_url} target="_blank">Link to repo</a></li>
-     </ul>
-    </form>
-    </div>`
-
- })
-})
-   // findingCommits(forkedRepos)
-}
-    findingRepos()
 
 
-const findingPulls = (repo) => {
+const findingPulls = (repos) => {
+        repos.forEach((repo) => {
+            console.log("repo", repo)
+      
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
     .then((res) => res.json())
     .then((data) => {
-        const commits = document.getElementById(`commit-${repo.name}`)
+        console.log(data, "data")
 
-        const pulls = data.fins((pull)=> pull.user.login === repo.owner.login)
-
-        fetchCommits(pulls.commits_url, repo.name)
-        console.log(pulls.commits_url)
-
+        const pulls = data.find((pull)=> pull.user.login === repo.owner.login)
+        console.log("pulls", pulls)
+        findingCommits(pulls.commits_url, repo.name)
+        console.log(pulls.commits_url, "commits")
     })
-
+    })
 }
-
-findingPulls()
 
   const findingCommits = (myCommitsUrl, myRepoName) => {
         fetch(myCommitsUrl, options)
@@ -84,12 +84,11 @@ findingPulls()
             console.log(data)
             document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
 
-})
-}
-findingCommits()
+        })
+    }
 
 
-
+addingRepos();
 
 
 
