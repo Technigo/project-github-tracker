@@ -2,11 +2,11 @@
  // //DOM-selector for the canvas 👇
 const ctx = document.getElementById("chart").getContext("2d");
 
+
 const drawChart = (amount) => {
 const labels = [
     'Projects done',
-    'Projects to be done',
-    
+    'Technigo projects',
   ];
 
   const data = {
@@ -21,7 +21,7 @@ const labels = [
 
   const config = {
     type: 'doughnut',
-    data: data,
+    data: data, 
     options: {
         responsive: true,
         maintainAspectRatio: true,
@@ -32,7 +32,6 @@ const labels = [
   document.getElementById('chart'),
   config
   ); 
- 
   }
 
   console.log('test') 
