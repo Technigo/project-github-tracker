@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@types/chart.js": "^2.9.35",
-    "chart.js": "^3.7.1"
+    "chart.js": "^3.7.1",
+    "netlify-cli": "^9.8.3"
   }
 }

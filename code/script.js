@@ -30,6 +30,11 @@ async function fetchGithubData(path) {
     `https://api.github.com/${path}`,
     requestOptions
   );
+  if (response.status === 403) {
+    throw new Error(
+      "API rate limit excceded, please visit again after an hour :)"
+    );
+  }
   return await response.json();
 }
 
@@ -67,6 +72,12 @@ async function init() {
     main = MainComp(avatar_url, name, login, html_url, technigoRepoData);
   } catch (e) {
     console.error(e);
+    root.innerHTML = `
+      <div class="error-container">
+        ${e.message}
+      </div>
+      
+      `;
   }
 }
 

@@ -503,3 +503,11 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.error-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
