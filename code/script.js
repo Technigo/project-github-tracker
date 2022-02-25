@@ -53,8 +53,11 @@ async function init() {
 
     // step 4. sort by last commit date
     baseData.sort(function (a, b) {
-      return b.latestCommitDate - a.latestCommitDate;
+      const currDate = new Date(a.latestCommitDate);
+      const nextDate = new Date(b.latestCommitDate);
+      return nextDate - currDate;
     });
+
     // step 5. create and inject html elements
     const header = HeaderComp(avatar_url);
     const main = MainComp(avatar_url, "jiiin✨", USERNAME, html_url, baseData);
