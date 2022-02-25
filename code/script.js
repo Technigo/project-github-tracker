@@ -37,8 +37,9 @@ const fetchRepos = () => {
         const forkedSortedRepos = forkedRepos.sort((oldestRepo, newestRepo) => new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at));
         forkedSortedRepos.forEach(repo => reposbox.innerHTML += `
                 <div class="projects">
-                 <h3><a href="${repo.html_url}">${repo.name} 
-                 with default branch ${repo.default_branch}</h3></a>
+                 <h3><a href="${repo.html_url}">${repo.name} </h3></a>
+                 <a href="${repo.html_url}"> 
+                 with default branch ${repo.default_branch}</a>
                  <p>Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
                  <p id="pull-request-${repo.name}"></p>
                  <p id="commits-${repo.name}"></p>
