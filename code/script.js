@@ -6,39 +6,23 @@ const API_PROFILE = `https://api.github.com/users/${username}`;
 const userProfile = document.getElementById("userProfile");
 const projects = document.getElementById("projects");
 
-//  T O K E N
-
-/*
-const options = {
-    method: 'GET',
-    headers: {
-          Authorization:'API_TOKEN'
-  }
-*/
-
-const options = {
-  method: "GET",
-  headers: {
-    Authorization: "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",
-  },
-};
-
 // P R O F I L E
 const fetchProfile = () => {
-  fetch(API_PROFILE, options)
+  fetch(API_PROFILE)
     .then((res) => res.json())
     .then((data) => {
       userProfile.innerHTML += `
                 <img src="${data.avatar_url}" class ="pic"></img>
-                    <h2>${data.login} </h2>
-                    <h2>${data.name} </>
+                <h2>${data.name} </h2>   
+                <h3><a href="https://github.com/lisabergstrom">${data.login}</a></h3>
+                    
 `;
     });
 };
 
 // R E P O S
 const fetchRepositories = () => {
-  fetch(API_REPOS, options)
+  fetch(API_REPOS)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -46,16 +30,16 @@ const fetchRepositories = () => {
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
 
+      //A function for filtering out the forked projects
       forkedRepos.forEach((repo) => {
         projects.innerHTML += `
   <div class="repos">
   <a href="${repo.html_url}">
-  <h3> Project name: ${repo.name} <br> </h3>
+  <h3>${repo.name} <br> </h3>
   <p> Latest push: ${new Date(repo.pushed_at).toLocaleString("sv-SE", {
     dateStyle: "short",
   })} </p>
   <p> Deafult branch: ${repo.default_branch} <p/>
-  <a href = ${repo.html_url}> ${repo.name}</a>
   <p id="commit-${repo.name}">Commits:</p>
   </a>
   </div>
@@ -82,7 +66,7 @@ const fetchPullRequestsArray = (allRepositories) => {
         );
         console.log(myPullRequest);
 
-        // Detect if we have pull request or not.
+        // Indicates a pull request or not.
         // If yes - call fetchCommits function
         // If no - inform user that no pull request was yet done
         if (myPullRequest) {
@@ -95,6 +79,7 @@ const fetchPullRequestsArray = (allRepositories) => {
   });
 };
 
+//function to get commit number for each project
 const fetchCommits = (myCommitsUrl, myRepoName) => {
   fetch(myCommitsUrl)
     .then((res) => res.json())

@@ -1,6 +1,10 @@
 body {
   background: lightgray;
   font-family: "Open Sans Condensed", sans-serif;
+  background-image: url("https://images.pexels.com/photos/2512386/pexels-photo-2512386.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #716d6a;
 }
 .title {
   font-size: 1.6rem;
@@ -8,10 +12,18 @@ body {
 }
 img {
   border-radius: 50%;
-  max-width: 30vw;
+  max-width: 20vw;
   filter: grayscale(100%);
 }
+h2 {
+  font-size: 2rem;
+  margin: 0;
+  padding-top: 10px;
+}
 
+h3 {
+  margin: 0%;
+}
 .user-profile {
   display: grid;
   justify-items: center;
@@ -19,11 +31,6 @@ img {
 
 .main-container .title {
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  align-items: center;
-}
-.main-container .title {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: center;
@@ -52,7 +59,8 @@ img {
   position: relative;
 }
 
-.repos a {
+.repos a,
+a {
   text-decoration: none;
   color: inherit;
 }
