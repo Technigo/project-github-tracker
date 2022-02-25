@@ -1,151 +1,140 @@
 body {
   background: white;
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin:0px;
+  margin: 0px;
 }
 
-a{
-  text-decoration:none;
- }
+a {
+  text-decoration: none;
+}
 
-.user-info{
+.user-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
- 
 }
 
-.head-tracker{
+.head-text {
   display: flex;
   justify-content: space-evenly;
-  margin:20px;
+  margin: 20px;
 }
 
-.catpic{
+.catpic {
   object-fit: cover;
-  width:100px;
+  width: 100px;
 }
 
-h2{
-  
-  margin-bottom:-30px;
+h2 {
+  margin-bottom: -30px;
 }
 
-.profileimg{
+.profileimg {
   display: flex;
   justify-content: center;
-  margin-bottom:-20px;
+  margin-bottom: -20px;
 }
 
 .profile-pic {
-  width:200px;
+  width: 200px;
   border-radius: 50%;
   align-self: center;
-  border: solid .5em #FFECE9;
-  padding: .3em;
-
+  border: solid 0.5em #ffece9;
+  box-shadow: 5px 10px 10px darkgrey;
 }
 
-.projects{
-  display: flex; 
+.projects {
+  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
 }
 
-.repos{
-  background-color: #FFECE9;
+.repos {
+  background-color: #ffece9;
   margin: 15px;
   border-radius: 10px;
-  padding:20px;
-  border:1px solid black;
+  padding: 20px;
+  border: 1px solid black;
   box-shadow: 5px 10px 10px darkgrey;
 }
 
-.chart-div{
+.chart-div {
   display: flex;
-  width:fit-content;
+  width: fit-content;
   justify-content: center;
   align-self: center;
-  
 }
 
 /*Tablet*/
 
-@media (min-width: 668px) and (max-width:1024px){
+@media (min-width: 668px) and (max-width: 1024px) {
+  .projects {
+    flex-direction: row;
+  }
 
-.projects{
-  flex-direction: row;
-}
+  .head-text {
+    justify-content: center;
+  }
 
-.head-tracker{
-  justify-content: center;
-}
+  .repos {
+    width: 40vw;
+    margin-bottom: 30px;
+  }
 
-.repos{
-  
-  width:40vw;
-}
+  .chart-div {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
 
-.chart-div {
-  justify-content: center;
-  align-items: center;
-  height:40%;
-  
- 
-}
-
-.chart{
-  display: flex;
-  justify-content: center;
-  padding-top:30px;
-}
-  
+  .chart {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
 }
 
 /*Desktop*/
 
 @media (min-width: 1025px) {
+  .projects {
+    flex-direction: row;
+  }
+  .head-text {
+    justify-content: center;
+  }
 
-.projects{
-  flex-direction: row;
-}
-.head-tracker{
-  justify-content: center;
-}
+  .profileimg {
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+  }
 
-.profileimg{
-flex-direction: row;
-justify-content: center;
-margin:20px;
-}
+  .user-facts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+  }
 
-.user-facts{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  margin:20px;
+  a:hover {
+    color: #ff97f6;
+  }
 
-}
+  .repos {
+    width: 25vw;
+  }
 
-a:hover {
-  color: #ff97f6;
-}
+  .profile-pic {
+    width: 250px;
+  }
 
-.repos{
-  width: 25vw;
-}
-
-.profile-pic{
-  width:250px;
-}
-
-.chart-div{
-  width:25%;
-}
-
+  .chart-div {
+    width: 25%;
+  }
 }

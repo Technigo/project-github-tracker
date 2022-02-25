@@ -12,31 +12,33 @@
 </head>
 <body>
   
-  
-  <div class="head-tracker">
+  <!-- Header -->
+  <div class="head-text">
     <img class="catpic" src="./images/cat.png"/>
-  <h1>GitHub Tracker</h1>
+    <h1>GitHub Tracker</h1>
 </div>
 <main class="user-facts">
-<div class="profileimg">
-  <img id="profile-pic" class="profile-pic"></img>
-</div>
-  
-  <div class="user-info">
-  <p id="full-name"></p>
-  <p id="user-name"></p>
+  <div class="profileimg">
+    <img id="profile-pic" class="profile-pic"></img>
   </div>
+  
+<!-- User info -->
+    <div class="user-info">
+      <p id="full-name"></p>
+      <p id="user-name"></p>
+   </div>
 </main>
 
-  <h2></h2>
-  <main id="projects" class="projects"></main>
+<!-- Section where the repos will appear -->
+  
+<main id="projects" class="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <section class="chart-div">
-  <canvas id="chart"></canvas>
-</div>
+  <!-- Chart -->
+<section class="chart-div">
+<canvas id="chart"></canvas>
+</section>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>   
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
 <script src="./script.js"></script>
 <script src="./chart.js"></script> 
 
