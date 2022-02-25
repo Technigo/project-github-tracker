@@ -36,7 +36,8 @@ export default function HeaderComp(userProfileImage) {
   searchForm.onsubmit = (e) => {
     e.preventDefault();
     //[todo] update function
-    console.log("hello");
+    console.log("search form is called");
+    searchForm.reset();
   };
 
   const nav = createElement("nav", "nav");

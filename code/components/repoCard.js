@@ -74,6 +74,7 @@ export default function RepoCardComp(
 
   if (pullRequestURL) {
     const pullContainer = createElement("div", "spec-container");
+    pullContainer.classList.add("pull-container");
     pullContainer.innerHTML = `
     <img src="${pullIcon}" alt="pull request icon" class="pull-icon"/>
       <a href=${pullRequestURL} class="go-to-pull-request">${pullRequestTitle}</a>

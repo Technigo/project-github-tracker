@@ -2,6 +2,7 @@ import "./style.css";
 import MainComp from "./components/main";
 import HeaderComp from "./components/header";
 import makeChart from "./technigoChart";
+import LoadingStatusComp from "./components/spinner";
 
 import { allRepo } from "./dummyData/allRepo";
 import { userInfo } from "./dummyData/userInfo";
@@ -9,9 +10,12 @@ import { repoData } from "./dummyData/repoData";
 
 const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
-console.log(TOKEN);
+
 let myLoginName;
 let completedProjects;
+let header;
+let main;
+
 async function fetchGithubData(path) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Basic ${TOKEN}`);
@@ -29,26 +33,29 @@ async function fetchGithubData(path) {
   return await response.json();
 }
 
-// const getUserInfo = fetchGithubData("users/jiiinCho");
-// const getRepos = fetchGithubData("users/jiiinCho/repos");
+const getUserInfo = fetchGithubData("users/jiiinCho");
+const getRepos = fetchGithubData("users/jiiinCho/repos");
+const spinner = LoadingStatusComp();
 
 async function init() {
-  try {
-    // const value = await Promise.all([getUserInfo, getRepos]);
-    // const { login, avatar_url, html_url, name } = value[0];
-    const { login, avatar_url, html_url, name } = userInfo;
-    myLoginName = login;
-    // const allRepository = value[1];
-    const allRepository = allRepo;
+  //display loading status
+  root.appendChild(spinner);
 
-    // const technigoRepoDataRaw = await filterTechnigo(allRepository);
-    const technigoRepoDataRaw = repoData;
+  try {
+    const value = await Promise.all([getUserInfo, getRepos]);
+    const { login, avatar_url, html_url, name } = value[0];
+    // const { login, avatar_url, html_url, name } = userInfo;
+    myLoginName = login;
+    const allRepository = value[1];
+    // const allRepository = allRepo;
+
+    const technigoRepoDataRaw = await filterTechnigo(allRepository);
+    // const technigoRepoDataRaw = repoData;
 
     //filter projects not forked from technigo
     const technigoRepoData = technigoRepoDataRaw.filter(
       (repo) => repo !== undefined
     );
-    console.log(technigoRepoData);
     completedProjects = technigoRepoData.length;
 
     //sort by last commit date
@@ -56,11 +63,8 @@ async function init() {
       return b.latestCommitDate - a.latestCommitDate;
     });
 
-    const header = HeaderComp(avatar_url);
-    const main = MainComp(avatar_url, name, login, html_url, technigoRepoData);
-
-    root.appendChild(header);
-    root.appendChild(main);
+    header = HeaderComp(avatar_url);
+    main = MainComp(avatar_url, name, login, html_url, technigoRepoData);
   } catch (e) {
     console.error(e);
   }
@@ -139,6 +143,11 @@ function setRepoData(latestCommit, allCommitCount, repoInfo, myPull) {
 }
 
 init().then(() => {
+  //remove loading spinner when data is ready
+  root.removeChild(spinner);
+  root.appendChild(header);
+  root.appendChild(main);
+
   makeChart(completedProjects, "chart");
   console.log("app is running!");
 });

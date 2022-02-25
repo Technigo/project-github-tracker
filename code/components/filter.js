@@ -7,12 +7,7 @@ export default function FilterComp() {
   filterFormInput.setAttribute("type", "text");
   filterFormInput.setAttribute("placeholder", "Find a repository..");
   filterForm.appendChild(filterFormInput);
-  // filterForm.innerHTML = `
-  //   <input
-  //   type="text"
-  //   class="filter-input"
-  //   placeholder="Find a repository..."
-  //   />`;
+
   const sortByLanguage = ["javascript", "typescript", "html", "css"];
   const sortBy = ["last updated", "name"];
 
