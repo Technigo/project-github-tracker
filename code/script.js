@@ -39,6 +39,7 @@ fetch(API_URL, options)
         ) 
         
     forkedRepos.forEach((repo) => {
+        console.log(forkedRepos)
         let updated = new Date(repo.updated_at)
     projects.innerHTML += `
     <div class="repos" id="repoDiv">
@@ -52,40 +53,48 @@ fetch(API_URL, options)
     </form>
     </div>`
 
-    fetch(`https://api.github.com/repos/idanaslund/${repo.name}/commits`, options)
-    .then((res) => res.json())
-    .then((commits) => {
-        console.log(commits)
-
-       // profile.innerHTML + `
-       // <p>Number of commits: ${commits.length}</p>`
-        
-    })
-}) 
-
-    
-    
-   
-
-
-
-
+ })
 })
-
-    
-    
-//let API_URL_PR = `https://api.github.com/repos/Technigo/${repo.name}/pulls`
-// const getPullRequests = (repos) => {
-    //repos.forEach(repo => {
-    //fetch(API_URL_PR)
-    //.then((res) => res.json())
-    //.then((pulls) => {
-    //console.log(pulls) 
-    //})
-  //})
-// }
+   // findingCommits(forkedRepos)
 }
-findingRepos()
+    findingRepos()
+
+
+const findingPulls = (repo) => {
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
+    .then((res) => res.json())
+    .then((data) => {
+        const commits = document.getElementById(`commit-${repo.name}`)
+
+        const pulls = data.fins((pull)=> pull.user.login === repo.owner.login)
+
+        fetchCommits(pulls.commits_url, repo.name)
+        console.log(pulls.commits_url)
+
+    })
+
+}
+
+  //const findingCommits = (repo) => {
+        //console.log(repo)
+        //fetch(`https://api.github.com/repos/idanaslund/${repo.name}/commits`, options)
+        //.then((res) => res.json())
+        //.then((commits) => {
+           // console.log(commits)
+    
+           // profile.innerHTML + `
+           // <p>Number of commits: ${commits.length}</p>`
+    
+          
+    
+    //})
+    
+//}
+//findingCommits()
+    
+//} 
+
+
 
 
 
