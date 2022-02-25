@@ -8,7 +8,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cutive+Mono&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cutive+Mono&family=Montserrat:wght@400;700&family=Raleway:wght@100;200&display=swap" rel="stylesheet">
   <title>Emma Springs Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -16,17 +19,27 @@
 
 
   <section id="header" class="header-container">
-     <h1>GitHub Tracker of = {Emma Springs}</h1>
-        <img width="100" src="https://avatars.githubusercontent.com/u/94292545?v=4"/>
+    <!-- <img width="100" src="https://avatars.githubusercontent.com/u/94292545?v=4"/> -->
+     <!-- <h1>GitHub tracker for = {Emma Springs}</h1> -->
+     <!-- <h3>GitHub username = EmmaSprings</h3> -->
   </section>
 
+<section class="project-chart-container">
 
-  <main id="projects" class="projects-container"></main>
-
+  
+   <main id="projects" class="projects-container"></main>
+      <section id="pullsRepo" class="pulls"></section>
+  
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart" width="400px" height="400px"></canvas>
+  <div class="chart-container">
+    <canvas id="chart" width="200" height="200"></canvas>
+  </div>
+  
+</section>
 
-  <script src="./script.js"></script>
+
   <script src="./chart.js"></script>
+  <script src="./token.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
