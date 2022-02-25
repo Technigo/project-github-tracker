@@ -1,15 +1,19 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
+Chart.defaults.font.family = 'Roboto'
+Chart.defaults.font.size = 23
+Chart.defaults.color = 'white'
+
 //"Draw" the chart here 👇
 progressChart = (projectsDone) => {
     
     const config = {
-        type: 'bar',
+        type: 'doughnut',
         data: {
             datasets: [{
                 label: '',
-                backgroundColor: ['rgb(97, 192, 194)', 'rgb(186, 223, 215)'],
+                backgroundColor: ['rgb(214, 169, 195)', 'rgb(188, 96, 153)'],
                 borderColor: 'rgb(22, 19, 21)',
                 hoverOffset: 8,
                 data: [projectsDone, 19 - projectsDone]
@@ -23,32 +27,32 @@ progressChart = (projectsDone) => {
         },
 
         options: { 
-            scales: {
-                x: {
-                    ticks: {
-                        font: {
-                            size: 18,
-                        }
-                    }
-                },
-                y: {
-                    ticks: {
-                        font: {
-                            size: 18,
-                        }
-                    }
-                }
-            },
+            // scales: {
+            //     x: {
+            //         ticks: {
+            //             font: {
+            //                 size: 18,
+            //             }
+            //         }
+            //     },
+            //     y: {
+            //         ticks: {
+            //             font: {
+            //                 size: 18,
+            //             }
+            //         }
+            //     }
+            // },
             plugins: {
                 responsive: true,
                 legend: {
                     display: true,
-                    position:'chartArea',
+                    position:'bottom', //change to chartArea if bar chart
                     labels: {
                         fontColor: '#FFF',
                         fontFamily: 'Roboto',
-                        boxWidth: 0,
-                        boxHeight: 0,
+                        boxWidth: 10,
+                        boxHeight: 10,
                     }
                 },
                 title: {

@@ -1,8 +1,8 @@
 /* Global css variables used for colors */
 :root {
   --primary: rgb(22, 19, 21);
-  --secondary: rgb(97, 192, 194);
-  --accent: rgb(186, 223, 215);
+  --secondary: rgb(188, 96, 153);
+  --accent: rgb(214, 169, 195);
 }
 
 * {
@@ -59,6 +59,7 @@ p {
 
 img {
   width: 250px;
+  border-radius: 50%;
   border: 5px solid var(--secondary);
   margin-block: 2em; 
 }
@@ -168,7 +169,7 @@ header {
   color: var(--primary);
   flex-direction: column;
   max-width: 100vw;
-  min-height: 25vh;
+  min-height: 30vh;
 }
 
 
@@ -183,10 +184,6 @@ header {
   padding: 1em 0;
 }
 
-/* .chart {
-  min-height: 200px;
-  padding: 1em;
-} */
 
 /***************************************************/
 /***************** Toggle switsh ******************/
@@ -366,6 +363,7 @@ footer {
 
   .section-overwiew {
     flex-direction: row;
+    min-height: 50vh;
   }
 
   .section-projects__container {
