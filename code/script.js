@@ -8,20 +8,15 @@ const API_REPOS = `${API_USER_INFO}/repos`;
 //Global variable to be used by the chart
 let technigoRepos;
 
-// const hardCodeApi = "https://api.github.com/users/jessand77/repos";
-
-// Läs lite här: https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
-
-//Should not be included in git push??
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     Authorization: 'token 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'
-//   }
-// }
+const options = {
+  method: 'GET',
+  headers: {
+      Authorization: 'token' + API_TOKEN
+  }
+}
 
 const fetchUserInfo = () => {
-  fetch(API_USER_INFO)
+  fetch(API_USER_INFO, options)
   .then(res => res.json())
   .then(user => {
     // console.log(user)
@@ -34,14 +29,16 @@ const fetchUserInfo = () => {
 }
 
 const getPRCommits = (pullRequestCommitsUrl, reponame) => {
-  fetch(pullRequestCommitsUrl)
+  fetch(pullRequestCommitsUrl, options)
   .then(res => res.json())
   .then(commits => {
 
-    let commitParagraph = document.getElementById(reponame);
+    let repoDiv = document.getElementById(reponame);
+    let commitParagraph = document.createElement('p')
     let commitMessageList = document.createElement('ol');
 
     commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
+    repoDiv.appendChild(commitParagraph)
     commitParagraph.appendChild(commitMessageList);
     
     commits.forEach(commit => {
@@ -57,10 +54,10 @@ const getPRCommits = (pullRequestCommitsUrl, reponame) => {
 // Hur kan jag ta fram bara huvudkommentaren i stället?
 
 const getPRComments = (pullRequestCommentsUrl, reponame) => {
-  fetch(pullRequestCommentsUrl)
+  fetch(pullRequestCommentsUrl, options)
   .then(res => res.json())
   .then(comments => {
-    // console.log(comments)
+    console.log(comments)
     // console.log(`The comments for ${reponame} are: `)
 
     let commentList = document.createElement('ul');
@@ -70,6 +67,7 @@ const getPRComments = (pullRequestCommentsUrl, reponame) => {
     comments.forEach(comment => {
       // console.log(comment.body)
       let listElement = document.createElement('li');
+      // listElement.style.display = 'none';
       listElement.innerHTML = comment.body;
       commentList.appendChild(listElement);
     });
@@ -80,7 +78,7 @@ const getPRComments = (pullRequestCommentsUrl, reponame) => {
 const getPullRequests = (repos) => {
   repos.forEach(repo => {
     // const repoName = repo.name;
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
     .then(res => res.json())
     .then(pullRequests => {
 
@@ -92,15 +90,30 @@ const getPullRequests = (repos) => {
       //If the length is 0 it is an ongoing project or a group project where I haven't done the pull request
 
       if (myPullRequests.length === 0) {
-        document.getElementById(repo.name).innerHTML = `No pull request done by my username`;
-        document.getElementById(repo.name).className = 'no-pullrequest';
+
+        let repoDiv = document.getElementById(repo.name);
+        let commitParagraph = document.createElement('p')
+
+        commitParagraph.innerHTML = `No pull request done by my username`;
+        commitParagraph.className = 'no-pullrequest';
+        
+        repoDiv.appendChild(commitParagraph);
       }
+      
       // console.log(myPullRequests)
+
+      // Hur får jag bara själva huvudkommentaren?
 
       myPullRequests.forEach(myPullRequest => {
 
-        // console.log(myPullRequest.review_comments_url); 
+        const pullNumber = myPullRequest.number;
+        console.log(pullNumber)
 
+        console.log(myPullRequest.review_comments_url); 
+        // https://api.github.com/repos/Technigo/project-business-site/pulls
+
+        //https://api.github.com/repos/Technigo/project-business-site/pulls/comments/289
+        
         getPRCommits(myPullRequest.commits_url, repo.name);
         getPRComments(myPullRequest.review_comments_url, repo.name);
       })
@@ -116,7 +129,7 @@ const getTechnigoRepos = (repos) => {
 
 
 const fetchRepos = () => {
-  fetch(API_REPOS)
+  fetch(API_REPOS, options)
   .then(res => res.json())
   .then(repos => {
 
@@ -136,11 +149,10 @@ const fetchRepos = () => {
       const mostRecentPush = new Date(repo.pushed_at).toLocaleDateString('en-GB');
 
       repoContainer.innerHTML += `
-      <div class="repo-div">
+      <div id=${repo.name} class="repo-div">
         <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
         <p>Most recent push: ${mostRecentPush}</p>
         <p>Default branch: ${repo.default_branch}</p>
-        <p id=${repo.name}></p>
       <div>
       `
       
@@ -149,9 +161,6 @@ const fetchRepos = () => {
 
   });
 }
-
-
-
 
 fetchUserInfo();
 fetchRepos();
