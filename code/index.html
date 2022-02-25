@@ -1,21 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Oswald:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+  <body>
+    <header class="header">
+      <h1>GitHub Tracker</h1>
+    </header>
+
+    <section class="grid-container">
+      <div class="profile" id="profile"></div>
+
+      <section class="repos-area">
+        <h2>Technigo Projects:</h2>
+        <div class="project-grid" id="projects"></div>
+      </section>
+
+      <div class="chart">
+        <canvas id="myChart"></canvas>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+    <script src="./secret.js"></script>
+    <script src="./chart.js"></script>
+
+    <footer>
+      <h5>- GitHub Tracker made by Isabell Wästfelt -</h5>
+    </footer>
+  </body>
 </html>
