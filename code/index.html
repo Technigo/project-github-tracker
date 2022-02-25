@@ -8,15 +8,33 @@
   <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Shizuru&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Shizuru&display=swap" rel="stylesheet">
 </head>
 <body>
+  <header>
   <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  </header>
+
+  <section class="userData" id="userData"></section>
+
+  <main id="projects">
+    <h2>Projects</h2>
+  </main>
+
+
+
+
+
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
+
+
+  <footer class="footer">
+    <div class="made-by">
+      <p>Made by Camilla Hallberg @ Technigo Bootcamp Spring 2022 <span style='font-size:16px;'>&#129302;</span></p>
+    </div>
+  </footer>
 
   <script src="./chart.js"></script>
   <script src="./token.js"></script>

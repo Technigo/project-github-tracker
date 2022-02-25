@@ -1,12 +1,13 @@
+// const userData = document.getElementsById('userData')
 const username = 'CamillaHallberg'
 let reponame = ''
-
 
 // API's
 const API_USER = `https://api.github.com/users/${username}`
 const API_URL_REPO = `https://api.github.com/users/${username}/repos`
 const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
 
+// my token
 const API_TOKEN = TOKEN;
 // console.log(TOKEN)
 
@@ -17,11 +18,21 @@ const options = {
     }
 }
 
+const getUser = () => {
 fetch(API_USER, options)
 .then(res => res.json())
-.then(userdata => {
-    console.log(userdata, 'my user');
-})
+.then(user => {
+    console.log(user, 'my user');
+        userData.innerHTML = `
+        <div class="info">
+        <img class="img" src="${user.avatar_url}" alt="user image">
+        <h3>${user.login}</h3>
+        <h4>${user.bio}</h4>
+        <h4>Location: ${user.location}</h4>
+        </div>`
+    })
+}
+getUser()
 
 const getRepos = () => {
     fetch(API_URL_REPO, options)

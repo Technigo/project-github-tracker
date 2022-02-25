@@ -1,17 +1,45 @@
 body {
-  background: #FFECE9;
+  background: linear-gradient(floralwhite, rosybrown);
 }
 
 h1 {
   font-family: 'Shizuru', cursive;
-  font-size: 72px;
+  font-size: 48px;
   color:palevioletred;
   text-align: center;
 }
 
 h2 {
   font-family: 'Shizuru', cursive;
-  font-size: 36px;
+  font-size: 32px;
   color:mediumpurple;
+  text-align: center;
+}
+
+.img {
+  width: 96px;
+  border-radius: 50%;
+  border: 8px solid floralwhite;
+}
+
+h3 {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 18px;
+  color: #886F6F;
+  text-align: center;
+}
+
+h4 {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 14px;
+  color: whitesmoke;
+  text-align: center;
+}
+
+/* Footer styling */
+.made-by {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 12px;
+  color:lavenderblush;
   text-align: center;
 }
