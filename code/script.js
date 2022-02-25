@@ -3,85 +3,116 @@ const profileInfo = document.getElementById('profile')
 const allProjects = document.getElementById('projects')
 
 const username = 'EmmaaBerg'
-const API_USER = `https://api.github.com/users/${username}`
+const API_PROFILE = `https://api.github.com/users/${username}`
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos`
 
 //Function to get the username and profilepicture
-const userInfo = () => {
-    fetch(API_USER)
+const userProfile = () => {
+    fetch(API_PROFILE)
         .then((res) => res.json())
-        .then(profile => {
-            profileInfo.innerHTML = `
+        .then(profileData => {
+            profileInfo.innerHTML += `
         <h2>GitHub Tracker</h2>
-        <img src = "${profile.avatar_url}">
-        <h3> ${profile.name}</h3>
+        <img src = "${profileData.avatar_url}">
+        <h3> ${profileData.name}</h3>
+        <h4> <a href = ${profileData.html_url}>${profileData.login}</h4>
         `
         })
 }
 
-//Invok the userInfo function
-userInfo()
+// Repos
+const repositories = () => {
+    fetch(API_URL_REPOS)
+        .then((resp) => resp.json())
+        .then((allRepos) => {
+            //A function for filtering out the forked projects from technigo.
+            //Repo is the "name for each object" in the array. Fork and name are two properties within
+            // the object 
+            const forkedRepos = allRepos.filter((repo) => repo.fork && repo.name.startsWith('project-'))
 
-fetch(API_URL_REPOS)
-    .then((resp) => resp.json())
-    .then((allRepos) => {
-        //A function for filtering out the forked projects from technigo.
-        //Repo is the "name for each object" in the array. Fork and name are two properties within
-        // the object 
-        const forkedRepos = allRepos.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-        forkedRepos.forEach((repo) => {
-            allProjects.innerHTML += `
+            forkedRepos.forEach((repo) => {
+                allProjects.innerHTML += `
             <div>
-            <h6> Project Name: ${repo.name} </h6>
-            <p> Latest push: ${repo.pushed_at}</p>
-            <p> Main branch: ${repo.default_branch}</p>
+            <h3> Project Name: ${repo.name} </h3>
+            <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('en-GB', {dateStyle:'short',})}</p> 
+            <p> Default branch: ${repo.default_branch}</p>
             <a href = ${repo.html_url}> ${repo.name}</a>
+            <p id="pull-${repo.name}"></p>
+            <p id="commit-${repo.name}">Commits:</p>
             </div>
             `
+                commits(repo.commits_url, repo.name)
+            })
+            //Add newDate to make 'latest push' look more readable
+            //A dynamic id added to be able to use the data in the pullrequest-function
+            pullRequests(forkedRepos);
+    
         })
-        pullRequests(forkedRepos);
-    })
+}
 
 const pullRequests = (forkedRepos) => {
     forkedRepos.forEach((repo) => {
-        fetch('https://api.github.com/repos/Technigo/' + repo.name + '/pulls')
+        const PULL_PR = `https://api.github.com/repos/Technigo/${repo.name}/pulls?
+        per_page=100`
+
+        fetch(PULL_PR)
             .then((res) => res.json())
             .then((pullReqs) => {
-                //console.log(pullReqs);// loop foeach data är en array
+                let groupProject = true
                 pullReqs.forEach((pull) => {
-                    if (pull.user.login === username) {
-                        comments(pull);
-                        commits(pull);
-                    }
+                    if (pull.user.login === username){
+                        groupProject = false
+                        document.getElementById(`pull-${repo.name}`).innerHTML = `
+                        <a href = ${pull.html_url}> Go to pull request </a>
+                        `
+                    } 
                     
-                    
-        allProjects.innerHTML += `
-        <div>
-        <p> Commit messages: ${pullReq.commits_url.length}</p>
-
-        </div>
-        `
                 })
-            })
 
+                if (groupProject === true){
+                    document.getElementById(`pull-${repo.name}`).innerHTML = `
+                        <p> No pull request, group project </p>
+                        `
+                }
+
+               /* const myPullRequests = pullReqs.find((pullReqs) => 
+                    pullReqs.user.login === repo.owner.login)
+
+                    if (myPullRequests) {
+                        commits(myPullRequests.commits_url, repo.name)
+                    } else {
+                        document.getElementById(`commit-${repo.name}`).innerHTML = ''
+                    }
+
+                })*/
+            })
     })
 }
+
+//function to get commit number for each project
+const commits = (myCommits, repoName) => {
+    let commitUrl = myCommits.replace('{/sha}','')
+    fetch(commitUrl)
+        .then((res) => res.json())
+        .then((commitNumber) => {
+            document.getElementById(`commit-${repoName}`).innerHTML += commitNumber.length;
+        })
+}
+
+
 //function to get review comments for each project
-const comments = (pullReq) => {
+/*const comments = (pullReq) => {
     //console.log(pullReq)
     fetch(pullReq.review_comments_url)
         .then((res) => res.json())
         .then((rewComment) => {
             console.log(rewComment);
         })
-}
+}*/
 
-//function to get commit number for each project
-const commits = (pullReq) => {
-    fetch(pullReq.commits_url)
-        .then((res) => res.json())
-        .then((commitNumber) => {
-            console.log(commitNumber[commitNumber.length])
-        })
-}
+
+
+//Invok the userProfile function and repositorie fetch
+userProfile()
+repositories()
 
