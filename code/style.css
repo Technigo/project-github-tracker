@@ -215,8 +215,8 @@ header {
   .layout {
     width: 44vw;
     max-width: 500px;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+    /* padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right); */
   }
   
   header {
@@ -228,6 +228,7 @@ header {
   .projects {
     margin-left: 0;
     max-width: 450px;
+    padding-right: env(safe-area-inset-right);
   }
   
   .project-wrapper {
@@ -243,6 +244,7 @@ header {
     grid-row: 2 / span 2;
     margin-right: 0;
     max-width: 400px;
+    padding-left: env(safe-area-inset-left);
   }
 
 }
