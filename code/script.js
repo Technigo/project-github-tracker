@@ -11,7 +11,7 @@ let technigoRepos;
 const options = {
   method: 'GET',
   headers: {
-      Authorization: 'token' + API_TOKEN
+      Authorization: 'token ' + API_TOKEN
   }
 }
 

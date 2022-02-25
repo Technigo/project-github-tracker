@@ -121,6 +121,7 @@ a {
 
 .no-pullrequest {
   font-style: italic;
+  font-size: small;
 }
 
 .message-list {
