@@ -10,6 +10,7 @@
   text-decoration: none;
 }
 
+/* Overall Styling */
 body {
   background: white;
   font-family: 'Roboto Mono', monospace;
@@ -25,8 +26,7 @@ p {
   line-height: 1.5;
 }
 
-/* Header */
-
+/* Header Section with Avatar & Username */
 header {
   display: flex;
   align-items: center;
@@ -41,15 +41,10 @@ header {
 .avatar {
   border-radius: 50%;
   height: 40px;
+  margin-top: 1vmin;
 }
 
-/* Projects Section */
-.projects {
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+/* Elements Across Sections */
 .title {
   background-color: #2D2E2F;
   padding: 15px 0 20px;
@@ -58,6 +53,13 @@ header {
   border-radius: 5px;
   overflow: hidden;
   max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Projects Section */
+.projects {
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
 }
@@ -126,7 +128,7 @@ header {
 /* Media Queries */
 
 /* Media Query - Tablet */
-@media (min-width: 668px) and (max-width: 930px) {
+/* @media (min-width: 668px) and (max-width: 930px) {
   body {
     display: grid;
     grid-template-columns: 2;
@@ -142,8 +144,6 @@ header {
   }
   
   .chart-container {
-
-    /* padding: 0; */
     margin-right: 0;
     max-width: 44vw;
   }
@@ -172,10 +172,10 @@ header {
     margin-left: 0;
     max-width: 44vw;
   }
-}
+} */
 
 /* Media Query - Desktop */
-@media (min-width: 930px) {
+/* @media (min-width: 930px) {
 
 body {
   display: grid;
@@ -191,6 +191,7 @@ header {
 }
 
 .chart-container {
+
   padding: 0;
   margin-right: 0;
   width: 400px;
@@ -221,10 +222,10 @@ header {
   width: 400px;
 }
 
-}
+} */
 
 /* Media Query - Mobile Landscape */
-@media (min-width: 640px) and (max-height: 420px) and (orientation: landscape) {
+/* @media (min-width: 640px) and (max-height: 420px) and (orientation: landscape) {
   body {
     display: grid;
     grid-template-columns: 2;
@@ -264,4 +265,4 @@ header {
     max-width: 44vw;
   }
 
-}
+} */
