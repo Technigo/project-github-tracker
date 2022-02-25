@@ -211,24 +211,18 @@ const sprintProgress = () => {
         type: 'bar',
         data: data,
         options: {
+            scales: {
+                x: {
+                    ticks: {
+                        stepSize: 1,
+                    }
+                }
+            },
             indexAxis: 'y',
-            // xAxisID: 'Weeks',
             plugins: {
                 legend: {
                     display: false,
-                    position: 'top',
                 },
-            scales: {
-                xAxis: {
-                    ticks: {
-                        // precision: 0,
-                        // stepSize: 1,
-                        min: 0,
-                        stepSize: 1,
-                        max: 4,
-                    }
-                }
-            }
             }
         }
     };

@@ -1,3 +1,6 @@
+// Global Font Family for Chart
+Chart.defaults.font.family = 'Roboto Mono, monospace';
+
 //DOM-selector
 const ctx = document.getElementById('myChart')
 
@@ -28,15 +31,11 @@ const completedProjects = (complete) => {
         options: {
             plugins: {
                 legend: {
-                    // display: false,
                     position: 'top',
-                    // align: 'start',
                     labels: {
                         font: {
-                            family: 'Roboto Mono, monospace',
                             size: 16,
                         },
-                        // padding: 20
                     }
                 },
             }
