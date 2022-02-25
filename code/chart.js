@@ -32,5 +32,5 @@ const fetchChart = (repos) => {
     },
   };
 
-  const myChart = new Chart(document.getElementById("chart"), config);
+  const myChart = new Chart(ctx, config);
 };
