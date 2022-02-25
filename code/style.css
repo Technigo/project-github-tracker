@@ -137,6 +137,10 @@ a {
   overflow: auto;
 }
 
+.repo-name {
+  text-transform: capitalize;
+}
+
 .footer-box {
   display: flex;
   justify-content: center;

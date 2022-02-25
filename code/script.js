@@ -1,9 +1,10 @@
-const username = 'nadialefebvre'
-const API_USER = `https://api.github.com/users/${username}`
-const API_REPOS = `https://api.github.com/users/${username}/repos`
 const userBox = document.getElementById('userBox')
 const reposBox = document.getElementById('reposBox')
 const sortingDropdown = document.getElementById('sortingDropdown')
+
+const username = 'nadialefebvre'
+const API_USER = `https://api.github.com/users/${username}`
+const API_REPOS = `https://api.github.com/users/${username}/repos`
 
 const API_TOKEN = TOKEN
 const options = {
@@ -20,28 +21,32 @@ const openTab = (event, tabName) => {
     for (i = 0; i < repoContent.length; i++) {
         repoContent[i].style.display = "none" // not displayed at first
     }
+
     let tabButton = event.currentTarget.parentNode.getElementsByClassName("tab-button")
     // when another button is clicked, "active" class is removed from the other buttons of the same card
     for (i = 0; i < tabButton.length; i++) {
-        tabButton[i].className = tabButton[i].className.replace(" active", "") 
+        tabButton[i].className = tabButton[i].className.replace(" active", "")
     }
+
     document.getElementById(tabName).style.display = "block"
     event.currentTarget.className += " active" // changes the classname on click to "active"
 }
 
 // Function to create the profile part of the header with user name and picture 
+// -------------------------------------------------- FETCH 1 --------------------------------------------------
 const createProfile = () => {
     fetch(API_USER, options)
         .then(res => res.json())
         .then(data => {
             userBox.innerHTML = `
-                    <img src="${data.avatar_url}" class="user-picture">
-                    <h2>${data.name}</h2>
+                <img src="${data.avatar_url}" class="user-picture" alt="user picture">
+                <h2>${data.name}</h2>
             `
         })
 }
 
 // Function to create all repo cards
+// -------------------------------------------------- FETCH 2 --------------------------------------------------
 const createRepoCard = (reposToUse = null) => {
     fetch(API_REPOS, options)
         .then(res => res.json())
@@ -57,10 +62,12 @@ const createRepoCard = (reposToUse = null) => {
                     sortByNameAZ(filteredRepos)
                 }
                 reposBox.innerHTML = ''
+                // function to create all repo cards called after sorting
                 createRepoCard(filteredRepos)
             }
 
-            // conditionals so the repos chart is drawn only once
+            // conditionals so the repos chart from chart.js is drawn only once
+            // filtering of the repos forked from technigo
             let filteredRepos
             if (reposToUse === null) {
                 filteredRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'))
@@ -70,24 +77,23 @@ const createRepoCard = (reposToUse = null) => {
                 filteredRepos = reposToUse
             }
 
-// filtering of the repos
             filteredRepos.forEach(repo => {
-                // function called to set the HTML structure of each repo card
+                // function called to set the HTML structure of each repo card filtered
                 setRepoCardStructure(repo)
 
-                const options = { day: 'numeric', month: 'numeric', year: 'numeric' }
-                document.getElementById(`${repo.name}-repoInfos`).innerHTML += `
+                document.getElementById(`${repo.name}-repoData`).innerHTML += `
                     <p>URL: <a href="${repo.html_url}">${repo.name}</a></p>
                     <p>Default branch : ${repo.default_branch}</p>
-                    <p>Last push: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
+                    <p>Last push: ${new Date(repo.pushed_at).toLocaleDateString('en-GB')}</p>
                 `
-                // Get the element with id="defaultOpen" and click on it
+
+                // get the element with id="defaultOpen" and click on it
                 document.getElementById(`${repo.name}-defaultOpen`).click()
 
-                // functions called after the right repos are fetched
+                // functions called after filtering the right repos
                 addCommits(repo)
-                fetchPullRequest(repo)
                 addLanguageChart(repo)
+                fetchPullRequest(repo)
             })
         })
 }
@@ -97,50 +103,49 @@ const setRepoCardStructure = (repo) => {
     reposBox.innerHTML += `
         <div class="repo-card">
             <div class="repo-tabs">
-                <button class="tab-button" onclick="openTab(event, '${repo.name}-infos')" id="${repo.name}-defaultOpen">Data</button>
+                <button class="tab-button" onclick="openTab(event, '${repo.name}-data')" id="${repo.name}-defaultOpen">Data</button>
                 <button class="tab-button" onclick="openTab(event, '${repo.name}-languages')">Languages</button>
                 <button class="tab-button" onclick="openTab(event, '${repo.name}-commitMessages')">Commits</button>
                 <button class="tab-button" onclick="openTab(event, '${repo.name}-pullComments')">Pull request</button>
             </div>
 
-            <div class="repo-content" id="${repo.name}-infos">
-                <h3>${repo.name}</h3>
-                <div id=${repo.name}-repoInfos></div>
+            <div class="repo-content" id="${repo.name}-data">
+                <h3 class="repo-name">${repo.name.replace('project-', '').replace('-', ' ')}</h3>
+                <div id=${repo.name}-repoData></div>
             </div>
 
             <div class="repo-content" id="${repo.name}-languages" style="display: none">
-                <h3>${repo.name}</h3>
+                <h3 class="repo-name">${repo.name.replace('project-', '').replace('-', ' ')}</h3>
                 <div id=${repo.name}-repoLanguages></div>
             </div>
 
             <div class="repo-content" id="${repo.name}-commitMessages" style="display: none">
-                <h3>${repo.name}</h3>
+                <h3 class="repo-name">${repo.name.replace('project-', '').replace('-', ' ')}</h3>
                 <h5>Messages</h5>
                 <div id=${repo.name}-repoCommitMessages></div>
             </div>
 
             <div class="repo-content" id="${repo.name}-pullComments" style="display: none">
-                <h3>${repo.name}</h3>
+                <h3 class="repo-name">${repo.name.replace('project-', '').replace('-', ' ')}</h3>
                 <div id=${repo.name}-repoPullComments>(none)</div>
             </div>
         </div>
     `
 }
 
-// Function to add the commits info in the right place
+// Function to add the commits data in the right place
+// -------------------------------------------------- FETCH 3 (inside of FETCH 2) --------------------------------------------------
 const addCommits = (repo) => {
-    fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
+    fetch(`https://api.github.com/repos/${username}/${repo.name}/commits?per_page=100`, options)
         .then(res => res.json())
         .then(data => {
-            // why item.author.login === username doesn't work here??
+            // I need to solve why item.author.login === username doesn't work here
             const userCommits = data.filter((item) => item.commit.author.name === 'Nadia Lefebvre')
 
-            document.getElementById(`${repo.name}-repoInfos`).innerHTML += `
+            document.getElementById(`${repo.name}-repoData`).innerHTML += `
                 <p>Fork commits: ${userCommits.length} (on ${data.length})</p>
             `
 
-            // const userFiveLastCommits = userCommits.slice(1, 5)
-            // userFiveLastCommits.forEach(item => {
             userCommits.forEach(item => {
                 document.getElementById(`${repo.name}-repoCommitMessages`).innerHTML += `
                     <li>${item.commit.message}</li>
@@ -150,6 +155,7 @@ const addCommits = (repo) => {
 }
 
 // Function to add the language chart in each repo card
+// -------------------------------------------------- FETCH 4 (inside of FETCH 2) --------------------------------------------------
 const addLanguageChart = (repo) => {
     fetch(`https://api.github.com/repos/${username}/${repo.name}/languages`, options)
         .then(res => res.json())
@@ -162,36 +168,47 @@ const addLanguageChart = (repo) => {
             const idChart = `${repo.name}Chart`
 
             document.getElementById(`${repo.name}-repoLanguages`).innerHTML += `
-            <div class="languages-chart">
-            <canvas id=${idChart}></canvas>
-            </div>
-`
-// function called from chart.js
+                <div class="languages-chart">
+                <canvas id=${idChart}></canvas>
+                </div>
+            `
+            // function called from chart.js
             drawLanguagesChart(html, css, js, idChart)
         })
 }
 
 // Function to fetch the pull request for each repo card
+// -------------------------------------------------- FETCH 4 (inside of FETCH 2) --------------------------------------------------
 const fetchPullRequest = (repo) => {
-    // fix it because only 1 page of 30 PR is fetched, link: https://docs.github.com/en/rest/reference/pulls#list-pull-requests (added ?per_page=100&page=1 to URL, but it doesn't fix the problem for when the PR will go to page 2-3-4...)
-    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100&page=1`, options)
+    // only 1 page of 100 PR is fetched, this will be an issue when the PR will go to page 2
+    fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100&page=1`)
         .then(res => res.json())
         .then(data => {
-            const userPulls = data.filter((item) => item.user.login === username)
-            userPulls.forEach(pull => {
-                fetch(pull.review_comments_url)
-                    .then(res => res.json())
-                    .then(data => {
-                        const reviewID = data[0].pull_request_review_id
-                        // function called for review info
-                        addCodeReviewInfos(repo, pull, reviewID)
-                    })
-            })
+            fetchCodeReview(data, repo)
         })
 }
 
-// Function to add the code review info in each repo card
-const addCodeReviewInfos = (repo, pull, reviewID) => {
+// Function to fetch the code review data for each repo card
+// -------------------------------------------------- FETCH 5 (inside of FETCH 4) --------------------------------------------------
+const fetchCodeReview = (data, repo) => {
+    const userPulls = data.filter((item) => item.user.login === username)
+    userPulls.forEach(pull => {
+        fetch(pull.review_comments_url)
+            .then(res => res.json())
+            .then(data => {
+                if (data.length) {
+                    const reviewID = data[0].pull_request_review_id
+                    // function called to add code review data
+                    addCodeReviewData(repo, pull, reviewID)
+                }
+            })
+    })
+}
+
+
+// Function to add the code review data in each repo card
+// -------------------------------------------------- FETCH 6 (inside of FETCH 5) --------------------------------------------------
+const addCodeReviewData = (repo, pull, reviewID) => {
     fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls/${pull.number}/reviews/${reviewID}`)
         .then(res => res.json())
         .then(data => {
@@ -246,23 +263,6 @@ const sortDateOldest = (filteredRepos) => {
     })
 }
 
-// First functions called when the page load
+// First functions called when accessing the page
 createProfile()
 createRepoCard()
-
-
-// To try
-// sortByCommits()
-// const sortByCommits = () => {
-//     fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
-//         .then(res => res.json())
-//         .then(data => {
-//             // why item.author.login === username doesn't work here??
-//             const userCommits = data.filter((item) => item.commit.author.name === 'Nadia Lefebvre')
-//             console.log(userCommits.length)
-
-//             userCommits.sort(function (a, b) {
-//                 return a.length - b.length
-//             })
-//         })
-// }

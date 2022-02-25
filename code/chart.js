@@ -24,16 +24,14 @@ const drawReposChart = (amount) => {
         options: {
             indexAxis: 'y', // for horizontal bar graph instead of vertical
             scales: {
-                // removes grid lines for y axis
                 y: {
                     grid: {
-                        display: false,
+                        display: false, // removes grid lines for y axis
                         borderColor: 'white',
                     }
                 },
-                // removes x axis
                 x: {
-                    display: false,
+                    display: false, // removes x axis
                 }
             },
             plugins: {
@@ -90,7 +88,11 @@ const drawLanguagesChart = (html, css, js, idChart) => {
             scales: {
                 r: {
                     ticks: {
-                        display: false // removes vertical numbers
+                        display: false, // removes vertical numbers
+                        // callback added because there is an issue with ticks, link: https://github.com/chartjs/Chart.js/issues/8092
+                        callback: function (val, index) {
+                            return val
+                        },
                     },
                     grid: {
                         display: false // removes circular lines
