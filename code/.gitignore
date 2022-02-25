@@ -1,0 +1,8 @@
+# This will ignore node modules
+
+# This will ignore all text files
+
+
+# This will ignore the file storing the token
+token.js
+
