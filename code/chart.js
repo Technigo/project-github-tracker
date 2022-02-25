@@ -14,8 +14,7 @@ const labels = [
     datasets: [{
       label: 'My First dataset',
       data: [amount, 19-amount],
-      backgroundColor: ['rgba(239, 191, 126, 255)', 'rgba(232, 183, 162)' ],
-      // backgroundColor: ['rgb(131, 28, 147)', 'rgba(19, 115, 199, 0.776)' ],
+      backgroundColor: ['rgba(203,108,127,255)', 'rgba(245,243,240)' ],
       borderColor: 'none',
     }]
   };
@@ -25,7 +24,7 @@ const labels = [
     data: data,
     options: {
         responsive: true,
-        
+        maintainAspectRatio: true,
     }
   };
 

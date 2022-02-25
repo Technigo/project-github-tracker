@@ -34,23 +34,20 @@ const getRepos = () => {
         </div>` 
                 
         userDataWrapper.innerHTML += 
-        `<h1>${data[0].owner.login}</h1>
-        <p>Frida Axelsson</>`
+        `<h1>Github tracker</h1>
+        <p>${data[0].owner.login} : Frida Axelsson</p>`
 
         //display repo info
         forkedRepos.forEach((data) => {
-
             projects.innerHTML +=
             ` <div class="repo-card"> 
             <a href="${data.html_url}">
-                <h3>${data.name}</h3>
-                </a>
-            
+                <h3>${data.name}</h3></a>
                     <p>Branch: ${data.default_branch}</p>
                     <p>Last push: ${new Date(data.pushed_at).toDateString()}</p>
-                    <p ="commits"> nr of commits: ${data.length}</p>
+                    <p ="commits"> Nr of commits: ${data.length}</p>
              </div>`
-            })
+        })
             
             drawChart(forkedRepos.length)
     })
