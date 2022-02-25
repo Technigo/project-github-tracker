@@ -54,12 +54,14 @@ fetch(API_URL_REPO, options)
         //-------filter out only technigo projects
 
         const myTechnigoRepos = data.filter(repo => repo.name.includes('project-'));
-        console.log('Filtered:', myTechnigoRepos)
+       // console.log('Filtered:', myTechnigoRepos)
 
 
         //------function that generates projects html
         const printProjects = (data) => {
 
+        //this is invoking(drawing) the chart, using the filtered number of repos as arguments within the chart.js-file
+        drawChart(data.length)
         //for (let i = 0; i < data.length; i++)
         myTechnigoRepos.forEach(repo => {
 

@@ -2,7 +2,7 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
-
+const drawChart = (finishedProjects) => {
 
 
   const data = {
@@ -13,9 +13,9 @@ const ctx = document.getElementById('chart').getContext('2d')
                          'rgba(255, 99, 132, 0.2)',
                          'rgba(54, 162, 235, 0.2)',
                          ],
-                         
+
       borderColor: 'rgb(255, 99, 132)',
-      data: [3, 10],
+      data: [finishedProjects, 19-finishedProjects],
     }]
   };
 
@@ -28,11 +28,9 @@ const ctx = document.getElementById('chart').getContext('2d')
   };
 
 
-
-
-
   const myChart = new Chart( ctx, config );
 
+}
 
 
 
