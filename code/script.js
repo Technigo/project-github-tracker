@@ -35,7 +35,7 @@ fetch(API_USER, options)
     .then ((data) => {
         console.log(data)
         header.innerHTML = `
-        <a class="img-link" href="https://github.com/Neaa99"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
+        <a class="img-link" target="_blank" href="https://www.linkedin.com/in/linnea-frisk-59a170206/"><img src="${data.avatar_url}" width="100px" alt="User image"></a>
             <div class="header-text">
             <p>${data.name}</p>
                 <h1><span>${data.login}</span></h1>
@@ -59,7 +59,7 @@ fetch(API_USER, options)
             technigoRepositories.forEach((repo) => {
                 container.innerHTML += `
                 <div class="technigo-repos" id="technigoRepos">
-                    <a class="netlify-link"  href="https://fascinated-jury-3fb.notion.site/Netlify-5e83f8322f8d4b92a96b4f0e8c2ccf96"><h2 id="repoName">${repo.name}</h2></a>
+                    <a class="netlify-link" target="_blank" href="https://fascinated-jury-3fb.notion.site/Netlify-5e83f8322f8d4b92a96b4f0e8c2ccf96"><h2 id="repoName">${repo.name}</h2></a>
                     <h3 id="description">${repo.description}</h3>
                     <div class="info">
                         <p><span>• Last push:</span>  ${new Date(repo.pushed_at).toDateString()}</p>
@@ -67,7 +67,7 @@ fetch(API_USER, options)
                         <p><span>• Main language:</span> ${repo.language}</p>
                         <p id="commit-${repo.name}"><span>• Number of commits:</span> </p>
                     </div>
-                    <p> <a class="repo-link" href="${repo.html_url}">Link to Repo</a></p>
+                    <p> <a class="repo-link" target="_blank" href="${repo.html_url}">Link to Repo</a></p>
                 
                 </div>
                 `
