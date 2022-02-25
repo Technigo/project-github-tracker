@@ -31,7 +31,7 @@ const getRepos = (sort) => {
 
                 if (repo.fork === true && repo.name.startsWith('project')) {
                     arrayWithRepos.push(repo.name);
-                    projects.innerHTML += `<tr><td id="${repo.name}">${repo.name}</td><td>${new Date(repo.updated_at).toLocaleDateString('sv-SE')}</td><td>${repo.default_branch}</td><td id="commits-${repo.name}"></td><td><a class="repo-url" href="${repo.html_url}">${repo.html_url}</a></td></tr>`
+                    projects.innerHTML += `<tr id="tr-${repo.name}"><td>${repo.name}</td><td>${new Date(repo.updated_at).toLocaleDateString('sv-SE')}</td><td>${repo.default_branch}</td><td id="commits-${repo.name}"></td><td><a class="repo-url" href="${repo.html_url}">${repo.html_url}</a></td><td id="open-${repo.name}">Open</td></tr>`
                 }
             });
             countRepos = arrayWithRepos.length;
