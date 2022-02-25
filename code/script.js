@@ -75,24 +75,19 @@ const findingPulls = (repo) => {
 
 }
 
-  //const findingCommits = (repo) => {
-        //console.log(repo)
-        //fetch(`https://api.github.com/repos/idanaslund/${repo.name}/commits`, options)
-        //.then((res) => res.json())
-        //.then((commits) => {
-           // console.log(commits)
-    
-           // profile.innerHTML + `
-           // <p>Number of commits: ${commits.length}</p>`
-    
-          
-    
-    //})
-    
-//}
-//findingCommits()
-    
-//} 
+findingPulls()
+
+  const findingCommits = (myCommitsUrl, myRepoName) => {
+        fetch(myCommitsUrl, options)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+
+})
+}
+findingCommits()
+
 
 
 
