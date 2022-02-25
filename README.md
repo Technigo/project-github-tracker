@@ -9,4 +9,4 @@ My biggest problem this week was to make all the fetches and to fetch the differ
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://compassionate-kowalevski-725997.netlify.app/
