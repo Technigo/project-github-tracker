@@ -3,14 +3,16 @@ import FilterButtonComp from "./filterButton";
 export default function FilterComp() {
   const filterContainer = createElement("div", "filter-container");
   const filterForm = createElement("form", "filter-form");
-  filterForm.innerHTML = `
-    <input
-    type="text"
-    class="filter-input"
-    placeholder="Find a repository..."
-  />
-    `;
-
+  const filterFormInput = createElement("input", "filter-input");
+  filterFormInput.setAttribute("type", "text");
+  filterFormInput.setAttribute("placeholder", "Find a repository..");
+  filterForm.appendChild(filterFormInput);
+  // filterForm.innerHTML = `
+  //   <input
+  //   type="text"
+  //   class="filter-input"
+  //   placeholder="Find a repository..."
+  //   />`;
   const sortByLanguage = ["javascript", "typescript", "html", "css"];
   const sortBy = ["last updated", "name"];
 
@@ -35,6 +37,7 @@ export default function FilterComp() {
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log("filter form submitted");
+    filterForm.reset();
   });
 
   filterContainer.appendChild(filterForm);

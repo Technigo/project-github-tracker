@@ -1,6 +1,7 @@
 import "./style.css";
 import MainComp from "./components/main";
 import HeaderComp from "./components/header";
+import makeChart from "./technigoChart";
 
 import { allRepo } from "./dummyData/allRepo";
 import { userInfo } from "./dummyData/userInfo";
@@ -10,6 +11,7 @@ const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
 console.log(TOKEN);
 let myLoginName;
+let completedProjects;
 async function fetchGithubData(path) {
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Basic ${TOKEN}`);
@@ -41,11 +43,15 @@ async function init() {
 
     // const technigoRepoDataRaw = await filterTechnigo(allRepository);
     const technigoRepoDataRaw = repoData;
+
+    //filter projects not forked from technigo
     const technigoRepoData = technigoRepoDataRaw.filter(
       (repo) => repo !== undefined
     );
     console.log(technigoRepoData);
+    completedProjects = technigoRepoData.length;
 
+    //sort by last commit date
     technigoRepoData.sort(function (a, b) {
       return b.latestCommitDate - a.latestCommitDate;
     });
@@ -133,5 +139,6 @@ function setRepoData(latestCommit, allCommitCount, repoInfo, myPull) {
 }
 
 init().then(() => {
+  makeChart(completedProjects, "chart");
   console.log("app is running!");
 });

@@ -12,6 +12,8 @@ export default function FilterButtonComp(
 ) {
   const filterBtnContainer = createElement("div", "filter-btn-container");
   const filterBtn = createElement("button", "filter-btn");
+  filterBtn.setAttribute("type", "button");
+
   filterBtn.id = "languageBtn";
   filterBtn.innerHTML = `
       <span> ${buttonName} </span>
@@ -19,18 +21,26 @@ export default function FilterButtonComp(
         src=${arrowButton}
         alt="checked icon"
         class="arrow-icon"
-      />
-      `;
+      />`;
 
   const filterBtnPositioner = createElement("div", "filter-btn-positioner");
   const filterSelectorLists = createElement("ul", filterTypeClassname);
   filterSelectorLists.id = filterId;
-  filterSelectorLists.innerHTML = `
-      <li class="${listItemClassname} filter-title">
-          <span>Select type</span>
-          <button class="close-btn">&times;</button>
-      </li>
-      `;
+
+  const filterTitleContainer = createElement("li", listItemClassname);
+  filterTitleContainer.classList.add("filter-title");
+
+  const filterTitle = createElement("span", "span-title");
+  filterTitle.innerText = "Select type";
+
+  const closeBtn = createElement("button", "close-btn");
+  closeBtn.setAttribute("type", "button");
+  closeBtn.innerHTML = "&times;";
+
+  filterTitleContainer.appendChild(filterTitle);
+  filterTitleContainer.appendChild(closeBtn);
+  filterSelectorLists.appendChild(filterTitleContainer);
+
   const listAttributes = filterLists;
   listAttributes.forEach((item) => {
     const li = createList(listItemClassname, item);
@@ -38,23 +48,42 @@ export default function FilterButtonComp(
   });
   filterBtnPositioner.appendChild(filterSelectorLists);
 
-  filterSelectorLists.addEventListener("click", (e) => {
-    console.log("selector clicked!");
-  });
-
   filterBtnContainer.appendChild(filterBtn);
   filterBtnContainer.appendChild(filterBtnPositioner);
 
+  // addEventlisteners
+  filterSelectorLists.addEventListener("click", (e) => {
+    if (e.target.nodeName !== "BUTTON" && e.target.nodeName !== "LI") {
+      return;
+    }
+    if (e.target.id !== "") {
+      console.log("filter by", e.target.id);
+    }
+    filterSelectorLists.classList.remove("active");
+  });
+
+  filterBtn.onclick = function displaySelection() {
+    const sortBtn = document.querySelector("#sortSelector");
+    const languageBtn = document.querySelector("#languageSelector");
+    if (
+      sortBtn.className.includes("active") ||
+      languageBtn.className.includes("active")
+    ) {
+      sortBtn.classList.remove("active");
+      languageBtn.classList.remove("active");
+    } else {
+      filterSelectorLists.classList.add("active");
+    }
+  };
   return filterBtnContainer;
 }
 
 function createList(classname, text) {
   const listItem = createElement("li", classname);
   listItem.id = text.replace(/\s/g, "");
-  const img = createElement("img", "checked-icon");
-  img.src = checkedIcon;
-
-  listItem.appendChild(img);
-  listItem.innerText = capitalizeFirstLetter(text);
+  listItem.innerHTML = `
+    <img class="filter-check-icon" src=${checkedIcon} alt="checked icon" />
+    ${capitalizeFirstLetter(text)}
+    `;
   return listItem;
 }

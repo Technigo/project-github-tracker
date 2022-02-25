@@ -19,6 +19,11 @@ export default function UserProfileComp(
   const emailElem = createElement("p", "email");
   emailElem.innerText = email;
 
+  const canvasContainer = createElement("div", "canvas-container");
+  const canvas = createElement("canvas", "canvas");
+  canvas.id = "chart";
+  canvasContainer.appendChild(canvas);
+
   userInfoContainer.appendChild(usernameElem);
   userInfoContainer.appendChild(emailElem);
 
@@ -31,5 +36,6 @@ export default function UserProfileComp(
 
   aside.appendChild(profileContainer);
   aside.appendChild(githubLinkElem);
+  aside.appendChild(canvasContainer);
   return aside;
 }
