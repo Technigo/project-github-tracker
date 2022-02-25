@@ -14,6 +14,7 @@ const options = {
     }
 }
 
+// Fetching profile info
 const addingProfile = () => {
     fetch(`https://api.github.com/users/${username}`, options)
     .then((res) => res.json())
