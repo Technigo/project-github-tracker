@@ -2,7 +2,7 @@ const projects = document.getElementById('projects')
 const profile = document.getElementById('profile')
 const repos = document.getElementById('repos')
 
-const username = 'StephannieMedenilla'
+const username = 'SteppbySteph'
 const USER_PROFILE = `https://api.github.com/users/SteppbySteph`
 const USER_REPO = `https://api.github.com/users/SteppbySteph/repos`
 
@@ -22,7 +22,6 @@ const getProfile = () => {
     fetch(USER_PROFILE, options)
         .then(res => res.json())
         .then(data => {
-            console.log('repos', data)
             const user = data.name
             const avatar = data.avatar_url
             profile.innerHTML += `
@@ -96,7 +95,7 @@ const getRepos = () => {
 // After extracting the pull requests done by owner(see above) we now fetch data from each of the pull request (myPR ---> myPull) from the API URL commit_url.
 //This is displayed in the innerHTML with the value from commit.length.   
 const getCommitNr = (myPull, myRepoName) => {
-    fetch(myPull.commits_url)
+    fetch(myPull.commits_url, options)
         .then(res => res.json())
         .then((commit) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += `
