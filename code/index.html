@@ -15,22 +15,25 @@
 <body>
 
   <header>
-    <i class="fab fa-github" style="font-size: 50px; color: white; padding: 20px;"></i>
+    <i class="fas fa-bars" id="hamburger-icon"></i>
+    <i class="fab fa-github" id="github-icon"></i> 
+    <i class="fas fa-bell" id="bell-icon"></i>
   </header>
 
   <main>
 
-    <section id="profile-container"></section>
+    <div id="profile-container"></div>
 
     <section id="projects" class="projects"></section>
 
-    <section id="chart-wrapper">
+    <div id="chart-container">
+      <h2>My technigo projects in statistics</h2>
       <canvas id="chart"></canvas>
-    </section>
+    </div>
 
   </main>
 
-
+  <script src="./token.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 
