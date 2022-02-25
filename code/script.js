@@ -4,13 +4,8 @@ import HeaderComp from "./components/header";
 import makeChart from "./technigoChart";
 import LoadingStatusComp from "./components/spinner";
 
-import { allRepo } from "./dummyData/allRepo";
-import { userInfo } from "./dummyData/userInfo";
-import { repoData } from "./dummyData/repoData";
-
 const root = document.getElementById("root");
 const TOKEN = process.env.GITHUB_AUTH;
-
 let myLoginName;
 let completedProjects;
 let header;
@@ -49,13 +44,10 @@ async function init() {
   try {
     const value = await Promise.all([getUserInfo, getRepos]);
     const { login, avatar_url, html_url, name } = value[0];
-    // const { login, avatar_url, html_url, name } = userInfo;
     myLoginName = login;
     const allRepository = value[1];
-    // const allRepository = allRepo;
 
     const technigoRepoDataRaw = await filterTechnigo(allRepository);
-    // const technigoRepoDataRaw = repoData;
 
     //filter projects not forked from technigo
     const technigoRepoData = technigoRepoDataRaw.filter(
@@ -74,10 +66,8 @@ async function init() {
     console.error(e);
     root.innerHTML = `
       <div class="error-container">
-        ${e.message}
-      </div>
-      
-      `;
+       <span class="error-message">${e.message}</span>
+      </div> `;
   }
 }
 
