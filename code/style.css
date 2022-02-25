@@ -1,7 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap');
+
+/* CSS below is to reset default values such as margin, padding and box-sizing
+    and increase the resolution of the text */
+    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  background: #FFECE9;
+  background: #FEFBF3;
+  border: solid #2FC5EE 8px;
+  width: 100%;
+  font-family: 'Poppins';
+}
+
+p {
+  font-size: 10px;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'poppins'; 
+  font-size: 10px;
+  color: #FF1E00;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+img {
+  width: 45%;
+}
+
+.user-name {
+  writing-mode: vertical-rl;
+  font-family: 'Playfair Display';
+  font-size: 13vw;
+  color: #FF1E00;
+}
+
+span {
+  color: #FF1E00;
+  font-size: 5vw;
+}
+
+.bio {
+  display: block;
+  color: black;
+  font-family: 'Playfair Display';
+  font-size: 2vw;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  margin: 3rem 5rem;
+  border-top: 0.5px solid #333;
+  border-bottom: 0.5px solid #333;
+  padding: 20px 0;
+}
+
+.project-header{
+  font-size: 5vw;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  margin-top: 50px;
+  border-bottom: 3px solid #333;
 }
 
 .projects {
-  border: 1px solid black;
+  border-bottom: 1px solid #333;
+}
+
+.projects-right {
+  text-align: right;
+  min-width: 20%;
+}
+
+.projects-left {
+  min-width: 20%;
+  text-align: left;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 70px;
+}
+
+.projects:hover {
+  background-color: #333;
+  color: #2FC5EE;
+  transition: all 1.5s ease;
+  cursor: pointer;
+}
+.project-name {
+  font-size: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.test {
+  display: none;
+}
+
+.active + .test {
+  display: block;
+}
+
+.branch-name {
+
+}
+
+.pushed-at {
+
+}
+
+.pull-requests {
+  text-align: center;
+}
+
+.commits {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.project-url {
+  line-height: 12px;
+}
+
+.chart-wrapper {
+  width: 57%;
+  margin: 70px auto;
+}
+
+/* On screens that are 768px or more (tablet) */
+
+@media screen and (min-width: 768px) {
+  body {
+    border: 22px solid #2FC5EE;
+  }
+
+  .bio {
+    margin: 12rem 10rem;
+    padding: 50px;
+    font-size: 2.5vw;
+  }
+
+  .project-name {
+    font-size: 30px;
+  }
+
+  .project-header{
+    margin: 70px 0;
+  }
 }
