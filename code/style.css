@@ -11,7 +11,7 @@ header{
 
 .hero{
   background-image: url(./img/susan-wilkinson-SjhL-Zrol6A-unsplash.jpg) ;
-  background-position: left;
+  background-position: left bottom;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -67,22 +67,19 @@ margin-bottom: 25%;
 }
 
 .repo-card{
-  height: 200px;
+  height: 40vh;
   width: 80vw;
   background-color: #f5f3f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .repo-card a {
   text-decoration: none;
   color: black;
 
-}
-.repo-card h3{
-  text-align: center;
-}
-
-.repo-card p{
-  padding: 0 10%;
 }
 
 .chart-box{
@@ -105,7 +102,7 @@ footer{
   margin-top: 25%;
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) and (orientaion: landscape) {
   .hero{
   height: 400px;
   }
@@ -131,7 +128,15 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: solid;
   }
+}
+
+.repo-card h3{
+  margin-bottom: 10px;
+}
+.repo-card p{
+  margin: 2px;
 }
 
 @media (min-width: 992px){
