@@ -7,8 +7,15 @@ const user = 'josse79'
 const API_USER = `https://api.github.com/users/${user}`
 const API_REPOS_LIST = `https://api.github.com/users/${user}/repos`
 
+const options = {
+  method: 'GET',
+  headers: {
+    Authorization: 'API_KEY'
+  }
+}
+
 const getUser = () => {
-  fetch(API_USER)
+  fetch(API_USER, options)
   .then(res => res.json())
   .then(data => {
     userContainer.innerHTML = `
@@ -19,7 +26,7 @@ const getUser = () => {
 }
 
 const getRepos = () => {
-  fetch(API_REPOS_LIST)
+  fetch(API_REPOS_LIST, options)
   .then(res => res.json())
   .then(data => {
     const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
@@ -39,7 +46,7 @@ const getRepos = () => {
 
   const getPullRequests = (repos) => {
     repos.forEach(repo => {
-      fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+      fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`, options)
       .then(res => res.json())
       .then(data => {
         const filteredPulls = data.find((pull) => pull.user.login === repo.owner.login)
@@ -56,7 +63,7 @@ const getRepos = () => {
   }
 
   const getCommits = (URL, repoName) => {
-    fetch(URL)
+    fetch(URL, options)
     .then(res => res.json())
     .then(data => {
       document.getElementById(repoName).innerHTML += `
@@ -65,7 +72,7 @@ const getRepos = () => {
   }
 
   const getReview = (URL, repoName) => {
-    fetch(URL)
+    fetch(URL, options)
     .then(res => res.json())
     .then(data => {
      console.log(data)
