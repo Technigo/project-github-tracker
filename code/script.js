@@ -19,7 +19,6 @@ const addingProfile = () => {
     fetch(`https://api.github.com/users/${username}`, options)
     .then((res) => res.json())
     .then((profileInfo) => {
-        console.log (profileInfo)
         profile.innerHTML += `
         <img src="${profileInfo.avatar_url}">
         <a href="${profileInfo.html_url}">${profileInfo.login}</a>`
@@ -27,19 +26,19 @@ const addingProfile = () => {
 }
 addingProfile()
 
+// The first fetch of repos, calling the function below all other functions
+
 const addingRepos = () => {fetch(API_URL, options)
     .then((res) => res.json())
     .then((repos) => {
-        console.log(repos)
-        console.log(API_TOKEN)
     
+    // Filtering all repos I've forked and that starts with the word project.
         const forkedRepos = repos.filter(
             repo => repo.fork && repo.name.startsWith('project-')
             ) 
-            
+    // For all filtered repos I put the following info on my page      
         forkedRepos.forEach((repo) => {
-            console.log(forkedRepos)
-            let updated = new Date(repo.updated_at)
+            let updated = new Date(repo.updated_at)       
         projects.innerHTML += `
         <div class="repos">
         <h4>${repo.name}</h4>
@@ -54,26 +53,27 @@ const addingRepos = () => {fetch(API_URL, options)
         </div>`
       
      })
-     findingPulls(forkedRepos)
+     findingPulls(forkedRepos)           // Bringing all filtered repos to the next function
     })
     
      }
 
 
-
-const findingPulls = (repos) => {
-        repos.forEach((repo) => {
-            console.log("repo", repo)
-      
+const findingPulls = (repos) => {                   
+        repos.forEach((repo) => {                   //For all filtered repos I fetch each pull request    
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
     .then((res) => res.json())
     .then((data) => {
-        console.log(data, "data")
 
-        const pulls = data.find((pull)=> pull.user.login === repo.owner.login)
+        const pulls = data.find((pull)=> pull.user.login === repo.owner.login)       //Comparing all pull requests from Technigo to show only the ones with me as owner
         console.log("pulls", pulls)
-        findingCommits(pulls.commits_url, repo.name)
+        if (pulls !== undefined ) {                                    // If pull requests exist = 
+        findingCommits(pulls.commits_url, repo.name)                    //passing the commits of these pull requests to the next function
         console.log(pulls.commits_url, "commits")
+        } else {                                                         // If pull requests does not exist = display this
+         document.getElementById(`commit-${repo.name}`).innerHTML += ' Is either a group project or pull request does not exist'
+        }
+        
     })
     })
 }
@@ -83,7 +83,7 @@ const findingPulls = (repos) => {
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
-            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+            document.getElementById(`commit-${myRepoName}`).innerHTML += data.length        //Getting the number of commits to be displayed on the page       
 
         })
     }
