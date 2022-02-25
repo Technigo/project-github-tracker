@@ -3,7 +3,7 @@ const projects = document.getElementById('projects')
 const userInfo = document.getElementById('user-info')
 const footer = document.getElementById('footer')
 
-//GITHUB
+//GITHUB URLS
 const user = 'sofiaringstedt';
 const repo_URL = `https://api.github.com/users/${user}/repos`;
 const user_URL = `https://api.github.com/users/${user}`;
@@ -16,13 +16,13 @@ const options = {
     }
 }
 
+//function to display profileinfo fetched from github
 const profileInfo = () => {
   fetch(user_URL)
   .then(res => res.json())
   .then(data => {
     const profileImg = data.avatar_url
     const profileBio = data.bio
-    //console.log(data)
     userInfo.innerHTML += `
       <div class="user-img">
       <img src="${profileImg}" alt="Image of Sofia Ringstedt">
@@ -37,12 +37,12 @@ const profileInfo = () => {
   })
 }
 
+//function to display repository info fetched from github
 const fetchRepos = () => {
     fetch(repo_URL, options) 
     .then(res => res.json())
     .then(data => {
         const filteredRepos = data.filter(repo => repo.name.startsWith("project") && repo.fork === true)
-        //console.log(filteredRepos)
 
         filteredRepos.forEach(repo => {
             projects.innerHTML += `
@@ -54,32 +54,31 @@ const fetchRepos = () => {
               </div>
             `
         })
-
-    getPullRequests(filteredRepos); // varför är denna här??
+    getPullRequests(filteredRepos);
     drawChart(filteredRepos.length)
     })
 }
 
-const getPullRequests = (filteredRepos) => { // filteredRepos?
+//function to fetch pull requests from github
+const getPullRequests = (filteredRepos) => { 
   filteredRepos.forEach(repo => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
     .then(res => res.json())
     .then(data => {
-      const myPullRequest = data.find((pull) => pull.user.login === repo.owner.login);// här göra en conditional ifall ej mina PR?
+      const myPullRequest = data.find((pull) => pull.user.login === repo.owner.login);
       const myCommitsURL = myPullRequest.commits_url
-      //const myCommentsURL = myPullRequest.comments_url
       const repoName = repo.name
-      //console.log(myCommitsURL, myPullRequest, filteredRepos, repoName)
       fetchCommits(myCommitsURL, repoName); // varför är denna här??
         })
     })
   }
 
+//function to fetch and display commits from github
 const fetchCommits = (myCommitsURL, repoName) => {
     fetch(myCommitsURL)
     .then((res) => res.json())
     .then (data => {
-      //console.log(data.length, repoName)
+      //send the number of commits to innerHTML injected in the fetchRepos function
       document.getElementById(repoName).innerHTML = `Number of commits: ${data.length}`
   });
 }

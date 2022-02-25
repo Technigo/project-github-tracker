@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+/* main styling for entire webpage */
 body {
   display: flex;
   flex-direction: column;
@@ -14,10 +15,11 @@ body {
   color: #1E1E24;
 }
 
+/* styling of header, including elements injected by JS */
 header, .user-name, .user-img, .user-info {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 header {
@@ -34,6 +36,7 @@ header h1 {
   position: relative;
 }
 
+/* animation setting of h1 */
 @keyframes slideLeft {
   from
   {
@@ -57,10 +60,13 @@ header img {
   font-size: 2.5vw;
 }
 
+/*style sizing of chart-wrapper*/
 .chart-wrapper {
-  width: 20vw;
+  width: 30vw;
+  height: 30vw;
 }
 
+/*style sizing and flexbox of project-wrapper*/
 .projects-wrapper {
   display: flex;
   flex-direction: column;
@@ -87,12 +93,14 @@ header img {
   margin: 1vw;
 }
 
+/*h3 animation*/
 h3:hover{
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
 
+/*style sizing and flexbox of project-cards injected by JS*/
 .card {
   display: inline-flex;
   flex-direction: column;
@@ -111,6 +119,7 @@ h3:hover{
   margin: 1vw;
 }
 
+/*style sizing and flexbox footer with github bio injected by JS*/
 footer {
   display: flex;
   justify-content: center;
@@ -126,6 +135,7 @@ footer {
   text-align: center;
 }
 
+/*media queries for responsiveness*/
 @media (min-width: 667px) {
   .projects {
     flex-direction: row;

@@ -1,15 +1,18 @@
-// //DOM-selector for the canvas 👇
+//DOM-selector for the canvas
 const ctx = document.getElementById("chart").getContext("2d");
-Chart.defaults.font.size = 10;
+
+//General styling of chart
+Chart.defaults.font.size = 8;
 Chart.defaults.color = "#1E1E24";
 
+//Amount of repos fetched from fetchRepos function in JS file
 const drawChart = (amount) => {
-const labels = [
+  const labels = [
     'Projects done',
     'Projects to do',
   ];
 
-  const data = {
+   const data = {
     labels: labels,
     datasets: [{
       label: 'Technigo projects',
@@ -24,7 +27,7 @@ const labels = [
     data: data,
     options: {
         responsive: true,
-       // maintainAspectRatio: false,
+        maintainAspectRatio: false,
     }
   };
 
@@ -32,6 +35,5 @@ const labels = [
   document.getElementById('chart'),
   config
   ); 
- // myChart()   // varför är denna ej aktiverad? vad gör den?
   }
 
