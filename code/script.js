@@ -2,12 +2,12 @@
 const toggleSwitch = document.getElementById('switch')
 const modalWrapper = document.getElementById('modal-wrapper')
 const modalBtn = document.getElementById("modal-btn")
+const myProjects = document.getElementById('section-projects')
 
 //Global variables
 const username = 'emmahogberg88'
 const URL_REPO = `https://api.github.com/users/${username}/repos`
 //const API_TOKEN = TOKEN || process.env.API_KEY
-
 
 //option for authorization
 const options = {
@@ -38,11 +38,20 @@ fetch(URL_REPO, options)
   <h4><a class="header nav-link" href='${data[0].html_url}'><i class="fab fa-github"></i> ${username}</a></h4>
   `
   
-  console.log('till sorting',technigoProjects)
-  
+  //Toggle switch to toggle between sorting projects by latest updated project or by name 
+  let toggleStatus = true
   toggleSwitch.addEventListener('click', () => {
-    technigoProjects.sort((a, b) => new Date(a.pushed_at) < new Date(b.pushed_at) ? 1 : -1)
-    console.log('new array?', technigoProjects)
+    if (toggleStatus){
+      technigoProjects.sort((a, b) => new Date(a.pushed_at) < new Date(b.pushed_at) ? 1 : -1)
+      myProjects.innerHTML = ''
+      repoData(technigoProjects)
+      toggleStatus = false
+    } else if (!toggleStatus){
+      technigoProjects.sort((a, b) => a.name > b.name ? 1 : -1)
+      myProjects.innerHTML = ''
+      repoData(technigoProjects)
+      toggleStatus = true
+    }
   })
 
   repoData(technigoProjects)
@@ -64,21 +73,20 @@ const repoData = (technigoProjects) => {
    
   //Get name of repo and date of latest update of the repo
   const reponame = repo.name
-  const latestUpdateRepo = new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})
   
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
-  document.getElementById('section-projects').innerHTML += `
+  myProjects.innerHTML += `
   <div class="section-projects__card box-shadow">
     <div>
-      <h3 class="repo-title bold-text"><a class="nav-link" href='${repo.html_url}'>${reponame}</a></h3>
+      <h3 class="repo-title bold-text"><a class="nav-link" href='${repo.html_url}'><i class="fab fa-github"></i> ${repo.name}</a></h3>
       <p><span class="bold-text">Default branch:</span> ${repo.default_branch}</p>
-      <p><span class="bold-text">Latest update:</span> ${latestUpdateRepo}</p>
-      <p id="commits-${reponame}"></p>
-      <p id="comments-${reponame}"></p>
+      <p><span class="bold-text">Latest update:</span> ${new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+      <p id="commits-${repo.name}"></p>
+      <p id="comments-${repo.name}"></p>
     </div>  
     <div class="card-btn flex">
-      <p id="website-${reponame}"></p>
-      <p id="comments-btn-${reponame}"></p>
+      <p id="website-${repo.name}"></p>
+      <p id="comments-btn-${repo.name}"></p>
     </div>
   </div>  
   `

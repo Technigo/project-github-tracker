@@ -70,9 +70,13 @@ img {
 
 a,
 a:active {
+  text-decoration: none;
+}
+
+a.nav-link,
+a.nav-link:active {
   position: relative;
   color: var(--primary);
-  text-decoration: none;
 }
 
 a.nav-link::before {
@@ -91,6 +95,15 @@ a.nav-link::before {
 
 a.nav-link:hover::before {
   transform: scaleX(1);
+}
+
+a.a-footer,
+a.a-footer:active {
+  color: var(--secondary);
+}
+
+a.a-footer:hover {
+  color: var(--accent);
 }
 
 
@@ -133,8 +146,12 @@ a.nav-link:hover::before {
 .filled-button:hover,
 .outlined-button {
   background-color: var(--secondary);
-  border-color: #F8F8F8;
+  border-color: var(--secondary);
   color: var(--primary);
+}
+
+.filled-button {
+  border: 1px solid var(--primary);
 }
 
 .outlined-button {
@@ -286,7 +303,7 @@ input:checked + label {
 /*************************************************/
 
 footer {
-  background: var(--secondary);
+  background: var(--primary);
   font-size: 2rem;
   padding: 0.25em;
   width: 100%;
@@ -295,9 +312,9 @@ footer {
   justify-content: center;
 }
 
-.a-footer {
+/* .a-footer {
   border-top: 1em solid var(--primary);
-}
+} */
 
 
 /***************************************************/
