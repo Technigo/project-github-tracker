@@ -1,3 +1,90 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  background-color: white;
+}
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.user-profile img {
+  border-radius: 50%;
+  height: 50vh;
+  width: 50vh;
+  padding: 20px;
+}
+.user-name {
+  padding: 20px;
+}
+.button {
+  height: 5vh;
+  width: 30vh;
+  font-size: 20px;
+  background-color: rgba(6, 26, 16, 0.158);
+  border-radius: 10px;
+  text-align: center;
+}
+.button a {
+  text-decoration: none;
+  text-transform: none;
+}
+.fa-github {
+  color: white;
+  height: 100px;
+  width: 100px;
+}
+a {
+  color: black;
+  text-transform: uppercase;
+}
+a:hover {
+  color: blue;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+}
+canvas {
+  width: 20rem !important;
+  height: 20rem !important;
+  margin-left: 2rem;
+  margin-top: 5rem;
+}
+.repo1 {
+  text-align: center;
+  background-color: rgba(6, 26, 16, 0.158);
+  padding: 20px;
+  border-radius: 10px 10px 0 0px;
+  margin-top: 20px;
+}
+
+.repo2,
+.repo3 {
+  padding: 10px;
+  background-color: rgba(132, 247, 189, 0.24);
+}
+.repo4 {
+  padding: 10px;
+  background-color: rgba(132, 247, 189, 0.24);
+  border-radius: 0 0px 10px 10px;
+}
+@media only screen and (min-width: 768px) {
+  .projects {
+    margin-right: 10rem;
+    margin-left: 10rem;
+  }
+  canvas {
+    width: 30rem !important;
+    height: 30rem !important;
+    margin-left: 10rem;
+    margin-top: 5rem;
+    font-size: 100px;
+  }
 }
