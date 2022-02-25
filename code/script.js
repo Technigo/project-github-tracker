@@ -2,7 +2,7 @@ const projects = document.getElementById('projects')
 const profile = document.getElementById('profile')
 const repos = document.getElementById('repos')
 
-const username = 'SteppbySteph'
+const username = 'StephannieMedenilla'
 const USER_PROFILE = `https://api.github.com/users/SteppbySteph`
 const USER_REPO = `https://api.github.com/users/SteppbySteph/repos`
 
