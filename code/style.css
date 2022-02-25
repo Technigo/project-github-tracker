@@ -1,3 +1,177 @@
+/* RESET CSS TO BORDER-BOX */
+* {
+  box-sizing: border-box;
+}
+
+/* main styling for entire webpage */
 body {
-  background: #FFECE9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #EFE6DD;
+  height: 100vh;
+  font-family: 'Noto Serif Display';
+  margin: 0;
+  color: #1E1E24;
+}
+
+/* styling of header, including elements injected by JS */
+header, .user-name, .user-img, .user-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+header {
+  width: 100vw;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 5vw;
+  width: 100vw;
+  margin: 5vw;
+  animation: slideLeft 2s forwards;
+  left: -400px;
+  position: relative;
+}
+
+/* animation setting of h1 */
+@keyframes slideLeft {
+  from
+  {
+      left: -300px;
+    }
+  to {
+    left: 0px;
+  }
+}
+
+header img {
+  width: 20vw;
+  border-radius: 50%;
+}
+
+.user-info {
+  flex-direction: column;
+}
+
+.user-name a, h2 {
+  font-size: 2.5vw;
+}
+
+/*style sizing of chart-wrapper*/
+.chart-wrapper {
+  width: 30vw;
+  height: 30vw;
+}
+
+/*style sizing and flexbox of project-wrapper*/
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4vw;
+}
+
+.projects-wrapper h2, a {
+  font-size: 4vw;
+  text-align: center;
+  color: #1E1E24;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.projects h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 4vw;
+  margin: 1vw;
+}
+
+/*h3 animation*/
+h3:hover{
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/*style sizing and flexbox of project-cards injected by JS*/
+.card {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 45vw;
+  font-size: 2.5vw;
+  background: #F8F7F9;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.card p {
+  display: inline-flex;
+  justify-content: center;
+  margin: 1vw;
+}
+
+/*style sizing and flexbox footer with github bio injected by JS*/
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #DAB49D;
+  height: 12vw;
+  width: 100vw;
+  margin-top: 10vw;
+}
+
+.profile-bio {
+  font-size: 2.5vw;
+  text-align: center;
+}
+
+/*media queries for responsiveness*/
+@media (min-width: 667px) {
+  .projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 992px) {
+
+  header {
+    margin-bottom: 4vw;
+  }
+
+  header h1 {
+   font-size: 4vw;
+   margin: 4vw;
+  }
+
+  .user-name a, h2 {
+    font-size: 1.5vw;
+  }
+
+  .projects-wrapper h2 {
+    font-size: 3vw;
+  }
+
+  .projects h3 {
+    font-size: 2vw;
+  }
+
+  .card {
+    font-size: 1.5vw;
+    width: 30vw;
+  }
+
+  footer p {
+    font-size: 1.5vw;
+  }
 }
