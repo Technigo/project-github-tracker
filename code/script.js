@@ -1,9 +1,10 @@
-
-
 const username = 'Kras053'
-const API_URL =`https://api.github.com/users/${username}/repos`
+const USER_URL =`https://api.github.com/users/${username}`
+const REPOS_URL =`https://api.github.com/users/${username}/repos`
 const repoContainer = document.querySelector('.repo-container')
+const userContainer = document.querySelector('.user-container')
 
+//Token from GitHub
 const options = {
     method: 'GET',
     headers: {
@@ -11,12 +12,28 @@ const options = {
       }
   }
 
+// my user info from GitHub 
+const userProfile = () => {
+	fetch(USER_URL, options)
+		.then((res) => res.json())
+		.then((data) => {
+			userContainer.innerHTML += `
+			  <a href="${data.html_url}">
+          <img class="profile-image" src="${data.avatar_url}"/>
+          <span class="profile-name">
+            ${data.login}
+          </span>
+        </a>
+		  `;
+		});
+};
 
+userProfile();
 
 //my repos in GitHub filtered on forks from Technigo
 const myRepos = () => {
 
-    fetch(API_URL, options)
+    fetch(REPOS_URL, options)
     .then((response) => response.json())
     .then((data) => {
     console.log(data)
@@ -25,6 +42,17 @@ const myRepos = () => {
     const technigoRepos = data.filter(repo => repo.name.startsWith('project'))
     console.log(forkedRepos)    
     console.log(technigoRepos)
+
+    technigoRepos.forEach(repo => {
+        repoContainer.innerHTML += `<p>Projects: ${data.name}</p>`
+        console.log(data.name)
+
+        })
+/*
+    if (technigoRepos) {
+        repoContainer.innerHTML += `<p>Projects: ${data[0].name}</p>`
+        console.log(data[0].name)
+    }*/
 
     //need to invoke this next function here already, passing along the filtered repos 
     //as an argument when calling the pull request function
@@ -44,7 +72,7 @@ const getPullRequests = (technigoRepos) => {
               
 //this finds the pull requests I made by comparing the user.login from the pull API
 // with the owner.login in the filtered repo/data(?) API, and therefore we use pull in the
-// find array method because that is the name of the array. 
+// find array method because that is the name of the array?
 // when undefined bc I did not do the pull request but my teammate
 
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
@@ -54,25 +82,24 @@ const getPullRequests = (technigoRepos) => {
             getCommits(myPullRequests.commits_url, repo.name)
            /* console.log(myCommitsURL)*/
         }
-        
-        // från myPullrequests vill jag hämta från varje array alla 3 commits_URL:sen och ? comments_URl:sen 
-        // och sedan göra en fetch för varje??
 
-// To get the commits from a PR, you need to get the URL from the commits_url property in the PR json object. It might look something like this:
-// https://api.github.com/repos/Technigo/project-news-site/pulls/227/commits
-// and then do a fetch with that url.
           })   
-    })
-}
 
+          // To get the commits from a PR we get the URL from the commits_url property in the PR json object 
+// and then do a fetch with that url.
 const getCommits = (URL, myRepo) => {
     fetch (URL, options)
     .then((res) => res.json())
     .then(data => {
-   /*     document.getElementById(`${myRepo}`).innerHTML += `<p>${data.length}</p>`*/
+   repoContainer.innerHTML += `<p>Number of commits: ${data.length}</p>`
         console.log(data.length)
     })
     }
+
+    })
+    }
+
+
 
     /* printing out my repos: 
     data.name.forEach(repo => {

@@ -1,3 +1,39 @@
+* {
+  margin: 0; 
+  padding: 0;  
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: content-box;
+  -webkit-font-smoothing: antialiased; 
+  text-rendering: optimizeLegibility;
+}
+
 body {
   background: #FFECE9;
+}
+
+.user-container img {
+  width: 250px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  place-items: center;
+  margin: 15px;
+}
+
+.user-container a {
+  margin: 10px;
+  color:black;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  place-items: center;
+}
+
+.repo-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  place-items: center;
+  grid-gap: 15px;
 }
