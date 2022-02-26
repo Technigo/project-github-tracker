@@ -8,6 +8,13 @@
 // All pull requests
 // A chart of how many project you've done so far, compared with how many you will do using chart.js.
 
+// Token
+const options = {
+    method: 'GET',
+    headers: {
+        Authorization: `TOKEN ${API_TOKEN}`
+    }
+}
 
 // DOM selectors
 const projectInfo = document.getElementById('projectInfo')
@@ -17,22 +24,23 @@ const profilePicture = document.getElementById('profilePicture')
 const mainContent = document.getElementById('mainContent')
 
 
-// Github API and token
+// Github API
 const username = 'emmajosefina'
 const API_URL = `https://api.github.com/users/${username}/repos`
 
-const options = {
-    method: 'GET',
-    headers: {
-        Authorization: `TOKEN ${API_TOKEN}`
-    }
-}
+
+
 
 const findingAllRepos = (repos) => { 
- //---------------------------- FIRST FETCH - ALL REPOS ---------------------------------
+ //------------------ FIRST FETCH - ALL REPOS -----------------------//
     fetch(API_URL, options) 
        .then((res) => res.json()) 
        .then((data) => { 
+
+
+        // Fetches only repositories from Technigo //
+        const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
+        console.log(forkedRepos, 'forked repos')
 
         mainContent.innerHTML += `
         <section class="profile-box"> 
@@ -50,7 +58,7 @@ const findingAllRepos = (repos) => {
 
       `
         console.log(data) 
-        data.forEach((repo) => 
+        forkedRepos.forEach((repo) => 
         projectInfo.innerHTML += 
         
         `
@@ -84,4 +92,4 @@ const findingAllRepos = (repos) => {
 
 findingAllRepos()
 
- //---------------------------- SECOND FETCH ---------------------------------
+ //------------------ SECOND FETCH - ALL REPOS -----------------------//
