@@ -18,7 +18,9 @@ const displayRepositories = (repositories) => {
       projectsSection.innerHTML += `
       <a class="projects__links" href="${projectUrl}">${repo.name}</a><span class="projects__links--right">${visibility}</span>
       <p class="projects__paragraphs">Forked from Technigo/project-${repo.name}</p>
-      <p class="projects__paragraphs">${language} <span class="projects__paragraphs--right">Updated ${numberOfDays} days ago</span></p>
+      <p class="projects__paragraphs">${language} 
+      <span class="projects__paragraphs"><img class="small-icon projects__paragraphs--right" src="./images/fork.png"></img>Branch ${repo.default_branch}</span>
+      <span class="projects__paragraphs--right">Updated ${numberOfDays} days ago</span></p>
       <hr>
       `;
     }

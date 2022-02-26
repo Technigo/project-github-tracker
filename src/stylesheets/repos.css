@@ -42,6 +42,10 @@
    margin-left: 15px;
 }
 
+.small-icon {
+  width: 13px;
+}
+
 @media (min-width: 1024px) {
   .body-wrapper {
     display: flex;

@@ -37,62 +37,45 @@ const fetchCommits = (repo) => {
         commitsSection.innerHTML += `
         <div id="messageWrapper" class=${repo.name}>
         <p class="text">${commitMessages}</p>
-        <p class="subtext"><img class="icons circle" src=${authorPicture} alt=${author}> <span class="bold-text">${author} </span> committed on ${formattedDate}</p>
+        <p class="subtext"><img class="icons circle" src=${authorPicture} alt=${author}> 
+        <span class="bold-text">${author} </span> <span class="hide-text">committed on ${formattedDate}</span></p>
         </div>
         `
       }
 
-
-    
-      const chatbot = document.getElementById("chatbot");
-      const weatherApp = document.getElementById("weather-app");
-      const newsSite = document.getElementById("news-site");
-      const guessWho = document.getElementById("guess-who");
-      const businessSite = document.getElementById("business-site");
-      const githubTracker = document.getElementById("github-tracker");
-
-      const chatbotItems = document.querySelectorAll(".chatbot");
-      const weatherItems = document.querySelectorAll(".weather-app");
-      const newsSiteItems = document.querySelectorAll(".news-site");
-      const guessWhoItems = document.querySelectorAll(".guess-who");
-      const businessItems = document.querySelectorAll(".business-site");
-      const githubTrackerItems = document.querySelectorAll(".github-tracker");
-
-      chatbot.addEventListener("click", () => {
-        chatbotItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
-
-      weatherApp.addEventListener("click", () => {
-        weatherItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
-
-      newsSite.addEventListener("click", () => {
-        newsSiteItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
-
-      guessWho.addEventListener("click", () => {
-        guessWhoItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
-
-      businessSite.addEventListener("click", () => {
-        businessItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
-
-      githubTracker.addEventListener("click", () => {
-        githubTrackerItems.forEach(item => {
-          item.classList.toggle("active");
-        })
-      })
+      document.addEventListener("click", function (e) {
+        if (e.target && e.target.id == "chatbot") {
+          const chatbotItems = document.querySelectorAll(`.chatbot`);
+          chatbotItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        } else if (e.target && e.target.id == "weather-app") {
+          const weatherItems = document.querySelectorAll(`.weather-app`);
+          weatherItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        } else if (e.target && e.target.id == "news-site") {
+          const newsSiteItems = document.querySelectorAll(`.news-site`);
+          newsSiteItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        } else if (e.target && e.target.id == "guess-who") {
+          const guessWhoItems = document.querySelectorAll(`.guess-who`);
+          guessWhoItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        } else if (e.target && e.target.id == "business-site") {
+          const businessItems = document.querySelectorAll(`.business-site`);
+          businessItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        } else if (e.target && e.target.id == "github-tracker") {
+          const githubTrackerItems = document.querySelectorAll(`.github-tracker`);
+          githubTrackerItems.forEach(item => {
+            item.classList.toggle("active");
+          })
+        }
+      });
     })
     .catch(error => console.log(error))
 }

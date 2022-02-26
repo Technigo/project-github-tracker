@@ -1,9 +1,9 @@
 # GitHub Tracker
 
-This project was built to track all of the repositories that I have created duringmy time at Technigo. The main
+This project was built to track all of the repositories that I have created during my time at Technigo. The main
 purpose of this project is to display information about the projects that I have built. 
 
-## The problem
+## The project
 
 I started off this project by fetching all of my repositories and data from the GitHub API. Once I had all the data 
 I needed I dispayed it on the page. Then I styled the page similar to the GitHub page layout, with the mind set of 

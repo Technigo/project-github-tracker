@@ -71,6 +71,17 @@
   font-weight: var(--fw-bold);
 }
 
+.hide-text {
+  display: none;
+}
+
+@media (min-width: 560px) {
+  .hide-text {
+    margin-left: 5px;
+    display: inline;
+  }
+}
+
 @media (min-width: 768px) {
   .body-wrapper {
     display: flex;
