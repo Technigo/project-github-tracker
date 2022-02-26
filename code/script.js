@@ -65,6 +65,7 @@ const findingAllRepos = (repos) => {
         <div class="projectContainer">
             <p class="smallerContainer">
                 <span class="header-project">
+
                 ${repo.name.replace('project-', '').replace('-', ' ')}
                 </span>
 
@@ -83,13 +84,23 @@ const findingAllRepos = (repos) => {
             </p>
 
             <p class="smallerContainer">
+            <span class="styledHeadingsProject">
+           Number of commits: </span>
+            </p>
+
+            <p class="smallerContainer">
+            <span class="styledHeadingsProject">
+           Pull requests: </span>
+            </p>
+
+
+            <p class="smallerContainer">
             <p>
             <span>
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
-
             <a class="project-url" href="${repo.svn_url}"> ${repo.name}</span></a>
-
             </p>
+
 
         </div>
         ` 

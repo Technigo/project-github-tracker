@@ -125,11 +125,6 @@ footer {
   background: #c0716a24;
 }
 
-.projectContainer:hover {
-  color: #c0716a;
-  transition: all 1s;
-}
-
 .styledHeadingsProject {
   font-weight: 600;
   color: #512d1eac;
@@ -152,12 +147,6 @@ footer {
 
   .inside-status-box {
     font-size: 17px;
-  }
-
-  .projectContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    column-gap: 20px;
   }
 
   .profile-picture {
