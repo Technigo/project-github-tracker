@@ -1,12 +1,13 @@
 // Fetching API from Github to add                              X
-// A list of all repos that are forked ones from Technigo
+// A list of all repos that are forked ones from Technigo       X
 // Your username and profile picture                            X
 // Most recent update (push) for each repo                      X
 // Name of your default branch for each repo                    X
 // URL to actual GitHub repo                                    X
 // Number of commit messages for each repo
 // All pull requests
-// A chart of how many project you've done so far, compared with how many you will do using chart.js.
+// A chart of how many project you've done so far, 
+// compared with how many you will do using chart.js.
 
 // Token
 const options = {
@@ -37,7 +38,6 @@ const getProfile = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log('data', data);
-        
         mainContent.innerHTML += 
         `
         <section class="profile-box"> 
@@ -45,7 +45,6 @@ const getProfile = () => {
             <p class="full-name">${data.name}</p>
             <p class="username">${data.login}</p> 
         </section>
-
         <div class="status-box">
         ${data.bio} 👩‍💻
         </div>
@@ -61,68 +60,54 @@ const findingAllRepos = (repos) => {
        .then((data) => { 
 
 
-        // Fetches only repositories from Technigo //
-        const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-        console.log(forkedRepos, 'forked repos')
+    // Fetches only repositories from Technigo //
+    const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
+    console.log(forkedRepos, 'forked repos')
 
-        forkedRepos.forEach((repo) => 
-        projectInfo.innerHTML += 
+    forkedRepos.forEach((repo) => 
+    projectInfo.innerHTML += 
         
-        `
-        <div class="projectContainer">
-            <p class="smallerContainer">
-                <span class="header-project">
-
-                ${repo.name.replace('project-', '').replace('-', ' ')}
-                </span>
-
-            </p>
-            <p class="smallerContainer">
-                <span class="styledHeadingsProject">
-                Updated:
-                </span>
-                ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}
-             </p>
-            
-             <p class="smallerContainer">
-                <span class="styledHeadingsProject">
-                Default branch: </span>
-                ${repo.default_branch}
-            </p>
-
-            <p class="smallerContainer">
+    `
+    <div class="projectContainer">
+        <p class="smallerContainer">
+            <span class="header-project">
+            ${repo.name.replace('project-', '').replace('-', ' ')}
+            </span>
+        </p>
+        <p class="smallerContainer">
+            <span class="styledHeadingsProject"> Updated:</span>
+            ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}
+        </p>
+        <p class="smallerContainer">
             <span class="styledHeadingsProject">
-           Number of commits: </span>
-            </p>
-
-            <p class="smallerContainer">
+            Default branch: </span>
+            ${repo.default_branch}
+        </p>
+        <p class="smallerContainer">
             <span class="styledHeadingsProject">
-           Pull requests: </span>
-            </p>
-
-
-            <p class="smallerContainer">
-            <p>
+            Number of commits: </span>
+        </p>
+        <p class="smallerContainer">
+            <span class="styledHeadingsProject">
+            Pull requests: </span>
+        </p>
+        <p class="smallerContainer">
             <span>
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
             <a class="project-url" href="${repo.svn_url}"> 
             ${repo.name}</span>
             </a>
-            </p>
-
-
-        </div>
-        ` 
-        )
-       })
-    }
-    findingAllRepos()
-    getPullRequest()
-
+        </p>
+    </div>
+    ` 
+)
+})
+}
+findingAllRepos()
 
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
 const getPullRequest = (forkedRepos) => {
-    forkedRepos.forEach(repo => {
+        forkedRepos.forEach(repo => {
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then(res => res.json())
         .then((data) => {
@@ -131,8 +116,18 @@ const getPullRequest = (forkedRepos) => {
             
             getCommits(pulls.commits_url, repo.name)
             console.log(pulls.commits_url, 'pulls commits_url')
-        })
-    })
+})
+})
+}
+getPullRequest()
 
-
-    }
+const getCommits = (myCommitsUrl, myRepoName) => {
+        fetch(myCommitsUrl, options)
+        .then((res) => {
+        return res.json()
+})
+        .then((data) => {
+        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+})
+        console.log('commits', myRepoName)
+}
