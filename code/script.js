@@ -1,5 +1,8 @@
 // DOM SELECTORS
 const projectsContainer = document.getElementById('projects')
+const header = document.getElementById('header')
+const profile = document.getElementById('profile')
+
 
 // GLOBAL VARIABLES
 const username = 'joannalodell19'
@@ -22,13 +25,13 @@ const profilePic = () => {
     fetch(API_PROFILE)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             picture = data.avatar_url
     let profilePicture =    `<div class = "photobox">
-                            <p>${username}</p>
                                 <img class = "photo" src="${picture}" />
+                                <p>${username}</p>
                             </div>`;
-    return (projects.innerHTML = profilePicture)
+    return (profile.innerHTML += profilePicture)
 })
 }
 
@@ -38,16 +41,16 @@ const getRepos = () => {
     fetch(API_URL)
     .then(res => res.json())
     .then(data => {
-        console.log('unfiltered data', data)
+        // console.log('unfiltered data', data)
 
         const forkedRepos = data.filter(repo => repo.fork = true)
-        console.log('data filtered by forks', forkedRepos)
+        // console.log('data filtered by forks', forkedRepos)
 
         const filteredRepo = forkedRepos.filter(repo => repo.name.startsWith('project-') === true)
-        console.log('data filtered on projects', filteredRepo)
+        // console.log('data filtered on projects', filteredRepo)
 
         filteredRepo.forEach(repo => {
-            console.log(repo.commits_url)
+            // console.log(repo.commits_url)
             projectsContainer.innerHTML += `
             <div class="repo" id=${repo.name}>
             <a href="${repo.html_url}"><h3>${repo.name}</h3></a>
@@ -57,8 +60,8 @@ const getRepos = () => {
             </div>
             `  
         })
-        getPullRequests(forkedRepos);
-        // drawChart(forkedRepos.length);
+        getPullRequests(filteredRepo);
+        // drawChart(filteredRepo.length);
     })
 }
 
@@ -85,13 +88,13 @@ const getPullRequests = (repos) => {
           }
         });
     });
-  };
-  
-  const getCommits = (myCommitsUrl, myRepoName) => {
+};
+
+const getCommits = (myCommitsUrl, myRepoName) => {
     fetch(myCommitsUrl)
-      .then((res) => res.json())
-      .then((commit) => {
-        document.getElementById(`commit-${myRepoName}`).innerHTML +=
-          commit.length;
-      });
-  };
+        .then((res) => res.json())
+        .then((commit) => {
+            document.getElementById(`commit-${myRepoName}`).innerHTML +=
+            commit.length;
+        });
+};
