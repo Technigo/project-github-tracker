@@ -1,13 +1,20 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This project was built to track all of the repositories that I have created duringmy time at Technigo. The main
+purpose of this project is to display information about the projects that I have built. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started off this project by fetching all of my repositories and data from the GitHub API. Once I had all the data 
+I needed I dispayed it on the page. Then I styled the page similar to the GitHub page layout, with the mind set of 
+mobile first. 
 
-## View it live
+If I had more time I would add a page for my pull requests and add funtionalities to the buttons on the page to be
+able to sort my repositories based off of language, type, and so on... Lastly, I would want to add JavaScript to 
+the input field so a user can search for a specific repository. 
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+## Demo
+
+https://gallant-ardinghelli-8ae929.netlify.app/
+
+

@@ -42,6 +42,8 @@ const fetchCommits = (repo) => {
         `
       }
 
+
+    
       const chatbot = document.getElementById("chatbot");
       const weatherApp = document.getElementById("weather-app");
       const newsSite = document.getElementById("news-site");
@@ -94,77 +96,3 @@ const fetchCommits = (repo) => {
     })
     .catch(error => console.log(error))
 }
-
-
-  // .then(commits => {
-  //   commitsSection.innerHTML += `
-  //     <div class="commits__text">
-  //     <div>
-  //     <p ><a href="${repo.html_url}">${username}/${repo.name}</a></p>
-  //     </div>
-  //     <div class="progress">
-  //     <div class="progress-bar bg-success" role="progressbar" style="width: ${commits.length * 3}%" aria-valuenow="${commits.length}" aria-valuemin="0" aria-valuemax="100"></div>
-  //     </div>
-  //     <div>
-  //     <button type="button" id=${repo.name} class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${commits.length} commits </button>
-  //     </div>
-  //     </div>
-  //     `
-
-  //   for (let i = 0; i < commits.length; i++) {
-  //     const commitMessages = commits[i].commit.message;
-  //     commitsSection.innerHTML += `
-  //       <p class=${repo.name}>- ${commitMessages}</p>
-  //       `
-  //   }
-
-  //   const chatbot = document.getElementById("chatbot");
-  //   const weatherApp = document.getElementById("weather-app");
-  //   const newsSite = document.getElementById("news-site");
-  //   const guessWho = document.getElementById("guess-who");
-  //   const businessSite = document.getElementById("business-site");
-  //   const githubTracker = document.getElementById("github-tracker");
-
-  //   const chatbotItems = document.querySelectorAll(".chatbot");
-  //   const weatherItems = document.querySelectorAll(".weather-app");
-  //   const newsSiteItems = document.querySelectorAll(".news-site");
-  //   const guessWhoItems = document.querySelectorAll(".guess-who");
-  //   const businessItems = document.querySelectorAll(".business-site");
-  //   const githubTrackerItems = document.querySelectorAll(".github-tracker");
-
-  //   chatbot.addEventListener("click", () => {
-  //     chatbotItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-
-  //   weatherApp.addEventListener("click", () => {
-  //     weatherItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-
-  //   newsSite.addEventListener("click", () => {
-  //     newsSiteItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-
-  //   guessWho.addEventListener("click", () => {
-  //     guessWhoItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-
-  //   businessSite.addEventListener("click", () => {
-  //     businessItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-
-  //   githubTracker.addEventListener("click", () => {
-  //     githubTrackerItems.forEach(item => {
-  //       item.classList.toggle("active");
-  //     })
-  //   })
-  // })
