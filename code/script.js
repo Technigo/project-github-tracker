@@ -24,7 +24,7 @@ const addingProfile = () => {
         console.log("profile", profileInfo)
         profile.innerHTML += `
         <img src="${profileInfo.avatar_url}">
-        <a class="userlink" href="${profileInfo.html_url}">${profileInfo.login}</a>
+        <a class="userlink" href="${profileInfo.html_url}" target="_blank">${profileInfo.login}</a>
         <p>${profileInfo.bio}</p>
         `
     }) 
@@ -52,20 +52,11 @@ const addingRepos = () => {fetch(API_URL, options)
          <ul>
             <li><span class="title">Most recent update:</span> ${updated}</li>
             <li><span class="title">Default branch:</span> ${repo.default_branch}</li>
-            <li><a class="repo-link" href=${repo.html_url} target="_blank">Link to repo</a></li>
+            <li><a class="repo-link" href=${repo.html_url} target="_blank">Link to repository</a></li>
             <li id=commit-${repo.name}><span class="title">Number of commits:</span> </li>
          </ul>
         </form>
         </div>`]
-
-
-      //  const sortingRepos = () => {
-       // if(sortRepos === 'alphabetical') {
-       //     repos.sort(forkedRepos)
-        //} else if(sortRepos === 'newestFirst') {
-         //   updated.sort(forkedRepos)
-         //   }
-       // }
     
      })
      findingPulls(forkedRepos)     
@@ -74,8 +65,7 @@ const addingRepos = () => {fetch(API_URL, options)
     
      }
 
-
-const findingPulls = (repos) => {                   
+ const findingPulls = (repos) => {                   
         repos.forEach((repo) => {                   //For all filtered repos I fetch each pull request    
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
     .then((res) => res.json())
@@ -104,6 +94,13 @@ const findingPulls = (repos) => {
         })
     }
 
+    //  const sortingRepos = () => {
+       // if(sortRepos === 'alphabetical') {
+       //     repos.sort(forkedRepos)
+        //} else if(sortRepos === 'newestFirst') {
+         //   updated.sort(forkedRepos)
+         //   }
+       // }
 
 addingRepos();
 
