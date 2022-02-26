@@ -24,12 +24,12 @@ fetch(API_USER, options)
 			<p class="user-name">${json.login}</p>
 		</div>
 		<div class="circles">
-			<div class="circle"></div>
-			<div class="circle"></div>
-			<div class="circle"></div>
-			<div class="circle"></div>
-			<div class="circle"></div>
-			<div class="circle"></div>
+			<div class="circle one"></div>
+			<div class="circle two"></div>
+			<div class="circle three"></div>
+			<div class="circle four"></div>
+			<div class="circle five"></div>
+			<div class="circle six"></div>
 		</div>
 		<p class="bio"><span>HI!</span> ${json.bio}</p>
 		`;

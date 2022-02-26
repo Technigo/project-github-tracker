@@ -1,5 +1,6 @@
-// font family for chart
-Chart.defaults.font.family = "Poppins";
+// font family & color for the chart
+Chart.defaults.font.family = "Roboto, sans-serif";
+Chart.defaults.color = "#333";
 
 // DOM-selector for the chart
 const ctx = document.getElementById("chart").getContext("2d");
@@ -24,6 +25,9 @@ const renderChart = (projects) => {
     options: {
       font: {
         size: 10,
+      },
+      layout: {
+        padding: 15,
       },
     },
   };

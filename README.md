@@ -1,13 +1,15 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week's project was to build a site that keep track of all my repositories that I have created during my time at Technigo. The main purpose of this project was to display information about the projects that I have built, using GitHub API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started off by fetching all of my repositories and data from the GitHub API. Once I had all the data I needed I dispayed it on the page. Then I started to do a quick scetch in Figma on how I wanted to style the page and then tried to come as close as possible. Of course with the mind set of mobile first.
+
+I struggled a lot with the API token this week, and I had a hard time to publish the site on Netlify.
+
+If I had more time, or less trouble with token-issues, I would add a sort function and a search field. And also I had investigated more time with the styling, as always :)
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://ecstatic-franklin-3423e2.netlify.app

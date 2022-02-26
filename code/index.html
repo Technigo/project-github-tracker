@@ -15,24 +15,39 @@
       rel="stylesheet"
     />
     <!-- Link to favicon -->
-    <link rel="icon" type="image/x-icon" href="/code/icons8-star-48.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Link to chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div id="header"></div>
     <h2 class="project-header">my github projects</h2>
     <main id="projects"></main>
-
     <h2 class="process-header">bootcamp status</h2>
     <!-- Chart sektion -->
     <div class="chart-wrapper" id="chartWrapper">
       <canvas id="chart"></canvas>
     </div>
-
     <footer>
       <p class="footer-text">© Åsa Sieurin</p>
     </footer>
-
     <!-- My scripts -->
     <script src="./chart.js"></script>
     <script src="./token.js"></script>
