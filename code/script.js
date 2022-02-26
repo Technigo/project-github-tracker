@@ -65,24 +65,31 @@ const findingAllRepos = (repos) => {
         <div class="projectContainer">
             <p class="smallerContainer">
                 <span class="header-project">
-                ${repo.name.replace('project-', '').replace('-', ' ')}</span>
-               
+                ${repo.name.replace('project-', '').replace('-', ' ')}
+                </span>
+
             </p>
             <p class="smallerContainer">
                 <span class="styledHeadingsProject">
-                Latest push: </span>
-                ${repo.pushed_at}
-            </p>
-            <p class="smallerContainer">
+                Updated:
+                </span>
+                ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}
+             </p>
+            
+             <p class="smallerContainer">
                 <span class="styledHeadingsProject">
                 Default branch: </span>
                 ${repo.default_branch}
             </p>
+
             <p class="smallerContainer">
-            <span class="styledHeadingsProject">
-            URL: </span>
-            ${repo.html_url}
-        </p>
+            <p>
+            <span>
+            <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
+
+            <a class="project-url" href="${repo.svn_url}"> ${repo.name}</span></a>
+
+            </p>
 
         </div>
         ` 
