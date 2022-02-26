@@ -55,8 +55,8 @@ body {
 
 .profile-picture {
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
+  height: 120px;
+  width: 120px;
   margin-top: 15px;
   border: solid 2px rgba(27, 31, 36, 0.15);
 }
@@ -66,7 +66,7 @@ body {
   border: 1px solid #d0d7de;
   border-radius: 6px;
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   color: #57606a;
   padding: 8px;
 }
@@ -152,7 +152,7 @@ footer {
   }
 
   .status-box {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .header-project {
@@ -173,5 +173,13 @@ footer {
 }
 
 /* DESKTOP */
-/* @media (min-width: 1025px) {
-} */
+@media (min-width: 1025px) {
+  .profile-picture {
+    height: 250px;
+    width: 250px;
+  }
+
+  .status-box {
+    font-size: 20px;
+  }
+}

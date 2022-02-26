@@ -119,27 +119,20 @@ const findingAllRepos = (repos) => {
     findingAllRepos()
 
 
-//  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
-// const getPullRequest = (repos) => {
-//     repos.forEach((repo) => {
-//         const PULLREQUEST_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
-//         fetch(PULLREQUEST_URL, options)
-//         .then((res) => res.json())
-//         .then((pull) => {
-//             const myPullRequest = pull.find(
-//                 (pull) => pull.user.login === repo.owner.login
-//             )
-//         }
-
-//         // If pull request done by user, getCommits function is invoked
-//         if (myPullRequest) {
-//             getCommits(myPullRequest.commits_url, repo.name)
-//         } else {
-//             document.getElementById(`commit-${repo.name}`).innerHTML =
-//             "No pull request done by user."
-//         }
-//         });
+ //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
+const getPullRequest = (forkedRepos) => {
+    forkedRepos.forEach(repo => {
+        fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+        .then(res => res.json())
+        .then((data) => {
+            const commits = document.getElementById(`commit -${repo.name}`)
+            const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+            
+            getCommits(pulls.commits_url, repo.name)
+            console.log(pulls.commits_url, 'pulls commits_url')
+        })
+    })
 
 
-//     }
-// getPullRequest()
+    }
+getPullRequest()
