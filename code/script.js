@@ -9,8 +9,7 @@ const USER_API = `https://api.github.com/users/${userName}`;
 const profileInfo = document.getElementById("profile-info")
 const projectsContainer = document.getElementById("projects")
 
-// const API_TOKEN = TOKEN || process.env.API_KEY;
-console.log(TOKEN)
+
 
 const options = {
     method: 'GET', //POST, PATCH, DELETE
