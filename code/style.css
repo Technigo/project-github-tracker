@@ -301,7 +301,7 @@ input:checked + label {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+  overflow: scroll; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.671); /* Black w/ opacity */
 }
@@ -327,17 +327,16 @@ input:checked + label {
   left: 25vw;
   overflow: scroll;
 }
-
+*/
 .modal-text {
-  margin: 0.5em 1.5em 0;
   border-bottom: 1px solid var(--primary);
 }
-*/
+
 .modal-btn {
   margin: auto; /* 15% from the top and centered */
   position: fixed;
-  top: calc(16% + 0.5em);
-  right: 13%;
+  top: 10%;
+  right: 40%;
 }
 
 /* .modal-header {
