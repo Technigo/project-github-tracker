@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(floralwhite, rosybrown);
+  background: linear-gradient(rosybrown, floralwhite);
 }
 
 h1 {
@@ -15,6 +15,7 @@ h2 {
   font-size: 32px;
   color:mediumpurple;
   text-align: center;
+  cursor: pointer;
 }
 
 h3 {
@@ -29,22 +30,38 @@ h4 {
   color: whitesmoke;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
 .img {
   width: 96px;
   border-radius: 50%;
   border: 8px solid floralwhite;
 }
 
+.info {
+  text-align: center;
+}
+
+.projects-card {
+  background: linen;
+  border: 6px solid hotpink;
+  margin: 12px;
+  padding: 12px;
+  font-size: 12px;
+  font-family: 'Shippori Antique B1', sans-serif;
+  text-align: center;
+}
+
+.default-branch {
+  font-family: 'Shizuru', cursive;
+}
+
+a {
+  color: black;
+}
+
 /* Footer Styling */
 .made-by {
   font-family: 'Shippori Antique B1', sans-serif;
   font-size: 12px;
-  color:lavenderblush;
+  color: #694E4E;
   text-align: center;
 }

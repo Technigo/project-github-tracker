@@ -25,8 +25,10 @@ fetch(API_USER, options)
 .then(user => {
     console.log(user, 'my user');
         userData.innerHTML = `
-        <div class="info">
+        <div class="avatar">
         <img class="img" src="${user.avatar_url}" alt="user image">
+        </div>
+        <div class="info">
         <h3>${user.login}</h3>
         <h4>${user.bio}</h4>
         <h4>Location: ${user.location}</h4>
@@ -48,17 +50,19 @@ const getRepos = () => {
         forkedRepos.forEach((repo) => {
             projectsContainer.innerHTML += `
                 <div class="projects-card" id="${repo.id}">
-                    <h3><a href="${repo.html_url}">${repo.name}</a> - ${repo.default_branch}</h3>
+                    <h3><a href="${repo.html_url}">${repo.name}</a></h3>
+                    <p class="default-branch">Branch: ${repo.default_branch}</p>
                     <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
                     <p id="commit_${repo.name}">Number of commits:</p>
                     <p>Main language: ${repo.language}</p>
                 </div>
             `
         })
-
         getPullRequests(forkedRepos)
     })
 }
+
+getRepos()
 
 const getPullRequests = (forkedRepos) => {
     forkedRepos.forEach(repo => {
@@ -67,7 +71,7 @@ const getPullRequests = (forkedRepos) => {
         .then(data => {
             const commits = document.getElementById(`commit-${repo.name}`)
             
-            const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+            const pulls = data.find((pull) => pull.user.login === repo.owner.login);
             
             getCommits(pulls.commits_url, repo.name)
             console.log(pulls.commits_url)
@@ -75,12 +79,12 @@ const getPullRequests = (forkedRepos) => {
     })
 }
 
-const getCommits = (myCommitsURL, myReposName) => {
-    fetch(myCommitsURL, options)
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById(`commit-${myReposName}`).innerHTML += data.length
+const getCommits = (myCommitsUrl, myRepoName) => {
+    fetch(myCommitsUrl, options)
+    .then((res) => {
+        return res.json()
+    })
+    .then((data) => {
+        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
     })
 }
-
-getRepos()
