@@ -16,86 +16,59 @@ const fetchUserInfo = () => {
   fetch(API_USER_INFO, options)
   .then(res => res.json())
   .then(user => {
-    // console.log(user)
     userSection.innerHTML = `
-      <p>${user.name}</p>
+      <h3>${user.name}</h3>
       <p>Username: ${user.login}</p>
       <a href="${user.html_url}" target="_blank"><img class="avatar" src="${user.avatar_url}" alt="profile picture" /></a>
-    ` 
+    `; 
   })
 }
 
-const getPRCommits = (pullRequestCommitsUrl, reponame) => {
+const getCommits = (pullRequestCommitsUrl, reponame) => {
   fetch(pullRequestCommitsUrl, options)
   .then(res => res.json())
   .then(commits => {
 
     let repoDiv = document.getElementById(reponame);
+
     let commitParagraph = document.createElement('p');
-    let showCommitsButton = document.createElement('button');
-    let commitMessageList = document.createElement('ol');
-    commitMessageList.className = 'message-list';
-
     commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
-    showCommitsButton.innerHTML = 'Show commit messages';
-    
     repoDiv.appendChild(commitParagraph);
-    repoDiv.appendChild(showCommitsButton);
-    repoDiv.appendChild(commitMessageList);
 
+    let commitMessageList = document.createElement('ol');
+    // commitMessageList.className = 'message-list';  
+  
     commits.forEach(commit => {
-      // console.log(commit.commit.message);
-      let listElement = document.createElement('li');
-      listElement.innerHTML = commit.commit.message;
-      commitMessageList.appendChild(listElement)
+      let commitMessage = document.createElement('li');
+      commitMessage.innerHTML = commit.commit.message;
+      commitMessageList.appendChild(commitMessage);
     })
 
-    // const showCommits = () => commitMessageList.style.display = 'block';
-    const showCommits = () => repoDiv.innerHTML = 'Show messages here'
-
-    showCommitsButton.addEventListener('click', showCommits)
+    let showCommitsButton = document.createElement('button');
+    showCommitsButton.className = 'commits-button';
+    showCommitsButton.innerHTML = 'Show commits';
+    repoDiv.appendChild(showCommitsButton);
+    
+    const showCommitMessageList = () => repoDiv.innerHTML = commitMessageList.outerHTML;
+    showCommitsButton.addEventListener('click', showCommitMessageList);
   })
 }
 
-const getReviewComment = (myPullRequestUrl, reponame) => {
-  fetch(`${myPullRequestUrl}/reviews`)
-  .then(res => res.json())
-  .then(json => {
-
-    let repoDiv = document.getElementById(reponame);
-    let reviewCommentParagraph = document.createElement('p');
-
-    reviewCommentParagraph.className = 'review-comment';
-
-    repoDiv.appendChild(reviewCommentParagraph);
-
-    json.forEach(item => {
-      reviewCommentParagraph.innerHTML = item.body;
-    })
-  })
-}
-
-// ------ This function shows the detailed comments ---------
-
-// const getPRComments = (pullRequestCommentsUrl, reponame) => {
-//   fetch(pullRequestCommentsUrl, options)
+// const getReviewComment = (myPullRequestUrl, reponame) => {
+//   fetch(`${myPullRequestUrl}/reviews`)
 //   .then(res => res.json())
-//   .then(comments => {
-//     console.log(comments)
-//     // console.log(`The comments for ${reponame} are: `)
+//   .then(json => {
 
-//     let commentList = document.createElement('ul');
-//     let commitParagraph = document.getElementById(reponame);
-//     commitParagraph.appendChild(commentList)
+//     let repoDiv = document.getElementById(reponame);
+//     let reviewCommentParagraph = document.createElement('p');
 
-//     comments.forEach(comment => {
-//       // console.log(comment.body)
-//       let listElement = document.createElement('li');
-//       // listElement.style.display = 'none';
-//       listElement.innerHTML = comment.body;
-//       commentList.appendChild(listElement);
-//     });
+//     reviewCommentParagraph.className = 'review-comment';
 
+//     repoDiv.appendChild(reviewCommentParagraph);
+
+//     json.forEach(item => {
+//       reviewCommentParagraph.innerHTML = item.body;
+//     })
 //   })
 // }
 
@@ -117,21 +90,14 @@ const getPullRequests = (repos) => {
         let commitParagraph = document.createElement('p')
 
         commitParagraph.innerHTML = `Either ongoing or group/pair project where I didn't make the pull request`;
-        commitParagraph.className = 'no-pullrequest';
+        commitParagraph.className = "no-pullrequest";
         
         repoDiv.appendChild(commitParagraph);
       }
 
       myPullRequests.forEach(myPullRequest => {
-
-        // const pullNumber = myPullRequest.number;
-        // console.log(pullNumber)
-        // console.log(myPullRequest.url)
-        // console.log(myPullRequest.review_comments_url); 
-        
-        getPRCommits(myPullRequest.commits_url, repo.name);
-        getReviewComment(myPullRequest.url, repo.name);
-        // getPRComments(myPullRequest.review_comments_url, repo.name);
+        getCommits(myPullRequest.commits_url, repo.name);
+        // getReviewComment(myPullRequest.url, repo.name);
       })
     })
   })
@@ -143,15 +109,12 @@ const getTechnigoRepos = (repos) => {
   .filter(repo => repo.fork === true && repo.name.startsWith("project"))
 }
 
-
 const fetchRepos = () => {
   fetch(API_REPOS, options)
   .then(res => res.json())
   .then(repos => {
-
-    //console.log(repos);
     
-    const technigoRepos = getTechnigoRepos(repos)
+    const technigoRepos = getTechnigoRepos(repos);
     
     getPullRequests(technigoRepos);
 
@@ -173,7 +136,7 @@ const fetchRepos = () => {
         <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
         <p>Most recent push: ${mostRecentPush}</p>
         <p>Default branch: ${repo.default_branch}</p>
-      <div>
+      </div>
       `
       
       
@@ -185,4 +148,6 @@ const fetchRepos = () => {
 
 fetchUserInfo();
 fetchRepos();
+
+
   

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+:root {
+  --primary: #F5F5F5;
+  --secondary: #8DB48E; 
+  --third: #4D724D;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,17 +13,16 @@
 }
 
 html {
-  background-color: grey;
+  background-color: var(--primary);
   font-size: 16px;
   font-family: 'Nunito', sans-serif;
 }
 
 body {
-  background-color: white;
-  background-image: linear-gradient(135deg, lightgreen, violet);
-  width: 90%;
-  margin: 10px auto;
+  width: 100%;
+  margin: 0 auto;
   min-width: 290px;
+  color: var(--third);
 }
 
 h1 {
@@ -50,11 +55,12 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: violet;
+  color: var(--primary);
+  background-color: var(--third);
 }
 
 .logo {
-  height: 50px;
+  height: 3rem;
   width: auto;
   margin: 2rem;
 }
@@ -103,7 +109,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid var(--third);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 2.5rem;
   margin: 0.5rem;
@@ -114,17 +120,26 @@ a {
   transform: scale(1.05);  
 }
 
-/* Where does this div inside .repo-div come from? */
-.repo-div div {
-  display: none;
-}
-
 .no-pullrequest {
   font-style: italic;
   font-size: small;
 }
 
-.message-list {
+.commits-button {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.6rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--third);
+  border: var(--third);
+}
+
+.commits-button:hover {
+  text-decoration: underline;
+}
+
+.commit-message-div {
   display: none;
 }
 
@@ -138,11 +153,13 @@ a {
 }
 
 .footer {
-  background-color: lightgreen;
+  background-color: var(--third);
+  color: var(--primary);
   height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
 }
 
 @media only screen and (max-width: 992px) {

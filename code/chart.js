@@ -13,8 +13,8 @@ const drawChart = (amount) => {
         labels: labels,
         datasets: [{
         label: 'My First dataset',
-        backgroundColor: ['rgb(144, 238, 144)', 'rgb(238, 130, 238)'],
-        borderColor: ['rgb(144, 238, 144)', 'rgb(238, 130, 238)'],
+        backgroundColor: ['#4D724D', '#8DB48E'],
+        borderColor: ['#4D724D', '#8DB48E'],
         data: [amount, 19-amount],
         }]
     };
