@@ -76,20 +76,23 @@ const getPullRequests = (technigoRepos) => {
 //this finds the pull requests I made by comparing the user.login from the pull API
 // with the owner.login in the filtered repo/data(?) API, and therefore we use pull in the
 // find array method because that is the name of the array?
-// when undefined bc I did not do the pull request but my teammate
 
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
         console.log(myPullRequests)
         /*console.log(myPullRequests.html_url)*/
        
-        if(myPullRequests) {
+
+        // here the pull request link is printed or if no link a default message. In log it would say undefined. 
+        if (myPullRequests) {
             document.getElementById(`${repo.name}`).innerHTML += 
             `<a href="${repo.html_url}">${myPullRequests.html_url}</a>`
         } else {
             document.getElementById(`${repo.name}`).innerHTML += 
-            `<p> Pull requests made by teammate</p>`
+            `<p> Pull request made by teammate</p>`
         }
 
+        //here is a first step to get the commits for each pull request, and we add the dynamic id to pass on
+        // or default message that teammate did the commits
         if (myPullRequests) {
             getCommits(myPullRequests.commits_url, repo.name) 
 
@@ -111,8 +114,6 @@ const getCommits = (URL, repoName) => {
     }
     })
     }
-
-//   document.getElementById(repoName).innerHTML += 'New data to inject'
 
 /*
 step 1 worked: 
