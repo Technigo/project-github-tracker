@@ -14,7 +14,7 @@ const getProfile = () => {
       profile.innerHTML = `
       <img src="${data.avatar_url}" class="user-img">
       <h2>${data.name}</h2>
-      <p id="bio">Front end development student @ Technigo</p>`;
+      <p id="bio">Front end development student @ Technigo</p></div>`;
     });
   getRepos();
 };
@@ -37,7 +37,7 @@ const getRepos = () => {
             repo.pushed_at
           ).toDateString()}</p>
           <a href="${repo.html_url}">Link to repo</a>
-          </div>`;
+          `;
       });
       getPullRequests(forkedRepos);
       drawChart(forkedRepos.length);

@@ -10,8 +10,8 @@ const drawChart = (projects) => {
     datasets: [
       {
         data: [projects, 19 - projects],
-        backgroundColor: ["rgb(198, 255, 148)", "rgb(255, 69, 0)"],
-        borderColor: ["rgb(198, 255, 148)", "rgb(255, 69, 0)"],
+        backgroundColor: ["rgb(157,219,201)", "rgb(255,87,87)"],
+        borderColor: ["rgb(157,219,201)", "rgb(255,87,87)"],
       },
     ],
   };
