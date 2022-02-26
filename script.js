@@ -41,6 +41,8 @@ const getRepos = () => {
       const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
       getPullRequests(forkedRepos)
       drawChart(forkedRepos.length)
+
+
     })
 }
 getRepos()
@@ -74,8 +76,7 @@ const getPullRequests = (repos) => {
           boxHtml += `<p>Created at: ${new Date(repo.created_at).toDateString()}</p>`
           boxHtml += `<p>Last update: ${new Date(repo.pushed_at).toDateString()}</p>`
           boxHtml += `<p>Default branch: ${repo.default_branch}</p>`
-          boxHtml += `<p>First comments: ${data[0].commit.message}</p>`
-          boxHtml += `<p>Last comments: ${data[data.length-1].commit.message}</p>`
+          //boxHtml += `<p>First comments: ${data[0].commit.message}</p>`
           boxHtml += `<p><a href="${repo.html_url}" target="_blank">Go to repo</a></p>`
           boxHtml += '</div>'
           projectsContainer.innerHTML += boxHtml; //closing the div tag
