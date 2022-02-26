@@ -1,9 +1,7 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
-#What to include
+Assignment is to build a site that shows info about our github account and the projects we've created to far.
+The following points is what is required to be shown.
 
 - A list of all repos that are forked ones from Technigo
 - Your username and profile picture
@@ -12,12 +10,12 @@ Start by briefly describing the assignment in a sentence or two. Keep it short a
 - URL to the actual GitHub repo
 - Number of commit messages for each repo
 - All pull requests
-- A chart of how many projects you've done so far, compared to how many you will do using [Chart.js](https://www.chartjs.org/). [Here](https://www.chartjs.org/docs/latest/getting-started/)'s documentation on how to get started, and in the left menu you can also find [example usage](https://www.chartjs.org/docs/latest/getting-started/usage.html).
+- A chart of how many projects you've done so far, compared to how many you will have done.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I used fetch to get the user data, which required 3 fetches - user data, pull requests, and commits. The styling was kept simple since the focus was to be able to display all the different data that was required. The biggest problem was data retrieval and getting it to actually show up on the site. The second biggest problem I had was that I had set up the fetches to all finish before moving on to displaying the data so the site took a very long time to load. That has been slightly remedied by splitting up the code into separate fetches but it still takes a fairly long time for the site to load.   
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-at.netlify.app/

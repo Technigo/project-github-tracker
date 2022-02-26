@@ -5,7 +5,7 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 const myChart = (numberOfProjects) => {
   new Chart(ctx, {
-    type: 'doughnut',
+    type: 'pie',
     data: {
       labels: ['Completed', 'To be done'],
       datasets: [{
