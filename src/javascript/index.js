@@ -2,12 +2,12 @@ const profileDetails = document.getElementById("aside");
 
 const username = "savannah-hayes"
 const USER_URL = `https://api.github.com/users/${username}`;
-const TOKEN = config.GITHUB_TOKEN || process.env.API_TOKEN
+const API_TOKEN = TOKEN || process.env.API_KEY
 
 const options = {
   method: "GET",
   headers: {
-    Authorization: `token ${TOKEN}`
+    Authorization: `token ${API_TOKEN}`
   }
 }
 

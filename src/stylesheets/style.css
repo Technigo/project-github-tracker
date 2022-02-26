@@ -105,7 +105,7 @@ h1 {
 }
 
 .bold-link {
-  font-weight: 600;
+  font-weight: var(--fw-bold);
   border-bottom: 3px solid orange;
   padding: 9px;
 }
