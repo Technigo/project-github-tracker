@@ -73,6 +73,11 @@ span {
   margin: 1rem;
 }
 
+.project:hover {
+  transition: background-color 500ms ease;
+  background-color: #f0d9c7;
+} 
+
 .chart-container {
   display: grid;
   grid-template-columns: 1fr;
