@@ -46,21 +46,13 @@ const getProfile = () => {
             <p class="username">${data.login}</p> 
         </section>
 
-
         <div class="status-box">
-            <span class="inside-status-box">👩‍💻 Edit status</span>
+        ${data.bio} 👩‍💻
         </div>
-
-        <p class="presentation-text">
-        ${data.bio}
-        </p>
-
-      
           `;
       });
   };
-  getProfile(); //invoking
-
+  getProfile();
 
    //------------------ SECOND FETCH - ALL REPOS -----------------------//
 const findingAllRepos = (repos) => { 
@@ -73,7 +65,6 @@ const findingAllRepos = (repos) => {
         const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log(forkedRepos, 'forked repos')
 
-        console.log(data) 
         forkedRepos.forEach((repo) => 
         projectInfo.innerHTML += 
         
@@ -114,7 +105,9 @@ const findingAllRepos = (repos) => {
             <p>
             <span>
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
-            <a class="project-url" href="${repo.svn_url}"> ${repo.name}</span></a>
+            <a class="project-url" href="${repo.svn_url}"> 
+            ${repo.name}</span>
+            </a>
             </p>
 
 
@@ -123,9 +116,30 @@ const findingAllRepos = (repos) => {
         )
        })
     }
+    findingAllRepos()
 
-findingAllRepos()
 
- //------------------ THIRD FETCH - COMMITS AND PULL REQUESTS -----------------------//
+//  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
+// const getPullRequest = (repos) => {
+//     repos.forEach((repo) => {
+//         const PULLREQUEST_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
+//         fetch(PULLREQUEST_URL, options)
+//         .then((res) => res.json())
+//         .then((pull) => {
+//             const myPullRequest = pull.find(
+//                 (pull) => pull.user.login === repo.owner.login
+//             )
+//         }
 
- 
+//         // If pull request done by user, getCommits function is invoked
+//         if (myPullRequest) {
+//             getCommits(myPullRequest.commits_url, repo.name)
+//         } else {
+//             document.getElementById(`commit-${repo.name}`).innerHTML =
+//             "No pull request done by user."
+//         }
+//         });
+
+
+//     }
+// getPullRequest()
