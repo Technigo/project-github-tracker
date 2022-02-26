@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background: #006d77;
+  background: rgb(0, 108, 117);
   margin: 0 0 5vh 0;
   display: flex;
   flex-direction: column-reverse;

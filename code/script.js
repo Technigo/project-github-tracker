@@ -31,11 +31,10 @@ addingProfile()
 const addingRepos = () => {fetch(API_URL, options)
     .then((res) => res.json())
     .then((repos) => {
-    
     // Filtering all repos I've forked and that starts with the word project.
         const forkedRepos = repos.filter(
             repo => repo.fork && repo.name.startsWith('project-')
-            ) 
+            )
     // For all filtered repos I put the following info on my page      
         forkedRepos.forEach((repo) => {
             let updated = new Date(repo.updated_at).toLocaleDateString()     //Turning date and time into date
@@ -53,7 +52,8 @@ const addingRepos = () => {fetch(API_URL, options)
         </div>`
       
      })
-     findingPulls(forkedRepos)                                // Bringing all filtered repos to the next function
+     findingPulls(forkedRepos)     
+     callingChart (forkedRepos.length)                           // Bringing all filtered repos to the next function
     })
     
      }
