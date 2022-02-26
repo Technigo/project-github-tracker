@@ -17,7 +17,7 @@ fetch(API_URL_ID)
 console.log(data.login)
 console.log(data.avatar_url)
 console.log(data.name)
-userInfo.innerHTML = `<h2>Name: ${data.name}</h2> <h2>Username: ${data.login}</h2>`
+userInfo.innerHTML = `<h2>${data.name}</h2> <h2> ${data.login}  <img class="logo"src="./GitHubMark.png"></h2>`
 //githubname.innerHTML = ``
 avatar.src = data.avatar_url
 getRepos()

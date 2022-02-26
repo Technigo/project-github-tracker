@@ -1,12 +1,8 @@
 # GitHub Tracker
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Assigment: To create a place to keep track of the GitHub repos that I am using at Technigo using JavaScript and API:s. 
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had problems with fetching teh commitsamount for my repos since all of them didnt have a pullrequest done by me. I solved it by adding conditional statment to sort out the repos with a pullrequest and only fetcinh the commitamount for them.
 
 ## View it live
 

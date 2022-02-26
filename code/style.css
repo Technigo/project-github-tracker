@@ -11,9 +11,9 @@ body {
 }
 .intro{width:80%; margin:auto; text-align:center}
 h1{font-size: 70px; text-align: center;}
-h2{text-align:center}
+h2{text-align:center; }
 .repo{width:80%; margin:auto; background-color:#fde3fb; border:1px solid white; padding:20px; margin:30px; border-radius:5%}
-.projects{display:flex; flex-wrap: wrap;}
+.projects{display:flex; flex-wrap: wrap; justify-content: center;}
 
 a{text-decoration:none;}
 h3{font-size: 30px;}
@@ -26,20 +26,20 @@ h3:hover{color:rgb(141, 190, 233);font-family: 'Bebas Neue', cursive;;}
   left: 0;
   right: 0;
   margin:auto;
-  width: auto}
-.userinfo{padding:40px;}
- 
+  width: 400px}
+
+.userinfo{padding:20px; }
+
+  @media only screen and (min-width: 600px) {
+.repo{width:40%}
+.chart{width:600px}
+  }
 
 @media only screen and (min-width: 992px) {
 .repo{width:20%}
 .picture{width:20%;}
 .intro{display:flex; align-items:center; justify-content: center;}
 h2{font-size:35px; text-align:left; margin-left:10px;}
-.chart{ position: absolute;
-  left: 0;
-  right: 0;
-  margin:auto;
-  width: 40%
-
-  }}
-
+.chart{ 
+  width: 40% }
+}
