@@ -13,7 +13,8 @@ const getProfile = () => {
     .then((data) => {
       profile.innerHTML = `
       <img src="${data.avatar_url}" class="user-img">
-      <h2>${data.name}</h2>`;
+      <h2>${data.name}</h2>
+      <p id="bio">Front end development student @ Technigo</p>`;
     });
   getRepos();
 };
@@ -24,12 +25,12 @@ const getRepos = () => {
     .then((res) => res.json())
     .then((data) => {
       // Filtering out not forked repositories
-      const onlyForked = data.filter(
+      const forkedRepos = data.filter(
         (repo) => repo.name.startsWith("project") && repo.fork === true
       );
-      onlyForked.forEach((repo) => {
+      forkedRepos.forEach((repo) => {
         repoGrid.innerHTML += `
-          <div class="repositories">
+        <div class='repos' id="${repo.name}">
           <h3 id="name">${repo.name}</h3>
           <p id="insideRepo">Default branch: ${repo.default_branch}</p>
           <p id="insideRepo">Recent Push: ${new Date(
@@ -38,13 +39,14 @@ const getRepos = () => {
           <a href="${repo.html_url}">Link to repo</a>
           </div>`;
       });
-      getPulls(onlyForked);
+      getPullRequests(forkedRepos);
+      drawChart(forkedRepos.length);
     });
 };
 
 // Fetch pull requests
-const getPulls = (onlyForked) => {
-  onlyForked.forEach((repo) => {
+const getPullRequests = (forkedRepos) => {
+  forkedRepos.forEach((repo) => {
     fetch(
       `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
     )
@@ -53,9 +55,9 @@ const getPulls = (onlyForked) => {
         const myPullsOnly = data.find(
           (pull) => pull.user.login === repo.owner.login
         );
-        // const myCommitsURL = myPullsOnly.commits_url;
-        // const repoName = repo.name;
-        getCommits();
+        const myCommitsURL = myPullsOnly.commits_url;
+        const repoName = repo.name;
+        getCommits(myCommitsURL, repoName);
       });
   });
 };
@@ -65,19 +67,8 @@ const getCommits = (myCommitsURL, repoName) => {
     .then((res) => res.json())
     .then((data) => {
       // count the number of commits
-      document.getElementById(
-        repoName
-      ).innerHTML += `Number of commits: ${data.length}`;
+      document.getElementById(repoName).innerHTML += `
+            <p id="insideRepo"># of Commits: ${data.length}</p>`;
     });
 };
-// Fetch commits function
-// const getCommits = (URL, repoName) => {
-//   fetch(URL)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       document.getElementById(`commit-${myRepoName}`).innerHTML += `
-//       <p># of Commits: ${data.length}</p>`;
-//     });
-// };
-
 getProfile();

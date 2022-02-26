@@ -1,6 +1,8 @@
 body {
-  background: #ffece9;
   margin: 0;
+}
+.profile {
+  background-image: url(Images/blob-red.png);
 }
 .user-img {
   display: block;
@@ -8,4 +10,13 @@ body {
   border-radius: 50%;
   margin: 20px auto;
   justify-content: center;
+}
+.chart-section {
+  display: flex;
+  justify-content: center;
+  margin: 7vh 0 15vh;
+}
+.chart-container {
+  max-width: 50vw;
+  min-width: 50vw;
 }
