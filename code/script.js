@@ -12,20 +12,20 @@ const options = {
       }
   }
 
-// my user info from GitHub 
+// my user info from GitHub wrapped in clickable link to my GitHub page
 const userProfile = () => {
 	fetch(USER_URL, options)
-		.then((res) => res.json())
-		.then((data) => {
-			userContainer.innerHTML += `
-			  <a href="${data.html_url}">
-          <img class="profile-image" src="${data.avatar_url}"/>
-          <span class="profile-name">
-            ${data.login}
-          </span>
-        </a>
-		  `;
-		});
+	.then((res) => res.json())
+	.then((data) => {
+	userContainer.innerHTML += `
+	<a href="${data.html_url}">
+    <img class="profile-image" src="${data.avatar_url}"/>
+    <span class="profile-name">
+    ${data.login}
+    </span>
+    </a>
+	`;
+  });
 };
 
 userProfile();
@@ -43,11 +43,34 @@ const myRepos = () => {
     console.log(forkedRepos)    
     console.log(technigoRepos)
 
+    // gets info from the filtered repos arrays and displays them on my page
+
+    technigoRepos.forEach((repo) => {
+        repoContainer.innerHTML += `
+
+            <div class="repo-cards" id="${repo.id}">
+                <h3><a href="${repo.html_url}"><b>${repo.name}</b></a> 
+                 (${repo.default_branch})</h3>
+                <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+                <p id="commit_${repo.name}">Number of commits: </p>
+            </div> 
+            `
+        })
+
+        // repos.forEach(repo => {
+        //     document.getElementById('container').innerHTML += `
+        //       <div class="repo" id=${repo.name}>
+        //         <h2>${repo.name}</h2>
+        //       </div>
+        //     `
+        //   })
+
+    /*
     technigoRepos.forEach(repo => {
         repoContainer.innerHTML += `<p>Projects: ${data.name}</p>`
         console.log(data.name)
 
-        })
+        })*/
 /*
     if (technigoRepos) {
         repoContainer.innerHTML += `<p>Projects: ${data[0].name}</p>`
