@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-*{box-sizing: border-box;}
-
+* {
+	box-sizing: border-box;
+}
 body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -9,37 +10,86 @@ body {
 	background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
 	font-family: 'Oswald', sans-serif;
 }
-.intro{width:80%; margin:auto; text-align:center}
-h1{font-size: 70px; text-align: center;}
-h2{text-align:center; }
-.repo{width:80%; margin:auto; background-color:#fde3fb; border:1px solid white; padding:20px; margin:30px; border-radius:5%}
-.projects{display:flex; flex-wrap: wrap; justify-content: center;}
-
-a{text-decoration:none;}
-h3{font-size: 30px;}
-h3:hover{color:rgb(141, 190, 233);font-family: 'Bebas Neue', cursive;;}
-
-.picture{width:80%; border-radius:50%;}
-
-.logo{width:30px;}
-.chart{ position: absolute;
-  left: 0;
-  right: 0;
-  margin:auto;
-  width: 400px}
-
-.userinfo{padding:20px; }
-
-  @media only screen and (min-width: 600px) {
-.repo{width:40%}
-.chart{width:600px}
-  }
-
+.intro {
+	width: 80%;
+	margin: auto;
+	text-align: center
+}
+h1 {
+	font-size: 70px;
+	text-align: center;
+}
+h2 {
+	text-align: center;
+}
+.repo {
+	width: 80%;
+	margin: auto;
+	background-color: #fde3fb;
+	border: 1px solid white;
+	padding: 20px;
+	margin: 30px;
+	border-radius: 5%
+}
+.projects {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+a {
+	text-decoration: none;
+}
+h3 {
+	font-size: 30px;
+}
+h3:hover {
+	color: rgb(141, 190, 233);
+	font-family: 'Bebas Neue', cursive;
+	;
+}
+.picture {
+	width: 80%;
+	border-radius: 50%;
+}
+.logo {
+	width: 30px;
+}
+.chart {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 400px
+}
+.userinfo {
+	padding: 20px;
+}
+@media only screen and (min-width: 600px) {
+	.repo {
+		width: 40%
+	}
+	.chart {
+		width: 600px
+	}
+}
 @media only screen and (min-width: 992px) {
-.repo{width:20%}
-.picture{width:20%;}
-.intro{display:flex; align-items:center; justify-content: center;}
-h2{font-size:35px; text-align:left; margin-left:10px;}
-.chart{ 
-  width: 40% }
+	.repo {
+		width: 20%
+	}
+	.picture {
+		width: 20%;
+	}
+	.intro {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	h2 {
+		font-size: 35px;
+		text-align: left;
+		margin-left: 10px;
+	}
+	.chart {
+		width: 40%
+	}
 }
