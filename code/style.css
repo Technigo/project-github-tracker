@@ -1,3 +1,50 @@
 body {
-  background: #FFECE9;
+  background: #11130d;
+  font-family: 'Zilla Slab', serif;
+  
 }
+
+
+h1{
+  font-family: 'Galada', cursive;
+  font-size: 65pt;
+  text-align: center;
+  text-shadow: 6px 5px rgb(151, 31, 71);
+  margin-bottom: -2rem;
+  color: rgb(216, 83, 128);
+}
+
+h3{
+  font-size: 35pt;
+  text-align: center;
+  color: rgb(216, 83, 128);
+}
+
+.profile-box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  color: rgb(216, 83, 128);
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 290px;
+  align-content: center;
+  border: 6px solid rgb(216, 83, 128); 
+ }
+
+ .projects {
+   display: flex;
+   flex-flow: wrap;
+ }
+
+ .repo-card {
+   display: flexbox;
+   margin: 2rem;
+   border-radius: 1rem;
+   padding: 1rem;
+   background-color:rgb(216, 83, 128)
+ }
