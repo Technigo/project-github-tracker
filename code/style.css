@@ -1,7 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap");
-
 /* CSS below is to reset default values such as margin, padding and box-sizing
     and increase the resolution of the text */
+:root {
+  --main-bg-color: #fbf9eb;
+  --my-black: #333;
+  --main-accent-color: #ff1e00;
+  --sec-accent-color: #2fc5ee;
+}
 
 * {
   margin: 0;
@@ -14,8 +18,8 @@
 }
 
 body {
-  background: #fefbf3;
-  border: solid #2fc5ee 8px;
+  background: var(--main-bg-color);
+  border: solid var(--sec-accent-color) 8px;
   width: 100%;
   font-family: "Poppins";
 }
@@ -28,7 +32,7 @@ a {
   text-decoration: none;
   font-family: "poppins";
   font-size: 8px;
-  color: #ff1e00;
+  color: var(--main-accent-color);
 }
 
 .header {
@@ -45,25 +49,42 @@ img {
   writing-mode: vertical-rl;
   font-family: "Playfair Display";
   font-size: 13vw;
-  color: #ff1e00;
+  color: var(--main-accent-color);
 }
 
 span {
-  color: #ff1e00;
+  color: var(--main-accent-color);
   font-size: 5vw;
+}
+
+.circles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 45%;
+  font-family: 'poppins';
+  color: var(--main-bg-color);
+}
+
+.circle {
+  width: 5vw;
+  height: 9vw;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: var(--sec-accent-color);
 }
 
 .bio {
   display: block;
-  color: black;
+  color: var(--my-black);
   font-family: "Playfair Display";
   font-size: 2vw;
   font-style: normal;
   font-weight: normal;
   text-align: center;
-  margin: 3rem 5rem;
-  border-top: 0.5px solid #333;
-  border-bottom: 0.5px solid #333;
+  margin: 5rem;
+  border-top: 0.5px solid var(--my-black);
+  border-bottom: 0.5px solid var(--my-black);
   padding: 20px 0;
 }
 
@@ -74,11 +95,11 @@ span {
   text-transform: uppercase;
   padding-bottom: 20px;
   margin-top: 50px;
-  border-bottom: 3px solid #333;
+  border-bottom: 3px solid var(--my-black);
 }
 
 .projects {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--my-black);
 }
 
 .projects-right {
@@ -88,6 +109,7 @@ span {
   display: flex;
   flex-direction: column;
   align-items: end;
+  text-align: -webkit-right;
 }
 
 .projects-left {
@@ -105,8 +127,8 @@ span {
 }
 
 .projects:hover {
-  background-color: #333;
-  color: #2fc5ee;
+  background-color: var(--my-black);
+  color: var(--sec-accent-color);
   transition: all 1.5s ease;
   cursor: pointer;
 }
@@ -137,16 +159,40 @@ span {
   line-height: 12px;
 }
 
-.chart-wrapper {
-  width: 57%;
-  margin: 70px auto;
+.process-header {
+  font-size: 4vw;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 50px;
 }
 
-/* On screens that are 768px or more (tablet) */
+.chart-wrapper {
+  width: 57%;
+  margin: 22px auto;
+  margin-bottom: 60px;
+}
 
+.footer-text {
+  font-size: 12px;
+  font-family: "poppins";
+  font-weight: normal;
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: var(--my-black);
+}
+
+footer {
+  height: 80px;
+  background-color: var(--sec-accent-color);
+  display: flex;
+  justify-content: center;
+}
+
+/* Media Query - Tablet */
 @media screen and (min-width: 768px) {
   body {
-    border: 22px solid #2fc5ee;
+    border: solid var(--sec-accent-color) 22px;
   }
 
   a,
@@ -154,8 +200,12 @@ span {
     font-size: 10px;
   }
 
+  .circle {
+  
+  }
+
   .bio {
-    margin: 20rem 15rem;
+    margin: 15rem 8rem;
     padding: 50px;
     font-size: 2.5vw;
   }
@@ -171,4 +221,20 @@ span {
   .project-info {
     height: 120px;
   }
+
+  .process-header {
+    margin-top: 100px;
+  }
+
+  .chart-wrapper {
+    width: 30%;
+  }
+
+  footer {
+    height: 80px;
+  }
+}
+
+/* Media Query - Desktop */
+@media screen and (min-width: 992px) {
 }

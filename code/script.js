@@ -24,6 +24,14 @@ fetch(API_USER, options)
 			<img src="${json.avatar_url}" alt= "avatar">
 			<p class="user-name">${json.login}</p>
 		</div>
+		<div class="circles">
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+			<div class="circle"></div>
+		</div>
 		<p class="bio"><span>HI!</span> ${json.bio}</p>
 		`;
   });
@@ -56,20 +64,20 @@ fetch(API_REPOS, options)
 						<p class="branch-name">${project.default_branch} branch</p>
 						<a class="project-url" href="${
               project.html_url
-            }" alt="link to git" target="_blank">link to project</a>
+            }" alt="link to git" target="_blank">link to repo</a>
 					</div>
 					<div class="test"> <h1>TESTAR LITE</h1> </div>
 				</div>
 			<div>
 			`;
-			
-      //toggle function that add the class active and
+
+      //toggle function that add the class active to a section
       function toggle() {
         this.classList.toggle("active");
       }
 
-      // calls a function which will be executed when the element, project section, is clicked.
-      document.getElementById(`${project.name}`).onclick = toggle;
+      // calls a function which will be executed when the element, project section, is clicked
+      document.getElementById(project.name).onclick = toggle;
 
       // fetch all the pull requests and print them out
       const reponame = project.name;
