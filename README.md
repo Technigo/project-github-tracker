@@ -6,4 +6,4 @@ I had problems with fetching teh commitsamount for my repos since all of them di
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://cranky-wing-8c4bce.netlify.app/
