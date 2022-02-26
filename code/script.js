@@ -55,8 +55,7 @@ const fetchRepositories = () => {
 
 const fetchPullRequestsArray = (allRepositories) => {
   allRepositories.forEach((repo) => {
-    const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?
-        per_page=100`;
+    const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
 
     fetch(PULL_URL)
       .then((res) => res.json())
