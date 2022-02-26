@@ -64,9 +64,9 @@ const findingAllRepos = (repos) => {
         `
         <div class="projectContainer">
             <p class="smallerContainer">
-                <span class="styledHeadingsProject">
-                Name of repository: </span>
-                ${repo.name}
+                <span class="header-project">
+                ${repo.name.replace('project-', '').replace('-', ' ')}</span>
+               
             </p>
             <p class="smallerContainer">
                 <span class="styledHeadingsProject">
