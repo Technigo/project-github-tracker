@@ -21,8 +21,8 @@ progressChart = (projectsDone) => {
             
             // These labels appear in the legend and in the tooltips when hovering different arcs
             labels: [
-                'done ☑️',
-                'todo 📝',
+                'done',
+                'todo',
             ]
         },
 

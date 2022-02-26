@@ -70,15 +70,17 @@ const repoData = (technigoProjects) => {
 
   //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
-   
   //Get name of repo and date of latest update of the repo
-  const reponame = repo.name
-  
+  const reponame = repo.name 
+
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
   myProjects.innerHTML += `
   <div class="section-projects__card box-shadow">
     <div>
       <h3 class="repo-title bold-text"><a class="nav-link" href='${repo.html_url}'><i class="fab fa-github"></i> ${repo.name}</a></h3>
+      <div class="repo-languages">
+        <p id="languages-${repo.name}"></p>
+      </div>
       <p><span class="bold-text">Default branch:</span> ${repo.default_branch}</p>
       <p><span class="bold-text">Latest update:</span> ${new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
       <p id="commits-${repo.name}"></p>
@@ -91,13 +93,15 @@ const repoData = (technigoProjects) => {
   </div>  
   `
 
+  languagesData(username, reponame)
+
   /////////////////////////////////////////////////////////////////////////////
   ////////////////////////      PULL REQUEST DATA      ///////////////////////
   ///////////////////////////////////////////////////////////////////////////
   fetch(`https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`, options)
     .then(res => res.json())
     .then(data => {
-      
+
       data.forEach( repo => {
         if(repo.user.login === username) {
 
@@ -123,6 +127,25 @@ const repoData = (technigoProjects) => {
   })
 }
 
+/////////////////////////////////////////////////////////////////////////////
+////////////////////////       LANGUAGES DATA        ///////////////////////
+///////////////////////////////////////////////////////////////////////////
+
+//Find languages for each repo
+const languagesData = (username, reponame) => {
+
+  fetch(`https://api.github.com/repos/${username}/${reponame}/languages`, options)
+    .then(res => res.json())
+    .then(data => {
+    
+    // create an array with languages used by using the object keys. 
+    const arrayLanguages = (Object.keys(data))
+    arrayLanguages.forEach(item => {
+      document.getElementById(`languages-${reponame}`).innerHTML += `<span class="repo-languages--item">${item}</span>`    
+      console.log('item', arrayLanguages)
+    })    
+  }) 
+}
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////////////      COMMITS DATA     /////////////////////////
@@ -159,9 +182,8 @@ const displayComments = (commentsUrl, reponame) => {
           </p>
           `         
           document.getElementById(`comments-btn-${reponame}`).innerHTML = `
-            <button class="outlined-button" id="click-${reponame}">comments 💬</button> 
+            <button class="filled-button" id="click-${reponame}">comments 💬</button> 
           `
-
           commentsArray.push(comment.body)
           document.getElementById(`click-${reponame}`).addEventListener('click', () => {
             commentsArray.forEach(item => {
@@ -191,7 +213,7 @@ const displayLink = (netlifyUrl, reponame) => {
   
     document.getElementById(`website-${reponame}`).innerHTML = `
     <a href="${netlifyUrl}" target="_blank">
-    <button class="filled-button">visit website</button>
+    <button class="outlined-button">visit website</button>
     </a>
     `
   }
