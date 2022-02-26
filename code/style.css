@@ -151,6 +151,22 @@ footer {
     font-size: 26px;
   }
 
+  .status-box {
+    font-size: 20px;
+  }
+
+  .header-project {
+    font-size: 24px;
+  }
+
+  .styledHeadingsProject {
+    font-size: 18px;
+  }
+
+  .project-url {
+    font-size: 18px;
+  }
+
   .presentation-text {
     font-size: 22px;
   }
