@@ -79,6 +79,7 @@ body {
 .header-project {
   font-size: 20px;
   color: #c0716a;
+  text-transform: capitalize;
 }
 
 #chart {

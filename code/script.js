@@ -83,11 +83,11 @@ const findingAllRepos = (repos) => {
             Default branch: </span>
             ${repo.default_branch}
         </p>
-        <p class="smallerContainer">
+        <p class="smallerContainer" id="pull-${repo.name}">
             <span class="styledHeadingsProject">
             Number of commits: </span>
         </p>
-        <p class="smallerContainer">
+        <p class="smallerContainer" id="pull-${repo.name}">
             <span class="styledHeadingsProject">
             Pull requests: </span>
         </p>
@@ -106,26 +106,23 @@ getPullRequest(forkedRepos)
 }
 findingAllRepos()
 
-
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
 const getPullRequest = (repos) => {
     repos.forEach((repo) => {
-      console.log("repo", repo);
       fetch(
         `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log("data", data);
+        //   console.log("data", data);
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login);
           if (pulls) {
-            fetchCommits(pulls.commits_url, repo.name);
+            getCommits(pulls.commits_url, repo.name);
           } else {
             document.getElementById(
-              `commit-${repo.name}`
-            ).innerHTML = `Commits done: (Pull request unavailable)`;
+              `commit-${repo.name}`).innerHTML = `Commits done: (Pull request unavailable)`;
           }
         });
     });
@@ -145,11 +142,12 @@ const getPullRequest = (repos) => {
       getCommits(pulls.commits_url, repo.name)
       console.log('HEY', pulls.commits_url, 'pulls commits_url')
       pullRequests.forEach((repo) => {
-          console.log("data", getPullRequest)
+          console.log("get pull request here", getPullRequest)
   })
 
 
   const getCommits = (myCommitsUrl, myRepoName) => {
+      console.log(getCommits)
           fetch(myCommitsUrl, options)
           .then((res) => {
           return res.json()
