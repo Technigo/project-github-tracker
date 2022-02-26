@@ -45,8 +45,8 @@ const getRepos = () => {
 
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML +=
-                    `<div class="project-list">
-                       <h3>Project Name:${repo.name}</h3>
+                    `<div id= "projects">
+                       <h3>${repo.name}</h3>
                        <a href = ${repo.html_url}> ${repo.name} </a>
                        <p> Main branch: ${repo.default_branch}</p>
                        
