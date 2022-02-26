@@ -1,35 +1,21 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
-
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
-
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)', 
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
+//Draws the chart and displays progress in projects finished vs left
+const drawChart = (amount) => {
   const config = {
     type: 'doughnut',
-    data: data,
-    options: {}
-  };
+    data: {
+      labels: ['Finished projects', 'Projects left'],
+      datasets: [
+        {
+          label: 'Technigo projects',
+          data: [amount, 19 - amount],
+          backgroundColor: ['rgb(63, 114, 175)', 'rgb(17, 45, 78)'],
+        },
+      ],
+    },
+  }
 
-
-const myChart = new Chart(
-    document.getElementById('chart'),
-    config
-  );
+  const myChart = new Chart(ctx, config)
+}
