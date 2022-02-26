@@ -27,12 +27,43 @@ const mainContent = document.getElementById('mainContent')
 // Github API
 const username = 'emmajosefina'
 const API_URL = `https://api.github.com/users/${username}/repos`
+const API_USER = `https://api.github.com/users/${username}`
 
 
 
+ //------------------ FIRST FETCH - USER PROFILE -----------------------//
+const getProfile = () => {
+    fetch(API_USER, options)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data', data);
+        
+        mainContent.innerHTML += 
+        `
+        <section class="profile-box"> 
+            <img src="${data.avatar_url}" id="profilePicture" class="profile-picture" />
+            <p class="full-name">${data.name}</p>
+            <p class="username">${data.login}</p> 
+        </section>
 
+
+        <div class="status-box">
+            <span class="inside-status-box">👩‍💻 Edit status</span>
+        </div>
+
+        <p class="presentation-text">
+        ${data.bio}
+        </p>
+
+      
+          `;
+      });
+  };
+  getProfile(); //invoking
+
+
+   //------------------ SECOND FETCH - ALL REPOS -----------------------//
 const findingAllRepos = (repos) => { 
- //------------------ FIRST FETCH - ALL REPOS -----------------------//
     fetch(API_URL, options) 
        .then((res) => res.json()) 
        .then((data) => { 
@@ -42,21 +73,6 @@ const findingAllRepos = (repos) => {
         const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log(forkedRepos, 'forked repos')
 
-        mainContent.innerHTML += `
-        <section class="profile-box"> 
-        <img src="${data[0].owner.avatar_url}" id="profilePicture" class="profile-picture" />
-        <p class="full-name">Emma Lindell</p>
-        <p class="username">emmajosefina</p>
-      </section>
-      <div class="status-box">
-      <span class="inside-status-box">👩‍💻 Edit status</span>
-      </div>
-
-    <p class="presentation-text">
-      Frontend Developer from Technigo Bootcamp. Always curious to learn more about technology and design.
-      </p>
-
-      `
         console.log(data) 
         forkedRepos.forEach((repo) => 
         projectInfo.innerHTML += 
@@ -110,4 +126,6 @@ const findingAllRepos = (repos) => {
 
 findingAllRepos()
 
- //------------------ SECOND FETCH - ALL REPOS -----------------------//
+ //------------------ THIRD FETCH - COMMITS AND PULL REQUESTS -----------------------//
+
+ 
