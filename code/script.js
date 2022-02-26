@@ -101,10 +101,11 @@ const findingAllRepos = (repos) => {
     </div>
     ` 
 )
+getPullRequest(forkedRepos)
 })
 }
 findingAllRepos()
-getPullRequest()
+
 
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
 const getPullRequest = (repos) => {
