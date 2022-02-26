@@ -12,9 +12,10 @@ const profileImage = document.getElementById('profileImage')
      <p> Github: ${data.html_url} </p>
     `
     profileImage.src = data.avatar_url
-  })
+   })
   .catch((err) => console.log(err))
 
+  // Repos forked from Technigo
   fetch('https://api.github.com/users/rawisou/repos') 
    .then((res) => res.json()) 
    .then((data) => {
@@ -35,25 +36,30 @@ const profileImage = document.getElementById('profileImage')
         const myPullRequests = pull.find( 
           (pull) => pull.user.login === repo.owner.login 
          )
-      let num = getCommits(`https://api.github.com/repos/rawisou/${repo.name}/commits?per_page=100`)
-    
-      if(myPullRequests != undefined) {projectCard.innerHTML += `
-      <div class="card">
-       <h3 class="repo-name">${repo.name}</h3>
-       <a href="${repo.html_url}">${repo.html_url}</a>
-       <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
-       <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-       <p><span class ="bolded"> Number of commits:</span>${num}</p>
-       <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">${myPullRequests.html_url}</a></p>
-      </div>   
-        ` } else if (repo.name === 'project-weather-app') {
+
+         fetch(`https://api.github.com/repos/rawisou/${repo.name}/commits?per_page=100`)
+         .then((res) => res.json())
+         .then((myCommits) => {
+         let num = myCommits.length
+  
+       if (myPullRequests != undefined) {projectCard.innerHTML += `
+          <div class="card">
+            <h3 class="repo-name">${repo.name}</h3>
+            <a href="${repo.html_url}">${repo.html_url}</a>
+            <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
+            <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
+            <p><span class ="bolded"> Number of commits:</span> ${num}</p>
+            <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">${myPullRequests.html_url}</a></p>
+          </div>   
+        ` 
+       } else if (repo.name === 'project-weather-app') {
          projectCard.innerHTML += `
          <div class="card">
            <h3 class="repo-name">${repo.name}</h3>
            <a href="${repo.html_url}">${repo.html_url}</a>
            <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
            <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-           <p><span class ="bolded"> Number of commits:</span>${num}</p>
+           <p><span class ="bolded"> Number of commits:</span> ${num}</p>
            <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">https://github.com/Technigo/project-weather-app/pull/215</a></p>
          </div>   
          `
@@ -64,32 +70,14 @@ const profileImage = document.getElementById('profileImage')
             <a href="${repo.html_url}">${repo.html_url}</a>
             <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
             <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
-            <p><span class ="bolded"> Number of commits:</span>${num}</p>
+            <p><span class ="bolded"> Number of commits:</span> ${num}</p>
             <p><span class ="bolded"> Pull Request:</span> No pull request </p>
           </div>   
           `
-        }
-        })
+             }
+          })
+       })
      })
    }
-
-
-const getCommits = (endpoint) => {
-  fetch(endpoint)
-  .then((res) => res.json())
-  .then((myCommits) => {
-   myCommits.length
-   console.log(myCommits)
- })
-}
-
-// ------Async/await which returns [object Promise] -----
-  // const getCommits = async (endpoint) => {
-  //   const res = await fetch(endpoint)
-  //   let myCommits = await res.json()
-  //   myCommits = myCommits.length
-  //   console.log(myCommits)
-  // }
-
 
   
