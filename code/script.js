@@ -10,7 +10,6 @@ const API_URL_REPO = `https://api.github.com/users/${username}/repos`
 
 const projectsContainer = document.getElementById('projects')
 
-
 const options = {
     method: 'GET',
     headers: {
@@ -42,49 +41,49 @@ const getRepos = () => {
     .then(data => {
         console.log(data, 'my repos')
 
-        // Filtering to get only my forked repos
+        // Filtering to get only my forked repos from Technigo
         const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
         console.log(forkedRepos, 'forked repos')
 
         forkedRepos.forEach((repo) => {
+            // Creating unique ID for each forked repo
+            let projectID = repo.id
+            console.log(repo)
             projectsContainer.innerHTML += `
-                <div class="projects-card" id="${repo.id}">
+                <div class="projects-card" id="${projectID}">
                     <h3><a href="${repo.html_url}">${repo.name}</a></h3>
                     <p class="default-branch">Branch: ${repo.default_branch}</p>
                     <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-                    <p id="commit-${repo.name}">Number of commits: </p>
                 </div>
             `
+            getCommits(repo, projectID)
         })
-        drawChart(forkedRepos.length)
         getPullRequests(forkedRepos)
+        drawChart(forkedRepos.length)
     })
 }
-
-getRepos()
 
 const getPullRequests = (forkedRepos) => {
     forkedRepos.forEach(repo => {
         fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=150`, options)
         .then(res => res.json())
         .then(data => {
-            const commits = document.getElementById(`commit-${repo.name}`)
-            
             const pulls = data.find((pull) => pull.user.login === repo.owner.login);
-            
-            getCommits(pulls.commits_url, repo.name)
-            console.log(pulls.commits_url, 'pulls commits_url')
         })
     })
 }
 
-const getCommits = (myCommitsUrl, myRepoName) => {
-    fetch(myCommitsUrl, options)
-    .then((res) => {
-        return res.json()
+const getCommits = (projectsContainer, projectID) => {
+    const GIT_COMMIT_API = projectsContainer.commits_url.replace("{/sha}", "")
+    fetch (GIT_COMMIT_API, options)
+    .then((res) => res.json())
+    .then(data => {
+        let numberOfCommits = data.length
+        document.getElementById(projectID).innerHTML +=`
+        <p>Number of commits: ${numberOfCommits}</p>`
     })
-    .then((data) => {
-        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-    })
-    console.log(myRepoName)
 }
+
+getRepos()
+
+// Kom ihåg att städa i koden + ta bort alla loggar 
