@@ -90,8 +90,6 @@ fetch(API_REPOS, options)
             return PR.user.login === "sieurin";
           });
 
-          console.log(filteredPR);
-
           const singleProject = document.getElementById(project.name);
           singleProject.innerHTML += `<p class="pull-requests">Pull requests: ${filteredPR.length}</p>`;
 
@@ -105,5 +103,4 @@ fetch(API_REPOS, options)
             });
         });
     });
-    console.log(filterProjects);
   });
