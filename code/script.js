@@ -2,13 +2,20 @@ const username = "lisabergstrom";
 const API_REPOS = `https://api.github.com/users/${username}/repos`;
 const API_PROFILE = `https://api.github.com/users/${username}`;
 
+// T O K E N
+const options = {
+  method: "GET",
+  headers: {
+    Authorization: "API_KEY",
+  },
+};
 // D O M - S E L E C T O R S
 const userProfile = document.getElementById("userProfile");
 const projects = document.getElementById("projects");
 
 // P R O F I L E
 const fetchProfile = () => {
-  fetch(API_PROFILE)
+  fetch(API_PROFILE, options)
     .then((res) => res.json())
     .then((data) => {
       userProfile.innerHTML += `
@@ -22,7 +29,7 @@ const fetchProfile = () => {
 
 // R E P O S
 const fetchRepositories = () => {
-  fetch(API_REPOS)
+  fetch(API_REPOS, options)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -57,7 +64,7 @@ const fetchPullRequestsArray = (allRepositories) => {
   allRepositories.forEach((repo) => {
     const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
 
-    fetch(PULL_URL)
+    fetch(PULL_URL, options)
       .then((res) => res.json())
       .then((data) => {
         const myPullRequest = data.find(
@@ -80,7 +87,7 @@ const fetchPullRequestsArray = (allRepositories) => {
 
 //function to get commit number for each project
 const fetchCommits = (myCommitsUrl, myRepoName) => {
-  fetch(myCommitsUrl)
+  fetch(myCommitsUrl, options)
     .then((res) => res.json())
     .then((data) => {
       document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;
