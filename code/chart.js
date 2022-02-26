@@ -25,6 +25,8 @@ const labels = [
     type: 'bar',
     data: data,
     options: {
+      responsive: true,
+      maintainAspectRatio: false,
       indexAxis: 'y',
       scales: {
         x: {

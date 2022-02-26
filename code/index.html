@@ -7,6 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -14,12 +15,26 @@
     </div>
     <h1>GitHub Tracker</h1>
   </header>
-  
-  <h2>Projects:</h2>
-  <main class="projects" id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <!-- Chart placement -->
+  <div class="chart-container">
+    <canvas class="chart" id="chart"></canvas>
+  </div>
+
+  <main>
+    <form action="select" id="formRepos">
+      <select name="sort-repos" id="sortRepos">
+        <option value="alphabetical">Alphabetical order</option>
+        <option value="newestFirst">Latest update</option>
+      </select>
+    </form>
+    <article class="projects" id="projects">
+    </article>
+  </main>
+
+  <footer>
+    <span class="footer-text">Made by Ida Näslund on Technigo Bootcamp, spring 2022</span>
+  </footer>
 
   <script src="./chart.js"></script>
   <script src="./token.js"></script>

@@ -2,6 +2,8 @@
 const projects = document.getElementById('projects')
 const username = 'idanaslund'
 const profile = document.getElementById('profile')
+const formRepos = document.getElementById('formRepos')
+const sortRepos = document.getElementById('sortRepos')
 
 let API_URL = `https://api.github.com/users/${username}/repos`
 
@@ -19,9 +21,12 @@ const addingProfile = () => {
     fetch(`https://api.github.com/users/${username}`, options)
     .then((res) => res.json())
     .then((profileInfo) => {
+        console.log("profile", profileInfo)
         profile.innerHTML += `
         <img src="${profileInfo.avatar_url}">
-        <a class="userlink"href="${profileInfo.html_url}">${profileInfo.login}</a>`
+        <a class="userlink" href="${profileInfo.html_url}">${profileInfo.login}</a>
+        <p>${profileInfo.bio}</p>
+        `
     }) 
 }
 addingProfile()
@@ -31,26 +36,37 @@ addingProfile()
 const addingRepos = () => {fetch(API_URL, options)
     .then((res) => res.json())
     .then((repos) => {
-    // Filtering all repos I've forked and that starts with the word project.
+       
+     // Filtering all repos I've forked and that starts with the word project
         const forkedRepos = repos.filter(
             repo => repo.fork && repo.name.startsWith('project-')
-            )
+            ) 
     // For all filtered repos I put the following info on my page      
         forkedRepos.forEach((repo) => {
-            let updated = new Date(repo.updated_at).toLocaleDateString()     //Turning date and time into date
-        projects.innerHTML += `
+            let updated = new Date(repo.updated_at).toLocaleDateString()            //Turning date and time into date
+            let upperCase = `${repo.name[0].toUpperCase()}${repo.name.slice(1)}`    //Making first letter of string to uppercase
+        projects.innerHTML += [`
         <div class="repos">
-        <h4>${repo.name}</h4>
+        <h4>${upperCase}</h4>
         <form label="projects">
          <ul>
-            <li>Most recent update: ${updated}</li>
-            <li>Default branch: ${repo.default_branch}</li>
-            <li><a href=${repo.html_url} target="_blank">Link to repo</a></li>
-            <li id=commit-${repo.name}>Number of commits:</li>
+            <li><span class="title">Most recent update:</span> ${updated}</li>
+            <li><span class="title">Default branch:</span> ${repo.default_branch}</li>
+            <li><a class="repo-link" href=${repo.html_url} target="_blank">Link to repo</a></li>
+            <li id=commit-${repo.name}><span class="title">Number of commits:</span> </li>
          </ul>
         </form>
-        </div>`
-      
+        </div>`]
+
+
+      //  const sortingRepos = () => {
+       // if(sortRepos === 'alphabetical') {
+       //     repos.sort(forkedRepos)
+        //} else if(sortRepos === 'newestFirst') {
+         //   updated.sort(forkedRepos)
+         //   }
+       // }
+    
      })
      findingPulls(forkedRepos)     
      callingChart (forkedRepos.length)                           // Bringing all filtered repos to the next function
@@ -71,7 +87,7 @@ const findingPulls = (repos) => {
         findingCommits(pulls.commits_url, repo.name)                    //passing the commits of these pull requests to the next function
         console.log(pulls.commits_url, "commits")
         } else {                                                         // If pull requests does not exist = display this
-         document.getElementById(`commit-${repo.name}`).innerHTML += ' Is either a group project or pull request does not exist'
+         document.getElementById(`commit-${repo.name}`).innerHTML += ' Group project/no pull request'
         }
         
     })
