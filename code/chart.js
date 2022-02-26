@@ -14,8 +14,8 @@ const labels = [
     labels: labels,
     datasets: [{
       label: 'Progress',
-      backgroundColor: ['rgb(255, 99, 132)','rgb(100, 5, 100)'],
-      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: ['rgb(57, 138, 185)','rgb(28, 101, 140)'],
+      borderColor: 'rgb(238, 238, 238)',
       data: [projects, 19-projects],
     }]
   };
@@ -23,7 +23,9 @@ const labels = [
   const config = {
     type: 'doughnut',
     data: data,
-    options: {}
+    options: {
+      
+    }
   };
   new Chart(
     document.getElementById('chart'),

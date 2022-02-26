@@ -26,7 +26,7 @@ const getUser = () => {
         .then((data) => {
             // console.log(data)
             profileInfo.innerHTML += `
-            <h3><a href="${API_URL}" target="_blank">${data.login}</a></h3>
+            <h2><img src = "./github.png"><a href="https://github.com/${userName}" target="_blank">${data.login}</a></h2>
             <img src = "${data.avatar_url}" class="user-picture"/>
        `
         })
@@ -46,11 +46,9 @@ const getRepos = () => {
             forkedRepos.forEach((repo) => {
                 projectsContainer.innerHTML +=
                     `<div id= "projects">
-                       <h3>${repo.name}</h3>
-                       <a href = ${repo.html_url}> ${repo.name} </a>
-                       <p> Main branch: ${repo.default_branch}</p>
-                       
-                       <p> Latest push : ${repo.pushed_at.slice(0, 10)}, ${repo.pushed_at.slice(11, 16)}</p>
+                       <h3><a href = ${repo.html_url}> ${repo.name} </a></h3>
+                       <p>Default branch: ${repo.default_branch}</p>
+                       <p>Latest push: ${repo.pushed_at.slice(0, 10)}, ${repo.pushed_at.slice(11, 16)}</p>
                        <p id="pull-${repo.name}"></p>
                        <p id="commit-${repo.name}">Commits: </p>
                        </div>`;
