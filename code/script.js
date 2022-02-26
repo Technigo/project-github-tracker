@@ -37,7 +37,7 @@ const getProfile = () => {
     fetch(API_USER, options)
       .then((res) => res.json())
       .then((data) => {
-        console.log('data', data);
+        console.log('profile data', data);
         mainContent.innerHTML += 
         `
         <section class="profile-box"> 
@@ -62,7 +62,7 @@ const findingAllRepos = (repos) => {
 
     // Fetches only repositories from Technigo //
     const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-    console.log(forkedRepos, 'forked repos')
+    console.log('repos from technigo', forkedRepos)
 
     forkedRepos.forEach((repo) => 
     projectInfo.innerHTML += 
@@ -104,30 +104,65 @@ const findingAllRepos = (repos) => {
 })
 }
 findingAllRepos()
-
- //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
-const getPullRequest = (forkedRepos) => {
-        forkedRepos.forEach(repo => {
-        fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
-        .then(res => res.json())
-        .then((data) => {
-            const commits = document.getElementById(`commit -${repo.name}`)
-            const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-            
-            getCommits(pulls.commits_url, repo.name)
-            console.log(pulls.commits_url, 'pulls commits_url')
-})
-})
-}
 getPullRequest()
 
-const getCommits = (myCommitsUrl, myRepoName) => {
-        fetch(myCommitsUrl, options)
-        .then((res) => {
-        return res.json()
-})
-        .then((data) => {
-        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-})
-        console.log('commits', myRepoName)
-}
+ //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
+const getPullRequest = (repos) => {
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+    .then(res => res.json())
+    .then(data =>
+        {
+            //Filter out pullrequests
+        const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+
+            if (pulls) {
+                fetchCommits(pulls.commits_url, repo.name)
+            } else {
+                document.getElementById(`commit-${repo.name}`).innerHTML =
+                `Commits done: (Pull request unavailable)`
+            }
+        })
+    })
+
+
+
+
+
+    // repos.forEach(repo => {
+    //     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
+    //         document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
+    // })
+    // }
+
+//     }
+        
+        
+        // )
+
+    
+        //     const commits = document.getElementById(`commit -${repo.name}`)
+        //     const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+            
+        //     getCommits(pulls.commits_url, repo.name)
+        //     console.log('HEY', pulls.commits_url, 'pulls commits_url')
+
+        //     pullRequests.forEach((repo) => {
+        //         console.log("data", pullRequest)
+// })
+// })
+// }
+
+
+// const getCommits = (myCommitsUrl, myRepoName) => {
+//         fetch(myCommitsUrl, options)
+//         .then((res) => {
+//         return res.json()
+// })
+//         .then((data) => {
+//         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+// })
+//         console.log('commits', myRepoName)
+//
