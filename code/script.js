@@ -83,7 +83,7 @@ const findingAllRepos = (repos) => {
             Default branch: </span>
             ${repo.default_branch}
         </p>
-        <p class="smallerContainer" id="pull-${repo.name}">
+        <p class="smallerContainer" id="commit-${repo.name}">
             <span class="styledHeadingsProject">
             Number of commits: </span>
         </p>
@@ -109,20 +109,19 @@ findingAllRepos()
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
 const getPullRequest = (repos) => {
     repos.forEach((repo) => {
-      fetch(
-        `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
-      )
+      fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then((res) => res.json())
         .then((data) => {
-        //   console.log("data", data);
+          console.log('pull request third fetch', data);
 
         //Filter out pullrequests
-          const pulls = data.find((pull) => pull.user.login === repo.owner.login);
+          const pulls = data.find((pull) => pull.user.login === repo.owner.login)
           if (pulls) {
-            getCommits(pulls.commits_url, repo.name);
+            getCommits(pulls.commits_url, repo.name)
+            console.log('pulls works')
           } else {
             document.getElementById(
-              `commit-${repo.name}`).innerHTML = `Commits done: (Pull request unavailable)`;
+              `commit-${repo.name}`).innerHTML += `Commits done: (Pull request unavailable)`;
           }
         });
     });
@@ -139,21 +138,20 @@ const getPullRequest = (repos) => {
   )
       const commits = document.getElementById(`commit -${repo.name}`)
       const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-      getCommits(pulls.commits_url, repo.name)
-      console.log('HEY', pulls.commits_url, 'pulls commits_url')
+      getCommits(pulls.commits_url, repo.name) // something is wrong here
+      console.log('get commits data', pulls.commits_url, 'pulls commits_url') // this doesnt show
       pullRequests.forEach((repo) => {
           console.log("get pull request here", getPullRequest)
-  })
+        })
 
-
-  const getCommits = (myCommitsUrl, myRepoName) => {
-      console.log(getCommits)
+   const getCommits = (myCommitsUrl, myRepoName) => {
+      console.log('get commits', getCommits)
           fetch(myCommitsUrl, options)
           .then((res) => {
           return res.json()
-  })
+            })
           .then((data) => {
           document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-  })
+        })
           console.log('commits', myRepoName)
-}
+        }
