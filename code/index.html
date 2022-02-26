@@ -8,13 +8,19 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <header> </header>
   <h1>GitHub Tracker</h1>
   <h2>Projects:</h2>
-  <main id="projects"></main>
+  <main>
+    <section class="user-container" id="user-container" ></section>
+    <section class="projects" id="projects" ></section>
+    <section class="chart-section" id="char-section" ></section>
+    
+  </main>
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
-
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
