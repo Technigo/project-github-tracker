@@ -335,7 +335,7 @@ input:checked + label {
 .modal-btn {
   margin: auto; /* 15% from the top and centered */
   position: fixed;
-  top: 10%;
+  top: 5%;
   right: 40%;
 }
 
@@ -380,6 +380,10 @@ footer {
 
   img {
     width: 300px;
+  }
+
+  .modal-btn {
+    top: 10%;
   }
 
   .section-overwiew {
