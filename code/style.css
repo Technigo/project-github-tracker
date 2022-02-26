@@ -5,15 +5,15 @@ body {
 h1 {
   font-family: 'Shizuru', cursive;
   font-size: 72px;
-  color:palevioletred;
+  color: palevioletred;
   text-align: center;
   cursor: pointer;
 }
 
 h2 {
   font-family: 'Shizuru', cursive;
-  font-size: 32px;
-  color:mediumpurple;
+  font-size: 28px;
+  color: #655D8A;
   text-align: center;
   cursor: pointer;
 }
@@ -30,9 +30,13 @@ h4 {
   color: whitesmoke;
 }
 
+.avatar {
+  text-align: center;
+}
+
 .img {
   width: 96px;
-  border-radius: 50%;
+  border-radius: 4px;
   border: 8px solid floralwhite;
 }
 
@@ -42,7 +46,8 @@ h4 {
 
 .projects-card {
   background: linen;
-  border: 6px solid hotpink;
+  border: 6px solid #7897AB;
+  border-radius: 4px;
   margin: 12px;
   padding: 12px;
   font-size: 12px;
@@ -52,6 +57,8 @@ h4 {
 
 .default-branch {
   font-family: 'Shizuru', cursive;
+  font-size: 14px;
+  color: #D885A3;
 }
 
 a {

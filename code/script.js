@@ -3,7 +3,6 @@ const username = 'CamillaHallberg'
 let reponame = ''
 
 const API_TOKEN = TOKEN || process.env.API_KEY;
-// console.log(TOKEN)
 
 // API's
 const API_USER = `https://api.github.com/users/${username}`
@@ -53,11 +52,11 @@ const getRepos = () => {
                     <h3><a href="${repo.html_url}">${repo.name}</a></h3>
                     <p class="default-branch">Branch: ${repo.default_branch}</p>
                     <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-                    <p id="commit_${repo.name}">Number of commits:</p>
-                    <p>Main language: ${repo.language}</p>
+                    <p id="commit-${repo.name}">Number of commits: </p>
                 </div>
             `
         })
+        drawChart(forkedRepos.length)
         getPullRequests(forkedRepos)
     })
 }
@@ -74,7 +73,7 @@ const getPullRequests = (forkedRepos) => {
             const pulls = data.find((pull) => pull.user.login === repo.owner.login);
             
             getCommits(pulls.commits_url, repo.name)
-            console.log(pulls.commits_url)
+            console.log(pulls.commits_url, 'pulls commits_url')
         })
     })
 }
@@ -87,4 +86,5 @@ const getCommits = (myCommitsUrl, myRepoName) => {
     .then((data) => {
         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
     })
+    console.log(myRepoName)
 }

@@ -4,17 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Chart 👇 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
   <link rel="stylesheet" href="./style.css" />
-  <!-- Google Fonts -->
+
+  <!-- Google Fonts 👇 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Shizuru&display=swap" rel="stylesheet">
+
   <title>GitHub Tracker by Camilla</title>
 </head>
 
 <body>
   <header>
-  <h1>GitHub Tracker</h1>
+    <h1>GitHub Tracker</h1>
   </header>
 
   <section class="userData" id="userData"></section>
@@ -24,14 +30,16 @@
   </main>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <div id="canvas" class="chart-container">
+    <canvas id="chart"></canvas>
+  </div>
 
   <footer class="made-by">
       <p>Made by Camilla Hallberg @ Technigo Bootcamp Spring 2022 <span style='font-size:16px;'>&#129302;</span></p>
   </footer>
 
-  <script src="./chart.js"></script>
   <script src="./token.js"></script>
+  <script src="./chart.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>
