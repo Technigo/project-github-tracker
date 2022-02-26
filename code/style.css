@@ -38,7 +38,7 @@ a {
 .header {
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: flex-end;
 }
 
 img {
@@ -62,7 +62,7 @@ span {
   flex-direction: row;
   justify-content: space-between;
   width: 45%;
-  font-family: 'poppins';
+  font-family: "poppins";
   color: var(--main-bg-color);
 }
 
@@ -132,6 +132,7 @@ span {
   transition: all 1.5s ease;
   cursor: pointer;
 }
+
 .project-name {
   font-size: 17px;
   text-align: center;
@@ -198,10 +199,6 @@ footer {
   a,
   p {
     font-size: 10px;
-  }
-
-  .circle {
-  
   }
 
   .bio {

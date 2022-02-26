@@ -70,14 +70,6 @@ fetch(API_REPOS, options)
 			<div>
 			`;
 
-      //toggle function that add the class active to a section
-      function toggle() {
-        this.classList.toggle("active");
-      }
-
-      // calls a function which will be executed when the element, project section, is clicked
-      document.getElementById(project.name).onclick = toggle;
-
       // fetch all the pull requests and print them out
       const reponame = project.name;
       const API_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`;
