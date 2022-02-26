@@ -10,15 +10,30 @@ const drawChart = (amount) =>
         labels: ["Completed projects", "Remaining projects"],
         datasets: [
           {
-            label: "projects",
+            label: "Technigo projects",
             data: [amount, 21-amount],
             backgroundColor: [
-              "#a4b2b0",
-              "#8ab2b4",
+              "#c8cccf",
+              "#778088",
             ],
+            barThickness: "30",
           },
         ],
       },
+      options: {
+        scales: {
+          x: {
+            grid: {
+              display: false,
+            }
+          },
+          y: {
+            grid: {
+              display: false
+            }
+          },
+        }
+      }
     }
  const myChart = new Chart(ctx, config)
 }

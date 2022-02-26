@@ -9,9 +9,9 @@ const profileImage = document.getElementById('profileImage')
     profile.innerHTML = `
     <h1>GitHub Tracker</h1>
      <h2>${data.name}</h2> 
-     <p> Github: ${data.html_url} </p>
+     <img class="profile-image" id="profileImage" src="${data.avatar_url}" alt="Github Profile Image">
+     <p><img class="ghlogo" src=./github.png><a href="${data.html_url}">${data.html_url}</a></p>
     `
-    profileImage.src = data.avatar_url
    })
   .catch((err) => console.log(err))
 
@@ -44,30 +44,28 @@ const profileImage = document.getElementById('profileImage')
   
        if (myPullRequests != undefined) {projectCard.innerHTML += `
           <div class="card">
-            <h3 class="repo-name">${repo.name}</h3>
-            <a href="${repo.html_url}">${repo.html_url}</a>
+
+            <h3><a href="${repo.html_url}"><span>${repo.full_name.replace('rawisou/project-', '').replace('-', ' ')}</span></a></h3>
             <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
             <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
             <p><span class ="bolded"> Number of commits:</span> ${num}</p>
-            <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">${myPullRequests.html_url}</a></p>
+            <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">here</a></p>
           </div>   
         ` 
        } else if (repo.name === 'project-weather-app') {
          projectCard.innerHTML += `
          <div class="card">
-           <h3 class="repo-name">${repo.name}</h3>
-           <a href="${repo.html_url}">${repo.html_url}</a>
+           <h3><a href="${repo.html_url}"><span>${repo.full_name.replace('rawisou/project-', '').replace('-', ' ')}</span></a></h3>
            <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
            <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
            <p><span class ="bolded"> Number of commits:</span> ${num}</p>
-           <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">https://github.com/Technigo/project-weather-app/pull/215</a></p>
+           <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">here</a></p>
          </div>   
          `
         } else {
           projectCard.innerHTML += `
           <div class="card">
-            <h3 class="repo-name">${repo.name}</h3>
-            <a href="${repo.html_url}">${repo.html_url}</a>
+            <h3><a href="${repo.html_url}"><span>${repo.full_name.replace('rawisou/project-', '').replace('-',' ')}</span></a></h3>
             <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
             <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
             <p><span class ="bolded"> Number of commits:</span> ${num}</p>

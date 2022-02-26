@@ -1,19 +1,20 @@
-
 * {
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 body {
-  background: #FFECE9;
-}
-
-header {
   display: flex;
   flex-direction: column;
-  background-color: white;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
+}
+.ghlogo {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
 }
 h1 {
   padding: 20px;
@@ -24,6 +25,32 @@ h2 {
 
 h3 {
   text-transform: uppercase;
+  width: 100%; 
+  text-align: center; 
+  border-bottom: 1px solid #000; 
+  line-height: 0.1em;
+  margin: 10px 0 20px; 
+  font-size: 20px;
+}
+
+
+h3 span { 
+   background:#fff; 
+   padding:0 10px; 
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+}
+
+a:hover {
+  font-size: 20px;
+}
+h3 a:hover {
+  font-size: 22px;
+  box-shadow: 5px 5px #7a7a7c;
 }
 
 .bolded {
@@ -41,9 +68,16 @@ h3 {
 }
 
 .card {
-  border: 1px solid black;
+  border: 1.5px solid rgb(27, 27, 27);
+  box-shadow: 10px 10px #4d4c4e;
   padding: 20px;
   margin: 20px;
+}
+
+.chart-wrapper {
+  display: flex;
+  margin: auto;
+  padding: 20px;
 }
 
 @media (min-width: 668px) {
@@ -51,16 +85,17 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
  }
-
+ .chart-wrapper {
+  width: 50%;
 }
 
+}
 
 @media (min-width: 1000px) {
   .project-card {
     grid-template-columns: 1fr 1fr 1fr;
   }
-
-  .chart {
-    width: 60%;
+  .chart-wrapper {
+    width: 30%;
   }
 }
