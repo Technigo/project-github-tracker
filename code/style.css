@@ -1,3 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
 body {
-  background: #FFECE9;
+  background: #e2e7e8;
+}
+
+header {
+  background:grey;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-container {
+  background:lightpink;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-image {
+  border-radius: 100%;
+  width: 20%;
+}
+
+.projects {
+  color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

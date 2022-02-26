@@ -13,11 +13,11 @@ const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
 const options = {
     method: 'GET',
     headers: {
-          Authorization: 'token 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' // you need to paste your token over here.
+          Authorization: 'API_TOKEN'
           
         }
     }
-    console.log(API_TOKEN)// 'HERE_WILL_BE_YOUR_TOKEN'
+    console.log(API_TOKEN)
 
 const getUser = () => {
     fetch (`https://api.github.com/users/${username}`, options)
@@ -25,7 +25,7 @@ const getUser = () => {
     .then((data) => {
         userContainer.innerHTML=
         `<p>${data.login}</p>
-        <img src=${data.avatar_url}/>`
+        <img class="user-image" src=${data.avatar_url}/>`
 
 
   console.log(data)
@@ -53,10 +53,10 @@ getRepos()
 
 const getPullRequests = (filterTechnigoProjects) => {
     filterTechnigoProjects.forEach(repo => {
-        fetch (`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
+        fetch (`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
         .then((res) => res.json())
         .then((data) => {
-            
+      
         console.log(data)
     })
     })
