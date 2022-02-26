@@ -117,6 +117,7 @@ const findingAllRepos = (repos) => {
        })
     }
     findingAllRepos()
+    getPullRequest()
 
 
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
@@ -135,4 +136,3 @@ const getPullRequest = (forkedRepos) => {
 
 
     }
-getPullRequest()
