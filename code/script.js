@@ -44,38 +44,18 @@ const myRepos = () => {
     console.log(technigoRepos)
 
     // gets info from the filtered repos arrays and displays them on my page
+    // using repo.name as dynamic ID to also insert commits
 
     technigoRepos.forEach((repo) => {
         repoContainer.innerHTML += `
 
-            <div class="repo-cards" id="${repo.id}">
+            <div class="repo-cards" id="${repo.name}">
                 <h3><a href="${repo.html_url}"><b>${repo.name}</b></a> 
                  (${repo.default_branch})</h3>
                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
-                <p id="commit_${repo.name}">Number of commits: </p>
             </div> 
             `
         })
-
-        // repos.forEach(repo => {
-        //     document.getElementById('container').innerHTML += `
-        //       <div class="repo" id=${repo.name}>
-        //         <h2>${repo.name}</h2>
-        //       </div>
-        //     `
-        //   })
-
-    /*
-    technigoRepos.forEach(repo => {
-        repoContainer.innerHTML += `<p>Projects: ${data.name}</p>`
-        console.log(data.name)
-
-        })*/
-/*
-    if (technigoRepos) {
-        repoContainer.innerHTML += `<p>Projects: ${data[0].name}</p>`
-        console.log(data[0].name)
-    }*/
 
     //need to invoke this next function here already, passing along the filtered repos 
     //as an argument when calling the pull request function
@@ -100,50 +80,38 @@ const getPullRequests = (technigoRepos) => {
 
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
         console.log(myPullRequests)
-
-        if (myPullRequests) {
-            getCommits(myPullRequests.commits_url, repo.name)
-           /* console.log(myCommitsURL)*/
+        /*console.log(myPullRequests.html_url)*/
+       
+        if(myPullRequests) {
+            document.getElementById(`${repo.name}`).innerHTML += 
+            `<a href="${repo.html_url}">${myPullRequests.html_url}</a>`
+        } else {
+            document.getElementById(`${repo.name}`).innerHTML += 
+            `<p> Pull requests made by teammate</p>`
         }
 
+        if (myPullRequests) {
+            getCommits(myPullRequests.commits_url, repo.name) 
+
+        } else {
+            document.getElementById(`${repo.name}`).innerHTML += 
+            `<p> Commits made by teammate</p>`
+        }
           })   
 
           // To get the commits from a PR we get the URL from the commits_url property in the PR json object 
 // and then do a fetch with that url.
-const getCommits = (URL, myRepo) => {
+const getCommits = (URL, repoName) => {
     fetch (URL, options)
     .then((res) => res.json())
     .then(data => {
-   repoContainer.innerHTML += `<p>Number of commits: ${data.length}</p>`
+        document.getElementById(`${repo.name}`).innerHTML += `<p>Number of commits: ${data.length}</p>`
         console.log(data.length)
     })
     }
-
     })
     }
 
-
-
-    /* printing out my repos: 
-    data.name.forEach(repo => {
-        document.querySelector('.repo-container').innerHTML += `
-          <div class="repo" id=${repo.name}>
-            <h2>${repo.name}</h2>
-          </div>
-        `
-      })*/
-/*
-    data.name.forEach((repo) => {
-    repoContainer.innerHTML += `<p>${repo.name}</p>`
-    })*/
-
-    // repos.forEach(repo => {
-//     document.getElementById('container').innerHTML += `
-//       <div class="repo" id=${repo.name}>
-//         <h2>${repo.name}</h2>
-//       </div>
-//     `
-//   })
 //   document.getElementById(repoName).innerHTML += 'New data to inject'
 
 /*
