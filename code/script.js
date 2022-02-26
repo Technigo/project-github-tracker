@@ -4,13 +4,12 @@ const projects = document.getElementById("projects");
 const header = document.getElementById("header");
 const API_REPOS = "https://api.github.com/users/sieurin/repos";
 const API_USER = "https://api.github.com/users/sieurin";
-const API_TOKEN = TOKEN || process.env.API_KEY;
 
 // my token
 const options = {
   method: "GET",
   headers: {
-    Authorization: `token ${API_TOKEN}`,
+    Authorization: TOKEN,
   },
 };
 
