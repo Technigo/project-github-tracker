@@ -1,3 +1,99 @@
-body {
-  background: #FFECE9;
+ body {
+  background: #74959A;
+  color: #495371;
+  min-width: 325px;
+  font-family: 'Oswald', sans-serif;
 }
+
+.big-container {
+  margin: 5% 0;
+
+}
+.big-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 2%;
+  }
+/* ===============
+    Header
+=============== */
+h1 {
+  text-align: center;
+  text-decoration: none;
+  font-size: 50px;
+}
+/* ===============
+    Profile
+=============== */
+.profile-container {
+  text-align: center;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px solid white;
+  filter: grayscale(40%);
+}
+
+.info-contain {
+  margin-top: 50px;
+}
+
+h3 {
+  font-size: 30px;
+  text-decoration: none;
+}
+
+/* ===============
+    Chart
+=============== */
+.chart-container {
+  width: 70%;
+  margin: 30% 0 10% 15%;
+}
+
+/* ===============
+    Project
+=============== */
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-auto-rows: auto; 
+  grid-gap: 1rem;
+  }
+.project-list {
+  padding: 20px;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  border-radius: 25px;
+  text-align: center;
+  margin: 10px; 
+  grid-auto-flow: column;
+  flex-wrap: wrap;
+  background: #FEECE9;
+  
+}
+
+
+/* .navigation-bar {
+width: 100%;
+height: 80px;
+margin-bottom: 50px;
+}
+
+.logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+} */
+
+/* DESKTOP LAYOUT */

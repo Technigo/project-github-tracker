@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="http://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comforter&family=Fuzzy+Bubbles:wght@700&family=Montserrat:wght@300;400;700&family=Oswald:wght@300;500;600&family=Pacifico&family=Roboto:wght@300;400&family=Rock+Salt&family=Rowdies:wght@700&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="navigation-bar">
+    <!-- <a href="https://github.com/github"> -->
+    <h1>GitHub Tracker</h1>
+    </a>
+  </header>
+  <div class="big-container">
+    <div class="info-contain">
+      <div id="profile-info" class="profile-container"></div>
+      <div class="chart-container">
+        <h2>Progress</h2>
+        <canvas id="chart" class="chart"></canvas>
+      </div>
+    </div>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <div class="projects-container">
+      <h2>Projects</h2>
 
-  <script src="./script.js"></script>
+      <div class="project-list">
+        <main id="projects" class="projects"></main>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="./secret.js"></script>
   <script src="./chart.js"></script>
+  <script src="./token.js"></script>
+  <script src="./script.js"></script>
 </body>
+
 </html>
