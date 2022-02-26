@@ -1,8 +1,8 @@
 const avatar = document.getElementById('avatar')
-const fullName = document.getElementById('full-name')
-const githubname = document.getElementById('githubname')
+//const fullName = document.getElementById('full-name')
+//const githubname = document.getElementById('githubname')
 const projects = document.getElementById('projects')
-const projects2 = document.getElementById('projects2')
+const userInfo = document.getElementById('userinfo')
 const username = 'Katarina821'
 let repoName 
 
@@ -17,8 +17,8 @@ fetch(API_URL_ID)
 console.log(data.login)
 console.log(data.avatar_url)
 console.log(data.name)
-fullName.innerHTML = `Name: ${data.name}.`
-githubname.innerHTML = `Username: ${data.login}`
+userInfo.innerHTML = `<h2>Name: ${data.name}</h2> <h2>Username: ${data.login}</h2>`
+//githubname.innerHTML = ``
 avatar.src = data.avatar_url
 getRepos()
 })
@@ -35,17 +35,20 @@ const getRepos = () => {
           console.log(forkedRepos)
         
       forkedRepos.forEach((repo)=>projects.innerHTML+=`
-      
-      <div class="repo">     
-      <a href="${repo.html_url}"><h2>${repo.name }</h2></a>
-        <h3>Defaultbranch  ${repo.default_branch}</h3> 
+     
+      <div class="repo"> 
+      <img class="logo"src="./GitHubMark.png">
+       <a href="${repo.html_url}"><h3>${repo.name }</h3></a>
+        <h4>Defaultbranch  ${repo.default_branch}</h4> 
         <p> Most resent update: ${new Date(repo.updated_at).toLocaleDateString("en-UK")}</p>
         <p id="${repo.name}">Commits amount: </p>
+        
       </div>
      
       `)
      
       getPullRequests(forkedRepos)
+      drawChart(forkedRepos.length)
       })
 }
 

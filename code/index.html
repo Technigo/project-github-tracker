@@ -8,17 +8,21 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+ 
   <h1>GitHub Tracker</h1>
+  <div class="intro">
   <img class="picture" id="avatar"></img>
-  <p id="full-name"></p>
-  <p id="githubname"></p>
-  <h2>Projects:</h2>
+  <section class="userinfo" id="userinfo"></section>
+ </div> 
+  <h1>Projects:</h1>
+
   <main id="projects" class ="projects"></main>
 
-  <div id="projects2" class ="projects"></main>
+ 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <canvas id="chart" class="chart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
