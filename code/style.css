@@ -16,12 +16,6 @@ body {
   margin: 0 16px 0 16px;
 }
 
-.dataFetch {
-  font-weight: 400;
-  color: #24292f;
-  font-size: 15px;
-}
-
 .navbar {
   background: #c0716a;
   display: flex;
@@ -129,7 +123,7 @@ footer {
   background: #c0716a24;
 }
 
-.styledHeadingsProject {
+.pullrequestStyle {
   font-weight: 600;
   color: #512d1eac;
   font-size: 15px;
@@ -167,10 +161,6 @@ footer {
     font-size: 24px;
   }
 
-  /* .styledHeadingsProject {
-    font-size: 18px;
-  } */
-
   .project-url {
     font-size: 18px;
   }
@@ -194,10 +184,6 @@ footer {
   .header-project {
     font-size: 24px;
   }
-
-  /* .styledHeadingsProject {
-    font-size: 18px;
-  } */
 
   .project-url {
     font-size: 18px;

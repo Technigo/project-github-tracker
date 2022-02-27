@@ -65,25 +65,25 @@ const findingAllRepos = (repos) => {
             </span>
         </p>
         <p class="smallerContainer">
-            <span class="styledHeadingsProject"> Updated:</span>
-           <span class="dataFetch"> ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</span>
+            <span> Updated:</span>
+           <span> ${new Date(repo.pushed_at).toLocaleDateString('en-SE', {year: 'numeric', month: 'short', day: 'numeric'})}</span>
         </p>
         <p class="smallerContainer">
-            <span class="styledHeadingsProject">
+            <span>
             Default branch: </span>
-            <span class="dataFetch">${repo.default_branch}</span>
+            <span>${repo.default_branch}</span>
         </p>
-        <p class="smallerContainer" id="commit-${repo.name}" style="color: #24292f; font-size: 15px">
-            <span class="styledHeadingsProject">
+        <p class="smallerContainer" id="commit-${repo.name}">
+            <span>
             Number of commits:
             </span>
         </p>
-        <p class="smallerContainer" id="pull-request-${repo.name}" style="color: #24292f; font-size: 15px">
-            <span class="styledHeadingsProject">Pull requests: </span>
+        <p class="smallerContainer" id="pull-request-${repo.name}">
+            <span>Pull requests: </span>
         </p>
         <p class="smallerContainer">
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
-            <span class="dataFetch"><a class="project-url" href="${repo.svn_url}">
+            <span><a class="project-url" href="${repo.svn_url}">
             ${repo.name}</span>
             </a>
         </p>
