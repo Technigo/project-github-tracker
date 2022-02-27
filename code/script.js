@@ -51,7 +51,7 @@ const getRepos = () => {
         projects.innerHTML += `
               <div class="repoInfo" id="${projectID}">
               <img src="github.png" class="repoimg" alt="logo" width="25px" />
-              <p class="cardInfo">
+              <p class="cardInfo">Project name: 
               ${repo.name.replace('project-', '').replace('-', ' ')}
           </p>
               <p class="cardInfo" id="commit-${repo.name}"></p>
