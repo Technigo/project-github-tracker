@@ -59,13 +59,11 @@ const getPullRequests = (repos) => {
  
         const commitUrl = myPullRequest[0].commits_url
 
-        //modalDisplay(commitUrl)
-
         fetch(commitUrl)
         .then(res => res.json())
         .then(data => {
 
-          const numberCommit = data.length
+        const numberCommit = data.length
 
           //added function so the DOM do not self close tags
           let boxHtml = `<div class="box-repo ${repo.name}">`; 
@@ -74,13 +72,14 @@ const getPullRequests = (repos) => {
           boxHtml += `<p>Created at: ${new Date(repo.created_at).toDateString()}</p>`
           boxHtml += `<p>Last update: ${new Date(repo.pushed_at).toDateString()}</p>`
           boxHtml += `<p>Default branch: ${repo.default_branch}</p>`
-          boxHtml += `<p>First comments: ${data[0].commit.message}</p>`
+          boxHtml += `<p>First comment: ${data[0].commit.message}</p>`
+          boxHtml += `<p>Last comment: ${data[numberCommit-1].commit.message}</p>`
           boxHtml += `<p><a href="${repo.html_url}" target="_blank">Go to repo</a></p>`
           boxHtml += '</div>'
           projectsContainer.innerHTML += boxHtml; //closing the div tag
           ldsripple.style.display = 'none' //loading icon
-          
         })
+
       })
     })
 }
