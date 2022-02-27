@@ -6,16 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <!-- Link to font family Montserrat -->
+  <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header>
+    <!-- the link to user's github to display from the start since it takes so long to load -->
+    <section id='usr' class='usr-name-img-container'><h1><a href='https://github.com/amandatange'>@amandatange</a></h1></section>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <main id="projects" class='project-container'>
 
-  <script src="./script.js"></script>
+  </main>
+  
+<!-- Chart showing how many projects have been done out of the total 19 -->
+  <section class="chart-container">
+    <canvas id="chart" class='chart'></canvas>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="./chart.js"></script>
+  <script src='./secret.js'></script>
+  <script src="./script.js"></script>
+
+  
+  
 </body>
 </html>
