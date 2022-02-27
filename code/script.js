@@ -51,9 +51,12 @@ const getRepos = () => {
         projects.innerHTML += `
               <div class="repoInfo" id="${projectID}">
               <img src="github.png" class="repoimg" alt="logo" width="25px" />
+              <p class="cardInfo">
+              ${repo.name.replace('project-', '').replace('-', ' ')}
+          </p>
               <p class="cardInfo" id="commit-${repo.name}"></p>
               <p class="cardInfo">${new Date(repo.pushed_at).toDateString()}</p>
-              <p class="cardInfo">Branch ${repo.default_branch}</p> 
+              <p class="cardInfo">Branch : ${repo.default_branch}</p> 
               <p class="cardInfo"$> <a href="${
                 repo.html_url
               }" target="blank">Repository ${repo.name}</a></p>
