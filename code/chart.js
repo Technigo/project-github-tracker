@@ -6,7 +6,7 @@ const drawChart = (amount) => {
   const configchart = {
     type: 'doughnut',
     data: {
-      label: ['Completed', 'Not Completed'],
+      labels: ['Finished', 'Not finished'],
       datasets: [
         {
           data: [amount, 19 - amount],
