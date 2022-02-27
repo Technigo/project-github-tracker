@@ -6,17 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap"
+    rel="stylesheet">
 </head>
 <body>
-  <div id="profile"></div>
+  <div class="profile-card">
+    <div id="profile"></div>
+    <canvas id="chart"></canvas>  
+  </div>
+  
   <h2>Projects:</h2>
+  <!-- This will be used to draw the chart 👇 -->
   <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
 
   <script src="./secret.js"></script>
   <script src="./script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
   <script src="./chart.js"></script>
 </body>
 </html>

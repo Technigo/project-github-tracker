@@ -23,7 +23,7 @@ fetch(API_USER_PROFILE, options)
         profile.innerHTML +=  ` 
             <h1>${username}'s GitHub Tracker</h1>
             <div class="profile-details">
-                <img src=${profilePic} width=100px/>
+                <img src=${profilePic} />
                 <span id="fullname">${name}</span>
                 <span id="username">${username}</span>
                 <span id="following">following ${following}</span>
@@ -39,9 +39,7 @@ fetch(API_URL, options) // options object is passed as 2nd argument to fetch() f
     .then(data => {
         const myRepos = data.filter((forkedRepos) => forkedRepos.fork == true && forkedRepos.name.startsWith("project-"))
         const numberOfProjects = myRepos.length
-        console.log(totalProjectsDuringBootcamp)
-        console.log(numberOfProjects)
-        console.log(totalProjectsDuringBootcamp -  numberOfProjects)
+        drawChart([numberOfProjects, totalProjectsDuringBootcamp-numberOfProjects])
         getPullRequests(myRepos)
     });
 
@@ -60,12 +58,14 @@ const getPullRequests = (repos) => {
 
 
                 projects.innerHTML += `
-                <div class="repo" id=${repoName}>
-                  <h2>
-                    <a href=${repoUrl}> 
-                        ${repoName}:${repoBranchName}
-                    </a>
-                  </h2>
+                <div class="repo-card">
+                    <div class="repo" id=${repoName}>
+                    <h2>
+                        <a href=${repoUrl}> 
+                            ${repoName}:${repoBranchName}
+                        </a>
+                    </h2>
+                    </div>
                 </div>
                 `
                 console.log("here")
