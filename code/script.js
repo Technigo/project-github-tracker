@@ -1,3 +1,4 @@
+// DOM selectors:
 const repoGrid = document.getElementById("repoGrid");
 const profile = document.getElementById("profile");
 
@@ -6,7 +7,7 @@ const userName = "JustineZwiazek";
 const API_USER = `https://api.github.com/users/${userName}`;
 const API_REPOS = `https://api.github.com/users/${userName}/repos`;
 
-// Profile information function
+// Profile information function:
 const getProfile = () => {
   fetch(API_USER)
     .then((res) => res.json())
@@ -22,12 +23,12 @@ const getProfile = () => {
   getRepos();
 };
 
-// Repositories grid function
+// Fetch repositories function:
 const getRepos = () => {
   fetch(API_REPOS)
     .then((res) => res.json())
     .then((data) => {
-      // Filtering out not forked repositories
+      // Filtering out not forked repositories:
       const forkedRepos = data.filter(
         (repo) => repo.name.startsWith("project") && repo.fork === true
       );
@@ -45,7 +46,7 @@ const getRepos = () => {
     });
 };
 
-// Fetch pull requests
+// Fetch pull requests function:
 const getPullRequests = (forkedRepos) => {
   forkedRepos.forEach((repo) => {
     fetch(
@@ -62,12 +63,13 @@ const getPullRequests = (forkedRepos) => {
       });
   });
 };
-// Fetch number of commits
+
+// Fetch number of commits function:
 const getCommits = (myCommitsURL, repoName) => {
   fetch(myCommitsURL)
     .then((res) => res.json())
     .then((data) => {
-      // count the number of commits
+      // Count the number of commits:
       document.getElementById(repoName).innerHTML += `
             <p># of Commits: ${data.length}</p>`;
     });

@@ -5,6 +5,7 @@
   color: #3a3950;
 }
 
+/* Profile information: */
 .profile {
   background-color: pink;
   margin: auto;
@@ -22,6 +23,9 @@
   margin-left: auto;
   margin-bottom: 20px;
 }
+.profile-info {
+  padding-bottom: 40px;
+}
 h2 {
   color: rgb(255, 87, 87);
   text-align: center;
@@ -29,9 +33,36 @@ h2 {
 .profile p {
   text-align: center;
 }
-.profile-info {
-  padding-bottom: 40px;
+
+/* Big image section */
+.img-bag {
+  width: 100vw;
+  display: block;
+  padding: 20px 0;
+  margin: auto;
+  background-color: rgb(241, 204, 161);
 }
+
+/* My happy wave: */
+.wave {
+  height: 20px;
+  background-position: 0;
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  animation: animateCloud 20s linear infinite;
+  background-image: url(images/wave-2.png);
+}
+
+@keyframes animateCloud {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1280px 0;
+  }
+}
+
+/* Project information: */
 .wrapper {
   background-color: pink;
   padding-top: 20px;
@@ -51,13 +82,14 @@ h2 {
   margin-left: auto;
   margin-right: auto;
 }
-
 .repos h3 {
   color: rgb(255, 87, 87);
 }
 a:hover {
   color: rgb(255, 87, 87);
 }
+
+/* Chart: */
 .chart-section {
   margin-left: auto;
   margin-right: auto;
@@ -73,30 +105,8 @@ a:hover {
 .img-bag-2 {
   display: none;
 }
-.img-bag {
-  width: 100vw;
-  display: block;
-  padding: 20px 0;
-  margin: auto;
-  background-color: rgb(241, 204, 161);
-}
-.wave {
-  height: 20px;
-  background-position: 0;
-  background-size: auto 100%;
-  background-repeat: repeat-x;
-  animation: animateCloud 20s linear infinite;
-  background-image: url(images/wave-2.png);
-}
 
-@keyframes animateCloud {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 1280px 0;
-  }
-}
+/* Footer: */
 footer {
   background-color: pink;
 }
@@ -106,6 +116,8 @@ h5 {
   color: white;
   text-shadow: 0 0 5px rgb(255, 87, 87);
 }
+
+/* Tablet */
 @media screen and (min-width: 600px) and (max-width: 992px) {
   .profile {
     display: flex;
@@ -132,6 +144,8 @@ h5 {
     width: 40vw;
   }
 }
+
+/* Desktop */
 @media screen and (min-width: 993px) {
   .profile {
     display: flex;
@@ -166,12 +180,14 @@ h5 {
     align-items: center;
     padding: 0 10vw;
   }
+
+  /* My happy bag */
   .img-bag-2 {
     width: 40vw;
     padding: 40px 0;
     display: block;
     object-fit: cover;
-    animation: shake 0.5s infinite;
+    animation: shake 2s infinite;
   }
   @keyframes shake {
     0% {
