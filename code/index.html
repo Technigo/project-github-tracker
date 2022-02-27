@@ -4,18 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>⏱  My GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+
+  
+
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
 </head>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <h1>My GitHub Tracker</h1>
 
+  <div class="profile-box" id="profileBox">
+
+    <p id="userName" class="user-name"></p>
+
+</div>
+
+
+<h3>PROJECTS</h3>
+
+<main id="projects" class="projects"> 
+
+  </main>
+
+
+  <div class="chart-size">
+  <canvas id="chart" class="chart"></canvas>
+
+</div>
+
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
 </html>
