@@ -3,8 +3,12 @@ const ctx = document.getElementById('chart').getContext('2d') // don't really ge
 
 const renderChart = ((completedProjects) => {
 
+    const labels = [
+        'Projects done',
+        'Projects left to do'
+    ]
+
     const data = {
-    labels: [''],
     datasets: [{
       data: [completedProjects],
       label: 'completed',
@@ -20,31 +24,31 @@ const renderChart = ((completedProjects) => {
     type: 'bar',
     data: data,
     options: {
-        indexAxis: 'y',
+    indexAxis: 'y',
         scales: {
         x: {
-            stacked: true,
-            grid: {
-                display: true,
-            },
+        stacked: true,
+        grid: {
+        display: true,
+        },
         },
         y: {
-            stacked: true,
-            grid: {
-                display: true,
-            }
+        stacked: true,
+        grid: {
+        display: true,
+        }
         }
     },
     
     plugins: {
-        title: {
-            display: true,
-            text: `Technigo projects completed: ${completedProjects} of 19`,
-            position: 'top',
+    title: {
+        display: true,
+        text: `Technigo projects completed: ${completedProjects} of 19`,
+        position: 'top',
         },
         legend: {
-            display: false,
-            position: 'top',
+        display: false,
+        position: 'top',
         }
     }
   }
@@ -53,4 +57,4 @@ const renderChart = ((completedProjects) => {
     document.getElementById('chart'),
     config
 )})
-renderChart()
+renderChart(forkedRepos)

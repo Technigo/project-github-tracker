@@ -103,7 +103,7 @@ const findingAllRepos = (repos) => {
     `
 )
 getPullRequest(forkedRepos)
-renderChart (forkedRepos.length)
+renderChart(forkedRepos.length)
 })
 }
 findingAllRepos()
@@ -141,7 +141,6 @@ const getPullRequest = (repos) => {
 
     });
   };
-
 
   repos.forEach(repo => {
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
