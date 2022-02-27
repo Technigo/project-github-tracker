@@ -19,8 +19,12 @@ const options = { //opject
      .then((res) => res.json())
      .then((profileData) => {
          userContainer.innerHTML +=
-         `<img src="${profileData.avatar_url}" class="user-image" alt="Profile picture"/>
-         <h2 class="user-name"> Username: ${profileData.login}</h2>`
+         `<img src="${profileData.avatar_url} "class="profile-pic" id="profilePic" alt="Profile picture"/>
+         <p class="name"> ${profileData.name}</p>
+         <p class="user-name"> Username: ${profileData.login}</p>
+         <img class="github" src="github-cat.png">
+         `
+         
         console.log(profileData)
      })
  }
@@ -40,13 +44,15 @@ const getRepos = () => {
        `
        <a class="project-link" href="${repo.html_url}" target="_blank"> 
        <div class="forkedrepo-div">
+            
             <h2 class="project-name"> ${repo.name}</h2>
             <p class="project-info"> Default branch: ${repo.default_branch}</p>
             <p class="project-info"> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
             <p class="project-info" id="commits-${repo.name}"> Amount of commits: </p>  
+            <a class="project-info" href=${repo.html_url} target="_blank">Link to repository</a>
         </div> `
        })
-
+       
        getPullRequests(forkedRepos)
        drawChart(forkedRepos.length)
     

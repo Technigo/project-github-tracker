@@ -9,19 +9,29 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
+
+
 <body>
+  <header class="video-header">
+    <video autoplay loop muted poster="space-blue.jpg">
+    <source src="video-film.mp4" type="video/mp4" />
+    Your browser dosen't support the vido tag.
+    </video>
+    <h1>Welcome to my Github Tracker!</h1>
+  </header>
+ 
+  <main id="projects">
 
-  <h1>Welcome to my GitHub Tracker</h1>
-  
+    <section class="user-container" id="userContainer">
+      
 
-  <main id="projects"></main>
-  <section class="user-container" id="userContainer"></section>
+    </section>
   <section class="projects-container" id="projectsContainer"></section>
 
   <!-- This will be used to draw the chart 👇 -->
-  <div>
-  <canvas id="myChart"></canvas>
-</div>
+  <div class="chart-container">
+    <canvas id="myChart" class="my-chart"></canvas>
+  </div>
 
 <footer>
 <div class="footer">
@@ -29,7 +39,7 @@
 
 </div>
 </footer>
-
+</main>
   
 <script src="./token.js"></script>
 <script src="./chart.js"></script> 
