@@ -1,12 +1,19 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a place to keep track of the GitHub repos that I'm using at the Technigo bootcamp. Following things should be included in this project:
+- A list of all repos that are forked ones from Technigo
+- Your username and profile picture
+- Most recent update (push) for each repo
+- Name of your default branch for each repo
+- URL to the actual GitHub repo
+- Number of commit messages for each repo
+- All pull requests
+- A chart of how many projects you've done so far, compared to how many you will do
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The thing I struggled with the most was to fetch the pull request and number of commits. I solved it by putting the other data inside a div within the innerHTML.
+If I had more time with this project I would like to spend it on the styling to make it less shitty lmao xd
 
 ## View it live
 

@@ -4,7 +4,47 @@
   box-sizing: border-box;
   text-decoration: none;
 }
+
 body {
-  background: #FFECE9;
+  background: #f2f2f2;
   font-family: 'Source Code Pro', monospace;
 }
+
+.profile-img {
+  border-radius: 50%;
+  width: 20vh;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin: 1rem;
+}
+
+.repo-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.chart-container {
+  margin: auto;
+  width: 50%;
+
+}
+
+@media (min-width: 668px) {
+  .repo-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+@media (min-width: 1025px) {
+  .repo-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  } 
