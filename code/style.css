@@ -1,9 +1,8 @@
 body {
   background: #11130d;
-  font-family: 'Zilla Slab', serif;
-  
+  font-family: 'Zilla Slab', serif; 
+  display: flexbox;
 }
-
 
 h1{
   font-family: 'Galada', cursive;
@@ -36,9 +35,11 @@ h3{
   border: 6px solid rgb(216, 83, 128); 
  }
 
+
  .projects {
    display: flex;
-   flex-flow: wrap;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
  }
 
  .repo-card {
@@ -47,4 +48,31 @@ h3{
    border-radius: 1rem;
    padding: 1rem;
    background-color:rgb(216, 83, 128)
+ }
+
+ .chart-size{
+   height: 500px;
+   width: 500px;
+padding: 3rem;
+justify-content: space-evenly;
+ }
+
+ @media (max-width: 624px) {
+  h1{
+    font-size: 30pt;
+  }
+  .profile-image {
+    width: 190px;
+  }
+.h3 {
+  font-size: 20pt
+ }
+ .repo-card {
+  margin-left: 5rem;
+  margin-right: 5rem;
+ }
+ .chart-size{
+  height: 250px;
+  width: 250px;
+}
  }

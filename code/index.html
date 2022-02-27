@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>⏱  My GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+
+  
+
   <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
 </head>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
 
   <h1>My GitHub Tracker</h1>
@@ -19,26 +25,22 @@
 
 </div>
 
-<div class="chart"></div>
-  
+
 <h3>PROJECTS</h3>
 
 <main id="projects" class="projects"> 
 
-<div id="reponame" class="reponame"></div>
-
   </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart" width="400" height="400"></canvas>
 
+  <div class="chart-size">
+  <canvas id="chart" class="chart"></canvas>
 
+</div>
 
   <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
-  
-
 
 </body>
 </html>

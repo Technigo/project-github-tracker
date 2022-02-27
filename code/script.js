@@ -1,5 +1,5 @@
 const username = 'JenFi72'
-let reponame = ''
+let reponame = ' '
 
 const profileBox= document.getElementById('profileBox');
 const profileImage = document.getElementById('profileImage')
@@ -11,15 +11,14 @@ const PULL_URL  = `https://api.github.com/repos/Technigo/${reponame}/pulls`;
 const PROFILE_URL  = `https://api.github.com/users/${username}`
 
 
-
+//TOKEN
 
 const options = {
     method: 'GET',
     headers: {
-          Authorization: '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' // my TOKEN
+          Authorization: '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' // my TOKEN
       }
   }
-  
 
 //FETCH PROFILE
  const fetchProfile = () =>{
@@ -29,16 +28,14 @@ const options = {
 
         profileBox.innerHTML +=`
         <img src="${profileData.avatar_url}" class='profile-image'>
-        <h2>${profileData.name}</h2>
-        <p>${profileData.login}</p>`
+        <h2>NAME: ${profileData.name}</h2>
+        <p>USERNAME: ${profileData.login}</p>`
      });
  }
 
-
-
+ fetchProfile();
 
 //FETCH REPOS
-
 
 const getRepos = () => {
 fetch (API_URL, options)
@@ -60,17 +57,16 @@ technigoRepos.forEach((repo) => {
     </div>
     `;
     getPullRequests(technigoRepos);
-    //drawChart(technigoRepos.length);
+    drawChart(technigoRepos.length);  //* if this one is commented out, more projects will appear. Do not know why. 
         });
 
 });
 };
 
-//FETCHING THE PULL REQUESTS
+//FETCH THE PULL REQUESTS
 const getPullRequests = (allRepos) => {
     allRepos.forEach((repo) => {
-      const PULL_URL = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`;
-      fetch(PULL_URL)
+      fetch (`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=150`)
         .then((res) => res.json())
         .then((data) => {
           const myPullRequest = data.find(
@@ -81,24 +77,21 @@ const getPullRequests = (allRepos) => {
             fetchCommits(myPullRequest.commits_url, repo.name);
           } else {
             document.getElementById(`commit-${repo.name}`).innerHTML =
-              'No pull request yet';
+              'No pull requests or closed';
           }
         });
     });
   };
 
-//FETCHING COMMITS
+//FETCH COMMITS
 const fetchCommits = (urlMyCommits, myRepoName) => {
     fetch(urlMyCommits)
     .then((res) => res.json ())
     .then ((data) => {
         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length;   
+        
     })
 };
 
-
-fetchProfile();
 getRepos();
 
-
-//reponame = data [7].name

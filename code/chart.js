@@ -1,27 +1,27 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
+
 //"Draw" the chart here 👇
 
-const drawChart = (amount) => {
+const drawChart = (number) => {
     const config = {
-        type: 'doughnut',
-        data: {
-        labels: [
-          'Completed projects',
-          'Projects left to build',
+      type: "doughnut",
+      data: {
+        labels: ["DONE", "LEFT TO DO"],
+        datasets: [
+          {label: "PROJECT CHART",
+            data: [number, 19 - number],
+            backgroundColor: ["#ff874e", "#db738e"],
+            hoverOffset: 4,
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+            borderWidth: 4
+          },
         ],
-        datasets: [{
-          label: 'My Technigo projects',
-          data: [amount, 19-amount],
-          backgroundColor: [
-            'rgb(235, 14, 14)',
-            'rgb(64, 19, 19)',
-          ],
-          hoverOffset: 4
-        }],
       },
     };
-
-    const projectsChart = new Chart(ctx, config);
-}
+    const myChart = new Chart(ctx, config);
+  };
