@@ -1,3 +1,78 @@
+/* * {
+} */
+
 body {
-  background: #FFECE9;
+  background: #edede9;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-img {
+  border-radius: 50%;
+  width: 200px;
+}
+
+/* .user-info {
+} */
+
+a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  color: rgb(161, 138, 114);
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+
+h2 {
+  margin-top: 10px;
+}
+
+.chart {
+  height: 300px;
+  width: 300px;
+  margin: auto;
+}
+
+.repo-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ffe8d6;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+  border-style: solid;
+}
+
+/* tablet */
+@media (min-width: 426px) and (max-width: 768px) {
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* desktop */
+@media (min-width: 769px) {
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
