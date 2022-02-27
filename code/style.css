@@ -1,3 +1,297 @@
+/* Color scheme */
+:root {
+  --main-bg-color: #fbf9eb;
+  --my-black: #333;
+  --main-accent-color: #ff1e00;
+  --sec-accent-color: #2fc5ee;
+}
+
+/* CSS below is to reset default values such as margin, padding and box-sizing
+    and increase the resolution of the text */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  background: #FFECE9;
+  background: var(--main-bg-color);
+  border: solid var(--sec-accent-color) 8px;
+  width: 100%;
+  font-family: "Poppins";
+}
+
+p {
+  font-size: 8px;
+}
+
+a {
+  text-decoration: none;
+  font-family: "poppins";
+  font-size: 8px;
+  color: var(--main-accent-color);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+img {
+  width: 45%;
+}
+
+.user-name {
+  writing-mode: vertical-rl;
+  font-family: "Playfair Display";
+  font-size: 13vw;
+  color: var(--main-accent-color);
+}
+
+span {
+  color: var(--main-accent-color);
+  font-size: 5vw;
+}
+
+.circles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 45%;
+  font-family: "poppins";
+  color: var(--main-bg-color);
+}
+
+.circle {
+  width: 5vw;
+  height: 9vw;
+  margin: 2px;
+  border-radius: 50%;
+  background-color: var(--sec-accent-color);
+  animation: bounce alternate infinite cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+/* Animation */
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(var(--bounce-offset));
+  }
+}
+
+.one {
+  --bounce-offset: -4px;
+  animation-duration: 400ms;
+}
+
+.two {
+  --bounce-offset: -6px;
+  animation-duration: 550ms;
+}
+
+.three {
+  --bounce-offset: -8px;
+  animation-duration: 400ms;
+}
+
+.four {
+  --bounce-offset: -10px;
+  animation-duration: 450ms;
+}
+
+.five {
+  --bounce-offset: -12px;
+  animation-duration: 500ms;
+}
+
+.six {
+  --bounce-offset: -4px;
+  animation-duration: 400ms;
+}
+
+.bio {
+  display: block;
+  color: var(--my-black);
+  font-family: "Playfair Display";
+  font-size: 2vw;
+  font-style: normal;
+  font-weight: normal;
+  text-align: center;
+  margin: 5rem;
+  border-top: 0.5px solid var(--my-black);
+  border-bottom: 0.5px solid var(--my-black);
+  padding: 20px 0;
+}
+
+.project-header {
+  font-size: 4vw;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+  margin-top: 50px;
+  border-bottom: 3px solid var(--my-black);
+}
+
+.projects {
+  border-bottom: 1px solid var(--my-black);
+}
+
+.projects:hover {
+  background-color: var(--my-black);
+  color: var(--sec-accent-color);
+  transition: all 1.5s ease;
+  cursor: pointer;
+}
+
+.projects-right {
+  text-align: right;
+  min-width: 20%;
+  line-height: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  text-align: -webkit-right;
+}
+
+.projects-left {
+  min-width: 20%;
+  text-align: left;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 70px;
+}
+
+.project-name {
+  font-size: 17px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pull-requests {
+  text-align: center;
+}
+
+.commits {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.project-url {
+  line-height: 12px;
+}
+
+.process-header {
+  font-size: 4vw;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 50px;
+}
+
+.chart-wrapper {
+  width: 57%;
+  margin: 22px auto;
+  margin-bottom: 60px;
+}
+
+.footer-text {
+  font-size: 12px;
+  font-family: "poppins";
+  font-weight: normal;
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+  color: var(--my-black);
+}
+
+footer {
+  height: 80px;
+  background-color: var(--sec-accent-color);
+  display: flex;
+  justify-content: center;
+}
+
+/* Media Query - Tablet */
+@media screen and (min-width: 768px) {
+  body {
+    border: solid var(--sec-accent-color) 22px;
+  }
+
+  a,
+  p {
+    font-size: 10px;
+  }
+
+  .one {
+    --bounce-offset: -30px;
+    animation-duration: 400ms;
+  }
+
+  .two {
+    --bounce-offset: -15px;
+    animation-duration: 250ms;
+  }
+
+  .three {
+    --bounce-offset: -20px;
+    animation-duration: 300ms;
+  }
+
+  .four {
+    --bounce-offset: -25px;
+    animation-duration: 350ms;
+  }
+
+  .five {
+    --bounce-offset: -30px;
+    animation-duration: 400ms;
+  }
+
+  .six {
+    --bounce-offset: -35px;
+    animation-duration: 450ms;
+  }
+
+  .bio {
+    margin: 15rem 8rem;
+    padding: 50px;
+    font-size: 2.5vw;
+  }
+
+  .project-name {
+    font-size: 3rem;
+  }
+
+  .project-header {
+    padding-bottom: 45px;
+  }
+
+  .project-info {
+    height: 120px;
+  }
+
+  .process-header {
+    margin-top: 100px;
+  }
+
+  .chart-wrapper {
+    width: 30%;
+  }
+
+  footer {
+    height: 80px;
+  }
 }

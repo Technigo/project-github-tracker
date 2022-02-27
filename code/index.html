@@ -1,21 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <!-- Link to stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Link to google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Link to chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+    <h2 class="project-header">my github projects</h2>
+    <main id="projects"></main>
+    <h2 class="process-header">bootcamp status</h2>
+    <!-- Chart sektion -->
+    <div class="chart-wrapper" id="chartWrapper">
+      <canvas id="chart"></canvas>
+    </div>
+    <footer>
+      <p class="footer-text">© Åsa Sieurin</p>
+    </footer>
+    <!-- My scripts -->
+    <script src="./chart.js"></script>
+    <script src="./token.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
