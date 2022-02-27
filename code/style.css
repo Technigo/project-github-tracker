@@ -17,7 +17,7 @@ header {
 }
 
 footer {
-  background: linear-gradient(150deg, #191b1b, #736bc7, #3a09b5) fixed;
+  background: linear-gradient(250deg, #191b1b, #736bc7, #3a09b5) fixed;
   text-align: center;
   padding: 50px;
 }
@@ -29,14 +29,16 @@ footer {
 }
 .img {
   margin: 20px;
-  border-radius: 20px;
+  border-radius: 250px;
   width: 300px;
+  box-shadow: 1px 1px 5px black;
 }
 .personData {
   justify-items: center;
   display: grid;
 }
 .repoInfo {
+  box-shadow: 1px 1px 5px black;
   background: linear-gradient(150deg, #191b1b, #736bc7, #3a09b5) fixed;
   padding: 20px;
   border-radius: 20px;
@@ -63,22 +65,37 @@ footer {
 }
 @keyframes color-change {
   0% {
-    background-color: rgb(5, 23, 82);
+    background-color: rgb(7, 41, 152);
   }
-  20% {
+  10% {
     background-color: rgb(65, 32, 153);
   }
-  40% {
+  20% {
     background-color: rgb(142, 120, 240);
   }
+  30% {
+    background-color: rgb(176, 151, 235);
+  }
+  40% {
+    background-color: rgb(149, 157, 233);
+  }
+  50% {
+    background-color: rgb(172, 169, 232);
+  }
   60% {
+    background-color: rgb(149, 157, 233);
+  }
+  70% {
     background-color: rgb(176, 151, 235);
   }
   80% {
-    background-color: rgb(149, 157, 233);
+    background-color: rgb(142, 120, 240);
+  }
+  90% {
+    background-color: rgb(65, 32, 153);
   }
   100% {
-    background-color: rgb(172, 169, 232);
+    background-color: rgb(7, 41, 152);
   }
 }
 @media (min-width: 668px) {
