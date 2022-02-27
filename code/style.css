@@ -59,6 +59,7 @@ h1 {
   display: grid;
   grid-template-columns: 1 fr;
   justify-content: center;
+  margin-bottom: 50px;
 }
 
 .repo {
