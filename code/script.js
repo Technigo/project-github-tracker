@@ -85,7 +85,8 @@ const findingAllRepos = (repos) => {
         </p>
         <p class="smallerContainer" id="commit-${repo.name}">
             <span class="styledHeadingsProject">
-            Number of commits: </span>
+            Number of commits: 
+            </span>
         </p>
         <p class="smallerContainer" id="pull-${repo.name}">
             <span class="styledHeadingsProject">
@@ -106,6 +107,19 @@ getPullRequest(forkedRepos)
 }
 findingAllRepos()
 
+
+const getCommits = (myCommitsUrl, myRepoName) => {
+    console.log('get commits', getCommits)
+        fetch(myCommitsUrl, options)
+        .then((res) => {
+        return res.json()
+          })
+        .then((data) => {
+        document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
+      })
+        console.log('commits', myRepoName)
+      }
+
  //------------------ THIRD FETCH - PULL REQUESTS -----------------------//
 const getPullRequest = (repos) => {
     repos.forEach((repo) => {
@@ -113,6 +127,7 @@ const getPullRequest = (repos) => {
         .then((res) => res.json())
         .then((data) => {
           console.log('pull request third fetch', data);
+          console.log(getCommits)
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
@@ -144,14 +159,4 @@ const getPullRequest = (repos) => {
           console.log("get pull request here", getPullRequest)
         })
 
-   const getCommits = (myCommitsUrl, myRepoName) => {
-      console.log('get commits', getCommits)
-          fetch(myCommitsUrl, options)
-          .then((res) => {
-          return res.json()
-            })
-          .then((data) => {
-          document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
-        })
-          console.log('commits', myRepoName)
-        }
+ 
