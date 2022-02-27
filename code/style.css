@@ -85,6 +85,10 @@ h3 a:hover {
   width: 20px;
 }
 
+footer {
+  font-size: 12px;
+}
+
 @media (min-width: 668px) {
  .project-card {
   display: grid;
