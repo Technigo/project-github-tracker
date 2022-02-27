@@ -62,6 +62,9 @@ const getPullRequests = (repos) => {
                 let languagesURL = repo.languages_url
                 languages(languagesURL, repo.name)
 
+                //date for first git push
+                console.log('repo:',repo)
+
                 //showing results on the page with innerHTML
                 document.getElementById('projects').innerHTML += `
                 <div class="project-card">
@@ -93,9 +96,7 @@ const getPullRequests = (repos) => {
     
   }
 
-  const commits = (url) => {
-
-  }
+  
 
   //Userdata function (profile pic etc)
   const userData = (data) => {
@@ -105,7 +106,7 @@ const getPullRequests = (repos) => {
       `
       //showing the username
       document.getElementById('username').innerHTML = `
-      <div color="whiteColor" class="flexCont"><img src="./assets/githubLogo.svg" alt="GitHub Logo"><h2 color="whiteColor">${data[0].owner.login}</h2></div>
+      <img class="smallLogo" src="./assets/githubLogo.svg" alt="GitHub Logo"><a href="https://github.com/kolkri"><h2 class="whiteColor">${data[0].owner.login}</h2></a>
       `
   }
 
@@ -149,54 +150,17 @@ const getPullRequests = (repos) => {
 
 }
 
-//language function to calculate the share of used languages
+//language function to show what languages used in each project
 const languages = (url, repoName) => {
     fetch(url, options)
     .then(res => res.json())
     .then(data => {
-        //totalPercentage is the sum of different languages value
-        let totalPercentage = 0
         Object.keys(data).forEach(key => {
-            totalPercentage = totalPercentage + data[key]
-        });
-        console.log('labels:', Object.keys(data))
-        let keyArray = Object.keys(data)
-        let valueArray = []
-        Object.keys(data).forEach(key => {
-            //next line is to calculate the share of each language
-            let percentage = Math.round((data[key] / totalPercentage)*100)
-            valueArray.push(percentage)
             document.getElementById(`lang-${repoName}`).innerHTML += `
-                ${key} (${percentage}%)
+                <span class="languagebox">${key}</span> 
                 `
         });
-        console.log('values:', valueArray)
-       //trying to draw language pie
-    //    new Chart(`chart-${repoName}`, {
-    //     type: "pie",
-    //     data: {
-    //       labels: keyArray,
-    //       datasets: [{
-    //         backgroundColor: [
-    //             "#b91d47",
-    //             "#00aba9",
-    //             "#2b5797",
-    //             "#e8c3b9",
-    //             "#1e7145"
-    //           ],
-    //         data: valueArray
-    //       }]
-    //     },
-    //     options: {
-    //       title: {
-    //         display: true,
-    //         text: "World Wide Wine Production"
-    //       }
-    //     }
-    //   })
-
     })
-   
 }
 
 
