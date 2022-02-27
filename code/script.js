@@ -24,7 +24,7 @@ const getUser = () => {
     .then((res) => res.json())
     .then((data) => {
         userContainer.innerHTML=
-        `<p>${data.login}</p>
+        `<h1>${data.login}</h1>
         <img class="user-image" src=${data.avatar_url}/>`
 
 
@@ -32,7 +32,8 @@ const getUser = () => {
     })
 }
 
-getUser()
+//getUser()
+
 
 //fetch all repos,filter technigo
 const getRepos = () => {
@@ -42,8 +43,15 @@ const getRepos = () => {
      const filterTechnigoProjects = data.filter((repo) => repo.fork && repo.name.startsWith("project"))
          filterTechnigoProjects.forEach(repo => {
             console.log(repo.name)
+            let projectID = repo.id
             projectsContainer.innerHTML+=
-            `<h1>${repo.name}</h1>`
+            `<div class="repocard" id=${projectID}>
+            <a href=${data.html_url}><h1> ${repo.name}</h1></a>
+            <p> Default branch: ${repo.default_branch}</p>
+            <p> Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+            </div>
+            `
+           
          })
          console.log(filterTechnigoProjects, "här")
          getPullRequests(filterTechnigoProjects)
@@ -53,12 +61,33 @@ getRepos()
 
 const getPullRequests = (filterTechnigoProjects) => {
     filterTechnigoProjects.forEach(repo => {
-        fetch (`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
+        fetch (`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then((res) => res.json())
         .then((data) => {
+            console.log(data, 'pr')
+        const filterMyPull = data.find((pull) => pull.user.login === repo.owner.login)
+        if (filterMyPull) {
+            getCommits(filterMyPull.commits_url, repo.name)
+        } else {
+          projectsContainer.innerHTML += 
+          
+           `<p>No PR made</p>`
       
-        console.log(data)
+           
+        }
+
+        
+        console.log(filterMyPull)
     })
     })
 }
-    
+
+const getCommits = (URL, repoName) => {
+    fetch(URL, options)
+    .then ((res) => res.json())
+    .then (data => {
+       projectsContainer.innerHTML +=
+       `<p>Number of commits: ${data.length}</p>`
+    })
+}
+    getUser()
