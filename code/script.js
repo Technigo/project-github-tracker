@@ -80,7 +80,6 @@ const findingAllRepos = (repos) => {
         </p>
         <p class="smallerContainer" id="pull-request-${repo.name}" style="color: #24292f; font-size: 15px">
             <span class="styledHeadingsProject">Pull requests: </span>
-            <span class="dataFetch"></span>
         </p>
         <p class="smallerContainer">
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
