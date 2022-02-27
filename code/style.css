@@ -46,9 +46,10 @@ a {
 }
 
 a:hover {
-  font-size: 20px;
+  color: #7a7a7c;
 }
 h3 a:hover {
+  color: #000;
   font-size: 22px;
   box-shadow: 5px 5px #7a7a7c;
 }
@@ -78,6 +79,10 @@ h3 a:hover {
   display: flex;
   margin: auto;
   padding: 20px;
+}
+
+.pointing-right {
+  width: 20px;
 }
 
 @media (min-width: 668px) {

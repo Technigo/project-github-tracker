@@ -10,7 +10,7 @@ const profileImage = document.getElementById('profileImage')
     <h1>GitHub Tracker</h1>
      <h2>${data.name}</h2> 
      <img class="profile-image" id="profileImage" src="${data.avatar_url}" alt="Github Profile Image">
-     <p><img class="ghlogo" src=./github.png><a href="${data.html_url}">${data.html_url}</a></p>
+     <p><img class="ghlogo" src=./github.png><a href="${data.html_url}"> Github account: ${data.login}</a></p>
     `
    })
   .catch((err) => console.log(err))
@@ -49,7 +49,7 @@ const profileImage = document.getElementById('profileImage')
             <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
             <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
             <p><span class ="bolded"> Number of commits:</span> ${num}</p>
-            <p><span class ="bolded"> Pull Request:</span> <a href="${myPullRequests.html_url}">here</a></p>
+            <p><a href="${myPullRequests.html_url}"><img class="pointing-right" src=./pointing-right.png> View the pull request</a></p>
           </div>   
         ` 
        } else if (repo.name === 'project-weather-app') {
@@ -59,7 +59,7 @@ const profileImage = document.getElementById('profileImage')
            <p><span class ="bolded"> Default branch: </span> ${repo.default_branch}</p>
            <p><span class ="bolded"> Pushed at:</span> ${new Date(repo.pushed_at).toDateString()}</p>
            <p><span class ="bolded"> Number of commits:</span> ${num}</p>
-           <p><span class ="bolded"> Pull Request:</span> <a href="https://github.com/Technigo/project-weather-app/pull/215">here</a></p>
+           <p><a href="https://github.com/Technigo/project-weather-app/pull/215"><img class="pointing-right" src=./pointing-right.png> View the pull request</a></p>
          </div>   
          `
         } else {
