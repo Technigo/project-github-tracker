@@ -40,6 +40,7 @@ body {
   margin: 1rem 0;
   width: 100%;
   padding: 0 1.5rem;
+  text-align: center;
 }
 
 .user-info {
@@ -315,7 +316,7 @@ a.nav-item:hover {
   }
   
   .repo-container {
-    width: 290px;
+    width: 330px;
     height: 275px;
     padding: 1rem;
   }
