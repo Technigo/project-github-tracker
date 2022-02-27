@@ -1,10 +1,11 @@
 // DOM-selectors stored as variables
-const container = document.getElementById('container')
+const userContainer = document.getElementById('user-container')
+const projectsContainer = document.getElementById('projects-container')
 
-// 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 github API
 
 // global variables
 const username = 'mathildakarlsson'
+const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
 let reponame
 
@@ -16,8 +17,22 @@ const options = {
           Authorization: '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'
       }
   }
-  
-  console.log(API_TOKEN)
+
+
+// fetch user
+const getUser = () => {
+    fetch(API_USER, options)
+    .then(res => res.json())
+    .then(data => {
+        userContainer.innerHTML += `
+        <div class="user">
+        <img class="user-img"src="${data.avatar_url}">
+        <h2 class="user-name"> ${data.login}    
+    `
+    })
+getRepos()
+}
+
 
 //Fetch 1
 
@@ -26,18 +41,20 @@ const getRepos = () => {
     fetch(API_REPOS, options)
     .then(res => res.json())
     .then(data => {
+    console.log(data)
         
     const filteredRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
    
     filteredRepos.forEach((data) => {
-        let projectID = data.id
-        container.innerHTML += `
-          <div class="repos" id="${projectID}">
+        projectsContainer.innerHTML += `
+          <div class="repos" id="${data.name}">
           <h3>${data.name}</h3>
           <a href="${data.html_url}">
-          <p>${data.name}</p></a>
+          <p>Link to repo</p></a>
           <p>Branch: ${data.default_branch}</p>
-          <p id="repoName">Number of commits: </p>
+          <p>Main language: ${data.language}</p>
+          <p>Latest push: ${data.pushed_at}</p>
+          <p id="${data.name}">Number of commits: </p>
           </div>
         `
     })
@@ -47,41 +64,42 @@ const getRepos = () => {
     const API_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
     const getPullRequests = (data) => { 
         data.forEach(repo => {
-            fetch(API_PR)
+            fetch(API_PR, options)
             .then(res => res.json())
             .then(data => {
                 const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
+                const API_COMMIT = myPullRequests.commits_url
+                const dataName = data.name
                 if (myPullRequests) {
-                    getCommits(data, projectID)
+                    getCommits(API_COMMIT, dataName)
                 } else {
-                    document.getElementById(`${data.name}`).innerHTML += `
+                    projectsContainer.innerHTML += `
                     <p>Is this working?</p>
                     `
                 }
-                getPullRequests(filteredRepos)
+            })
+        getPullRequests(filteredRepos)
     })
-})
+}
 
     
-}
+
     
     
 //Fetch 3
-const getCommits = (projects, projectsID) => { 
-    const API_COMMIT = projects.commits_url.replace("{/sha}","")
+const getCommits = (API_COMMIT, dataName) => { 
     fetch(API_COMMIT, options)
     .then(res => res.json())
     .then(data => {
-        let numberOfCommits = data.length
-        document.getElementById(projectsID).innerHTML += `
-        <p>Number of commits: ${numberOfCommits}</p>
+        // let numberOfCommits = [data.length]
+        document.getElementById(dataName).innerHTML += `
+        <p>Number of commits: ${data.length}</p>
         `
         })
     }
 })
+
 }
-
-
-getRepos()
+getUser()
     
                     
