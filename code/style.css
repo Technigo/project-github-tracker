@@ -250,7 +250,7 @@ a.nav-item:hover {
     justify-content: space-evenly;
     gap: 0;
     margin: 0;
-    padding: 0 1rem 0 2.5rem;
+    padding: 0 1rem 0 3.5rem;
   }
 
   .main-title {
@@ -270,7 +270,7 @@ a.nav-item:hover {
   }
 
   .user-image {
-    width: 215px;
+    width: 225px;
     margin: 0;
     padding-top: 1rem;
   }
@@ -353,7 +353,7 @@ a.nav-item:hover {
 
   .user-section {
     width: 40%;
-    padding: 1rem 0 0 3rem;
+    padding: 1rem 0 0 3.5rem;
   }
 
   .main-title {

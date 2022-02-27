@@ -97,7 +97,7 @@ const getTechnigoRepos = (data) => {
         <p>Default branch: ${defaultBranch}</p>
         <p id='commit-${repo.name}'></p>
         <p>Most recent push: ${recentUpdate}</p>
-        <button class='repo-link-button'><a class='nav-item' href='${repo.html_url}' target="-blank">Click here to visit repo</a></button>
+        <button class='repo-link-button'><a class='nav-item' href='${repo.html_url}' target="-blank">Click here to view repo</a></button>
     `
     
 //-------------------------------FETCH 2------------------------------------------------
