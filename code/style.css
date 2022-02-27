@@ -62,7 +62,7 @@ h2 {
 }
 
 /* tablet */
-@media (min-width: 426px, max-width: 768px) {
+@media (min-width: 426px) and (max-width: 768px) {
   .projects {
     display: flex;
     flex-wrap: wrap;
