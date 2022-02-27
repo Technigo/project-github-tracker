@@ -1,0 +1,89 @@
+allow_forking: true
+archive_url: "https://api.github.com/repos/toal13/project-business-site/{archive_format}{/ref}"
+archived: false
+assignees_url: "https://api.github.com/repos/toal13/project-business-site/assignees{/user}"
+blobs_url: "https://api.github.com/repos/toal13/project-business-site/git/blobs{/sha}"
+branches_url: "https://api.github.com/repos/toal13/project-business-site/branches{/branch}"
+clone_url: "https://github.com/toal13/project-business-site.git"
+collaborators_url: "https://api.github.com/repos/toal13/project-business-site/collaborators{/collaborator}"
+comments_url: "https://api.github.com/repos/toal13/project-business-site/comments{/number}"
+commits_url: "https://api.github.com/repos/toal13/project-business-site/commits{/sha}"
+compare_url: "https://api.github.com/repos/toal13/project-business-site/compare/{base}...{head}"
+contents_url: "https://api.github.com/repos/toal13/project-business-site/contents/{+path}"
+contributors_url: "https://api.github.com/repos/toal13/project-business-site/contributors"
+created_at: "2022-01-23T16:12:15Z"
+default_branch: "master"
+deployments_url: "https://api.github.com/repos/toal13/project-business-site/deployments"
+description: null
+disabled: false
+downloads_url: "https://api.github.com/repos/toal13/project-business-site/downloads"
+events_url: "https://api.github.com/repos/toal13/project-business-site/events"
+fork: true
+forks: 0
+forks_count: 0
+forks_url: "https://api.github.com/repos/toal13/project-business-site/forks"
+full_name: "toal13/project-business-site"
+git_commits_url: "https://api.github.com/repos/toal13/project-business-site/git/commits{/sha}"
+git_refs_url: "https://api.github.com/repos/toal13/project-business-site/git/refs{/sha}"
+git_tags_url: "https://api.github.com/repos/toal13/project-business-site/git/tags{/sha}"
+git_url: "git://github.com/toal13/project-business-site.git"
+has_downloads: true
+has_issues: false
+has_pages: false
+has_projects: true
+has_wiki: true
+homepage: null
+hooks_url: "https://api.github.com/repos/toal13/project-business-site/hooks"
+html_url: "https://github.com/toal13/project-business-site"
+id: 451158190
+is_template: false
+issue_comment_url: "https://api.github.com/repos/toal13/project-business-site/issues/comments{/number}"
+issue_events_url: "https://api.github.com/repos/toal13/project-business-site/issues/events{/number}"
+issues_url: "https://api.github.com/repos/toal13/project-business-site/issues{/number}"
+keys_url: "https://api.github.com/repos/toal13/project-business-site/keys{/key_id}"
+labels_url: "https://api.github.com/repos/toal13/project-business-site/labels{/name}"
+language: "CSS"
+languages_url: "https://api.github.com/repos/toal13/project-business-site/languages"
+license: null
+merges_url: "https://api.github.com/repos/toal13/project-business-site/merges"
+milestones_url: "https://api.github.com/repos/toal13/project-business-site/milestones{/number}"
+mirror_url: null
+name: "project-business-site"
+node_id: "R_kgDOGuQgrg"
+notifications_url: "https://api.github.com/repos/toal13/project-business-site/notifications{?since,all,participating}"
+open_issues: 0
+open_issues_count: 0
+owner: {login: 'toal13', id: 91566202, node_id: 'U_kgDOBXUweg', avatar_url: 'https://avatars.githubusercontent.com/u/91566202?v=4', gravatar_id: '', …}
+private: false
+pulls_url: "https://api.github.com/repos/toal13/project-business-site/pulls{/number}"
+pushed_at: "2022-01-29T19:48:50Z"
+releases_url: "https://api.github.com/repos/toal13/project-business-site/releases{/id}"
+size: 19693
+ssh_url: "git@github.com:toal13/project-business-site.git"
+stargazers_count: 0
+stargazers_url: "https://api.github.com/repos/toal13/project-business-site/stargazers"
+statuses_url: "https://api.github.com/repos/toal13/project-business-site/statuses/{sha}"
+subscribers_url: "https://api.github.com/repos/toal13/project-business-site/subscribers"
+subscription_url: "https://api.github.com/repos/toal13/project-business-site/subscription"
+svn_url: "https://github.com/toal13/project-business-site"
+tags_url: "https://api.github.com/repos/toal13/project-business-site/tags"
+teams_url: "https://api.github.com/repos/toal13/project-business-site/teams"
+topics: []
+trees_url: "https://api.github.com/repos/toal13/project-business-site/git/trees{/sha}"
+updated_at: "2022-01-29T19:36:22Z"
+url: "https://api.github.com/repos/toal13/project-business-site"
+visibility: "public"
+watchers: 0
+watchers_count: 0
+[[Prototype]]: Object
+2: {id: 454313860, node_id: 'R_kgDOGxRHhA', name: 'project-chatbot', full_name: 'toal13/project-chatbot', private: false, …}
+3: {id: 462003502, node_id: 'R_kgDOG4mdLg', name: 'project-github-tracker', full_name: 'toal13/project-github-tracker', private: false, …}
+4: {id: 456101513, node_id: 'R_kgDOGy-OiQ', name: 'project-guess-who', full_name: 'toal13/project-guess-who', private: false, …}
+5: {id: 448514498, node_id: 'R_kgDOGrvJwg', name: 'project-news-site', full_name: 'toal13/project-news-site', private: false, …}
+6: {id: 462883011, node_id: 'R_kgDOG5cIww', name: 'project-weather-app', full_name: 'toal13/project-weather-app', private: false, …}
+7: {id: 462241115, node_id: 'R_kgDOG409Ww', name: 'unit-tests', full_name: 'toal13/unit-tests', private: false, …}
+length: 8
+[[Prototype]]: Array(0)
+fiveserver.js:1 [Five Server] connected.
+﻿
+
