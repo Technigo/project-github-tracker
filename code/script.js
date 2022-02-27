@@ -14,7 +14,8 @@ const getProfile = () => {
       profile.innerHTML = `
       <img src="${data.avatar_url}" class="user-img">
       <h2>${data.name}</h2>
-      <p id="bio">Front End Development student @ Technigo</p></div>`;
+      <p id="bio">Front End Development student @ Technigo</p></div>
+      `;
     });
   getRepos();
 };

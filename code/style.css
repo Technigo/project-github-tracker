@@ -51,9 +51,12 @@ h2 {
 .repos h3 {
   color: rgb(255, 87, 87);
 }
+a:hover {
+  color: rgb(255, 87, 87);
+}
 .chart-section {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
   margin-left: auto;
   margin-right: auto;
   margin-top: 8;
@@ -63,6 +66,8 @@ h2 {
   padding: 20px 0;
   max-width: 90vw;
   min-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 .img-bag {
   width: 100vw;
@@ -105,4 +110,9 @@ h2 {
 }
 footer {
   background-color: pink;
+}
+h4,
+h5 {
+  text-align: center;
+  padding: 20px;
 }
