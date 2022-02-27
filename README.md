@@ -8,4 +8,4 @@ I had trouble with fetching the amount of commits from the pull requests. I used
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://ecstatic-ptolemy-db0375.netlify.app/
