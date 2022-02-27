@@ -2,7 +2,7 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 
-//"Draw" the chart here 👇
+//CHART
 
 const drawChart = (number) => {
     const config = {
@@ -25,3 +25,4 @@ const drawChart = (number) => {
     };
     const myChart = new Chart(ctx, config);
   };
+  
