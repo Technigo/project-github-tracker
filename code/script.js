@@ -12,8 +12,8 @@ const userProfile = () => {
         .then((res) => res.json())
         .then(profileData => {
             profileInfo.innerHTML += `
-        <img src = "${profileData.avatar_url}" alt="profile image of Emma Berg">
-        <div class="profile-name">
+        <img src = '${profileData.avatar_url}' alt='profile image of Emma Berg'>
+        <div class='profile-name'>
         <h3> ${profileData.name}</h3>
         <h4> <a href = ${profileData.html_url}>${profileData.login}</h4>
         </div>
@@ -33,25 +33,23 @@ const repositories = () => {
 
             forkedRepos.forEach((repo) => {
                 allProjects.innerHTML += `
-            <div class="card">
-            <hr>
-            <h3> <a href = ${repo.html_url}> ${repo.name}</a></h3>
-            <hr>
-            <ul>
-              <li> <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('sv-SE', {dateStyle:'short',})}</p> </li>
-              <li><p> Default branch: ${repo.default_branch}</p></li>
-              <li><p id="pull-${repo.name}"></p></li>
-              <li><p id="commit-${repo.name}">Commits: </p></li>
-            </ul>
-            </div>
-            `
+                    <div class='card'>
+                        <hr>
+                        <h3> <a href = ${repo.html_url}> ${repo.name}</a></h3>
+                        <hr>
+                        <ul>
+                            <li> <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('sv-SE', { dateStyle: 'short', })}</p> </li>
+                            <li><p> Default branch: ${repo.default_branch}</p></li>
+                            <li><p id='pull-${repo.name}'></p></li>
+                            <li><p id='commit-${repo.name}'>Commits: </p></li>
+                        </ul>
+                    </div>
+                    `
                 commits(repo.commits_url, repo.name)
             })
-            //Add newDate to make 'latest push' look more readable
-            //A dynamic id added to be able to use the data in the pullrequest-function
             pullRequests(forkedRepos);
             drawChart(forkedRepos.length);
-    
+
         })
 }
 
@@ -65,57 +63,32 @@ const pullRequests = (forkedRepos) => {
             .then((pullReqs) => {
                 let groupProject = true
                 pullReqs.forEach((pull) => {
-                    if (pull.user.login === username){
+                    if (pull.user.login === username) {
                         groupProject = false
                         document.getElementById(`pull-${repo.name}`).innerHTML = `
-                        <a href = ${pull.html_url}> Go to pull request </a>
-                        `
-                    } 
-                    
+                            <a href = ${pull.html_url}> Go to pull request </a>
+                            `
+                    }
                 })
 
-                if (groupProject === true){
+                if (groupProject === true) {
                     document.getElementById(`pull-${repo.name}`).innerHTML = `
                         <p> No pull request, group project </p>
                         `
                 }
-
-               /* const myPullRequests = pullReqs.find((pullReqs) => 
-                    pullReqs.user.login === repo.owner.login)
-
-                    if (myPullRequests) {
-                        commits(myPullRequests.commits_url, repo.name)
-                    } else {
-                        document.getElementById(`commit-${repo.name}`).innerHTML = ''
-                    }
-
-                })*/
             })
     })
 }
 
 //function to get commit number for each project
 const commits = (myCommits, repoName) => {
-    let commitUrl = myCommits.replace('{/sha}','')
+    let commitUrl = myCommits.replace('{/sha}', '')
     fetch(commitUrl)
         .then((res) => res.json())
         .then((commitNumber) => {
             document.getElementById(`commit-${repoName}`).innerHTML += commitNumber.length;
         })
 }
-
-
-//function to get review comments for each project
-/*const comments = (pullReq) => {
-    //console.log(pullReq)
-    fetch(pullReq.review_comments_url)
-        .then((res) => res.json())
-        .then((rewComment) => {
-            console.log(rewComment);
-        })
-}*/
-
-
 
 //Invok the userProfile function and repositorie fetch
 userProfile()

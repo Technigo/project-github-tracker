@@ -47,7 +47,6 @@ h1{
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  
 }
 
 img {
@@ -86,6 +85,7 @@ img {
   align-items: center;
   margin: 2rem;
 }
+
 .card {
   background-color: var(--primary);
   width: 60vw;
@@ -111,7 +111,7 @@ text-align: center;
 }
 
 
-/* Media for tablet */
+/* Media query for tablet */
 @media screen and (min-width: 768px) {
 
   h1{
@@ -150,7 +150,7 @@ text-align: center;
 
 }
 
-/* Media for desktop */
+/* Media query for desktop */
 @media screen and (min-width:1024px) {
   .projects {
     display: grid; 
@@ -162,8 +162,5 @@ text-align: center;
 
   .card {
     max-width: 30vw;
-    
-  }
-  
-  
+  } 
 }
