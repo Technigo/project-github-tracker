@@ -27,42 +27,46 @@ const getRepos = () => {
     fetch(API_REPOS)
       .then(response => response.json())
       .then(data => {
-        const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project-'))
+        const forkedRepos = data.filter(repo => repo.fork && repo.name.startsWith('project'))
         
   
          forkedRepos.forEach(repo => {
-  
-        //   fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`) 
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         //console.log(data)
-        //         //console.log(data.user.login)
-        //        // console.log(repo.owner.login)
-        //       //const myPullRequest = data.filter((pull) => {return pull.user.login === repo.owner.login})
-        //       const myPullRequest = data.filter(pull => pull.user.login === repo.owner.login)
-        //       const commitUrl = myPullRequest[0].commits_url
-      
-        //       fetch(commitUrl)
-        //       .then(res => res.json())
-        //       .then(data => {
-               // const numberCommit = data.length
-      
+             projects.innerHTML += `<div class='repo-card'>
+             <a href='${repo.html_url}'><p>Repo name: ${repo.name}</p></a>
+             <p>Default branch: ${repo.default_branch}</p>
+             <p>Last push: ${new Date(repo.pushed_at).toLocaleString()}
+             <p id =${repo.name}>Number of commits: </p>
+             
+           </div> 
+                `   
                
-               
-      document.getElementById('projects').innerHTML += `
-      <div class="repo" id=${repo.name}> 
-        <h2>${repo.name}</h2>
-        <h2><a href ="${repo.html_url}"> Github Link</a </h2>
-        <h2>Default branch: ${repo.default_branch}</h2>
-        <h2>Latest push: ${new Date(repo.pushed_at).toDateString()}</h2>
-        
-        
-      </div>`
+
               })
+                getPullRequest(forkedRepos)
             })
         }
   
-      //})
-  //} 
+    const getPullRequest= (repos) => {
+        repos.forEach((repo)=> {
+            fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`)
+            .then(response => response.json())
+            .then(data => {
+                const myPullRequest = data.find((pull)=> pull.user.login === repo.owner.login)
+                if (myPullRequest) {
+                    getCommits(myPullRequest.commits_url, repo.name)
+                } else {
+                    document.getElementById(`${repo.name}`).innerHTML=`No pullrequest `
+                }
+                })
+            })
+        }
+    
+  const getCommits=(commits, myRepoName) => {
+      fetch(commits)
+      .then(response => response.json)
+      .then(data =>{
+          document.getElementById(`${myRepoName}`).innerHTML += data.length
+      })
+  }
 
   getRepos()
