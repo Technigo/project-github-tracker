@@ -14,15 +14,7 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="hamburger-wrapper">
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
-      <span class="hamburger"></span>
-    </div>
-    <h1>GitHub Tracker</h1>
-    <img src="./images/me.png" class="header__image" alt="image of savannah hayes">
-  </header>
+  <header id="header" class="header"></header>
   <main class="body-wrapper">
     <div class="aside-chart">
       <aside class="aside" id="aside"></aside>
@@ -35,29 +27,14 @@
     </div>
 
     <section class="commits" id="commits">
-      <div class="html-links">
-        <a class="links" href="index.html"><img src="./images/book.png" class="icons" alt="book icon"> Repositories</a>
-        <a class="links bold-link" href="commits.html"><img src="./images/box.png" class="icons" alt="box icon">
-          Contributions</a>
-        <a href="#" class="links links--hide"><img src="./images/pr.png" class="icons" alt="pull request icon"> Pull
-          Requests</a>
-      </div>
+      <div id="htmlLinks" class="html-links"></div>
       <hr>
      
     </section>
   </main>
 
   <hr>
-  <footer class="footer footer-flex">
-    <p class="footer__text footer-flex"><img src="./images/github.png" class="footer__icon" alt="github icon">GitHub
-      Tracker</p>
-    <ul class="footer__links footer-flex">
-      <li class="footer__link footer-flex">Terms</li>
-      <li class="footer__link footer-flex">Privacy</li>
-      <li class="footer__link footer-flex">Security</li>
-      <li class="footer__link footer-flex footer__link--hide">About</li>
-    </ul>
-  </footer>
+  <footer id="footer" class="footer footer-flex"></footer>
 
   <script src="./src/javascript/chart.js"></script>
   <script src="./src/javascript/config.js"></script>

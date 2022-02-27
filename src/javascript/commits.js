@@ -24,7 +24,7 @@ const fetchCommitMessages = (commits, repository) => {
 
   commitsSection.innerHTML += `
     <div class="commits__text">
-    <div><p><a href="${repository.html_url}">${username}/${repositoryName}</a></p></div>
+    <div><p><a href="${repository.html_url}" target="_blank">${username}/${repositoryName}</a></p></div>
     <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: ${commits.length * 3}%" aria-valuenow="${commits.length}" aria-valuemin="0" aria-valuemax="100"></div></div>
     <div><button type="button" id=${repositoryName} class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${commits.length} commits </button></div>
     </div>

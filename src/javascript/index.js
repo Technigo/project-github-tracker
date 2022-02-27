@@ -1,4 +1,7 @@
 const profileDetails = document.getElementById("aside");
+const header = document.getElementById("header");
+const htmlLinks = document.getElementById("htmlLinks");
+const footer = document.getElementById("footer");
 
 const username = "savannah-hayes"
 const USER_URL = `https://api.github.com/users/${username}`;
@@ -10,6 +13,36 @@ const options = {
     Authorization: `token ${API_TOKEN}`
   }
 }
+
+const displayHtml = () => {
+  header.innerHTML = `
+    <div class="hamburger-wrapper">
+    <span class="hamburger"></span>
+    <span class="hamburger"></span>
+    <span class="hamburger"></span>
+    </div>
+    <h1>GitHub Tracker</h1>
+    <img src="./images/me.png" class="header__image" alt="image of savannah hayes">
+    `
+  
+  htmlLinks.innerHTML = `
+    <a href="index.html" class="links bold-link"><img src="./images/book.png" class="icons" alt="book icon"> Repositories</a>
+    <a href="commits.html" class="links"><img src="./images/box.png" class="icons" alt="box icon"> Contributions</a>
+    <a href="#" class="links links--hide"><img src="./images/pr.png" class="icons" alt="pull request icon"> Pull Requests</a>
+    `
+
+  footer.innerHTML = `
+    <p class="footer__text footer-flex"><img src="./images/github.png" class="footer__icon" alt="github icon">GitHub Tracker</p>
+    <ul class="footer__links footer-flex">
+    <li class="footer__link footer-flex">Terms</li>
+    <li class="footer__link footer-flex">Privacy</li>
+    <li class="footer__link footer-flex">Security</li>
+    <li class="footer__link footer-flex footer__link--hide">About</li>
+    </ul>
+  `
+}
+
+displayHtml()
 
 const displayProfileData = (profileData) => {
   const image = profileData.avatar_url;
