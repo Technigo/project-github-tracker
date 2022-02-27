@@ -1,7 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d') // don't really get what this does
 
-const renderChart = ((completedProjects) => {
+const renderChart = (completedProjects) => {
 
     const labels = [
         'Projects done',
@@ -56,5 +56,5 @@ const renderChart = ((completedProjects) => {
     new Chart(
     document.getElementById('chart'),
     config
-)})
+)}
 

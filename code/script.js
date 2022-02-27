@@ -4,10 +4,13 @@
 // Most recent update (push) for each repo                      X
 // Name of your default branch for each repo                    X
 // URL to actual GitHub repo                                    X
-// Number of commit messages for each repo
+// Number of commit messages for each repo                      X
 // All pull requests
 // A chart of how many project you've done so far,
 // compared with how many you will do using chart.js.
+
+// const repos
+
 
 // Token
 const options = {
@@ -51,7 +54,7 @@ const getProfile = () => {
       });
   };
   getProfile();
-  
+
 
    //------------------ SECOND FETCH - ALL REPOS -----------------------//
 const findingAllRepos = (repos) => {
@@ -63,7 +66,7 @@ const findingAllRepos = (repos) => {
 
     // Fetches only repositories from Technigo //
     const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-  
+
 
     forkedRepos.forEach((repo) =>
     projectInfo.innerHTML +=
@@ -89,7 +92,7 @@ const findingAllRepos = (repos) => {
             Number of commits:
             </span>
         </p>
-        <p class="smallerContainer" id="pull-${repo.length}>
+        <p class="smallerContainer" id="pull-request-${repo.name}>
             <span class="styledHeadingsProject">Pull requests: </span>
             <span class="dataFetch"></span>
         </p>
@@ -127,7 +130,7 @@ const getPullRequest = (repos) => {
       fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then((res) => res.json())
         .then((data) => {
-          console.log('pull request third fetch', data);
+        //   console.log('pull request third fetch', data);
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
@@ -142,21 +145,23 @@ const getPullRequest = (repos) => {
     });
   };
 
-  repos.forEach(repo => {
+const findingPulls = (repos) => {
+
+ repos.forEach(repo => { // For all filtered repos I fetch each pull request
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
     .then((res) => res.json())
     .then((data) => {
+        console.log('get commits data', pulls.commits_url, 'pulls commits_url')
         const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
-        document.getElementById(`pull-${repo.length}`).innerHTML = `Pull Request: ${myPullRequests.length}`
+        document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
         })
 
         const commits = document.getElementById(`commit -${repo.name}`)
         const pulls = data.find((pull) => pull.user.login === repo.owner.login)
         getCommits(pulls.commits_url, repo.name)
-        console.log('get commits data', pulls.commits_url, 'pulls commits_url')
         pullRequests.forEach((repo) => {
             console.log("get pull request here", getPullRequest)
           })
 }
 )
-
+}
