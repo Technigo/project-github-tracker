@@ -14,7 +14,7 @@ and in the left menu you can also find [example usage](https://www.chartjs.org/d
 
 // DOM selectors
 const userInfo = document.getElementById('user-info')
-const projectBoard = document.getElementById('project-board')
+const projectBoard = document.getElementById('projects')
 
 // global variables
 const username = 'tiiliu'
@@ -37,7 +37,6 @@ const options = {
 
 // Function to fetch all github projects
 const getGithubProjects = () => {
-
 //-------------------------------FETCH 1------------------------------------------------
     fetch(API_URL, options)
         .then(res => res.json())
@@ -48,25 +47,31 @@ const getGithubProjects = () => {
             createUser(data)
             getTechnigoRepos(data)
         })
+        .catch(err => console.error(err))
 }
 
+        // profile picture: ${data[0].owner.avatar_url}
 
 // Function to display info from user
 const createUser = (data) => {
-    userInfo.innerHTML += `
-        <img class='user-image' src='${data[0].owner.avatar_url}'>
-        <h2 class='full-name'>Tiina Liukkonen</h2>
-        <h4 class='github-user-name'>Github username: ${data[0].owner.login}</h4>
+    userInfo.innerHTML = `
+        <p><img class='user-image' src='./images/test.jpg' alt='profile picture from Github'/></p>
+        <h1 class='full-name'>Tiina Liukkonen</h1>
+        <h3 class='github-user-name'><i class="fab fa-github"></i>  ${data[0].owner.login}</h3>
+        <h1 class='course-name'>Technigo Web Development Class of Jan '22 student</h1>
         `
 }
         
 // Function to filter out all repos forked from Technigo
 const getTechnigoRepos = (data) => {
 // console.log('testy testyyyy')
-
+    
     // variable to store the filtered repos
     const forkedProjects = data.filter(repo => repo.name.includes('project-'))
     console.log('forked projects:', forkedProjects)
+
+    // Invoking the drawChart function
+    drawChart(forkedProjects.length)
 
     // Looping through the filtered repos
     forkedProjects.forEach(repo => {
@@ -77,7 +82,7 @@ const getTechnigoRepos = (data) => {
     //console.log('reponame', reponame)
 
     //storing the latest update for each repo
-    let recentUpdate = new Date(repo.pushed_at).toLocaleDateString()
+    let recentUpdate = new Date(repo.pushed_at).toLocaleDateString('en', {day: 'numeric', month: 'short', year: 'numeric'})
     //console.log(recentUpdate)
 
     // storing the default branch for each repo
@@ -88,15 +93,13 @@ const getTechnigoRepos = (data) => {
     let linkToRepo = repo.html_url
     //console.log(linkToRepo)
 
-    //<a class='nav-item' href='${repo.html_url}' target="-blank"></a>
-
     projectBoard.innerHTML += `
     <div class='repo-container'>
-        <h3 class='repo-title'>${reponame}</h3>
+        <h2 class='repo-title'>${reponame}</h2>
         <p>Default branch: ${defaultBranch}</p>
-        <p id=''>Number of commits: </p>
-        <p>Recent push: ${recentUpdate}</p>
-        <p><a class='nav-item' href='${repo.html_url}' target="-blank">Link to repo</a></p>
+        <p id='commit-${repo.name}'></p>
+        <p>Most recent push: ${recentUpdate}</p>
+        <button class='repo-link-button'><a class='nav-item' href='${repo.html_url}' target="-blank">Click here to visit repo</a></button>
     `
     
 //-------------------------------FETCH 2------------------------------------------------
@@ -107,24 +110,30 @@ const getTechnigoRepos = (data) => {
 
                 // filtering for my own pull requests
                 const ownPullRequests = data.filter(repo => repo.user.login === username)
-                console.log('own pull requests', ownPullRequests)
+                //console.log('own pull requests', ownPullRequests)
+
+                const otherPullRequests = data.filter(item => item.user.login === 'kolkri' && item.base.repo.name === 'project-weather-app')
+                //console.log('commits done by others:', otherPullRequests)
+
+                const combinedPullRequests = ownPullRequests.concat(otherPullRequests)
+                //console.log('combined arrays:',combinedPullRequests )
 
                     // looping through own pull requests
-                    ownPullRequests.forEach(repo => {
+                    combinedPullRequests.forEach(repo => {
 
                         // storing the reponame of each pull request
                         reponame = repo.base.repo.name
 
                         // storing the url for commits for each repo
                         const commitsForRepos = repo.commits_url
-                        //console.log('commits url:', commitsForRepos)
+                        // console.log('commits url:', commitsForRepos)
 
                         // Invoking the fetchCommits function
                         fetchCommits(commitsForRepos, reponame)
 
                         // storing the url for comments for each repo
-                        const commentsForRepos = repo.comments_url
-                        console.log('comments', commentsForRepos)
+                        //const commentsForRepos = repo.comments_url
+                        //console.log('comments', commentsForRepos)
 
                         // storing the pull request number for each repo
                         const pullRequestNumber = repo.number
@@ -132,6 +141,14 @@ const getTechnigoRepos = (data) => {
 
                         // Invoking the fetchComments function
                         fetchComments(pullRequestNumber, reponame)
+
+                          // storing the url for languages
+                    const usedLanguages = repo.base.repo.languages_url
+                    //console.log('languages url:', usedLanguages)
+
+                    // Invoking the getLanguages function
+                    getLanguages(usedLanguages, reponame)
+
                     })
             })
     })
@@ -146,23 +163,25 @@ const fetchCommits = (commitsForRepos, reponame) => {
         .then(data => {
         //console.log('data from commits', data)
 
-            const ownCommits = data.filter(item => item.author.login === username)
-            //console.log('own commits:', ownCommits)
+        // storing the number of commits
+        const numberOfCommits = data.length
+        //console.log('number of commits:', numberOfCommits)
 
-            // storing the number of commits
-            const numberOfCommits = data.length
-            //console.log('number of commits:', numberOfCommits)
+        document.getElementById(`commit-${reponame}`).innerHTML += `
+        <p>Amount of commits: ${numberOfCommits}</p>
+        `
 
-                // looping through each commit
-                ownCommits.forEach(commit => {
-                //console.log('test', commit)
-   
-                    // storing the commit message from each 
-                    const commitMessages = commit.commit.message
-                    //console.log('commit message:', commitMessages)
-            
-                })
-        })               
+            data.forEach(item => {
+            // storing the commit message from each 
+                const commitMessages = item.commit.message
+                //console.log('commit message:', commitMessages)
+
+
+            //     item.author.login === username
+                    
+            })     
+        })
+        .catch(err => console.error(err))
 }
 
 // Function for fetching the comments for each pull request
@@ -175,9 +194,23 @@ const fetchComments = (pullRequestNumber, reponame) => {
         //console.log('data from comments url', data)
 
         // storing the review message
-        const reviewMessage = data[0].body
+        //const reviewMessage = data[0].body
         //console.log('review message:', reviewMessage)
+
         })    
+        .catch(err => console.error(err))
+}
+
+const getLanguages = (usedLanguages, reponame) => {
+    fetch(usedLanguages, options)
+        .then(res => res.json())
+        .then(data => {
+            //console.log('data from languages', data)
+
+            const languages = Object.keys(data)
+            //console.log(languages)
+        
+        })
 }
 
 getGithubProjects()

@@ -6,34 +6,36 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>Project GitHub Tracker</title>
   <link rel='stylesheet' href='./style.css' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Manrope:wght@300;400&display=swap">
   <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
 </head>
 <body>
 
-  <div class='background-container'>
-
-    <aside class='aside-section'>
+    <aside class='user-section'>
       
       <h1 class='main-title'>My Gitfolio</h1>
       <div class='user-info' id='user-info'></div>
       
-      <div class='chart'>
+      <div class='chart-container'>
         <!-- This will be used to draw the chart 👇 -->
-        <canvas id='chart'></canvas>
+        <canvas class='chart' id='chart'></canvas>
       </div>
-      
+
     </aside>
+          
     
-    
-    <main class='main-section-container'>
+    <main class='projects-container'>
       
       <!--<h3 class='projects-title'>Projects:</h3>-->
       
-      <div class='project-board' id='project-board'></div>
+      <div class='projects' id='projects'></div>
       
     </main>
 
-    <footer class='footer'></footer>
+    <footer class='footer'>
+        <p>&copy; Tiina Liukkonen</p>
+    </footer>
 
   </div>
     
