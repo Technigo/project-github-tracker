@@ -8,16 +8,16 @@ const sortRepos = document.getElementById('sortRepos')
 let API_URL = `https://api.github.com/users/${username}/repos`
 
 //Get the token here!!
-const options = {
-    method: 'GET',
-    headers: {
-        Authorization: `token ${API_TOKEN}`
-    }
-}
+//const options = {
+   // method: 'GET',
+   // headers: {
+    //    Authorization: `token ${API_TOKEN}`
+   // }
+//}
 
 // Fetching profile info
 const addingProfile = () => {
-    fetch(`https://api.github.com/users/${username}`, options)
+    fetch(`https://api.github.com/users/${username}`)   //, options
     .then((res) => res.json())
     .then((profileInfo) => {
         profile.innerHTML += `
@@ -31,7 +31,7 @@ addingProfile()
 
 // The first fetch of repos, calling the function below all other functions
 
-const addingRepos = () => {fetch(API_URL, options)
+const addingRepos = () => {fetch(API_URL)        //, options
     .then((res) => res.json())
     .then((repos) => {
        
@@ -65,7 +65,7 @@ const addingRepos = () => {fetch(API_URL, options)
 
  const findingPulls = (repos) => {                   
         repos.forEach((repo) => {                   //For all filtered repos I fetch each pull request    
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`, options)
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)    //, options
     .then((res) => res.json())
     .then((data) => {
 
