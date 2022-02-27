@@ -1,9 +1,7 @@
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
-
-const doughnutCounter = (finishedProjects) => {
+const doughnutCounter = (projects) => {
     const labels = [
         'Finished projects',
         'Remaining projects',
@@ -12,12 +10,11 @@ const doughnutCounter = (finishedProjects) => {
       const data = {
         labels: labels,
         datasets: [{
+          data: [projects, 19-projects],
           label: 'My finished projects',
           backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 95, 155)'],
           borderColor: 'rgb(255, 99, 132)',
-          data: [finishedProjects, 19-finishedProjects],
         }]
-        
       };
 
       const config = {
@@ -27,12 +24,6 @@ const doughnutCounter = (finishedProjects) => {
       };
 
       
-      const myChart = new Chart(
-        document.getElementById('chart'),
-        config
-        
-      );
-     
+      const myChart = new Chart(document.getElementById('chart'),config);
       }
-      doughnutCounter()
       

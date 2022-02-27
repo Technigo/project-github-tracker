@@ -61,6 +61,9 @@ const myRepos = () => {
     //as an argument when calling the pull request function
     getPullRequests(technigoRepos)
 
+         //Passing the filtered repos length to the chart in the file chart.js
+         doughnutCounter(technigoRepos.length)
+
 })
 }
 myRepos()
@@ -100,7 +103,11 @@ const getPullRequests = (technigoRepos) => {
             document.getElementById(`${repo.name}`).innerHTML += 
             `<p> Commits made by teammate</p>`
         }
+      
           })   
+
+  
+       
 
           // To get the commits from a PR we get the URL from the commits_url property in the PR json object 
 // and then do a fetch with that url.
