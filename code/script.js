@@ -49,8 +49,8 @@ const addingRepos = () => {fetch(API_URL)
         </div>`]
     
      })
-     findingPulls(forkedRepos)     
-     callingChart (forkedRepos.length)                           // Bringing all filtered repos to the next function
+     findingPulls(forkedRepos)                              // Bringing all filtered repos to the next function
+     callingChart (forkedRepos.length)                        //Bringing all filtered repos to the chart   
     })
     
      }
