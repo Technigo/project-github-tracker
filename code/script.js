@@ -6,7 +6,7 @@
 // URL to actual GitHub repo                                    X
 // Number of commit messages for each repo
 // All pull requests
-// A chart of how many project you've done so far, 
+// A chart of how many project you've done so far,
 // compared with how many you will do using chart.js.
 
 // Token
@@ -37,12 +37,12 @@ const getProfile = () => {
     fetch(API_USER, options)
       .then((res) => res.json())
       .then((data) => {
-        mainContent.innerHTML += 
+        mainContent.innerHTML +=
         `
-        <section class="profile-box"> 
+        <section class="profile-box">
             <img src="${data.avatar_url}" id="profilePicture" class="profile-picture" />
             <p class="full-name">${data.name}</p>
-            <p class="username">${data.login}</p> 
+            <p class="username">${data.login}</p>
         </section>
         <div class="status-box">
         ${data.bio} 👩‍💻
@@ -51,21 +51,23 @@ const getProfile = () => {
       });
   };
   getProfile();
+  
 
    //------------------ SECOND FETCH - ALL REPOS -----------------------//
-const findingAllRepos = (repos) => { 
-    fetch(API_URL, options) 
-       .then((res) => res.json()) 
-       .then((data) => { 
+const findingAllRepos = (repos) => {
+    fetch(API_URL, options)
+       .then((res) => res.json())
+       .then((data) => {
+
 
 
     // Fetches only repositories from Technigo //
     const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-    // console.log('repos from technigo', forkedRepos)
+  
 
-    forkedRepos.forEach((repo) => 
-    projectInfo.innerHTML += 
-        
+    forkedRepos.forEach((repo) =>
+    projectInfo.innerHTML +=
+
     `
     <div class="projectContainer">
         <p class="smallerContainer">
@@ -84,7 +86,7 @@ const findingAllRepos = (repos) => {
         </p>
         <p class="smallerContainer" id="commit-${repo.name}" style="color: #24292f; font-size: 15px">
             <span class="styledHeadingsProject">
-            Number of commits: 
+            Number of commits:
             </span>
         </p>
         <p class="smallerContainer" id="pull-${repo.length}">
@@ -93,17 +95,18 @@ const findingAllRepos = (repos) => {
         </p>
         <p class="smallerContainer">
             <img src="images/github-logo-extra-big.png" alt="github-logo" width="15px" />
-            <span class="dataFetch"><a class="project-url" href="${repo.svn_url}"> 
+            <span class="dataFetch"><a class="project-url" href="${repo.svn_url}">
             ${repo.name}</span>
             </a>
         </p>
     </div>
-    ` 
+    `
 )
 getPullRequest(forkedRepos)
 })
 }
 findingAllRepos()
+renderChart(forkedRepos.length)
 
 
 const getCommits = (myCommitsUrl, myRepoName) => {
@@ -112,7 +115,7 @@ const getCommits = (myCommitsUrl, myRepoName) => {
         return res.json()
           })
         .then((data) => {
-            
+
         document.getElementById(`commit-${myRepoName}`).innerHTML += data.length
       })
       }
@@ -134,9 +137,9 @@ const getPullRequest = (repos) => {
               `commit-${repo.name}`).innerHTML += `Commits done: (Pull request unavailable)`;
           }
         });
-        
+
     });
-    
+
   };
 
 
@@ -157,4 +160,3 @@ const getPullRequest = (repos) => {
           })
 }
 )
- 
