@@ -14,8 +14,8 @@ Requirements:
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I stated by reviewing the GitHub documentation. Then looked at the instructions hos to use the dynamic id. The profile section was easy to get up, but then I struggled with getting commits up. I had an error in the dynamic id. Once I solved it I moved on to the chart. Getting the data up was not easy, it took me some time to understand how to pass on the info from script to the chart.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://laughing-bardeen-1bdbb2.netlify.app/
