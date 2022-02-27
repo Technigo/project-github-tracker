@@ -8,13 +8,14 @@ const API_URL_ID = `https://api.github.com/users/${username}`
 
 
 
-const options = {
-  method: 'GET',
-  headers: {
-		Authorization: 'token ${API_TOKEN}' // Token
-	}
-}
+const API_TOKEN = TOKEN || process.env.API_KEY;
 
+const options = {
+    method: 'GET',
+    headers: {
+        Authorization: `token ${API_TOKEN}`
+    }
+}
 
 
 
