@@ -1,3 +1,137 @@
 body {
-  background: #d5cac4;
+  margin: 0;
+  background: #e3ded9;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile {
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  margin: 3rem;
+}
+
+.chart {
+  margin: 1rem;
+}
+
+.profile h3 {
+  font-size: 2rem;
+}
+
+.profile img {
+  border-radius: 50%;
+  max-height: 30rem;
+  max-height: 30rem;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.projects div {
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 0.2rem solid black;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: #8aa4ab;
+  color: #e3ded9;
+}
+
+.projects div:hover {
+  background-color: #416270;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem;
+  font-size: 1em;
+}
+
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+  .body h1 {
+    font-size: 6em;
+  }
+
+  .flex {
+    background-color: #416270;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    color: #e3ded9;
+    margin: 1rem;
+  }
+
+  .profile h3 {
+    font-size: 2.5rem;
+  }
+
+  .chart {
+    margin: 10rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .projects div {
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .flex {
+    background-color: #416270;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .profile {
+    display: flex;
+    padding: 3rem;
+    text-align: center;
+    font-size: 1.5em;
+    color: #e3ded9;
+  }
+
+  .profile h3 {
+    font-size: 3rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .projects div {
+    padding: 1.5rem;
+    font-size: 1.6rem;
+  }
 }

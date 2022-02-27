@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-</head>
-<body>
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart" style="width: 100%; max-width: 400px; height: 100%; max-height: 200px;"></canvas>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main class="container" id="container">
-  
-  <aside id="profile"></aside>
-  
-  <section id="projects" class="projects">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  </head>
+  <body>
+    <h1>GitHub Tracker</h1>
 
-  </section>
-  </main>
-  <footer></footer>
-  
-  <script src="./chart.js"></script>
-  <script src="./script.js"></script>
-  
-</body>
+    <section class="flex">
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas
+        id="chart"
+        class="chart"
+        style="
+          display: flex;
+          width: 100%;
+          max-width: 500px;
+          height: 100%;
+          max-height: 500px;
+        "
+      ></canvas>
+      <div id="profile" class="profile"></div>
+    </section>
+    <main class="container" id="container">
+      <section id="projects" class="projects"></section>
+    </main>
+
+    <footer>Created by Terese Claesson</footer>
+
+    <script src="./chart.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
