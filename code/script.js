@@ -4,16 +4,12 @@ const username = 'LovisaBrorson'
 const USER_INFO = `https://api.github.com/users/${username}` //Profilepicture and username
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos` // Get the forked repos
 const userContainer = document.getElementById('userContainer')
-// const API_KEY =
 
-
-//const API_TOKEN = TOKEN || process.env.API_KEY;
-//console.log(TOKEN 'This is the token')
 
 const options = { //opject
-    method: 'GET', //Kan också var apost, patch, delete
+    method: 'GET', //Kan också var post, patch, delete
      headers: {
-        //Authorization: `token ${API_TOKEN}`
+        Authorization: `token ${API_TOKEN}`
     }
 }
 
@@ -33,7 +29,7 @@ const options = { //opject
 //Funktion that get the repos from Github
 const getRepos = () => {
 
-    fetch(API_URL_REPOS)
+    fetch(API_URL_REPOS, options)
     .then((res) => res.json())
     .then((reposData) => {
         console.log(reposData)
@@ -65,27 +61,25 @@ const getPullRequests = (repos) => {
           fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
             .then(res => res.json())
             .then((pullData) => {
-            
             let myPullRequest = pullData.find((pull) => pull.user.login === repo.owner.login)
-           
-
             if (myPullRequest) {
                 displayCommits(myPullRequest.commits_url, repo.name)
             } else {
-                document.getElementById(`commit-${repo.name}`).innerHTML = `No pulls from this user yet.`
+                document.getElementById(`commits-${repo.name}`).innerHTML = `No pulls from this user yet.`
             }    
          })
     })
 }
 
-//getPullRequests () //- VARFÖR BEHÖVS INTE DENNA?
 
 
-const getCommits = (commitsUrl, repo) => {
+
+const displayCommits = (commitsUrl, repo) => {
     fetch(commitsUrl, options)
         .then(res => res.json())
         .then((data) => {
-        document.getElementById(`commit-${repo.name}`).innerHTML += data.length
+
+        document.getElementById(`commits-${repo}`).innerHTML += data.length
     
 })
 }
