@@ -4,24 +4,36 @@
   font-family: "Poppins", sans-serif;
   color: #3a3950;
 }
+
 .profile {
+  background-color: pink;
   margin: auto;
-  margin-top: 10px;
   display: block;
   padding-top: 20px;
 }
 .user-img {
-  background-color: #3a3950;
+  background-color: white;
   display: block;
-  width: 80vw;
+  width: 70vw;
   border-radius: 50%;
   border: 5px solid #dddcf1;
   padding: 5px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 20px;
+}
+h2 {
+  color: rgb(255, 87, 87);
+  text-align: center;
+}
+.profile p {
+  padding-bottom: 20px;
+  text-align: center;
 }
 .wrapper {
   background-color: pink;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .repo-grid {
   display: flex;
@@ -29,14 +41,26 @@
   background-color: pink;
   padding-top: 20px;
 }
+.repos {
+  border: 5px solid rgb(157, 219, 201);
+  border-radius: 20px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.repos h3 {
+  color: rgb(255, 87, 87);
+}
 .chart-section {
   display: flex;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 8;
+  background-color: rgb(241, 204, 161);
 }
 .chart-container {
+  padding: 20px 0;
   max-width: 90vw;
   min-width: 90vw;
 }
@@ -78,4 +102,7 @@
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
+}
+footer {
+  background-color: pink;
 }

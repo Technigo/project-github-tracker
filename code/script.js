@@ -14,7 +14,7 @@ const getProfile = () => {
       profile.innerHTML = `
       <img src="${data.avatar_url}" class="user-img">
       <h2>${data.name}</h2>
-      <p id="bio">Front end development student @ Technigo</p></div>`;
+      <p id="bio">Front End Development student @ Technigo</p></div>`;
     });
   getRepos();
 };
@@ -31,11 +31,9 @@ const getRepos = () => {
       forkedRepos.forEach((repo) => {
         repoGrid.innerHTML += `
         <div class='repos' id="${repo.name}">
-          <h3 id="name">${repo.name}</h3>
-          <p id="insideRepo">Default branch: ${repo.default_branch}</p>
-          <p id="insideRepo">Recent Push: ${new Date(
-            repo.pushed_at
-          ).toDateString()}</p>
+          <h3>${repo.name}</h3>
+          <p>Default branch: ${repo.default_branch}</p>
+          <p>Recent Push: ${new Date(repo.pushed_at).toDateString()}</p>
           <a href="${repo.html_url}">Link to repo</a>
           `;
       });
@@ -68,7 +66,8 @@ const getCommits = (myCommitsURL, repoName) => {
     .then((data) => {
       // count the number of commits
       document.getElementById(repoName).innerHTML += `
-            <p id="insideRepo"># of Commits: ${data.length}</p>`;
+            <p># of Commits: ${data.length}</p>`;
     });
 };
+// Initiate the first function
 getProfile();
