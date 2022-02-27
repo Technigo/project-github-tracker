@@ -3,26 +3,22 @@ const ctx = document.getElementById('chart').getContext('2d');
 
 //"Draw" the chart here 👇
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
+const drawChart = (amount) => {
+  const config = {
+    type: 'doughnut',
+    data: {
+      labels: ['My completed projects', 'Projects left to do'],
+      datasets: [
+        {
+          label: 'Dataset',
+          data: [amount, 19 - amount],
+          backgroundColor: ['#ddbea9', '#b7b7a4'],
+          borderColor: '#22223b',
+        },
+      ],
     },
-  ],
+  };
+  const myChart = new Chart(document.getElementById('chart'), config);
 };
 
-const config = {
-  type: 'doughnut',
-  data: data,
-  options: {},
-};
-
-const chart = new Chart(ctx, config);
-
-//const myChart = new Chart(document.getElementById('chart'), config);
+// const chart = new Chart(ctx, config);

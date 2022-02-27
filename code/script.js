@@ -3,7 +3,6 @@ const username = 'vanhaj',
   API_URL = `https://api.github.com/users/${username}/repos`,
   userDisplay = document.getElementById('userDisplay'),
   projects = document.getElementById('projects');
-// let reponame;
 
 // token
 const options = {
@@ -12,18 +11,19 @@ const options = {
     Authorization: `token ${API_TOKEN}`,
   },
 };
-console.log(API_TOKEN);
 
 // username and profile picture
 const myProfile = () => {
   fetch(API_USER, options)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data, 'min user');
-
       userDisplay.innerHTML += `
-      <img src=${data.avatar_url} alt='image of user'/>
-      <h2><a href='${data.html_url}'>${data.login}</a></h2>
+      <div class='profile'>
+        <img class='user-img' src=${data.avatar_url} alt='image of user'/>
+        <h2 class="user-info">
+          <a href='${data.html_url}'>${data.login}</a>
+        </h2>
+      </div>
       `;
     });
 };
@@ -38,52 +38,46 @@ const myRepos = () => {
 
       //filtering out only those that starts with projects
       const filteredProject = data.filter(
-        (repo) => repo.fork && repo.name.startsWith('project-')
+        (repo) => repo.fork && repo.name.startsWith('project')
       );
-      console.log(filteredProject, 'my repos');
 
-      // img code here?
       filteredProject.forEach((repo) => {
-        console.log(repo.name, 'hejhej');
         projects.innerHTML += `
-        <a href='${repo.html_url}'><p>name of my repo: ${repo.name}</p></a>
-        <p>Default branch: ${repo.default_branch}</p>
-        <p>Last push: ${new Date(repo.pushed_at).toLocaleString()}
-        <p id =${repo.name}>Number of commits:</p>
+        <div class='repo-card'>
+          <a href='${repo.html_url}'>
+            <p>Repo name: ${repo.name}</p>
+          </a>
+          <p>Default branch: ${repo.default_branch}</p>
+          <p>Last push: ${new Date(repo.pushed_at).toDateString()}
+          <p id =${repo.name}>Number of commits: </p>
+        </div>
         `;
       });
 
       getPullRequests(filteredProject);
-      drawChart(forkedRepos.length);
+      drawChart(filteredProject.length);
     });
 };
 
 //fetches 100 pulls
-const getPullRequests = (filteredProject) => {
+const getPullRequests = (repos) => {
   //Get all the PRs for each project
-  filteredProject.forEach((repo) => {
+  repos.forEach((repo) => {
     fetch(
-      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`,
-      options
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`
     )
       .then((res) => res.json())
       .then((data) => {
         const myPS = data.find((pull) => pull.user.login === repo.owner.login);
-
-        // console.log(repo.name, 'detta');
 
         // if PS was made by user -> getting the commits (getCommits)
         if (myPS) {
           getCommits(myPS.commits_url, repo.name);
         } else {
           document.getElementById(
-            (`${repo.name}`.innerHTML += 'No pull request was done by the user')
-          );
+            `${repo.name}`
+          ).innerHTML = `No pull request was done`;
         }
-        // const myCommits = myPS.commits_url;
-        // const myRepoName = repo.name;
-        // getCommits(myCommits, myRepoName);
-        // console.log(data, 'is this working');
       });
   });
 };
@@ -100,7 +94,3 @@ const getCommits = (myCommits, myRepoName) => {
 };
 
 myRepos();
-//------
-
-// if you have time, get the comments
-// also dont forget the token step when deploying to netlify
