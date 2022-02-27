@@ -6,4 +6,4 @@ I had problems with fetching teh commitsamount for my repos since all of them di
 
 ## View it live
 
-https://cranky-wing-8c4bce.netlify.app/
+https://cocky-lovelace-ac89bc.netlify.app
