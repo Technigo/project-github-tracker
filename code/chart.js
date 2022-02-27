@@ -6,9 +6,10 @@ const drawChart = (amount) => {
   const configchart = {
     type: 'doughnut',
     data: {
-      labels: ['Finished', 'Not finished'],
+      labels: ['Complete', 'Not Complete'],
       datasets: [
         {
+          label: 'Technigo projects rate ',
           data: [amount, 19 - amount],
           backgroundColor: ['#77E327', '#E33527'],
           hoverOffset: 3,
