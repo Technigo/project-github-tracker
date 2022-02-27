@@ -1,4 +1,4 @@
-# GitHub Tracker
+# GitHub Tracker 📊
 
 This weeks project was to create a GitHub tracker using JavaScript and GitHub API.
 
