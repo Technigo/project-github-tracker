@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "chart.js": "^3.7.1",
-    "dotenv": "^16.0.0"
-  }
-}

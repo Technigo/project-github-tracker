@@ -89,7 +89,8 @@ body {
 }
 
 #chart {
-  height: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Footer styling */
