@@ -38,13 +38,8 @@ h4 {
   font-size: 1.5rem;
 }
 
-ul {
-  list-style-type: none;
-}
-
 ol {
-  font-size: xx-small;
-  margin-top: 2rem;
+  font-size: small;
 }
 
 a {
@@ -70,7 +65,7 @@ a {
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
-  gap: 4rem;
+  gap: 3rem;
   padding: 20px;
 }
 
@@ -92,8 +87,7 @@ a {
 .project-section {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  text-align: center;
+  align-items: center;
 }
 
 .repo-container {
@@ -106,18 +100,23 @@ a {
 .repo-div {
   flex: 25%;
   min-height: 13rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   border: 1px solid var(--third);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 2.5rem;
+  padding: 1.5rem;
   margin: 0.5rem;
   transition: 0.2s; /*The delay of the scale change below*/
 }
 
 .repo-div:hover {
   transform: scale(1.05);  
+}
+
+.repo-div-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .no-pullrequest {
@@ -137,14 +136,6 @@ a {
 
 .commits-button:hover {
   text-decoration: underline;
-}
-
-.commit-message-div {
-  display: none;
-}
-
-.review-comment {
-  display: none;
 }
 
 .canvas-section {
