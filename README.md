@@ -4,8 +4,10 @@ This week, we have created a place to keep track of the GitHub repos that Im usi
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I struggeled a lot this week to get the API part. I had to watch other project to understand how to handle the commit part.
+When I finally was done I hade a bug that I couln´t find the solution for. I wrote the question at Stackowerflow. 
+The issue was ONE simple linebreak. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://lb-githubtracker.netlify.app/
