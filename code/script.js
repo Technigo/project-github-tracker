@@ -4,13 +4,11 @@ const username = 'LovisaBrorson'
 const USER_INFO = `https://api.github.com/users/${username}` //Profilepicture and username
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos` // Get the forked repos
 const userContainer = document.getElementById('userContainer')
-//const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls` // ej klar, gör en loop för att hämta upp alla mina rep.
 // const API_KEY =
 
-//let reponame
 
 //const API_TOKEN = TOKEN || process.env.API_KEY;
-//console.log(TOKEN)
+//console.log(TOKEN 'This is the token')
 
 const options = { //opject
     method: 'GET', //Kan också var apost, patch, delete
@@ -19,7 +17,7 @@ const options = { //opject
     }
 }
 
-//User information, profilepicture and username
+//User information = profilepicture and username
  const profileInfo = () => {
     fetch(USER_INFO, options)
      .then((res) => res.json())
@@ -30,7 +28,6 @@ const options = { //opject
         console.log(profileData)
      })
  }
-
  profileInfo()
 
 //Funktion that get the repos from Github
@@ -53,8 +50,49 @@ const getRepos = () => {
             <p class="project-info" id="commits-${repo.name}"> Amount of commits: </p>  
         </div> `
        })
+
+       getPullRequests(forkedRepos)
+       drawChart(forkedRepos.length)
+    
     })
-
+    
 }    
-
 getRepos()
+
+//Funciton that shows the pull requests that has been done by the user to Technigo project
+const getPullRequests = (repos) => {
+    repos.forEach(repo => {
+          fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+            .then(res => res.json())
+            .then((pullData) => {
+            
+            let myPullRequest = pullData.find((pull) => pull.user.login === repo.owner.login)
+           
+
+            if (myPullRequest) {
+                displayCommits(myPullRequest.commits_url, repo.name)
+            } else {
+                document.getElementById(`commit-${repo.name}`).innerHTML = `No pulls from this user yet.`
+            }    
+         })
+    })
+}
+
+//getPullRequests () //- VARFÖR BEHÖVS INTE DENNA?
+
+
+const getCommits = (commitsUrl, repo) => {
+    fetch(commitsUrl, options)
+        .then(res => res.json())
+        .then((data) => {
+        document.getElementById(`commit-${repo.name}`).innerHTML += data.length
+    
+})
+}
+
+
+
+
+
+
+
