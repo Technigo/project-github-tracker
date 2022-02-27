@@ -1,5 +1,4 @@
 
-
 //-----DOM-----//
 const profileInfo = document.getElementById("profile-info")
 const projectsContainer = document.getElementById("projects")
