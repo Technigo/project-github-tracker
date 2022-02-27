@@ -4,18 +4,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Project GitHub Tracker</title>
+
+  <!-- Chart link -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="header">
+    <h1>GitHub Tracker</h1>
+    <a href="https://github.com/" target="_blank"><img class="logo" src="./assets/GitHub-Mark-Light-64px.png" alt="github-logo" /></a>
+  </header>
+  
+  <main class="main">
+    <section class="user-section" id="user"></section>
+    <section class="project-section" id="projects"></section>
+     <!-- Chart 👇 -->
+    <section class="canvas-section">
+      <canvas id="chart"></canvas>
+    </section>   
+  </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
   <script src="./chart.js"></script>
+  <script src="./secret.js"></script>
+  <script src="./script.js"></script>
+  
 </body>
 </html>
