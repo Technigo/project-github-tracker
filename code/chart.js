@@ -10,7 +10,7 @@ const drawChart = (amount) => {
       labels: ["Finished projects", "Projects to do"],
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Technigo Projects",
           data: [amount, 19 - amount],
           backgroundColor: ["#13233d", "#fafafa"],
 
