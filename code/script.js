@@ -6,9 +6,21 @@ const username = 'Katarina821'
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos`
 const API_URL_ID = `https://api.github.com/users/${username}`
 
+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
+
+const options = {
+  method: 'GET',
+  headers: {
+		Authorization: '' // Token
+	}
+}
+
+
+
+
 //First function, fetches userdata and displays them in userinfo
 const getIntro = () => {
-	fetch(API_URL_ID).then(res => res.json()).then(data => {
+	fetch(API_URL_ID, options).then(res => res.json()).then(data => {
 		userInfo.innerHTML = `<h2>${data.name}</h2><a href=${data.html_url}> <h2> <img class="logo"src="./GitHubMark.png"> ${data.login} </h2></a>`
 		avatar.src = data.avatar_url
     console.log(data.html_url)
@@ -17,7 +29,7 @@ const getIntro = () => {
 }
 //second function, fetches my repos and filters the ones that are forked and stars with project. Displays info.
 const getRepos = () => {
-	fetch(API_URL_REPOS).then(res => res.json()).then(data => {
+	fetch(API_URL_REPOS, options).then(res => res.json()).then(data => {
 		console.log(data)
 		const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"))
 		console.log(forkedRepos)
@@ -37,7 +49,7 @@ const getRepos = () => {
 //third function Fetches all techningos pullrequests and filters the one done by me
 const getPullRequests = (forkedRepos) => {
 	forkedRepos.forEach(repo => {
-		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`).then(res => res.json()).then(data => {
+		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`, options).then(res => res.json()).then(data => {
 			const myPullRequests = data.filter(item => item.user.login === repo.owner.login)
 			console.log(myPullRequests)
       //conditional statement to sort out the repos that have a pullrequest done 
