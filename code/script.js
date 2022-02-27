@@ -1,17 +1,3 @@
-// Fetching API from Github to add                              X
-// A list of all repos that are forked ones from Technigo       X
-// Your username and profile picture                            X
-// Most recent update (push) for each repo                      X
-// Name of your default branch for each repo                    X
-// URL to actual GitHub repo                                    X
-// Number of commit messages for each repo                      X
-// All pull requests
-// A chart of how many project you've done so far,
-// compared with how many you will do using chart.js.
-
-// const repos
-
-
 // Token
 const options = {
     method: 'GET',
@@ -92,7 +78,7 @@ const findingAllRepos = (repos) => {
             Number of commits:
             </span>
         </p>
-        <p class="smallerContainer" id="pull-request-${repo.name} style="color: #24292f; font-size: 15px">
+        <p class="smallerContainer" id="pull-request-${repo.name}" style="color: #24292f; font-size: 15px">
             <span class="styledHeadingsProject">Pull requests: </span>
             <span class="dataFetch"></span>
         </p>
@@ -134,38 +120,17 @@ const getPullRequest = (repos) => {
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-        //   const myPullRequests = data.filter((pullRequest) => {
-        //     return pullRequest.user.login === username
-        //     })
-        //     document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
+          const myPullRequests = data.filter((pullRequest) => {
+            return pullRequest.user.login === username
+            })
+            document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
             if (pulls) {
             getCommits(pulls.commits_url, repo.name)
             } else {
             document.getElementById(
-              `commit-${repo.name}`).innerHTML += `Commits done: (Pull request unavailable)`;
+              `commit-${repo.name}`).innerHTML += `no commits visible, pull request unavailable.`;
           }
         });
 
     });
   };
-
-
-
-//  repos.forEach(repo => { // For all filtered repos I fetch each pull request
-//     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
-//     .then((res) => res.json())
-//     .then((data) => {
-//         console.log('get commits data', pulls.commits_url, 'pulls commits_url')
-//         const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
-//         document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
-//         })
-
-//         const commits = document.getElementById(`commit -${repo.name}`)
-//         const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-//         getCommits(pulls.commits_url, repo.name)
-//         pullRequests.forEach((repo) => {
-//             console.log("get pull request here", getPullRequest)
-//           })
-// }
-// )
-

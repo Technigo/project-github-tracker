@@ -1,4 +1,3 @@
-//DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d') // don't really get what this does
 
 const renderChart = (completedProjects) => {
@@ -11,8 +10,8 @@ const renderChart = (completedProjects) => {
       const data = {
         labels: labels,
         datasets: [{
-          label: 'Technigo Projects',
           backgroundColor: 'rgb(217, 169, 165)',
+          label: 'Technigo Projects',
           borderColor: 'rgb(192, 113, 106)',
           data: [completedProjects, 19-completedProjects],
         }]
