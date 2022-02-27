@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
-
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>GitHub Tracker</title>
+      <link rel="stylesheet" href="./style.css" />
+   </head>
+   <body class="body">
+      <section class="user-data" id="userData">
+         <h1 class="header">GitHub Tracker</h1>
+      </section>
+      <h2 class="project-header">Projects</h2>
+      <section class="filters-sorting">
+         <p class="filters-sorting-heading">Filter by</p>
+         <button class="sort-btn" id="filterLangJsBtn">JavaScript</button>
+         <button class="sort-btn" id="filterLangHtmlBtn">HTML</button>
+         <button class="sort-btn" id="filterAllBtn">All</button>
+      </section>
+      <section class="filters-sorting">
+        <p class="filters-sorting-heading">Sort by:</p>
+        <button class="sort-btn" id="sortSizeBtn">size</button>
+        <button class="sort-btn" id="sortCreatedBtn">created</button>
+        <button class="sort-btn" id="sortNameBtn">name</button>
+      </section>
+      <main class="projects" id="projects"></main>
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas class="chart" id="chart"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="./chart.js"></script>
+      <script src="./script.js"></script>
+   </body>
 </html>
