@@ -38,19 +38,22 @@ h2 {
 }
 a {
 	text-decoration: none;
+  color:black
 }
 h3 {
 	font-size: 30px;
 }
-h3:hover {
-	color: rgb(141, 190, 233);
+a:hover {
+	color: rgb(247, 91, 208);
 	font-family: 'Bebas Neue', cursive;
 	;
 }
 .picture {
 	width: 80%;
 	border-radius: 50%;
+  opacity: 0.8
 }
+.picture:hover{opacity: 1.0}
 .logo {
 	width: 30px;
 }

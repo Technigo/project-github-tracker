@@ -9,8 +9,9 @@ const API_URL_ID = `https://api.github.com/users/${username}`
 //First function, fetches userdata and displays them in userinfo
 const getIntro = () => {
 	fetch(API_URL_ID).then(res => res.json()).then(data => {
-		userInfo.innerHTML = `<h2>${data.name}</h2> <h2> ${data.login}  <img class="logo"src="./GitHubMark.png"></h2>`
+		userInfo.innerHTML = `<h2>${data.name}</h2><a href=${data.html_url}> <h2> <img class="logo"src="./GitHubMark.png"> ${data.login} </h2></a>`
 		avatar.src = data.avatar_url
+    console.log(data.html_url)
 		getRepos()
 	})
 }
@@ -36,8 +37,8 @@ const getRepos = () => {
 //third function Fetches all techningos pullrequests and filters the one done by me
 const getPullRequests = (forkedRepos) => {
 	forkedRepos.forEach(repo => {
-		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`).then(res => res.json()).then(data2 => {
-			const myPullRequests = data2.filter(item => item.user.login === repo.owner.login)
+		fetch(`https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`).then(res => res.json()).then(data => {
+			const myPullRequests = data.filter(item => item.user.login === repo.owner.login)
 			console.log(myPullRequests)
       //conditional statement to sort out the repos that have a pullrequest done 
      // if pullrequest is done, evoke fetch commit function
@@ -54,7 +55,6 @@ const getPullRequests = (forkedRepos) => {
 const fetchCommits = (myCommitsUrl, myRepoName) => {
 	fetch(myCommitsUrl).then((res) => res.json()).then((data) => {
 		document.getElementById(`${myRepoName}`).innerHTML += data.length
-		console.log(`${data.length}`)
 	})
 }
 
