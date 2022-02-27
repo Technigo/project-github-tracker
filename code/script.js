@@ -62,9 +62,6 @@ const getPullRequests = (repos) => {
                 let languagesURL = repo.languages_url
                 languages(languagesURL, repo.name)
 
-                //date for first git push
-                console.log('repo:',repo)
-
                 //showing results on the page with innerHTML
                 document.getElementById('projects').innerHTML += `
                 <div class="project-card">
