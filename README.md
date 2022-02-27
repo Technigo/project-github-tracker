@@ -1,13 +1,21 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
+In this project we were suppose to build a tracker of all our projects related to Technigo using GitHub API. The site should include:
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+
+- A list of all repos forked from Technigo
+- Username and profile picture
+- Most recent push for each repo
+- Default branch for each repo
+- URL to the actual GitHub repo
+- Number of commits per repo
+- Chart showing completed projects/total.
+
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In order to solve the problem I've worked with API's and a personal token. A challening project where there still are things needed to be fixed (when the chart is showing only 2 out of 5 projects are visible). 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://jolly-hopper-ee7c71.netlify.app/
