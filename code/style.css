@@ -1,7 +1,20 @@
+*{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
+}
+
 body {
-  background: #FFECE9;
+  background: #252525;
   font-family: 'Nunito', sans-serif;
   margin: 0 auto;
+  display: flex;
 }
 
 
@@ -11,63 +24,79 @@ html {
 
 h1 {
   font-size: 1.4rem;
+  color: #f2f2f2;
 }
 
 h2 {
   font-size: 1.2rem;
   text-align: center;
+  color: #f2f2f2;
 }
 
 h3 {
   text-align: center;
-  background-color: rgba(130, 60, 60, 0.2);
   border-radius: 0.4rem;
-  margin-top: 0;
-  padding: 1rem 0rem;
+  margin-top: 10;
+  padding: 1rem 1rem;
+  color: #f2f2f2;
+}
+
+p{
+  font-size: 1rem;
+  margin-top: 15px;
+  color: #f2f2f2;
 }
 
 #profile-wrapper {
-  display: block;
-  text-align: center;
-  justify-content: center;
   display: flex;
+  text-align: center;
   position: absolute;
   left: 50%;
   top: 50%;
   width: 100%;
   max-width: 300px;
   transform: translate(-50%, -50%);
-  margin: auto;
+  margin: 2px;
+  padding: 20px;
   width: 63%;
+  box-shadow: 6px 6px 39px -4px rgba(0,0,0,0.75);
 }
 
 #profile {
   display: inline-block;
   justify-content: center;
+  margin-top: 10px;
 }
 
 /*/ --- BUTTON --- /*/
 .button{
   background: #00aa2b;
   color: #fff;
-  padding: 10px 40px;
+  padding: 10px 20px;
   box-shadow: 6px 6px 39px -4px rgba(0,0,0,0.75);
   border-radius: 3px;
   cursor: pointer;
-  transition: 0.4s;
+  text-align: center;
+  align-items: center;
   position: absolute;
-  margin-top: 100px;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 200px;
+  transform: translate(-50%, -50%);
+  transition: 0.4s;
+  margin-top: 100%;
 }
 /*/ --- BUTTON --- /*/
 
 .profile-image {
   display: inline-block;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 2px solid whitesmoke;
   overflow: hidden;
-  margin-bottom: 0;
+  margin-bottom: 40px;
 }
 
 .profile-image > a > img {
@@ -79,20 +108,22 @@ h3 {
   flex-flow: row wrap;
   justify-content: center;
   left: 50%;
-  top: 40%;
+  top: 130%;
   width: 100%;
   transform: translate(-50%, -50%);
   position: absolute;
   gap: 1rem;
   margin-bottom: 1rem;
-  
 }
 
 .projects-card {
   width: 320px;
-  background-color: #f2f2f2;
+  height: 230px;
+  background-color: #1d1d1d;
   box-shadow: rgba(0, 0, 0, 0.6) 0 0.065rem 0.25rem;
   border-radius: 0.4rem;
+  text-align: center;
+  margin: 0;
   padding: 1rem;
 }
 
@@ -101,6 +132,10 @@ h3 {
   max-width: 512px;
   margin: 0 auto;
   position: absolute;
+  left: 50%;
+  top: 200%;
+  width: 100%;
+  transform: translate(-50%, -50%);
 }
 
 header {
@@ -120,7 +155,7 @@ header, footer {
 }
 
 footer, a {
-  color: rgb(130, 60, 60)
+  color: #ffbb00;
 }
 
 footer > p > a {

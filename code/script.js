@@ -17,6 +17,7 @@ const options = { //Object
     }
 }
 
+
 const showProfile = () => {
     fetch(PROFILE_URL, options)
         .then(res => res.json()) //Converting the response to a JSON object
@@ -30,12 +31,13 @@ const showProfile = () => {
                         </a>
                     </figure>
                     <h3>${data.login}</h3>
-                    <p>Public repositories: ${data.public_repos}.</p>
+                    <p>Public repositories: ${data.public_repos}</p>
                 </div>
             `
         })
 }
 showProfile()
+
 
 const showRepos = () => {
     fetch(REPO_URL, options)
@@ -46,9 +48,9 @@ const showRepos = () => {
             myRepos.forEach(repo => {
                 repoWrapper.innerHTML += `
                     <div class="projects-card" id="${repo.id}">
-                        <h3><a href="${repo.html_url}"><b>${repo.name}</b></a>  <strong>(${repo.default_branch})</strong></h3>
-                        <p>Most recent push: ${new Date(repo.pushed_at).toDateString()} </p>
-                        <p id="commit_${repo.name}">Number of commits:</p>
+                        <h3><a href="${repo.html_url}"><b>${repo.name}</b></a>  <strong><br>${repo.default_branch}</strong></h3>
+                        <p>Recent push: ${new Date(repo.pushed_at).toDateString()} </p>
+                        <p id="commit_${repo.name}">Commits: </p>
                         <p>Main language: ${repo.language}</p>
                     </div>
                 `
@@ -68,24 +70,23 @@ const showPullRequestsArray = (allRepos) => {
                     (pull) => pull.user.login === repo.owner.login
                 )
                 if (myPullRequest) {
-                    fetchCommits(myPullRequest.commits_url, repo.name)
+                    showCommits(myPullRequest.commits_url, repo.name)
                 } else {
                     document.getElementById(`commit_${repo.name}`)
-                    .innerHTML = 'Pull request unavailable, or closed.';
+                    .innerHTML = 'Commits: No Pull request available.';
                 }
             })
     })
 }
 
 
-const fetchCommits = (myCommitsUrl, myRepoName) => {
+const showCommits = (myCommitsUrl, myRepoName) => {
         fetch(myCommitsUrl)
             .then((response) => response.json())
             .then((data) => {
                 document.getElementById(`commit_${myRepoName}`).innerHTML += data.length
             })
     }
-
 showRepos()
 
 
