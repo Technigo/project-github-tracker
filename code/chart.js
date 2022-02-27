@@ -12,7 +12,7 @@ const renderChart = (completedProjects) => {
         labels: labels,
         datasets: [{
           label: 'Technigo Projects',
-          backgroundColor: 'rgb(192, 113, 106)',
+          backgroundColor: 'rgb(217, 169, 165)',
           borderColor: 'rgb(192, 113, 106)',
           data: [completedProjects, 19-completedProjects],
         }]
@@ -23,7 +23,6 @@ const renderChart = (completedProjects) => {
         data: data,
         options: {
             responsive: true,
-            
         }
       };
 
