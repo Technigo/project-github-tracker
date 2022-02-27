@@ -46,6 +46,9 @@ footer {
   text-transform: uppercase;
   font-size: 20px;
 }
+.repoimg {
+  float: left;
+}
 .chart {
   width: 200px;
 }

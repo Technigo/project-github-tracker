@@ -2,10 +2,8 @@
 const username = 'Kyparn'
 const API_USER = `https://api.github.com/users/${username}`
 const API_REPO = `https://api.github.com/users/${username}/repos`
-let reponame = ''
+const projects = document.getElementById('projects')
 const personData = document.getElementById('personData')
-
-const apiToken = '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'
 
 const api_Token = apiToken || process.API_KEY
 //console.log(apiToken)
@@ -29,70 +27,70 @@ const getUserData = () => {
   <img class="img" src="${user.avatar_url}">
   <h2> ${user.name}</h2>
   <h2>${user.location}</h2>
-  <h2></h2>
-  <h2></h2> 
+  <h2>${user.bio}</h2>
   </div>`
     })
 }
 getUserData()
-// ALL OF MY REPOS
 
+// Function to fetch my repositories
 const getRepos = () => {
   fetch(API_REPO, options)
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
-
-      // Filtering in out my forkd repo
+      // Filter to get only my forked repos from Technigo
       const filtered = data.filter(
         (repo) => repo.fork && repo.name.startsWith('project-'),
       )
-      console.log(filtered)
 
       filtered.forEach((repo) => {
+        // Creating unique ID for each forked repo
         let projectID = repo.id
 
         projects.innerHTML += `
-       <div class="repoInfo id="${projectID}">
-       <p class="cardInfo">${new Date(repo.pushed_at).toDateString()}</p>
-       <p class="cardInfo"> ${repo.name}</p>
-        <p class="cardInfo"> ${repo.default_branch}</p>
-       <p class="cardInfo"$> <a href="${
-         repo.html_url
-       }" target="blank">Repository ${repo.name}</a></p>
-        </div>  `
-        getCommits(data, projectID)
-      })
+              <div class="repoInfo" id="${projectID}">
+              <img src="github.png" class="repoimg" alt="logo" width="25px" />
+              <p class="cardInfo">${new Date(repo.pushed_at).toDateString()}</p>
+              <p class="cardInfo">Branch ${repo.default_branch}</p> 
+              <p class="cardInfo"$> <a href="${
+                repo.html_url
+              }" target="blank">Repository ${repo.name}</a></p>
 
-      //chart
+              </div>`
+
+        // Invoking function to get the number of commits for the projects
+        getCommits(repo, projectID)
+      })
       getPullRequests(filtered)
       drawChart(filtered.length)
     })
 }
-const getPullRequests = (repos) => {
-  //Get all the PRs for each project.
-  repos.forEach((repo) => {
+
+const getPullRequests = (filtered) => {
+  filtered.forEach((repo) => {
     fetch(
-      `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`,
+      `https://api.github.com/repos/technigo/${repo.name}/pulls?per_page=100`,
       options,
     )
       .then((res) => res.json())
       .then((data) => {
-        const commits = document.getElementById(`commit-${repo.name}`)
-
+        console.log(data)
         const pulls = data.find((pull) => pull.user.login === repo.owner.login)
       })
   })
 }
-// Function to get commits
+
 const getCommits = (projects, projectID) => {
   const GIT_COMMIT_API = projects.commits_url.replace('{/sha}', '')
   fetch(GIT_COMMIT_API, options)
     .then((res) => res.json())
     .then((data) => {
+      console.log(data)
       let numberOfCommits = data.length
       document.getElementById(projectID).innerHTML += `
       <p>Number of commits: ${numberOfCommits}</p>`
     })
 }
+
 getRepos()
