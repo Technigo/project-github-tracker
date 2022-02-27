@@ -65,9 +65,8 @@ fetch(API_REPOS, options)
               project.html_url
             }" alt="link to git" target="_blank">link to repo</a>
 					</div>
-					<div class="test"> <h1>TESTAR LITE</h1> </div>
 				</div>
-			<div>
+			</div>
 			`;
 
       // fetch all the pull requests and print them out
@@ -84,7 +83,7 @@ fetch(API_REPOS, options)
           const singleProject = document.getElementById(project.name);
           singleProject.innerHTML += `<p class="pull-requests">Pull requests: ${filteredPR.length}</p>`;
 
-          // fetch all the commits and print them out
+          // fetch all commits and print them out
           const API_COMMITS = `https://api.github.com/repos/sieurin/${reponame}/commits`;
           fetch(API_COMMITS, options)
             .then((res) => res.json())
