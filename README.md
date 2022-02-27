@@ -1,13 +1,13 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks project was to build a website that keept track on my info on github :)
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This week i had alot of problems with the code, all kinds of error and more more, i had help from my my team Foxes to fix the problem :)
 
 ## View it live
 
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+Here u can se my page live -----> https://github-trackar.netlify.app/
