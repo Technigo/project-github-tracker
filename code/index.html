@@ -6,16 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <section class="profile-info">
+    <div class="titles">
+      <div class = "flexCont"><img class="bigLogo"src="./assets/githubLogo.svg" alt="GitHub Logo"><h1>GitHub Tracker</h1></div>
+      <h2 class="whiteColor">Technigo Boot Camp spring '22</h2>
+      <div id="profile-pic"></div>
+      <div class = "flexCont" id="username"></div>
+      <!-- This will be used to draw the chart 👇 -->
+      <h2 class="whiteColor">BOOT CAMP PROGRESS:</h2>
+      <div class ="chart">
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+  </section>
+  
+  <main id="projects"class="projects">
+    
+  </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <footer>
+    <p>&copy; Kristiina Kolu</p>
+    <p>Technigo Boot Camp spring '22</p>
+    <p>Week 7 project</p>
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
 </html>
+<a href="http://"></a>
