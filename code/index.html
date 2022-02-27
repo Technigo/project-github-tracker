@@ -4,21 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project GitHub Tracker</title>
+    <title>Mimmis Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+      src="https://kit.fontawesome.com/8fe3e91d62.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header id="header-box" class="header-box">
+    <header id="headerBox">
       <h1>GitHub Tracker</h1>
-      <div id="my-profile" class="my-profile"></div>
+      <h3>Technigo Student Spring 2022</h3>
     </header>
 
-    <main id="main-container" class="main-container"></main>
-    <h2>Projects:</h2>
+    <main id="main-container" class="main-container">
+      <section class="projects">
+        <div class="section-projects__container" id="section-projects"></div>
+      </section>
 
-    <!-- This will be used to draw the chart 👇 -->
-    <canvas id="myChart"></canvas>
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas id="chart" class="chart"></canvas>
+    </main>
 
     <script src="./chart.js"></script>
     <script src="./secret.js"></script>

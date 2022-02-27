@@ -1,25 +1,25 @@
-//DOM-selector for the canvas 👇
-const ctx = document.getElementById("myChart").getContext("2d");
+const showChart = (countRepos) => {
+  const ctx = document.getElementById("chart").getContext("2d");
 
-//"Draw" the chart here 👇
-const labels = ["January", "February", "March", "April", "May", "June"];
+  const labels = [`Finished projects`, `Projects left`];
 
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: "My First dataset",
-      backgroundColor: "rgb(255, 99, 132)",
-      borderColor: "rgb(255, 99, 132)",
-      data: [0, 10, 5, 2, 20, 30, 45],
-    },
-  ],
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "My Technigo projects",
+        backgroundColor: ["#9E9FCF", "#484B76"],
+        borderColor: "rgb(66, 66, 66)",
+        data: [countRepos, 19 - countRepos],
+      },
+    ],
+  };
+
+  const config = {
+    type: "pie",
+    data: data,
+    options: {},
+  };
+
+  const myChart = new Chart(ctx, config);
 };
-
-const config = {
-  type: "line",
-  data: data,
-  options: {},
-};
-
-const myChart = new Chart(document.getElementById("myChart"), config);
