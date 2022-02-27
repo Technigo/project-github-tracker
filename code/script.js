@@ -8,7 +8,7 @@ const totalProjectsDuringBootcamp = 19;
 const options = {
     method: 'GET',
     headers: {
-        Authorization: `token ${API_TOKEN} ` // you need to paste your token over here.
+        Authorization: `token ${API_TOKEN}` // you need to paste your token over here.
     }
 }
 
