@@ -8,26 +8,25 @@
   <link rel="stylesheet" href="./style.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nixie+One&family=Roboto:wght@300&display=swap"
-        rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nixie+One&family=Roboto:wght@300&display=swap" rel="stylesheet">
+  
+  <!-- link to chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
   <main class="projects" id="projects">
-  
   <div class ="user-container"></div>
-
   <div class="repo-container"></div>
 
   <!-- This will be used to draw the chart 👇 -->
   <div class="chart-container">
   <canvas class="chart" id="chart"></canvas>
-</div>
-</main> 
+  </div>
+  </main> 
 
-<!--this is for the GitHub secret token so it can fetch more than 60 times/h-->
+<!--this secret.js is the GitHub token so we can fetch more than 60 times/h-->
   <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>

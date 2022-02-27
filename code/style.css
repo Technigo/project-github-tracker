@@ -16,11 +16,11 @@ body {
 .user-container img {
   width: 250px;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 1, 1fr;
   justify-items: center;
   place-items: center;
   margin: 15px;
-  border-style:inset;
+  border-style: inset;
   border-width: 4px;
   border-color:rgb(50, 82, 136);
 }
@@ -30,7 +30,7 @@ body {
   color:black;
   text-decoration: none;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 1, 1fr;
   justify-items: center;
   place-items: center;
   margin-bottom: 35px;
@@ -38,12 +38,11 @@ body {
 
 .repo-container {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: 1, 1fr;
   justify-items: center;
   place-items: center;
   grid-gap: 40px;
   margin-bottom: 55px;
-
 }
 
 .repo-container a {
@@ -52,14 +51,14 @@ color:rgb(36, 161, 156);
 }
 
 .chart {
- max-width: 350px; 
- max-height: 350px; 
+max-width: 350px; 
+max-height: 350px; 
 }
 
 .chart-container {
-  display: grid;
-  place-items: center;
-  margin-top: 25px;
+display: grid;
+place-items: center;
+margin-top: 25px;
 }
 
 @media (min-width: 668px) {
