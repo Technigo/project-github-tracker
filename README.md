@@ -1,13 +1,16 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This weeks assignment was to create a responsive tracker website for Github repos by using the Github API.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started the project by gathering all the necessary information using the fetch() method. After that I started to build the functions for using the information and refactored the code. All functionalities were done with Javascript. With Javascript I also created a chart to show data about course progress.
+
+With more time, I would like to use the collected data to show more information through different functionalities, for example the accordion to show review or commit messages from projects.
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+Link to my deployed project:
+
+https://my-gitfolio.netlify.app/
