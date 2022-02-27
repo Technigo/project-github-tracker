@@ -8,14 +8,33 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <!-- <main id="projects"></main> -->
+  
+  <main>
+    <section id="profile-wrapper">
+      <a href="#" class="button" id="button">All repos</a>
+    </section>
+ 
+
+    <section class="repo-wrapper" id="repo-wrapper"></section>
+
+    <section id="chart-wrapper">
+      <canvas id="chart"></canvas>
+    </section>
+    
+  </main>
+ 
+
+  <div id="root"></div>
+  <section id="projects"></section>
 
   <!-- This will be used to draw the chart 👇 -->
   <canvas id="chart"></canvas>
 
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
+
 </html>
