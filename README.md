@@ -1,12 +1,10 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a GitHub Tracker. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+Using HTML, CSS and JS. Using the API:s frm GitHub. Also first use of a chart. If I had more time I would've continued with the styling and JS functions. The styling as of now I think has too much code. 
 
 ## View it live
 

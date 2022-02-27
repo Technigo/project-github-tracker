@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="header "id="header">
@@ -13,13 +14,15 @@
   </div>
   <div id="profile" class="profile">
   </div>
- 
-  <main id="projects" class="projects">
-
+  <div id="chart">
+    <canvas id="myChart"></canvas>
+  </div>
+  <main>
+    <div id="projects" class="projects"></div>
+    
   </main>
-  <canvas id="chart"></canvas>
   <script src="./secret.js"></script>
-  <script src="./script.js"></script>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>

@@ -41,6 +41,7 @@ h1 {
 .photobox {
   align-items: center;
   padding: 5%;
+  margin-top: 20px;
 }
 
 .photobox p {
@@ -51,7 +52,7 @@ h1 {
 .photo {
   width: 100px;
   border-radius: 50%;
-  border: #13233d dotted 3px;
+  border: #13233d solid 3px;
 }
 
 .projects {
