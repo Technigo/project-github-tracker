@@ -80,7 +80,7 @@ const addingRepos = () => {fetch(API_URL)        //, options
 }
 
   const findingCommits = (myCommitsUrl, myRepoName) => {
-        fetch(myCommitsUrl, options)
+        fetch(myCommitsUrl)            //, options
         .then((res) => res.json())
         .then((data) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += data.length        //Getting the number of commits to be displayed on the page       
