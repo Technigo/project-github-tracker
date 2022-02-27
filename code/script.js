@@ -61,8 +61,9 @@ const getRepos = () => {
          repo.html_url
        }" target="blank">Repository ${repo.name}</a></p>
         </div>  `
+        getCommits(data, projectID)
       })
-      getCommits(data, projectID)
+
       //chart
       getPullRequests(filtered)
       drawChart(filtered.length)
@@ -84,16 +85,14 @@ const getPullRequests = (repos) => {
   })
 }
 // Function to get commits
-const getCommits = (project, projectID) => {
-  const GIT_COMMIT_API = project.commits_url.replace('{/sha}', '')
-  fetch(GIT_COMMIT_API)
+const getCommits = (projects, projectID) => {
+  const GIT_COMMIT_API = projects.commits_url.replace('{/sha}', '')
+  fetch(GIT_COMMIT_API, options)
     .then((res) => res.json())
     .then((data) => {
       let numberOfCommits = data.length
       document.getElementById(projectID).innerHTML += `
-          <p>Number of commits: ${numberOfCommits}</p>
-          `
+      <p>Number of commits: ${numberOfCommits}</p>`
     })
 }
-
 getRepos()
