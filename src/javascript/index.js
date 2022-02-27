@@ -1,6 +1,5 @@
 const profileDetails = document.getElementById("aside");
 const header = document.getElementById("header");
-const htmlLinks = document.getElementById("htmlLinks");
 const footer = document.getElementById("footer");
 
 const username = "savannah-hayes"
@@ -23,12 +22,6 @@ const displayHtml = () => {
     </div>
     <h1>GitHub Tracker</h1>
     <img src="./images/me.png" class="header__image" alt="image of savannah hayes">
-    `
-  
-  htmlLinks.innerHTML = `
-    <a href="index.html" class="links bold-link"><img src="./images/book.png" class="icons" alt="book icon"> Repositories</a>
-    <a href="commits.html" class="links"><img src="./images/box.png" class="icons" alt="box icon"> Contributions</a>
-    <a href="#" class="links links--hide"><img src="./images/pr.png" class="icons" alt="pull request icon"> Pull Requests</a>
     `
 
   footer.innerHTML = `

@@ -3,36 +3,40 @@ const searchForm = document.getElementById("searchForm")
 
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
 
-searchForm.innerHTML = `
-  <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Find a repository..." 
-  aria-label="Repositories"aria-describedby="basic-addon1">
-  </div>
-  <div class="dropdown">
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" 
-  id="dropdownMenuButton1"data-bs-toggle="dropdown" aria-expanded="false">Type</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="#">All</a></li>
-  <li><a class="dropdown-item" href="#">Public</a></li>
-  <li><a class="dropdown-item" href="#">Private</a></li>
-  </ul>
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
-  data-bs-toggle="dropdown" aria-expanded="false">Language
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="#">All</a></li>
-  <li><a class="dropdown-item" href="#">JavaScript</a></li>
-  <li><a class="dropdown-item" href="#">HTML</a></li>
-  </ul>
-  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
-  data-bs-toggle="dropdown" aria-expanded="false">Sort
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-  <li><a class="dropdown-item" href="#">Last Updated</a></li>
-  <li><a class="dropdown-item" href="#">Name</a></li>
-  </ul>
-  </div>
-`
+const displaySearchForm = () => {
+  searchForm.innerHTML = `
+    <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Find a repository..." 
+    aria-label="Repositories"aria-describedby="basic-addon1">
+    </div>
+    <div class="dropdown">
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" 
+    id="dropdownMenuButton1"data-bs-toggle="dropdown" aria-expanded="false">Type</button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">All</a></li>
+    <li><a class="dropdown-item" href="#">Public</a></li>
+    <li><a class="dropdown-item" href="#">Private</a></li>
+    </ul>
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
+    data-bs-toggle="dropdown" aria-expanded="false">Language
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">All</a></li>
+    <li><a class="dropdown-item" href="#">JavaScript</a></li>
+    <li><a class="dropdown-item" href="#">HTML</a></li>
+    </ul>
+    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
+    data-bs-toggle="dropdown" aria-expanded="false">Sort
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Last Updated</a></li>
+    <li><a class="dropdown-item" href="#">Name</a></li>
+    </ul>
+    </div>
+  `
+}
+
+displaySearchForm()
 
 const displayRepositories = (repositories) => {
   repositories.filter(repo => {
@@ -43,7 +47,7 @@ const displayRepositories = (repositories) => {
     const currentDate = new Date();
     const projectDate = new Date(repo.pushed_at);
     const numberOfDays = Math.round(Math.abs((currentDate - projectDate) / oneDay));
-
+    
     language === "HTML" ? language = `🔴 ${language}` : language = `🟡 ${language}`;
 
     if (repo.fork === true && repo.name !== "unit-tests") {

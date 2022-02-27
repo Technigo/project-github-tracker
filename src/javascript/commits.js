@@ -13,6 +13,7 @@ const fetchRepositories = (repositories) => {
 
 const fetchCommitMessages = (commits, repository) => {
   const repositoryName = repository.name; 
+
   document.addEventListener("click", function (e) {
     if (e.target && e.target.id == repositoryName) {
       const repoClassname = `.${repository.name}`
@@ -36,7 +37,7 @@ const fetchCommitMessages = (commits, repository) => {
     const authorPicture = commits[i].author.avatar_url;
     const date = new Date(commits[i].commit.committer.date);
     const formattedDate = date.toDateString().split(' ').slice(1).join(' ');
-    
+
     commitsSection.innerHTML += `
       <div id="messageWrapper" class=${repositoryName}>
       <p class="text">${commitMessages}</p>
