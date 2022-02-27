@@ -4,18 +4,44 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header>
+    <h1 class="heading">GitHub Tracker for:</h1>
+    <div class="user">
+      <p class="username" id="username"></p>
+      <img id="picture" class="picture" />
+    </div>
+    </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
-  <script src="./script.js"></script>
+  <main>
+    <table class="projects">
+      <thead>
+        <tr>
+          <td>Repo name</td>
+          <td>Updated at</td>
+          <td>Default branch</td>
+          <td>Number of commits</td>
+          <td>URL</td>
+        </tr>
+      </thead>
+      <tbody id="projects">
+      </tbody>
+    </table>
+  </main>
+  <canvas id="chart" class="chart">
+  </canvas>
+  <p id="numberOfProjects" class="number-of-projects"></p>
+  
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 </html>
