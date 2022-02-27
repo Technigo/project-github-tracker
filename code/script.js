@@ -20,8 +20,7 @@ const userProfile = () => {
 	userContainer.innerHTML += `
 	<a href="${data.html_url}">
     <img class="profile-image" src="${data.avatar_url}"/>
-    <span class="profile-name">
-    ${data.login}
+    <span class="profile-name">Github tracker for ${data.login}
     </span>
     </a>
 	`;
@@ -88,7 +87,7 @@ const getPullRequests = (technigoRepos) => {
         // here the pull request link is printed or if no link a default message. In log it would say undefined. 
         if (myPullRequests) {
             document.getElementById(`${repo.name}`).innerHTML += 
-            `<a href="${repo.html_url}">${myPullRequests.html_url}</a>`
+            `<a href="${myPullRequests.html_url}"> Pull request</a>`
         } else {
             document.getElementById(`${repo.name}`).innerHTML += 
             `<p> Pull request made by teammate</p>`

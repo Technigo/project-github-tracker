@@ -12,8 +12,8 @@ const doughnutCounter = (projects) => {
         datasets: [{
           data: [projects, 19-projects],
           label: 'My finished projects',
-          backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 95, 155)'],
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: ['rgb(217, 96, 152)', 'rgb(50, 82, 136)'],
+          borderColor: 'rgb(38, 0, 27)',
         }]
       };
 
