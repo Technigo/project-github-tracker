@@ -1,3 +1,166 @@
+/* Global CSS variables for colors */
+:root {
+  --primary: #F1FAEE;
+  --secondary: #A8DADC;
+  --tertiary:#1D3557;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body {
-  background: #FFECE9;
+  background: var(--primary);
+  color: var(--tertiary);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Header styling */
+header {
+  background: var(--secondary);
+  color: var(--primary);
+  width: 100%;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1{
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 2rem;
+  padding: 0.5rem;
+}
+
+/* Main page */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Profile section */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+img {
+ border-radius: 50%;
+ max-width: 20vw;
+ border: 2px solid var(--secondary);
+}
+
+.profile-name h3{
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.profile-name h4 {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.profil-name h4, a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.chart-container {
+  max-width: 20vh;
+  max-height: 20vh;
+  margin-bottom: 1rem;
+}
+
+
+/* Styling of the project section */ 
+.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+}
+
+.card {
+  background-color: var(--primary);
+  width: 60vw;
+  border: 2px solid var(--tertiary);
+  padding: 1.2rem;
+  margin: 0.5rem;
+  box-shadow: 4px 6px 6px #36454F;
+}
+
+.card h3 {
+text-transform: uppercase;
+text-align: center;
+}
+
+.card:hover {
+  background-color: var(--tertiary);
+  color: var(--primary);
+  border: 5px solid var(--secondary);
+}
+
+.card a:hover {
+  color: var(--secondary);
+}
+
+
+/* Media query for tablet */
+@media screen and (min-width: 768px) {
+
+  h1{
+    font-size: 3rem;
+  }
+
+  .profile-name h3{
+    font-size: 1.5rem;
+  }
+  
+  .profile-name h4 {
+    font-size: 1rem;
+  }
+
+ .profile-container {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+ }
+
+ .chart-container {
+  min-width: 20vw;
+  min-height: 20vh;
+}
+
+.projects {
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  place-items: center;
+}
+
+.card {
+  max-width: 40vw;
+}
+
+}
+
+/* Media query for desktop */
+@media screen and (min-width:1024px) {
+  .projects {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: (auto, 1fr);
+    gap: 0.2rem;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 30vw;
+  } 
 }
