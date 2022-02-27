@@ -8,4 +8,4 @@ I started the project by fetching the data and filtered the repositories I wante
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-emmajosefina.netlify.app/
