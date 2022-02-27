@@ -103,10 +103,11 @@ const findingAllRepos = (repos) => {
     `
 )
 getPullRequest(forkedRepos)
+renderChart (forkedRepos.length)
 })
 }
 findingAllRepos()
-renderChart(forkedRepos.length)
+
 
 
 const getCommits = (myCommitsUrl, myRepoName) => {
@@ -139,7 +140,6 @@ const getPullRequest = (repos) => {
         });
 
     });
-
   };
 
 
@@ -160,3 +160,4 @@ const getPullRequest = (repos) => {
           })
 }
 )
+

@@ -1,5 +1,5 @@
 //DOM-selector for the canvas 👇
-// const ctx = document.getElementById('chart').getContext('2d')
+const ctx = document.getElementById('chart').getContext('2d') // don't really get what this does
 
 const renderChart = ((completedProjects) => {
 
@@ -39,7 +39,7 @@ const renderChart = ((completedProjects) => {
     plugins: {
         title: {
             display: true,
-            text: `Completed projects from Technigo: ${completedProjects} of 19`,
+            text: `Technigo projects completed: ${completedProjects} of 19`,
             position: 'top',
         },
         legend: {
