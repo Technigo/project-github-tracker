@@ -2,7 +2,7 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 // Global options
-Chart.defaults.font.family = 'Manrope';
+Chart.defaults.font.family = 'Manrope, sans-serif';
 Chart.defaults.font.size = 25;
 
 const drawChart = (doneProjects) => { 
@@ -50,7 +50,6 @@ const drawChart = (doneProjects) => {
                     color: '#5F2C3E',
                     font: {
                         size: 32,
-                        weight: 'bold',
                     },
                     padding: {
                         top: 0,

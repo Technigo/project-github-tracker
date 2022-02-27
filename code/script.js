@@ -50,18 +50,16 @@ const getGithubProjects = () => {
         .catch(err => console.error(err))
 }
 
-        // profile picture: ${data[0].owner.avatar_url}
-
 // Function to display info from user
 const createUser = (data) => {
     userInfo.innerHTML = `
-        <p><img class='user-image' src='./images/test.jpg' alt='profile picture from Github'/></p>
+        <p><img class='user-image' src='${data[0].owner.avatar_url}' alt='profile picture from Github'/></p>
         <h1 class='full-name'>Tiina Liukkonen</h1>
-        <h3 class='github-user-name'><i class="fab fa-github"></i>  ${data[0].owner.login}</h3>
+        <h3 class='github-user-name'><a class='nav-item' href='https://github.com/tiiliu' target="-blank"><i class="fab fa-github"></i>  ${data[0].owner.login}</a></h3>
         <h1 class='course-name'>Technigo Web Development Class of Jan '22 student</h1>
         `
 }
-        
+
 // Function to filter out all repos forked from Technigo
 const getTechnigoRepos = (data) => {
 // console.log('testy testyyyy')
