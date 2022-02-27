@@ -12,7 +12,7 @@ The assignment was to create a place to keep track of the GitHub repos that I'm 
 
 ## The problem
 
-The thing I struggled with the most was to fetch the pull request and number of commits. I solved it by putting the other data inside a div within the innerHTML.
+All the problems will be added here soon...
 If I had more time with this project I would like to spend it on the styling to make it less shitty lmao xd
 
 ## View it live
