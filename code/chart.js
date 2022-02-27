@@ -9,7 +9,6 @@ const drawChart = (amount) => {
       label: ['Completed', 'Not Completed'],
       datasets: [
         {
-          label: 'Total project at Technigo',
           data: [amount, 19 - amount],
           backgroundColor: ['#77E327', '#E33527'],
           hoverOffset: 3,
