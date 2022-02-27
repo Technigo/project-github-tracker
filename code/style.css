@@ -20,7 +20,7 @@ body {
 header {
   background: var(--secondary);
   color: var(--primary);
-  width: 100vw;
+  width: 100%;
   min-height: 25vh;
   display: flex;
   flex-direction: column;
