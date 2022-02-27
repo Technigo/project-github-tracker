@@ -6,12 +6,12 @@ const username = 'Katarina821'
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos`
 const API_URL_ID = `https://api.github.com/users/${username}`
 
-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
+
 
 const options = {
   method: 'GET',
   headers: {
-		Authorization: '' // Token
+		Authorization: 'token ${API_TOKEN}' // Token
 	}
 }
 
