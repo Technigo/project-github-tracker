@@ -1,3 +1,100 @@
 body {
-  background: #FFECE9;
+  background: white;
+  color: rgb(13, 18, 46);
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Mobile-first design approach*/
+.nav {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  font-size: 20px;
+  color: grey;
+}
+
+.chart-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.chart {
+  height: 25vh;
+  width: 25vw;
+}
+
+ main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+} 
+
+.projectSection {
+  width: 100vw;
+}
+
+.projectSection article {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgb(76, 81, 105);
+  border-radius: 3%;
+  margin: 10px;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.pull-commit-section {
+  background-color: rgb(76, 81, 105);
+  color: white;
+  border-radius: 3%;
+  margin: 10px;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+header section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+ header section img {
+   margin-right: 30px;
+   border-radius: 50%;
+ } 
+
+@media only screen and (min-width: 768px) {
+  .projectSection{
+    display: grid;
+  }
+
+  .projectSection article {
+    grid-template-columns: repeat(2, 1fr);
+    border-radius: 5%;
+  }
+  
+  .projectSection section {
+    grid-column: span 2;
+  }
+
+  .chart {
+    width: 30vw;
+    margin-left: 150px;
+  }
+
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media only screen and (min-width: 1025px) {
+  .chart {
+    width: 20vw;
+    margin-left: 5px;
+  }
+  
 }
