@@ -8,7 +8,7 @@ const USER = 'JaEngd'
 const PROFILE_URL = `https://api.github.com/users/${USER}`
 const REPO_URL = `https://api.github.com/users/${USER}/repos`
 
-const API_TOKEN = TOKEN || process.env.API_KEY;
+const API_TOKEN = TOKEN 
 
 const options = { //Object
     method: 'GET', //POST, PATCH, DELETE
