@@ -21,6 +21,7 @@ const options = {
 fetch(API_URL, options)
     .then(res => res.json())
     .then(data => {
+        
         //using the fetched data for userdata function
         userData(data)
         //filter out and only show the forked ones
@@ -39,16 +40,16 @@ const getPullRequests = (repos) => {
     //Get all the PRs for each project.
     //invoking the function drawChart using the amount of projects as an argument
     drawChart(repos.length)
+    
     repos.forEach(repo => {
       fetch('https://api.github.com/repos/technigo/' + repo.name + '/pulls?per_page=100', options)
       .then(res => res.json())
       .then(data => {
-        
-
+                
+                
                  //1. Find only the PR that you made by comparing pull.user.login to your own username
                 let myPullRequests = data.filter(element => element.user.login === username)
-               
-            
+
                 //2. Now you're able to get the commits for each repo by using the commits_url as an argument to call another function
                 let commitsURL = myPullRequests[0].commits_url
                 myCommits(commitsURL, repo.name)
@@ -57,21 +58,36 @@ const getPullRequests = (repos) => {
                  let reviewCommentsURL = myPullRequests[0].review_comments_url
                  reviewComments(reviewCommentsURL, repo.name)
             
-                //just testing
-                let pushedDate = repo.pushed_at
+                //fecthing languages
+                let languagesURL = repo.languages_url
+                languages(languagesURL, repo.name)
 
                 //showing results on the page with innerHTML
                 document.getElementById('projects').innerHTML += `
                 <div class="project-card">
-                    <h3>${repo.name}</h3>
-                    <p>Most recent update: ${new Date(repo.pushed_at).toLocaleDateString('en-GB', options)}</p>
-                    <p>Default branch name: ${repo.default_branch}</p>
-                    <p>URL: ${repo.html_url}</p>
-                    <button id=commitsButton class="commitsButton">Show commits and comments</button>
-                    <div id=${repo.name}>
-                    </div>
+                        <div class="flexCont"><img src="./assets/githubLogo.svg" alt="GitHub Logo"><h3>${repo.name}</h3></div>
+                        <p><span class="boldText">Latest update:</span> ${new Date(repo.pushed_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
+                        <p><span class="boldText">Default branch:</span> ${repo.default_branch}</p>
+                        <p id="lang-${repo.name}"><span class="boldText">Languages:</span></p>
+                        <p>View project in <a href="${repo.html_url}" target="_blank">GitHub</a></p>
+                        <button id="accordionButton" class="accordionButton">Commits and reviews <img src="./assets/comment.svg"></button>
+                        <div id=${repo.name} class="comments"></div>
                 </div>
                 `
+                //here i made the accordion for commits messages and reviews:
+                let acc = document.getElementsByClassName("accordionButton");
+
+                for (let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var comments = this.nextElementSibling;
+                    if (comments.style.display === "block") {
+                    comments.style.display = "none";
+                    } else {
+                    comments.style.display = "block";
+                    }
+                });
+                }               
         })
     })
     
@@ -89,7 +105,7 @@ const getPullRequests = (repos) => {
       `
       //showing the username
       document.getElementById('username').innerHTML = `
-      Username: ${data[0].owner.login}
+      <div color="whiteColor" class="flexCont"><img src="./assets/githubLogo.svg" alt="GitHub Logo"><h2 color="whiteColor">${data[0].owner.login}</h2></div>
       `
   }
 
@@ -132,5 +148,55 @@ const getPullRequests = (repos) => {
  })
 
 }
- 
+
+//language function to calculate the share of used languages
+const languages = (url, repoName) => {
+    fetch(url, options)
+    .then(res => res.json())
+    .then(data => {
+        //totalPercentage is the sum of different languages value
+        let totalPercentage = 0
+        Object.keys(data).forEach(key => {
+            totalPercentage = totalPercentage + data[key]
+        });
+        console.log('labels:', Object.keys(data))
+        let keyArray = Object.keys(data)
+        let valueArray = []
+        Object.keys(data).forEach(key => {
+            //next line is to calculate the share of each language
+            let percentage = Math.round((data[key] / totalPercentage)*100)
+            valueArray.push(percentage)
+            document.getElementById(`lang-${repoName}`).innerHTML += `
+                ${key} (${percentage}%)
+                `
+        });
+        console.log('values:', valueArray)
+       //trying to draw language pie
+    //    new Chart(`chart-${repoName}`, {
+    //     type: "pie",
+    //     data: {
+    //       labels: keyArray,
+    //       datasets: [{
+    //         backgroundColor: [
+    //             "#b91d47",
+    //             "#00aba9",
+    //             "#2b5797",
+    //             "#e8c3b9",
+    //             "#1e7145"
+    //           ],
+    //         data: valueArray
+    //       }]
+    //     },
+    //     options: {
+    //       title: {
+    //         display: true,
+    //         text: "World Wide Wine Production"
+    //       }
+    //     }
+    //   })
+
+    })
+   
+}
+
 

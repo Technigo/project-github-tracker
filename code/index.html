@@ -6,21 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
   <section class="profile-info">
-    <h1>GitHub Tracker</h1>
-    <h2 id="username"></h2>
-    <div id="profile-pic"></div>
-    <!-- This will be used to draw the chart 👇 -->
-    <div class ="chart">
-      <canvas id="chart"></canvas>
+    <div class="titles">
+      <div class = "flexCont"><img class="bigLogo"src="./assets/githubLogo.svg" alt="GitHub Logo"><h1>GitHub Tracker</h1></div>
+      <h2 class="whiteColor">Technigo Boot Camp spring '22</h2>
+      <div id="profile-pic"></div>
+      <a href="https://github.com/kolkri" target="_blank"><h2 id="username"></h2></a>
+      <!-- This will be used to draw the chart 👇 -->
+      <h2 class="whiteColor">Boot camp progress:</h2>
+      <div class ="chart">
+        <canvas id="chart"></canvas>
+      </div>
     </div>
   </section>
   
   <main id="projects"class="projects">
     
   </main>
+
+  <footer>
+    <p>&copy; Kristiina Kolu</p>
+    <p>Technigo Boot Camp spring '22 / project of week 7</p>
+  </footer>
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="./secret.js"></script>
