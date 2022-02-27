@@ -134,10 +134,6 @@ const getPullRequest = (repos) => {
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-          const myPullRequests = data.filter((pullRequest) => {
-            return pullRequest.user.login === username
-          })
-          document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
             if (pulls) {
             getCommits(pulls.commits_url, repo.name)
             } else {
@@ -151,22 +147,21 @@ const getPullRequest = (repos) => {
 
 
 
- repos.forEach(repo => { // For all filtered repos I fetch each pull request
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
-    .then((res) => res.json())
-    .then((data) => {
-        console.log('get commits data', pulls.commits_url, 'pulls commits_url')
-        const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
-        document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
-        })
+//  repos.forEach(repo => { // For all filtered repos I fetch each pull request
+//     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+//     .then((res) => res.json())
+//     .then((data) => {
+//         console.log('get commits data', pulls.commits_url, 'pulls commits_url')
+//         const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
+//         document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
+//         })
 
-        const commits = document.getElementById(`commit -${repo.name}`)
-        const pulls = data.find((pull) => pull.user.login === repo.owner.login)
-        getCommits(pulls.commits_url, repo.name)
-        pullRequests.forEach((repo) => {
-            console.log("get pull request here", getPullRequest)
-          })
-}
-)
+//         const commits = document.getElementById(`commit -${repo.name}`)
+//         const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+//         getCommits(pulls.commits_url, repo.name)
+//         pullRequests.forEach((repo) => {
+//             console.log("get pull request here", getPullRequest)
+//           })
+// }
+// )
 
-const findingPulls = (repos)
