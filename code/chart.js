@@ -1,6 +1,5 @@
 const showChart = (countRepos) => {
 
-
   const ctx = document.getElementById('chart').getContext('2d');
 
   const labels = [
@@ -18,7 +17,6 @@ const showChart = (countRepos) => {
       }]
     };
 
-
   const config = {
       type: 'pie',
       data: data,
@@ -26,4 +24,5 @@ const showChart = (countRepos) => {
     };
 
     const myChart = new Chart(ctx, config);
+
 }
