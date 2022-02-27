@@ -20,7 +20,7 @@ fetch(API_USER_PROFILE, options)
         // const memberSince = data.created_at
         const followers = data.followers
         const following = data.following
-        profile.innerHTML +=  ` 
+        profile.innerHTML += ` 
             <h1>${username}'s GitHub Tracker</h1>
             <div class="profile-details">
                 <img src=${profilePic} />
@@ -39,7 +39,7 @@ fetch(API_URL, options) // options object is passed as 2nd argument to fetch() f
     .then(data => {
         const myRepos = data.filter((forkedRepos) => forkedRepos.fork == true && forkedRepos.name.startsWith("project-"))
         const numberOfProjects = myRepos.length
-        drawChart([numberOfProjects, totalProjectsDuringBootcamp-numberOfProjects])
+        drawChart([numberOfProjects, totalProjectsDuringBootcamp - numberOfProjects])
         getPullRequests(myRepos)
     });
 
@@ -52,10 +52,10 @@ const getPullRequests = (repos) => {
         fetch('https://api.github.com/repos/technigo/' + repo.name + '/pulls' + '?per_page=100', options)
             .then(res => res.json())
             .then(data => {
+
                 const repoBranchName = repo.default_branch
                 const repoName = repo.name
                 const repoUrl = repo.html_url
-
 
                 projects.innerHTML += `
                 <div class="repo-card">
@@ -68,70 +68,65 @@ const getPullRequests = (repos) => {
                     </div>
                 </div>
                 `
-                console.log("here")
+
 
                 const myPullRequests = data.filter((myPR) => myPR.user.login == repo.owner.login);
-                console.log(data)
                 handlePullRequest(repoName, myPullRequests)
             })
     })
 
 }
 
-
-
 const handlePullRequest = (repoElementId, myPullRequests) => {
     const repo = document.getElementById(repoElementId);
 
     //Get all the PRs for each project.
     myPullRequests
-      .forEach((pullRequest) => {
-          const prTitle = pullRequest.title
-          const prUrl = pullRequest.html_url
-          repo.innerHTML += `
+        .forEach((pullRequest) => {
+            const prTitle = pullRequest.title
+            const prUrl = pullRequest.html_url
+            repo.innerHTML += `
             <div class="pull-request">
                 <span>PR: <a href=${prUrl}> ${prTitle}</a></span>
             </div>
           `
-        //   return pullRequest.commits_url
         })
     myPullRequests
-      .map(pullRequest => pullRequest.commits_url)
-      .forEach(commitUrl => {
-        fetch(commitUrl + "?per_page=100", options)
-            .then(res => res.json())
-            .then(data => {
-                const mostRecentCommit = data[data.length - 1]
-                const commitMessage = mostRecentCommit.commit.message
-                const commitAuthor = mostRecentCommit.author.login
-                const commitUrl = mostRecentCommit.html_url
-                const commitDateString = mostRecentCommit.commit.author.date
-                const commitDate = Date.parse(commitDateString)
-                const commitTimeSince = timeSince(commitDate)
-                repo.innerHTML += `
+        .map(pullRequest => pullRequest.commits_url)
+        .forEach(commitUrl => {
+            fetch(commitUrl + "?per_page=100", options)
+                .then(res => res.json())
+                .then(data => {
+                    const mostRecentCommit = data[data.length - 1]
+                    const commitMessage = mostRecentCommit.commit.message
+                    const commitAuthor = mostRecentCommit.author.login
+                    const commitUrl = mostRecentCommit.html_url
+                    const commitDateString = mostRecentCommit.commit.author.date
+                    const commitDate = Date.parse(commitDateString)
+                    const commitTimeSince = timeSince(commitDate)
+                    repo.innerHTML += `
                     <div>
                         <p>${data.length} commits</p>
                         <p>latest: <a href=${commitUrl}>${commitMessage}</a> by ${commitAuthor} ${commitTimeSince}</p>
                     </div>
                 `
-            })
-    })
+                })
+        })
 
     myPullRequests
-      .map(pullRequest => pullRequest.review_comments_url)
-      .forEach(reviewCommentUrl => {
-        fetch(reviewCommentUrl + "?per_page=100", options)
-        .then(res => res.json())
-        .then(data => {
-            repo.innerHTML += `
-            <div class="comments">
-                <span>received ${data.length} comments</span>
-            </div>
-          `
+        .map(pullRequest => pullRequest.review_comments_url)
+        .forEach(reviewCommentUrl => {
+            fetch(reviewCommentUrl + "?per_page=100", options)
+                .then(res => res.json())
+                .then(data => {
+                    repo.innerHTML += `
+                        <div class="comments">
+                            <span>received ${data.length} comments</span>
+                        </div>
+                    `
+                })
         })
-      })
 }
-
 
 function timeSince(date) {
 
