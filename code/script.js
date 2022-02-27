@@ -14,7 +14,7 @@ const profilePic = () => {
            // console.log(data)
             picture = data.avatar_url
     let profilePicture =    `<div class = "photobox">
-                            <p>${username}</p>
+                            <h1>${username}</h1>
                                 <img class = "photo" src="${picture}" />
                             </div>`;
     return (projects.innerHTML = profilePicture)
@@ -34,7 +34,7 @@ const getRepos = () => {
              projects.innerHTML += `<div class='repo-card'>
              <a href='${repo.html_url}'><p>Repo name: ${repo.name}</p></a>
              <p>Default branch: ${repo.default_branch}</p>
-             <p>Last push: ${new Date(repo.pushed_at).toLocaleString()}
+             <p>Last push: ${new Date(repo.pushed_at).toDateString()}
              <p id =${repo.name}>Number of commits: </p>
              
            </div> 
@@ -42,7 +42,9 @@ const getRepos = () => {
                
 
               })
-                getPullRequest(forkedRepos)
+
+             getPullRequest(forkedRepos)
+             drawChart(forkedRepos.length)
             })
         }
   
