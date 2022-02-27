@@ -1,12 +1,10 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+This week the project was to fetch information from Github about my repositories and pull requests and display the information on a page. We were also supposed to compare data in a chart.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I had trouble with fetching the amount of commits from the pull requests. I used my team for help and also analyzed other students code to solve it. I also had a problem with planning this project because I found it hard to understand what the end product was going to be. If I had more time I would have tried to accomplish the red and black levels.
 
 ## View it live
 
