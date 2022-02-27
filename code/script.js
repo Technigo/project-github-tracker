@@ -12,8 +12,6 @@ let filteredRepo = [] // Probably not needed
 const API_URL = `https://api.github.com/users/${username}/repos`
 const API_PROFILE = `https://api.github.com/users/${username}`
 
-let TOKEN = undefined
-
 const API_TOKEN = TOKEN || process.env.API_KEY;
 
 const options = {
