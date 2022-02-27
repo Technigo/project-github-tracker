@@ -3,14 +3,15 @@ const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
 const drawChart = (amount) => {
+    console.log("Draw chart with amount: " + amount)
     const data = {
         labels: [
-            'Completed projects',
-            'Remaining project'
+            'Completed',
+            'Remaining'
         ],
         datasets: [
             {
-                backgroundColor: ['green', 'red'],
+                backgroundColor: ['#A8DADC', '#457B9D'],
                 data: [amount, 19 - amount],
                 hoverOffSet: 4,
             },

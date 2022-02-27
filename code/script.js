@@ -12,10 +12,11 @@ const userProfile = () => {
         .then((res) => res.json())
         .then(profileData => {
             profileInfo.innerHTML += `
-        <h2>GitHub Tracker</h2>
-        <img src = "${profileData.avatar_url}">
+        <img src = "${profileData.avatar_url}" alt="profile image of Emma Berg">
+        <div class="profile-name">
         <h3> ${profileData.name}</h3>
         <h4> <a href = ${profileData.html_url}>${profileData.login}</h4>
+        </div>
         `
         })
 }
@@ -32,13 +33,16 @@ const repositories = () => {
 
             forkedRepos.forEach((repo) => {
                 allProjects.innerHTML += `
-            <div>
-            <h3> Project Name: ${repo.name} </h3>
-            <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('en-GB', {dateStyle:'short',})}</p> 
-            <p> Default branch: ${repo.default_branch}</p>
-            <a href = ${repo.html_url}> ${repo.name}</a>
-            <p id="pull-${repo.name}"></p>
-            <p id="commit-${repo.name}">Commits:</p>
+            <div class="card">
+            <hr>
+            <h3> <a href = ${repo.html_url}> ${repo.name}</a></h3>
+            <hr>
+            <ul>
+              <li> <p> Latest push: ${new Date(repo.pushed_at).toLocaleString('sv-SE', {dateStyle:'short',})}</p> </li>
+              <li><p> Default branch: ${repo.default_branch}</p></li>
+              <li><p id="pull-${repo.name}"></p></li>
+              <li><p id="commit-${repo.name}">Commits: </p></li>
+            </ul>
             </div>
             `
                 commits(repo.commits_url, repo.name)

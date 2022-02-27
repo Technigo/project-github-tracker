@@ -4,23 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Project 7: GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 </head>
 <body>
-  <main class="container">
+  <header>
+    <h1>My GitHub Tracker</h1>
+  </header>
 
-    <aside id="profile"></aside>
+<main class="container">
+
+  <div class="profile-container">
+    <section id="profile" class="profile-info">
+    </section>
+    <div class="chart-container">
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas id="chart" class="chart"></canvas>
+    </div>
+  </div>
   
   <section id="projects" class='projects'> 
   </section>
-
-   <!-- This will be used to draw the chart 👇 -->
-   <canvas id="chart" style="width:100%;max-width:700px; height: 100%; max-height:200px;"></canvas>
-  
-
-  <footer id="footer"></footer>
 
 </main>
 
