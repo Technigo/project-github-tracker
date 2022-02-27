@@ -16,7 +16,7 @@ const renderChart = ((completedProjects) => {
     }, {
         data: [19-completedProjects],
         label: 'remaining',
-        backgroundColor: 'rgb(63, 203, 226, 0.1)',
+        backgroundColor: 'rgb(251, 139, 55)',
     }]
   }
 
@@ -57,4 +57,4 @@ const renderChart = ((completedProjects) => {
     document.getElementById('chart'),
     config
 )})
-renderChart(forkedRepos)
+

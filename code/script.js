@@ -89,7 +89,7 @@ const findingAllRepos = (repos) => {
             Number of commits:
             </span>
         </p>
-        <p class="smallerContainer" id="pull-${repo.length}">
+        <p class="smallerContainer" id="pull-${repo.length}>
             <span class="styledHeadingsProject">Pull requests: </span>
             <span class="dataFetch"></span>
         </p>
@@ -147,7 +147,7 @@ const getPullRequest = (repos) => {
     .then((res) => res.json())
     .then((data) => {
         const myPullRequests = data.filter((pullRequest) => pullRequest.user.login === username)
-        document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
+        document.getElementById(`pull-${repo.length}`).innerHTML = `Pull Request: ${myPullRequests.length}`
         })
 
         const commits = document.getElementById(`commit -${repo.name}`)
