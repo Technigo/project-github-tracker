@@ -1,3 +1,62 @@
-body {
-  background: #FFECE9;
+* {
+  box-sizing: border-box;
 }
+
+html {
+  font-family: "Montserrat", sans-serif;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  background-color: #3F72AF;
+}
+
+.main {
+  display: grid;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+  row-gap: 1em;
+  
+}
+
+.projects-container {
+  display: grid;
+  gap: 1rem;
+}
+
+.projects, .profile, .chart {
+  background-color: whitesmoke;
+  border-radius: 3%;
+  align-items: center;
+  
+  margin: 10px;
+  padding: 10%;
+}
+
+.profile_picture {
+  border-radius: 50%;
+  width: 50%;
+}
+
+a, a:visited, a:hover, a:active {
+  color: #3F72AF;
+}
+
+p, h1, a {
+  color: #3F72AF;
+}
+
+@media (min-width: 668px) {
+  .projects-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1080px) {
+    .projects-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
