@@ -8,4 +8,4 @@ Using HTML, CSS and JS. Using the API:s frm GitHub. Also first use of a chart. I
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://modest-archimedes-0644fa.netlify.app/
