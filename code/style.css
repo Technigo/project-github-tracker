@@ -1,7 +1,10 @@
 * {
   box-sizing: border-box;
-  font-family: 'Cutive Mono', monospace;
+  /* font-family: 'Cutive Mono', monospace; */
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
   color:rgb(19, 115, 199);
+  /* commits amount */
 }
 body {
   padding: 20px 0 20px 0;

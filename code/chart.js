@@ -1,3 +1,8 @@
+
+Chart.defaults.font.size = 18
+Chart.defaults.font.family = 'Raleway, sans-serif';
+// Chart.defaults.font.family = 'monospace';
+
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
