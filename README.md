@@ -2,12 +2,14 @@
 
 Replace this readme with your own information about your project.
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Create a website where I can track my GitHub status that updates when something has been added or pushed. And also show how many commits and pull requests have been made by me. 
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+This was very hard and I still need to figure out how to use the dynamic ID to make everything work. As for now, my commits and pull requests does not show as I couldnt get them into the correct place in he innerHTML. Will continue to look into that and solve it. 
+
+
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://competent-austin-d90803.netlify.app/
