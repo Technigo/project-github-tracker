@@ -10,7 +10,7 @@ const options = {
   headers: {
       Authorization: 'token ' + API_TOKEN
   }
-}
+};
 
 const fetchUserInfo = () => {
   fetch(API_USER_INFO, options)
@@ -21,8 +21,8 @@ const fetchUserInfo = () => {
       <p>Username: ${user.login}</p>
       <a href="${user.html_url}" target="_blank"><img class="avatar" src="${user.avatar_url}" alt="profile picture" /></a>
     `; 
-  })
-}
+  });
+};
 
 const getCommits = (pullRequestCommitsUrl, reponame) => {
   fetch(pullRequestCommitsUrl, options)
@@ -30,42 +30,51 @@ const getCommits = (pullRequestCommitsUrl, reponame) => {
   .then(commits => {
 
     let repoDiv = document.getElementById(`${reponame}-div`);
-    console.log(repoDiv);
     let repoDivContent = document.getElementById(`${reponame}-div-content`);
-    console.log(repoDivContent);
 
     let commitParagraph = document.createElement('p');
-    commitParagraph.innerHTML = `Number of commits: ${commits.length}`;
+    commitParagraph.innerHTML = `Number of commits: <span>${commits.length}</span>`;
     repoDivContent.appendChild(commitParagraph);
+
+    // Create a new div to put the commit messages and the hide commits button in
+    let commitDiv = document.createElement('div');
+    commitDiv.className = 'commit-div';
+    commitDiv.style.display = 'none';
+    repoDiv.appendChild(commitDiv);
 
     let commitMessageList = document.createElement('ol');
     commitMessageList.className = 'message-list';  
+    commitDiv.appendChild(commitMessageList);
   
     commits.forEach(commit => {
       let commitMessage = document.createElement('li');
       commitMessage.innerHTML = commit.commit.message;
       commitMessageList.appendChild(commitMessage);
-    })
+    });
 
+    // Buttons to show or hide commit comments
     let showCommitsButton = document.createElement('button');
     showCommitsButton.className = 'commits-button';
     showCommitsButton.innerHTML = 'Show commits';
     repoDivContent.appendChild(showCommitsButton);
-    
-    const hideCommits = () => {
-      userSection.style.backgroundColor = 'brown';
-    }
+
+    let hideCommitsButton = document.createElement('button');
+    hideCommitsButton.className = 'commits-button';
+    hideCommitsButton.innerHTML = 'Hide commits';
+    commitDiv.appendChild(hideCommitsButton);
 
     const showCommitMessageList = () => {
-      repoDivContent.innerHTML = commitMessageList.outerHTML;
-      let knapp = document.createElement('button');
-      knapp.innerHTML = 'en knapp';
-      repoDivContent.appendChild(knapp);
-      knapp.addEventListener('click', hideCommits);
-    }  
+      repoDivContent.style.display = 'none';
+      commitDiv.style.display = 'block';
+    }
+
+    const hideCommitMessageList = () => {
+      commitDiv.style.display = 'none';
+      repoDivContent.style.display = 'flex';
+    }
 
     showCommitsButton.addEventListener('click', showCommitMessageList);
-    
+    hideCommitsButton.addEventListener('click', hideCommitMessageList); 
   })
 }
 
@@ -83,22 +92,22 @@ const getPullRequests = (repos) => {
       const myPullRequests = pullRequests
       .filter(pullRequest => pullRequest.user.login === username || pullRequest.title === firstTitleToSearchFor || pullRequest.title === secondTitleToSearchFor)
 
-      //If the length is 1 I have done a pull request
-      //If the length is 0 it is an ongoing project or a group project where I haven't done the pull request
+      //If the length is 0 no pull request has been made
       if (myPullRequests.length === 0) {
 
         let repoDivContent = document.getElementById(`${repo.name}-div-content`);
-        let commitParagraph = document.createElement('p')
+        let commitParagraph = document.createElement('p');
 
-        commitParagraph.innerHTML = "No pull request found";
+        commitParagraph.innerHTML = `<span>No pull request found</span>`;
         commitParagraph.className = "no-pullrequest";
         
         repoDivContent.appendChild(commitParagraph);
       }
 
+      //Fetches the commits for all the projects where a pull request has been made
       myPullRequests.forEach(myPullRequest => {
         getCommits(myPullRequest.commits_url, repo.name);
-      })
+      });
     })
   })
 }
@@ -107,7 +116,7 @@ const getPullRequests = (repos) => {
 const getTechnigoRepos = (repos) => {
   return repos
   .filter(repo => repo.fork === true && repo.name.startsWith("project"))
-}
+};
 
 const fetchRepos = () => {
   fetch(API_REPOS, options)
@@ -115,8 +124,6 @@ const fetchRepos = () => {
   .then(repos => {
     
     const technigoRepos = getTechnigoRepos(repos);
-
-    console.log(technigoRepos)
     
     getPullRequests(technigoRepos);
 
@@ -137,15 +144,15 @@ const fetchRepos = () => {
         <div id=${repo.name}-div class="repo-div">
           <div id=${repo.name}-div-content class="repo-div-content">
             <h4><a href="${repo.html_url}" target="_blank">${repo.name}</a></h4>
-            <p>Most recent push: ${mostRecentPush}</p>
-            <p>Default branch: ${repo.default_branch}</p>
+            <p>Most recent push: <span>${mostRecentPush}</span></p>
+            <p>Default branch: <span>${repo.default_branch}</span></p>
           </div>
         </div>
-      `
+      `;
     
-    })
+    });
   });
-}
+};
 
 
 fetchUserInfo();
