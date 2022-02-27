@@ -24,10 +24,13 @@ footer {
 .info {
   text-align: center;
 }
+.userInfo {
+  padding: 10px;
+}
 .img {
   margin: 20px;
   border-radius: 20px;
-  width: 200px;
+  width: 300px;
 }
 .personData {
   justify-items: center;
@@ -46,11 +49,17 @@ footer {
   text-transform: uppercase;
   font-size: 20px;
 }
-.repoimg {
-  float: left;
-}
+
 .chart {
-  width: 200px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  max-height: 250px;
+  max-width: 250px;
+  padding: 25px;
+}
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
 }
 @keyframes color-change {
   0% {
@@ -72,13 +81,17 @@ footer {
     background-color: rgb(172, 169, 232);
   }
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 668px) {
   .repoInfo {
     justify-items: center;
     display: grid;
   }
-}
-.personData {
-  justify-items: center;
-  display: grid;
+
+  .personData {
+    justify-items: center;
+    display: grid;
+  }
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
 }
