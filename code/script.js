@@ -1,61 +1,59 @@
-// const userData = document.getElementsById('userData')
+// DOM selectors
+const projectsContainer = document.getElementById('projects')
+
 const username = 'CamillaHallberg'
 let reponame = ''
 
+// Authentication
 const API_TOKEN = TOKEN || process.env.API_KEY;
-
-// API's
-const API_USER = `https://api.github.com/users/${username}`
-const API_URL_REPO = `https://api.github.com/users/${username}/repos`
-
-const projectsContainer = document.getElementById('projects')
-
 const options = {
     method: 'GET',
     headers: {
         Authorization: `${API_TOKEN}`
     }
 }
+// API's
+const API_USER = `https://api.github.com/users/${username}`
+const API_URL_REPO = `https://api.github.com/users/${username}/repos`
 
+// Function to fetch my user data
 const getUser = () => {
-fetch(API_USER, options)
-.then(res => res.json())
-.then(user => {
-    console.log(user, 'my user');
+    fetch(API_USER, options)
+    .then(res => res.json())
+    .then(user => {
         userData.innerHTML = `
         <div class="avatar">
-        <img class="img" src="${user.avatar_url}" alt="user image">
+            <img class="img" src="${user.avatar_url}" alt="user image">
         </div>
         <div class="info">
-        <h3>${user.login}</h3>
-        <h4>${user.bio}</h4>
-        <h4>Location: ${user.location}</h4>
+            <h3>${user.login}</h3>
+            <h4>${user.bio}</h4>
+            <h4>Location: ${user.location}</h4>
         </div>`
     })
 }
 getUser()
 
+// Function to fetch my repositories
 const getRepos = () => {
     fetch(API_URL_REPO, options)
     .then(res => res.json())
     .then(data => {
-        console.log(data, 'my repos')
-
-        // Filtering to get only my forked repos from Technigo
+        // Filter to get only my forked repos from Technigo
         const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project-'))
-        console.log(forkedRepos, 'forked repos')
-
+ 
         forkedRepos.forEach((repo) => {
             // Creating unique ID for each forked repo
             let projectID = repo.id
-            console.log(repo)
+            
             projectsContainer.innerHTML += `
                 <div class="projects-card" id="${projectID}">
                     <h3><a href="${repo.html_url}">${repo.name}</a></h3>
                     <p class="default-branch">Branch: ${repo.default_branch}</p>
                     <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
-                </div>
-            `
+                </div>`
+            
+            // Invoking function to get the number of commits for the projects    
             getCommits(repo, projectID)
         })
         getPullRequests(forkedRepos)
@@ -84,6 +82,4 @@ const getCommits = (projectsContainer, projectID) => {
     })
 }
 
-getRepos()
-
-// Kom ihåg att städa i koden + ta bort alla loggar 
+getRepos() 

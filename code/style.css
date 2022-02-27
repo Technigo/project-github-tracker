@@ -65,7 +65,11 @@ a {
   color: black;
 }
 
-/* --- FOOTER --- */
+.chart-container {
+  padding: 20px;
+}
+
+/* --- Footer --- */
 .made-by {
   font-family: 'Shippori Antique B1', sans-serif;
   font-size: 12px;
@@ -146,5 +150,14 @@ a {
 
   h2 {
     font-size: 48px;
+  }
+
+  .chart-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 600px;
+    padding: 100px;
   }
 }
