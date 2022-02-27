@@ -1,10 +1,11 @@
-//DOM-selector for the canvas 👇
-const ctx = document.getElementById("chart").getContext("2d");
+
 
 
 
 //"Draw" the chart here 👇
 const drawChart = (amount) => {
+  //DOM-selector for the canvas 👇
+const ctx = document.getElementById("chart").getContext("2d");
   //font for chart
   Chart.defaults.font.family = 'Syne Mono, monospace';
   Chart.defaults.font.weight = 'bold';
