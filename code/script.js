@@ -1,9 +1,5 @@
 //DOM selectors//
-// const fullName = document.getElementById('full-name')
-// const reponame = document.getElementById('repoName')
 const userContainer = document.getElementById('userContainer')
-//const projectContainer = document.getElementById('projectContainer')
-//const avatar = document.getElementById('avatar')
 
 //APIs to fetch from
 const username = 'MarianneArdin'
