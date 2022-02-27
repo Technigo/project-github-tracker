@@ -86,5 +86,4 @@ const fetchCommits = (commitsURL, reponame) => {
       document.getElementById(`commit-${reponame}`).innerHTML += data.length;
     });
 };
-
 userRepo();

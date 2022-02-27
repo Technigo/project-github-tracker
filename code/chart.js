@@ -2,34 +2,25 @@
 const ctx = document.getElementById("chart").getContext("2d");
 
 //"Draw" the chart here 👇
-const fetchChart = (repos) => {
+const fetchChart = (amount) => {
   const labels = ["Completed Projects", "Remaining Projects"];
 
   const data = {
     labels: labels,
     datasets: [
       {
-        label: "My First dataset",
+        label: "Technigo projects",
         backgroundColor: ["rgb(57, 91, 100)", "rgb(148, 180, 159)"],
         borderColor: "#f7e9e7",
-        data: [repos, 19 - repos],
+        data: [amount, 19 - amount],
+        hoverOffset: 4,
       },
     ],
   };
 
   const config = {
-    type: "doughnut",
+    type: "pie",
     data: data,
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            // This more specific font property overrides the global property
-            font: {},
-          },
-        },
-      },
-    },
   };
 
   const myChart = new Chart(ctx, config);
