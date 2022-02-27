@@ -3,13 +3,12 @@
 
 const renderChart = ((completedProjects) => {
 
-//"Draw" the chart here 👇
-  const data = {
+    const data = {
     labels: [''],
     datasets: [{
       data: [completedProjects],
       label: 'completed',
- backgroundColor: 'rgb(63, 103, 126)',
+    backgroundColor: 'rgb(63, 103, 126)',
     }, {
         data: [19-completedProjects],
         label: 'remaining',
@@ -36,6 +35,7 @@ const renderChart = ((completedProjects) => {
             }
         }
     },
+    
     plugins: {
         title: {
             display: true,
