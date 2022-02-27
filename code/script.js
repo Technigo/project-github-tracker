@@ -8,7 +8,7 @@ const personData = document.getElementById('personData')
 const apiToken = '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'
 
 const api_Token = apiToken || process.API_KEY
-console.log(apiToken)
+//console.log(apiToken)
 
 const options = {
   method: 'GET',
@@ -34,6 +34,7 @@ const getUserData = () => {
   </div>`
     })
 }
+getUserData()
 // ALL OF MY REPOS
 
 const getRepos = () => {
@@ -47,53 +48,52 @@ const getRepos = () => {
         (repo) => repo.fork && repo.name.startsWith('project-'),
       )
       console.log(filtered)
+
       filtered.forEach((repo) => {
-        const pushedDate = new Date(repo.pushed_at).toLocaleDateString(
-          'en-se',
-          {
-            hour: '2-digit',
-            minute: '2-digit',
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          },
-        )
+        let projectID = repo.id
 
         projects.innerHTML += `
-       <div class="repoInfo">
-       <p class="cardInfo">Latest push ${pushedDate}</p>
+       <div class="repoInfo id="${projectID}">
+       <p class="cardInfo">${new Date(repo.pushed_at).toDateString()}</p>
        <p class="cardInfo"> ${repo.name}</p>
         <p class="cardInfo"> ${repo.default_branch}</p>
-       <p class="cardInfo"$> <a href="${repo.html_url}" target="blank">Repository ${repo.name}</a></p>
+       <p class="cardInfo"$> <a href="${
+         repo.html_url
+       }" target="blank">Repository ${repo.name}</a></p>
         </div>  `
-
-        const getPullRequests = (repos) => {
-          //Get all the PRs for each project.
-          repos.forEach((repo) => {
-            fetch(
-              'https://api.github.com/repos/technigo/' +
-                repo.name +
-                '/pulls?per_page=200',
-              options,
-            )
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data)
-                //TODO
-                //1. Find only the PR that you made by comparing pull.user.login
-                // with repo.owner.login
-                //2. Now you're able to get the commits for each repo by using
-                // the commits_url as an argument to call another function
-                //3. You can also get the comments for each PR by calling
-                // another function with the review_comments_url as argument
-              })
-          })
-        }
-        getPullRequests(filtered)
       })
+      getCommits(data, projectID)
+      //chart
+      getPullRequests(filtered)
+      drawChart(filtered.length)
+    })
+}
+const getPullRequests = (repos) => {
+  //Get all the PRs for each project.
+  repos.forEach((repo) => {
+    fetch(
+      `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`,
+      options,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const commits = document.getElementById(`commit-${repo.name}`)
+
+        const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+      })
+  })
+}
+// Function to get commits
+const getCommits = (project, projectID) => {
+  const GIT_COMMIT_API = project.commits_url.replace('{/sha}', '')
+  fetch(GIT_COMMIT_API)
+    .then((res) => res.json())
+    .then((data) => {
+      let numberOfCommits = data.length
+      document.getElementById(projectID).innerHTML += `
+          <p>Number of commits: ${numberOfCommits}</p>
+          `
     })
 }
 
-getUserData()
 getRepos()

@@ -2,7 +2,7 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 //"Draw" the chart here 👇
-const myChart = new Chart(ctx, {
+const drawChart = new Chart(ctx, {
   type: 'line',
   data: {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
