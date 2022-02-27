@@ -59,7 +59,7 @@
 
 .subtext {
   margin-bottom: 5px;
-  color: var(--clr-light);
+  color: var(--clr-accent);
 }
 
 .circle {
@@ -99,7 +99,7 @@
   
   .aside-chart {
     width: 60%;
-    border-right: 1px solid var(--clr-light);
+    border-right: 1px solid var(--clr-accent);
   }
 
   .aside {

@@ -1,7 +1,8 @@
 :root {
     --fw-bold: 600; 
-    --clr-light: rgb(87, 87, 87);;
     --clr-dark: #000;
+    --clr-light: #fff;
+    --clr-accent: rgb(87, 87, 87);;
 }
 
 h1 {
@@ -14,7 +15,7 @@ h1 {
 
 .header {
   background-color: #24292E;
-  color: white;
+  color: var(--clr-light);
   display: flex;
   height: 60px;
   justify-content: space-between;
@@ -22,7 +23,7 @@ h1 {
 }
 
 .header__image {
-  background-color: white;
+  background-color: var(--clr-light);
   width: 32px;
   height: 30px;
   border-radius: 50%;
@@ -34,7 +35,7 @@ h1 {
 }
 
 .hamburger {
-  background-color: white;
+  background-color: var(--clr-light);
   display: block;
   border-radius: 10px;
   margin: 5px;
@@ -77,7 +78,7 @@ h1 {
 }
 
 .aside-content__paragraph--grey {
-  color: var(--clr-light);
+  color: var(--clr-accent);
 }
 
 .aside-content__paragraph--bold {

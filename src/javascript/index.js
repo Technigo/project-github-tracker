@@ -11,14 +11,14 @@ const options = {
   }
 }
 
-const displayProfileData = (data) => {
-  const image = data.avatar_url;
-  const name = data.name;
-  const username = data.login;
-  const bio = data.bio;
-  const followers = data.followers;
-  const following = data.following;
-  const location = data.location;
+const displayProfileData = (profileData) => {
+  const image = profileData.avatar_url;
+  const name = profileData.name;
+  const username = profileData.login;
+  const bio = profileData.bio;
+  const followers = profileData.followers;
+  const following = profileData.following;
+  const location = profileData.location;
 
   profileDetails.innerHTML = `
     <section class="aside__header">
