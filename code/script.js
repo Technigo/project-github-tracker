@@ -7,17 +7,9 @@ const sortRepos = document.getElementById('sortRepos')
 
 let API_URL = `https://api.github.com/users/${username}/repos`
 
-//Get the token here!!
-//const options = {
-   // method: 'GET',
-   // headers: {
-    //    Authorization: `token ${API_TOKEN}`
-   // }
-//}
-
 // Fetching profile info
 const addingProfile = () => {
-    fetch(`https://api.github.com/users/${username}`)   //, options
+    fetch(`https://api.github.com/users/${username}`)   
     .then((res) => res.json())
     .then((profileInfo) => {
         profile.innerHTML += `
@@ -31,7 +23,7 @@ addingProfile()
 
 // The first fetch of repos, calling the function below all other functions
 
-const addingRepos = () => {fetch(API_URL)        //, options
+const addingRepos = () => {fetch(API_URL)  
     .then((res) => res.json())
     .then((repos) => {
        
@@ -80,7 +72,7 @@ const addingRepos = () => {fetch(API_URL)        //, options
 }
 
   const findingCommits = (myCommitsUrl, myRepoName) => {
-        fetch(myCommitsUrl)            //, options
+        fetch(myCommitsUrl)
         .then((res) => res.json())
         .then((data) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += data.length        //Getting the number of commits to be displayed on the page       
