@@ -78,13 +78,13 @@ const getPullRequests = (repos) => {
 }
 
 const handlePullRequest = (repoElementId, myPullRequests) => {
-    const repo = document.getElementById(repoElementId);
 
     //Get all the PRs for each project.
     myPullRequests
         .forEach((pullRequest) => {
             const prTitle = pullRequest.title
             const prUrl = pullRequest.html_url
+            const repo = document.getElementById(repoElementId);
             repo.innerHTML += `
             <div class="pull-request">
                 <span>PR: <a href=${prUrl}> ${prTitle}</a></span>
@@ -104,6 +104,7 @@ const handlePullRequest = (repoElementId, myPullRequests) => {
                     const commitDateString = mostRecentCommit.commit.author.date
                     const commitDate = Date.parse(commitDateString)
                     const commitTimeSince = timeSince(commitDate)
+                    const repo = document.getElementById(repoElementId);
                     repo.innerHTML += `
                     <div>
                         <p>${data.length} commits</p>
@@ -119,6 +120,7 @@ const handlePullRequest = (repoElementId, myPullRequests) => {
             fetch(reviewCommentUrl + "?per_page=100", options)
                 .then(res => res.json())
                 .then(data => {
+                    const repo = document.getElementById(repoElementId);
                     repo.innerHTML += `
                         <div class="comments">
                             <span>received ${data.length} comments</span>
