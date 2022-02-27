@@ -2,7 +2,7 @@
 const ctx = document.getElementById('chart').getContext('2d')
 
 
-//"Draw" the chart here 👇
+//Chart
 const activateChart = (projects) => {
 console.log(projects)
 const labels = [
@@ -23,10 +23,9 @@ const labels = [
   const config = {
     type: 'doughnut',
     data: data,
-    options: {
-      
-    }
+    options: {}
   };
+
   new Chart(
     document.getElementById('chart'),
     config

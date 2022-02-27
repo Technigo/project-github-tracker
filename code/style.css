@@ -52,7 +52,6 @@ h1 {
   border-radius: 50%;
   border: 1px solid white;
   filter: grayscale(40%);
-
 }
 
 /* ===============
@@ -158,11 +157,11 @@ Desktop layout
   background: #E8E8E8;
 }
 
-
   .user-picture{
     width: 60%;
     height: 60%;
   }
+  
   .info-contain {
    margin-top: -14px;
   }
