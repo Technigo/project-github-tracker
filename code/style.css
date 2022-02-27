@@ -15,14 +15,25 @@ body {
   color: grey;
 }
 
-.chart {
-  height: 500px;
-  width: 100vw;
+.chart-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
 }
+
+.chart {
+  height: 25vh;
+  width: 25vw;
+}
+
  main {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 } 
+
+.projectSection {
+  width: 100vw;
+}
 
 .projectSection article {
   background-color: black;
@@ -44,7 +55,6 @@ body {
   word-wrap: break-word;
 }
 
-/* ----- Profile information */
 header section {
   display: flex;
   justify-content: center;
@@ -63,14 +73,11 @@ header section {
 
   .projectSection article {
     grid-template-columns: repeat(2, 1fr);
+    border-radius: 5%;
   }
   
   .projectSection section {
     grid-column: span 2;
-  }
-
-  .projectSection article {
-    border-radius: 5%;
   }
 
   .chart {
@@ -81,4 +88,13 @@ header section {
   main {
     grid-template-columns: repeat(2, 1fr);
   }
+
+}
+
+@media only screen and (min-width: 1025px) {
+  .chart {
+    width: 20vw;
+    margin-left: 5px;
+  }
+  
 }

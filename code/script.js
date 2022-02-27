@@ -68,7 +68,6 @@ let displayPullRequests = (data) => {
 //Displays data for each object in the array containing repo information
 let displayRepos = (data) => {
         //Only display forked projects which has corresponding pull request
-        //if repo doesnt start with project but is forked - include by adding project- before
     const forkedRepos = data.filter(repo => repo.fork === true && repo.name.startsWith('project-'));
 
     for (i = 0; i < forkedRepos.length; i++) {

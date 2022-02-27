@@ -13,7 +13,7 @@ const labels = [
   };
 
   const config = {
-    type: 'bar',
+    type: 'doughnut',
     data: data,
     options: {
         maintainAspectRatio: false,
