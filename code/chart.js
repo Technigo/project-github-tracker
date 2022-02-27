@@ -11,70 +11,23 @@ const renderChart = (completedProjects) => {
       const data = {
         labels: labels,
         datasets: [{
-          label: 'My First dataset',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: [0, 10, 5, 2, 20, 30, 45],
+          label: 'Technigo Projects',
+          backgroundColor: 'rgb(192, 113, 106)',
+          borderColor: 'rgb(192, 113, 106)',
+          data: [completedProjects, 19-completedProjects],
         }]
       };
     
       const config = {
         type: 'bar',
         data: data,
-        options: {}
+        options: {
+            responsive: true,
+            
+        }
       };
 
-//     const labels = [
-//         'Projects done',
-//         'Projects left to do'
-//     ]
 
-//     const data = {
-//     datasets: [{
-//       data: [completedProjects, 19-completedProjects],
-//       label: 'completed',
-//         backgroundColor: 'rgb(63, 103, 126)',
-//         borderColor: 'rgb(255, 99, 132)',
-//     }, {
-//         data: [19-completedProjects],
-//         label: 'remaining',
-//         backgroundColor: 'rgb(251, 139, 55)',
-//     }]
-//   }
-
-//   const config = {
-//     type: 'bar',
-//     data: data,
-//     options: {
-//     indexAxis: 'y',
-//         scales: {
-//         x: {
-//         stacked: true,
-//         grid: {
-//         display: true,
-//         },
-//         },
-//         y: {
-//         stacked: true,
-//         grid: {
-//         display: true,
-//         }
-//         }
-//     },
-    
-//     plugins: {
-//     title: {
-//         display: true,
-//         text: `Technigo projects completed: ${completedProjects} of 19`,
-//         position: 'top',
-//         },
-//         legend: {
-//         display: false,
-//         position: 'top',
-//         }
-//     }
-//   }
-// }
     new Chart(
     document.getElementById('chart'),
     config
