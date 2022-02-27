@@ -13,8 +13,10 @@ const getProfile = () => {
     .then((data) => {
       profile.innerHTML = `
       <img src="${data.avatar_url}" class="user-img">
+      <div class="profile-info">
       <h2>${data.name}</h2>
-      <p id="bio">Front End Development student @ Technigo</p></div>
+      <p>Front End Development student 👩🏻‍💻</p>
+      <p>Stockholm, Sweden 🇸🇪</p></div>
       `;
     });
   getRepos();
