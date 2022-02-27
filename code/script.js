@@ -134,6 +134,10 @@ const getPullRequest = (repos) => {
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
+          const myPullRequests = data.filter((pullRequest) => {
+            return pullRequest.user.login === username
+          })
+          document.getElementById(`pull-request-${repo.name}`).innerHTML = `Pull Request: ${myPullRequests.length}`
             if (pulls) {
             getCommits(pulls.commits_url, repo.name)
             } else {
@@ -145,7 +149,7 @@ const getPullRequest = (repos) => {
     });
   };
 
-const findingPulls = (repos) => {
+
 
  repos.forEach(repo => { // For all filtered repos I fetch each pull request
     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
@@ -164,4 +168,5 @@ const findingPulls = (repos) => {
           })
 }
 )
-}
+
+const findingPulls = (repos)
