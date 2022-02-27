@@ -7,7 +7,6 @@ const sortRepos = document.getElementById('sortRepos')
 
 let API_URL = `https://api.github.com/users/${username}/repos`
 
-
 //Get the token here!!
 const options = {
     method: 'GET',
