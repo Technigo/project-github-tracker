@@ -88,14 +88,12 @@ body {
   text-transform: capitalize;
 }
 
-#chart {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.chart-container {
+  margin: 16px;
 }
 
 /* Footer styling */
 footer {
-  width: 100%;
   background: #c0716a;
   padding: 0.15rem;
   color: #24292f;
