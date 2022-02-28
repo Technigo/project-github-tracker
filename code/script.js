@@ -44,7 +44,8 @@ const getRepos = () => {
     console.log(data)
         
     const filteredRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
-   
+    
+
     filteredRepos.forEach((data) => {
         projectsContainer.innerHTML += `
           <div class="repos" id="${data.name}">
@@ -75,7 +76,10 @@ const getRepos = () => {
                     } 
                   })
                 }
-    })
+            })
+            drawChart(filteredRepos.length)
+            
+            
     
     // Fetch 2
     
@@ -118,7 +122,9 @@ const getCommits = (API_COMMIT, dataName) => {
 })
 
 
+
 }
+
 getUser()
     
                     

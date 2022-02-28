@@ -9,7 +9,6 @@
 
 body {
   font-family: 'PT Sans', sans-serif;
-  background-color: rgb(166, 182, 211);
 }
 
 a {
@@ -121,6 +120,10 @@ left: 45%;
 .active {
   font-weight: bold;
   border-radius: 1em;
+}
+
+.chart {
+  display: block;
 }
 
 footer {
