@@ -44,7 +44,7 @@ const getRepos = () => {
         let projectID = repo.id
         projectsContainer.innerHTML+=
         `<div class="repocard" id=${projectID}>
-          <a href=${data.html_url}><h3> ${repo.name}</h3></a>
+          <a href=${repo.html_url}><h3> ${repo.name}</h3></a>
           <p> Default branch: ${repo.default_branch}</p>
           <p> Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
           <p id="commit-${repo.name}">Commits:</p>
