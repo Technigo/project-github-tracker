@@ -248,6 +248,7 @@ a.nav-item:hover {
 
   .user-section {
     width: 30%;
+    max-height: 160vh;
     justify-content: space-evenly;
     gap: 0;
     margin: 0;
@@ -354,6 +355,7 @@ a.nav-item:hover {
 
   .user-section {
     width: 40%;
+    max-height: 130vh;
     padding: 1rem 0 0 3.5rem;
   }
 
