@@ -5,14 +5,14 @@ const ctx = document.getElementById('myChart')
 //"Draw" the chart here 👇
 const labels = [
     'Finished projects',
-    'Unfinished projects',
+    'Upcoming projects',
   ];
 
   const data = {
     labels: labels,
     datasets: [{
       label: 'Bootcamp progress',
-      backgroundColor: ['rgb(255, 99, 132)', 'rgb(88, 99, 243)'],
+      backgroundColor: ['rgb(255, 99, 132)', 'rgb(104, 131, 180)'],
       data: [6, 11],
     }]
   };

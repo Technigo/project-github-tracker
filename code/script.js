@@ -23,9 +23,11 @@ const getUser = () => {
     .then(res => res.json())
     .then(data => {
         userContainer.innerHTML += `
-        <div class="user">
         <img class="user-img"src="${data.avatar_url}">
-        <a href="https://github.com/mathildakarlsson" class="user-name">${data.login}</a>  
+        <div class="github-user">
+            <a href="https://github.com/"><img class="github-logo" src="images/GitHub-Mark-32px.png"></a>
+            <a href="https://github.com/mathildakarlsson" class="user-name">${data.login}</a>
+        </div>
     `
     })
 getRepos()
