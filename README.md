@@ -7,5 +7,4 @@ I had massive problems with showing my commits. Whenever I invoked the code to d
 
 
 ## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://brave-hopper-89f38f.netlify.app
