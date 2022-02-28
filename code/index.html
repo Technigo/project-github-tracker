@@ -6,16 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet">
+  
+
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  
+  <!-- Header -->
+  <div class="head-text">
+    <img class="catpic" src="./images/cat.png"/>
+    <h1>GitHub Tracker</h1>
+</div>
+<main class="user-facts">
+  <div class="profileimg">
+    <img id="profile-pic" class="profile-pic"></img>
+  </div>
+  
+<!-- User info -->
+    <div class="user-info">
+      <p id="full-name"></p>
+      <p id="user-name"></p>
+   </div>
+</main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+<!-- Section where the repos will appear -->
+  
+<main id="projects" class="projects"></main>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
+  <!-- Chart -->
+<section class="chart-div">
+<canvas id="chart"></canvas>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<script src="./script.js"></script>
+<script src="./chart.js"></script> 
+
 </body>
 </html>

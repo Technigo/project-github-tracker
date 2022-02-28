@@ -1,3 +1,140 @@
 body {
-  background: #FFECE9;
+  background: white;
+  font-family: "Merriweather Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.head-text {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+.catpic {
+  object-fit: cover;
+  width: 100px;
+}
+
+h2 {
+  margin-bottom: -30px;
+}
+
+.profileimg {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -20px;
+}
+
+.profile-pic {
+  width: 200px;
+  border-radius: 50%;
+  align-self: center;
+  border: solid 0.5em #ffece9;
+  box-shadow: 5px 10px 10px darkgrey;
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.repos {
+  background-color: #ffece9;
+  margin: 15px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 5px 10px 10px darkgrey;
+}
+
+.chart-div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-self: center;
+}
+
+/*Tablet*/
+
+@media (min-width: 668px) and (max-width: 1024px) {
+  .projects {
+    flex-direction: row;
+  }
+
+  .head-text {
+    justify-content: center;
+  }
+
+  .repos {
+    width: 40vw;
+    margin-bottom: 30px;
+  }
+
+  .chart-div {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+  .chart {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
+}
+
+/*Desktop*/
+
+@media (min-width: 1025px) {
+  .projects {
+    flex-direction: row;
+  }
+  .head-text {
+    justify-content: center;
+  }
+
+  .profileimg {
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  .user-facts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+  }
+
+  a:hover {
+    color: #ff97f6;
+  }
+
+  .repos {
+    width: 25vw;
+  }
+
+  .profile-pic {
+    width: 250px;
+  }
+
+  .chart-div {
+    width: 25%;
+  }
 }
