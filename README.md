@@ -4,14 +4,10 @@ This week, we have created a place to keep track of the GitHub repos that we are
 🔵 Blue Level (Minimum Requirements)
 Your page should include:
 
-A list of all repos that are forked from Technigo
-Your username and profile picture
-Most recent update (push) for each repo
-Name of your default branch for each repo
-URL to the actual GitHub repo
-Number of commits for each repo
-It should be responsive (mobile first)
-A visualisation, for example through a pie chart, of how many projects you've done so far, compared to how many you will do (in total it will be 19 weekly projects 🥳) using [Chart.js]
+A list of all repos that are forked from Technigo, Your username and profile picture,
+Most recent update (push) for each repo, Name of your default branch for each repo,
+URL to the actual GitHub repo, Number of commits for each repo,
+It should be responsive (mobile first),A visualisation, for example through a pie chart, of how many projects you've done so far, compared to how many you will do (in total it will be 19 weekly projects 🥳) using [Chart.js]
 
 ## The problem
 
@@ -32,4 +28,4 @@ If I had more time I would add more information about every repo: languages used
 
 ## View it live
 
-link to netlify
+https://github-tracker-bymimmi.netlify.app/
