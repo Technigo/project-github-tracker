@@ -2,7 +2,7 @@ const profileDetails = document.getElementById("aside");
 const header = document.getElementById("header");
 const footer = document.getElementById("footer");
 
-const username = "savannah-hayes"
+const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
 const API_TOKEN = TOKEN || process.env.API_KEY
 
@@ -38,20 +38,14 @@ const displayHtml = () => {
 displayHtml()
 
 const displayProfileData = (profileData) => {
-  const image = profileData.avatar_url;
-  const name = profileData.name;
-  const username = profileData.login;
-  const bio = profileData.bio;
-  const followers = profileData.followers;
-  const following = profileData.following;
-  const location = profileData.location;
+  const { avatar_url, name, login, bio, followers, following, location } = profileData;
 
   profileDetails.innerHTML = `
     <section class="aside__header">
-    <img src="${image}" class="aside__image" alt="image of ${name}"></img>
+    <img src="${avatar_url}" class="aside__image" alt="image of ${name}"></img>
     <div class="aside__text">
     <h2 class="aside__title">${name}</h2>
-    <p class="aside__sub-title">${username}</p>
+    <p class="aside__sub-title">${login}</p>
     </div>
     </section>
     <section class="aside-content">

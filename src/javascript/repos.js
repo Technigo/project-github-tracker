@@ -40,23 +40,38 @@ displaySearchForm()
 
 const displayRepositories = (repositories) => {
   repositories.filter(repo => {
+    const { fork, name, html_url, visibility, default_branch, pushed_at } = repo;
     let language = repo.language;
-    const projectUrl = repo.html_url;
-    const visibility = repo.visibility;
-    const oneDay = 24 * 60 * 60 * 1000;
+    let updatedTime;
+    const DAY_IN_MS = 24 * 60 * 60 * 1000;
     const currentDate = new Date();
-    const projectDate = new Date(repo.pushed_at);
-    const numberOfDays = Math.round(Math.abs((currentDate - projectDate) / oneDay));
+    const projectDate = new Date(pushed_at);
+    const seconds = Math.round((currentDate - projectDate) / 1000);
+    const minutes = Math.round(seconds / 60);
+    const hours = Math.round(minutes / 60)
+    const numberOfDays = Math.round(Math.abs((currentDate - projectDate) / DAY_IN_MS));
+
+    if (seconds < 5) {
+      updatedTime = 'now';
+    } else if (seconds < 60) {
+      updatedTime = `${seconds} seconds ago`;
+    } else if (minutes < 60) {
+      updatedTime = `${minutes} minutes ago`;
+    } else if (hours < 60) {
+      updatedTime = `${hours} hours ago`;
+    } else {
+      updatedTime = `${numberOfDays} days ago`;
+    }
     
     language === "HTML" ? language = `🔴 ${language}` : language = `🟡 ${language}`;
 
-    if (repo.fork === true && repo.name !== "unit-tests") {
+    if (fork === true && name !== "unit-tests") {
       projectsSection.innerHTML += `
-      <a class="projects__links" href="${projectUrl}" target="_blank">${repo.name}</a><span class="projects__links--right">${visibility}</span>
-      <p class="projects__paragraphs">Forked from Technigo/project-${repo.name}</p>
+      <a class="projects__links" href="${html_url}" target="_blank">${name}</a><span class="projects__links--right">${visibility}</span>
+      <p class="projects__paragraphs">Forked from Technigo/project-${name}</p>
       <p class="projects__paragraphs">${language} 
-      <span class="projects__paragraphs"><img class="small-icon projects__paragraphs--right" src="./images/fork.png"></img>Branch ${repo.default_branch}</span>
-      <span class="projects__paragraphs--right">Updated ${numberOfDays} days ago</span></p>
+      <span class="projects__paragraphs"><img class="small-icon projects__paragraphs--right" src="./images/fork.png"></img>Branch ${default_branch}</span>
+      <span class="projects__paragraphs--right">Updated ${updatedTime}</span></p>
       <hr>
       `;
     }

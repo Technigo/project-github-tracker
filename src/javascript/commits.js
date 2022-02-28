@@ -32,17 +32,16 @@ const fetchCommitMessages = (commits, repository) => {
     `
 
   for (let i = 0; i < commits.length; i++) {
-    const commitMessages = commits[i].commit.message;
-    const author = commits[i].commit.author.name;
-    const authorPicture = commits[i].author.avatar_url;
-    const date = new Date(commits[i].commit.committer.date);
+    const { message, committer, author } = commits[i].commit;
+    const { avatar_url } = commits[i].author;
+    const date = new Date(committer.date);
     const formattedDate = date.toDateString().split(' ').slice(1).join(' ');
 
     commitsSection.innerHTML += `
       <div id="messageWrapper" class=${repositoryName}>
-      <p class="text">${commitMessages}</p>
-      <p class="subtext"><img class="icons circle" src=${authorPicture} alt=${author}> 
-      <span class="bold-text">${author} </span> <span class="hide-text">committed on ${formattedDate}</span></p>
+      <p class="text">${message}</p>
+      <p class="subtext"><img class="icons circle" src=${avatar_url} alt=${author.name}> 
+      <span class="bold-text">${author.name} </span> <span class="hide-text">committed on ${formattedDate}</span></p>
       </div>
       `
   }
