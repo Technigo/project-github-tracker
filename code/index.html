@@ -7,10 +7,6 @@
     <title>Mimmis Project GitHub Tracker</title>
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script
-      src="https://kit.fontawesome.com/8fe3e91d62.js"
-      crossorigin="anonymous"
-    ></script>
     <!--font-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,7 +27,9 @@
       </section>
 
       <!-- This will be used to draw the chart 👇 -->
-      <canvas id="chart" class="chart"></canvas>
+      <canvas id="chart" class="chart">
+        <p id="numberOfProjects" class="number-of-projects"></p>
+      </canvas>
     </main>
 
     <script src="./chart.js"></script>

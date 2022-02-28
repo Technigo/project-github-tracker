@@ -16,12 +16,14 @@ header {
 
 /* header text */
 h1 {
+  margin: 0.5rem;
   color: #ffffff;
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 /* description text */
 h3 {
+  margin: 0.5rem;
   color: #ffffff;
 }
 
@@ -32,8 +34,19 @@ h3 {
 img {
   width: 300px;
   border-radius: 50%;
-
   margin-block: 2em;
+}
+
+/* link to my github and repos */
+a,
+a:active {
+  text-decoration: none;
+}
+
+a.nav-link,
+a.nav-link:active {
+  position: relative;
+  color: black;
 }
 
 .section-projects {
@@ -45,13 +58,15 @@ img {
   min-height: 100%;
   display: grid;
   gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  justify-content: center;
+  justify-items: center;
 }
 
 .section-projects__card {
   background: #f9f8ff;
   border-radius: 0.5em;
-  width: 350px;
+  width: 300px;
   padding: 1em;
   margin: 1em;
   display: flex;
@@ -61,5 +76,10 @@ img {
 
 /* chart */
 .chart {
-  /* background: #223b3f; */
+  max-height: 60vh;
+}
+
+@media screen and (min-width: 768px) {
+  .chart {
+  }
 }

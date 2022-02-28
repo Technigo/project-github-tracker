@@ -15,6 +15,10 @@ const showChart = (countRepos) => {
     ],
   };
 
+  Chart.defaults.font.family = "Source Serif Pro";
+  Chart.defaults.font.size = "20";
+  Chart.defaults.color = "#000000";
+
   const config = {
     type: "pie",
     data: data,
