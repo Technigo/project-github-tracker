@@ -6,6 +6,14 @@ const userInfo = document.getElementById('user-info')
 // const body = document.getElementById('body')
 
 
+// LEFT TO DO:
+
+// IF No pulll requests - change from "loading" to "none"
+// Sort repos by Date
+//project counter (in writing)
+//responsive styling
+//make string replacement function to remove "project-" from the headlines of each project
+
 
 const username = 'Dorothea-B'
 const API_URL_USER = `https://api.github.com/users/${username}`
@@ -71,7 +79,7 @@ fetch(API_URL_REPO, options)
                 <div class="left">
                 <div class="repoName">${repo.name} </div>
 
-                <div id="github-link-${repo.name}"><a href="${repo.svn_url}"><img class="giticon" src="./assets/GitHub-Mark-64px.png"> ${repo.name} </a></div>
+                <div id="github-link-${repo.name}"><a href="${repo.svn_url}" target="_blank"><img class="giticon" src="./assets/GitHub-Mark-64px.png"> ${repo.name} </a></div>
                 <div id="updated-at-${repo.name}">Updated: ${new Date(repo.updated_at).toLocaleDateString('en-GB', {year: 'numeric', month: 'long', day: 'numeric'})} </div>
                 </div>
 
@@ -79,7 +87,7 @@ fetch(API_URL_REPO, options)
                 <div id="def-branch-${repo.name}">Default branch: ${repo.default_branch} </div>
                 <div id="latest-${repo.name}">Latest push: </div>
                 <div id="num-commits-${repo.name}">Commits: </div>
-                <div id="pull-req-${repo.name}"><img class="giticon" src="./assets/git_pull_request_icon_175163.svg">Pull requests: Loading...</div>
+                <div id="pull-req-${repo.name}"><img class="giticon" src="./assets/git_pull_request_icon_175163.svg"> Pull requests: Loading...</div>
                 </div>
 
                 </div>`
@@ -127,7 +135,7 @@ fetch(API_URL_REPO, options)
                 if(pushMessage.length > 25) {pushMessage = pushMessage.substring(0,25)};
 
                 
-                document.getElementById(`latest-${repo.name}`).innerHTML = `Latest push: <a href="${data[0].html_url}"><span style="font-style: italic; ">${pushMessage}</span></a>`
+                document.getElementById(`latest-${repo.name}`).innerHTML = `Latest push: <a href="${data[0].html_url}" target="_blank"><span style="font-style: italic; ">${pushMessage}</span></a>`
 
                 // let latestPush = limit(data[0].commit.message)
             })
@@ -164,7 +172,7 @@ fetch(API_URL_REPO, options)
 
                     //-------printing the pull requests
 
-                    document.getElementById(`pull-req-${repo.name}`).innerHTML = `<img class="giticon" src="./assets/git_pull_request_icon_175163.svg"> <a href="${pull._links.html.href}">Pull requests</a>`
+                    document.getElementById(`pull-req-${repo.name}`).innerHTML = `<img class="giticon" src="./assets/git_pull_request_icon_175163.svg"> <a href="${pull._links.html.href}" target="_blank">Pull requests</a>`
 
                     }   
 
