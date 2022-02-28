@@ -16,17 +16,13 @@ a {
   font-weight: 600;
 }
 
-
 .user-container {
   height: 100vh;
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
-  /* margin-top: 5em; */
 }
 
 .github-tracker {
-  /* padding: 1em; */
   margin-top: 3.5em;
   padding: 2em;
   font-size: 30px;
@@ -67,12 +63,10 @@ a {
 }
 
 .projects-container {
-  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
-  /* margin-top: 6em; */
 }
 
 .projects-header {
@@ -95,7 +89,6 @@ a {
   transition: 1s;
   overflow: visible;
   text-align: center;
-  /* justify-self: center; */
   background-color: rgb(104, 131, 180);
 }
 
@@ -150,29 +143,27 @@ footer {
 
 /* TABLET */
 @media screen and (min-width: 667px) and (max-width: 1024px) {
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  justify-items: center;
-  
-}
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    
+  }
 
-.project-name {
-  width: 40vw;
-}
+  .project-name {
+    width: 40vw;
+  }
 
-.chart {
-  height: 30vh;
-  width: 40vw;
-}
+  .chart {
+    height: 30vh;
+    width: 40vw;
+  }
 }
 
 /* DESKTOP */
 @media (min-width: 1024px) {
 
-
-  
   .user-container {
     flex-direction: row;
     flex-wrap: nowrap;
@@ -249,6 +240,4 @@ footer {
     width: 25vw;
     margin: 1em .5em 2em .5em;
   }
-
-
 }

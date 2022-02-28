@@ -2,22 +2,21 @@
 const userContainer = document.getElementById('user-container')
 const projectsContainer = document.getElementById('projects-container')
 
-// global variables
+// global variables + storing API
 const username = 'mathildakarlsson'
+let reponame
 const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
-let reponame
 
 //personal token
 const options = {
     method: 'GET',
     headers: {
-          Authorization: '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'
-      }
-  }
+        Authorization: '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'
+    }
+}
 
-
-// fetch user
+// step 1 - fetch user
 const getUser = () => {
     fetch(API_USER, options)
     .then(res => res.json())
@@ -28,27 +27,21 @@ const getUser = () => {
             <a href="https://github.com/"><img class="github-logo" src="images/GitHub-Mark-32px.png"></a>
             <a href="https://github.com/mathildakarlsson" class="user-name">${data.login}</a>
         </div>
-    `
+        `
     })
-getRepos()
+getRepos() //invoking step 2
 }
 
-
-//Fetch 1
-
+//step 2 - fetch repos and filter + open/closing accordion
 const getRepos = () => { 
-
     fetch(API_REPOS, options)
     .then(res => res.json())
     .then(data => {
-    console.log(data)
-        
+    // console.log(data)
     const filteredRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
-    
-
-    filteredRepos.forEach((data) => {
+        filteredRepos.forEach((data) => {
         projectsContainer.innerHTML += `
-          <div class="repos" id="${data.name}">
+        <div class="repos" id="${data.name}">
             <button class="project-name">${data.name}</button>
             <div class="panel">
                 <a href="${data.html_url}">
@@ -57,32 +50,26 @@ const getRepos = () => {
                 <p id="${data.name}">Nr of commits: </p>
                 <p>Main language: ${data.language}</p>
                 <p>Latest push: ${data.pushed_at}</p>
-                </div>
-                </div>
-                `
-                
-                // Open and close panel
-                const acc = document.getElementsByClassName("project-name")
-                let i
-                
-                for (i = 0; i < acc.length; i++) {
-                  acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active")
-                    const panel = this.nextElementSibling
-                    if (panel.style.maxHeight) {
+            </div>
+        </div>
+        `
+// Open and close accordion with project info
+        const acc = document.getElementsByClassName("project-name")
+        let i
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active")
+                const panel = this.nextElementSibling
+                if (panel.style.maxHeight) {
                       panel.style.maxHeight = null
-                    } else {
+                } else {
                       panel.style.maxHeight = panel.scrollHeight + "px"
-                    } 
-                  })
-                }
+                } 
             })
-            // myChart()
-            
-            
-    
-    // Fetch 2
-    
+        }
+    })
+ 
+    // step 3 - fetch pull requests
     const API_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`
     const getPullRequests = (data) => { 
         data.forEach(repo => {
@@ -100,31 +87,24 @@ const getRepos = () => {
                     `
                 }
             })
-        getPullRequests(filteredRepos)
-    })
-}
-
-    
-
-    
-    
-//Fetch 3
-const getCommits = (API_COMMIT, dataName) => { 
-    fetch(API_COMMIT, options)
-    .then(res => res.json())
-    .then(data => {
-        // let numberOfCommits = [data.length]
-        document.getElementById(dataName).innerHTML += `
-        <p>Number of commits: ${data.length}</p>
-        `
         })
     }
-})
-
-
-
-}
-
-getUser()
     
+    //invoke step 3, getPullRequests(filteredRepos)
+    
+
+    //Step 4 - fetch commits and display the amount
+    const getCommits = (API_COMMIT, dataName) => { 
+        fetch(API_COMMIT, options)
+        .then(res => res.json())
+        .then(data => {
+            // let numberOfCommits = [data.length]
+            document.getElementById(dataName).innerHTML += `
+            <p>Number of commits: ${data.length}</p>
+            `
+            })
+        }
+    })
+}
+getUser() //invoking step 1
                     

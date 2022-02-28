@@ -1,29 +1,29 @@
 
-//DOM-selector for the canvas 👇
+//DOM-selector for the canvas
 const ctx = document.getElementById('myChart')
 
-//"Draw" the chart here 👇
+//drawing the chart
 const labels = [
     'Finished projects',
     'Upcoming projects',
-  ];
+];
 
-  const data = {
+const data = {
     labels: labels,
     datasets: [{
       label: 'Bootcamp progress',
       backgroundColor: ['rgb(255, 99, 132)', 'rgb(104, 131, 180)'],
       data: [6, 11],
     }]
-  };
+};
 
-  const config = {
+const config = {
     type: 'doughnut',
     data: data,
     options: {}
-  };
+};
 
-  const myChart = new Chart(
-    document.getElementById('chart'),
+const myChart = new Chart(
+    document.getElementById('technigoProgress'),
     config
-  );
+);
