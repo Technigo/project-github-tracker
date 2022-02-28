@@ -1,6 +1,5 @@
 :root {
   --primary: #F6E9D7;
-  /*#d4c4ced8;*/
   --secondary: #D1ADCC;
   --tertiary: #C2D2BD;
   --accent: #5F2C3E;
@@ -14,9 +13,19 @@ body {
   margin: 0;
   background: var(--tertiary);
   font-family: 'Manrope', sans-serif;
-  /* font-family: 'JetBrains Mono', monospace; */
 }
 
+@media screen and (min-width:1024px) {
+
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+
+
+/**********************USER INFO SECTION*************************/
 
 .user-section {
   box-sizing: border-box;
@@ -27,20 +36,6 @@ body {
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
-}
-
-.main-title, .projects-title, .full-name, .github-user-name, .course-name, .repo-title, p {
-  color: var(--accent);
-}
-
-.main-title {
-  display: flex;
-  justify-content: center;
-  font-size: 4.5rem;
-  margin: 1rem 0;
-  width: 100%;
-  padding: 0 1.5rem;
-  text-align: center;
 }
 
 .user-info {
@@ -60,25 +55,102 @@ body {
   margin-bottom: 1rem;
 }
 
-.full-name {
-  margin-bottom: 0;
-  font-size: 2rem;
+@media screen and (min-width:768px) {
+
+  .user-section {
+    gap: 2rem;
+    margin: 2.5rem 0 0;
+  }
+
+  .user-info {
+    gap: 1.5rem;
+    padding-bottom: 6rem;
+  }
+
+  .user-image {
+    width: 350px;
+    margin-bottom: 0.5rem;
+  }
 }
 
-.github-user-name {
-  margin: 0;
-  font-size: 1.5rem;
+@media screen and (min-width:1024px) {
+
+  .user-section {
+    width: 30%;
+    max-height: 160vh;
+    justify-content: space-evenly;
+    gap: 0;
+    margin: 0;
+    padding: 0 1rem 0 3.5rem;
+  }
+
+  .user-info {
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: center;
+    align-items: center;
+  }
+
+  .user-image {
+    width: 225px;
+    margin: 0;
+    padding-top: 1rem;
+  }
 }
 
-.course-name {
-  font-size: 1.3rem;
-  padding: 0 2rem;
+@media screen and (min-width:1400px) {
+
+  .user-section {
+    width: 40%;
+    max-height: 130vh;
+    padding: 1rem 0 0 3.5rem;
+  }
+
+  .user-image {
+    width: 275px;
+    padding: 0;
+  }
 }
+
+
+/******************************CHART*********************************/
 
 .chart-container {
   width: 350px;
   margin: 4rem 0;
 }
+
+@media screen and (min-width:768px) {
+
+  .chart-container {
+    width: 500px;
+    margin: 2rem 0;
+    padding: 3rem 0;
+  }
+}
+
+@media screen and (min-width:1024px) {
+
+  .chart-container {
+    width: 285px;
+    margin: 1.5rem 0 0 0;
+    padding: 0 2rem;
+  }
+}
+
+@media screen and (min-width:1400px) {
+
+  .chart-container {
+    width: 350px;
+    padding: 1.5rem 0 0;
+  }
+}
+
+
+
+/******************************PROJECT BOARD***************************/
 
 .projects-container {
   box-sizing: border-box;
@@ -109,99 +181,9 @@ body {
   border-radius: 30px;
   background-color: #d1adcc;
   text-align: center;
-  /* box-shadow: 3px 3px 4px var(--accent); */
 }
-
-.repo-title, p {
-  margin: 0;
-  padding: 0;
-  line-height: 2rem;
-}
-
-.repo-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.repo-container p, .footer p {
-  font-size: 1.3rem;
-}
-
-.repo-link-button {
-  font-size: 1rem;
-  padding: 1rem;
-  margin-top: 1.5rem;
-  border-radius: 30px;
-  background-color: var(--primary);
-  border: 2px solid var(--primary);
-  /* box-shadow: 2px 2px 2px var(--accent); */
-}
-
-.repo-link-button:hover {
-  border: 2px solid var(--tertiary);
-  background-color: var(--tertiary);
-}
-
-a.nav-item:link, a.nav-item:visited {
-  text-decoration: none;
-  color: var(--accent);
-}
-
-a.nav-item:hover {
-  color: var(--primary);
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 4rem 0;
-}
-
-
-/*************************MEDIA QUERY FOR TABLETS AND LARGE PHONES**********************************/
 
 @media screen and (min-width:768px) {
-
-  .user-section {
-    gap: 2rem;
-    margin: 2.5rem 0 0;
-  }
-
-  .main-title {
-    font-size: 5rem;
-    margin: 1.5rem 0;
-  }
-
-  .user-info {
-    gap: 1.5rem;
-    padding-bottom: 6rem;
-  }
-
-  .user-image {
-    width: 350px;
-    margin-bottom: 0.5rem;
-  }
-
-  .full-name {
-    font-size: 2.5rem;
-  }
-  
-  .github-user-name {
-    font-size: 1.8rem;
-    margin-top: 0;
-  }
-
-  .course-name {
-    font-size: 1.5rem;
-    padding: 0;
-  }
-
-  .chart-container {
-    width: 500px;
-    margin: 2rem 0;
-    padding: 3rem 0;
-  }
 
   .projects-container {
     padding: 2rem 0;
@@ -216,89 +198,9 @@ a.nav-item:hover {
     width: 550px;
     height: 400px;
   }
-
-  .repo-title, p {
-    line-height: 3rem;
-  }
-  
-  .repo-title {
-    font-size: 3rem;
-  }
-
-  .repo-container p, .footer p {
-    font-size: 1.8rem;
-  }
-
-  .repo-link-button {
-    font-size: 1.5rem;
-    padding: 1.5rem;
-    margin-top: 2rem;
-  }
-
 }
 
-/*************************MEDIA QUERY FOR LAPTOPS*******************************/
-
 @media screen and (min-width:1024px) {
-
-  body{
-    display: flex;
-    flex-direction: row;
-  }
-
-  .user-section {
-    width: 30%;
-    max-height: 160vh;
-    justify-content: space-evenly;
-    gap: 0;
-    margin: 0;
-    padding: 0 1rem 0 3.5rem;
-  }
-
-  .main-title {
-    width: 100%;
-    font-size: 3.8rem;
-    margin: 0;
-    padding-left: 1.5rem;
-  }
-
-  .user-info {
-    gap: 0;
-    margin: 0;
-    padding: 0;
-    border: none;
-    text-align: center;
-    align-items: center;
-  }
-
-  .user-image {
-    width: 225px;
-    margin: 0;
-    padding-top: 1rem;
-  }
-
-  .full-name {
-    font-size: 2rem;
-    margin: default;
-    padding: default;
-  }
-  
-  .github-user-name {
-    font-size: 1.5rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .course-name {
-    font-size: 1.3rem;
-    margin-bottom: 0;
-  }
-
-  .chart-container {
-    width: 285px;
-    margin: 1.5rem 0 0 0;
-    padding: 0 2rem;
-  }
 
   .projects-container {
     width: 90%;
@@ -321,6 +223,143 @@ a.nav-item:hover {
     height: 275px;
     padding: 1rem;
   }
+}
+
+@media screen and (min-width:1400px) {
+
+  .projects {
+    margin: 0;
+  }
+
+  .repo-container {
+    width: 400px;
+    height: 300px;
+  }
+}
+
+
+/*****************************FOOTER***************************/
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 4rem 0;
+}
+
+@media screen and (min-width:1024px) {
+
+  .footer {
+    display: none;
+  }
+}
+
+
+/**********************TEXTS AND TITLES*************************/
+
+.main-title, .projects-title, .full-name, .github-user-name, .course-name, .repo-title, p {
+  color: var(--accent);
+}
+
+.main-title {
+  display: flex;
+  justify-content: center;
+  font-size: 4.5rem;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.full-name {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.github-user-name {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.course-name {
+  font-size: 1.3rem;
+  padding: 0 2rem;
+}
+
+.repo-title, p {
+  margin: 0;
+  padding: 0;
+  line-height: 2rem;
+}
+
+.repo-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.repo-container p, .footer p {
+  font-size: 1.3rem;
+}
+
+@media screen and (min-width:768px) {
+
+  .main-title {
+    font-size: 5rem;
+    margin: 1.5rem 0;
+  }
+
+  .full-name {
+    font-size: 2.5rem;
+  }
+  
+  .github-user-name {
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+  .course-name {
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .repo-title, p {
+    line-height: 3rem;
+  }
+  
+  .repo-title {
+    font-size: 3rem;
+  }
+
+  .repo-container p, .footer p {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width:1024px) {
+
+  .main-title {
+    width: 100%;
+    font-size: 3.8rem;
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .full-name {
+    font-size: 2rem;
+    margin: default;
+    padding: default;
+  }
+  
+  .github-user-name {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .course-name {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
 
   .repo-title, p {
     margin: 0;
@@ -335,37 +374,12 @@ a.nav-item:hover {
   .repo-container p, .footer p {
     font-size: 1.5rem;
   }
-
-  .repo-link-button {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    margin-left: 10%;
-  }
-
-  .footer {
-    display: none;
-  }
-
 }
-
-/*************************MEDIA QUERIES FOR LARGER DEVICES*******************************/
 
 @media screen and (min-width:1400px) {
 
-  .user-section {
-    width: 40%;
-    max-height: 130vh;
-    padding: 1rem 0 0 3.5rem;
-  }
-
   .main-title {
     font-size: 4.7rem;
-  }
-
-  .user-image {
-    width: 275px;
-    padding: 0;
   }
 
   .full-name {
@@ -380,20 +394,6 @@ a.nav-item:hover {
     font-size: 2rem;
   }
 
-  .chart-container {
-    width: 350px;
-    padding: 1.5rem 0 0;
-  }
-
-  .projects {
-    margin: 0;
-  }
-
-  .repo-container {
-    width: 400px;
-    height: 300px;
-  }
-
   .repo-title, p {
     line-height: 2.5rem;
   }
@@ -405,11 +405,59 @@ a.nav-item:hover {
   .repo-container p, .footer p {
     font-size: 1.9rem;
   }
+}
+
+
+
+/**********************BUTTONS AND LINKS*************************/
+
+.repo-link-button {
+  font-size: 1rem;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 30px;
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.repo-link-button:hover {
+  border: 2px solid var(--tertiary);
+  background-color: var(--tertiary);
+}
+
+a.nav-item:link, a.nav-item:visited {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+a.nav-item:hover {
+  color: var(--primary);
+}
+
+@media screen and (min-width:768px) {
+
+  .repo-link-button {
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width:1024px) {
+
+  .repo-link-button {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-left: 10%;
+  }
+}
+
+@media screen and (min-width:1400px) {
 
   .repo-link-button {
     padding: 0.5rem;
     margin-top: 2rem;
     margin-left: 0;
   }
-
 }

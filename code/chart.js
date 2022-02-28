@@ -5,10 +5,11 @@ const ctx = document.getElementById('chart').getContext('2d')
 Chart.defaults.font.family = 'Manrope, sans-serif';
 Chart.defaults.font.size = 25;
 
+
+// Function for creating the chart
 const drawChart = (doneProjects) => { 
 
     //"Draw" the chart here 👇
-
     const config = {
         type: 'doughnut',
         data: {
