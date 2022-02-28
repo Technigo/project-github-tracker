@@ -22,7 +22,7 @@ const drawChart = (finishedProjects) => {
     datasets: [{
       label: 'My First dataset',
       backgroundColor: [
-        '#211D31',
+        '#211d31d2',
                          '#FFFFFF',
                          ],
 
