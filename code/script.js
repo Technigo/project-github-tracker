@@ -12,14 +12,14 @@ const options = {
       }
   }
 
-// Display profile picture and username
+// Display profile picture and username from user api
 const getUser = () =>  {
     fetch(API_USER_URL, options)
     .then(res => res.json())
     .then(data => {
         userSection.innerHTML = `
         <img src='${data.avatar_url}' class='profile-img'/>
-        <h2>${data.login}</h2>`
+        <h1>${data.login}</h1>`
     })
    getRepos() 
 }
@@ -31,7 +31,7 @@ const getRepos = () => {
        const forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
        forkedRepos.forEach((repo) => {
            repoSection.innerHTML += `
-           <div class='projects' id='${repo.name}'>
+           <div class='repo-name' id='${repo.name}'>
             <h2>${repo.name}</h2>
             <p>Repo link: <a href='${repo.html_url}'>here</a></p>
             <p>Default branch: ${repo.default_branch}</p>
