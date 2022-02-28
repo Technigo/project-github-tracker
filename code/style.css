@@ -1,3 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} 
 body {
-  background: #FFECE9;
+  background: #e2e7e8;
+  font-family: "Oxygen", sans-serif;
+}
+
+.title {
+  background-image: url(./bakgrund.jpeg) ;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  height: 220px;
+  width: 100%;
+  display: grid;
+  justify-content: center; 
+  align-items: center;
+  padding: 5%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  background-color: rgba(148,182,165,0.8);
+}
+
+.user-image {
+  max-width: 20vw;
+  border-radius: 100%;
+  padding-top: 20px;
+}
+
+.user-img {
+  display: flex; 
+  justify-content: center; 
+  padding-top: 10px;
+}
+
+.user-info {
+  display: grid;
+  padding-bottom: 40px;
+  justify-items: center; 
+}
+
+.projects {
+  color: black;
+  display: inline-grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 5%;
+}
+
+.repocard {
+  display: block;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  width: 100%; 
+  background-color: rgba(148,182,165,0.1);
+}
+
+.repocard a {
+  text-decoration: none;
+  color: gray
+}
+
+a:hover {
+  color: darkgreen;
+}
+
+.chart-wrapper {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  background-color: rgba(148,182,165,0.5);
+}
+
+.chart-container {
+  display: grid;
+  justify-items: center;
+  padding: 5%;
+  max-width: 450px;
+}
+
+
+@media (min-width: 769px) {
+.projects {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 25px;
+}
+
+.title {
+font-size: 1.9rem;
+}
 }

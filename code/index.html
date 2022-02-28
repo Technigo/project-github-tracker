@@ -6,15 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="title">
+    <h1>| github tracker</h1>
+  </header>
+  <main>
+    <section class="user-container" id="user-container">
+      <div class="user-img" id="user-img"></div>
+      <div class="user-info" id="user-info"></div>
+    </section>
+  
+    <section class="projects" id="projects" ></section>
+    <section class="chart-wrapper">
+      <div class="chart-container">
+      <canvas id="chart" class="chart"></canvas>
+      </div>
+    </section>
+  </main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
-
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
 </body>
