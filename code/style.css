@@ -7,13 +7,12 @@
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   text-decoration: none;
-
 }
 
 body {
   background:rgb(68, 68, 247);
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
- 
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
 }
 
 
@@ -45,33 +44,63 @@ h1, header {
   font-size: 3rem;
 }
 
+/* ------- USER PIC AND NAME + CHART ------- */
+
+
 .profile-pic {
   border-radius: 50%;
   border: 7px solid darkblue;
   width: 20em;
   padding: 20px;
   margin: 20px;
+  width: 80%;
+  max-width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-self: center;
 }
 
-
-/* ------- USER PIC AND NAME + CHART ------- */
-.user-container {
+.user-info {
   display: grid;
-  
-  
+  grid-template-columns: 1fr;
+  justify-self: center;
+
 }
 
 .name {
   font-weight: bold;
   font-size: 2em;
+  display: grid;
+  grid-template-columns: 1f;
+  justify-self: center;
+  
 }
 
 .user-name {
   font-size: 1em;
+  display: grid;
+  grid-template-columns: 1f;
+  justify-self: center;
+}
+
+.github {
+  height: 35px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-self: center;
+  margin-top: 5px;
+}
+
+.user-text {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-self: center;
 }
 
 .chart-container {
   display: grid;
+  grid-template-columns: fr;
+  justify-self: center;
   padding: 20px;
   width: 20em;
   border: 7px solid darkblue;
@@ -81,18 +110,20 @@ h1, header {
 
 /* ------- PROJECTS ------- */
 
-.forkedrepo-div {
-  display: flex;
-  flex-direction: row;
+ .forkedrepo-div {
   background-color: lightblue;
   border-radius: 20px;
   padding: 20px;
-  height: 13em;
   margin: 25px;
   border: 7px solid darkblue;
-  
-  
+
+} 
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
+
 
 .project-name {
   color: darkblue;
@@ -112,51 +143,104 @@ h1, header {
   font-weight: bold;
 }
 
-.github {
-  height: 35px;
-}
 
 footer {
   background-color: darkblue;
   height: 80px;
   font-size: 1rem;
- 
+  font-weight: bold;
+  text-align: center;
+  padding: 2em;
+  
 }
 
-/* ------- TABLET -------*/
-@media (min-width: 667px) and (max-with: 1024px) {
 
-  .user-container {
+/* ------- TABLET -------*/
+@media (min-width:667px) {
+
+  .container-chart-name-pic {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    position: relative;
+  }
+
+  .name {
+    font-weight: bold;
+    font-size: 2.5em;
+    display: grid;
+    grid-template-columns: 1f;
+    justify-self: center;
     
   }
-
-
-  .forkedrepo-div {
-    height: 300px;
+  
+  .user-name {
+    font-size: 1.2em;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1f;
+    justify-self: center;
   }
   
+  .github {
+    height: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: center;
+    margin-top: 5px;
+}
 
+  .chart-container {
+    padding: 20px;
+    width: 20em;
+    border: 7px solid darkblue;
+    border-radius: 50%;
+    margin: 20px;
+    position: absolute;
+   
 }
 
 /* ------- LAPTOP ------- */
-@media (min-width: 1024px) {
-
-
-  .user-container {
+@media (min-width:1025px) {
+  .container-chart-name-pic {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-self: center;
     
   }
 
-  .forkedrepo-div {
+  .name {
+    font-weight: bold;
+    font-size: 2.5em;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1f;
+    justify-self: center;
     
   }
   
+  .user-name {
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: 1f;
+    justify-self: center;
+  }
   
+  .github {
+    height: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: center;
+    margin-top: 5px;
+  }
+
+  .chart-container {
+    padding: 20px;
+    width: 20em;
+    border: 7px solid darkblue;
+    border-radius: 50%;
+    margin: 20px;
+    position: absolute;
+   
+  }
 }
+
+

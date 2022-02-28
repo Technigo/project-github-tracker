@@ -4,6 +4,7 @@ const username = 'LovisaBrorson'
 const USER_INFO = `https://api.github.com/users/${username}` //Profilepicture and username
 const API_URL_REPOS = `https://api.github.com/users/${username}/repos` // Get the forked repos
 const userContainer = document.getElementById('userContainer')
+const projectsContainer = document.getElementById('projectsContainer')
 
 
 const options = { //opject
@@ -19,10 +20,14 @@ const options = { //opject
      .then((res) => res.json())
      .then((profileData) => {
          userContainer.innerHTML +=
-         `<img src="${profileData.avatar_url} "class="profile-pic" id="profilePic" alt="Profile picture"/>
+         `<div class="user-info">
+         <img src="${profileData.avatar_url} "class="profile-pic" id="profilePic" alt="Profile picture"/>
+         </div>
+         <div class="user-text">  
          <p class="name"> ${profileData.name}</p>
          <p class="user-name"> Username: ${profileData.login}</p>
          <img class="github" src="github-cat.png">
+         </div>
          `
          
         console.log(profileData)
@@ -38,24 +43,25 @@ const getRepos = () => {
     .then((reposData) => {
         console.log(reposData)
         const forkedRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith("project-"))
-        
+
         forkedRepos.forEach(repo => {
-        projectsContainer.innerHTML += 
-       `
-       <a class="project-link" href="${repo.html_url}" target="_blank"> 
+
+            console.log('test', repo)
+
+        projectsContainer.innerHTML += `
        <div class="forkedrepo-div">
-            
             <h2 class="project-name"> ${repo.name}</h2>
             <p class="project-info"> Default branch: ${repo.default_branch}</p>
             <p class="project-info"> Recent push: ${new Date(repo.pushed_at).toDateString()}</p>
             <p class="project-info" id="commits-${repo.name}"> Amount of commits: </p>  
-            <a class="project-info" href=${repo.html_url} target="_blank">Link to repository</a>
-        </div> `
+            <a class="project-info" href="${repo.html_url}" target="_blank">Link to repository</a>
+        </div> 
+        `
        })
        
        getPullRequests(forkedRepos)
        drawChart(forkedRepos.length)
-    
+    //    
     })
     
 }    
