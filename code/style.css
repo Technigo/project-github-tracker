@@ -70,6 +70,10 @@ a.nav-link:active {
   justify-content: space-between;
 }
 
+canvas {
+  margin: 2rem;
+}
+
 @media screen and (min-width: 768px) {
   .chart {
     max-height: 60vh;
