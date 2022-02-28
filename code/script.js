@@ -1,8 +1,9 @@
 const username = "Mimmisen";
 const API_URL = `https://api.github.com/users/${username}`;
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
-//const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`;
+// const API_URL_PR = `https://api.github.com/repos/Technigo/${reponame}/pulls`;
 const numberOfProjects = document.getElementById("numberOfProjects");
+let reponame = "";
 
 const options = {
   method: "GET",
@@ -39,20 +40,17 @@ fetch(REPOS_URL, options)
     console.log("Technigo projects", technigoProjects);
 
     //Count the repos and show the chart
-    countRepos = technigoProjects.length;
+    showChart(technigoProjects.length);
     // numberOfProjects.innerHTML = `I have finished ${countRepos} projects and have ${
     //   19 - countRepos
     // } left.`;
-    showChart(countRepos);
 
-    // repo info
+    // repo + link to pull request and date for latest update
     technigoProjects.forEach((repo) => {
       //Get the name of the repo
       const reponame = repo.name;
-
       //get the url fo each repo
       const projectUrl = repo.html_url;
-
       //get the latest push/update of the repo
       const latestPushRepo = new Date(repo.updated_at).toLocaleDateString(
         "sv-SE",
@@ -73,58 +71,57 @@ fetch(REPOS_URL, options)
      </div>
      `;
     });
-    //----------------------------------FETCH 3-------------------------------------
-
-    fetch(
-      `https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`,
-      options
-    )
-      .then((res) => res.json())
-      .then((pullData) => {
-        console.log("repos", pullData);
-        let myPullRequest = pullData.find(
-          (pull) => pull.user.login === repo.owner.login
-        );
-        technigoProjects.forEach((repo) => {
-          if (repo.user.login === username) {
-            let reponame = repo.base.repo.name;
-            console.log(reponame);
-            //   //get url for commits to use in new fetch
-            const commitsUrl = repo.commits_url;
-            displayCommits(commitsUrl, reponame);
-            //   //get url for netlify
-            //   //const netlifyUrl = repo.body;
-            //   // displayLink(netlifyUrl, reponame);
-          } else if (
-            repo.user.login === "sukiphan97" &&
-            reponame === "project-chatbot"
-          ) {
-            displayCommits(repo.commits_url, reponame);
-            // displayLink("https://dr-strange-chatbot.netlify.app", reponame);
-          } else if (
-            repo.user.login === "kolkri" &&
-            reponame === "project-weather-app"
-          ) {
-            displayCommits(repo.commits_url, reponame);
-            //   // displayLink("https://hippos1-weatherapp.netlify.app/", reponame);
-          } else {
-            document.getElementById(`commits-${reponame}`).innerHTML = "";
-          }
-          const displayCommits = (commitsUrl, reponame) => {
-            fetch(commitsUrl, options)
-              .then((res) => res.json())
-              .then((data) => {
-                document.getElementById(`commits-${reponame}`).innerHTML = `
-            //          <p class="bold-text">Amount of commits: ${data.length}
-            //          </p>`;
-              });
-            // const displayLink = (netlifyUrl, reponame) => {
-            //   document.getElementById(`website-${reponame}`).innerHTML = `
-            //   <a href="${netlifyUrl}" target="_blank">
-            //   <button class= "netlify-button">Go to website</button>
-            //   </a>
-            //   `;
-          };
-        }); // forEach
-      }); // then from fetch 3
   }); // fetch from the repos
+//----------------------------------FETCH 3-------------------------------------
+
+fetch(
+  `https://api.github.com/repos/Technigo/${reponame}/pulls?per_page=100`,
+  options
+)
+  .then((res) => res.json())
+  .then((data) => {
+    console.log("repos", data);
+
+    data.forEach((repo) => {
+      if (repo.user.login === username) {
+        let reponame = repo.base.repo.name;
+        console.log(reponame);
+        //   //get url for commits to use in new fetch
+        const commitsUrl = repo.commits_url;
+        displayCommits(commitsUrl, reponame);
+        //   //get url for netlify
+        //   //const netlifyUrl = repo.body;
+        //   // displayLink(netlifyUrl, reponame);
+      } else if (
+        repo.user.login === "sukiphan97" &&
+        reponame === "project-chatbot"
+      ) {
+        displayCommits(repo.commits_url, reponame);
+        // displayLink("https://dr-strange-chatbot.netlify.app", reponame);
+      } else if (
+        repo.user.login === "kolkri" &&
+        reponame === "project-weather-app"
+      ) {
+        displayCommits(repo.commits_url, reponame);
+        //   // displayLink("https://hippos1-weatherapp.netlify.app/", reponame);
+      } else {
+        document.getElementById(`commits-${reponame}`).innerHTML =
+          "No commits for this repo";
+      }
+      const displayCommits = (commitsUrl, reponame) => {
+        fetch(commitsUrl, options)
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById(`commits-${reponame}`).innerHTML = `
+                <p class="bold-text">Amount of commits: ${data.length}
+                </p>`;
+          });
+        // const displayLink = (netlifyUrl, reponame) => {
+        //   document.getElementById(`website-${reponame}`).innerHTML = `
+        //   <a href="${netlifyUrl}" target="_blank">
+        //   <button class= "netlify-button">Go to website</button>
+        //   </a>
+        //   `;
+      };
+    }); // forEach
+  }); // then from fetch 3
