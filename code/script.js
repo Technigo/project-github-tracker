@@ -2,13 +2,11 @@
 const userContainer = document.getElementById('user-container')
 const projectsContainer = document.getElementById('projects-container')
 
-
 // global variables
 const username = 'mathildakarlsson'
 const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
 let reponame
-
 
 //personal token
 const options = {
@@ -77,7 +75,7 @@ const getRepos = () => {
                   })
                 }
             })
-            drawChart(filteredRepos.length)
+            // myChart()
             
             
     
@@ -96,7 +94,7 @@ const getRepos = () => {
                     getCommits(API_COMMIT, dataName)
                 } else {
                     projectsContainer.innerHTML += `
-                    <p>Is this working?</p>
+                    <p>No pull requests made</p>
                     `
                 }
             })
