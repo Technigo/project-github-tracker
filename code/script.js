@@ -13,9 +13,7 @@ const profilePic = () => {
         .then(data => {
            // console.log(data)
             picture = data.avatar_url
-    let profilePicture =    `<div class = "photobox">
-                            <h1>${username}</h1>
-                                <img class = "photo" src="${picture}" />
+    let profilePicture =    `<div class = "profile"><h1>${username}</h1> <img class = "photo" src="${picture}" />
                             </div>`;
     return (projects.innerHTML = profilePicture)
 })
@@ -65,7 +63,7 @@ const getRepos = () => {
     
   const getCommits=(commits, myRepoName) => {
       fetch(commits)
-      .then(response => response.json)
+      .then(response => response.json())
       .then(data =>{
           document.getElementById(`${myRepoName}`).innerHTML += data.length
       })
