@@ -1,3 +1,15 @@
+const counterDiv = document.querySelector('projectCounter');
+
+
+Chart.defaults.font.family = 'Miriam Libre, sans-serif';
+Chart.defaults.font.size = 12;
+
+const drawCounter = (finishedProjects) => {
+
+  counterDiv.innerHTML += `Finished projects: ${finishedProjects} <br> Projects to go: ${19-finishedProjects}`
+
+}
+
 //DOM-selector for the canvas 👇
 const ctx = document.getElementById('chart').getContext('2d')
 
@@ -6,15 +18,15 @@ const drawChart = (finishedProjects) => {
 
 
   const data = {
-    labels: ['finished','unfinished'],
+    labels: ['Finished','Unfinished'],
     datasets: [{
       label: 'My First dataset',
       backgroundColor: [
-                         'rgba(255, 99, 132, 0.2)',
-                         'rgba(54, 162, 235, 0.2)',
+        '#211D31',
+                         '#FFFFFF',
                          ],
 
-      borderColor: 'rgb(255, 99, 132)',
+      borderWidth: '0',
       data: [finishedProjects, 19-finishedProjects],
     }]
   };
@@ -23,71 +35,18 @@ const drawChart = (finishedProjects) => {
     type: 'pie',
   data: data,
   options: {
+      plugins: {
+
+        legend: {
+        display: false
+        },
+    },
     responsive: true,
-  }
+    
+    }
+  
   };
-
-
+  
   const myChart = new Chart( ctx, config );
 
 }
-
-
-
-
-
-
-
-
-
-//------- I just couldn't figure out how to reference the variable from script.js, 
-//--------as it was a local variable. I've seen people do functions but I don't want to 
-//--------mess up my code. So I fetched the info again instead.
-
-
-
-
-
-
-// const data = {
-   
-//     data: {
-//         labels: ['Finsihed', 'TBD'],
-//         datasets: [{
-//             label: 'Project counter',
-//             data: [12, 19, 3, 5, 2, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-                
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-                
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
-//     options: {
-//         scales: {
-//             y: {
-//                 beginAtZero: true
-//             }
-//         }
-//     },
-// };
-
-// let finishedProj = 5
-// let unfinishedProj = 19 - finishedProj
-
-// const config = {
-
-//     type: 'pie',
-//     data: data,
-//     options: {
-//         responsive: true
-//     }
-// }
-
-// const myChart = new Chart(ctx, config);
