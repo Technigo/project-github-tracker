@@ -27,7 +27,7 @@ const getUser = () => {
         userContainer.innerHTML += `
         <div class="user">
         <img class="user-img"src="${data.avatar_url}">
-        <h2 class="user-name"> ${data.login}    
+        <a href="https://github.com/mathildakarlsson" class="user-name">${data.login}</a>  
     `
     })
 getRepos()
@@ -48,15 +48,33 @@ const getRepos = () => {
     filteredRepos.forEach((data) => {
         projectsContainer.innerHTML += `
           <div class="repos" id="${data.name}">
-          <h3>${data.name}</h3>
-          <a href="${data.html_url}">
-          <p>Link to repo</p></a>
-          <p>Branch: ${data.default_branch}</p>
-          <p>Main language: ${data.language}</p>
-          <p>Latest push: ${data.pushed_at}</p>
-          <p id="${data.name}">Number of commits: </p>
-          </div>
-        `
+            <button class="project-name">${data.name}</button>
+            <div class="panel">
+                <a href="${data.html_url}">
+                <p>Link to repo</p></a>
+                <p>Branch: ${data.default_branch}</p>
+                <p id="${data.name}">Nr of commits: </p>
+                <p>Main language: ${data.language}</p>
+                <p>Latest push: ${data.pushed_at}</p>
+                </div>
+                </div>
+                `
+                
+                // Open and close panel
+                const acc = document.getElementsByClassName("project-name")
+                let i
+                
+                for (i = 0; i < acc.length; i++) {
+                  acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active")
+                    const panel = this.nextElementSibling
+                    if (panel.style.maxHeight) {
+                      panel.style.maxHeight = null
+                    } else {
+                      panel.style.maxHeight = panel.scrollHeight + "px"
+                    } 
+                  })
+                }
     })
     
     // Fetch 2
@@ -98,6 +116,7 @@ const getCommits = (API_COMMIT, dataName) => {
         })
     }
 })
+
 
 }
 getUser()

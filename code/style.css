@@ -1,17 +1,177 @@
-body {
-  background: #FFECE9;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-.container {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 5em;
-  background-color: aquamarine;
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: rgb(166, 182, 211);
 }
 
-p {
+a {
+  text-decoration: none;
+  color: white;
   font-weight: 600;
+}
+
+
+.user-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero-img {
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
+.github-tracker, .tracker-for, .user-name {
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  color: rgb(66, 93, 143);
+  font-size: 25px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .1em;
+}
+
+.tracker-for {
+top: 22%;
+left: 45%;
+}
+
+.github-logo {
+  position: absolute;
+  top: 68%;
+  left: 24%;
+  background-color: white;
+  border-radius: 1em;
+  height: 1.7em;
+}
+
+.user-name {
+  top: 68%;
+  left: 35%;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.user-img {
+  position: absolute;
+  top: 33%;
+  left: 30%;
+  height: 13em;
+  align-self: center;
+  border-radius: 8em;
+}
+
+.projects-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-top: 3em;
+}
+
+.project-name {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  padding: .8em .5em;
+  margin-top: 1em;
+  width: 90vw;
+  border: none;
+  outline: none;
+  transition: 1s;
+  overflow: visible;
+  text-align: center;
+  justify-self: center;
+  background-color: rgb(104, 131, 180);;
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-heigth 1s ease-out;
+  font-size: 20px;
+  transition: max-heigth 1s ease-out;
+  color: white;
+  text-align: center;
+  margin-bottom: 1em;
+  
+}
+
+.active + .panel {
+  display: block;
+  transition: 1s;
+  margin: 1em 0;
+}
+
+.active {
+  font-weight: bold;
+  border-radius: 1em;
+}
+
+footer {
+  background-color: rgba(255, 255, 255, 0.651);
+  height: 10vh;
+  width: 100vw;
+  text-align: center;
+  padding: 1em;
+}
+
+
+/* TABLET */
+@media screen and (min-width: 667px) and (max-width: 1024px) {
+.projects-container {
+  grid-template-columns: auto auto;
+}
+
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+
+.user-container {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.github-tracker {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+}
+
+.user-img {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+}
+
+.user-name {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+}
+
+
+
+.projects-container {
+    grid-template-columns: auto auto auto;
+  }
+
+
 }
