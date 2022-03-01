@@ -12,7 +12,7 @@ const API_REPOS = `https://api.github.com/users/${username}/repos`
 const options = {
     method: 'GET',
     headers: {
-        Authorization: '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'
+        Authorization: `token ${GITHUB_TOKEN}`
     }
 }
 
@@ -109,7 +109,7 @@ const getPullRequests = (filteredRepos) => {
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
 
 
-        
+
         //conditionals to use for invoking step 4?
         // if (myPullRequests) {
         //     getCommits(projects, projectID)
