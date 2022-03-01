@@ -18,6 +18,8 @@ For this project I used a personal API token from Github, and making it secret b
 
 Lastly I styled the webpage and made it responsive. I'm happy with the accordion and the way the flex/grid is responsive, but there's some things in the user-section that doesn't look quite right in desktop-size. I think it is because of the position: absolute and how the headers are positioned in relation to the profile pic and the chart.
 
+Since I still have some issues that needs to be fixed, I'll save my commented out code in js-file for now. I've tried some different approaches and need to see which could best be modified.
+
 ## View it live
 
 https://serene-mayer-c47183.netlify.app/
