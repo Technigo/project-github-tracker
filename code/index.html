@@ -4,18 +4,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+
+  <!-- Chart 👇 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <link rel="stylesheet" href="./style.css" />
+
+  <!-- Google Fonts 👇 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&family=Shizuru&display=swap" rel="stylesheet">
+
+  <title>GitHub Tracker by Camilla</title>
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header>
+    <div class="header">
+      <h1>GitHub Tracker</h1>
+    </div>
+  </header>
+
+  <section class="user-data" id="userData"></section>
+
+  <!-- Technigo Projects followed by an HTML emoji -->
+  <section>
+    <h2>Technigo Projects &#128071;&#127997;</h2>
+  </section>
+
+  <section class="projects-wrapper" id="projects"></section>
 
   <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <section class="chart-container" id="canvas">
+    <canvas id="chart"></canvas>
+  </section>
 
-  <script src="./script.js"></script>
+  <footer class="made-by">
+      <p>Made by Camilla Hallberg @ Technigo Bootcamp Spring 2022 <span style='font-size:16px;'>&#129302;</span></p>
+  </footer>
+
+  <script src="./token.js"></script>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>

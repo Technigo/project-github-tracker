@@ -1,3 +1,163 @@
 body {
-  background: #FFECE9;
+  background: linear-gradient(rosybrown, floralwhite);
+}
+
+h1 {
+  font-family: 'Shizuru', cursive;
+  font-size: 48px;
+  color: palevioletred;
+  text-align: center;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: 'Shizuru', cursive;
+  font-size: 28px;
+  color: #655D8A;
+  text-align: center;
+  cursor: pointer;
+}
+
+h3 {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 18px;
+  color: #886F6F;
+}
+
+h4 {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 14px;
+  color: whitesmoke;
+}
+
+.avatar {
+  text-align: center;
+}
+
+.info {
+  text-align: center;
+}
+
+.img {
+  width: 96px;
+  border-radius: 4px;
+  border: 8px solid #FDCEB9;
+}
+
+.projects-card {
+  background: linen;
+  border: 6px solid #7897AB;
+  border-radius: 4px;
+  margin: 12px;
+  padding: 12px;
+  font-size: 12px;
+  font-family: 'Shippori Antique B1', sans-serif;
+  text-align: center;
+}
+
+.default-branch {
+  font-family: 'Shizuru', cursive;
+  font-size: 14px;
+  color: #D885A3;
+}
+
+a {
+  color: black;
+}
+
+.chart-container {
+  padding: 20px;
+}
+
+/* --- Footer --- */
+.made-by {
+  font-family: 'Shippori Antique B1', sans-serif;
+  font-size: 12px;
+  color: #694E4E;
+  text-align: center;
+}
+
+/* --- TABLET VIEW --- */
+@media (min-width: 667px) and (max-width: 1024px) {
+
+  h1 {
+    font-size: 96px;
+  }
+
+  h2 {
+    font-size: 48px;
+  }
+
+  h3 {
+    font-size: 36px;
+  }
+
+  h4, p {
+    font-size: 18px;
+  }
+
+  .img {
+    width: 200px;
+  }
+
+  .default-branch {
+    font-size: 24px;
+  }
+
+  .projects-wrapper { 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+  }   
+}
+
+/* --- DESKTOP VIEW --- */
+@media (min-width: 1025px) {
+  .projects-wrapper { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .projects-card {
+    transition: transform .6s;
+  }
+
+  .projects-card:hover {
+    background-color:#D885A3;
+    transform: scale(1.2);
+  }
+
+  .default-branch {
+    color: lightpink;
+  }
+
+  .user-data {
+    display: flex;
+    justify-content: space-around;
+    padding: 48px;
+  }
+
+  .img {
+    width: 150px;
+  }
+
+  h1 {
+    font-size: 96px;
+  }
+
+  h2 {
+    font-size: 48px;
+  }
+
+  .chart-container {
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 600px;
+    padding: 100px;
+  }
 }
