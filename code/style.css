@@ -1,3 +1,78 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 body {
-  background: #FFECE9;
+  background-color: #d3e4cd;
+}
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.user-profile img {
+  border-radius: 50%;
+  height: 50vh;
+  width: 50vh;
+  padding: 20px;
+}
+.user-name {
+  padding: 20px;
+}
+h4 {
+  font-size: 20px;
+}
+a {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+a:hover {
+  color: white;
+}
+.projects {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+h3 {
+  padding: 10px;
+}
+.repo {
+  padding: 5px;
+  text-transform: capitalize;
+}
+.repos {
+  width: 350px;
+  background-color: #10251042;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.chart-container {
+  display: grid;
+
+  margin: 0 auto;
+  width: 20rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .chart-container {
+    width: 25rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .projects {
+    margin: 2rem 5rem;
+  }
+  .chart-container {
+    width: 30rem;
+  }
 }
