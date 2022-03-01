@@ -24,5 +24,9 @@ const config = {
     options: {}
 };
 
-new Chart(document.getElementById('chart'),config);
+// new Chart(document.getElementById('chart'),config);
+const myChart = new Chart(
+    document.getElementById('chart'),
+    config
+  );
 }
