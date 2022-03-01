@@ -92,6 +92,11 @@ a {
   background-color: rgb(104, 131, 180);
 }
 
+.project-name:hover {
+  font-weight: 800;
+  background-color: rgb(59, 83, 129);
+}
+
 .panel {
   max-height: 0;
   overflow: hidden;
@@ -116,6 +121,7 @@ a {
 .active {
   font-weight: bold;
   border-radius: 1em;
+  background-color: rgb(59, 83, 129);
 }
 
 .chart-header {
@@ -128,7 +134,7 @@ a {
 
 .chart {
   height: 50vh;
-  width: 80vw;
+  width: 50vw;
   margin-left: 2.5em;
 }
 
