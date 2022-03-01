@@ -1,8 +1,8 @@
 /* Global css variables used for colors */
 :root {
   --primary: rgb(22, 19, 21);
-  --secondary: rgb(188, 96, 153);
-  --accent: rgb(214, 169, 195);
+  --secondary: rgb(198, 228, 207);
+  --accent: rgb(111, 167, 132);
 }
 
 * {
@@ -107,7 +107,7 @@ a.a-footer:hover {
 
 
 /***************************************************/
-/************ reusable styling elements ***********/
+/************ Reusable styling elements ***********/
 /*************************************************/
 .flex {
   display: flex;

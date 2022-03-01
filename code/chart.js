@@ -13,7 +13,7 @@ progressChart = (projectsDone) => {
         data: {
             datasets: [{
                 label: '',
-                backgroundColor: ['rgb(214, 169, 195)', 'rgb(188, 96, 153)'],
+                backgroundColor: ['rgb(198, 228, 207)', 'rgb(111, 167, 132)'],
                 borderColor: 'rgb(22, 19, 21)',
                 hoverOffset: 8,
                 data: [projectsDone, 19 - projectsDone]
@@ -27,22 +27,6 @@ progressChart = (projectsDone) => {
         },
 
         options: { 
-            // scales: {
-            //     x: {
-            //         ticks: {
-            //             font: {
-            //                 size: 18,
-            //             }
-            //         }
-            //     },
-            //     y: {
-            //         ticks: {
-            //             font: {
-            //                 size: 18,
-            //             }
-            //         }
-            //     }
-            // },
             plugins: {
                 responsive: true,
                 legend: {
