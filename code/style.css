@@ -76,18 +76,6 @@ a.repo-link{
   color: rgb(141, 132, 132);
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  grid-gap: 5px;
-  padding: 20px;
-  margin: 150px;
-  width: 80vw;
-}
-
 .technigo-repos {
   display: flex;
   flex-direction: column;
@@ -106,10 +94,8 @@ a.repo-link{
 }
 
 .chart-container {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin:auto;
+  display: flex;
+  justify-content: center;
   width: 600px;
 }
 
@@ -166,7 +152,7 @@ a.repo-link{
 
 /* -------------- media queries for tablet mode---------------*/
 
-@media (min-width:668px) and (max-width:1024px){
+@media (min-width:668px){
   body {
     background-repeat: no-repeat;
     width: 100vw;
@@ -207,7 +193,7 @@ a.repo-link{
     line-height: 30px;
     margin-top: -60px;
     font-size: 120%;
-    text-align: center;
+    
     
   }
 
@@ -221,6 +207,7 @@ a.repo-link{
   }
   .chart-container {
     width: 600px;
+    margin: 0 auto;
   }
   
 }
