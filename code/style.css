@@ -12,7 +12,7 @@
 body {
   background:rgb(68, 68, 247);
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
+  
 }
 
 
@@ -26,6 +26,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-bottom: 30px;
 }
 
 .video-header video {
@@ -46,15 +47,12 @@ h1, header {
 
 /* ------- USER PIC AND NAME + CHART ------- */
 
-
 .profile-pic {
   border-radius: 50%;
   border: 7px solid darkblue;
-  width: 20em;
   padding: 20px;
   margin: 20px;
   width: 80%;
-  max-width: fit-content;
   display: grid;
   grid-template-columns: 1fr;
   justify-self: center;
@@ -64,7 +62,6 @@ h1, header {
   display: grid;
   grid-template-columns: 1fr;
   justify-self: center;
-
 }
 
 .name {
@@ -73,7 +70,6 @@ h1, header {
   display: grid;
   grid-template-columns: 1f;
   justify-self: center;
-  
 }
 
 .user-name {
@@ -97,6 +93,11 @@ h1, header {
   justify-self: center;
 }
 
+.my-chart {
+  width: 80%;
+  max-width: fit-content;
+}
+
 .chart-container {
   display: grid;
   grid-template-columns: fr;
@@ -110,13 +111,12 @@ h1, header {
 
 /* ------- PROJECTS ------- */
 
- .forkedrepo-div {
+.forkedrepo-div {
   background-color: lightblue;
   border-radius: 20px;
   padding: 20px;
   margin: 25px;
   border: 7px solid darkblue;
-
 } 
 
 .projects-container {
@@ -129,14 +129,11 @@ h1, header {
   color: darkblue;
   font-size: 1,8em;
   text-transform: capitalize;
-
-  
 }
 
 .project-info {
   color: rgb(68, 68, 247);
   padding-top: 7px;
-
 }
 
 .project-info:hover {
@@ -151,18 +148,16 @@ footer {
   font-weight: bold;
   text-align: center;
   padding: 2em;
-  
 }
 
 
-/* ------- TABLET -------*/
+/* ------- TABLET AND LAPTOP -------*/
 @media (min-width:667px) {
 
   .container-chart-name-pic {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-self: center;
-    position: relative;
   }
 
   .name {
@@ -171,7 +166,6 @@ footer {
     display: grid;
     grid-template-columns: 1f;
     justify-self: center;
-    
   }
   
   .user-name {
@@ -189,58 +183,16 @@ footer {
     margin-top: 5px;
 }
 
+  .my-chart {
+    width: 80%;
+    max-width: fit-content;
+}
+
   .chart-container {
-    padding: 20px;
-    width: 20em;
     border: 7px solid darkblue;
     border-radius: 50%;
     margin: 20px;
-    position: absolute;
-   
+    height: 300px;
+    width: auto;
+    object-fit: cover;
 }
-
-/* ------- LAPTOP ------- */
-@media (min-width:1025px) {
-  .container-chart-name-pic {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-self: center;
-    
-  }
-
-  .name {
-    font-weight: bold;
-    font-size: 2.5em;
-    display: grid;
-    grid-template-columns: 1f;
-    justify-self: center;
-    
-  }
-  
-  .user-name {
-    font-size: 1.2em;
-    display: grid;
-    grid-template-columns: 1f;
-    justify-self: center;
-  }
-  
-  .github {
-    height: 45px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-self: center;
-    margin-top: 5px;
-  }
-
-  .chart-container {
-    padding: 20px;
-    width: 20em;
-    border: 7px solid darkblue;
-    border-radius: 50%;
-    margin: 20px;
-    position: absolute;
-   
-  }
-}
-
-
