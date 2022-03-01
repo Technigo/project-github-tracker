@@ -5,20 +5,24 @@ const COMMITS_URL = `https://api.github.com/repos/${username}/`;
 
 const fetchRepositories = (repositories) => {
   repositories.filter(repo => {
-    if (repo.fork === true && repo.name !== "unit-tests") {
+    if (repo.fork && repo.name !== "unit-tests") {
       fetchCommits(repo)
     }
   })
 }
 
 const fetchCommitMessages = (commits, repository) => {
-  const repositoryName = repository.name; 
+  const repositoryName = repository.name;
 
   document.addEventListener("click", function (e) {
     if (e.target && e.target.id == repositoryName) {
-      const repoClassname = `.${repository.name}`
+      const repoClassname = `.${repository.name}`;
       document.querySelectorAll(repoClassname).forEach(name => {
-        name.classList.toggle("active");
+        if (name.style.display === "none") {
+          name.style.display = "block";
+        } else {
+          name.style.display = "none";
+        }
       })
     }
   });
@@ -38,7 +42,7 @@ const fetchCommitMessages = (commits, repository) => {
     const formattedDate = date.toDateString().split(' ').slice(1).join(' ');
 
     commitsSection.innerHTML += `
-      <div id="messageWrapper" class=${repositoryName}>
+      <div id="messageWrapper" class=${repositoryName} style="display: none">
       <p class="text">${message}</p>
       <p class="subtext"><img class="icons circle" src=${avatar_url} alt=${author.name}> 
       <span class="bold-text">${author.name} </span> <span class="hide-text">committed on ${formattedDate}</span></p>

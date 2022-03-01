@@ -57,8 +57,10 @@ const displayRepositories = (repositories) => {
       updatedTime = `${seconds} seconds ago`;
     } else if (minutes < 60) {
       updatedTime = `${minutes} minutes ago`;
-    } else if (hours < 60) {
+    } else if (hours < 24) {
       updatedTime = `${hours} hours ago`;
+    } else if (hours < 48) {
+      updatedTime = `about 1 day ago`
     } else {
       updatedTime = `${numberOfDays} days ago`;
     }
