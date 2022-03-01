@@ -85,10 +85,16 @@ const getCommits = (projects, projectID) => {
         .then(res => res.json())
         .then(data => {
             let numberOfCommits = data.length
+            if (numberOfCommits === 'undefined') {
+                document.getElementById(projectID).innerHTML += `
+                <p> Commits undefined</p>
+                `
+            } else {
             document.getElementById(projectID).innerHTML += `
             <p> Number of commits: ${numberOfCommits}</p>
             `
-            console.log(numberOfCommits)
+        }
+        console.log(numberOfCommits)
         })
     }
 
@@ -101,9 +107,9 @@ const getPullRequests = (filteredRepos) => {
         .then(data => {
         
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
-        //for my pull requests - invoke step 4
-        
 
+
+        
         //conditionals to use for invoking step 4?
         // if (myPullRequests) {
         //     getCommits(projects, projectID)
