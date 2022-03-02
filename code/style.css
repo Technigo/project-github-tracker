@@ -133,8 +133,8 @@ a {
 }
 
 .chart {
-  height: 50vh;
-  width: 50vw;
+  height: 300px;
+  width: 300px;
   margin-left: 2.5em;
 }
 
@@ -162,8 +162,11 @@ footer {
   }
 
   .chart {
-    height: 30vh;
-    width: 40vw;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

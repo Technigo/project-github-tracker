@@ -4,7 +4,6 @@ const projectsContainer = document.getElementById('projects-container')
 
 // global variables + storing API
 const username = 'mathildakarlsson'
-// const projects = document.getElementById('projects')
 const API_USER = `https://api.github.com/users/${username}`
 const API_REPOS = `https://api.github.com/users/${username}/repos`
 
@@ -12,9 +11,10 @@ const API_REPOS = `https://api.github.com/users/${username}/repos`
 const options = {
     method: 'GET',
     headers: {
-        Authorization: `token ${GITHUB_TOKEN}`
-    }
-}
+          Authorization: `token ${GITHUBTOKEN}`
+      }
+  } 
+
 
 // step 1 - fetch user
 const getUser = () => {
@@ -29,8 +29,8 @@ const getUser = () => {
         </div>
         `
     })
-
-
+}
+getUser() //invoking step 1
 
 
 //step 2 - fetch repos and filter + open/closing accordion
@@ -39,21 +39,34 @@ const getRepos = () => {
     .then(res => res.json())
     .then((data) => {
         const filteredRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
-        filteredRepos.forEach((data) => {
-            let projectID = data.id
+        filteredRepos.forEach((repo) => {
             projectsContainer.innerHTML += `
-            <div class="repos" id="${projectID}">
-            <button class="project-name">${data.name}</button>
-            <div class="panel">
-            <a href="${data.html_url}">
-            <p>Link to repo</p></a>
-            <p>Branch: ${data.default_branch}</p>
-            <p id="reopName">Nr of commits:</p>
-            <p>Main language: ${data.language}</p>
-            <p>Latest push: ${new Date(data.pushed_at).toDateString()}</p>
-            </div>
+            <div class="repos" id="${repo.name}">
+                <button class="project-name">${repo.name}</button>
+                <div class="panel">
+                    <a href="${repo.html_url}">
+                    <p>Link to repo</p></a>
+                    <p>Branch: ${repo.default_branch}</p>
+                    <p>Main language: ${repo.language}</p>
+                    <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
+                </div>
             </div>
             `
+        //     technigoRepos.forEach((repo) => {
+        //         repoContainer.innerHTML += `
+        //             <div class="repo-cards" id="${
+        // repo.name
+        // }">
+        //                 <h3><a href="${repo.html_url}"><b>${
+        // repo.name
+        // }</b></a> 
+        //                  (${repo.default_branch})</h3>
+        //                 <p>Most recent push: ${new Date(repo.pushed_at).toDateString()}</p>
+        //             </div> 
+        //             `
+        //         }) 
+
+
             //open and close accordion with project info
             const acc = document.getElementsByClassName("project-name")
             let i
@@ -66,63 +79,78 @@ const getRepos = () => {
                     } else {
                         panel.style.maxHeight = panel.scrollHeight + "px"
                     } 
-                    getCommits(data, projectID)
                 })
             }
         })
-        
         getPullRequests(filteredRepos) //invoke step 3
-        
         drawChart(filteredRepos.length) //invoke the functions that draws the chart, passing on the number of projects
     })
 }
+
 getRepos()
 
-//Step 4 - fetch commits and display the amount
-const getCommits = (projects, projectID) => { 
-    const GIT_COMMIT_API = projects.commits_url.replace("{/sha)","")
-        fetch(GIT_COMMIT_API)
-        .then(res => res.json())
-        .then(data => {
-            let numberOfCommits = data.length
-            if (numberOfCommits === 'undefined') {
-                document.getElementById(projectID).innerHTML += `
-                <p> Commits undefined</p>
-                `
-            } else {
-            document.getElementById(projectID).innerHTML += `
-            <p> Number of commits: ${numberOfCommits}</p>
-            `
-        }
-        console.log(numberOfCommits)
-        })
-    }
-
 // step 3 - fetch pull requests
-// const API_PR = `https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`
 const getPullRequests = (filteredRepos) => { 
     filteredRepos.forEach(repo => {
         fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then(res => res.json())
         .then(data => {
-        
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
-
-
+        console.log(myPullRequests)
+        if (myPullRequests) {
+            getCommits(myPullRequests.commits_url, repo.name)
+         } else {
 
         //conditionals to use for invoking step 4?
         // if (myPullRequests) {
-        //     getCommits(projects, projectID)
-        // } else {
-        //     document.getElementById(`${repo.name}`).innerHTML += `
+        //     document.getElementById(`${repo.name}`).innerHTML += 
+        //     `<a href="${myPullRequests.html_url}"> Pull request</a>`
+        //  } else {
+        //      document.getElementById(`${repo.name}`).innerHTML += `
+        //         <p>PR made by group partner</p>
+        //          `
+        //  }
+        //  if (myPullRequests) {
+        //     getCommits(myPullRequests.commits_url, repo.name)
+            
+        //  } else {
+        //      document.getElementById(`${repo.name}`).innerHTML += `
         //         <p>Commit made by group partner</p>
-        //         `
-        // }
+        //          `
+        //  }
+    }
     })
-})   
+
+
+
+//Step 4 - fetch commits and display the amount
+const getCommits = (URL, repoName) => { 
+    // const GIT_COMMIT_API = `https://api.github.com/repos/${username}/${repo.name}/commits`
+        fetch(`https://api.github.com/repos/${username}/${repo.name}/commits`, options)
+        .then(res => res.json())
+        .then(data => {
+            // let numberOfCommits = data.length
+            document.getElementById(`${repo.name}`).innerHTML += `
+            <p> Number of commits: ${data.length}</p>
+            `
+        console.log(data.length)
+        })
+    }
+    })
 }
-}
-getUser() //invoking step 1
+    // const getCommits = (URL, repoName) => {
+    //     fetch (URL, options)
+    //     .then((res) => res.json())
+    //     .then(data => {
+    //         document.getElementById(`${
+    // repo.name
+    // }`).innerHTML += `<p>Number of commits: ${data.length}</p>`
+    //         // console.log(data.length)
+    //     })
+    //     }
+    //     })
+    //     } 
+
 
 
 //------------ OLD CODE - MIGHT BE USEFUL ------------
