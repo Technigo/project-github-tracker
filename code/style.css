@@ -1,7 +1,6 @@
 body {
   box-sizing: border-box;
   background: #83c5be;
-  /*006d77*/
   margin: 0;
   padding: 0;
   font-family: 'Patrick Hand', cursive;
@@ -123,7 +122,7 @@ footer {
 
   .repos {
     width: 20vw;
-    min-width: 210px;;
+    min-width: 210px;
   }
 
 }

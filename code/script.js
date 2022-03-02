@@ -57,7 +57,7 @@ const addingRepos = () => {fetch(API_URL)
 
  const findingPulls = (repos) => {                   
         repos.forEach((repo) => {                   //For all filtered repos I fetch each pull request    
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)    //, options
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)  
     .then((res) => res.json())
     .then((data) => {
 
