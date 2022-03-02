@@ -28,7 +28,11 @@ h3 {
 }
 
 .username {
-  font-size: 30px;
+  font-size: 25px;
+}
+
+.my-name {
+  font-size: 35px;
 }
 
 img {

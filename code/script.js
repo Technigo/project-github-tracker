@@ -20,7 +20,8 @@ fetch(API_URL, options)
     <img src="${data.avatar_url}" alt="Avatar of ${data.login}">
     </a>
     </div>
-    <a href="https://github.com/Mimmisen"><h1 class="username">${data.name}<h1></a>
+    <a href="https://github.com/Mimmisen"><h1 class="username">${data.login}<h1></a>
+    <div class="my-name">Mimmi Fordal Uddin</div>
 
     `;
   });
@@ -33,20 +34,19 @@ fetch(REPOS_URL, options)
     const technigoProjects = data.filter(
       (repo) => repo.name.startsWith("project-") && repo.fork
     );
+    console.log("repos", data);
 
-    //Count the repos and show the chart
     showChart(technigoProjects.length);
 
-    // repo + link to pull request and date for latest update
     technigoProjects.forEach((repo) => {
-      //Get the name of the repo
       const reponame = repo.name;
 
-      //declaring reponame to the function to display amount of push I have done for each project
       fetchTechnigo(reponame);
-      //get the url fo each repo
+
       const projectUrl = repo.html_url;
-      //get the latest push/update of the repo
+
+      const defaultBranch = repo.default_branch;
+
       const latestPushRepo = new Date(repo.updated_at).toLocaleDateString(
         "sv-SE",
         {
@@ -63,6 +63,7 @@ fetch(REPOS_URL, options)
      <h3 class="repo-title bold-text"><a class="nav-link" href='${projectUrl}'>${reponame}</a></h3>
      <p><span class="bold-text">Latest update:</span> ${latestPushRepo}</p>
      <p id="commits-${reponame}"></p>
+     <p> default branch: ${defaultBranch}</p>
      </div>
      </div>
      `;
@@ -76,7 +77,8 @@ const displayCommits = (commitsUrl, reponame) => {
     .then((data) => {
       document.getElementById(`commits-${reponame}`).innerHTML = `
         <p class="bold-text">Amount of commits: ${data.length}
-        </p>`;
+        </p>
+        `;
     });
 };
 
