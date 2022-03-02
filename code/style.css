@@ -1,3 +1,140 @@
 body {
-  background: #FFECE9;
+  box-sizing: border-box;
+  background: #83c5be;
+  margin: 0;
+  padding: 0;
+  font-family: 'Patrick Hand', cursive;
+}
+
+header {
+  background: rgb(0, 108, 117);
+  margin: 0 0 5vh 0;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+h1 {
+  display: inline;
+  margin: 0;
+  padding-top: 2vh;
+  font-size: 50px;
+
+}
+
+.profile {
+ display: inline; 
+ margin: 2vh 5vw; 
+}
+
+p {
+  color: #83c5be;
+  font-size: 18px;
+}
+
+.profile img {
+  border-radius: 50%;
+  height: 20vh;
+  box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -webkit-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+}
+
+.userlink {
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+}
+
+.repo-link {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color:#83c5be;
+}
+
+ul {
+  list-style-image: url(./images/GitHub-Mark/PNG/GitHub-Mark-32px.png);
+  
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+h4 {
+  display: inline;
+  font-size: 25px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.repos {
+  background: white;
+  font-size: 20px;
+  width: 100vw;
+  max-width: 375px;
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -webkit-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+  -moz-box-shadow: 10px 10px 29px -5px rgba(0,0,0,0.72);
+}
+
+li {
+  padding: 4% 0 4% 0;
+}
+.title {
+  font-size: 18px;
+}
+
+.chart-container {
+  width: 50vw;
+  height: 20vh;
+  margin: 0 25vw;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-text {
+  padding: 1vh 2vw;
+}
+
+@media (min-width: 668px) and (max-width: 1024px) {
+
+  header {
+    flex-direction: row;
+  }
+
+  .repos {
+    width: 20vw;
+    min-width: 210px;
+  }
+
+}
+
+@media (min-width: 1025px) {
+  
+  header {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .repos {
+    width: 20vw;
+  }
 }
