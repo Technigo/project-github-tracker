@@ -1,7 +1,6 @@
-//DOM-selector for the canvas 👇
+//DOM-selector for the canvas
 const ctx = document.getElementById('chart').getContext('2d')
 
-//"Draw" the chart here 👇
 const activateChart = (projects) => {
 
 const labels = [
@@ -21,7 +20,6 @@ const labels = [
   const config = {
     type: 'doughnut',
     data: data,
-//     // options: {}
   };
 
   new Chart(document.getElementById('chart'),config);
