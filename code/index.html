@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Project GitHub Tracker</title>
+      <link rel="stylesheet" href="./style.css" />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <body>
+      <header class="video-header">
+        <video autoplay loop muted poster="space-blue.jpg">
+        <source src="video-film.mp4" type="video/mp4" />
+        <p>Your browser dosen't support the vido tag.</p>
+        </video>
+        <h1>Welcome to my Github Tracker!</h1>
+      </header>
+    
+    <main id="projects">
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+      <div class="container-chart-name-pic">
+        <section class="user-container" id="userContainer"></section>
+        <div class="chart-container">
+            <canvas id="myChart" class="my-chart"></canvas>
+        </div>
+      </div>  
+      
+      <section class="projects-container" id="projectsContainer"></section>
+
+      <footer>
+        <div class="footer">
+          <span>Lovisa Brorson - Technigo ©2022</span>
+        </div>
+      </footer>
+    </main>
+      
+    <script src="./token.js"></script>
+    <script src="./chart.js"></script> 
+    <script src="./script.js"></script>
+  
+  </body>
 </html>
