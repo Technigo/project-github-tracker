@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eyahya's GitHub Tracker</title>
+  <link rel="shortcut icon" href="./img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="main-grid">
+  <header class="header">
+    <h1 class="header-text">GitHub Tracker</h1>
+    <div class="search-container">
+      <form id="search-form">
+        <input class="input-field" id="search-field" type="text" placeholder="Search eyahya's repo here..." autocomplete="off"/>
+        <input type="submit" id="searchbtn" class="button-search" value="Search">
+    </form>
+  </div>
+  </header>
+
+  <div id="myProfile" class="my-profile"></div>
+  <div id="loading" class="lds-ripple"></div>
+
+  <main id="projects" class="grid-container"></main>
+  <!-- This will be used to draw the chart -->
+  <div class="chart">
+    <canvas id="chart"></canvas>
+  </div>
+
+  <script src="./chart.js"></script>
+  <script src="./secret.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
