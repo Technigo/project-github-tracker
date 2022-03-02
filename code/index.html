@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mimmis Project GitHub Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!--font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="headerBox">
+      <h1>GitHub Tracker</h1>
+      <h3>Technigo Student Spring 2022</h3>
+    </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <main>
+      <section class="projects">
+        <div class="section-projects__container" id="section-projects"></div>
+      </section>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+      <!-- This will be used to draw the chart 👇 -->
+      <canvas id="chart" class="chart">
+        <p id="numberOfProjects" class="number-of-projects"></p>
+      </canvas>
+    </main>
+
+    <script src="./chart.js"></script>
+    <script src="./secret.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>
