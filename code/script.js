@@ -43,6 +43,7 @@ const getRepos = () => {
     .then((reposData) => {
         console.log(reposData)
         const forkedRepos = reposData.filter((repo) => repo.fork && repo.name.startsWith("project-"))
+        forkedRepos.sort((oldestRepo, newestRepo) => new Date(newestRepo.pushed_at) - new Date(oldestRepo.pushed_at));
 
         forkedRepos.forEach(repo => {
 
