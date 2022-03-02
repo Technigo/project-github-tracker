@@ -34,8 +34,6 @@ fetch(REPOS_URL, options)
     const technigoProjects = data.filter(
       (repo) => repo.name.startsWith("project-") && repo.fork
     );
-    console.log("repos", data);
-
     showChart(technigoProjects.length);
 
     technigoProjects.forEach((repo) => {
