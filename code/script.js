@@ -27,10 +27,9 @@ fetch(URL_REPO, options)
   .then(res => res.json())
   .then(data => {
 
-  //Get technigo projects by filtering data by repos that starts with "project- and is forked"
+  
   const technigoProjects = data.filter(repo => repo.name.startsWith('project-') && repo.fork)
   
-  //Get image and url from user profile and display on website
   document.getElementById('profile-picture').innerHTML = `
   <img class="box-shadow" src='${data[0].owner.avatar_url}' alt='image of emmahogberg88 at GitHub'>
   `
@@ -68,9 +67,7 @@ fetch(URL_REPO, options)
 const repoData = (technigoProjects) => {
 
 
-  //Loop through array to get data about each item in array
   technigoProjects.forEach(repo => {
-  //Get name of repo and date of latest update of the repo
   const reponame = repo.name 
 
   //Display HTML for all GitHub repos on website, setting dynamic ID to be able to add on more HTML in another function
@@ -131,7 +128,7 @@ const repoData = (technigoProjects) => {
 ////////////////////////       LANGUAGES DATA        ///////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
-//Find languages for each repo
+
 const languagesData = (username, reponame) => {
 
   fetch(`https://api.github.com/repos/${username}/${reponame}/languages`, options)

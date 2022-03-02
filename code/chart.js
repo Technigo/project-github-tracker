@@ -1,11 +1,10 @@
 //DOM-selector for the canvas 👇
-const ctx = document.getElementById('chart').getContext('2d')
+const chart = document.getElementById('chart').getContext('2d')
 
 Chart.defaults.font.family = 'Roboto'
 Chart.defaults.font.size = 23
 Chart.defaults.color = 'white'
 
-//"Draw" the chart here 👇
 progressChart = (projectsDone) => {
     
     const config = {
@@ -52,35 +51,6 @@ progressChart = (projectsDone) => {
         }
     }
 
-
-    // const config = {
-    //     type: 'bar',
-    //     data: {
-    //         datasets: [{
-    //             label: '',
-    //             backgroundColor: ['rgb(97, 192, 194)', 'rgb(186, 223, 215)'],
-    //             data: [projectsLeft, 19 - projectsLeft],
-    //             barPercentage: 1.0,
-    //         }],
-            
-    //         // These labels appear in the legend and in the tooltips when hovering different arcs
-    //         labels: [
-    //             'done 🗸',
-    //             'todo 📝',
-    //         ]
-    //     },
-
-    //     options: {
-    //         scales: {
-    //             xAxes: [{
-    //                 stacked: true
-    //             }],
-    //             yAxes: [{
-    //                 stacked: true
-    //             }]
-    //         }
-    //     }
-    // }
     
-    const myChart = new Chart(ctx, config);
+    const myChart = new Chart(chart, config);
 }
