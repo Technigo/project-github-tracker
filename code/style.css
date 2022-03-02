@@ -1,3 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ -webkit-font-smoothing: antialiased;
+ text-rendering: optimizeLegibility;
+ font-family: "Roboto", sans-serif
+}
+
+h1 {
+  max-height: 5vh;
+  min-height: 2vh;
+  font-weight: 500;
+  padding-bottom: 1vh;
+  margin-bottom: 1vh
+}
+
+p {
+  padding: 0.5vh
+}
+
+a {
+  color: rgb(255, 69, 0)
+}
+
+.hero-image {
+  background-image: url("hero-grafitti2.jpg");
+  width: 100vw;
+  height: 30vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
 body {
-  background: #FFECE9;
+  color: black;
+}
+
+.user-container {
+  position: relative;
+  text-align: center;
+  bottom: 12vh
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 25vh;
+  filter: grayscale(100%)
+}
+
+.project-container {
+  display: grid;
+  margin-top: -5vh;
+  justify-content: center;
+  text-align: center;
+}
+.repos {
+  padding-bottom: 5vh;
+  font-weight: 300;
+  margin-bottom: 5vh;
+  padding: 1vh;
+  cursor: pointer;
+}
+
+.project-container :hover {
+  background: linear-gradient(90deg, #D1D1D1, #e6e6e6 50%, #e6e6e6 50%, #e6e6e6 50%, #D1D1D1);
+}
+
+.chart-section {
+  display: flex;
+  justify-content: center;
+  margin: 7vh 0 15vh;
+}
+.chart-container {
+  max-width: 50vw;
+  min-width: 50vw
+}
+
+/*media queries*/
+@media screen and (min-width: 668px) {
+ .hero-image {
+   height: 35vh
+ }
+ .user-container {
+  bottom: 15vh
+}
+ .user-image {
+   width: 30vh
+ }
+ .project-container {
+   grid-template-columns: 1fr 1fr
+ }
+ h1 {
+  margin-bottom: 2vh
+  }
+}
+
+@media screen and (min-width: 1025px) and (orientation: landscape) {
+  .hero-image {
+    height: 55vh
+  }
+  .user-container {
+    bottom: 18vh
+  }
+  .user-image {
+    width: 35vh
+  }
+  .project-container {
+    margin-left: 12vw;
+    margin-right: 12vw
+  }
 }

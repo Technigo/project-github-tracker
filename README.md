@@ -1,13 +1,12 @@
 # GitHub Tracker
-
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Assignment to fetch Technigo Projects with name and URL +  number of commits via pull requests.
+Also calculate projects made comparing to projects remaining.
 
 ## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I started with the Js file - trying one API fetch at a time - console logging and then positioning the data in InnerHTML before declaring and invoking next function. After all information i needed was fetched I did the styling. Last I made the chart and the token.
+I googled, used SO for checking other people questions regarding this project.
+If I had more time I would have added more information like commit comments.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://ecstatic-wing-3740de.netlify.app/
