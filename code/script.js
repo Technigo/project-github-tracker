@@ -41,13 +41,14 @@ const getRepos = () => {
         const filteredRepos = data.filter((repo) => repo.fork && repo.name.startsWith('project'))
         filteredRepos.forEach((repo) => {
             projectsContainer.innerHTML += `
-            <div class="repos" id="${repo.name}">
+            <div class="repos">
                 <button class="project-name">${repo.name}</button>
                 <div class="panel">
                     <a href="${repo.html_url}">
                     <p>Link to repo</p></a>
                     <p>Branch: ${repo.default_branch}</p>
                     <p>Main language: ${repo.language}</p>
+                    <p id="commit-${repo.name}"> Number of commits: </p>
                     <p>Latest push: ${new Date(repo.pushed_at).toDateString()}</p>
                 </div>
             </div>
@@ -98,9 +99,10 @@ const getPullRequests = (filteredRepos) => {
         const myPullRequests = data.find((pull) => pull.user.login === repo.owner.login)
         console.log(myPullRequests)
         if (myPullRequests) {
-            getCommits(myPullRequests.commits_url, repo.name)
+            getCommits(myPullRequests.commits_url, `${repo.name}`)
          } else {
-
+            document.getElementById(`${repo.name}`).innerHTML += 
+            `commits made by group partner`
         //conditionals to use for invoking step 4?
         // if (myPullRequests) {
         //     document.getElementById(`${repo.name}`).innerHTML += 
@@ -130,12 +132,9 @@ const getCommits = (URL, repoName) => {
         .then(res => res.json())
         .then(data => {
             // let numberOfCommits = data.length
-            document.getElementById(`${repo.name}`).innerHTML += `
-            <p> Number of commits: ${data.length}</p>
-            `
-        console.log(data.length)
+            document.getElementById(`commit-${repo.name}`).innerHTML += data.length
         })
-    }
+        }
     })
 }
     // const getCommits = (URL, repoName) => {
@@ -248,5 +247,5 @@ const getCommits = (URL, repoName) => {
 //     }
 // })
 // }
-// getUser() //invoking step 1
+
                     

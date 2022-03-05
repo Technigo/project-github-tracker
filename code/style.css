@@ -138,6 +138,11 @@ a {
   margin-left: 2.5em;
 }
 
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
 footer {
   height: 15vh;
   width: 100vw;
@@ -182,14 +187,14 @@ footer {
   .github-tracker {
     position: absolute;
     top: -30%;
-    left: 25%;
+    left: 35%;
     font-size: 50px;
   }
 
   .github-logo {
     position: absolute;
     top: 11%;
-    left: 27%;
+    left: 37%;
     border-radius: 1em;
     height: 3em;
   }
@@ -198,7 +203,7 @@ footer {
     display: block;
     position: absolute;
     top: 29%;
-    right: 63%;
+    right: 67%;
     font-size: 25px;
     letter-spacing: .5em;
     font-weight: 100;
@@ -215,7 +220,7 @@ footer {
   .user-name {
     position: absolute;
     top: 80%;
-    right: 60%;
+    right: 65%;
     font-size: 25px;
   }
   
@@ -223,7 +228,7 @@ footer {
     font-size: 25px;
     position: absolute;
     top: 20%;
-    right: 15%;
+    right: 18%;
   }
   
   .chart {
