@@ -8,4 +8,4 @@ I first tried the API and played around to try to find the different data I woul
 
 ## View it live
 
-https://app.netlify.com/sites/github-tracker-week7/overview
+https://github-tracker-week7.netlify.app
