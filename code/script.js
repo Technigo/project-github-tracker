@@ -112,7 +112,12 @@ const commitFetch = (projects, projectsID) => {
         }
         // Formatting MONTHS
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let lastCommitMonthNumber = lastCommitDateRaw.substring(5,7).replace("0","")
+        let lastCommitMonthNumber
+        if (lastCommitDateRaw.substring(5,7) !== 10) {
+            lastCommitMonthNumber = lastCommitDateRaw.substring(5,7).replace("0","")
+        } else {
+            lastCommitMonthNumber = lastCommitDateRaw.substring(5,7)
+        }
         let lastCommitMonth = months[lastCommitMonthNumber - 1]
         // Extracting YEAR
         let lastCommitYear = lastCommitDateRaw.substring(0,4)
