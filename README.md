@@ -10,16 +10,18 @@ The website should also include a chart that showed how many projects was done i
 
 I started with fetching the Github API for my user and my repositories. Then I could display my username and profile pic as well as filter out the repositories so only the forked ones marked as "project-" was displayed.
 
-I continued with building up info about default branch etc in innerHTML. Then I fetched all pullrequests and filtered out so only my own was left by comparing "pull.user.login" with "repo.owner.login". Then I tried to display number of commits by using the commit_url, but for some reason it won't show. I will take a closer look at this and ask for help in StackOverflow.
+I continued with building up info about push date, default branch etc in innerHTML. Then I fetched all pullrequests and filtered out so only my own was left by comparing "pull.user.login" with "repo.owner.login". I used a dynamic ID for the innerHTML-element to display the number of commits in the panel.
 
-Then I created a chart using chart.js. It went well with styling etc but when I tried to wrap it up in a function that I then called in the js-file the chart wouldn't show at all on the website. I tried different things but as for the commit-issue I will have to dig deeper on this one. Hopefully some of my classmates can help me.
+Then I created a chart using chart.js and called the function for it in script-file. To be able to style the chart I put it in a div-element in the HTML-file.
 
 For this project I used a personal API token from Github, and making it secret by using secret.js and gitignore.
 
-Lastly I styled the webpage and made it responsive. I'm happy with the accordion and the way the flex/grid is responsive, but there's some things in the user-section that doesn't look quite right in desktop-size. I think it is because of the position: absolute and how the headers are positioned in relation to the profile pic and the chart.
+Lastly I styled the webpage and made it responsive. I'm happy with the accordion and the way the flex/grid is responsive, but the headers in the user-section doesn't look quite right in desktop-size. I think it is because of the position: absolute and how the headers are positioned in relation to the profile pic and the chart.
 
-Since I still have some issues that needs to be fixed, I'll save my commented out code in js-file for now. I've tried some different approaches and need to see which could best be modified.
+If I had more time I would give the styling of the website a little more love. I would also make another chart.
+
+
 
 ## View it live
 
-https://serene-mayer-c47183.netlify.app/
+https://confident-brattain-b7ba85.netlify.app/
