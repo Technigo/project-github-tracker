@@ -58,7 +58,7 @@ p {
 img {
   width: 250px;
   border-radius: 50%;
-  border: 5px solid var(--secondary);
+  border: 5px solid var(--accent);
   margin-block: 2em; 
 }
 
@@ -98,11 +98,11 @@ a.nav-link:hover::before {
 
 a.a-footer,
 a.a-footer:active {
-  color: var(--secondary);
+  color: var(--accent);
 }
 
 a.a-footer:hover {
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 
@@ -129,7 +129,7 @@ a.a-footer:hover {
 
 .filled-button,
 .outlined-button {
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 5px 15px;
   font-size: 1rem;
   cursor: pointer;
@@ -137,16 +137,17 @@ a.a-footer:hover {
 
 .filled-button,
 .outlined-button:hover {
-  background-color: var(--secondary);
+  background-color: var(--accent);
   color: var(--primary);
   border: none;
 }
+
 
 .filled-button:hover,
 .outlined-button {
   padding: 6px 16px;
   background-color: var(--primary);
-  color: var(--secondary);
+  color: var(--accent);
   border-color: var(--secondary);
 }
 
@@ -265,7 +266,10 @@ input:checked + label {
 }
 
 .section-projects__card {
-  background: var(--accent);
+  /* background: var(--accent); */
+  border-top: 1px solid var(--accent);
+  border-left: 8px solid var(--accent);
+  background: #f0f0f0;
   width: 350px;
   padding: 1em;
   margin: 1em;
@@ -281,7 +285,7 @@ input:checked + label {
 
 .repo-languages--item:not(:last-child):after {
     content: ' || ';
-    color: var(--secondary);
+    color: var(--accent);
     font-weight: bold;
 }
 
