@@ -1,3 +1,443 @@
+/* Global css variables used for colors */
+:root {
+  --primary: rgb(22, 19, 21);
+  --secondary: rgb(198, 228, 207);
+  --accent: rgb(111, 167, 132);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body {
-  background: #FFECE9;
+  background: var(--secondary);
+  color: var(--accent);
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  padding-bottom: 0;
+}
+
+
+/***************************************************/
+/***************** Fonts and text *****************/
+/*************************************************/
+
+h1 {
+  font-family: 'Manrope', sans-serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+h3 {
+  text-transform: uppercase;
+  border-block: 1px solid var(--primary);
+  padding: 0;
+  margin-bottom: 0.5em;
+}
+
+h3, 
+h4 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  padding: 0.5em 0;
+}
+
+p {
+  color: var(--primary);
+}
+
+/***************************************************/
+/********************* Image **********************/
+/*************************************************/
+
+img {
+  width: 250px;
+  border-radius: 50%;
+  border: 5px solid var(--accent);
+  margin-block: 2em; 
+}
+
+
+/***************************************************/
+/********************** Links *********************/
+/*************************************************/
+
+a,
+a:active {
+  text-decoration: none;
+}
+
+a.nav-link,
+a.nav-link:active {
+  position: relative;
+  color: var(--primary);
+}
+
+a.nav-link::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1.4em;
+  bottom: 0;
+  left: 0;
+  background-color: #2222227a;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.3s ease;
+}
+
+a.nav-link:hover::before {
+  transform: scaleX(1);
+}
+
+a.a-footer,
+a.a-footer:active {
+  color: var(--accent);
+}
+
+a.a-footer:hover {
+  color: var(--secondary);
+}
+
+
+/***************************************************/
+/************ Reusable styling elements ***********/
+/*************************************************/
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+.box-shadow {
+  box-shadow:
+  7px 7px 20px 0px #0002,
+  4px 4px 5px 0px #0001;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+/* Buttons */
+
+.filled-button,
+.outlined-button {
+  border-radius: 2px;
+  padding: 5px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.filled-button,
+.outlined-button:hover {
+  background-color: var(--accent);
+  color: var(--primary);
+  border: none;
+}
+
+
+.filled-button:hover,
+.outlined-button {
+  padding: 6px 16px;
+  background-color: var(--primary);
+  color: var(--accent);
+  border-color: var(--secondary);
+}
+
+/***************************************************/
+/******************** Header **********************/
+/*************************************************/
+
+header {
+  background-color: var(--secondary);
+  color: var(--primary);
+  flex-direction: column;
+  max-width: 100vw;
+  min-height: 30vh;
+}
+
+
+/***************************************************/
+/**************** Section owerview ****************/
+/*************************************************/
+
+.section-overwiew {
+  background: var(--primary);
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1em 0;
+}
+
+
+/***************************************************/
+/***************** Toggle switsh ******************/
+/*************************************************/
+.toggle-switch{
+  flex-direction: column;
+  margin-top: 2em;
+  align-items: center;
+}
+
+.toggle-text {
+  margin-bottom: -0.65em;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+label {
+  display: block;
+  width: 150px;
+  height: 45px;
+  background-color: var(--primary);
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 0 20px #477a8550;
+}
+
+label::before {
+  content: 'latest update';
+  color: var(--accent);
+  font-weight: 500;
+  position: absolute;
+  bottom: 13px;
+  left: 45px;
+}
+
+input:checked + label::before{
+  content: 'name';
+  color: var(--primary);
+  left: 50px;
+}
+
+label::after {
+  content: '';
+  width: 35px;
+  height: 35px;
+  background-color: var(--accent);
+  position: absolute;
+  border-radius: 70px;
+  top: 5px;
+  left: 5px;
+  transition: 0.5s ease;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+  background-color: var(--secondary);
+}
+
+input:checked + label {
+  background-color: var(--accent);
+  color: var(--primary)
+}  
+
+
+/***************************************************/
+/**************** Section projects ****************/
+/*************************************************/
+
+.section-projects {
+  position: relative;
+}
+
+.section-projects__container {
+  background: var(--secondary);
+  padding: 2em 0;
+  min-height: 100%; 
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.section-projects__card {
+  /* background: var(--accent); */
+  border-top: 1px solid var(--accent);
+  border-left: 8px solid var(--accent);
+  background: #f0f0f0;
+  width: 350px;
+  padding: 1em;
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} 
+
+.repo-languages {
+  color: var(--primary);
+  padding-bottom: 0.25em;
+}
+
+.repo-languages--item:not(:last-child):after {
+    content: ' || ';
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.card-btn {
+  padding-top: 1em;
+  justify-content: space-between;
+}
+
+/***************************************************/
+/********************* Modal **********************/
+/*************************************************/
+
+.modal-wrapper {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: scroll; 
+  background-color: var(--secondary); /* Fallback color */
+  background-color: rgba(226, 193, 213, 0.746); 
+}
+
+.modal-content {
+  background-color: rgb(245, 234, 240);
+  margin: 15% auto; 
+  padding: 20px;
+  width: 80%;
+}
+
+.modal-text:not(:last-child):after {
+  content: ' __________';
+  display: block;
+  position: relative;
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+.modal-btn {
+  margin: auto; 
+  position: absolute;
+  top: 1em;
+  right: 2.5em;
+}
+
+/***************************************************/
+/********************* Footer *********************/
+/*************************************************/
+
+footer {
+  background: var(--primary);
+  font-size: 2rem;
+  padding: 0.25em;
+  width: 100%;
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+
+/***************************************************/
+/********************* Media query *********************/
+/*************************************************/
+
+/********************** TABLET **********************/
+
+@media (min-width: 768px) {
+  
+  html {
+    font-size: 120%;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  img {
+    width: 300px;
+  }
+
+  .section-overwiew {
+    flex-direction: row;
+    min-height: 50vh;
+  }
+
+  .section-projects__container {
+    justify-items: center;
+  }
+
+  label {
+    width: 230px;
+    height: 50px;
+  }
+  
+  label::before {
+    font-size: 1.2em;
+    bottom: 12px;
+    left: 55px;
+  }
+
+  input:checked + label::before {
+    left: 80px;
+  }
+
+  label::after {
+    width: 40px;
+    height: 40px;
+  }
+
+  .section-projects__card {
+    min-width: 475px
+  } 
+
+  footer {
+    padding: 0.3em;
+  }
+}
+
+/************************ DESKTOP *********************/
+
+@media (min-width: 1300px) {
+  
+  html {
+    font-size: 140%;
+  }
+
+  img {
+    width: 350px;
+  }
+
+  label {
+    width: 300px;
+    height: 60px;
+  }
+  
+  label::before {
+    bottom: 15px;
+    left: 80px;
+  }
+
+  input:checked + label::before {
+    left: 110px;
+  }
+  
+  label::after {
+    width: 50px;
+    height: 50px;
+  }
+
+  .section-overwiew {
+    padding-inline: 4em;
+  }
 }

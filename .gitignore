@@ -1,0 +1,6 @@
+# Ignore environmental API keys
+.env
+
+
+# Other
+code/secret.js

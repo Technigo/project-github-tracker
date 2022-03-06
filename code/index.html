@@ -4,18 +4,67 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/c7081c8e9b.js" crossorigin="anonymous"></script>
+  <title>Emma´s Project GitHub Tracker</title>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="flex">
+    <h1>GitHub Tracker</h1>
+    <h2>Technigo Boot Camp Spring ´22</h2>
+    <h4 id="username">emmahogberg88</h4>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <main id="projects">
+ 
+    <section class="section-overwiew flex" id="section-overwiew">
+      <div id="profile-picture">Profile picture</div>
+      <div class="chart-container">        
+        <!-- This will be used to draw the chart 👇 -->
+        <canvas id="chart" class="chart"></canvas>
+      </div>
+    </section>
 
-  <script src="./script.js"></script>
+    <section class="section-projects">
+      <div class="toggle-switch flex">
+        <p class="toggle-text bold-text">Sort by:<p>
+        <input type="checkbox" name="switch" id="switch">
+        <label for="switch"></label>
+      </div>
+      
+      <div class="section-projects__container" id="section-projects">
+      </div>
+    </section>  
+
+    <section id="modal-wrapper" class="modal-wrapper">
+      <div>
+        <button id="modal-btn" class="modal-btn filled-button">Close</button>
+        <div id="modal" class="modal-content"></div>
+      </div>
+    </section>
+  
+  </main>
+
+  <footer>
+    <div class="footer-items">
+      <a class="a-footer" href="https://github.com/emmahogberg88">
+        <i class="fab fa-github"></i>
+      </a>
+      <a class="a-footer" href="https://www.linkedin.com/in/emmahogberg/">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="a-footer" href="https://twitter.com/Emm4_dev">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+  </footer> 
+
+  <script src="./secret.js"></script>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
