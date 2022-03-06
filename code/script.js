@@ -110,24 +110,26 @@ const handlePullRequest = (repoElementId, myPullRequests) => {
                         <p>${data.length} commits</p>
                         <p>latest: <a href=${commitUrl}>${commitMessage}</a> by ${commitAuthor} ${commitTimeSince}</p>
                     </div>
-                `
+                    `
+
+
+                    myPullRequests
+                        .map(pullRequest => pullRequest.review_comments_url)
+                        .forEach(reviewCommentUrl => {
+                            fetch(reviewCommentUrl + "?per_page=100", options)
+                                .then(res => res.json())
+                                .then(data => {
+                                    const repo = document.getElementById(repoElementId);
+                                    repo.innerHTML += `
+                                        <div class="comments">
+                                            <span>received ${data.length} comments</span>
+                                        </div>
+                                    `
+                                })
+                        })
                 })
         })
 
-    myPullRequests
-        .map(pullRequest => pullRequest.review_comments_url)
-        .forEach(reviewCommentUrl => {
-            fetch(reviewCommentUrl + "?per_page=100", options)
-                .then(res => res.json())
-                .then(data => {
-                    const repo = document.getElementById(repoElementId);
-                    repo.innerHTML += `
-                        <div class="comments">
-                            <span>received ${data.length} comments</span>
-                        </div>
-                    `
-                })
-        })
 }
 
 function timeSince(date) {
