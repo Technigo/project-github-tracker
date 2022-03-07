@@ -131,7 +131,7 @@ const commitFetch = (projects, projectsID) => {
             `
 
         // If statement to check if last commit includes netlify link
-        if (lastCommitLink.includes('netlify') === true) {
+        if (lastCommitLink.includes('https://') === true) {
             document.getElementById(`${projectsID}2`).innerHTML += `
             <p>View it live <a href="${lastCommitLink}" target="_blank">here</a>.
             `
