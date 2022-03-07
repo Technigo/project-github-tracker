@@ -96,7 +96,7 @@ const commitFetch = (projects, projectsID) => {
 
         for (let i = 0; i < data.length; i++) {
             let author = data[i].commit.author.name
-            if (author === "Michael Dohmann Chang") {
+            if (author.includes("Chang") === true) {
                 filteredCommits.push('1')
             }
         };
