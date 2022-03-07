@@ -8,4 +8,4 @@ I approached the problem in 2 main steps: first extracting data from a -filtered
 
 ## View it live
 
-https://vibrant-heisenberg-b96d49.netlify.app
+https://kara-howes-tracker.netlify.app/
