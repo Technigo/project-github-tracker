@@ -1,3 +1,67 @@
 body {
-  background: #FFECE9;
+  background: peachpuff;
 }
+
+ h1 {
+ font-size: 80px;
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ color: darkseagreen;
+text-align: center; 
+
+}
+
+.profile-picture {
+width: 200px;
+height: 200px;
+text-align: center;
+border: 1px solid transparent;
+border-radius: 50px;
+
+}
+
+h2 {
+font-size: 50px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: darkseagreen;
+text-align: center; 
+padding-top: 30px;
+
+}
+
+
+project-container {
+
+flex-direction: column;
+justify-content: center;  
+
+}
+
+
+h4 {
+box-sizing: border-box;
+}
+
+
+@media (min-width:667px) {
+  h1 {
+    font-size: 100%;
+    text-align: center; 
+
+  }
+h2 {
+  text-align: center; 
+  padding-top: 30px;
+  
+
+}
+}
+
+@media (min-width:1024) {
+  h1 { font-size: 100%;
+  text-align: center;
+}
+}
+
+
+
+

@@ -6,16 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="title">
+  <h1>Projects at Technigo </h1>
+</header>
 
+  <main>
+    
+    <div class="profile-container" id="profile">
+    </div>
+    
+    <div class="project-container" id="project" >
+    </div>
+    <div class="commits" id="commits">
+      <h4> PROJECTS COMMITS </h4>
+
+    </div>
+    
+  </main>
+  
   <!-- This will be used to draw the chart 👇 -->
+  <div class="chart-container"> 
   <canvas id="chart"></canvas>
+</div>
 
-  <script src="./script.js"></script>
+</main> 
+   
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
+  
 </body>
 </html>
