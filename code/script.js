@@ -92,8 +92,17 @@ const commitFetch = (projects, projectsID) => {
         .then(res => res.json())
         .then(data => {
 
+        const filteredCommits = []
+
+        for (let i = 0; i < data.length; i++) {
+            let author = data[i].commit.author.name
+            if (author === "Michael Dohmann Chang") {
+                filteredCommits.push('1')
+            }
+        };
+
         // Defining number of commits
-        let numberOfCommits = data.length;
+        let numberOfCommits = filteredCommits.length;
 
         // Last Commit Message - Committed Netlify Link to add to live link.
         let lastCommitLink = data[0].commit.message
