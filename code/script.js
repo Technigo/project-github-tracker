@@ -37,7 +37,6 @@ const fetchRepositories = () => {
         (repo) => repo.fork && repo.name.startsWith("project-")
       );
 
-      //A function for filtering out the forked projects
       forkedRepos.forEach((repo) => {
         projects.innerHTML += `
   <div class="repos">
@@ -55,7 +54,6 @@ const fetchRepositories = () => {
 
       fetchPullRequestsArray(forkedRepos);
 
-      //Draw chart with forkedRepos data
       drawChart(forkedRepos.length);
     });
 };
@@ -72,9 +70,6 @@ const fetchPullRequestsArray = (allRepositories) => {
         );
         console.log(myPullRequest);
 
-        // Indicates a pull request or not.
-        // If yes - call fetchCommits function
-        // If no - inform user that no pull request was yet done
         if (myPullRequest) {
           fetchCommits(myPullRequest.commits_url, repo.name);
         } else {
@@ -85,7 +80,6 @@ const fetchPullRequestsArray = (allRepositories) => {
   });
 };
 
-//function to get commit number for each project
 const fetchCommits = (myCommitsUrl, myRepoName) => {
   fetch(myCommitsUrl, options)
     .then((res) => res.json())
