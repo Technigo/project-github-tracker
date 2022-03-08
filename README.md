@@ -1,6 +1,7 @@
 # GitHub Tracker
 
-This week, we have created a place to keep track of the GitHub repos that Im using here at Technigo.
+The project is to build a GitHub tracker to gather my Technigo repositories in order to practice JavaScript and API skills through GitHub API. 
+It contains some data about the repositories like commits, lastest push and so on.
 
 ## The problem
 
