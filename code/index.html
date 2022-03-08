@@ -3,19 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Technigo Projects GitHub Tracker | michaelchangdk</title>
+  <!-- Link to Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <!-- Link Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto+Mono:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Link to StyleSheet -->
   <link rel="stylesheet" href="./style.css" />
+  <!-- Link to Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
 
+  <!-- Header for Avatar & Username -->
+  <header class="layout"></header>
+
+  <!-- Projects List & Info Section -->
+  <section class="layout projects" id="projects">
+    <h2 class="title">Technigo Projects:</h2>
+  </section>
+
+<!-- Charts Section -->
+  <section class="charts-wrapper layout">
+    <div class="chart-container bootcamp-chart">
+      <h2 class="title">Bootcamp Progress:</h2>
+      <canvas id="myChart" class="chart">
+      </canvas>
+    </div>
+
+    <div class="chart-container sprint-chart">
+      <h2 class="title">Sprint Progress:</h2>
+      <canvas id="sprintChart" class="chart">
+      </canvas>
+    </div>
+  </section>
+
+  <!-- JS Scripts -->
+  <script src="./token.js"></script>
   <script src="./script.js"></script>
-  <script src="./chart.js"></script>
+  <script src="./chart.js"></script> 
+  <script src="./chart2.js"></script>
 </body>
 </html>

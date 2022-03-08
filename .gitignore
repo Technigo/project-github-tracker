@@ -1,0 +1,8 @@
+#API KEY
+code/token.js
+
+# Ignore node_modules folder
+node_modules
+
+# Ignore files related to API keys
+.env

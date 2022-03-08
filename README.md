@@ -1,13 +1,11 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The brief was to create a tracker over all of our forked technigo projects from Github, as well as a chart showing our current progress.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+I first tried the API and played around to try to find the different data I would need, and where I would find the links to the rest of the fetches I needed. After feeling comfortable with where I could find the different information I needed, I began setting up my javascript. I didn't spend much time on design this week, and I struggled a bit with the chart.js documentation, but in the end I was very satisfied with the solutions I came up with. I also spent some time debugging a few small issues I had and refactoring my code to make it more readable.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-week7.netlify.app
