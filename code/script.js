@@ -87,7 +87,7 @@ const getProjects = async () => {
 
 // Function for Fetching Commits and Live Link
 const commitFetch = (projects, projectsID) => {
-    const GIT_COMMIT_API = projects.commits_url.replace("{/sha}", "")
+    const GIT_COMMIT_API = projects.commits_url.replace("{/sha}", "") + "?per_page=100"
     fetch(GIT_COMMIT_API, options)
         .then(res => res.json())
         .then(data => {
