@@ -1,8 +1,6 @@
 # GitHub Tracker
 
-The assignment was to create a place to keep track of the GitHub repos that I use at Technigo. The focus was JavaScript and API.
-
-Also it was very interesting using the open-source `Chart.js` to create the chart about how many projects we finished and how many projects left at the Technigo course. (See `https://www.chartjs.org/docs/latest/`)
+The aim of the project was to build a personal github tracker that would show my technigo-projects. This was done by fetching and displaying data from API's, using forEach, filter and find methods. A doughnut chart was also implemented to give a visual display of the amount of projects done. In terms of styling, a CSS grid and a hero header was used.
 
 ## The problem
 
@@ -11,5 +9,4 @@ The solution were to scale down the project and do small chunks at a time.
 
 ## View it live
 
-https://sharp-bell-9c5d9b.netlify.app
-
+https://github-tracker-fatima.netlify.app/

@@ -14,7 +14,6 @@ const getMyProfile = () => {
   fetch(API_GITHUB_PROFILE)
   .then(resp => resp.json())
   .then(data => {
-    console.log(data)
     profileSection.innerHTML = `
     <div class=picture-container>
        <img class="profile-pic" alt="profile picture" src = ${data.avatar_url}/>
@@ -37,7 +36,8 @@ const getRepos = (search) => {
   fetch(API_GITHUB)
     .then((resp) => resp.json())
     .then((data) => {
-      let forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-")); // Filtering the repos that are forked from Technigo
+      // Filtering the repos that are forked from Technigo plus the ones that start with the project word
+      let forkedRepos = data.filter((repo) => repo.fork && repo.name.startsWith("project-"));
       forkedRepos.forEach((repo) => {
       projectsContainer.innerHTML += `
       <div class="card">
