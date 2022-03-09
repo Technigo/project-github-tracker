@@ -1,3 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 body {
-  background: #FFECE9;
+  font-family: 'PT Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.user-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.github-tracker {
+  margin-top: 3.5em;
+  padding: 2em;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  align-self: center;
+}
+
+.user-header {
+  display: none;
+}
+
+.github-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-logo {
+  background-color: white;
+  border-radius: 1em;
+  height: 1.7em;
+}
+
+.user-name {
+  padding-left: .5em;
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
+}
+
+.user-img {
+  height: 11em;
+  align-self: center;
+  border-radius: 8em;
+  margin-bottom: 3.5em;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.projects-header {
+  margin-bottom: 2em;
+  font-size: 28px;
+  letter-spacing: .5em;
+  font-weight: 100;
+  text-align: center;
+}
+
+.project-name {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  padding: .8em .5em;
+  margin-top: 1em;
+  width: 90vw;
+  border: none;
+  outline: none;
+  transition: 1s;
+  overflow: visible;
+  text-align: center;
+  background-color: rgb(104, 131, 180);
+}
+
+.project-name:hover {
+  font-weight: 800;
+  background-color: rgb(59, 83, 129);
+}
+
+.panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-heigth 1s ease-out;
+  font-size: 20px;
+  transition: max-heigth 1s ease-out;
+  color: rgb(104, 131, 180);
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.panel a {
+  color: rgb(104, 131, 180);
+}
+
+.active + .panel {
+  display: block;
+  transition: 1s;
+  margin: 1em 0;
+}
+
+.active {
+  font-weight: bold;
+  border-radius: 1em;
+  background-color: rgb(59, 83, 129);
+}
+
+.chart-header {
+  margin: 2.5em 0 2em 0;
+  font-size: 28px;
+  letter-spacing: .5em;
+  font-weight: 100;
+  text-align: center;
+}
+
+.chart {
+  height: 300px;
+  width: 300px;
+  margin-left: 2.5em;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  height: 15vh;
+  width: 100vw;
+  text-align: center;
+  padding-top: 4em;
+  margin-top: 4em;
+}
+
+
+/* TABLET */
+@media screen and (min-width: 667px) and (max-width: 1024px) {
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+    
+  }
+
+  .project-name {
+    width: 40vw;
+  }
+
+  .chart {
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+
+  .user-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  
+  .github-tracker {
+    position: absolute;
+    top: -30%;
+    left: 35%;
+    font-size: 50px;
+  }
+
+  .github-logo {
+    position: absolute;
+    top: 11%;
+    left: 37%;
+    border-radius: 1em;
+    height: 3em;
+  }
+  
+  .user-header {
+    display: block;
+    position: absolute;
+    top: 29%;
+    right: 67%;
+    font-size: 25px;
+    letter-spacing: .5em;
+    font-weight: 100;
+  }
+
+  .user-img {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    height: 250px;
+    border-radius: 5%;
+  }
+  
+  .user-name {
+    position: absolute;
+    top: 80%;
+    right: 65%;
+    font-size: 25px;
+  }
+  
+  .chart-header {
+    font-size: 25px;
+    position: absolute;
+    top: 20%;
+    right: 18%;
+  }
+  
+  .chart {
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    height: 320px;
+    width: 320px;
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .projects-header {
+    font-size: 40px;
+  }
+  
+  .project-name {
+    width: 25vw;
+    margin: 1em .5em 2em .5em;
+  }
 }

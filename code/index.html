@@ -4,18 +4,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <main>
+    <div id="user-container" class="user-container">
+      <h1 class="github-tracker">GitHub Tracker</h1>
+      <h2 class="user-header">USER</h2>
+    </div>
+    <h2 class="projects-header">PROJECTS</h2>
+    <div id="projects-container" class="projects-container"></div>
+    <h2 class="chart-header">PROGRESS</h2>
+    <section class="chart-container">
+      <div class="chart">
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <p>Technigo Web Development Bootcamp 2022</p>
+  </footer>
+
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
+
 </html>
