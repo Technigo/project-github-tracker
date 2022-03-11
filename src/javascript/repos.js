@@ -10,13 +10,6 @@ const displaySearchForm = () => {
     aria-label="Repositories"aria-describedby="basic-addon1">
     </div>
     <div class="dropdown">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" 
-    id="dropdownMenuButton1"data-bs-toggle="dropdown" aria-expanded="false">Type</button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">All</a></li>
-    <li><a class="dropdown-item" href="#">Public</a></li>
-    <li><a class="dropdown-item" href="#">Private</a></li>
-    </ul>
     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
     data-bs-toggle="dropdown" aria-expanded="false">Language
     </button>
@@ -25,13 +18,6 @@ const displaySearchForm = () => {
     <li><a class="dropdown-item" href="#">JavaScript</a></li>
     <li><a class="dropdown-item" href="#">HTML</a></li>
     </ul>
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1"
-    data-bs-toggle="dropdown" aria-expanded="false">Sort
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Last Updated</a></li>
-    <li><a class="dropdown-item" href="#">Name</a></li>
-    </ul>
     </div>
   `
 }
@@ -39,6 +25,7 @@ const displaySearchForm = () => {
 displaySearchForm()
 
 const displayRepositories = (repositories) => {
+
   repositories.filter(repo => {
     const { fork, name, html_url, visibility, default_branch, pushed_at } = repo;
     let language = repo.language;

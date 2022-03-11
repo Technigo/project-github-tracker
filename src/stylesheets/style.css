@@ -101,10 +101,6 @@ h1 {
   margin-left: 15px;
 }
 
-.links--hide {
-  display: none;
-}
-
 .bold-link {
   font-weight: var(--fw-bold);
   border-bottom: 3px solid orange;
