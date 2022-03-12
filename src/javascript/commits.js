@@ -4,13 +4,14 @@ const REPOS_URL = `https://api.github.com/users/${username}/repos`;
 const COMMITS_URL = `https://api.github.com/repos/${username}/`;
 
 const fetchRepositories = (repositories) => {
- repositories.filter(repo => {
+  const myRepos = repositories.filter((repo) => repo.fork && repo.name !== "unit-tests").length;
+  repositories.filter(repo => {
     if (repo.fork && repo.name !== "unit-tests") {
       fetchCommits(repo)
     }
   })
-  
-}
+  displayChart(myRepos)
+};
 
 const fetchCommitMessages = (commits, repository) => {
   const repositoryName = repository.name;
@@ -52,7 +53,7 @@ const fetchCommitMessages = (commits, repository) => {
         </div>
         `
   }
-}
+};
 
 fetch(REPOS_URL, options)
   .then(res => res.json())
@@ -64,4 +65,4 @@ const fetchCommits = (repo) => {
     .then(res => res.json())
     .then(commits => fetchCommitMessages(commits, repo))
     .catch(error => console.log(error))
-}
+};
