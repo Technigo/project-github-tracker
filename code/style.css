@@ -1,3 +1,145 @@
 body {
-  background: #FFECE9;
+  background-color: #21262d;
+  margin: 0;
+  box-sizing: border-box;
+  color: rgb(201, 209, 217);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin-bottom: -10px;
+}
+
+.upper-section {
+  display: flex;
+  justify-content: left;
+}
+
+.profile-container {
+  display: flex;
+  width: 35%;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.profile-image {
+  width: 65%;
+  border-radius: 50%;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.repo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 25px);
+  column-gap: 10px;
+  row-gap: 10px;
+  border: 1px solid rgb(201, 209, 217);
+  border-radius: 6px;
+  padding: 15px;
+  height: 140px;
+  color: #8b949e;
+}
+
+.repo-item1 {
+  grid-column: span 3;
+  color: #58a6ff;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.repo-item2 {
+  grid-column: span 1;
+}
+
+.repo-item3,
+.repo-item4,
+.repo-item5 {
+  grid-column: span 4;
+}
+
+.branch {
+  border: 1px solid rgb(201, 209, 217);
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+}
+.chart {
+  margin-top: 20px;
+  max-height: 250px;
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .logo-container {
+    justify-content: flex-end;
+  }
+  .logo-image {
+    width: 100px;
+  }
+
+  .upper-section {
+    flex-direction: column;
+    width: 25%;
+    margin-left: 10px;
+  }
+  .profile-container {
+    width: 85%;
+    align-items: center;
+  }
+  .profile-image {
+    width: 100%;
+  }
+  .projects-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .projects {
+    width: 65%;
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    margin-left: 250px;
+    margin-top: -250px;
+  }
+
+  .repo {
+    height: 150px;
+  }
+
+  .chart-container {
+    margin-top: 1500px;
+  }
+
+  .chart {
+    max-width: 300px;
+    max-height: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .projects {
+    margin-left: 300px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .projects {
+    margin-left: 400px;
+  }
 }
