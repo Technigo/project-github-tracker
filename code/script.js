@@ -5,15 +5,15 @@ const username = 'jessand77';
 const API_USER_INFO = `https://api.github.com/users/${username}`;
 const API_REPOS = `${API_USER_INFO}/repos`;
 
-const options = {
-  method: 'GET',
-  headers: {
-      Authorization: 'token ' + API_TOKEN
-  }
-};
+// const options = {
+//   method: 'GET',
+//   headers: {
+//       Authorization: 'token ' + API_TOKEN
+//   }
+// };
 
 const fetchUserInfo = () => {
-  fetch(API_USER_INFO, options)
+  fetch(API_USER_INFO)
   .then(res => res.json())
   .then(user => {
     userSection.innerHTML = `
@@ -25,7 +25,7 @@ const fetchUserInfo = () => {
 };
 
 const getCommits = (pullRequestCommitsUrl, reponame) => {
-  fetch(pullRequestCommitsUrl, options)
+  fetch(pullRequestCommitsUrl)
   .then(res => res.json())
   .then(commits => {
 
@@ -81,7 +81,7 @@ const getCommits = (pullRequestCommitsUrl, reponame) => {
 const getPullRequests = (repos) => {
   repos.forEach(repo => {
     
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
+    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`)
     .then(res => res.json())
     .then(pullRequests => {
 
@@ -120,7 +120,7 @@ const getTechnigoRepos = (repos) => {
 };
 
 const fetchRepos = () => {
-  fetch(API_REPOS, options)
+  fetch(API_REPOS)
   .then(res => res.json())
   .then(repos => {
     
