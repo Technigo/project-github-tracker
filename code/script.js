@@ -88,9 +88,10 @@ const getPullRequests = (repos) => {
       // How can I get the pull requests for the repos that I am not the owner of without hardcoding like this?
       const firstTitleToSearchFor = 'Week 4 project - Sofie Pellegrini & Jessica Sandler';
       const secondTitleToSearchFor = 'Week 6 project : Jessica - Maurii - Nadia - Rijad - Terese';
+      const thirdTitleToSearchFor = 'Week 9: Jessica Sandler, Laura Sjölander and Nadia Lefebvre';
 
       const myPullRequests = pullRequests
-      .filter(pullRequest => pullRequest.user.login === username || pullRequest.title === firstTitleToSearchFor || pullRequest.title === secondTitleToSearchFor)
+      .filter(pullRequest => pullRequest.user.login === username || pullRequest.title === firstTitleToSearchFor || pullRequest.title === secondTitleToSearchFor || pullRequest.title === thirdTitleToSearchFor)
 
       //If the length is 0 no pull request has been made
       if (myPullRequests.length === 0) {
