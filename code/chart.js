@@ -1,6 +1,7 @@
-const ctx = document.getElementById('chart').getContext('2d') // don't really get what this does
+const ctx = document.getElementById('chart').getContext('2d') 
 
 const renderChart = (completedProjects) => {
+
 
     const labels = [
         'Projects done',

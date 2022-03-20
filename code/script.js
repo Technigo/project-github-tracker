@@ -34,7 +34,7 @@ const getProfile = () => {
             <p class="username">${data.login}</p>
         </section>
         <div class="status-box">
-        ${data.bio} 👩‍💻
+        <p class="status-text">${data.bio} 👩‍💻</p>
         </div>
           `;
       });
@@ -115,7 +115,6 @@ const getPullRequest = (repos) => {
       fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`, options)
         .then((res) => res.json())
         .then((data) => {
-        //   console.log('pull request third fetch', data);
 
         //Filter out pullrequests
           const pulls = data.find((pull) => pull.user.login === repo.owner.login)
