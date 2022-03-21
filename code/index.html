@@ -6,16 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project GitHub Tracker</title>
   <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+    <header>
+      <div class="profile" id="profile"></div>
+    </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+    <main id="projects">
+      <div class="project-card" id="projectCard"></div>
+    </main>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
+    <!-- This will be used to draw the chart 👇 -->
+    <div class="chart-wrapper">
+    <canvas id="myChart" class="chart"></canvas>
+    </div> 
+
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+
+    <footer><a href="https://www.flaticon.com/free-icons/" title="finger and Github icons">Pointing-finger and Github icons created by Freepik - Flaticon</a></footer>
 </body>
 </html>
