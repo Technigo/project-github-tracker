@@ -35,5 +35,5 @@ const drawChart = (amount) =>
         }
       }
     }
- const myChart = new Chart(ctx, config)
+ new Chart(ctx, config)
 }
