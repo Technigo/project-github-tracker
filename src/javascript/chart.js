@@ -9,7 +9,7 @@ const displayChart = (projects) => {
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First Dataset',
+      label: 'My Projects at Technigo',
       data: [projects, 19 - projects],
       backgroundColor: [
         'rgb(142, 85, 255)',

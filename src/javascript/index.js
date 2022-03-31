@@ -4,7 +4,7 @@ const footer = document.getElementById("footer");
 
 const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
-const API_TOKEN = TOKEN || process.env.API_KEY
+const API_TOKEN = TOKEN || process.env.API_KEY;
 
 const options = {
   method: "GET",
@@ -21,7 +21,7 @@ const displayHtml = () => {
     <span class="hamburger"></span>
     </div>
     <h1>GitHub Tracker</h1>
-    <img src="./images/me.png" class="header__image" alt="image of savannah hayes">
+    <img src="./images/me.png" class="header__image" alt="small image of savannah hayes">
     `
 
   footer.innerHTML = `
@@ -51,10 +51,13 @@ const displayProfileData = (profileData) => {
     <section class="aside-content">
     <p class="aside-content__paragraph aside-content__paragraph--top">${bio}</p>
     <p class="aside-content__paragraph aside-content__paragraph--grey">
-    <img class="icons icons-left" src="./images/group.png">
+    <img class="icons icons-left" src="./images/group.png" alt="three people icon">
     <span class="aside-content__paragraph--bold">${followers}</span>  followers · 
     <span class="aside-content__paragraph--bold">${following}</span> following</p>
-    <p class="aside-content__paragraph"><img class="icons icons-left" src="./images/location.png"></img> ${location}</p>
+    <p class="aside-content__paragraph">
+    <img class="icons icons-left" src="./images/location.png" alt="location pin icon">
+    </img> ${location}
+    </p>
     </section>
   `;
 }

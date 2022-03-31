@@ -1,5 +1,5 @@
 const projectsSection = document.getElementById("projects");
-const searchForm = document.getElementById("searchForm")
+const searchForm = document.getElementById("searchForm");
 
 const REPOS_URL = `https://api.github.com/users/${username}/repos`;
 
