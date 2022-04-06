@@ -7,4 +7,4 @@ This project was roller-coaster ride and I could learn a lot about how to fetch 
 
 ## View it live
 
-Check it out here https://github-tracker-sherin.netlify.app/
+Check it out here https://sherin-github-tracker.netlify.app/
