@@ -1,3 +1,69 @@
 body {
-  background: #FFECE9;
+	background: grey;
+	font-family: 'Bebas Neue', cursive;
+	margin: 1rem;
+}
+
+header {
+	background-color: lightgrey;
+	border-radius: 180%;
+	color: black;
+	text-align: center;
+}
+
+h1 {
+	font-size: 40px;
+	text-align: center;
+}
+
+h2 {
+	font-size: 40px;
+	text-align: center;
+}
+
+h3 {
+	font-size: 20px;
+	text-align: center;
+}
+
+/*Image*/
+img {
+	width: 200px;
+	border-radius: 50%;
+	padding: 2rem;
+}
+
+a {
+	color: black;
+}
+
+.profile {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+.forkedrepo-div {
+	border: black solid;
+	padding: 1rem;
+	margin: 2rem;
+}
+/* THE CHART SECTION */
+
+#chart-wrapper {
+	width: 90%;
+	margin: 20px auto 40px;
+}
+
+#chart {
+	padding: 20%;
+}
+
+/* This is styling for the footer*/
+footer {
+	background-color: darkgrey;
+	text-align: center;
 }

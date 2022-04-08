@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="./style.css" />
-</head>
-<body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Project GitHub Tracker</title>
+		<link rel="stylesheet" href="./style.css" />
+		<!--Link to font-->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<header>
+			<h1>GitHub Tracker</h1>
+			<h3 id="username"></h3>
+		</header>
+		<section class="profile" id="profile"></section>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+		<section id="userContainer"></section>
+		<section id="projectContainer"></section>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
-</body>
+		<!-- This will be used to draw the chart 👇 -->
+		<section class="chart-container">
+			<canvas id="chart" class="chart"></canvas>
+		</section>
+
+		<!-- This is a little footer -->
+		<footer>
+			Page by Marianne Ardin week 7 Technigo bootcamp 2022 marianne@ardin.se
+			<a href="https://www.linkedin.com/in/marianneardin/"
+				>Marianne Ardin on linkedin</a
+			>
+		</footer>
+
+		<!-- link to chart.js -->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		<script src="./token.js"></script>
+		<script src="./script.js"></script>
+		<script src="./chart.js"></script>
+	</body>
 </html>
