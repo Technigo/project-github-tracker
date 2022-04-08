@@ -89,9 +89,10 @@ const getPullRequests = (repos) => {
       const firstTitleToSearchFor = 'Week 4 project - Sofie Pellegrini & Jessica Sandler';
       const secondTitleToSearchFor = 'Week 6 project : Jessica - Maurii - Nadia - Rijad - Terese';
       const thirdTitleToSearchFor = 'Week 9: Jessica Sandler, Laura Sjölander and Nadia Lefebvre';
+      const fourthTitleToSearchFor = 'Project Elephant Quiz made by Sofie Pellegrini, Lisa Bergström, Jessica Sandler, Terese Claesson and Emma Berg'
 
       const myPullRequests = pullRequests
-      .filter(pullRequest => pullRequest.user.login === username || pullRequest.title === firstTitleToSearchFor || pullRequest.title === secondTitleToSearchFor || pullRequest.title === thirdTitleToSearchFor)
+      .filter(pullRequest => pullRequest.user.login === username || pullRequest.title === firstTitleToSearchFor || pullRequest.title === secondTitleToSearchFor || pullRequest.title === thirdTitleToSearchFor || pullRequest.title === fourthTitleToSearchFor)
 
       //If the length is 0 no pull request has been made
       if (myPullRequests.length === 0) {

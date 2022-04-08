@@ -129,6 +129,10 @@ span {
   font-size: small;
 }
 
+.commit-div {
+  margin-left: 2.5rem;
+}
+
 .commits-button {
   width: fit-content;
   margin: 1rem auto;
@@ -137,6 +141,8 @@ span {
   color: var(--primary);
   background-color: var(--third);
   border: var(--third);
+  position: relative;
+  left: -1.3rem;
 }
 
 .commits-button:hover {
