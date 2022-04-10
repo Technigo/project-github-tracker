@@ -11,9 +11,9 @@ const options = {
   headers: {
     Authorization: `token ${API_TOKEN}`
   }
-}
+};
 
-const displayHtml = () => {
+const displayHeaderAndFooter = () => {
   header.innerHTML = `
     <div class="hamburger-wrapper">
     <span class="hamburger"></span>
@@ -33,9 +33,7 @@ const displayHtml = () => {
     <li class="footer__link footer-flex footer__link--hide">About</li>
     </ul>
   `
-}
-
-displayHtml()
+};
 
 const displayProfileData = (profileData) => {
   const { avatar_url, name, login, bio, followers, following, location } = profileData;
@@ -60,7 +58,9 @@ const displayProfileData = (profileData) => {
     </p>
     </section>
   `;
-}
+};
+
+displayHeaderAndFooter();
 
 fetch(USER_URL, options)
   .then(res => res.json())

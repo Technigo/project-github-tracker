@@ -18,8 +18,8 @@ const fetchCommitMessages = (commits, repository) => {
   const allCommits = commits.map(commit => commit);
   const newCommits = allCommits.filter(commits => commits.commit.author.date.includes("2022"));
 
-  document.addEventListener("click", function (e) {
-    if (e.target && e.target.id == repositoryName) {
+  document.addEventListener("click", function (event) {
+    if (event.target.id === repositoryName) {
       const repoClassname = `.${repository.name}`;
       document.querySelectorAll(repoClassname).forEach(name => {
         if (name.style.display === "none") {
@@ -33,7 +33,7 @@ const fetchCommitMessages = (commits, repository) => {
 
   commitsSection.innerHTML += `
     <div class="commits__text">
-    <div><p><a href="${repository.html_url}" target="_blank">${username}/${repositoryName}</a></p></div>
+    <div><p><a href="${repository.html_url}/commits" target="_blank">${username}/${repositoryName}</a></p></div>
     <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: ${newCommits.length * 3}%" aria-valuenow="${newCommits.length}" aria-valuemin="0" aria-valuemax="100"></div></div>
     <div><button type="button" id=${repositoryName} class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${newCommits.length} commits </button></div>
     </div>
@@ -46,12 +46,12 @@ const fetchCommitMessages = (commits, repository) => {
     const formattedDate = date.toDateString().split(' ').slice(1).join(' ');
 
     commitsSection.innerHTML += `
-        <div id="messageWrapper" class=${repositoryName} style="display: none">
-        <p class="text">${message}</p>
-        <p class="subtext"><img class="icons circle" src=${avatar_url} alt=${author.name}> 
-        <span class="bold-text">${author.name} </span> <span class="hide-text">committed on ${formattedDate}</span></p>
-        </div>
-        `
+      <div id="messageWrapper" class=${repositoryName} style="display: none">
+      <p class="text">${message}</p>
+      <p class="subtext"><img class="icons circle" src=${avatar_url} alt=${author.name}> 
+      <span class="bold-text">${author.name} </span> <span class="hide-text">committed on ${formattedDate}</span></p>
+      </div>
+    `
   }
 };
 
