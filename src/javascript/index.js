@@ -64,5 +64,5 @@ displayHeaderAndFooter();
 
 fetch(USER_URL, options)
   .then(res => res.json())
-  .then(displayProfileData)
+  .then(data => displayProfileData(data))
   .catch(error => console.log(error))

@@ -47,5 +47,5 @@ const displayRepositories = (repositories) => {
 
 fetch(REPOS_URL, options)
   .then(res => res.json())
-  .then(displayRepositories)
+  .then(data => displayRepositories(data))
   .catch(error => console.log(error))

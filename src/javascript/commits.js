@@ -18,7 +18,7 @@ const fetchCommitMessages = (commits, repository) => {
   const allCommits = commits.map(commit => commit);
   const newCommits = allCommits.filter(commits => commits.commit.author.date.includes("2022"));
 
-  document.addEventListener("click", function (event) {
+  document.addEventListener("click", (event) => {
     if (event.target.id === repositoryName) {
       const repoClassname = `.${repository.name}`;
       document.querySelectorAll(repoClassname).forEach(name => {
@@ -28,7 +28,7 @@ const fetchCommitMessages = (commits, repository) => {
           name.style.display = "none";
         }
       })
-    }
+    };
   });
 
   commitsSection.innerHTML += `
@@ -57,12 +57,12 @@ const fetchCommitMessages = (commits, repository) => {
 
 fetch(REPOS_URL, options)
   .then(res => res.json())
-  .then(fetchRepositories)
+  .then(data => fetchRepositories(data))
   .catch(error => console.log(error))
 
 const fetchCommits = (repo) => {
   fetch(`${COMMITS_URL}${repo.name}/commits`, options)
     .then(res => res.json())
-    .then(commits => fetchCommitMessages(commits, repo))
+    .then(data => fetchCommitMessages(data, repo))
     .catch(error => console.log(error))
 };
