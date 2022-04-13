@@ -83,12 +83,7 @@ const getPullRequests = (forkedRepos) => {
              const commit = document.getElementById(`commit-${repo.name}`)
              
              const filteredPulls = data.find((pull) => pull.user.login === repo.owner.login)
-             
-            
-
-             fetchCommits({filteredPulls.commits_url, repo.name})
-             
-            
+             fetchCommits(filteredPulls.commits_url, repo.name)       
           })
         })
       }
