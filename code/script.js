@@ -80,10 +80,15 @@ const getPullRequests = (forkedRepos) => {
           .then(res => res.json())
           .then(data => {
 
-             const commit = document.getElementById(`commit-${repo.name}`)
+//              const commit = document.getElementById(`commit-${repo.name}`)
              
              const filteredPulls = data.find((pull) => pull.user.login === repo.owner.login)
-             fetchCommits(filteredPulls.commits_url, repo.name)       
+             if (filteredPulls) {
+                fetchCommits(filteredPulls.commits_url, repo.name)
+            } else {
+                document.getElementById(`commits-${repo.name}`).innerHTML = `No pulls from this user yet.`
+            }  
+//              fetchCommits(filteredPulls.commits_url, repo.name)       
           })
         })
       }
