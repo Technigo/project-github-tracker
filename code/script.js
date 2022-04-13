@@ -86,7 +86,7 @@ const getPullRequests = (forkedRepos) => {
              if (filteredPulls) {
                 fetchCommits(filteredPulls.commits_url, repo.name)
             } else {
-                document.getElementById(`commits-${repo.name}`).innerHTML = `No pulls from this user yet.`
+                document.getElementById(`commits-${repo.name}`).innerHTML = "No pulls from this user yet."
             }  
 //              fetchCommits(filteredPulls.commits_url, repo.name)       
           })
