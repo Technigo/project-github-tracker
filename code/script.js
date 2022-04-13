@@ -86,7 +86,7 @@ const getPullRequests = (forkedRepos) => {
              
             
 
-             fetchCommits(filteredPulls.commits_url, repo.name)
+             fetchCommits({filteredPulls.commits_url, repo.name})
              
             
           })
