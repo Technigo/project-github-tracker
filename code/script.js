@@ -30,7 +30,7 @@ const API_REPOS = `https://api.github.com/users/${username}/repos`
 fetch(USER_API, )
 .then(res => res.json())
 .then(data => {
-    console.log(data)
+    
     header.innerHTML += `
     <div class="header-text">
       <img src="${data.avatar_url}" class="image" />
@@ -48,7 +48,7 @@ fetch(USER_API, )
 fetch(API_REPOS)
     .then(res => res.json())
      .then(data => {
-        // console.log(data)
+       
         const technigoRepositories = data.filter(repo => repo.name.includes('project-') && repo.fork)
 
          technigoRepositories.forEach((repo) => {
@@ -87,7 +87,7 @@ const getPullRequests = (forkedRepos) => {
             
 
              fetchCommits(filteredPulls.commits_url, repo.name)
-            //  console.log(filteredPulls.commits_url) 
+            
             
           })
         })
