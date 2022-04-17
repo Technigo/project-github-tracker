@@ -4,7 +4,6 @@ const footer = document.getElementById("footer");
 
 const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
-const API_TOKEN = TOKEN || process.env.API_KEY;
 
 const options = {
   method: "GET",
