@@ -13,7 +13,7 @@ const API_TOKEN = TOKEN || process.env.API_KEY;
 const options = {
     method: 'GET',
     headers: {
-        Authorization: `token ${API_TOKEN}`
+       // Authorization: `token ${API_TOKEN}`
     }
 }
 

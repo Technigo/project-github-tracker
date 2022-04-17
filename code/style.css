@@ -25,7 +25,7 @@ h2 {
 .repo {
 	width: 80%;
 	margin: auto;
-	background-color: #fde3fb;
+	background-color:  rgb(255,255,255,0.5);
 	border: 1px solid white;
 	padding: 20px;
 	margin: 30px;
