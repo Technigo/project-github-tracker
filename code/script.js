@@ -82,7 +82,5 @@ fetch(REPOS_URL, options)
                 })
         }
 
-        //I used this API for my project: `https://api.github.com/repos/${username}/${repo.name}/commits`
-
 
 fetchRepos()
