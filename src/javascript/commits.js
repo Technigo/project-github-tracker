@@ -1,8 +1,5 @@
 const commitsSection = document.getElementById("commits");
 
-const REPOS_URL = `https://api.github.com/users/${username}/repos`;
-const COMMITS_URL = `https://api.github.com/repos/${username}/`;
-
 const fetchRepositories = (repositories) => {
   const myRepos = repositories.filter((repo) => repo.fork && repo.name !== "unit-tests").length;
   repositories.filter(repo => {

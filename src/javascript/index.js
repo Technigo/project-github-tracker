@@ -4,6 +4,8 @@ const footer = document.getElementById("footer");
 
 const username = "savannah-hayes";
 const USER_URL = `https://api.github.com/users/${username}`;
+const REPOS_URL = `https://api.github.com/users/${username}/repos`;
+const COMMITS_URL = `https://api.github.com/repos/${username}/`;
 
 const options = {
   method: "GET",

@@ -1,7 +1,5 @@
 const projectsSection = document.getElementById("projects");
 
-const REPOS_URL = `https://api.github.com/users/${username}/repos`;
-
 const displayRepositories = (repositories) => {
 
   repositories.filter(repo => {
