@@ -3,8 +3,8 @@ const projectsSection = document.getElementById("projects");
 const displayRepositories = (repositories) => {
 
   repositories.filter(repo => {
-    const { fork, name, html_url, visibility, default_branch, pushed_at } = repo;
-    let projectLanguage = repo.language;
+    const { fork, name, html_url, visibility, default_branch, pushed_at, language } = repo;
+    let projectLanguage = language;
     let updatedTime;
     const DAY_IN_MS = 24 * 60 * 60 * 1000;
     const currentDate = new Date();
@@ -32,11 +32,18 @@ const displayRepositories = (repositories) => {
 
     if (fork && name !== "unit-tests") {
       projectsSection.innerHTML += `
-      <a class="projects__links" href="${html_url}" target="_blank">${name}</a><span class="projects__links--right">${visibility}</span>
+      <a class="projects__links" href="${html_url}" target="_blank">${name}</a>
+      <span class="projects__links--right">${visibility}</span>
       <p class="projects__paragraphs">Forked from Technigo/project-${name}</p>
       <p class="projects__paragraphs">${projectLanguage} 
-      <span class="projects__paragraphs"><img class="small-icon projects__paragraphs--right" src="./images/fork.png"></img>Branch ${default_branch}</span>
-      <span class="projects__paragraphs--right">Updated ${updatedTime}</span></p>
+        <span class="projects__paragraphs">
+          <img class="small-icon projects__paragraphs--right" src="./images/fork.png"></img>
+            Branch ${default_branch}
+        </span>
+        <span class="projects__paragraphs--right">
+          Updated ${updatedTime}
+        </span>
+      </p>
       <hr>
       `;
     }

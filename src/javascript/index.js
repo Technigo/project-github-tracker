@@ -26,7 +26,9 @@ const displayHeaderAndFooter = () => {
     `
 
   footer.innerHTML = `
-    <p class="footer__text footer-flex"><img src="./images/github.png" class="footer__icon" alt="github icon">GitHub Tracker</p>
+    <p class="footer__text footer-flex">
+      <img src="./images/github.png" class="footer__icon" alt="github icon">GitHub Tracker
+    </p>
     <ul class="footer__links footer-flex">
     <li class="footer__link footer-flex">Terms</li>
     <li class="footer__link footer-flex">Privacy</li>

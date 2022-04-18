@@ -6,18 +6,17 @@ const fetchRepositories = (repositories) => {
     if (repo.fork && repo.name !== "unit-tests") {
       fetchCommits(repo)
     }
-  })
-  displayChart(myRepos)
+  });
+  displayChart(myRepos);
 };
 
 const fetchCommitMessages = (commits, repository) => {
   const repositoryName = repository.name;
-  const allCommits = commits.map(commit => commit);
-  const newCommits = allCommits.filter(commits => commits.commit.author.date.includes("2022"));
+  const newCommits = commits.filter(commits => commits.commit.author.date.includes("2022"));
 
   document.addEventListener("click", (event) => {
     if (event.target.id === repositoryName) {
-      const repoClassname = `.${repository.name}`;
+      const repoClassname = `.${repositoryName}`;
       document.querySelectorAll(repoClassname).forEach(name => {
         if (name.style.display === "none") {
           name.style.display = "block";
@@ -31,10 +30,18 @@ const fetchCommitMessages = (commits, repository) => {
   commitsSection.innerHTML += `
     <div class="commits__text">
     <div><p><a href="${repository.html_url}/commits" target="_blank">${username}/${repositoryName}</a></p></div>
-    <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width: ${newCommits.length * 3}%" aria-valuenow="${newCommits.length}" aria-valuemin="0" aria-valuemax="100"></div></div>
-    <div><button type="button" id=${repositoryName} class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">${newCommits.length} commits </button></div>
+    <div class="progress">
+      <div class="progress-bar bg-success" role="progressbar" style="width: ${newCommits.length * 3}%" 
+        aria-valuenow="${newCommits.length}" aria-valuemin="0" aria-valuemax="100">
+      </div>
     </div>
-    `
+    <div>
+      <button type="button" id=${repositoryName} class="btn btn-secondary btn-sm dropdown-toggle" 
+        data-bs-toggle="dropdown" aria-expanded="false">${newCommits.length} commits 
+      </button>
+    </div>
+    </div>
+  `
 
   for (let i = 0; i < newCommits.length; i++) {
     const { message, committer, author } = newCommits[i].commit;
