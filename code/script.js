@@ -6,9 +6,6 @@ const repo_URL = "https://api.github.com/users/Sherin-Susan-Thomas/repos";
 
 const options = {
   method: "GET",
-  headers: {
-    Authorization: `token ${API_TOKEN}`,
-  },
 };
 
 //To fetch profile data
