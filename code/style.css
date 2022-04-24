@@ -1,3 +1,213 @@
-body {
-  background: #FFECE9;
+:root {
+  --primary: #F0A500;
+  --secondary:#fff;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 20px;
+}
+/* Header */
+.header {  
+  background-color: var(--secondary);
+  position: relative;
+  height: 160px;
+}
+
+.heading-one {
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 50px;
+}
+
+.tracker {
+  color:var(--primary);
+}
+
+.fab {
+  color:#000;
+  margin-top:18px;
+  margin-left: 15px;
+  font-size:28px;
+}
+
+.burger {
+  height: 50px;
+  position: absolute;
+  top:18px;
+  right: 20px;
+}
+
+.burger div {
+  width: 30px;
+  height: 6px;
+  background-color: #000;
+  border:1px solid var(--secondary);
+}
+
+/* Profile section */
+.profile-section {
+  height: 700px;
+  background-color: black;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.picture-container {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 200px;
+  border-radius: 50%;
+  padding-bottom: 25px;
+  margin-top: 200px;
+}
+
+.myProfile {
+  color:var(--secondary);
+  padding-top: 20px;
+  text-align: center;
+  line-height: 38px;
+}
+
+.account, .email {
+  display: block;
+  text-decoration: none;
+  color:var(--primary);
+}
+
+.account:hover, .email:hover {
+  color:var(--secondary);
+}
+
+.fas {
+  color:var(--secondary);
+  font-weight: 800;
+  margin-right: 5px;
+}
+
+/* Main */
+.main {
+  background-color:var(--secondary);
+  
+}
+
+.heading-two {
+  text-align: center;
+  text-transform: uppercase;
+  color:grey;
+  padding-top:10px;
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+.projects-container {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.card {
+  width: 90%;
+  height: 190px;
+  background-color: var(--primary);
+  margin:15px auto;
+  box-shadow: 2px 2px 1px;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding: 10px;
+  line-height: 30px;
+  color:grey;
+  box-shadow:10px 5px 5px;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.1,1.1);
+}
+
+ .repo {
+  color:grey;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: 1.3rem;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  text-shadow: 0.5px 0.5px 1px grey;
+ }
+
+.repo:hover {
+  color:#E8F6EF;
+}
+
+span {
+  color:#E8F6EF;
+}
+
+
+/* Chart */
+.chart {
+  margin: 0 auto;
+  width: 300px;
+  padding-bottom: 15px;
+}
+
+/* Footer */
+.footer {
+  background-color: #000;
+  height: 150px;
+}
+
+.icon-footer {
+  text-align: center;
+}
+
+.orange-icon {
+  color:var(--primary);
+  font-size:26px;
+  margin:30px auto;
+}
+
+.copyright {
+  color:#B8DFD8;
+}
+
+/* Media Queries */
+
+@media(min-width: 768px) {
+  .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    width: 40%;
+    max-width: 350px;
+  }
+
+}
+
+
+@media(min-width:1334px) {
+  
+  html {
+    background-color:#E6E6E6;
+  }
+
+  body {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media(min-width:1685px) {
+  .chart {
+    width: 350px;
+  }
+}
+
+

@@ -1,13 +1,12 @@
 # GitHub Tracker
 
-Replace this readme with your own information about your project.
-
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The aim of the project was to build a personal github tracker that would show my technigo-projects. This was done by fetching and displaying data from API's, using forEach, filter and find methods. A doughnut chart was also implemented to give a visual display of the amount of projects done. In terms of styling, a CSS grid and a hero header was used.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+In the beginning of the project it felt like there were a lot of API fetches that needed to be done. It was also hard to understand were to place, and where to call the different functions. 
+The solution were to scale down the project and do small chunks at a time. 
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://github-tracker-fatima.netlify.app/
