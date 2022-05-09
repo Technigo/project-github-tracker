@@ -1,4 +1,4 @@
-const USER = 'BritishSwede';
+const USER = 'rebeccablixt';
 const USER_URL = `https://api.github.com/users/${USER}`;
 const REPOS_URL = `https://api.github.com/users/${USER}/repos`;
 
