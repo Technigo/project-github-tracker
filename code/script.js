@@ -9,13 +9,13 @@ const username = 'tiiliu'
 const API_URL = `https://api.github.com/users/${username}/repos`
 
 // Github token
-const API_TOKEN = TOKEN
+const TOKEN = API_TOKEN
 
 // Authorization
 const options = {
     method: 'GET', 
     headers: {
-        Authorization: `token ${API_TOKEN}`,
+        Authorization: `token ${TOKEN}`,
     } 
 }
 
