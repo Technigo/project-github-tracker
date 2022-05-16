@@ -13,4 +13,4 @@ I focused on getting all the js/chart in place first, and then went on with the 
 If I had more time I would look into the red and black requirements. And add a footer with some contact info. 
 
 ## View it live
-https://friendly-pike-d9b647.netlify.app
+https://github-tracker-maria.netlify.app/
