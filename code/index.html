@@ -4,18 +4,59 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <title>Project GitHub Tracker – emmajosefina</title>
   <link rel="stylesheet" href="./style.css" />
+
+<!-- GOOGLE FONT-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- FAVICON -->
+<link rel="icon" href="images/github-logo-small.png" type="image/gif" sizes="16x16">
+
+<!-- CHART SCRIPT-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  <header class="navbar">
+   <a href="https://github.com/emmajosefina"> 
+     <img src="images/github-logo-extra-big.png" class="github-logo" alt="github-logo">
+    </a>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  
 
+  <div class="chart-parent">
+
+    <div class="chart-container">
+      <div id="mainContent" class="main-content"></div>
+    <canvas class="chart" id="chart"></canvas>
+  </div>
+</div>
+
+  <section id="projectInfo" class="user-info"></section>
+
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/emmalindell4/" class="fa fa-linkedin fa-2x"></a>
+      <a href="https://github.com/emmajosefina" class="fa fa-github fa-2x"></a>
+    </p>
+
+<footer class="footer-text">
+ <p>Project 7 – Github Tracker</p>
+ <p>By Emma Lindell @ Technigo Bootcamp 2022</p>
+</footer>
+
+  </footer>
+
+  <script src="./secret.js"></script>
   <script src="./script.js"></script>
   <script src="./chart.js"></script>
+
 </body>
 </html>
