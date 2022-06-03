@@ -19,7 +19,7 @@ body {
   grid-template-columns: 1, 1fr;
   justify-items: center;
   place-items: center;
-  margin: 10px;
+  margin: 15px;
   border-style: inset;
   border-width: 4px;
   border-color:rgb(50, 82, 136);
