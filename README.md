@@ -17,4 +17,4 @@ If I had more time I would try to play around with API:s more and presenting the
 
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 
-https://app.netlify.com/sites/dazzling-edison-30e09d/overview
+https://dazzling-edison-30e09d.netlify.app/
