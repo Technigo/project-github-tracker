@@ -8,18 +8,18 @@ const USER_REPO = `https://api.github.com/users/SteppbySteph/repos`
 
 
 
-const options = {
-    method: 'GET',
-    headers: {
-          Authorization: `token ${GITHUB_TOKEN}`
-    }
-}    
+// const options = {
+//     method: 'GET',
+//     headers: {
+//           Authorization: `token ${GITHUB_TOKEN}`
+//     }
+// }    
 
 
 //----USER NAME & PROFILE----//
 
 const getProfile = () => {
-    fetch(USER_PROFILE, options)
+    fetch(USER_PROFILE)
         .then(res => res.json())
         .then(data => {
             const user = data.name
@@ -38,7 +38,7 @@ getProfile()
 //----REPOSITORIES WITH DATA OF NAME, PUSH DATE, DEFAULT BRANCH, URL, PULL REQUESTS AND getCommitNr ()----//
 
 const getRepos = () => {
-    fetch(USER_REPO, options)
+    fetch(USER_REPO)
         .then(res => res.json())
         .then(data => {
             // Creating constsant for my filtered repos
@@ -74,7 +74,7 @@ const getRepos = () => {
                     `   
                 // Fetch for all pull requests.
                 const USER_PR = `https://api.github.com/repos/Technigo/${repoName}/pulls?per_page=100`;
-                fetch(USER_PR, options)
+                fetch(USER_PR)
                     .then(res => res.json())
                     .then(AllpullRequests => {
                         const myPR = AllpullRequests.find((pull) => pull.user.login === repo.owner.login)
@@ -95,7 +95,7 @@ const getRepos = () => {
 // After extracting the pull requests done by owner(see above) we now fetch data from each of the pull request (myPR ---> myPull) from the API URL commit_url.
 //This is displayed in the innerHTML with the value from commit.length.   
 const getCommitNr = (myPull, myRepoName) => {
-    fetch(myPull.commits_url, options)
+    fetch(myPull.commits_url)
         .then(res => res.json())
         .then((commit) => {
             document.getElementById(`commit-${myRepoName}`).innerHTML += `
