@@ -16,7 +16,7 @@ const labels = [
       label: 'My First dataset',
       backgroundColor: ['#B6766D', '#F8E8DE'],
       borderColor: '#f7e9e7',
-      data: [repos, 19-repos],
+      data: [repos, 18-repos],
     }]
   };
 
