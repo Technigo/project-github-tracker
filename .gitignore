@@ -1,0 +1,5 @@
+# api keys
+/src/javascript/config.js
+
+# misc
+.DS_Store

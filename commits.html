@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./src/stylesheets/commits.css" />
+  <link rel="stylesheet" href="./src/stylesheets/style.css" />
+</head>
+
+<body>
+  <header id="header" class="header"></header>
+  <main class="body-wrapper">
+    <div class="aside-chart">
+      <aside class="aside" id="aside"></aside>
+      <hr>
+      <div class="chart-wrapper">
+        <canvas class="chart" id="chart">
+          <p>Your browser does not support the canvas element.</p>
+        </canvas>
+      </div>
+    </div>
+
+    <section class="commits" id="commits">
+      <div class="html-links">
+        <a href="index.html" class="links">
+          <img src="./images/book.png" class="icons" alt="book icon"> Repositories
+        </a>
+        <a href="commits.html" class="links bold-link">
+          <img src="./images/box.png" class="icons" alt="box icon"> Contributions
+        </a>
+      </div>
+      <hr>
+    </section>
+  </main>
+
+  <hr>
+  <footer id="footer" class="footer footer-flex"></footer>
+
+  <script src="./src/javascript/chart.js"></script>
+  <script src="./src/javascript/config.js"></script>
+  <script src="./src/javascript/index.js"></script>
+  <script src="./src/javascript/commits.js"></script>
+</body>
+
+</html>
