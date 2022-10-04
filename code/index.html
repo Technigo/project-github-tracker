@@ -1,21 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
   <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+  <title>Nadia Lefebvre - GitHub Tracker</title>
 </head>
+
 <body>
-  <h1>GitHub Tracker</h1>
-  <h2>Projects:</h2>
-  <main id="projects"></main>
+  
+  <header 
+    class="header-box" 
+    id="headerBox">
+    <!-- User name and picture are injected here by JavaScript -->
+    <div 
+      class="user-box" 
+      id="userBox">
+    </div>
+    <h1 class="project-title">GitHub Tracker</h1>
+    <div class="repos-chart">
+      <!-- Technigo's projects chart is injected here by JavaScript -->
+      <canvas id="reposChart"></canvas>
+    </div>
+  </header>
 
-  <!-- This will be used to draw the chart 👇 -->
-  <canvas id="chart"></canvas>
+  <main class="main-box">
+    <select 
+      class="sorting-dropdown" 
+      id="sortingDropdown">
+      <option value="A to Z">A to Z</option>
+      <option value="Z to A">Z to A</option>
+      <option value="Latest">Latest</option>
+      <option value="Oldest">Oldest</option>
+    </select>
 
-  <script src="./script.js"></script>
+    <!-- All repo cards are injected here by JavaScript -->
+    <section 
+      class="repos-box" 
+      id="reposBox">
+    </section>
+  </main>
+
+  <footer class="footer-box">
+    <span>Created by Nadia Lefebvre</span>
+    <a 
+      href="https://www.linkedin.com/in/nadiainsweden/" 
+      target="_blank" 
+      title="Linkedin Nadia Lefebvre"> 
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a 
+      href="https://github.com/nadialefebvre" 
+      target="_blank" 
+      title="GitHub Nadia Lefebvre">
+      <i class="fab fa-github"></i>
+    </a>
+    <a 
+      href="https://stackoverflow.com/users/17550223/nadia-lefebvre" 
+      target="_blank"
+      title="Stack Overflow Nadia Lefebvre">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
+  </footer>
+
+  <script src="./token.js"></script>
   <script src="./chart.js"></script>
+  <script src="./script.js"></script>
+
 </body>
+
 </html>
