@@ -1,12 +1,9 @@
 # GitHub Tracker
 
-A GitHub-like page where you can track all of the projects which I will build at Technigos boot camp. For this project, I continued my journey with JavaScript and digging deeper into API.
+A simple copy of GitHub. With that project I learned how to fetch an API, how JavaScript functions communicate with each others and how to display data from API.
 
-# What I learned
-
-- how to fetch data from API 
-- how to pass data to functions 
-- how to use filter/find functions 
+UPDATE 2.0
+For this update of ther project, I added a search functionality.
 
 # View it live
 
