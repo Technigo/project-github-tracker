@@ -1,70 +1,97 @@
 // main fetch and function and put the DOM here
-const projectsContainer = document.getElementById('projects')
-const headerContainer = document.getElementById('header')
-const USER = 'DALA746'
-const ALL_MY_REPOS = `https://api.github.com/users/${USER}/repos`
+const projectsContainer = document.getElementById('projects');
+const headerContainer = document.getElementById('header');
+const USER = 'DALA746';
+const ALL_MY_REPOS = `https://api.github.com/users/${USER}/repos`;
 
-const button = document.getElementById('button')
+const button = document.getElementById('button');
+
+const searchProject = () => {
+  let input = document.getElementById('searchbar').value;
+  input = input.toLowerCase();
+  let repo = document.getElementsByClassName('repo');
+
+  for (i = 0; i < repo.length; i++) {
+    if (!repo[i].innerHTML.toLowerCase().includes(input)) {
+      repo[i].style.display = 'none';
+    } else {
+      repo[i].style.display = 'block';
+    }
+  }
+};
+
+const renderHTML = (repos) => {
+  console.log(repos);
+  repos.forEach((repo) => {
+    headerContainer.innerHTML = `
+    <div class="info-about-user">
+      <img class="profile-img"src="${repo.owner.avatar_url}" />
+    </div>
+    <h3>${repo.owner.login}</h3>
+    <div>SOME STATS</div>
+
+  `;
+    projectsContainer.innerHTML += `
+    <div class="repo"> 
+      <a href="${
+        repo.clone_url
+      }"  target="_blank"><div class="icon-container"><i class="fal fa-book" style="font-size:25px;color:var(--grey);"></i><h3>${
+      repo.name
+    }</h3></div> </a>
+      <p id="commit-${repo.name}"><span class="bold">Commits amount: </span></p>
+      <p><span class="bold">Language:</span> ${repo.language}</p>
+      <p><span class="bold">Latest push update:</span> ${new Date(
+        repo.pushed_at
+      ).toDateString()}</p>
+      <p><span class="bold">Default branch:</span> ${repo.default_branch}</p>
+    </div>
+  `;
+  });
+};
 
 const getRepos = () => {
   fetch(ALL_MY_REPOS)
-  .then(res => res.json())
-  .then((json) => {
-    console.log(json) // This json shows all of my repos on GitHub
-    // filter repos so I can only get tehcnigos repos 
-    const forkedRepos = json.filter(repo => repo.fork && repo.name.startsWith('project-')) // or you can use includes method 
-    drawChart(forkedRepos.length)
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      const forkedRepos = json.filter(
+        (repo) => repo.fork && repo.name.startsWith('project-')
+      );
+      drawChart(forkedRepos.length);
+      renderHTML(forkedRepos);
+      // getPullRequests(forkedRepos);
+    });
+};
 
-    forkedRepos.forEach((repo) => { 
-      // header container 
-      headerContainer.innerHTML = `
-        <div class="info-about-user">
-          <img class="profile-img"src="${repo.owner.avatar_url}" />
-          <h2>Darya Lapata</h2>
-          <h3>${repo.owner.login}</h3>
-          <p>Location: Stockholm</p>
-        </div>
-      ` 
-      // project container 
-      projectsContainer.innerHTML += `
-        <div class="repo"> 
-          <a href="${repo.clone_url }"  target="_blank"><h3>${repo.name}</h3> </a>
-          <p id="commit-${repo.name}">Commits amount: </p>
-          <p>Latest push update: ${ new Date(repo.pushed_at).toDateString()}</p>
-          <p>Default branch: ${repo.default_branch}</p>
-        </div>
-      `
-    })
-    getPullRequests(forkedRepos) // passing all my forked repos to this function 
-  })
-}
-// calling getRepos function
-getRepos()
+getRepos();
 
-// GETTING ALL MY PULL REQUESTS 
-const getPullRequests = (forkedRepos) => { // repos är samma som forkedRepos
-  forkedRepos.forEach(repo => {
-    // console.log(repo) // alla mina forked pull requests 
-    fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls?per_page=100`) // getting all pullrequest to the specific project
-    .then(res => res.json())
-    .then(data => {
-      const myPullRequests = data.find(pull => pull.user.login === repo.owner.login) // there is a different between filter and find function, with find you get a sandwich with a name on
-      getCommits(myPullRequests.commits_url, repo.name) // link 
-    })
-  })
-}
+// GETTING ALL MY PULL REQUESTS
+// const getPullRequests = (forkedRepos) => {
+//   forkedRepos.forEach((repo) => {
+//     fetch(`https://api.github.com/repos/Technigo/${repo.name}/pulls`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         console.log(data);
+//         const myPullRequests = data.find(
+//           (pull) => pull.user.login === repo.owner.login
+//         );
+//         console.log(myPullRequests, 'data');
+//         getCommits(myPullRequests.commits_url, repo.name);
+//       });
+//   });
+// };
 
 const getCommits = (url, myRepoName) => {
-// fetching url for commits 
   fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    const numberOfCommits = data.length
-    document.getElementById(`commit-${myRepoName}`).innerHTML += numberOfCommits
-  })
-}
+    .then((res) => res.json())
+    .then((data) => {
+      const numberOfCommits = data.length;
+      document.getElementById(`commit-${myRepoName}`).innerHTML +=
+        numberOfCommits;
+    });
+};
 
-
-
-
-
+button.addEventListener('click', (e) => {
+  e.preventDefault();
+  searchProject();
+});

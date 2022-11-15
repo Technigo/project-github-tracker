@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project GitHub Tracker</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <!--CHART LIBRARY-->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="./style.css" />
-
-</head>
-<body>
-  <nav class="topnav">
-    <div class="logo-container">
-      <i class="fab fa-github fa-3x"></i>
-      <h4>GitHub Tracker</h4>
-    </div>
-    <!--<section class="search-container">
-      <form class="example">
-        <input type="text" placeholder="Search.." name="search" id="inputValue">
-        <button type="submit" id="button"><i class="fa fa-search"></i></button>
-      </form>
-    </section>-->
-  </nav>
-
-  <section class="container">
-    <div class="statistics-container">
-      <header id="header" class="user-information"></header>
-      <main id="projects" class="project-container"></main>
-    </div>
-
-    <div class="chart-container">
-      <h2>Project Statistics</h2>
-      <div class="doughnut">
-        <canvas id="chart"></canvas>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <div class="logo-container">
+        <i class="fab fa-github fa-4x"></i>
+        <h1>GitHub Tracker</h1>
       </div>
-    </div>
-  </section>
+      <div class="input-container">
+        <input
+          type="text"
+          placeholder="Search.."
+          name="search"
+          id="searchbar"
+        />
+        <button type="submit" id="button"><i class="fa fa-search"></i></button>
+      </div>
+    </nav>
 
-  <script src="./script.js"></script>
-  <script src="./chart.js"></script>
+    <section class="statistics-container">
+      <div id="header" class="user-information"></div>
+      <div class="stats-and-project-wrapper">
+        <div>
+          <h2>SOME FANCY STATS</h2>
+          <div
+            class="chart-container"
+            style="position: relative; height: 300px; width: 300px"
+          >
+            <canvas id="chart"></canvas>
+          </div>
+        </div>
+        <div id="projects" class="project-container"></div>
+      </div>
+    </section>
 
-</body>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+  </body>
 </html>
