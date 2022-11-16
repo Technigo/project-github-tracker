@@ -1,4 +1,6 @@
-# Week 7: GitHub tracker
+# Project GitHub Tracker
+
+Weekly project for Technigo's bootcamp, week 7: build a GitHub tracker
 
 The project is to build a GitHub tracker to gather my Technigo repositories in order to practice JavaScript and API skills through GitHub API. It contains some data about the repositories like commit messages, lastest push and so on.
 
