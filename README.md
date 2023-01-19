@@ -11,3 +11,7 @@ At first I felt some stress since there was no starter code to begin with and it
 ## View it live
 
 Project deployed here: [Nadia Lefebvre - GitHub Tracker](https://nadialefebvre-github-tracker.netlify.app/)
+
+<div align="center">
+  <img src="screenshot.jpg" />
+</div>
