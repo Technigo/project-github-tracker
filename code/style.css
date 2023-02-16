@@ -37,9 +37,10 @@ body {
 
 
 /* Profile styling and image*/
-.profile-container{
+.profile-section{
   width:90%;
   margin: 0 auto; 
+  border-bottom: 7px dashed black;
 }
 
 .profile-wrapper{
@@ -80,9 +81,10 @@ body {
 /* styles bio from GitHub*/
 .profile-text {
  
-  text-align: justify;
+  text-align: center;
   margin-bottom: 40px;
-  border-bottom: 7px dashed black;
+
+  
 }
 
 /* Cards styling*/
@@ -131,7 +133,7 @@ body {
 
 /* This is the span styling*/
 .space {
-  margin-left: 18px;
+  margin-left: 12px;
   color: #87bee7;
 } 
 
@@ -169,7 +171,7 @@ body {
    flex-direction: row;
 }
 .js-card{
-  width: 40%;
+  width: 80%;
 }
 .canvas-chart {
   min-width: 400px;
@@ -182,7 +184,7 @@ body {
 @media (min-width: 992px) {
 
   .js-card{
-    width: 30%;
+    width: 50%;
   }
   .canvas-chart {
     min-width: 400px;

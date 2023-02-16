@@ -10,20 +10,24 @@ const userProfile = () => {
   .then (response => response.json())
   .then (data => {
      // This injects the fetched data into the profileContainer innerHTML
-    profileContainer.innerHTML+= `
-    <div class="profile-wrapper" id="profile-wrapper">
-      <div class="profile-photo" id=" profile-image">
-        <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
-      </div>
-      <div class="profile-username" id ="profile-username">
-        <div class="user-name">Name:<span class="space">${data.login}</span></div>
-        <div class="real-name">AKA:<span class="space">${data.name}</span></div>
-        <div class="location">Find me in:<span class="space">${data.location}, CH</span></div>
-      </div>
-  </div>
-  <div class="profile-text" id="profile-text">
-    <p> ${data.bio}</p>
-  </div>`
+    profileContainer.innerHTML += `
+
+   <div class="profile-section" id="profile-container">
+   <div class="profile-wrapper" id="profile-wrapper">
+   <div class="profile-photo" id=" profile-image">
+     <img src="https://avatars.githubusercontent.com/u/70952682?v=4" alt="Profile Picture of User" >
+   </div>
+   <div class="profile-username" id ="profile-username">
+     <div class="user-name"><span class="space">Name:<span><span class="space">${data.login}</span></div>
+     <div class="real-name"><span class="space">AKA:<span><span class="space">${data.name}</span></div>
+     <div class="location"><span class="space">Location:<span><span class="space">${data.location}, CH</span></div>
+   </div>
+ </div>
+<div class="profile-text" id="profile-text">
+ <p> ${data.bio}</p>
+</div>
+   </div>
+   `;
   })
 }
 //This invokes the userProfile function
