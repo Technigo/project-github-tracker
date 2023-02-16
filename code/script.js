@@ -44,21 +44,21 @@ const getRepos = ()=>{
         forkedProjects.forEach(repo => cardsContainer.innerHTML += `
         <section class="js-card">
           <div class="card-projectname" id="cardProjectName">   
-          Project Name: <span class="space">${repo.name}</span></div>
+          <span class="space">Project Name:<span> <span class="space">${repo.name}</span></div>
           <div class="updated" id="cardUpdated">
-          Most recent update:<span class="space"> ${new Date(repo.pushed_at).toDateString()}</span>   
+          <span class="space">Most recent update:<span><span class="space"> ${new Date(repo.pushed_at).toDateString()}</span>   
           </div>
           <div class= "branch" id="cardBranch">
-          Name of default branch:<span class="space">${repo.default_branch}</span>    
+          <span class="space">Name of default branch:<span><span class="space">${repo.default_branch}</span>    
           </div>
           <div class= "URL" id="cardURL">
-          URL: <span class="space"><a href="${repo.html_url} ">Clicky</span></a> 
+          <span class="space">URL:<span> <span class="space"><a href="${repo.html_url} ">Clicky</span></a> 
           </div>
           <div class= "number-commits" id="commit-${repo.name}">
-          Number of Commits:  
+          <span class="space">Number of commits:<span>  
           </div>
           <div class= "times-forked" id="cardForked">
-          Number of times forked:<span class="space">${repo.forks}</span>  
+          <span class="space">Number of times forked:<span><span class="space">${repo.forks}</span>  
           </div>
         </section>`
     )
