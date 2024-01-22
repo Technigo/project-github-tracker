@@ -16,7 +16,7 @@ Chart.defaults.font.size = 18;
           ],
           datasets: [{
             label: 'My First Dataset',
-            data: [amount, 100-amount], 
+            data: [amount, Math.max(18 - amount, 0)],
             backgroundColor: [
               'rgb(226, 176, 9)',
               'white'
